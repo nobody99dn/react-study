@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/reset.css" />
   </head>
   <body>
     <header class="page-header">
@@ -22,7 +23,7 @@
       <nav class="nav-bar">
         <ul class="nav-bar__list">
           <li class="nav-bar__item">
-            <a href="#" class="nav-bar__link">browser</a>
+            <a href="#" class="nav-bar__link">browse</a>
           </li>
 
           <div class="nav-bar__divider"></div>
@@ -54,43 +55,52 @@
     </header>
 
     <main class="page-content">
-      <div class="container">
-        <div class="intro">
-          <hgroup>
-            <h1>Renting made simple</h1>
-            <h5>We make it easy to rent apartments</h5>
+      <!--start intro area-->
+      <div class="intro d-center">
+        <div class="intro__content d-center">
+          <hgroup class="intro__title">
+            <h1 class="d-center">Renting made simple.</h1>
+            <h2 class="d-center">We make it easy to rent apartments.</h2>
           </hgroup>
 
-          <div class="filter-area">
-            <div class="filter-area__text">
-              <input
-                type="text"
-                placeholder="Maybe Berlin or somewhere nearly?"
-              />
-            </div>
+          <div class="filter-area d-center">
+            <input
+              class="filter-area__text d-center input"
+              type="text"
+              placeholder="Maybe Berlin or somewhere nearly?"
+            />
 
-            <div class="filter-area__select">
-              <select name="rooms" id="rooms">
-                <option value="Rooms"></option>
-                <option value="Houses"></option>
-                <option value="Department"></option>
-              </select>
-            </div>
+            <div class="filter-area__select d-center">
+              <div class="filter-area__select-item">
+                <select class="input" name="rooms" id="rooms">
+                  <option value="" disabled selected>Rooms</option>
+                </select>
 
-            <div class="filter-area__select">
-              <select name="budgets" id="budgets">
-                <option value="Budgets"></option>
-                <option value="Houses"></option>
-                <option value="Department"></option>
-              </select>
-            </div>
+                <span class="text-secondary d-absolute"
+                  ><i class="fas fa-angle-down fa-lg"></i
+                ></span>
+              </div>
 
-            <div class="filter-area__btn">
+              <div class="filter-area__select-item">
+                <select class="input" name="budgets" id="budgets">
+                  <option value="" disabled selected>Budgets</option>
+                </select>
+
+                <span class="text-secondary d-absolute"
+                  ><i class="fas fa-angle-down fa-lg"></i
+                ></span>
+              </div>
+
               <button class="btn btn-secondary">Get started</button>
             </div>
           </div>
+          <button class="intro__btn text-capitalize" href="">
+            how it works
+          </button>
         </div>
+      </div>
 
+      <div class="container">
         <section class="post">
           <nav class="post__nav">
             <ul class="secondary-nav">
@@ -387,5 +397,9 @@
     </footer>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html-inspector/0.8.2/html-inspector.js"></script>
+    <script
+      src="https://kit.fontawesome.com/6559ddb932.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
