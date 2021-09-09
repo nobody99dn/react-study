@@ -90,8 +90,9 @@ select {
   align-items: center;
   display: flex;
   justify-content: space-between;
+  height: 135px;
   margin: 18px 30px;
-  width: 97%;
+  width: 96.8%;
   position: absolute;
   z-index: 1;
 }
@@ -119,7 +120,8 @@ select {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: 12px 30px;
+  letter-spacing: 2px;
+  padding: 20px 40px;
 }
 
 .nav-bar__divider {
