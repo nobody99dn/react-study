@@ -37,7 +37,7 @@ select {
   position: absolute;
 }
 
-.d-center {
+.display-center {
   align-items: center;
   display: flex;
   justify-content: center;
