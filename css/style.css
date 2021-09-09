@@ -270,3 +270,42 @@ select {
   margin-top: 20px;
   margin-left: -30px;
 }
+
+.secondary-nav li {
+  padding-right: 27px;
+}
+
+.secondary-nav__link {
+  color: #aaaeb2;
+  padding-bottom: 11px;
+}
+
+.active {
+  border-bottom: 2px solid #f5a623;
+  color: #0f4555;
+}
+
+.post__nav {
+  padding: 70px 0;
+}
+
+.post__item {
+  height: auto;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card {
+  background-color: white;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.card-title {
+}
+
+.card-subtitle {
+  color: #9b9da0;
+  font-size: 12px;
+  text-transform: uppercase;
+}
