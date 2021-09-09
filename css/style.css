@@ -240,6 +240,10 @@ sup {
   margin-left: -30px;
 }
 
+/*------------------------------------*\
+#NAV IN POST AREA
+\*------------------------------------*/
+
 .secondary-nav li {
   padding-right: 27px;
 }
@@ -265,6 +269,10 @@ sup {
   width: 100%;
 }
 
+/*------------------------------------*\
+#BUTTON IN POST AREA
+\*------------------------------------*/
+
 .post__btn {
   height: 160px;
   width: 100%;
@@ -277,6 +285,10 @@ sup {
   height: 50px;
   width: 188px;
 }
+
+/*------------------------------------*\
+#CARD IN POST AREA
+\*------------------------------------*/
 
 .card {
   background-color: white;
