@@ -16,6 +16,11 @@ select {
   appearance: none;
 }
 
+sup {
+  font-size: small;
+  vertical-align: top;
+}
+
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #b5b5b5;
@@ -142,7 +147,7 @@ select {
 }
 
 .container {
-  margin: 0 5%;
+  margin: 0 7.5%;
 }
 
 /*------------------------------------*\
@@ -241,6 +246,7 @@ select {
 
 .secondary-nav__link {
   color: #aaaeb2;
+  font-size: 15px;
   padding-bottom: 11px;
 }
 
@@ -259,6 +265,19 @@ select {
   width: 100%;
 }
 
+.post__btn {
+  height: 160px;
+  width: 100%;
+}
+
+.post__btn > button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #e9eaea;
+  font-size: 15px;
+  height: 50px;
+  width: 188px;
+}
+
 .card {
   background-color: white;
   border-radius: 3px;
@@ -266,10 +285,40 @@ select {
 }
 
 .card-title {
+  color: #0f4555;
+  font-style: normal;
+  font-family: 20px;
+  padding-top: 5px;
 }
 
 .card-subtitle {
   color: #9b9da0;
   font-size: 12px;
+
   text-transform: uppercase;
+}
+
+.card__value {
+  padding-top: 7px;
+  font-size: 18px;
+}
+
+.card__body-top {
+  border-bottom: 1px solid #f6f8fa;
+  height: 3em;
+  width: 100%;
+}
+
+.card__body-content {
+  margin: 20px;
+}
+
+.card__body-bottom {
+  height: 4em;
+}
+
+.card__body-info {
+  flex-direction: column;
+  width: 33.3%;
+  height: 100%;
 }
