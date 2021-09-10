@@ -354,7 +354,7 @@ sup {
 }
 
 .benefit__item-algin {
-  height: 37%;
+  height: 40%;
 }
 
 .benefit__content {
@@ -370,4 +370,6 @@ sup {
 
 .benefit__subtitle {
   font-size: 14px;
+  letter-spacing: 0.0142857em;
+  line-height: 20px;
 }
