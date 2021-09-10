@@ -299,7 +299,7 @@ sup {
 .card-title {
   color: #0f4555;
   font-style: normal;
-  font-family: 20px;
+  font-size: 20px;
   padding-top: 5px;
 }
 
@@ -333,4 +333,37 @@ sup {
   flex-direction: column;
   width: 33.3%;
   height: 100%;
+}
+
+.benefit {
+  height: 510px;
+}
+
+.benefit > .container {
+  justify-content: space-around;
+  height: 100%;
+}
+
+.benefit__item {
+  height: 100%;
+  width: 300px;
+}
+
+.benefit__item-algin {
+  height: 37%;
+}
+
+.benefit__content {
+  color: #0f4555;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  text-align: center;
+}
+.benefit__title {
+  font-size: 20px;
+}
+
+.benefit__subtitle {
+  font-size: 14px;
 }
