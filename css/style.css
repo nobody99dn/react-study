@@ -100,6 +100,14 @@ sup {
   text-transform: uppercase;
 }
 
+.underline {
+  color: #f5a623;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 3px;
+  width: 32px;
+}
+
 /*------------------------------------*\
 #PAGE HEADER
 \*------------------------------------*/
@@ -169,6 +177,7 @@ sup {
 
 .container {
   margin: 0 7.5%;
+  height: 100%;
 }
 
 /*------------------------------------*\
@@ -429,4 +438,109 @@ sup {
   font-size: 14px;
   letter-spacing: 0.0142857em;
   line-height: 20px;
+}
+
+/*------------------------------------*\
+# ---COMMENT AREA---
+\*------------------------------------*/
+
+.comment-area {
+  background-color: white;
+  height: 560px;
+  width: 100%;
+}
+
+.comment-area__align {
+  flex-direction: column;
+  height: 70%;
+  justify-content: space-between;
+}
+
+/*------------------------------------*\
+#TITLE IN COMMENT AREA
+\*------------------------------------*/
+
+.comment-area__title {
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+/*------------------------------------*\
+#QUOTE IN COMMENT AREA
+\*------------------------------------*/
+
+.comment-area__content {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.comment-area__content > img {
+  width: 53px;
+  height: 45.5px;
+}
+
+.comment-area__content > p {
+  font-size: 28px;
+  padding-left: 40px;
+  padding-top: 15px;
+  line-height: 35px;
+}
+
+/*------------------------------------*\
+#USERS IN COMMENT AREA
+\*------------------------------------*/
+
+.comment-area__list-users {
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.comment-area__user {
+  visibility: hidden;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 150px;
+}
+
+.comment-area__user:hover {
+  cursor: pointer;
+  transition: 0.25s;
+  visibility: visible;
+}
+
+.comment-area__user:hover .comment-area__user-img {
+  filter: none;
+  height: 90px;
+  width: 90px;
+  transition: 0.5s;
+}
+
+.comment-area__user-img {
+  filter: grayscale(100%);
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.comment-area__user-name {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.comment-area__user-role {
+  font-size: 18px;
+}
+
+.active--user {
+  visibility: visible;
+}
+
+.active--user > .comment-area__user-img {
+  height: 90px;
+  width: 90px;
+  filter: none;
 }
