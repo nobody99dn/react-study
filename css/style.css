@@ -25,11 +25,11 @@ select {
 #COMMON COMPONENT
 \*------------------------------------*/
 
-.bg-primary {
+.background-primary {
   background-color: #f6f8fa;
 }
 
-.bg-secondary {
+.background-secondary {
   background-color: #f5a623;
 }
 
