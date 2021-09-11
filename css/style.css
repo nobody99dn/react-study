@@ -12,6 +12,11 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #f5a623;
+  transition: 0.2s;
+}
+
 select {
   appearance: none;
 }
@@ -72,9 +77,33 @@ select {
   background: #fff;
 }
 
+.btn-primary:hover {
+  background-color: #f5a623;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn-primary:not(:hover) {
+  color: #f5a623;
+  background: #fff;
+  transition: 0.2s;
+}
+
 .btn-secondary {
   background-color: #f5a623;
   color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #ff9f00;
+  border: 3px double white;
+  transition: 0.2s;
+}
+
+.btn-secondary:not(:hover) {
+  background-color: #f5a623;
+  border: 0px;
+  transition: 1s;
 }
 
 .title {
@@ -171,9 +200,22 @@ select {
   border: 2px solid #cbcbcb;
   border-radius: 5px;
   color: #cbcbcb;
+  cursor: pointer;
   font-size: 18px;
   height: 4em;
   width: 31.2%;
+}
+
+.intro__btn:hover {
+  border: 2px solid white;
+  color: white;
+  transition: 0.2s;
+}
+
+.intro__btn:not(:hover) {
+  border: 2px solid #cbcbcb;
+  color: #cbcbcb;
+  transition: 0.2s;
 }
 
 /*------------------------------------*\
@@ -205,6 +247,7 @@ select {
 
 .filter-area__select select {
   color: #b5b5b5;
+  cursor: pointer;
   font-size: 15px;
   height: 100%;
   width: 100%;
@@ -218,9 +261,9 @@ select {
 }
 
 .filter-area__select-item {
+  color: #b5b5b5;
   height: 100%;
   width: 32.3%;
-  color: #b5b5b5;
 }
 
 .filter-area__select span {
