@@ -12,11 +12,6 @@ a {
   text-decoration: none;
 }
 
-.nav-bar__item > a:hover {
-  color: #f5a623;
-  transition: 0.2s;
-}
-
 select {
   appearance: none;
 }
@@ -117,7 +112,7 @@ sup {
 }
 
 /*------------------------------------*\
-  #PAGE HEADER
+#PAGE HEADER
 \*------------------------------------*/
 
 .page-header {
@@ -132,7 +127,7 @@ sup {
 }
 
 /*------------------------------------*\
-  #LOGO
+#LOGO
 \*------------------------------------*/
 
 .logo {
@@ -142,7 +137,7 @@ sup {
 }
 
 /*------------------------------------*\
-  #NAV BAR
+#NAV BAR
 \*------------------------------------*/
 
 .nav li {
@@ -154,6 +149,10 @@ sup {
   text-transform: uppercase;
 }
 
+.nav-bar__item > a:hover {
+  color: #f5a623;
+  transition: 0.2s;
+}
 .nav-bar__link {
   letter-spacing: 2px;
   padding: 15px 40px;
@@ -294,6 +293,11 @@ sup {
   padding-bottom: 11px;
 }
 
+.secondary-nav__link:hover {
+  color: #f5a623;
+  transition: 0.2s;
+}
+
 .active {
   border-bottom: 2px solid #f5a623;
   color: #0f4555;
@@ -324,6 +328,11 @@ sup {
   font-size: 15px;
   height: 50px;
   width: 188px;
+}
+
+.post__btn > button:hover {
+  border: 2px solid #0f4555;
+  transition: 0.2s;
 }
 
 /*------------------------------------*\
