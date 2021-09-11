@@ -303,10 +303,19 @@ sup {
   color: #0f4555;
 }
 
+.post {
+  width: 100%;
+}
+
 .post__nav {
   padding: 70px 0;
 }
 
+.post__content {
+  display: contents;
+  height: 415px;
+  width: 344px;
+}
 .post__item {
   height: auto;
   justify-content: space-between;
