@@ -12,13 +12,13 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: #f5a623;
-  transition: 0.2s;
-}
-
 select {
   appearance: none;
+}
+
+sup {
+  font-size: small;
+  vertical-align: top;
 }
 
 ::placeholder {
@@ -112,7 +112,7 @@ select {
 }
 
 /*------------------------------------*\
-  #PAGE HEADER
+#PAGE HEADER
 \*------------------------------------*/
 
 .page-header {
@@ -127,7 +127,7 @@ select {
 }
 
 /*------------------------------------*\
-  #LOGO
+#LOGO
 \*------------------------------------*/
 
 .logo {
@@ -137,14 +137,22 @@ select {
 }
 
 /*------------------------------------*\
-  #NAV BAR
+#NAV BAR
 \*------------------------------------*/
 
-.nav-bar__list li {
+.nav li {
   display: inline;
+  text-transform: capitalize;
+}
+
+.nav-bar__list li {
   text-transform: uppercase;
 }
 
+.nav-bar__item > a:hover {
+  color: #f5a623;
+  transition: 0.2s;
+}
 .nav-bar__link {
   letter-spacing: 2px;
   padding: 15px 40px;
@@ -164,7 +172,7 @@ select {
 }
 
 .container {
-  margin: 0 5%;
+  margin: 0 7.5%;
 }
 
 /*------------------------------------*\
@@ -269,4 +277,121 @@ select {
 .filter-area__select span {
   margin-top: 20px;
   margin-left: -30px;
+}
+
+/*------------------------------------*\
+#NAV IN POST AREA
+\*------------------------------------*/
+
+.secondary-nav li {
+  padding-right: 27px;
+}
+
+.secondary-nav__link {
+  color: #aaaeb2;
+  font-size: 15px;
+  padding-bottom: 11px;
+}
+
+.secondary-nav__link:hover {
+  color: #f5a623;
+  transition: 0.2s;
+}
+
+.active {
+  border-bottom: 2px solid #f5a623;
+  color: #0f4555;
+}
+
+.post {
+  width: 100%;
+}
+
+.post__nav {
+  padding: 70px 0;
+}
+
+.post__content {
+  display: contents;
+  height: 415px;
+  width: 344px;
+}
+.post__item {
+  height: auto;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/*------------------------------------*\
+#BUTTON IN POST AREA
+\*------------------------------------*/
+
+.post__btn {
+  height: 160px;
+  width: 100%;
+}
+
+.post__btn > button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #e9eaea;
+  font-size: 15px;
+  height: 50px;
+  width: 188px;
+}
+
+.post__btn > button:hover {
+  border: 2px solid #0f4555;
+  transition: 0.2s;
+}
+
+/*------------------------------------*\
+#CARD IN POST AREA
+\*------------------------------------*/
+
+.card {
+  background-color: white;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.card-title {
+  padding-top: 5px;
+}
+
+.card-title a {
+  color: #0f4555;
+  font-style: normal;
+  font-family: 20px;
+}
+
+.card-subtitle {
+  color: #9b9da0;
+  font-size: 12px;
+
+  text-transform: uppercase;
+}
+
+.card__value {
+  padding-top: 7px;
+  font-size: 18px;
+}
+
+.card__body-top {
+  border-bottom: 1px solid #f6f8fa;
+  height: 3em;
+  width: 100%;
+}
+
+.card__body-content {
+  margin: 20px;
+}
+
+.card__body-bottom {
+  height: 4em;
+}
+
+.card__body-info {
+  flex-direction: column;
+  width: 33.3%;
+  height: 100%;
 }
