@@ -72,17 +72,6 @@ sup {
   cursor: pointer;
 }
 
-.btn-primary {
-  color: #f5a623;
-  background: #fff;
-}
-
-.btn-primary:hover {
-  background-color: #f5a623;
-  color: #fff;
-  transition: 0.2s;
-}
-
 .btn-primary:not(:hover) {
   color: #f5a623;
   background: #fff;
@@ -149,13 +138,20 @@ sup {
   text-transform: uppercase;
 }
 
-.nav-bar__item > a:hover {
-  color: #f5a623;
-  transition: 0.2s;
-}
 .nav-bar__link {
   letter-spacing: 2px;
   padding: 15px 40px;
+}
+
+.nav-bar__link:hover {
+  color: #f5a623;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #f5a623;
+  color: #fff;
+  transition: 0.2s;
 }
 
 .nav-bar__divider {
@@ -394,4 +390,43 @@ sup {
   flex-direction: column;
   width: 33.3%;
   height: 100%;
+}
+
+.benefit {
+  height: 510px;
+}
+
+/*------------------------------------*\
+#BENEFIT AREA
+\*------------------------------------*/
+
+.benefit > .container {
+  justify-content: space-around;
+  height: 100%;
+}
+
+.benefit__item {
+  height: 100%;
+  width: 300px;
+}
+
+.benefit__item-algin {
+  height: 40%;
+}
+
+.benefit__content {
+  color: #0f4555;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  text-align: center;
+}
+.benefit__title {
+  font-size: 20px;
+}
+
+.benefit__subtitle {
+  font-size: 14px;
+  letter-spacing: 0.0142857em;
+  line-height: 20px;
 }
