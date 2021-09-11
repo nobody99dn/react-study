@@ -12,7 +12,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+.nav-bar__item > a:hover {
   color: #f5a623;
   transition: 0.2s;
 }
@@ -145,8 +145,12 @@ sup {
   #NAV BAR
 \*------------------------------------*/
 
-.nav-bar__list li {
+.nav li {
   display: inline;
+  text-transform: capitalize;
+}
+
+.nav-bar__list li {
   text-transform: uppercase;
 }
 
@@ -333,10 +337,13 @@ sup {
 }
 
 .card-title {
+  padding-top: 5px;
+}
+
+.card-title a {
   color: #0f4555;
   font-style: normal;
   font-family: 20px;
-  padding-top: 5px;
 }
 
 .card-subtitle {
