@@ -112,23 +112,20 @@ select {
 \*------------------------------------*/
 
 .nav-bar__list li {
-  display: inline-block;
+  display: inline;
   text-transform: uppercase;
 }
 
 .nav-bar__link {
-  align-items: center;
-  display: flex;
-  justify-content: center;
   letter-spacing: 2px;
   padding: 20px 40px;
 }
 
 .nav-bar__divider {
-  width: 2px;
-  height: 10px;
   background-color: white;
   display: inline-block;
+  width: 2px;
+  height: 10px;
 }
 
 .page-content {
