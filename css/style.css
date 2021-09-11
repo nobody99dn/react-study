@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  background-color: #f0f0f0;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f5a623;
+  transition: 0.2s;
+}
+
+select {
+  appearance: none;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #b5b5b5;
+}
+
+/*------------------------------------*\
+#COMMON COMPONENT
+\*------------------------------------*/
+
+.background-primary {
+  background-color: #f6f8fa;
+}
+
+.background-secondary {
+  background-color: #f5a623;
+}
+
+.display-absolute {
+  position: absolute;
+}
+
+.display-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  border: 0;
+  border-radius: 3px;
+}
+
+.text-primary {
+  color: #0f4555;
+}
+
+.text-secondary {
+  color: #f5a623;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.btn {
+  border-radius: 3px;
+  border: 2px #e9eaea;
+  color: #0f4555;
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: #f5a623;
+  background: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #f5a623;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn-primary:not(:hover) {
+  color: #f5a623;
+  background: #fff;
+  transition: 0.2s;
+}
+
+.btn-secondary {
+  background-color: #f5a623;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #ff9f00;
+  border: 3px double white;
+  transition: 0.2s;
+}
+
+.btn-secondary:not(:hover) {
+  background-color: #f5a623;
+  border: 0px;
+  transition: 1s;
+}
+
+.title {
+  size: 14px;
+  text-transform: uppercase;
+}
+
+/*------------------------------------*\
+  #PAGE HEADER
+\*------------------------------------*/
+
+.page-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 135px;
+  margin: 18px 30px;
+  width: 96.8%;
+  position: absolute;
+  z-index: 1;
+}
+
+/*------------------------------------*\
+  #LOGO
+\*------------------------------------*/
+
+.logo {
+  float: left;
+  height: 80px;
+  width: 80px;
+}
+
+/*------------------------------------*\
+  #NAV BAR
+\*------------------------------------*/
+
+.nav-bar__list li {
+  display: inline;
+  text-transform: uppercase;
+}
+
+.nav-bar__link {
+  letter-spacing: 2px;
+  padding: 15px 40px;
+}
+
+.nav-bar__divider {
+  background-color: white;
+  display: inline-block;
+  width: 2px;
+  height: 10px;
+}
+
+.page-content {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.container {
+  margin: 0 5%;
+}
+
+/*------------------------------------*\
+  #INTRO AREA
+\*------------------------------------*/
+
+.intro {
+  background: #fff url(../assets/images/001bg-1.png) no-repeat center center;
+  background-size: cover;
+  height: 700px;
+  padding-top: 5em;
+}
+
+.intro__content {
+  justify-content: space-around;
+  flex-direction: column;
+  height: 70%;
+}
+
+.intro__title > h2 {
+  font-size: 62px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.intro__title > h3 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.intro__btn {
+  background: rgba(255, 255, 255, 0);
+  border: 2px solid #cbcbcb;
+  border-radius: 5px;
+  color: #cbcbcb;
+  cursor: pointer;
+  font-size: 15px;
+  height: 50px;
+  width: 31.2%;
+}
+
+.intro__btn:hover {
+  border: 2px solid white;
+  color: white;
+  transition: 0.2s;
+}
+
+.intro__btn:not(:hover) {
+  border: 2px solid #cbcbcb;
+  color: #cbcbcb;
+  transition: 0.2s;
+}
+
+/*------------------------------------*\
+  #FILTER
+\*------------------------------------*/
+
+.filter-area {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 3px;
+  justify-content: space-evenly;
+  height: 132px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.filter-area__text {
+  height: 40%;
+  width: 97%;
+  text-indent: 30px;
+  font-size: 15px;
+  padding: 0;
+}
+
+.filter-area__select {
+  height: 40%;
+  justify-content: space-between;
+  width: 97%;
+}
+
+.filter-area__select select {
+  color: #b5b5b5;
+  cursor: pointer;
+  font-size: 15px;
+  height: 100%;
+  width: 100%;
+  text-indent: 30px;
+}
+
+.filter-area__select .btn {
+  height: 100%;
+  font-size: 15px;
+  width: 32.3%;
+}
+
+.filter-area__select-item {
+  color: #b5b5b5;
+  height: 100%;
+  width: 32.3%;
+}
+
+.filter-area__select span {
+  margin-top: 20px;
+  margin-left: -30px;
+}
