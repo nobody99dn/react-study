@@ -72,17 +72,6 @@ sup {
   cursor: pointer;
 }
 
-.btn-primary {
-  color: #f5a623;
-  background: #fff;
-}
-
-.btn-primary:hover {
-  background-color: #f5a623;
-  color: #fff;
-  transition: 0.2s;
-}
-
 .btn-primary:not(:hover) {
   color: #f5a623;
   background: #fff;
@@ -149,13 +138,20 @@ sup {
   text-transform: uppercase;
 }
 
-.nav-bar__item > a:hover {
-  color: #f5a623;
-  transition: 0.2s;
-}
 .nav-bar__link {
   letter-spacing: 2px;
   padding: 15px 40px;
+}
+
+.nav-bar__link:hover {
+  color: #f5a623;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #f5a623;
+  color: #fff;
+  transition: 0.2s;
 }
 
 .nav-bar__divider {
