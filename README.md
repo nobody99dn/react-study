@@ -49,5 +49,5 @@
 
 ## Usage
 
-- Clone project: `git@gitlab.asoft-python.com:g-vantran/html-css-training.git`
+- Clone project: `git clone -b master git@gitlab.asoft-python.com:g-vantran/html-css-training.git`
 - Open `index.html` by your browser
