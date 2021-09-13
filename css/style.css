@@ -177,7 +177,6 @@ sup {
 .page-content {
   width: 100%;
   height: auto;
-  position: absolute;
 }
 
 .container {
@@ -373,7 +372,6 @@ sup {
 .card-subtitle {
   color: #9b9da0;
   font-size: 12px;
-
   text-transform: uppercase;
 }
 
@@ -582,4 +580,69 @@ sup {
 .start-now__text {
   color: #cbcbcb;
   font-size: 16px;
+}
+
+/*------------------------------------*\
+#FOOTER
+\*------------------------------------*/
+
+.page-footer {
+  align-items: center;
+  background-color: #fff;
+  height: 140px;
+  margin: 0 auto;
+}
+
+.page-footer > .container {
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1600px;
+}
+
+.page-footer__release,
+.page-footer__nav * {
+  color: #9b9da0;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.page-footer__nav-info > .page-footer__nav-item {
+  margin: 0 18px;
+}
+
+.page-footer__nav-social > .page-footer__nav-item {
+  margin-left: 24px;
+}
+
+.page-footer__nav-social > .page-footer__nav-item a {
+  background-color: #9b9da0;
+  border-radius: 50%;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+}
+
+.page-footer__nav-link:hover {
+  color: #0f4555;
+  transition: 0.2s;
+}
+
+a.page-footer__nav-facebook:hover {
+  background-color: #1877f2;
+  transition: 0.2s;
+}
+
+a.page-footer__nav-twitter:hover {
+  background-color: #1da1f2;
+  transition: 0.2s;
+}
+
+a.page-footer__nav-google:hover {
+  background-color: #ea4335;
+  transition: 0.2s;
+}
+
+a.page-footer__nav-instagram:hover {
+  background-color: #e4405f;
+  transition: 0.2s;
 }
