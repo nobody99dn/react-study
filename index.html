@@ -24,29 +24,29 @@
       </div>
 
       <!--start nav bar-->
-      <nav class="nav-bar">
-        <ul class="nav nav-bar__list">
-          <li class="nav-bar__item">
-            <a href="#" class="nav-bar__link">browse</a>
-            <span class="nav-bar__divider"></span>
+      <nav class="header-header-links-group">
+        <ul class=" horizontal-list header-links-group__list">
+          <li class="header-links-group__item">
+            <a href="#" class="header-links-group__link">browse</a>
+            <span class="header-links-group__divider"></span>
           </li>
 
-          <li class="nav-bar__item">
-            <a href="#" class="nav-bar__link">discover</a>
-            <span class="nav-bar__divider"></span>
+          <li class="header-links-group__item">
+            <a href="#" class="header-links-group__link">discover</a>
+            <span class="header-links-group__divider"></span>
           </li>
 
-          <li class="nav-bar__item">
-            <a href="#" class="nav-bar__link">list your flat</a>
-            <span class="nav-bar__divider"></span>
+          <li class="header-links-group__item">
+            <a href="#" class="header-links-group__link">list your flat</a>
+            <span class="header-links-group__divider"></span>
           </li>
 
-          <li class="nav-bar__item">
-            <a href="#" class="nav-bar__link text-capitalize">login</a>
+          <li class="header-links-group__item">
+            <a href="#" class="header-links-group__link text-capitalize">login</a>
           </li>
 
-          <li class="nav-bar__item">
-            <a class="btn btn-primary nav-bar__link text-capitalize" href="#"
+          <li class="header-links-group__item">
+            <a class="btn btn-primary header-links-group__link text-capitalize" href="#"
               >join us</a
             >
           </li>
@@ -66,34 +66,36 @@
           </hgroup>
 
           <div class="filter-area display-center">
-            <input
-              class="filter-area__text display-center input"
-              type="text"
-              placeholder="Maybe Berlin or somewhere nearly?"
-            />
-
-            <div class="filter-area__select display-center">
-              <div class="filter-area__select-item">
-                <select class="input" name="rooms" id="rooms">
-                  <option value="" disabled selected>Rooms</option>
-                </select>
-
-                <span class="text-secondary display-absolute"
-                  ><i class="fas fa-angle-down fa-lg"></i
-                ></span>
-              </div>
-
-              <div class="filter-area__select-item">
-                <select class="input" name="budgets" id="budgets">
-                  <option value="" disabled selected>Budgets</option>
-                </select>
-
-                <span class="text-secondary display-absolute"
-                  ><i class="fas fa-angle-down fa-lg"></i
-                ></span>
-              </div>
-
-              <button class="btn btn-secondary">Get started</button>
+            <form class="filter-area__form display-center" action="">
+              <input
+                class="filter-area__text display-center "
+                type="text"
+                placeholder="Maybe Berlin or somewhere nearly?"
+              />
+  
+              <div class="filter-area__select display-center">
+                <div class="filter-area__select-item">
+                  <select  name="rooms" id="rooms">
+                    <option value="" disabled selected>Rooms</option>
+                  </select>
+  
+                  <span class="text-secondary display-absolute"
+                    ><i class="fas fa-angle-down fa-lg"></i
+                  ></span>
+                </div>
+  
+                <div class="filter-area__select-item">
+                  <select name="budgets" id="budgets">
+                    <option value="" disabled selected>Budgets</option>
+                  </select>
+  
+                  <span class="text-secondary display-absolute"
+                    ><i class="fas fa-angle-down fa-lg"></i
+                  ></span>
+                </div>
+  
+                <button class="btn btn-secondary">Get started</button>
+            </form>
             </div>
           </div>
           <button class="btn intro__btn text-capitalize" href="">
@@ -107,14 +109,14 @@
       <section class="post">
         <div class="container">
           <!--start nav in post area-->
-          <nav class="post__nav">
-            <ul class="nav secondary-nav">
-              <li class="secondary-nav__item">
-                <a class="secondary-nav__link active" href="#">lastest</a>
+          <nav class="post__links-group">
+            <ul class=" horizontal-list post__links-group__list">
+              <li class="post__links-group__item">
+                <a class="post__links-group__link active" href="#">lastest</a>
               </li>
 
-              <li class="secondary-nav__item">
-                <a class="secondary-nav__link" href="#">highest reach</a>
+              <li class="post__links-group__item">
+                <a class="post__links-group__link" href="#">highest reach</a>
               </li>
             </ul>
           </nav>
@@ -367,7 +369,7 @@
                 </p>
               </div>
 
-              <div class="comment-area__user active--user display-center">
+              <div class="comment-area__user display-center">
                 <img
                   class="comment-area__user-img"
                   src="assets/images/img-03user-2.png"
@@ -450,49 +452,49 @@
     <footer class="page-footer display-center">
       <div class="container display-center">
         <p class="page-footer__release">2015 All Rights Reserved</p>
-        <nav class="page-footer__nav">
-          <ul class="page-footer__nav-info display-center">
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-link">blog</a>
+        <nav class="page-footer__links-group">
+          <ul class="page-footer__links-group-info display-center">
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-link">blog</a>
             </li>
 
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-link">about</a>
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-link">about</a>
             </li>
 
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-link">contact</a>
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-link">contact</a>
             </li>
 
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-link">FAG's</a>
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-link">FAG's</a>
             </li>
 
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-link">imprint</a>
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-link">imprint</a>
             </li>
           </ul>
         </nav>
 
         <nav>
-          <ul class="page-footer__nav-social display-center">
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-facebook display-center"
+          <ul class="page-footer__links-group-social display-center">
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-facebook display-center"
                 ><i class="fab fa-facebook-f"></i
               ></a>
             </li>
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-twitter display-center"
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-twitter display-center"
                 ><i class="fab fa-twitter"></i
               ></a>
             </li>
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-google display-center"
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-google display-center"
                 ><i class="fab fa-google-plus-g"></i
               ></a>
             </li>
-            <li class="page-footer__nav-item">
-              <a href="#" class="page-footer__nav-instagram display-center"
+            <li class="page-footer__links-group-item">
+              <a href="#" class="page-footer__links-group-instagram display-center"
                 ><i class="fab fa-instagram"></i
               ></a>
             </li>
