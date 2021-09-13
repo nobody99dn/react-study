@@ -341,7 +341,7 @@ sup {
 
 .post__btn > button {
   background-color: rgba(255, 255, 255, 0);
-  border: 2px solid #e9eaea;
+  border-style: solid;
 }
 
 .post__btn > button:hover {
@@ -366,7 +366,8 @@ sup {
 .card-title a {
   color: #0f4555;
   font-style: normal;
-  font-family: 20px;
+  font-size: 20px;
+  font-weight: normal;
 }
 
 .card-subtitle {
@@ -382,7 +383,7 @@ sup {
 
 .card__body-top {
   border-bottom: 1px solid #f6f8fa;
-  height: 3em;
+  height: 4em;
   width: 100%;
 }
 
@@ -410,7 +411,6 @@ sup {
 
 .benefit > .container {
   justify-content: space-around;
-  height: 100%;
   max-width: 1600px;
   width: 100%;
 }
