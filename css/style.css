@@ -606,9 +606,22 @@ sup {
   text-transform: capitalize;
 }
 
+/*------------------------------------*\
+#List in footer
+\*------------------------------------*/
+
 .page-footer__nav-info > .page-footer__nav-item {
   margin: 0 18px;
 }
+
+.page-footer__nav-link:hover {
+  color: #0f4555;
+  transition: 0.2s;
+}
+
+/*------------------------------------*\
+#Social network
+\*------------------------------------*/
 
 .page-footer__nav-social > .page-footer__nav-item {
   margin-left: 24px;
@@ -620,11 +633,6 @@ sup {
   color: #fff;
   height: 30px;
   width: 30px;
-}
-
-.page-footer__nav-link:hover {
-  color: #0f4555;
-  transition: 0.2s;
 }
 
 a.page-footer__nav-facebook:hover {
