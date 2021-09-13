@@ -91,7 +91,6 @@ select {
 }
 
 .btn-secondary:not(:hover) {
-  background-color: #f5a623;
   border: 0px;
   transition: 1s;
 }
@@ -198,13 +197,13 @@ select {
   height: 70%;
 }
 
-.intro__title > h2 {
+.intro__titile {
   font-size: 62px;
   font-weight: normal;
   margin-bottom: 10px;
 }
 
-.intro__title > h3 {
+.intro__subtitle {
   font-size: 30px;
   font-weight: normal;
 }
@@ -214,18 +213,15 @@ select {
   border: 2px solid #cbcbcb;
   border-radius: 5px;
   color: #cbcbcb;
-  cursor: pointer;
 }
 
 .intro__btn:hover {
-  border: 2px solid white;
+  border-color: white;
   color: white;
   transition: 0.2s;
 }
 
 .intro__btn:not(:hover) {
-  border: 2px solid #cbcbcb;
-  color: #cbcbcb;
   transition: 0.2s;
 }
 
@@ -384,7 +380,7 @@ select {
   font-size: 18px;
 }
 
-.card__body-top {
+.card__body-text {
   border-bottom: 1px solid #f6f8fa;
   height: 4em;
   width: 100%;
@@ -394,7 +390,7 @@ select {
   margin: 20px;
 }
 
-.card__body-bottom {
+.card__body-parameter {
   height: 4em;
 }
 
