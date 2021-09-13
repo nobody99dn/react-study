@@ -341,7 +341,7 @@ sup {
 
 .post__btn > button {
   background-color: rgba(255, 255, 255, 0);
-  border: 2px solid #e9eaea;
+  border-style: solid;
 }
 
 .post__btn > button:hover {
@@ -366,7 +366,8 @@ sup {
 .card-title a {
   color: #0f4555;
   font-style: normal;
-  font-family: 20px;
+  font-size: 20px;
+  font-weight: normal;
 }
 
 .card-subtitle {
@@ -382,7 +383,7 @@ sup {
 
 .card__body-top {
   border-bottom: 1px solid #f6f8fa;
-  height: 3em;
+  height: 4em;
   width: 100%;
 }
 
@@ -410,7 +411,6 @@ sup {
 
 .benefit > .container {
   justify-content: space-around;
-  height: 100%;
   max-width: 1600px;
   width: 100%;
 }
@@ -606,9 +606,22 @@ sup {
   text-transform: capitalize;
 }
 
+/*------------------------------------*\
+#List in footer
+\*------------------------------------*/
+
 .page-footer__nav-info > .page-footer__nav-item {
   margin: 0 18px;
 }
+
+.page-footer__nav-link:hover {
+  color: #0f4555;
+  transition: 0.2s;
+}
+
+/*------------------------------------*\
+#Social network
+\*------------------------------------*/
 
 .page-footer__nav-social > .page-footer__nav-item {
   margin-left: 24px;
@@ -620,11 +633,6 @@ sup {
   color: #fff;
   height: 30px;
   width: 30px;
-}
-
-.page-footer__nav-link:hover {
-  color: #0f4555;
-  transition: 0.2s;
 }
 
 a.page-footer__nav-facebook:hover {
