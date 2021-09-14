@@ -6,7 +6,7 @@
 
 ## Timeline
 
-- 7 days (06 Sep 2021 - 12 SEP 2021)
+- 7 days (06 Sep 2021 - 14 SEP 2021)
 
 ## Team size
 
@@ -17,7 +17,8 @@
 - Understand and using [HTML/CSS - Design and build websites](https://drive.google.com/file/d/0B8qLV3MMnCELODc3Y2tWRnZlTlU/view)
 - Using HTML5/CSS3
 - Using [Flexbox in CSS](http://cssreference.io/flexbox)
-- Using GitLab
+- Using Git/GitLab
+- Using [HTML Inspector](https://github.com/philipwalton/html-inspector)
 - Follow and Using:
   - [CSS Naming convention document](https://drive.google.com/file/d/0B7etZYEsK6j5SnUxYnoxaGREMUE/view)
   - [CSS Guide](https://cssguidelin.es/)
