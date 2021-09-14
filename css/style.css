@@ -21,6 +21,12 @@ sup {
   vertical-align: top;
 }
 
+input[type="text"],
+select {
+  border: 0;
+  border-radius: 3px;
+}
+
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #b5b5b5;
@@ -38,19 +44,10 @@ sup {
   background-color: #f5a623;
 }
 
-.display-absolute {
-  position: absolute;
-}
-
 .display-center {
   align-items: center;
   display: flex;
   justify-content: center;
-}
-
-.input {
-  border: 0;
-  border-radius: 3px;
 }
 
 .text-primary {
@@ -94,7 +91,6 @@ sup {
 }
 
 .btn-secondary:not(:hover) {
-  background-color: #f5a623;
   border: 0px;
   transition: 1s;
 }
@@ -141,22 +137,22 @@ sup {
 #NAV BAR
 \*------------------------------------*/
 
-.nav li {
+.horizontal-list li {
   display: inline;
   text-transform: capitalize;
 }
 
-.nav-bar__list li {
+.header-links-group__list li {
   text-transform: uppercase;
 }
 
-.nav-bar__link {
+.header-links-group__link {
   letter-spacing: 2px;
   padding: 15px 40px;
   font-size: 16px;
 }
 
-.nav-bar__link:hover {
+.header-links-group__link:hover {
   color: #f5a623;
   transition: 0.2s;
 }
@@ -167,7 +163,7 @@ sup {
   transition: 0.2s;
 }
 
-.nav-bar__divider {
+.header-links-group__divider {
   background-color: white;
   display: inline-block;
   width: 2px;
@@ -201,13 +197,13 @@ sup {
   height: 70%;
 }
 
-.intro__title > h2 {
+.intro__titile {
   font-size: 62px;
   font-weight: normal;
   margin-bottom: 10px;
 }
 
-.intro__title > h3 {
+.intro__subtitle {
   font-size: 30px;
   font-weight: normal;
 }
@@ -217,18 +213,15 @@ sup {
   border: 2px solid #cbcbcb;
   border-radius: 5px;
   color: #cbcbcb;
-  cursor: pointer;
 }
 
 .intro__btn:hover {
-  border: 2px solid white;
+  border-color: white;
   color: white;
   transition: 0.2s;
 }
 
 .intro__btn:not(:hover) {
-  border: 2px solid #cbcbcb;
-  color: #cbcbcb;
   transition: 0.2s;
 }
 
@@ -239,10 +232,15 @@ sup {
 .filter-area {
   background: rgba(255, 255, 255, 0.35);
   border-radius: 3px;
-  justify-content: space-evenly;
   height: 132px;
-  flex-direction: column;
   width: 100%;
+}
+
+.filter-area__form {
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 
 .filter-area__text {
@@ -281,6 +279,7 @@ sup {
 }
 
 .filter-area__select span {
+  position: absolute;
   margin-top: 20px;
   margin-left: -30px;
 }
@@ -289,17 +288,17 @@ sup {
 #NAV IN POST AREA
 \*------------------------------------*/
 
-.secondary-nav li {
+.post__links-group__list li {
   padding-right: 27px;
 }
 
-.secondary-nav__link {
+.post__links-group__link {
   color: #aaaeb2;
   font-size: 15px;
   padding-bottom: 11px;
 }
 
-.secondary-nav__link:hover {
+.post__links-group__link:hover {
   color: #f5a623;
   transition: 0.2s;
 }
@@ -313,7 +312,7 @@ sup {
   width: 100%;
 }
 
-.post__nav {
+.post__links-group {
   padding: 70px 0;
 }
 
@@ -381,7 +380,7 @@ sup {
   font-size: 18px;
 }
 
-.card__body-top {
+.card__body-text {
   border-bottom: 1px solid #f6f8fa;
   height: 4em;
   width: 100%;
@@ -391,7 +390,7 @@ sup {
   margin: 20px;
 }
 
-.card__body-bottom {
+.card__body-parameter {
   height: 4em;
 }
 
@@ -517,6 +516,7 @@ sup {
   height: 90px;
   width: 90px;
   transition: 0.5s;
+  opacity: 1;
 }
 
 .comment-area__user-img {
@@ -525,7 +525,7 @@ sup {
   height: 80px;
   width: 80px;
   visibility: visible;
-  opacity: 1;
+  opacity: 0.5;
 }
 
 .comment-area__user-name {
@@ -535,16 +535,6 @@ sup {
 
 .comment-area__user-role {
   font-size: 18px;
-}
-
-.active--user {
-  visibility: visible;
-}
-
-.active--user > .comment-area__user-img {
-  height: 90px;
-  width: 90px;
-  filter: none;
 }
 
 /*------------------------------------*\
@@ -600,7 +590,7 @@ sup {
 }
 
 .page-footer__release,
-.page-footer__nav * {
+.page-footer__links-group * {
   color: #9b9da0;
   font-size: 14px;
   text-transform: capitalize;
@@ -610,11 +600,11 @@ sup {
 #List in footer
 \*------------------------------------*/
 
-.page-footer__nav-info > .page-footer__nav-item {
+.page-footer__links-group-info > .page-footer__links-group-item {
   margin: 0 18px;
 }
 
-.page-footer__nav-link:hover {
+.page-footer__links-group-link:hover {
   color: #0f4555;
   transition: 0.2s;
 }
@@ -623,11 +613,11 @@ sup {
 #Social network
 \*------------------------------------*/
 
-.page-footer__nav-social > .page-footer__nav-item {
+.page-footer__links-group-social > .page-footer__links-group-item {
   margin-left: 24px;
 }
 
-.page-footer__nav-social > .page-footer__nav-item a {
+.page-footer__links-group-social > .page-footer__links-group-item a {
   background-color: #9b9da0;
   border-radius: 50%;
   color: #fff;
@@ -635,22 +625,22 @@ sup {
   width: 30px;
 }
 
-a.page-footer__nav-facebook:hover {
+a.page-footer__links-group-facebook:hover {
   background-color: #1877f2;
   transition: 0.2s;
 }
 
-a.page-footer__nav-twitter:hover {
+a.page-footer__links-group-twitter:hover {
   background-color: #1da1f2;
   transition: 0.2s;
 }
 
-a.page-footer__nav-google:hover {
+a.page-footer__links-group-google:hover {
   background-color: #ea4335;
   transition: 0.2s;
 }
 
-a.page-footer__nav-instagram:hover {
+a.page-footer__links-group-instagram:hover {
   background-color: #e4405f;
   transition: 0.2s;
 }
