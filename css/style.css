@@ -112,7 +112,7 @@ select {
 #PAGE HEADER
 \*------------------------------------*/
 
-.page-header {
+.main-header {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -142,17 +142,17 @@ select {
   text-transform: capitalize;
 }
 
-.header-links-group__list li {
+.main-nav li {
   text-transform: uppercase;
 }
 
-.header-links-group__link {
+.main-nav__link {
   letter-spacing: 2px;
   padding: 15px 40px;
   font-size: 16px;
 }
 
-.header-links-group__link:hover {
+.main-nav__link:hover {
   color: #f5a623;
   transition: 0.2s;
 }
@@ -163,7 +163,7 @@ select {
   transition: 0.2s;
 }
 
-.header-links-group__divider {
+.main-nav__divider {
   background-color: white;
   display: inline-block;
   width: 2px;
@@ -176,8 +176,14 @@ select {
 }
 
 .container {
-  margin: 0 7.5%;
-  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.container-fluid {
+  width: 100%;
 }
 
 /*------------------------------------*\
@@ -187,14 +193,14 @@ select {
 .intro {
   background: #fff url(../assets/images/001bg-1.png) no-repeat center center;
   background-size: cover;
-  height: 700px;
+  height: auto;
   padding-top: 5em;
 }
 
 .intro__content {
   justify-content: space-around;
   flex-direction: column;
-  height: 70%;
+  height: 700px;
 }
 
 .intro__titile {
@@ -288,17 +294,17 @@ select {
 #NAV IN POST AREA
 \*------------------------------------*/
 
-.post__links-group__list li {
+.post-nav li {
   padding-right: 27px;
 }
 
-.post__links-group__link {
+.post-nav__link {
   color: #aaaeb2;
   font-size: 15px;
   padding-bottom: 11px;
 }
 
-.post__links-group__link:hover {
+.post-nav__link:hover {
   color: #f5a623;
   transition: 0.2s;
 }
@@ -310,9 +316,10 @@ select {
 
 .post {
   width: 100%;
+  max-width: 1600px;
 }
 
-.post__links-group {
+.post > nav {
   padding: 70px 0;
 }
 
@@ -358,6 +365,17 @@ select {
   overflow: hidden;
 }
 
+.card__img {
+  width: 343px;
+  height: 260px;
+}
+
+.card__img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .card-title {
   padding-top: 5px;
 }
@@ -400,23 +418,18 @@ select {
   height: 100%;
 }
 
-.benefit {
-  height: 510px;
-}
-
 /*------------------------------------*\
 #BENEFIT AREA
 \*------------------------------------*/
 
-.benefit > .container {
-  justify-content: space-around;
-  max-width: 1600px;
-  width: 100%;
+.benefit {
+  justify-content: space-evenly;
 }
 
 .benefit__item {
   height: 100%;
   width: 300px;
+  padding: 180px 0;
 }
 
 .benefit__item-algin {
@@ -426,7 +439,7 @@ select {
 .benefit__content {
   color: #0f4555;
   flex-direction: column;
-  height: 100%;
+  height: 190px;
   justify-content: space-between;
   text-align: center;
 }
@@ -446,14 +459,14 @@ select {
 
 .comment-area {
   background-color: white;
-  height: 560px;
   width: 100%;
 }
 
 .comment-area__align {
   flex-direction: column;
-  height: 70%;
+  height: 375px;
   justify-content: space-between;
+  padding: 90px 0;
 }
 
 /*------------------------------------*\
@@ -493,47 +506,53 @@ select {
 #USERS IN COMMENT AREA
 \*------------------------------------*/
 
-.comment-area__list-users {
+.users {
   width: 100%;
   justify-content: space-evenly;
 }
 
-.comment-area__user {
+.user {
   visibility: hidden;
   flex-direction: column;
   justify-content: space-around;
-  height: 150px;
+  height: 165px;
+  width: 100px;
 }
 
-.comment-area__user:hover {
+.user:hover {
   cursor: pointer;
   transition: 0.25s;
   visibility: visible;
 }
 
-.comment-area__user:hover .comment-area__user-img {
+.user:hover .user__img img {
   filter: none;
-  height: 90px;
-  width: 90px;
+  height: 100%;
+  width: 100%;
   transition: 0.5s;
   opacity: 1;
 }
 
-.comment-area__user-img {
+.user__img {
+  height: 100px;
+  width: 100px;
+  visibility: visible;
+}
+
+.user__img img {
   filter: grayscale(100%);
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
-  visibility: visible;
+  width: 80%;
+  height: 80%;
   opacity: 0.5;
 }
 
-.comment-area__user-name {
+.user-name {
   font-size: 12px;
   text-transform: uppercase;
 }
 
-.comment-area__user-role {
+.user-role {
   font-size: 18px;
 }
 
@@ -545,14 +564,13 @@ select {
   background: #fff url(../assets/images/bg-02.png) no-repeat center center;
   background-size: cover;
   width: 100%;
-  height: 560px;
 }
 
 .start-now__align {
-  height: 50%;
+  height: 250px;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 100px;
+  padding: 100px 0 200px 0;
 }
 
 .start-now__align .title {
@@ -576,21 +594,21 @@ select {
 #FOOTER
 \*------------------------------------*/
 
-.page-footer {
+.main-footer {
   align-items: center;
   background-color: #fff;
   height: 140px;
   margin: 0 auto;
 }
 
-.page-footer > .container {
+.main-footer > .container {
   justify-content: space-between;
   width: 100%;
   max-width: 1600px;
 }
 
-.page-footer__release,
-.page-footer__links-group * {
+.release,
+.foot-nav * {
   color: #9b9da0;
   font-size: 14px;
   text-transform: capitalize;
@@ -600,11 +618,11 @@ select {
 #List in footer
 \*------------------------------------*/
 
-.page-footer__links-group-info > .page-footer__links-group-item {
+.foot-nav-info > .foot-nav-item {
   margin: 0 18px;
 }
 
-.page-footer__links-group-link:hover {
+.foot-nav-link:hover {
   color: #0f4555;
   transition: 0.2s;
 }
@@ -613,11 +631,11 @@ select {
 #Social network
 \*------------------------------------*/
 
-.page-footer__links-group-social > .page-footer__links-group-item {
+.foot-nav-social > .foot-nav-item {
   margin-left: 24px;
 }
 
-.page-footer__links-group-social > .page-footer__links-group-item a {
+.foot-nav-social > .foot-nav-item a {
   background-color: #9b9da0;
   border-radius: 50%;
   color: #fff;
@@ -625,22 +643,22 @@ select {
   width: 30px;
 }
 
-a.page-footer__links-group-facebook:hover {
+a.foot-nav-facebook:hover {
   background-color: #1877f2;
   transition: 0.2s;
 }
 
-a.page-footer__links-group-twitter:hover {
+a.foot-nav-twitter:hover {
   background-color: #1da1f2;
   transition: 0.2s;
 }
 
-a.page-footer__links-group-google:hover {
+a.foot-nav-google:hover {
   background-color: #ea4335;
   transition: 0.2s;
 }
 
-a.page-footer__links-group-instagram:hover {
+a.foot-nav-instagram:hover {
   background-color: #e4405f;
   transition: 0.2s;
 }
