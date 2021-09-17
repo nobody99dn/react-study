@@ -33,3 +33,45 @@
   padding: 1.625rem 1.75rem;
   border: 0.125rem solid var(--white-color);
 }
+
+/*------------------------------------*\
+  APP-BAR
+\*------------------------------------*/
+.main-header {
+  padding: 0.9375rem 1.875rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-link {
+  width: 14.125rem;
+  height: 1.875rem;
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.nav-list {
+  font-size: 1.125rem;
+}
+
+.nav-list__item {
+  display: inline;
+}
+
+.nav-list__item .nav-list__item--active,
+.nav-list__link:hover {
+  color: var(--red-color);
+}
+
+.nav-list__item + .nav-list__item {
+  margin-left: 3.125rem;
+}
+
+.nav-list__link {
+  color: #00000c;
+  text-transform: capitalize;
+  text-decoration: none;
+}
