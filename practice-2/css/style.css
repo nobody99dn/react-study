@@ -89,9 +89,73 @@
 }
 
 /*------------------------------------*\
-  APP-BAR for Tablet Desktop
+MAIN FOOTER
+\*------------------------------------*/
+
+.main-footer {
+  background-color: var(--dark-gray-color);
+  color: var(--gray-color);
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 0.875rem;
+  justify-content: space-between;
+}
+
+.address {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  line-height: 2.5;
+  padding: 0 0.625rem;
+  text-align: center;
+}
+
+.socials {
+  display: flex;
+}
+
+.social-item {
+  display: inline-block;
+  height: 2.5rem;
+  width: 20%;
+}
+
+.social-item a {
+  align-items: center;
+  color: var(--white-color);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.social-item__facebook {
+  background-color: #1877f2;
+}
+
+.social-item__twitter {
+  background-color: var(--blue-color);
+}
+
+.social-item__instagram {
+  background-color: #e4405f;
+}
+
+.social-item__email {
+  background-color: var(--violet-color);
+}
+
+.social-item__goodfilms {
+  background: #1f1f1f url(../assets/images/goodfilms.png) no-repeat center
+    center;
+  background-size: contain;
+}
+
+/*------------------------------------*\
+  >=TABLET
 \*------------------------------------*/
 @media (min-width: 740px) {
+  /* MAIN HEADER */
   .main-header {
     padding: 0.9375rem 1.875rem;
   }
@@ -122,4 +186,22 @@
   .btn__text-start::after {
     content: "Start Your Agility Experience";
   }
+
+  /* MAIN FOOTER */
+  .address {
+    padding-left: 2.1875rem;
+  }
+  .social-item {
+    width: 4.375rem;
+    height: 4.375rem;
+  }
+  .main-footer {
+    flex-direction: row;
+  }
+}
+
+/*------------------------------------*\
+  >=DESKTOP
+\*------------------------------------*/
+@media (min-width: 1024px) {
 }
