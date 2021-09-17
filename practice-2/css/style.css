@@ -128,8 +128,8 @@
 \*------------------------------------*/
 
 .main-footer {
-  background-color: rgb(74, 74, 74);
-  color: rgb(216, 216, 216);
+  background-color: var(--dark-gray-color);
+  color: var(--gray-color);
   display: flex;
   flex-direction: column-reverse;
   font-size: 0.875rem;
@@ -157,7 +157,7 @@
 
 .social-item a {
   align-items: center;
-  color: #fff;
+  color: var(--white-color);
   display: flex;
   height: 100%;
   justify-content: center;
@@ -169,7 +169,7 @@
 }
 
 .social-item__twitter {
-  background-color: #1da1f2;
+  background-color: var(--blue-color);
 }
 
 .social-item__instagram {
@@ -177,7 +177,7 @@
 }
 
 .social-item__email {
-  background-color: #74187f;
+  background-color: var(--violet-color);
 }
 
 .social-item__goodfilms {
