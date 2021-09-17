@@ -1,0 +1,24 @@
+/* @font-face {
+  font-family: HeliveticaNeue;
+  src: url(../assets/font/Helvetica-Neue-Font/HelveticaNeueUltraLight/HelveticaNeueUltraLight.ttf);
+} */
+
+:root {
+  --white-color: #fff;
+  --violet-color: #5250a7;
+  --gray-color: #f2f2f2;
+  --red-color: #d90052;
+  --dark-blue-color: #3c49a1;
+  --blue-color: #3d9df0;
+  --dark-gray-color: #4a4a4a;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  /* font-family: HeliveticaNeue, serif; */
+  font-weight: 400;
+  box-sizing: border-box;
+}
