@@ -33,3 +33,85 @@
   padding: 1.625rem 1.75rem;
   border: 0.125rem solid var(--white-color);
 }
+
+/*------------------------------------*\
+  MAIN FOOTER
+\*------------------------------------*/
+
+.main-footer {
+  background-color: rgb(74, 74, 74);
+  color: rgb(216, 216, 216);
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 0.875rem;
+  justify-content: space-between;
+}
+
+.address {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  line-height: 2.5;
+  /* padding: 0 2.1875rem; */
+}
+
+.socials {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.social-item {
+  display: inline-block;
+  height: 2.5rem;
+  width: 20%;
+}
+
+.social-item a {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.social-item__facebook {
+  background-color: #1877f2;
+}
+
+.social-item__twitter {
+  background-color: #1da1f2;
+}
+
+.social-item__instagram {
+  background-color: #e4405f;
+}
+
+.social-item__email {
+  background-color: #74187f;
+}
+
+.social-item__goodfilms {
+  background: #1f1f1f url(../assets/images/goodfilms.png) no-repeat center
+    center;
+  background-size: contain;
+}
+
+/* >=Tablet */
+@media (min-width: 740px) {
+  .address {
+    padding-left: 2.1875rem;
+  }
+  .social-item {
+    width: 4.375rem;
+    height: 4.375rem;
+  }
+  .main-footer {
+    flex-direction: row;
+  }
+}
+
+/* >=Desktop */
+@media (min-width: 1024px) {
+}
