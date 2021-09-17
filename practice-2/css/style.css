@@ -20,17 +20,14 @@
 /* type of btn */
 .btn--primary {
   background-color: var(--dark-blue-color);
-  padding: 1.3125rem 3.375rem;
 }
 
 .btn--secondary {
   background: var(--red-color);
-  padding: 0.8125rem 2rem;
 }
 
 .btn--outlined {
   background-color: rgba(0, 0, 0, 0);
-  padding: 1.625rem 1.75rem;
   border: 0.125rem solid var(--white-color);
 }
 
@@ -38,9 +35,10 @@
   APP-BAR
 \*------------------------------------*/
 .main-header {
-  padding: 0.9375rem 1.875rem;
   align-items: center;
   display: flex;
+  padding: 0.625rem 1.25rem;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -53,12 +51,21 @@
   max-width: 100%;
 }
 
+.app-nav {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  margin-top: 0.9375rem;
+  justify-content: space-between;
+}
+
 .nav-list {
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 .nav-list__item {
   display: inline;
+  margin-right: 1.25rem;
 }
 
 .nav-list__item .nav-list__item--active,
@@ -66,12 +73,53 @@
   color: var(--red-color);
 }
 
-.nav-list__item + .nav-list__item {
-  margin-left: 3.125rem;
-}
-
 .nav-list__link {
   color: #00000c;
   text-transform: capitalize;
   text-decoration: none;
+}
+
+.btn__text-start::after {
+  content: "Get Started";
+}
+
+.btn__text-start {
+  font-size: 0.875rem;
+  padding: 0.6875rem 0.8125rem;
+}
+
+/*------------------------------------*\
+  APP-BAR for Tablet Desktop
+\*------------------------------------*/
+@media (min-width: 740px) {
+  .main-header {
+    padding: 0.9375rem 1.875rem;
+  }
+
+  .logo-link {
+    width: 14.125rem;
+    height: 1.875rem;
+  }
+
+  .app-nav {
+    width: auto;
+    margin: 0;
+  }
+
+  .nav-list {
+    font-size: 1.125rem;
+  }
+
+  .nav-list__item {
+    margin-right: 3.125rem;
+  }
+
+  .btn__text-start {
+    padding: 0.8125rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  .btn__text-start::after {
+    content: "Start Your Agility Experience";
+  }
 }
