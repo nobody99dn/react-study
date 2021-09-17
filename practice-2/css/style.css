@@ -89,9 +89,10 @@
 }
 
 /*------------------------------------*\
-  APP-BAR for Tablet Desktop
+  >=TABLET
 \*------------------------------------*/
 @media (min-width: 740px) {
+  /* MAIN HEADER */
   .main-header {
     padding: 0.9375rem 1.875rem;
   }
@@ -122,6 +123,25 @@
   .btn__text-start::after {
     content: "Start Your Agility Experience";
   }
+
+  /* MAIN FOOTER */
+  .address {
+    padding-left: 2.1875rem;
+  }
+  .social-item {
+    width: 4.375rem;
+    height: 4.375rem;
+  }
+  .main-footer {
+    flex-direction: row;
+  }
+}
+
+/*------------------------------------*\
+  >=DESKTOP
+\*------------------------------------*/
+@media (min-width: 1024px) {
+}
 
 /*------------------------------------*\
   MAIN FOOTER
@@ -185,21 +205,3 @@
     center;
   background-size: contain;
 }
-
-/* >=Tablet */
-@media (min-width: 740px) {
-  .address {
-    padding-left: 2.1875rem;
-  }
-  .social-item {
-    width: 4.375rem;
-    height: 4.375rem;
-  }
-  .main-footer {
-    flex-direction: row;
-  }
-}
-
-/* >=Desktop */
-/* @media (min-width: 1024px) {
-} */
