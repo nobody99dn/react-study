@@ -89,7 +89,7 @@
 }
 
 /*------------------------------------*\
-MAIN FOOTER
+  MAIN FOOTER
 \*------------------------------------*/
 
 .main-footer {
@@ -196,6 +196,17 @@ MAIN FOOTER
   height: 100%;
 }
 
+GAME-PRODUCTS \*------------------------------------*/ .game-product {
+  height: 65vw;
+}
+
+.game-product__body {
+}
+
+.game-product__img {
+  width: 100%;
+  height: 100%;
+}
 /*------------------------------------*\
   >=TABLET
 \*------------------------------------*/
@@ -245,14 +256,23 @@ MAIN FOOTER
   .intro-banner__play-icon:hover {
     opacity: 0.6;
   }
+  /* SECTION GAME-PRODUCTS */
+
+  .game-product {
+    height: 35vw;
+  }
+
   /* MAIN FOOTER */
+
   .address {
     padding-left: 2.1875rem;
   }
+
   .social-item {
     width: 4.375rem;
     height: 4.375rem;
   }
+
   .main-footer {
     flex-direction: row;
   }
@@ -262,4 +282,7 @@ MAIN FOOTER
   >=DESKTOP
 \*------------------------------------*/
 @media (min-width: 1024px) {
+  .game-product {
+    height: 20vw;
+  }
 }
