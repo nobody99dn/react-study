@@ -91,7 +91,6 @@
 /*------------------------------------*\
 MAIN FOOTER
 \*------------------------------------*/
-
 .main-footer {
   background-color: var(--dark-gray-color);
   color: var(--gray-color);
@@ -149,6 +148,48 @@ MAIN FOOTER
   background: #1f1f1f url(../assets/images/goodfilms.png) no-repeat center
     center;
   background-size: contain;
+}
+
+/*------------------------------------*\
+  SECTION GAME SERVICES
+\*------------------------------------*/
+.game-services {
+  color: var(--white-color);
+  background-color: var(--dark-blue-color);
+  line-height: 1.56;
+  padding: 1.875rem 1.5625rem;
+}
+
+.service-intro__header {
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.service-intro__desc {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.service-item__image {
+  width: 30px;
+  height: 30px;
+}
+
+.service-item__header {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.service-item__name {
+  font-size: 1rem;
+  margin-left: 0.625rem;
+}
+
+.service-item__desc {
+  margin-top: 0.3125rem;
+  font-size: 0.875rem;
 }
 
 /*------------------------------------*\
