@@ -112,6 +112,7 @@
 
 .socials {
   display: flex;
+  font-size: 0.25rem;
 }
 
 .social-item {
@@ -137,8 +138,8 @@
   background-color: var(--blue-color);
 }
 
-.social-item__instagram {
-  background-color: #e4405f;
+.social-item__linkedin {
+  background-color: #0a66c2;
 }
 
 .social-item__email {
@@ -263,6 +264,10 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   }
 
   /* MAIN FOOTER */
+
+  .socials {
+    font-size: 0.5rem;
+  }
 
   .address {
     padding-left: 2.1875rem;
