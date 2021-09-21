@@ -163,6 +163,7 @@ MAIN FOOTER
 .service-intro__header {
   font-size: 1.5rem;
   line-height: 1.1;
+  text-transform: capitalize;
 }
 
 .service-intro__desc {
@@ -185,6 +186,7 @@ MAIN FOOTER
 .service-item__name {
   font-size: 1rem;
   margin-left: 0.625rem;
+  text-transform: capitalize;
 }
 
 .service-item__desc {
@@ -238,6 +240,42 @@ MAIN FOOTER
   }
   .main-footer {
     flex-direction: row;
+  }
+
+  /* SECTION GAME SERVICE */
+  .game-services {
+    padding: 4.375rem 0px;
+  }
+
+  .service-intro__header {
+    font-size: 2.25rem;
+  }
+
+  .services-intro {
+    padding: 0px 4.375rem 0px 6.25rem;
+  }
+
+  .service-intro__desc {
+    font-size: 1rem;
+    margin-top: 1.5625rem;
+  }
+
+  .service-item {
+    padding-right: 4.375rem;
+  }
+
+  .service-item__image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .service-item__name {
+    font-size: 1.5rem;
+    margin-left: 1.25rem;
+  }
+
+  .service-item__desc {
+    margin-left: 4.375rem;
   }
 }
 
