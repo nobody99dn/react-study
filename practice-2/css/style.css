@@ -296,6 +296,86 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   font-size: 0.875rem;
 }
 
+/* TESTIMONIALS SECTION */
+.testimonials-sliders {
+  background: var(--dark-blue-color);
+  padding: 2rem 0px;
+}
+
+.testimonials-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white-color);
+}
+
+.testimonial-header {
+  margin-bottom: 2rem;
+}
+
+.testimonial-header__text {
+  font-size: 2.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.testimonial {
+  width: 85%;
+  text-align: center;
+}
+
+.testimonial__desc {
+  line-height: 1.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 1.4rem;
+}
+
+.testimonial__ref {
+  color: #bcc3cc;
+  font-size: 1rem;
+}
+
+.arrow-left {
+  width: 2rem;
+  height: 2rem;
+  border-top: 0.25rem solid rgb(174, 174, 174);
+  border-left: 0.25rem solid rgb(174, 174, 174);
+  cursor: pointer;
+  transform: rotate(-45deg) skew(-13deg, -13deg);
+  margin-left: 3%;
+}
+
+.arrow-right {
+  margin-right: 3%;
+  width: 2rem;
+  height: 2rem;
+  border-bottom: 0.25rem solid rgb(174, 174, 174);
+  border-right: 0.25rem solid rgb(174, 174, 174);
+  cursor: pointer;
+  transform: rotate(-45deg) skew(-13deg, -13deg);
+}
+
+.indicator {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.circle {
+  padding: 0.25rem;
+  border: 1px solid var(--white-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.circle + .circle {
+  margin-left: 0.5rem;
+}
+
+.circle--contained {
+  background-color: white;
+}
+
 /*------------------------------------*\
   >=TABLET
 \*------------------------------------*/
