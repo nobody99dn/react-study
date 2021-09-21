@@ -296,8 +296,10 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   font-size: 0.875rem;
 }
 
-/* TESTIMONIALS SECTION */
-.testimonials-sliders {
+/*------------------------------------*\
+  SECTION GAME SERVICES
+\*------------------------------------*/
+.testimonials-slider {
   background: var(--dark-blue-color);
   padding: 2rem 0px;
 }
@@ -335,24 +337,24 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   font-size: 1rem;
 }
 
-.arrow-left {
+.arrow-left,
+.arrow-right {
   width: 2rem;
   height: 2rem;
-  border-top: 0.25rem solid rgb(174, 174, 174);
-  border-left: 0.25rem solid rgb(174, 174, 174);
   cursor: pointer;
   transform: rotate(-45deg) skew(-13deg, -13deg);
+}
+
+.arrow-left {
+  border-top: 0.25rem solid rgb(174, 174, 174);
+  border-left: 0.25rem solid rgb(174, 174, 174);
   margin-left: 3%;
 }
 
 .arrow-right {
-  margin-right: 3%;
-  width: 2rem;
-  height: 2rem;
   border-bottom: 0.25rem solid rgb(174, 174, 174);
   border-right: 0.25rem solid rgb(174, 174, 174);
-  cursor: pointer;
-  transform: rotate(-45deg) skew(-13deg, -13deg);
+  margin-right: 3%;
 }
 
 .indicator {
@@ -373,7 +375,7 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
 }
 
 .circle--contained {
-  background-color: white;
+  background-color: var(--white-color);
 }
 
 /*------------------------------------*\
@@ -526,7 +528,7 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   }
 
   /* TESTIMONIALS SECTION */
-  .testimonials-sliders {
+  .testimonials-slider {
     padding: 4.5rem 0px;
   }
 
