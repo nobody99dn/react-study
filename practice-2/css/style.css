@@ -524,6 +524,43 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   .main-footer {
     flex-direction: row;
   }
+
+  /* TESTIMONIALS SECTION */
+  .testimonials-sliders {
+    padding: 4.5rem 0px;
+  }
+
+  .testimonial-header {
+    margin-bottom: 2rem;
+  }
+
+  .testimonial-header__text {
+    font-size: 3.5rem;
+  }
+
+  .testimonial {
+    width: 75%;
+  }
+
+  .testimonial__desc {
+    line-height: 2.2rem;
+    font-size: 1.865rem;
+    margin-bottom: 1.625rem;
+  }
+
+  .testimonial__ref {
+    font-size: 1.3rem;
+  }
+
+  .arrow-left,
+  .arrow-right {
+    width: 2.8125rem;
+    height: 2.8125rem;
+  }
+
+  .indicator {
+    margin-top: 2rem;
+  }
 }
 
 /*------------------------------------*\
