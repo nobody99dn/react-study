@@ -91,7 +91,6 @@
 /*------------------------------------*\
   MAIN FOOTER
 \*------------------------------------*/
-
 .main-footer {
   background-color: var(--dark-gray-color);
   color: var(--gray-color);
@@ -252,6 +251,51 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
 .game-product__more {
   display: none;
 }
+
+/*------------------------------------*\
+  SECTION GAME SERVICES
+\*------------------------------------*/
+.game-services {
+  color: var(--white-color);
+  background-color: var(--dark-blue-color);
+  line-height: 1.56;
+  padding: 1.875rem 1.5625rem;
+}
+
+.service-intro__header {
+  font-size: 1.5rem;
+  line-height: 1.1;
+  text-transform: capitalize;
+}
+
+.service-intro__desc {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.service-item__image {
+  width: 30px;
+  height: 30px;
+}
+
+.service-item__header {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.service-item__name {
+  font-size: 1rem;
+  margin-left: 0.625rem;
+  text-transform: capitalize;
+}
+
+.service-item__desc {
+  margin-top: 0.3125rem;
+  font-size: 0.875rem;
+}
+
 /*------------------------------------*\
   >=TABLET
 \*------------------------------------*/
@@ -301,8 +345,8 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   .intro-banner__play-icon:hover {
     opacity: 0.6;
   }
-  /* SECTION GAME-PRODUCTS */
 
+  /* SECTION GAME-PRODUCTS */
   .game-product {
     height: 35vw;
   }
@@ -347,8 +391,43 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
     text-transform: capitalize;
   }
 
-  /* MAIN FOOTER */
+  /* SECTION GAME SERVICE */
+  .game-services {
+    padding: 4.375rem 0px;
+  }
 
+  .service-intro__header {
+    font-size: 2.25rem;
+  }
+
+  .services-intro {
+    padding: 0px 4.375rem 0px 6.25rem;
+  }
+
+  .service-intro__desc {
+    font-size: 1rem;
+    margin-top: 1.5625rem;
+  }
+
+  .service-item {
+    padding-right: 4.375rem;
+  }
+
+  .service-item__image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .service-item__name {
+    font-size: 1.5rem;
+    margin-left: 1.25rem;
+  }
+
+  .service-item__desc {
+    margin-left: 4.375rem;
+  }
+
+  /* MAIN FOOTER */
   .socials {
     font-size: 0.5rem;
   }
