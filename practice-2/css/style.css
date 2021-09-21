@@ -397,6 +397,54 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   font-weight: inherit;
   padding: 1.3rem 0;
 }
+/*------------------------------------*\
+  SECTION ABOUT US
+\*------------------------------------*/
+
+.about-us {
+  background-color: var(--white-color);
+  color: var(--dark-gray-color);
+}
+
+.about-us__header > .about-us__text {
+  align-items: center;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  display: flex;
+  justify-content: center;
+}
+
+.about-us__title {
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.5rem;
+  padding: 1.875rem 1.563rem;
+}
+
+.about-us__main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-us__body > .about-us__text {
+  align-items: center;
+  background-color: var(--gray-color);
+  display: flex;
+  font-size: 0.875rem;
+  padding: 1.25rem 1.5625rem;
+  line-height: 1.428;
+}
+
+.process-image {
+  background-color: var(--white-color);
+}
+
+.process-image > img {
+  /* padding: 0.05rem; */
+  width: 100%;
+  height: 100%;
+}
 
 /*------------------------------------*\
   >=TABLET
@@ -527,6 +575,36 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
 
   .service-item__desc {
     margin-left: 4.375rem;
+  }
+
+  /* SECTION ABOUT-US */
+
+  .about-us__header {
+    height: 34.6875rem;
+  }
+
+  .about-us__body > .about-us__text {
+    font-size: 1.125rem;
+    padding: 0px 3.4375rem;
+  }
+
+  .about .about-us__title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.875rem;
+    line-height: 2.375rem;
+    height: 100%;
+    text-transform: capitalize;
+    text-align: right;
+  }
+
+  .about-us__title span {
+    text-transform: uppercase;
+  }
+
+  .about-us__title :last-child {
+    font-weight: bold;
   }
 
   /* MAIN FOOTER */
