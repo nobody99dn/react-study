@@ -205,6 +205,10 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   height: 65vw;
 }
 
+.game-products__title {
+  display: none;
+}
+
 .game-product__img {
   width: 100%;
   height: 100%;
