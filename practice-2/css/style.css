@@ -89,7 +89,7 @@
 }
 
 /*------------------------------------*\
-MAIN FOOTER
+  MAIN FOOTER
 \*------------------------------------*/
 .main-footer {
   background-color: var(--dark-gray-color);
@@ -111,12 +111,17 @@ MAIN FOOTER
 
 .socials {
   display: flex;
+  font-size: 0.25rem;
 }
 
 .social-item {
   display: inline-block;
   height: 2.5rem;
   width: 20%;
+}
+
+.social-item:hover {
+  opacity: 0.8;
 }
 
 .social-item a {
@@ -136,8 +141,8 @@ MAIN FOOTER
   background-color: var(--blue-color);
 }
 
-.social-item__instagram {
-  background-color: #e4405f;
+.social-item__linkedin {
+  background-color: #0a66c2;
 }
 
 .social-item__email {
@@ -148,6 +153,103 @@ MAIN FOOTER
   background: #1f1f1f url(../assets/images/goodfilms.png) no-repeat center
     center;
   background-size: contain;
+}
+
+/*------------------------------------*\
+ SECTION GAME INTRO
+\*------------------------------------*/
+.game-intro {
+  position: relative;
+  width: 100%;
+  height: 55vw;
+}
+
+.intro-banner {
+  color: var(--white-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-banner__slogan {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 300;
+}
+
+.intro-banner__play-icon {
+  font-size: 2.25rem;
+  margin-top: 1.8125rem;
+  cursor: pointer;
+}
+
+.intro-thumbnail {
+  height: 100%;
+}
+
+.intro-thumbnail__img {
+  width: 100%;
+  height: 100%;
+}
+
+GAME-PRODUCTS \*------------------------------------*/ .game-product {
+  height: 65vw;
+}
+
+.game-products__title {
+  display: none;
+}
+
+.game-product__img {
+  width: 100%;
+  height: 100%;
+}
+
+.game-product__body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.game-product__content {
+  align-items: flex-end;
+  color: var(--white-color);
+  cursor: pointer;
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  top: 0;
+  padding: 0 1rem 0.5rem 1rem;
+  position: absolute;
+}
+
+.game-product__title {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.game-product__subtitle {
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.game-product__excerpt {
+  display: none;
+}
+
+.game-product__more {
+  display: none;
 }
 
 /*------------------------------------*\
@@ -230,16 +332,63 @@ MAIN FOOTER
     content: "Start Your Agility Experience";
   }
 
-  /* MAIN FOOTER */
-  .address {
-    padding-left: 2.1875rem;
+  /* SECTION GAME INTRO */
+  .intro-banner__slogan {
+    font-size: 3rem;
   }
-  .social-item {
-    width: 4.375rem;
-    height: 4.375rem;
+
+  .intro-banner__play-icon {
+    font-size: 5rem;
+    margin-top: 5rem;
   }
-  .main-footer {
-    flex-direction: row;
+
+  .intro-banner__play-icon:hover {
+    opacity: 0.6;
+  }
+
+  /* SECTION GAME-PRODUCTS */
+  .game-product {
+    height: 35vw;
+  }
+
+  .game-product__content {
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.6);
+    align-items: flex-start;
+    padding: 2.5rem;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .game-product__body:hover .game-product__content {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.4s ease-in-out;
+  }
+
+  .game-product__title {
+    color: rgb(31, 51, 64);
+    font-size: 1.125rem;
+  }
+
+  .game-product__subtitle {
+    margin-top: 0.8125rem;
+    color: #f2f2f2;
+  }
+
+  .game-product__excerpt {
+    color: rgb(31, 51, 64);
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: normal;
+  }
+
+  .game-product__more {
+    color: var(--red-color);
+    display: block;
+    margin-top: 1.5rem;
+    text-transform: capitalize;
   }
 
   /* SECTION GAME SERVICE */
@@ -277,10 +426,31 @@ MAIN FOOTER
   .service-item__desc {
     margin-left: 4.375rem;
   }
+
+  /* MAIN FOOTER */
+  .socials {
+    font-size: 0.5rem;
+  }
+
+  .address {
+    padding-left: 2.1875rem;
+  }
+
+  .social-item {
+    width: 4.375rem;
+    height: 4.375rem;
+  }
+
+  .main-footer {
+    flex-direction: row;
+  }
 }
 
 /*------------------------------------*\
   >=DESKTOP
 \*------------------------------------*/
 @media (min-width: 1024px) {
+  .game-product {
+    height: 20vw;
+  }
 }
