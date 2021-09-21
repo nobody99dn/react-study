@@ -57,7 +57,29 @@
 
     <!-- CONTAINER -->
     <main class="container">
-      <section class="game-intro"></section>
+      <section class="game-intro">
+        <div class="intro-banner">
+          <h1 class="intro-banner__slogan">
+            Fantasy Drives Creativity<br />If you can imagine it, we can build
+            it
+          </h1>
+          <i class="far fa-play-circle intro-banner__play-icon"></i>
+        </div>
+
+        <div class="intro-thumbnail">
+          <img
+            src="./assets/images/intro-banner-img-500w.jpg"
+            srcset="
+              ./assets/images/intro-banner-img-500w.jpg   500w,
+              ./assets/images/intro-banner-img-1000w.jpg 1000w,
+              ./assets/images/intro-banner-img-1500w.jpg 1500w
+            "
+            alt="Thumbnail Image"
+            class="intro-thumbnail__img"
+          />
+        </div>
+      </section>
+
       <section class="game-products"></section>
       <section class="game-services"></section>
       <section class="about-us"></section>
