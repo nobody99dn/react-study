@@ -297,6 +297,88 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
 }
 
 /*------------------------------------*\
+  SECTION GAME SERVICES
+\*------------------------------------*/
+.testimonials-slider {
+  background: var(--dark-blue-color);
+  padding: 2rem 0px;
+}
+
+.testimonials-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white-color);
+}
+
+.testimonial-header {
+  margin-bottom: 2rem;
+}
+
+.testimonial-header__text {
+  font-size: 2.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.testimonial {
+  width: 85%;
+  text-align: center;
+}
+
+.testimonial__desc {
+  line-height: 1.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 1.4rem;
+}
+
+.testimonial__ref {
+  color: #bcc3cc;
+  font-size: 1rem;
+}
+
+.arrow-left,
+.arrow-right {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  transform: rotate(-45deg) skew(-13deg, -13deg);
+}
+
+.arrow-left {
+  border-top: 0.25rem solid rgb(174, 174, 174);
+  border-left: 0.25rem solid rgb(174, 174, 174);
+  margin-left: 3%;
+}
+
+.arrow-right {
+  border-bottom: 0.25rem solid rgb(174, 174, 174);
+  border-right: 0.25rem solid rgb(174, 174, 174);
+  margin-right: 3%;
+}
+
+.indicator {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.circle {
+  padding: 0.25rem;
+  border: 1px solid var(--white-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.circle + .circle {
+  margin-left: 0.5rem;
+}
+
+.circle--contained {
+  background-color: var(--white-color);
+}
+
+/*------------------------------------*\
   >=TABLET
 \*------------------------------------*/
 @media (min-width: 740px) {
@@ -443,6 +525,43 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
 
   .main-footer {
     flex-direction: row;
+  }
+
+  /* TESTIMONIALS SECTION */
+  .testimonials-slider {
+    padding: 4.5rem 0px;
+  }
+
+  .testimonial-header {
+    margin-bottom: 2rem;
+  }
+
+  .testimonial-header__text {
+    font-size: 3.5rem;
+  }
+
+  .testimonial {
+    width: 75%;
+  }
+
+  .testimonial__desc {
+    line-height: 2.2rem;
+    font-size: 1.865rem;
+    margin-bottom: 1.625rem;
+  }
+
+  .testimonial__ref {
+    font-size: 1.3rem;
+  }
+
+  .arrow-left,
+  .arrow-right {
+    width: 2.8125rem;
+    height: 2.8125rem;
+  }
+
+  .indicator {
+    margin-top: 2rem;
   }
 }
 
