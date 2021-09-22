@@ -379,6 +379,26 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
 }
 
 /*------------------------------------*\
+  SECTION GAME FEEDBACK
+\*------------------------------------*/
+.game-feedback {
+  background: var(--blue-color);
+  color: white;
+}
+
+.game-feedback__header {
+  display: none;
+}
+
+.game-feedback__btn {
+  border: none;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: inherit;
+  padding: 1.3rem 0;
+}
+
+/*------------------------------------*\
   >=TABLET
 \*------------------------------------*/
 @media (min-width: 740px) {
