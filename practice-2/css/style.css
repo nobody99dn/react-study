@@ -200,7 +200,9 @@
   height: 100%;
 }
 
-GAME-PRODUCTS \*------------------------------------*/ .game-product {
+/* GAME-PRODUCTS  */
+
+.game-product {
   height: 65vw;
 }
 
@@ -397,6 +399,108 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
   font-weight: inherit;
   padding: 1.3rem 0;
 }
+/*------------------------------------*\
+  SECTION ABOUT US
+\*------------------------------------*/
+
+.about-us {
+  background-color: var(--white-color);
+  color: var(--dark-gray-color);
+}
+
+.image-contain {
+  height: 100%;
+}
+
+.about-us__header-item {
+  align-items: center;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  display: flex;
+  justify-content: center;
+}
+
+.about-us__title {
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.5rem;
+  padding: 1.875rem 1.563rem;
+}
+
+.about-us__main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-us__body-item {
+  align-items: center;
+  background-color: var(--gray-color);
+  display: flex;
+  font-size: 0.875rem;
+  padding: 1.25rem 1.5625rem;
+  line-height: 1.428;
+}
+
+.process-image {
+  background-color: var(--white-color);
+  width: 50%;
+  height: 30vw;
+}
+
+.process-image > img {
+  padding: 0.05rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-us__items {
+  height: 100%;
+}
+
+.about-us__item {
+  background-color: var(--gray-color);
+  border: 0.0625rem solid var(--white-color);
+  display: flex;
+  height: 7.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-item {
+  height: 5.375rem;
+  width: 4.625rem;
+  transform: scale(0.5);
+}
+
+.about-us__label {
+  color: var(--red-color);
+  font-size: 1.75rem;
+  margin-bottom: 0.3125rem;
+}
+
+.about-us__info {
+  color: var(--dark-gray-color);
+  font-size: 0.875rem;
+}
+
+.about-us__more {
+  align-items: center;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  display: flex;
+  height: 7.5rem;
+  justify-content: center;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.arrow {
+  width: 1.125rem;
+  height: 0.75rem;
+  margin-left: 0.5rem;
+}
 
 /*------------------------------------*\
   >=TABLET
@@ -527,6 +631,80 @@ GAME-PRODUCTS \*------------------------------------*/ .game-product {
 
   .service-item__desc {
     margin-left: 4.375rem;
+  }
+
+  /* SECTION ABOUT-US */
+
+  .about-us__header {
+    height: 34.6875rem;
+  }
+
+  .about-us__header-item {
+    height: 100%;
+  }
+
+  .about-us__body {
+    padding: 0.15625rem;
+  }
+
+  .about-us__body-item {
+    font-size: 1.125rem;
+    padding: 0px 3.4375rem;
+    border: 0.15625rem solid var(--white-color);
+    height: 13.75rem;
+    overflow: auto;
+  }
+
+  .about-us__title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.875rem;
+    line-height: 2.375rem;
+    height: 100%;
+    text-transform: capitalize;
+    text-align: right;
+  }
+
+  .about-us__title span {
+    text-transform: uppercase;
+  }
+
+  .about-us__title :last-child {
+    font-weight: bold;
+  }
+
+  .process-image {
+    border: 0.15625rem solid var(--white-color);
+    height: 13.75rem;
+  }
+
+  .process-image img {
+    padding: 0;
+  }
+
+  .about-us__item {
+    border: 0.15625rem solid var(--white-color);
+    height: 13.75rem;
+  }
+
+  .img-item {
+    transform: none;
+    margin-right: 1.25rem;
+  }
+
+  .about-us__label {
+    font-size: 3rem;
+  }
+
+  .about-us__info {
+    font-size: 1.4375rem;
+  }
+
+  .about-us__more {
+    border: 0.15625rem solid var(--white-color);
+    font-size: 1.5rem;
+    height: 13.75rem;
   }
 
   /* MAIN FOOTER */
