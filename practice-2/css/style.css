@@ -138,7 +138,7 @@
 }
 
 .social-item__twitter {
-  background-color: var(--blue-color);
+  background-color: #1da1f2;
 }
 
 .social-item__linkedin {
@@ -235,7 +235,6 @@
   color: var(--white-color);
   cursor: pointer;
   display: flex;
-  font-weight: bold;
   justify-content: space-between;
   height: 100%;
   left: 0;
@@ -246,20 +245,24 @@
 }
 
 .game-product__title {
+  font-family: HeliveticaNeueBold;
   font-size: 1rem;
   text-transform: capitalize;
 }
 
 .game-product__subtitle {
+  font-family: HeliveticaNeueBold;
   font-size: 0.875rem;
   text-transform: capitalize;
 }
 
 .game-product__excerpt {
+  font-size: 0.875rem;
   display: none;
 }
 
 .game-product__more {
+  font-family: HeliveticaNeueBold;
   display: none;
 }
 
@@ -444,6 +447,7 @@
 
 .about-us__title {
   text-align: center;
+  font-family: HeliveticaNeue;
   font-weight: normal;
   font-size: 1.5rem;
   padding: 1.875rem 1.563rem;
@@ -499,12 +503,14 @@
 .about-us__label {
   color: var(--red-color);
   font-size: 1.75rem;
+  font-family: HeliveticaNeue;
   margin-bottom: 0.3125rem;
 }
 
 .about-us__info {
   color: var(--dark-gray-color);
   font-size: 0.875rem;
+  text-transform: capitalize;
 }
 
 .about-us__btn {
@@ -512,9 +518,10 @@
   background-color: var(--red-color);
   color: var(--white-color);
   display: flex;
-  height: 7.5rem;
+  line-height: 1.42;
   justify-content: center;
   text-transform: capitalize;
+  text-align: left;
   font-weight: bold;
   width: 100%;
   height: 100%;
