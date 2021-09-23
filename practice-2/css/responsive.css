@@ -74,19 +74,21 @@
 
   .game-product__title {
     color: rgb(31, 51, 64);
+
     font-size: 1.125rem;
   }
 
   .game-product__subtitle {
+    color: rgb(172, 182, 189);
+
     margin-top: 0.8125rem;
-    color: #f2f2f2;
   }
 
   .game-product__excerpt {
     color: rgb(31, 51, 64);
     display: block;
     margin-top: 1.75rem;
-    font-weight: normal;
+    font-size: 0.875rem;
   }
 
   .game-product__more {
@@ -160,6 +162,7 @@
     justify-content: center;
     flex-direction: column;
     font-size: 1.875rem;
+    font-family: HeliveticaNeue;
     line-height: 2.375rem;
     height: 100%;
     text-transform: capitalize;
@@ -171,7 +174,8 @@
   }
 
   .about-us__title :last-child {
-    font-weight: bold;
+    font-family: HeliveticaNeueBold;
+    font-size: 2.9375rem;
   }
 
   .process-image {
