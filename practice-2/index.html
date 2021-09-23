@@ -20,9 +20,12 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="icon" href="assets/images/icon.ico" />
 
-    <!-- style for app -->
+    <!-- Grid System -->
     <link rel="stylesheet" href="css/grid.css" />
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Responsive -->
+    <link rel="stylesheet" href="./css/responsive.css" />
   </head>
 
   <body>
@@ -64,7 +67,10 @@
             Fantasy Drives Creativity<br />If you can imagine it, we can build
             it
           </h1>
+
           <i class="far fa-play-circle intro-banner__play-icon"></i>
+
+          <button class="btn btn--outlined game-intro__btn">Get Started</button>
         </div>
 
         <div class="intro-thumbnail">
@@ -471,13 +477,15 @@
                   <h4 class="about-us__info">downloads</h4>
                 </div>
               </div>
-              <div class="c-6 m-4 about-us__more">
-                <p class="">learn more <br />about us</p>
-                <img
-                  class="arrow"
-                  src="assets/images/svg-images/learn-more-icon.svg"
-                  alt="Learn more"
-                />
+              <div class="c-6 m-4">
+                <button class="btn btn--outlined about-us__btn">
+                  learn more <br />about us
+                  <img
+                    class="arrow"
+                    src="assets/images/svg-images/learn-more-icon.svg"
+                    alt="Learn more"
+                  />
+                </button>
               </div>
             </div>
           </div>
@@ -490,28 +498,27 @@
         <div class="testimonials-container">
           <div class="arrow-left"></div>
 
-          <article class="testimonial">
-            <header class="testimonial-header">
-              <h3 class="testimonial-header__text">Testimonials</h3>
-            </header>
+          <div class="testimonials-content">
+            <h3 class="testimonials-header">Testimonials</h3>
 
-            <p class="testimonial__desc">
-              “We’ve used AgilityIO for alot of outsourcing for complex
-              Javascript web applications, and found that they are very easy to
-              work with, produce excellent quallity code, are competitively
-              priced, and will step up when you need them. I very much
-              recommended them!”
-            </p>
+            <article class="testimonial">
+              <h4 class="testimonial__ref">Ted griggs - Former CEO of Goko</h4>
+              
+              <p class="testimonial__desc">
+                “We’ve used AgilityIO for alot of outsourcing for complex
+                Javascript web applications, and found that they are very easy
+                to work with, produce excellent quallity code, are competitively
+                priced, and will step up when you need them. I very much
+                recommended them!”
+              </p>
 
-            <p class="testimonial__ref">Ted griggs - Former CEO of Goko</p>
-
-            <div class="indicator">
-              <div class="circle circle--contained"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-            </div>
-          </article>
-
+              <div class="indicator">
+                <div class="circle circle--contained"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+              </div>
+            </article>
+          </div>
           <div class="arrow-right"></div>
         </div>
       </section>
