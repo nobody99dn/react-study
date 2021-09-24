@@ -152,8 +152,8 @@
 }
 
 .social-item__goodfilms {
-  background: #1f1f1f url(../assets/images/goodfilms.png) no-repeat center
-    center;
+  background: #1f1f1f url(../assets/images/icon-images/goodfilms.png) no-repeat
+    center center;
   background-size: contain;
 }
 
