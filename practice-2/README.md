@@ -56,6 +56,10 @@
 
 - HTML5/CSS3
 
+## Open question
+
+- [Detail](https://docs.google.com/document/d/1en7b7YY2ouNDEE4VrAHqqo1RmYNI94pYasUELCsl5aM/edit?usp=sharing)
+
 ## Usage
 
 - Clone project: `git clone -b master git@gitlab.asoft-python.com:g-vantran/html-css-training.git`
