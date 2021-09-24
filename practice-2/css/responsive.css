@@ -74,13 +74,11 @@
 
   .game-product__title {
     color: rgb(31, 51, 64);
-
     font-size: 1.125rem;
   }
 
   .game-product__subtitle {
     color: rgb(172, 182, 189);
-
     margin-top: 0.8125rem;
   }
 
