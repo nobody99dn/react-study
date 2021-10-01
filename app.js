@@ -1,4 +1,14 @@
 /* CALLBACKS */
+function greeting(name) {
+  console.log(`Hello ${name}, welcome to Scotch!`);
+}
+
+function introduction(firstName, lastName, callback) {
+  const fullName = `${firstName} ${lastName}`;
+  callback(fullName);
+}
+
+introduction("Chris", "Nwamba", greeting);
 
 //callback with ajax
 function getData(callback) {
@@ -66,25 +76,60 @@ performTasks(fileName, [
 ]);
 
 /* PROMISES */
-readFile("fileName")
-  .then(function (text) {
-    return tokenize(text);
+//create a promise
+const weather = true;
+const date = new Promise(function (resolve, reject) {
+  if (weather) {
+    const dateDetails = {
+      name: "Cubana Restaurant",
+      location: "55th Street",
+      table: 5,
+    };
+    resolve(dateDetails);
+  } else {
+    reject(new Error("Bad weather, so no Date"));
+  }
+});
+
+//using promise
+date
+  .then(function (done) {
+    // the content from the resolve() is here
   })
-  .then(function (tokens) {
-    return parse(tokens);
-  })
-  .then(function (parseTree) {
-    return optimize(parseTree);
-  })
-  .then(function (optimizedTree) {
-    return evaluate(optimizedTree);
-  })
-  .then(function (output) {
-    console.log(output);
+  .catch(function (error) {
+    // the info from the reject() is here
   });
 
-/* ASYNC/AWAIT */
-const doSomething = async () => {
-  const data = await getData();
-  console.log(data);
+//create short promise
+const orderUber = function (dateDetails) {
+  const message = `Get me an Uber ASAP to ${dateDetails.location}`;
+  return Promise.resolve(message);
 };
+
+const myDate = function () {
+  date
+    .then(orderUber)
+    .then(function (done) {
+      console.log(done);
+    })
+    .catch(function (error) {
+      console.log(error.message);
+    });
+};
+
+myDate();
+
+/* ASYNC/AWAIT */
+async function myDate() {
+  try {
+    let dateDetails = await date;
+    let message = await orderUber(dateDetails);
+    console.log(message);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+(async () => {
+  await myDate();
+})();
