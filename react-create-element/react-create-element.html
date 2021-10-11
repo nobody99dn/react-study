@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>create element</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script type="">
+      const h1 = React.createElement(
+        'h1',
+        {
+          title: 'Hello',
+          className: 'heading'
+        },
+        'Hello guys'
+      )
+
+      console.dir(h1)
+
+      const list = React.createElement(
+        'ul',
+        null,
+        React.createElement('li', 'null', 'JavaScript'),
+        React.createElement('li', 'null', 'ReactJS')
+      )
+
+      console.dir(list)
+
+      // Render UI
+      ReactDOM.render(list, document.getElementById('root'))
+    </script>
+  </body>
+</html>
