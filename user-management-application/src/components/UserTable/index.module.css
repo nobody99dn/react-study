@@ -7,6 +7,11 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+.table-scroll {
+  max-height: 400px;
+  overflow: auto;
+}
+
 .user-table__heading {
   background-color: var(--button-color);
   color: white;
