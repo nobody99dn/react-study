@@ -1,10 +1,10 @@
-## REACT TRAINING - PRACTICE ONE
+## REACT TRAINING - PRACTICE TWO
 
 - From _Oct 15, 2021_
 
 ## DESCRIPTION
 
-- This document provides the requirement for React practice one.
+- This document provides the requirement for React practice two.
 
 ## TIMELINE
 

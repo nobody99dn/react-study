@@ -5,4 +5,4 @@
 
 ## Practice 1: Increase/Decrease Application
 
-## Practice 2: Task Management
+## Practice 2: User Management Application
