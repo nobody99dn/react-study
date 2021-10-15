@@ -1,34 +1,65 @@
 import React from 'react';
+
+// import component
 import { Button } from '../Button';
+
+// import type
+import { User } from "../../pages/UserManagementPage";
+
+// import class
 import classes from "./index.module.css";
+
+// faker library
 var faker = require("faker");
-var myStorage = window.localStorage;
-interface User {
-  id: string;
-  name: string;
-  role: string;
-  email: string;
-}
+
 interface FormProps {
   user?: User;
+  listUsers: User[];
+  addNewUser: (user: User) => void;
+  updateUser: (user: User) => void;
 }
 
 export const FormInfoUser: React.FC<FormProps> = (
   {
-    user
+    user,
+    listUsers,
+    addNewUser,
+    updateUser
   }) => {
   function handleSubmit(event: any) {
     event.preventDefault();
-    console.dir(myStorage);
 
     user = {
-      id: faker.datatype.uuid(),
+      id: event.target.id.value ? event.target.id.value : faker.datatype.uuid(),
       name: event.target.name.value,
       role: event.target.role.value,
       email: event.target.email.value
     };
-    console.log('Click!');
-    console.log(user);
+
+    if (!user.name || user.name === '') {
+      console.warn('Enter correct name!');
+      return;
+    }
+
+    if (!user.role || user.role === '') {
+      console.warn('Enter correct role!');
+      return;
+    }
+
+    if (!user.email || user.email === '') {
+      console.warn('Enter correct email!');
+      return;
+    }
+
+    if (listUsers.findIndex(listUser => listUser.id === user?.id) === -1) {
+      if (listUsers.findIndex(listUser => listUser.email === user?.email) >= 0) {
+        console.warn('Email existed!');
+        return;
+      }
+      addNewUser(user);
+    } else {
+      updateUser(user);
+    }
   };
 
   return (
@@ -40,6 +71,9 @@ export const FormInfoUser: React.FC<FormProps> = (
 
         <form onSubmit={handleSubmit}>
           <div className={classes.form__input}>
+
+            <input type="text" name={'id'} defaultValue={user?.id} hidden />
+
             <div className={classes['input-group']}>
               <input className={`${classes.input} ${classes['input-name']}`} type="text" name={'name'} placeholder="Name" defaultValue={user?.name} />
 

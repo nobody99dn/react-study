@@ -43,6 +43,15 @@ export default function UserManagementPage() {
     setUserSelected(user);
   };
 
+  const handleAddUser = (newUser: User) => {
+    setUsers([...users, newUser]);
+  };
+
+  const handleUpdateUser = (updatedUser: User) => {
+    users[users.findIndex(user => user.id === updatedUser.id)] = updatedUser;
+    setUsers(users);
+  };
+
   return (
     <div>
       <TabBar
@@ -53,7 +62,9 @@ export default function UserManagementPage() {
       {pageName === "Show Users" ? (
         <UserTable users={users} onRowClick={handleUserIndex} />
       ) : (
-        <FormInfoUser user={userSelected} />
+        <FormInfoUser listUsers={users}
+          user={userSelected}
+          addNewUser={handleAddUser} updateUser={handleUpdateUser} />
       )}
     </div>
   );
