@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../components/Button";
-import FormInfoUser from "../../components/FormInfoUser";
+import { FormInfoUser } from "../../components/FormInfoUser";
 import { TabBar } from "../../components/TabBar";
 import { UserTable } from "../../components/UserTable";
 var faker = require("faker");
@@ -31,11 +31,16 @@ export default function UserManagementPage() {
   const [users, setUsers] = React.useState<User[]>(usersFake);
   const [pageName, setPageName] = React.useState("table");
   const [tabIndex, setTabIndex] = React.useState(TabUserPageName.Add);
+  const [userSelected, setUserSelected] = React.useState<User>();
 
   const switchPageUser = (value: string) => {
     if (value === TabUserPageName.Show) setPageName(TabUserPageName.Show);
     else setPageName(TabUserPageName.Add);
     setTabIndex(value as TabUserPageName);
+  };
+
+  const handleUserIndex = (user: User) => {
+    setUserSelected(user);
   };
 
   return (
@@ -46,9 +51,9 @@ export default function UserManagementPage() {
         tabIndex={tabIndex}
       />
       {pageName === "Show Users" ? (
-        <UserTable users={users} />
+        <UserTable users={users} onRowClick={handleUserIndex} />
       ) : (
-        <FormInfoUser />
+        <FormInfoUser user={userSelected} />
       )}
     </div>
   );
