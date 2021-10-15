@@ -3,6 +3,7 @@ import { Button } from "../../components/Button";
 import { FormInfoUser } from "../../components/FormInfoUser";
 import { TabBar } from "../../components/TabBar";
 import { UserTable } from "../../components/UserTable";
+import classes from "./index.module.css";
 var faker = require("faker");
 
 export interface User {
@@ -15,6 +16,7 @@ export interface User {
 export enum TabUserPageName {
   Show = "Show Users",
   Add = "Add User",
+  Update = "Update User",
 }
 
 const usersFake: User[] = [];
@@ -35,7 +37,8 @@ export default function UserManagementPage() {
 
   const switchPageUser = (value: string) => {
     if (value === TabUserPageName.Show) setPageName(TabUserPageName.Show);
-    else setPageName(TabUserPageName.Add);
+    else if (value === TabUserPageName.Add) setPageName(TabUserPageName.Add);
+    else setPageName(TabUserPageName.Update);
     setTabIndex(value as TabUserPageName);
   };
 
@@ -53,19 +56,24 @@ export default function UserManagementPage() {
   };
 
   return (
-    <div>
+    <div className={classes["table-scroll"]}>
       <TabBar
         listHeading={Object.values(TabUserPageName)}
         onClick={switchPageUser}
         tabIndex={tabIndex}
       />
-      {pageName === "Show Users" ? (
-        <UserTable users={users} onRowClick={handleUserIndex} />
-      ) : (
-        <FormInfoUser listUsers={users}
-          user={userSelected}
-          addNewUser={handleAddUser} updateUser={handleUpdateUser} />
-      )}
+      <div className={classes["user-page__components-wrapper"]}>
+        {pageName === TabUserPageName.Show && (
+          <UserTable users={users} onRowClick={handleUserIndex} />
+        )}
+        {pageName === TabUserPageName.Add && <FormInfoUser />}
+        {pageName === TabUserPageName.Update &&
+          (userSelected ? (
+            <FormInfoUser user={userSelected} />
+          ) : (
+            "Please Choose a User"
+          ))}
+      </div>
     </div>
   );
 }
