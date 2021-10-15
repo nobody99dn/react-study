@@ -1,14 +1,18 @@
-## REACT TRAINING - PRACTICE TWO
+## REACT TRAINING - PRACTICE ONE
 
-- From _Oct 14, 2021_ to _Oct 16, 2021_
+- From _Oct 15, 2021_
 
 ## DESCRIPTION
 
-- This document provides the requirement for React practice two.
+- This document provides the requirement for React practice one.
 
 ## TIMELINE
 
-- 3 days
+- 1 day
+
+## TEAM SIZE
+
+- 2 developers
 
 ## TARGETS
 
@@ -26,13 +30,14 @@
 ## TECHNOLOGY
 
 - React v17.0.2
+- TypeScript v4.4.4
 
 ## Usage
 
 - Clone project: `git clone -b master https://gitlab.asoft-python.com/g-vantran/react-training`
-- `cd task-management`
+- `cd user-management-application`
 - run `npm i` then run `npm start`
 
 ## AUTHOR
 
-Van Tran
+Van Tran, Minh Hoang Nguyen
