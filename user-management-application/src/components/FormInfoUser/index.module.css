@@ -1,0 +1,62 @@
+.container {
+  width: 90%;
+  margin: 3rem auto;
+}
+
+.form__content {
+  width: 30rem;
+  margin: 0 auto;
+}
+
+.form__title {
+  font-weight: bold;
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+.form__subtitle {
+  margin-top: 1rem;
+}
+
+.form__input {
+  margin: 2rem 0;
+}
+
+.form__subtitle {
+  color: var(--heading-color);
+  font-size: 1.125rem;
+  padding-bottom: 2rem;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.input {
+  border: 2px var(--gray) solid;
+  border-radius: 10px;
+  padding: 0.75rem 0;
+  text-indent: 0.75rem;
+}
+
+.input:focus {
+  border-color: #8a8c8e;
+  outline: none;
+}
+
+.input-name,
+.input-role {
+  width: 48%;
+}
+
+.input-role {
+  -webkit-appearance: none;
+  text-transform: capitalize;
+}
+
+.input-email {
+  width: 100%;
+}
