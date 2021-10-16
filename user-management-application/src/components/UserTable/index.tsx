@@ -1,14 +1,23 @@
 import React from "react";
-import { User } from "../../pages/UserManagementPage";
+
+// Import User Interface
+import { User } from "../../storage/storage";
+
+// Style Css
 import classes from "./index.module.css";
 interface tableUserProps {
   users: User[];
   onRowClick: (user: User) => void;
+  handleDeleteUser: (id: string) => void;
 }
 
-export const UserTable: React.FC<tableUserProps> = ({ users, onRowClick }) => {
+export const UserTable: React.FC<tableUserProps> = ({
+  users,
+  onRowClick,
+  handleDeleteUser,
+}) => {
   const [indexRowHover, setIndexRowHover] = React.useState(-1);
-  
+
   const handleHoverRow = (event: any, index: number) => {
     setIndexRowHover(index);
   };
@@ -51,7 +60,15 @@ export const UserTable: React.FC<tableUserProps> = ({ users, onRowClick }) => {
               <td className={classes["user-table__row-element"]}>
                 {user.role}
               </td>
-              <td className={classes["user-table__row-element"]}>delete</td>
+              <td
+                className={classes["user-table__row-element"]}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDeleteUser(user.id);
+                }}
+              >
+                <i className="fas fa-trash-alt"></i>
+              </td>
             </tr>
           ))}
         </tbody>

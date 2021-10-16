@@ -3,8 +3,8 @@ import React from 'react';
 // import component
 import { Button } from '../Button';
 
-// import type
-import { User } from "../../pages/UserManagementPage";
+// Import User Interface
+import { User } from "../../storage/storage";
 
 // import class
 import classes from "./index.module.css";
