@@ -15,17 +15,50 @@ var faker = require("faker");
 interface FormProps {
   user?: User;
   listUsers: User[];
-  addNewUser: (user: User) => void;
-  updateUser: (user: User) => void;
+  addNewUser?: (user: User) => void;
+  updateUser?: (user: User) => void;
+  button: string;
 }
 
 export const FormInfoUser: React.FC<FormProps> = (
   {
     user,
     listUsers,
+    button,
     addNewUser,
     updateUser
   }) => {
+  const [error, setError] = React.useState('');
+
+  function handleValidate(user: User) {
+
+    if (!user.name || user.name === '') {
+      console.log(user);
+      setError('Please enter your name!');
+      return false;
+    }
+
+    if (!user.role || user.role === '') {
+      setError('Please enter your role!');
+      return false;
+    }
+
+    if (!user.email || user.email === '') {
+      setError('Please enter your email!');
+      return false;
+    }
+
+    //check if email existed
+    if (
+      addNewUser &&
+      listUsers.findIndex(listUser => listUser.email === user.email) >= 0
+    ) {
+      setError('Email existed!');
+      return false;
+    }
+    return true;
+  }
+
   function handleSubmit(event: any) {
     event.preventDefault();
 
@@ -36,29 +69,14 @@ export const FormInfoUser: React.FC<FormProps> = (
       email: event.target.email.value
     };
 
-    if (!user.name || user.name === '') {
-      console.warn('Enter correct name!');
-      return;
-    }
+    if (handleValidate(user)) {
+      // this for add new
+      if (addNewUser) addNewUser(user);
 
-    if (!user.role || user.role === '') {
-      console.warn('Enter correct role!');
-      return;
-    }
-
-    if (!user.email || user.email === '') {
-      console.warn('Enter correct email!');
-      return;
-    }
-
-    if (listUsers.findIndex(listUser => listUser.id === user?.id) === -1) {
-      if (listUsers.findIndex(listUser => listUser.email === user?.email) >= 0) {
-        console.warn('Email existed!');
-        return;
-      }
-      addNewUser(user);
+      // this for update
+      if (updateUser) updateUser(user);
     } else {
-      updateUser(user);
+      console.warn('Form is invalid!');
     }
   };
 
@@ -72,20 +90,34 @@ export const FormInfoUser: React.FC<FormProps> = (
         <form onSubmit={handleSubmit}>
           <div className={classes.form__input}>
 
+            <p className={classes.errors}>{error}</p>
+
             <input type="text" name={'id'} defaultValue={user?.id} hidden />
 
             <div className={classes['input-group']}>
-              <input className={`${classes.input} ${classes['input-name']}`} type="text" name={'name'} placeholder="Name" defaultValue={user?.name} />
+              <input className={`${classes.input} ${classes['input-name']}`}
+                type="text" name={'name'}
+                placeholder="Name"
+                defaultValue={user?.name}
+              />
 
-              <input className={`${classes.input} ${classes['input-role']}`} type="text" name={'role'} placeholder="Role" defaultValue={user?.role} />
+              <input className={`${classes.input} ${classes['input-role']}`}
+                type="text" name={'role'}
+                placeholder="Role"
+                defaultValue={user?.role}
+              />
 
             </div>
             <div className={classes['input-group']}>
-              <input className={`${classes.input} ${classes['input-email']}`} type={'email'} placeholder="Email" name={'email'} defaultValue={user?.email} />
+              <input className={`${classes.input} ${classes['input-email']}`}
+                type={'email'}
+                placeholder="Email"
+                name={'email'}
+                defaultValue={user?.email} />
             </div>
           </div>
 
-          <Button children={'Invite User'} />
+          <Button children={button} />
 
         </form>
       </div>

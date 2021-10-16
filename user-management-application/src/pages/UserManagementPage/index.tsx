@@ -66,10 +66,19 @@ export default function UserManagementPage() {
         {pageName === TabUserPageName.Show && (
           <UserTable users={users} onRowClick={handleUserIndex} />
         )}
-        {pageName === TabUserPageName.Add && <FormInfoUser />}
+        {pageName === TabUserPageName.Add &&
+          <FormInfoUser
+            listUsers={users}
+            addNewUser={handleAddUser}
+            button={'Invite User'}
+          />}
         {pageName === TabUserPageName.Update &&
           (userSelected ? (
-            <FormInfoUser user={userSelected} />
+            <FormInfoUser user={userSelected}
+              listUsers={users}
+              updateUser={handleUpdateUser}
+              button={'Update User'}
+            />
           ) : (
             "Please Choose a User"
           ))}
