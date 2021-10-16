@@ -1,9 +1,8 @@
 import React from "react";
-import { Button } from "../../components/Button";
 import { FormInfoUser } from "../../components/FormInfoUser";
 import { TabBar } from "../../components/TabBar";
 import { UserTable } from "../../components/UserTable";
-import classes from "./index.module.css"
+import classes from "./index.module.css";
 var faker = require("faker");
 
 export interface User {
@@ -46,6 +45,15 @@ export default function UserManagementPage() {
     setUserSelected(user);
   };
 
+  const handleAddUser = (newUser: User) => {
+    setUsers([...users, newUser]);
+  };
+
+  const handleUpdateUser = (updatedUser: User) => {
+    users[users.findIndex(user => user.id === updatedUser.id)] = updatedUser;
+    setUsers(users);
+  };
+
   return (
     <div className={classes["table-scroll"]}>
       <TabBar
@@ -57,10 +65,19 @@ export default function UserManagementPage() {
         {pageName === TabUserPageName.Show && (
           <UserTable users={users} onRowClick={handleUserIndex} />
         )}
-        {pageName === TabUserPageName.Add && <FormInfoUser />}
+        {pageName === TabUserPageName.Add &&
+          <FormInfoUser
+            listUsers={users}
+            addNewUser={handleAddUser}
+            titleBtn={'Invite User'}
+          />}
         {pageName === TabUserPageName.Update &&
           (userSelected ? (
-            <FormInfoUser user={userSelected} />
+            <FormInfoUser user={userSelected}
+              listUsers={users}
+              updateUser={handleUpdateUser}
+              titleBtn={'Update User'}
+            />
           ) : (
             "Please Choose a User"
           ))}

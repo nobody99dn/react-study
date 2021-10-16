@@ -60,3 +60,10 @@
 .input-email {
   width: 100%;
 }
+
+.errors {
+  color: red;
+  padding-bottom: 0.5rem;
+  text-transform: capitalize;
+  height: 1rem;
+}
