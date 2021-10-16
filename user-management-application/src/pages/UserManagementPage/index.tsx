@@ -2,15 +2,8 @@ import React from "react";
 import { FormInfoUser } from "../../components/FormInfoUser";
 import { TabBar } from "../../components/TabBar";
 import { UserTable } from "../../components/UserTable";
+import { getUsersStorage, setUsersStorage, User } from "../../storage/storage";
 import classes from "./index.module.css";
-var faker = require("faker");
-
-export interface User {
-  id: string;
-  name: string;
-  role: string;
-  email: string;
-}
 
 export enum TabUserPageName {
   Show = "Show Users",
@@ -18,40 +11,41 @@ export enum TabUserPageName {
   Update = "Update User",
 }
 
-const usersFake: User[] = [];
-for (let i = 0; i <= 10; i++) {
-  usersFake.push({
-    id: faker.datatype.uuid(),
-    name: faker.name.findName(),
-    role: faker.name.jobTitle(),
-    email: faker.internet.email(),
-  });
-}
-
 export default function UserManagementPage() {
-  const [users, setUsers] = React.useState<User[]>(usersFake);
-  const [pageName, setPageName] = React.useState("table");
-  const [tabIndex, setTabIndex] = React.useState(TabUserPageName.Add);
+  const [users, setUsers] = React.useState<User[]>(getUsersStorage());
+  const [tabIndex, setTabIndex] = React.useState(TabUserPageName.Show);
   const [userSelected, setUserSelected] = React.useState<User>();
 
+  React.useEffect(() => {
+    if (tabIndex !== TabUserPageName.Update) setUserSelected(undefined);
+  }, [tabIndex]);
+
   const switchPageUser = (value: string) => {
-    if (value === TabUserPageName.Show) setPageName(TabUserPageName.Show);
-    else if (value === TabUserPageName.Add) setPageName(TabUserPageName.Add);
-    else setPageName(TabUserPageName.Update);
     setTabIndex(value as TabUserPageName);
   };
 
   const handleUserIndex = (user: User) => {
     setUserSelected(user);
+    setTabIndex(TabUserPageName.Update);
   };
 
   const handleAddUser = (newUser: User) => {
     setUsers([...users, newUser]);
+    setTabIndex(TabUserPageName.Show);
+    setUsersStorage([...users, newUser]);
+  };
+
+  const handleDeleteUser = (userId: string) => {
+    const newUserList = users.filter((user, index) => user.id !== userId);
+    setUsers(newUserList);
+    setUsersStorage(newUserList);
   };
 
   const handleUpdateUser = (updatedUser: User) => {
-    users[users.findIndex(user => user.id === updatedUser.id)] = updatedUser;
+    users[users.findIndex((user) => user.id === updatedUser.id)] = updatedUser;
     setUsers(users);
+    setTabIndex(TabUserPageName.Show);
+    setUsersStorage(users);
   };
 
   return (
@@ -62,21 +56,27 @@ export default function UserManagementPage() {
         tabIndex={tabIndex}
       />
       <div className={classes["user-page__components-wrapper"]}>
-        {pageName === TabUserPageName.Show && (
-          <UserTable users={users} onRowClick={handleUserIndex} />
+        {tabIndex === TabUserPageName.Show && (
+          <UserTable
+            users={users}
+            onRowClick={handleUserIndex}
+            handleDeleteUser={handleDeleteUser}
+          />
         )}
-        {pageName === TabUserPageName.Add &&
+        {tabIndex === TabUserPageName.Add && (
           <FormInfoUser
             listUsers={users}
             addNewUser={handleAddUser}
-            titleBtn={'Invite User'}
-          />}
-        {pageName === TabUserPageName.Update &&
+            titleBtn={"Invite User"}
+          />
+        )}
+        {tabIndex === TabUserPageName.Update &&
           (userSelected ? (
-            <FormInfoUser user={userSelected}
+            <FormInfoUser
+              user={userSelected}
               listUsers={users}
               updateUser={handleUpdateUser}
-              titleBtn={'Update User'}
+              titleBtn={"Update User"}
             />
           ) : (
             "Please Choose a User"
