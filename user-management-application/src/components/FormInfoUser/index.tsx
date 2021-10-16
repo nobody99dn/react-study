@@ -17,14 +17,14 @@ interface FormProps {
   listUsers: User[];
   addNewUser?: (user: User) => void;
   updateUser?: (user: User) => void;
-  button: string;
+  titleBtn: string;
 }
 
 export const FormInfoUser: React.FC<FormProps> = (
   {
     user,
     listUsers,
-    button,
+    titleBtn,
     addNewUser,
     updateUser
   }) => {
@@ -33,7 +33,6 @@ export const FormInfoUser: React.FC<FormProps> = (
   function handleValidate(user: User) {
 
     if (!user.name || user.name === '') {
-      console.log(user);
       setError('Please enter your name!');
       return false;
     }
@@ -83,7 +82,7 @@ export const FormInfoUser: React.FC<FormProps> = (
   return (
     <div className={classes.container}>
       <div className={classes.form__content}>
-        <h4 className={classes.form__title}>invite users</h4>
+        <h4 className={classes.form__title}>invite user</h4>
 
         <h5 className={classes.form__subtitle}>Enter the data of the users you want to invite to the project</h5>
 
@@ -117,7 +116,7 @@ export const FormInfoUser: React.FC<FormProps> = (
             </div>
           </div>
 
-          <Button children={button} />
+          <Button children={titleBtn} />
 
         </form>
       </div>

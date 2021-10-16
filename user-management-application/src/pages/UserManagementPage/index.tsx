@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../../components/Button";
 import { FormInfoUser } from "../../components/FormInfoUser";
 import { TabBar } from "../../components/TabBar";
 import { UserTable } from "../../components/UserTable";
@@ -70,14 +69,14 @@ export default function UserManagementPage() {
           <FormInfoUser
             listUsers={users}
             addNewUser={handleAddUser}
-            button={'Invite User'}
+            titleBtn={'Invite User'}
           />}
         {pageName === TabUserPageName.Update &&
           (userSelected ? (
             <FormInfoUser user={userSelected}
               listUsers={users}
               updateUser={handleUpdateUser}
-              button={'Update User'}
+              titleBtn={'Update User'}
             />
           ) : (
             "Please Choose a User"
