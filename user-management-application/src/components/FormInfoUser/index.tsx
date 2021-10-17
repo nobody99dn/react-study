@@ -17,6 +17,8 @@ interface FormProps {
   listUsers: User[];
   addNewUser?: (user: User) => void;
   updateUser?: (user: User) => void;
+  title: string;
+  subtitle: string;
   titleBtn: string;
 }
 
@@ -24,6 +26,8 @@ export const FormInfoUser: React.FC<FormProps> = (
   {
     user,
     listUsers,
+    title,
+    subtitle,
     titleBtn,
     addNewUser,
     updateUser
@@ -82,9 +86,9 @@ export const FormInfoUser: React.FC<FormProps> = (
   return (
     <div className={classes.container}>
       <div className={classes.form__content}>
-        <h4 className={classes.form__title}>invite user</h4>
+        <h4 className={classes.form__title}>{title}</h4>
 
-        <h5 className={classes.form__subtitle}>Enter the data of the users you want to invite to the project</h5>
+        <h5 className={classes.form__subtitle}>{subtitle}</h5>
 
         <form onSubmit={handleSubmit}>
           <div className={classes.form__input}>
