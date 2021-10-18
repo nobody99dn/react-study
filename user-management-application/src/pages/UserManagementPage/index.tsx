@@ -68,6 +68,8 @@ export default function UserManagementPage() {
             listUsers={users}
             addNewUser={handleAddUser}
             titleBtn={"Invite User"}
+            title={'Invite user'}
+            subtitle={'Enter the data of the users you want to invite to the project'}
           />
         )}
         {tabIndex === TabUserPageName.Update &&
@@ -77,6 +79,8 @@ export default function UserManagementPage() {
               listUsers={users}
               updateUser={handleUpdateUser}
               titleBtn={"Update User"}
+              title={'Update user'}
+              subtitle={'Enter the data of the users you want to update'}
             />
           ) : (
             "Please Choose a User"

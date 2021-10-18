@@ -17,6 +17,8 @@ interface FormProps {
   listUsers: User[];
   addNewUser?: (user: User) => void;
   updateUser?: (user: User) => void;
+  title: string;
+  subtitle: string;
   titleBtn: string;
 }
 
@@ -24,6 +26,8 @@ export const FormInfoUser: React.FC<FormProps> = (
   {
     user,
     listUsers,
+    title,
+    subtitle,
     titleBtn,
     addNewUser,
     updateUser
@@ -82,9 +86,9 @@ export const FormInfoUser: React.FC<FormProps> = (
   return (
     <div className={classes.container}>
       <div className={classes.form__content}>
-        <h4 className={classes.form__title}>invite user</h4>
+        <h4 className={classes.form__title}>{title}</h4>
 
-        <h5 className={classes.form__subtitle}>Enter the data of the users you want to invite to the project</h5>
+        <h5 className={classes.form__subtitle}>{subtitle}</h5>
 
         <form onSubmit={handleSubmit}>
           <div className={classes.form__input}>
@@ -93,21 +97,24 @@ export const FormInfoUser: React.FC<FormProps> = (
 
             <input type="text" name={'id'} defaultValue={user?.id} hidden />
 
-            <div className={classes['input-group']}>
+            <div
+              className={classes['input-group']}>
               <input className={`${classes.input} ${classes['input-name']}`}
                 type="text" name={'name'}
                 placeholder="Name"
                 defaultValue={user?.name}
               />
 
-              <input className={`${classes.input} ${classes['input-role']}`}
+              <input
+                className={`${classes.input} ${classes['input-role']}`}
                 type="text" name={'role'}
                 placeholder="Role"
                 defaultValue={user?.role}
               />
 
             </div>
-            <div className={classes['input-group']}>
+            <div
+              className={classes['input-group']}>
               <input className={`${classes.input} ${classes['input-email']}`}
                 type={'email'}
                 placeholder="Email"
