@@ -97,21 +97,24 @@ export const FormInfoUser: React.FC<FormProps> = (
 
             <input type="text" name={'id'} defaultValue={user?.id} hidden />
 
-            <div className={classes['input-group']}>
+            <div
+              className={classes['input-group']}>
               <input className={`${classes.input} ${classes['input-name']}`}
                 type="text" name={'name'}
                 placeholder="Name"
                 defaultValue={user?.name}
               />
 
-              <input className={`${classes.input} ${classes['input-role']}`}
+              <input
+                className={`${classes.input} ${classes['input-role']}`}
                 type="text" name={'role'}
                 placeholder="Role"
                 defaultValue={user?.role}
               />
 
             </div>
-            <div className={classes['input-group']}>
+            <div
+              className={classes['input-group']}>
               <input className={`${classes.input} ${classes['input-email']}`}
                 type={'email'}
                 placeholder="Email"
