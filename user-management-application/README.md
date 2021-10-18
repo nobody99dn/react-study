@@ -1,6 +1,6 @@
 ## REACT TRAINING - PRACTICE TWO
 
-- From _Oct 15, 2021_
+- _Oct 15, 2021_
 
 ## DESCRIPTION
 
@@ -19,7 +19,7 @@
 - Build React app with latest version
 - Understand Main Concept of React
 - Get familiar with React syntax, JSX extension
-- Get familiar and know power of TypeScript
+- Get familiar of TypeScript
 
 ## ENVIRONMENT
 
