@@ -1,0 +1,23 @@
+{
+  "name": "javascript-training",
+  "version": "1.0.0",
+  "description": "This is sample Singe Ton pattern",
+  "scripts": {
+    "singleton": "parcel Singleton/index.html",
+    "proxy": "parcel Proxy/index.html",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.asoft-python.com:g-vantran/javascript-training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.3.2"
+  },
+  "dependencies": {
+    "node-gyp-build": "^4.3.0"
+  }
+}
