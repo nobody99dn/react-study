@@ -6,6 +6,7 @@
     "singleton": "parcel Singleton/index.html",
     "proxy": "parcel Proxy/index.html",
     "prototype": "parcel Prototype/index.html",
+    "module": "parcel Module/index.html",
     "build": "parcel build"
   },
   "repository": {
