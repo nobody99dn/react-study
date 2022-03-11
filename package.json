@@ -8,6 +8,7 @@
     "prototype": "parcel Prototype/index.html",
     "module": "parcel Module/index.html",
     "medicator": "parcel Medicator/index.html",
+    "flyweight": "parcel Flyweight/index.html",
     "build": "parcel build"
   },
   "repository": {
