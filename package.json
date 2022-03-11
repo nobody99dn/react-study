@@ -7,6 +7,7 @@
     "proxy": "parcel Proxy/index.html",
     "prototype": "parcel Prototype/index.html",
     "module": "parcel Module/index.html",
+    "medicator": "parcel Medicator/index.html",
     "build": "parcel build"
   },
   "repository": {
