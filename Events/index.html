@@ -4,25 +4,66 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Events</title>
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Add button -->
-    <button onclick="changeText()">Click me</button>
+    <h1>Sign Up Page</h1>
 
-    <button id="btn-two">Click me</button>
+    <div class="main-content">
+      <div class="item">
+        <div class="email-label">
+          <label for="email">Email: </label>
+        </div>
+        <div class="info-email">
+          <p class="notification"></p>
+          <input type="text" name="email" id="email" />
+        </div>
+      </div>
 
-    <button id="btn-three">Click me</button>
+      <div class="item">
+        <div class="username-label">
+          <label for="username">Username: </label>
+        </div>
+        <div class="info-username">
+          <p class="notification"></p>
+          <input type="text" name="username" id="username" />
+        </div>
+      </div>
 
-    <p>Try to change me.</p>
+      <div class="item">
+        <div class="pwd-label">
+          <label for="pwd">Password: </label>
+        </div>
+        <div class="info-pwd">
+          <p class="notification"></p>
+          <input type="password" name="pwd" id="pwd" />
+        </div>
+      </div>
 
-    <p id="event-object"></p>
+      <div class="item">
+        <div class="cpwd-label">
+          <label for="cpwd">Confirm Password: </label>
+        </div>
+        <div class="info-cpwd">
+          <p class="notification"></p>
+          <input type="password" name="cpwd" id="cpwd" />
+        </div>
+      </div>
 
-    <section>
-      <div id="one">One</div>
-      <div id="two">Two</div>
-      <div id="three">Three</div>
-    </section>
+      <div class="btn">
+        <input
+          id="signup"
+          type="button"
+          value="Sign up"
+          onclick="SignUpForm()"
+        />
+        <input id="reset" type="button" value="Reset" onclick="reset()" />
+      </div>
+    </div>
+
+    <div class="result"></div>
 
     <script src="app.js"></script>
   </body>

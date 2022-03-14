@@ -1,62 +1,73 @@
-const changeText = () => {
-  const p = document.querySelector('p')
-  p.textContent = 'Inline Event Handler Attributes'
-}
+let signupBtn = document.querySelector('#signup')
+let resetBtn = document.querySelector('#reset')
 
-const button = document.getElementById('btn-two')
-button.onclick = () => {
-  const p = document.querySelector('p')
-  p.textContent = 'Event Handler Properties'
-}
+const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+const regexUsername =
+  /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/
 
-const btnThree = document.getElementById('btn-three')
-const changeTextListener = () => {
-  const p = document.querySelector('p')
-  p.textContent = 'Event Listener'
-}
-const alertText = () => {
-  alert('Will I alert?')
-}
-btnThree.addEventListener('click', changeTextListener)
-btnThree.addEventListener('click', alertText)
-btnThree.removeEventListener('click', alertText)
+signupBtn.SignUpForm = () => {
+  let result = document.querySelector('.result')
+  result.innerHTML = ''
 
-// Test the key and code properties
-document.addEventListener('keydown', (event) => {
-  console.log('key: ' + event.key)
-  console.log('code: ' + event.code)
-})
+  const email = document.querySelector('input[name="email"]').value
+  const username = document.querySelector('input[name="username"]').value
+  const pwd = document.querySelector('input[name="pwd"]').value
+  const cpwd = document.querySelector('input[name="cpwd"]').value
 
-// Event Object
-document.addEventListener('keydown', (event) => {
-  const btnObject = document.getElementById('event-object')
+  let notiEmail = document.querySelector('.info-email > .notification')
+  let notiUsername = document.querySelector('.info-username > .notification')
+  let notiPwd = document.querySelector('.info-pwd > .notification')
+  let notiCpwd = document.querySelector('.info-cpwd > .notification')
 
-  // Set variables for keydown codes
-  let a = 'KeyA'
-  let s = 'KeyS'
-  let d = 'KeyD'
-  let w = 'KeyW'
-
-  // Set a direction for each code
-  switch (event.code) {
-    case a:
-      btnObject.textContent = 'Left'
-      break
-    case s:
-      btnObject.textContent = 'Down'
-      break
-    case d:
-      btnObject.textContent = 'Right'
-      break
-    case w:
-      btnObject.textContent = 'Up'
-      break
+  if (email === '') {
+    return (notiEmail.textContent = 'Do not empty email')
+  } else if (!email.match(regexEmail)) {
+    return (notiEmail.textContent = 'Please enter correct email!')
+  } else if (username === '') {
+    return (notiUsername.textContent = 'Do not empty username!')
+  } else if (!username.match(regexUsername)) {
+    return (notiUsername.textContent = 'Please enter correct username!')
+  } else if (pwd === '') {
+    return (notiPwd.textContent = 'Do not empty password')
+  } else if (cpwd === '') {
+    return (notiCpwd.textContent = 'Please confirm password')
+  } else if (pwd != cpwd) {
+    return (notiCpwd.textContent = 'Confirm password failed!')
   }
-})
 
-const section = document.querySelector('section')
+  let notis = document.getElementsByClassName('notification')
 
-// Print the selected target
-section.addEventListener('click', (event) => {
-  console.log(event.target)
-})
+  for (const noti of notis) {
+    noti.innerHTML = ''
+  }
+
+  //print
+  let newEmail = document.createElement('p')
+  let newUsername = document.createElement('p')
+  let newPwd = document.createElement('p')
+  let newCpwd = document.createElement('p')
+
+  newEmail.textContent = `Email: ${email}`
+  newUsername.textContent = `Username: ${username}`
+  newPwd.textContent = `Password: ${pwd}`
+  newCpwd.textContent = `Confirm Password: ${cpwd}`
+
+  result.appendChild(newEmail)
+  result.appendChild(newUsername)
+  result.appendChild(newPwd)
+  result.appendChild(newCpwd)
+
+  result.style.color = 'green'
+}
+
+resetBtn.reset = () => {
+  const email = document.querySelector('input[name="email"]')
+  const username = document.querySelector('input[name="username"]')
+  const pwd = document.querySelector('input[name="pwd"]')
+  const cpwd = document.querySelector('input[name="cpwd"]')
+
+  email.value = ''
+  username.value = ''
+  pwd.value = ''
+  cpwd.value = ''
+}
