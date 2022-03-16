@@ -10,7 +10,9 @@
 
 ## TEAM SIZE
 
-- 2 developers
+- 2 developers:
+  - [Van Tran](van.tran@asnet.com.vn)
+  - [Bao Thai](bao.thai@asnet.com.vn)
 
 ## TARGETS
 
@@ -29,6 +31,7 @@
 - [Commitlint](https://github.com/conventional-changelog/commitlint)
 - [Parcel](https://parceljs.org/docs/)
 - [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+- [Json server](https://www.npmjs.com/package/json-server)
 
 ## REQUIREMENT DETAILS
 
