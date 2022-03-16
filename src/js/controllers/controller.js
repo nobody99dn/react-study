@@ -3,17 +3,20 @@ export default class Controller {
     this.model = model
     this.view = view
 
-    //Display initial todos
+    // Explicit this binding
+    this.model.bindTodoListChanged(this.onTodoListChanged)
+    this.view.bindAddTodo(this.handleAddTodo)
+
+    //Display initial app
     this.onTodoListChanged(this.model.todos)
   }
 
-  onTodoListChanged = (todos) => {
-    this.view.displayTodos(todos)
+  onTodoListChanged = (data) => {
+    this.view.displayApp(data)
   }
 
   handleAddTodo = (todoText) => {
     this.model.addTodo(todoText)
-    this.view.bindAddTodo(this.handleAddTodo)
   }
 
   handleEditTodo = (id, todoText) => {}
