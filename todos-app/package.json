@@ -1,0 +1,15 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "This is pair practice",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.asoft-python.com:g-vantran/javascript-training.git"
+  },
+  "author": "Bao Thai and Van Tran",
+  "license": "MIT"
+}
