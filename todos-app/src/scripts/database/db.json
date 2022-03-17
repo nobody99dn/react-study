@@ -1,1 +1,34 @@
-{}
+{
+  "groups": [
+    {
+      "id": "82a7d2c0-4abe-4180-9c49-3ba1d50f33cc",
+      "name": "Training",
+      "lists": [
+        "f5ab43e8-0867-4ea0-85cf-654c0a8fa753",
+        "0ffd86bd-3943-472d-8a75-a37386f388c1"
+      ]
+    }
+  ],
+  "lists": [
+    {
+      "id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa753",
+      "name": "Day 1",
+      "tasks": [
+        "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
+        "87f07e83-c1d3-4838-be81-083034ff31b0"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
+      "name": "Practice",
+      "dueDate": "2022-03-17"
+    },
+    {
+      "id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
+      "name": "ES6 syntax",
+      "dueDate": "2022-03-19"
+    }
+  ]
+}
