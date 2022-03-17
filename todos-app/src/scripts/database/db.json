@@ -1,23 +1,23 @@
 {
   "todos": [
     {
-      "_id": "82a7d2c0-4abe-4180-9c49-3ba1d50f33cc",
+      "id": "82a7d2c0-4abe-4180-9c49-3ba1d50f33cc",
       "type": "group",
       "name": "Training",
       "lists": [
         {
-          "_id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa753",
+          "id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa753",
           "type": "list",
           "name": "Day 1",
           "tasks": [
             {
-              "_id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
+              "id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
               "name": "Practice",
               "dueDate": "2022-03-17",
               "dateModified": "2022-02-12"
             },
             {
-              "_id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
+              "id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
               "name": "ES6 syntax",
               "dueDate": "2022-03-19",
               "dateModified": "2022-02-12"
@@ -25,19 +25,19 @@
           ]
         },
         {
-          "_id": "0ffd86bd-3943-472d-8a75-a37386f388c1",
+          "id": "0ffd86bd-3943-472d-8a75-a37386f388c1",
           "type": "list",
           "name": "Day 1",
           "tasks": [
             {
-              "_id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
+              "id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
               "name": "Practice",
               "dueDate": "2022-03-17",
               "dateCreated": "2022-02-12",
               "dateModified": "2022-02-12"
             },
             {
-              "_id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
+              "id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
               "name": "ES6 syntax",
               "dueDate": "2022-03-19",
               "dateCreated": "2022-02-12",
@@ -48,19 +48,19 @@
       ]
     },
     {
-      "_id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa753",
+      "id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa753",
       "type": "list",
       "name": "Day 1",
       "tasks": [
         {
-          "_id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
+          "id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
           "name": "Practice",
           "dueDate": "2022-03-17",
           "dateCreated": "2022-02-12",
           "dateModified": "2022-02-12"
         },
         {
-          "_id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
+          "id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
           "name": "ES6 syntax",
           "dueDate": "2022-03-19",
           "dateCreated": "2022-02-12",
