@@ -7,15 +7,7 @@
   border-radius: 0.3rem;
 }
 
-.task-detail {
-  margin-top: 0.2rem;
-}
-
 .task-detail p {
   margin-bottom: 0rem;
   vertical-align: middle;
-}
-
-.task-list {
-  margin-top: 3rem;
 }
