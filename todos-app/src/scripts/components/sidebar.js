@@ -1,4 +1,4 @@
-export const Sidebar = (logoURL = '', listsElement = '') => `
+const Sidebar = (logoURL = '', listsElement = '') => `
   <div class="sidebar position-relative d-flex flex-column vh-100 p-1">
     <div class="logo-container">${logoURL}</div>
     <div class="list-item-container">${listsElement}</div>
@@ -8,3 +8,4 @@ export const Sidebar = (logoURL = '', listsElement = '') => `
     </div>
   </div>
 `
+export default Sidebar
