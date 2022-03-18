@@ -9,3 +9,6 @@
 
 /* Title component style */
 @import url(./components/title.css);
+
+/* Sidebar component style */
+@import url(./components/sidebar.css);
