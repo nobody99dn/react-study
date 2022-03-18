@@ -1,5 +1,1 @@
-export default class View {
-  constructor() {}
-
-  //...
-}
+export default class View {}
