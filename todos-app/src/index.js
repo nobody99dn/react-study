@@ -1,5 +1,5 @@
 // Components
-import Sidebar from './scripts/components/sidebar';
+import Sidebar from './scripts/layouts/sidebar';
 
 const handleRenderApp = () => {
   // Render Sidebar
