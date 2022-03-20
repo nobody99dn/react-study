@@ -12,7 +12,10 @@ const Sidebar = () => `
     </div>
     <div class="list-item-container"></div>
       <div class="add-new-container position-absolute bottom-0 pb-1">
-        <div class="w-25 d-inline new-list-container"></div>
+        <div class="new-list-container w-25 d-inline btn m-auto">
+          <span class="fs-3">&#43</span>
+          <span class="fs-6 px-2">Add new list</span>
+        </div>
         <div class="w-75 d-inline new-group-container">
           <button class="btn px-2 py-0">
           <i class="bi bi-folder-plus fs-4"></i>
