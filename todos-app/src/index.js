@@ -16,6 +16,12 @@ const handleRenderApp = () => {
       type: 'group',
       name: 'Training',
       lists: []
+    },
+    {
+      id: '82a7d2c0-4abe-4180-9c49-3ba1d5123sdc',
+      type: 'group',
+      name: 'Practice',
+      lists: []
     }
   ]);
 };

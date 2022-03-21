@@ -2,6 +2,9 @@
 // Component
 import List from './list';
 
+// Constants
+import { TODO_TYPE } from '../constants/constant';
+
 /**
  * Group() returns a new element
  * based on the passed-in tag name
@@ -11,7 +14,8 @@ const Group = (listData = []) => `
     <div class="list-group">
   ${listData
     .map((data, index) => {
-      if (data.type === 'group') {
+      if (data.type === TODO_TYPE.GROUP) {
+        // TODO: This will return block DOM contain list
         return `
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading-${index}">
@@ -37,10 +41,10 @@ const Group = (listData = []) => `
           id="group-${index}"
           class="accordion-collapse collapse"
           aria-labelled="heading-${index}"
-          data-bs-parent="#group-list"
         >
           <div class="accordion-body">
       ${
+        // TODO: This will return block DOM contain list
         data.lists.length
           ? `${data.lists.map((list) => List(list)).join('')}`
           : '<p class="empty-text m-0"><small>This group is empty.</small></p>'
@@ -50,7 +54,7 @@ const Group = (listData = []) => `
       </div>
       `;
       } else {
-        // This will render list, will open soon
+        // TODO: This will return block DOM contain list
         return '';
       }
     })
