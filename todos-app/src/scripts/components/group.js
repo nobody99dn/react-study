@@ -12,7 +12,7 @@ import { TODO_TYPE } from '../constants/constant';
 const Group = (listData = []) => `
   <div class="accordion" id="group-list">
     <div class="list-group">
-  ${listData
+  ${(listData || [])
     .map((data, index) => {
       if (data.type === TODO_TYPE.GROUP) {
         // TODO: This will return block DOM contain list
@@ -45,9 +45,8 @@ const Group = (listData = []) => `
           <div class="accordion-body">
       ${
         // TODO: This will return block DOM contain list
-        data.lists.length
-          ? `${data.lists.map((list) => List(list)).join('')}`
-          : '<p class="empty-text m-0"><small>This group is empty.</small></p>'
+        `${(data.lists || []).map((list) => List(list)).join('')}` ||
+        '<p class="empty-text m-0"><small>This group is empty.</small></p>'
       }
           </div>
         </div>
