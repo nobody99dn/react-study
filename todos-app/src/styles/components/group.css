@@ -1,10 +1,15 @@
 .accordion-button:not(.collapsed) {
   color: var(--dark-gray-color);
   background-color: var(--light-purple-background-color);
+  box-shadow: none;
 }
 
 .accordion-button:focus {
   box-shadow: none;
+}
+
+.accordion-item:first-of-type .accordion-button {
+  border-radius: 0;
 }
 
 /* FIXME: I will replace another solution soon */
