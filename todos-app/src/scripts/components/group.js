@@ -18,9 +18,9 @@ const Group = (listData = []) => `
         // TODO: This will return block DOM contain list
         return `
         <div class="accordion-item">
-          <h3 class="accordion-header" id="heading-${index}">
+          <p class="accordion-header" id="heading-${index}">
             <button
-              class="accordion-button"
+              class="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#group-${index}"
@@ -36,7 +36,7 @@ const Group = (listData = []) => `
               </form>
               <span data-value="${data.name}">${data.name}</span>
             </button>
-          </h3>
+          </p>
         <div
           id="group-${index}"
           class="accordion-collapse collapse"
