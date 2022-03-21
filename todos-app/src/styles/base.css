@@ -15,14 +15,14 @@ html {
   --dark-purple-color: #788cde;
   --dark-gray-color: #1c1c1c;
   --light-white-color: #fff;
-  --theme-color-button-focus: #f8f9fa;
+  --theme-color-button-focus: #d2d6e9;
 }
 
 .btn:focus {
   box-shadow: none;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: var(--theme-color-button-focus);
   color: var(--dark-gray-color);
 }
