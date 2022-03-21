@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 // Component
 import List from './list';
 

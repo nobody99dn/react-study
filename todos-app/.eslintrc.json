@@ -12,7 +12,7 @@
     "eqeqeq": ["error", "always"],
     "curly": "error",
     "quotes": ["error", "single"],
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "ignoredNodes": ["TemplateLiteral *"] }],
     "semi": ["error", "always"]
   }
 }
