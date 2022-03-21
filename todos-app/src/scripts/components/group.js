@@ -3,7 +3,7 @@
 import List from './list';
 
 // Constants
-import { TODO_TYPE } from '../constants/constant';
+import { TODO_TYPE } from '../constants/todo';
 
 /**
  * Group() returns a new element
