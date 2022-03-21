@@ -14,4 +14,7 @@
 @import url(./components/sidebar.css);
 
 /* Task container component style */
-@import url(./components/taskContainer.css);
+@import url(./components/tasksContainer.css);
+
+/*Task action menu component style*/
+@import url(./components/actionMenu.css);
