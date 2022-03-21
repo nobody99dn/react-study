@@ -12,3 +12,6 @@
 
 /* Sidebar component style */
 @import url(./components/sidebar.css);
+
+/* Task container component style */
+@import url(./components/taskContainer.css);
