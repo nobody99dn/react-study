@@ -53,7 +53,7 @@ const Group = (listData = []) => `
       `;
       } else {
         // TODO: This will return block DOM contain list
-        return '';
+        return List(data);
       }
     })
     .join('')}

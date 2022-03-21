@@ -12,6 +12,12 @@ const handleRenderApp = () => {
   // Render list on sidebar
   document.querySelector('.list-item-container').innerHTML = Group([
     {
+      id: 'f5ab43e8-0867-4ea0-85cf-654c0a8fa753',
+      type: 'list',
+      name: 'Day 2',
+      tasks: []
+    },
+    {
       id: '82a7d2c0-4abe-4180-9c49-3ba1d50f33cc',
       type: 'group',
       name: 'Training'
