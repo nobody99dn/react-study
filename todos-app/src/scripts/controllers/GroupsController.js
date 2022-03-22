@@ -4,12 +4,15 @@ export default class GroupsController {
     this.groupsModel = groupsModel;
 
     // NOTE: 2.1 Run this method when init app to render groups
-    this.onGroupsListChanged(this.groupsModel.groupsListData);
+    this.onGroupsListChanged();
   }
 
-  onGroupsListChanged(groupsListData) {
+  onGroupsListChanged() {
     // NOTE: 2.2
     this.getBook();
+
+    // Explicit this binding
+    this.groupsView.bindOpenAddGroup();
   }
 
   // TODO: Get groups data and render

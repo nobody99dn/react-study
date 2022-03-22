@@ -18,7 +18,7 @@ const Sidebar = () => `
           <span class="fs-2">&#43</span>
           <span class="fs-5 px-3 pt-2">Add new list</span>
         </div>
-          <button class="btn px-2 py-0 col-2">
+          <button class="btn group-btn px-2 py-0 col-2">
             <i class="bi bi-folder-plus fs-4"></i>
           </button>
       </div>
