@@ -17,6 +17,7 @@ html {
   --light-white-color: #fff;
   --light-purple-background-color: #788cde30;
   --theme-color-button-focus: #d2d6e9;
+  --theme-color-task: #e4e4e4;
 }
 
 .btn:focus {
