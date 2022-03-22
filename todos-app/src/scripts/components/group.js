@@ -9,8 +9,6 @@ import { TODO_TYPE } from '../constants/todo';
  * based on the passed-in tag name
  */
 const Group = (listData = []) => `
-  <div class="accordion" id="group-list">
-    <div class="list-group">
   ${(listData || [])
     .map((data, index) => {
       if (data.type === TODO_TYPE.GROUP) {
@@ -27,11 +25,11 @@ const Group = (listData = []) => `
               aria-controls="group-${index}"
             >
               <i class="bi bi-collection fs-4 px-2"></i>
-              <form class="group-form">
+              <form class="visually-hidden">
                 <input 
                   type="text" 
                   value="${data.name}" 
-                  class="group-input form-control visually-hidden"
+                  class="form-control"
                   id="${data.id}">
               </form>
               <span class="group-name" data-value="${data.name}">${
@@ -60,8 +58,6 @@ const Group = (listData = []) => `
       }
     })
     .join('')}
-    </div>
-  </div>
 `;
 
 export default Group;

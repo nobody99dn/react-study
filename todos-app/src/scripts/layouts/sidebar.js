@@ -11,7 +11,18 @@ const Sidebar = () => `
       <h1 class="sidebar-title text-center">Todo Application</h1>
     </div>
     <hr>
-    <div class="list-item-container"></div>
+    <div class="list-item-container">
+      <div class="accordion" id="group-list">
+        <div class="list-group">
+        </div>
+        <form id="new-group-form" class="visually-hidden">
+          <input 
+            type="text"
+            class="group-input form-control"
+            id="">
+        </form>
+      </div>
+    </div>
     <div class="add-new-container position-absolute bottom-0 pb-1 row w-100">
       <hr>
       <div class="new-list-container btn col-10 py-0 d-flex align-items-center">
