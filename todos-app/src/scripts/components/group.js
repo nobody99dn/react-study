@@ -16,10 +16,10 @@ const Group = (listData = []) => `
       if (data.type === TODO_TYPE.GROUP) {
         // TODO: This will return block DOM contain list
         return `
-        <div class="accordion-item">
+        <div class="accordion-item border-0 mb-1">
           <p class="accordion-header" id="heading-${index}">
             <button
-              class="accordion-button collapsed"
+              class="accordion-button collapsed py-1 rounded-1"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#group-${index}"
@@ -41,7 +41,7 @@ const Group = (listData = []) => `
           class="accordion-collapse collapse"
           aria-labelled="heading-${index}"
         >
-          <div class="accordion-body">
+          <div class="accordion-body py-1">
       ${
         // TODO: This will return block DOM contain list
         `${(data.lists || []).map((list) => List(list)).join('')}` ||
@@ -53,7 +53,7 @@ const Group = (listData = []) => `
       `;
       } else {
         // TODO: This will return block DOM contain list
-        return '';
+        return List(data);
       }
     })
     .join('')}

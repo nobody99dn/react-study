@@ -21,3 +21,6 @@
 
 /* Group component style */
 @import url(./components/group.css);
+
+/* List component style */
+@import url(./components/list.css);
