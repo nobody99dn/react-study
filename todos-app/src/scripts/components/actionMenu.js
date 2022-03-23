@@ -1,13 +1,11 @@
-const actionMenu = (listItems) => `
-  <div class="action-menu">
+const MenuAction = (listItems) => `
   ${listItems
     .map(
       (item) => `
-    <div class="menu-item" id="${item.id}">${item.icon} ${item.content}</div>
-  `
+        <li><i class="${item.iconClass}"><i/><a class="dropdown-item" href="#">${item.context}</a></li>
+      `
     )
     .join('')}
-  </div>
 `;
 
-export default actionMenu;
+export default MenuAction;

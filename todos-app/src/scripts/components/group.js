@@ -35,6 +35,7 @@ const Group = (listData = []) => `
               <span class="group-name" data-value="${data.name}">${
           data.name
         }</span>
+        <ul id="" class="dropdown-menu d-block"></ul>
             </button>
           </p>
         <div
