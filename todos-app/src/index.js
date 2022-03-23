@@ -2,12 +2,25 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Components
-import Sidebar from './scripts/layouts/sidebar';
-import Group from './scripts/components/group';
+import TasksContainer from './scripts/layouts/tasksContainer';
+import taskLine from './scripts/components/taskLine';
+import taskInput from './scripts/components/taskInput';
+import actionMenu from './scripts/components/actionMenu';
 
 const handleRenderApp = () => {
   // Render Sidebar
-  document.getElementById('root').insertAdjacentHTML('afterbegin', Sidebar());
+  document
+    .getElementById('root')
+    .insertAdjacentHTML('afterbegin', TasksContainer());
+  document
+    .getElementsByClassName('task-list')[0]
+    .insertAdjacentHTML('afterbegin', taskLine());
+  document
+    .getElementsByClassName('form-input')[0]
+    .insertAdjacentHTML('afterbegin', taskInput());
+  document
+    .getElementsByClassId('task-container')[0]
+    .insertAdjacentHTML('afterbegin', actionMenu());
 
   // Render list on sidebar
   document.querySelector('.list-item-container').innerHTML = Group([
