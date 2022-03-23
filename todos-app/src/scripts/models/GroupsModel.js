@@ -10,8 +10,8 @@ export default class GroupsModel {
 
   // Get Groups List data
   async getGroupsList() {
-    this.groupsListData = (await get(urlGroup)) || [];
-    return this.groupsListData;
+    this.groupsListData = (await get(urlGroup))[0] || [];
+    return (this.groupsListData = await get(urlGroup));
   }
 
   async addNewGroup(groupName) {
@@ -21,8 +21,8 @@ export default class GroupsModel {
       name: groupName
     };
 
-    const group = await post(urlGroup, newGroup);
-    this.groupsListData.push(group);
-    return group;
+    // const group = await post(urlGroup, newGroup);
+    // await this.groupsListData.push(group);
+    return await post(urlGroup, newGroup);
   }
 }
