@@ -24,5 +24,6 @@
 }
 
 .input-group {
-  max-width: 100%;
+  background-color: var(--light-white-color);
 }
+
