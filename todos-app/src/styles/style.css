@@ -24,3 +24,6 @@
 
 /* List component style */
 @import url(./components/list.css);
+
+/* Task input component style */
+@import url(./components/taskInput.css);
