@@ -11,14 +11,14 @@
   right: 35px;
 }
 
-.form-control{
+.task-form .form-control {
   text-indent: 35px;
   border-color: transparent;
   max-width: 100%;
   outline: none;
 }
 
-.form-control:focus {
+.task-form .form-control:focus {
   border-color: transparent;
   box-shadow: none;
 }
@@ -26,4 +26,3 @@
 .input-group {
   background-color: var(--light-white-color);
 }
-
