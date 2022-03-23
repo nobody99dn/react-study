@@ -27,3 +27,6 @@
 
 /*Task component style*/
 @import url(./components/taskLine.css);
+
+/* Task input component style */
+@import url(./components/taskInput.css);

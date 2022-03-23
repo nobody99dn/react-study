@@ -1,0 +1,28 @@
+.input-group .add-icon {
+  font-size: 25px;
+  position: absolute;
+  z-index: 10000;
+  top: 0px;
+  left: 5px;
+}
+
+.input-group .calendar-icon {
+  font-size: 25px;
+  right: 35px;
+}
+
+.form-control{
+  text-indent: 35px;
+  border-color: transparent;
+  max-width: 100%;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.input-group {
+  max-width: 100%;
+}
