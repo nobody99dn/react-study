@@ -15,6 +15,12 @@
   text-indent: 35px;
   border-color: transparent;
   max-width: 100%;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .input-group {
