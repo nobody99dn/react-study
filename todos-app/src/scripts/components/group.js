@@ -15,7 +15,7 @@ const Group = (listData = []) => `
         // TODO: This will return block DOM contain list
         return `
         <div class="accordion-item border-0 mb-1">
-          <p class="accordion-header" id="heading-${index}">
+          <p class="group-header accordion-header" id="heading-${index}">
             <button
               class="accordion-button collapsed py-1 rounded-1"
               type="button"

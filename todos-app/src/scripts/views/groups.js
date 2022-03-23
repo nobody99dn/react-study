@@ -16,6 +16,8 @@ export default class GroupsView {
 
     // The group name
     this.groupName = this.getElement('.group-name');
+
+    this.groupHeader = this.getElement('.group-header') || [];
   }
 
   getElement(selector) {
@@ -23,6 +25,7 @@ export default class GroupsView {
     return element;
   }
 
+  // TODO: Get value of group input
   get _groupText() {
     return this.groupInput.value;
   }
@@ -40,6 +43,7 @@ export default class GroupsView {
    */
   displayGroupsList(groupsListData) {
     this.groupsList.innerHTML = Group(groupsListData);
+    this.groupsList.bind(this);
   }
 
   /**
@@ -65,6 +69,17 @@ export default class GroupsView {
         this._resetGroupInput();
         this.groupForm.classList.add('visually-hidden');
       }
+    });
+  }
+
+  bindOpenActionMenu() {
+    console.log(this.groupsList.classList);
+    [...document.querySelectorAll('.group-header')].forEach((group) => {
+      console.log(group);
+      group.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        console.log(e.target);
+      });
     });
   }
 }

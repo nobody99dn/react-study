@@ -10,13 +10,12 @@ const get = async (url) => {
 };
 
 /**
- * Get task = list id to fetch and return data from json
+ * Add data to server
+ *
+ * @param {string} url the resource that you wish to fetch
+ * @param {object} data the the data that you wish to into server
+ * @returns object
  */
-const getTasks = async (url, taskId) => {
-  const response = await fetch(`${url}/?id=${taskId}`);
-  return response.json();
-};
-
 const post = async (url, data) => {
   const response = await fetch(url, {
     method: 'POST',
