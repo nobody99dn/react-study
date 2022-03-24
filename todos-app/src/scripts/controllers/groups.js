@@ -9,16 +9,18 @@ export default class GroupsController {
 
   onGroupsListChanged() {
     // NOTE: 2.2
-    this.getBook();
+    this.getGroups();
 
     // Explicit this binding
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
   }
 
-  // TODO: Get groups data and render
   // NOTE: 2.2
-  async getBook() {
+  /**
+   * Call data and render to UI
+   *  */
+  async getGroups() {
     this.groupsModel.groupsListData = await this.groupsModel.getGroupsList();
     this.groupsView.displayGroupsList(this.groupsModel.groupsListData);
   }
