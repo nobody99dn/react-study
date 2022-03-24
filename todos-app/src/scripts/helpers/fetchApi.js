@@ -9,6 +9,9 @@ const get = async (url) => {
   return response.json();
 };
 
+/**
+ * Get task = list id to fetch and return data from json
+ */
 const getTasks = async (url, taskId) => {
   const response = await fetch(`${url}/?id=${taskId}`);
   return response.json();

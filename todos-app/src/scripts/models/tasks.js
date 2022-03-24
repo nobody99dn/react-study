@@ -7,6 +7,9 @@ export default class TasksModel {
     this.tasksInputData = [];
   }
 
+  /**
+   * Get data from list
+   */
   async getTasksList() {
     this.tasksListData = await getTasks(
       urlGroup,
@@ -15,6 +18,9 @@ export default class TasksModel {
     return this.tasksListData[0].tasks;
   }
 
+  /**
+   * Get data from input text
+   */
   async getTasksInput() {
     this.tasksInputData = await get(urlGroup);
     return this.tasksInputData;
