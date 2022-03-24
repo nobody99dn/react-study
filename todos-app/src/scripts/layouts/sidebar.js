@@ -5,7 +5,7 @@ import logo from '../../assets/images/todo-logo.png';
  * based on the passed-in tag name
  */
 const Sidebar = () => `
-  <div class="sidebar position-relative d-flex flex-column vh-100 p-1">
+  <div class="sidebar position-relative d-flex flex-column vh-100 p-1 float-start">
     <div class="text-center">
       <a class="logo-container" href="#"><img class="w-75" src="${logo}" alt="Icon" /></a>
       <h1 class="sidebar-title text-center">Todo Application</h1>

@@ -1,5 +1,6 @@
 // Components
 import Sidebar from '../layouts/sidebar';
+import TasksContainer from '../layouts/tasksContainer';
 
 export default class AppView {
   constructor() {
@@ -18,5 +19,6 @@ export default class AppView {
   displayApp() {
     // Render Sidebar
     this.getElement('#root').insertAdjacentHTML('afterbegin', Sidebar());
+    this.getElement('#root').insertAdjacentHTML('beforeend', TasksContainer());
   }
 }
