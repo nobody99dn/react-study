@@ -15,9 +15,10 @@ const Group = (listData = []) => `
         // TODO: This will return block DOM contain list
         return `
         <div class="accordion-item border-0 mb-1">
-          <p class="group-header accordion-header" id="heading-${index}">
+          <p class="accordion-header" id="heading-${index}">
             <button
-              class="accordion-button collapsed py-1 rounded-1"
+              id="${data.id}"
+              class="group-button accordion-button collapsed py-1 rounded-1"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#group-${index}"
@@ -25,7 +26,7 @@ const Group = (listData = []) => `
               aria-controls="group-${index}"
             >
               <i class="bi bi-collection fs-4 px-2"></i>
-              <form class="visually-hidden">
+              <form id="${data.id}" class="visually-hidden">
                 <input 
                   type="text" 
                   value="${data.name}" 
@@ -35,7 +36,7 @@ const Group = (listData = []) => `
               <span class="group-name" data-value="${data.name}">${
           data.name
         }</span>
-        <ul id="" class="dropdown-menu d-block"></ul>
+        <ul class="dropdown-menu"></ul>
             </button>
           </p>
         <div

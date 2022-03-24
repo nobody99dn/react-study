@@ -14,6 +14,7 @@ export default class GroupsController {
     // Explicit this binding
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindOpenActionMenu();
+    this.groupsView.bindCloseActionMenu();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
   }
 

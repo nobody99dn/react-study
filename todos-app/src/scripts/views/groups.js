@@ -1,4 +1,7 @@
 import Group from '../components/group';
+import MenuAction from '../components/menuAction';
+import { ACTION_ITEMS, NAME_ACTION } from '../constants/todo';
+import { hideMenuAction } from '../constants/view';
 
 export default class GroupsView {
   constructor() {
@@ -16,13 +19,10 @@ export default class GroupsView {
 
     // The group name
     this.groupName = this.getElement('.group-name');
-
-    this.groupHeader = this.getElement('.group-header') || [];
   }
 
   getElement(selector) {
-    const element = document.querySelector(selector);
-    return element;
+    return document.querySelector(selector);
   }
 
   // TODO: Get value of group input
@@ -43,7 +43,6 @@ export default class GroupsView {
    */
   displayGroupsList(groupsListData) {
     this.groupsList.innerHTML = Group(groupsListData);
-    this.groupsList.bind(this);
   }
 
   /**
@@ -73,13 +72,52 @@ export default class GroupsView {
   }
 
   bindOpenActionMenu() {
-    console.log(this.groupsList.classList);
-    [...document.querySelectorAll('.group-header')].forEach((group) => {
-      console.log(group);
-      group.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        console.log(e.target);
-      });
+    this.groupsList.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+
+      if (e.target.classList.contains('group-button')) {
+        // Group ID
+        const id = e.target.id;
+
+        // Render Action Menu to Group
+        e.target.querySelector('.dropdown-menu').innerHTML =
+          MenuAction(ACTION_ITEMS);
+
+        // Display Action menu
+        hideMenuAction();
+        e.target.querySelector('.dropdown-menu').classList.add('d-block');
+
+        // Add event listener for menu action
+        e.target.querySelectorAll('.dropdown-item').forEach((item) => {
+          item.addEventListener('click', (e) => {
+            if (e.target.dataset.value === NAME_ACTION.RENAME) {
+              const buttonGroup = document.getElementById(id);
+
+              hideMenuAction();
+
+              // show form
+              buttonGroup
+                .querySelector('form')
+                .classList.remove('visually-hidden');
+
+              // hide name
+              buttonGroup
+                .querySelector('.group-name')
+                .classList.add('visually-hidden');
+            }
+          });
+        });
+      }
     });
   }
+
+  bindCloseActionMenu() {
+    document.querySelector('body').addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown-menu')) {
+        hideMenuAction();
+      }
+    });
+  }
+
+  bindSubmitRenameGroup(handler) {}
 }
