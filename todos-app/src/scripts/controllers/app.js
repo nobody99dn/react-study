@@ -7,6 +7,9 @@ export default class AppController {
     this.onAppChanged();
   }
 
+  /**
+   * Render App
+   */
   onAppChanged() {
     // NOTE: 1.3 Flow render App
     this.appView.displayApp();

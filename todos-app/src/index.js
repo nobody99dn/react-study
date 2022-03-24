@@ -2,14 +2,14 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Classes
-import AppController from './scripts/controllers/AppController';
-import GroupsController from './scripts/controllers/GroupsController';
-import TasksController from './scripts/controllers/TasksController';
-import GroupsModel from './scripts/models/GroupsModel';
-import TasksModel from './scripts/models/TasksModel';
-import AppView from './scripts/views/AppView';
-import GroupsView from './scripts/views/GroupsView';
-import TasksView from './scripts/views/TasksView';
+import AppController from './scripts/controllers/app';
+import GroupsController from './scripts/controllers/groups';
+import TasksController from './scripts/controllers/tasks';
+import GroupsModel from './scripts/models/groups';
+import TasksModel from './scripts/models/tasks';
+import AppView from './scripts/views/app';
+import GroupsView from './scripts/views/groups';
+import TasksView from './scripts/views/tasks';
 
 // NOTE: 1. Flow render App
 new AppController(new AppView());

@@ -14,8 +14,10 @@ export default class AppView {
     return element;
   }
 
-  // TODO: This function render app
   // NOTE: 1.4 Flow render App
+  /**
+   * Render Layout to root
+   */
   displayApp() {
     // Render Sidebar
     this.getElement('#root').insertAdjacentHTML('afterbegin', Sidebar());

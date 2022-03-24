@@ -14,6 +14,11 @@ export default class GroupsModel {
     return (this.groupsListData = await get(urlGroup));
   }
 
+  /**
+   * Add a new group to database
+   * @param {string} groupName
+   * @returns object
+   */
   async addNewGroup(groupName) {
     const newGroup = {
       id: uuidv4(),

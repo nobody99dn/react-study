@@ -27,15 +27,24 @@ export default class GroupsView {
     return this.groupInput.value;
   }
 
+  /**
+   * Reset input
+   */
   _resetGroupInput() {
     this.groupInput.value = '';
   }
 
-  // TODO: This will render groups data to UI
+  /**
+   * Render groups data to UI
+   * @param {array} groupsListData
+   */
   displayGroupsList(groupsListData) {
     this.groupsList.innerHTML = Group(groupsListData);
   }
 
+  /**
+   * Bind open add input group
+   */
   bindOpenAddGroup() {
     this.newGroupBtn.addEventListener('click', (e) => {
       this.groupForm.classList.remove('visually-hidden');
@@ -43,6 +52,10 @@ export default class GroupsView {
     });
   }
 
+  /**
+   * Bind submit a new group
+   * @param {callback} handler
+   */
   bindAddNewGroup(handler) {
     this.groupForm.addEventListener('submit', (e) => {
       e.preventDefault();
