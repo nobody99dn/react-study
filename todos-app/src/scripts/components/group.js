@@ -12,7 +12,7 @@ const Group = (listData = []) => `
   ${(listData || [])
     .map((data, index) => {
       if (data.type === TODO_TYPE.GROUP) {
-        // TODO: This will return block DOM contain list
+        // This will return block DOM contain list
         return `
         <div class="accordion-item border-0 mb-1">
           <p class="accordion-header" id="heading-${index}">
@@ -26,7 +26,7 @@ const Group = (listData = []) => `
               aria-controls="group-${index}"
             >
               <i class="bi bi-collection fs-4 px-2"></i>
-              <form id="${data.id}" class="visually-hidden">
+              <form id="${data.id}" class="group-form-item visually-hidden">
                 <input 
                   type="text" 
                   value="${data.name}" 
@@ -46,7 +46,7 @@ const Group = (listData = []) => `
         >
           <div class="accordion-body py-1">
       ${
-        // TODO: This will return block DOM contain list
+        // This will return block DOM contain list
         `${(data.lists || []).map((list) => List(list)).join('')}` ||
         '<p class="empty-text m-0"><small>This group is empty.</small></p>'
       }
@@ -55,7 +55,7 @@ const Group = (listData = []) => `
       </div>
       `;
       } else {
-        // TODO: This will return block DOM contain list
+        // This will return block DOM contain list
         return List(data);
       }
     })

@@ -19,10 +19,17 @@ export default class GroupsView {
 
     // The group name
     this.groupName = this.getElement('.group-name');
+
+    //The group items
+    this.groupFormItems = this.getElements('.group-form-item') || [];
   }
 
   getElement(selector) {
     return document.querySelector(selector);
+  }
+
+  getElements(selector) {
+    return document.querySelectorAll(selector);
   }
 
   // TODO: Get value of group input
@@ -30,24 +37,37 @@ export default class GroupsView {
     return this.groupInput.value;
   }
 
-  /**
-   * Reset input
-   */
+  // TODO: Reset value of group input
   _resetGroupInput() {
     this.groupInput.value = '';
   }
 
   /**
-   * Render groups data to UI
-   * @param {array} groupsListData
-   */
-  displayGroupsList(groupsListData) {
+   * This will render groups data to UI and add event to form
+   *  */
+  displayGroupsList(groupsListData, handler) {
     this.groupsList.innerHTML = Group(groupsListData);
+
+    [...this.groupsList.querySelectorAll('.group-form-item')].forEach(
+      (form) => {
+        this.bindSubmitRenameGroup(form, handler); // #2
+      }
+    );
   }
 
-  /**
-   * Bind open add input group
-   */
+  bindSubmitRenameGroup(form, handler) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const updateGroup = {
+        id: e.target.querySelector('input').id,
+        name: e.target.querySelector('input').value
+      };
+
+      handler(updateGroup); // #1
+    });
+  }
+
   bindOpenAddGroup() {
     this.newGroupBtn.addEventListener('click', (e) => {
       this.groupForm.classList.remove('visually-hidden');
@@ -55,10 +75,6 @@ export default class GroupsView {
     });
   }
 
-  /**
-   * Bind submit a new group
-   * @param {callback} handler
-   */
   bindAddNewGroup(handler) {
     this.groupForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -111,6 +127,9 @@ export default class GroupsView {
     });
   }
 
+  /**
+   * Binding close action menu
+   */
   bindCloseActionMenu() {
     document.querySelector('body').addEventListener('click', (e) => {
       if (!e.target.closest('.dropdown-menu')) {
@@ -118,6 +137,4 @@ export default class GroupsView {
       }
     });
   }
-
-  bindSubmitRenameGroup(handler) {}
 }
