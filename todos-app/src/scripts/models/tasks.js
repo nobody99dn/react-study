@@ -1,21 +1,49 @@
 import { urlGroup } from '../constants/apis';
-import { get, getTasks } from '../helpers/fetchApi';
+import { get } from '../helpers/fetchApi';
+import { TODO_TYPE } from '../constants/todo';
 
 export default class TasksModel {
   constructor() {
     this.tasksListData = [{}, {}];
     this.tasksInputData = [];
+    this.todos = [];
+  }
+
+  /**
+   * Get first list
+   */
+  getFirstList(todos) {
+    let tasks = [];
+
+    // Find first List in data
+    for (const group of [...todos]) {
+      if (group.type === TODO_TYPE.GROUP && 'lists' in group) {
+        console.log('list in group');
+        if (group.lists.length) {
+          for (const list of group.lists) {
+            if (list.tasks.length) {
+              tasks = list.tasks;
+              break;
+            }
+          }
+        }
+      } else if (group.type === TODO_TYPE.LIST && 'tasks' in group) {
+        console.log('list outside');
+        if (group.tasks.length) {
+          tasks = group.tasks;
+        }
+      }
+      if (tasks.length) {
+        return tasks;
+      }
+    }
   }
 
   /**
    * Get data from list
    */
-  async getTasksList() {
-    this.tasksListData = await getTasks(
-      urlGroup,
-      'f5ab43e8-0867-4ea0-85cf-654c0a8fa753'
-    );
-    return this.tasksListData[0].tasks;
+  async getTodosData() {
+    return await get(urlGroup);
   }
 
   /**
