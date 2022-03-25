@@ -6,11 +6,13 @@ const TODO_TYPE = {
 const ACTION_ITEMS = [
   {
     content: 'rename',
-    iconClass: 'bi bi-cursor-text'
+    iconClass: 'bi bi-cursor-text',
+    class: 'rename-option'
   },
   {
     content: 'delete',
-    iconClass: 'bi bi-trash3'
+    iconClass: 'bi bi-trash3',
+    class: 'delete-option'
   }
 ];
 
