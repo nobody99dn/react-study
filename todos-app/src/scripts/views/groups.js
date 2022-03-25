@@ -1,7 +1,7 @@
 import Group from '../components/group';
 import MenuAction from '../components/menuAction';
 import { ACTION_ITEMS, NAME_ACTION } from '../constants/todo';
-import { hideMenuAction } from '../constants/view';
+import { hideForm, hideMenuAction, showNameIsHiding } from '../constants/view';
 
 export default class GroupsView {
   constructor() {
@@ -21,7 +21,7 @@ export default class GroupsView {
     this.groupName = this.getElement('.group-name');
 
     //The group items
-    this.groupFormItems = this.getElements('.group-form-item') || [];
+    this.formItems = this.getElements('.form-item') || [];
   }
 
   getElement(selector) {
@@ -48,11 +48,9 @@ export default class GroupsView {
   displayGroupsList(groupsListData, handler) {
     this.groupsList.innerHTML = Group(groupsListData);
 
-    [...this.groupsList.querySelectorAll('.group-form-item')].forEach(
-      (form) => {
-        this.bindSubmitRenameGroup(form, handler); // #2
-      }
-    );
+    [...this.groupsList.querySelectorAll('.form-item')].forEach((form) => {
+      this.bindSubmitRenameGroup(form, handler); // #2
+    });
   }
 
   bindSubmitRenameGroup(form, handler) {
@@ -90,50 +88,61 @@ export default class GroupsView {
   bindOpenActionMenu() {
     this.groupsList.addEventListener('contextmenu', (e) => {
       e.preventDefault();
+      hideForm();
+      showNameIsHiding();
 
       if (e.target.classList.contains('group-button')) {
         // Group ID
         const id = e.target.id;
+        const menu = document.querySelector(`.dropdown-menu[id="${id}"]`) || [];
 
         // Render Action Menu to Group
-        e.target.querySelector('.dropdown-menu').innerHTML =
-          MenuAction(ACTION_ITEMS);
+        menu.innerHTML = MenuAction(ACTION_ITEMS);
 
         // Display Action menu
         hideMenuAction();
-        e.target.querySelector('.dropdown-menu').classList.add('d-block');
+        menu.classList.add('d-block');
 
-        // Add event listener for menu action
-        e.target.querySelectorAll('.dropdown-item').forEach((item) => {
-          item.addEventListener('click', (e) => {
-            if (e.target.dataset.value === NAME_ACTION.RENAME) {
-              const buttonGroup = document.getElementById(id);
-
-              hideMenuAction();
-
-              // show form
-              buttonGroup
-                .querySelector('form')
-                .classList.remove('visually-hidden');
-
-              // hide name
-              buttonGroup
-                .querySelector('.group-name')
-                .classList.add('visually-hidden');
-            }
-          });
-        });
+        this.bindClickActionMenu(menu, id);
       }
+    });
+  }
+
+  /**
+   * Bind click event to menu item after render menu action
+   * @param {object} menu
+   * @param {string} id
+   */
+  bindClickActionMenu(menu, id) {
+    [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (e.target.dataset.value === NAME_ACTION.RENAME) {
+          const buttonGroup = document.getElementById(id);
+
+          hideMenuAction();
+
+          // show form
+          buttonGroup.querySelector('form').classList.remove('visually-hidden');
+
+          // hide name
+          buttonGroup
+            .querySelector('.group-name')
+            .classList.add('visually-hidden');
+        }
+      });
     });
   }
 
   /**
    * Binding close action menu
    */
-  bindCloseActionMenu() {
+  bindClickOutsideAction() {
     document.querySelector('body').addEventListener('click', (e) => {
-      if (!e.target.closest('.dropdown-menu')) {
-        hideMenuAction();
+      !e.target.closest('.dropdown-menu') && hideMenuAction();
+
+      if (!e.target.closest('.form-item, .rename-option, .group-btn')) {
+        hideForm();
+        showNameIsHiding();
       }
     });
   }

@@ -1,3 +1,6 @@
+/**
+ * Hide the menu is opening
+ */
 const hideMenuAction = () => {
   const openMenu = document.querySelector('.dropdown-menu.d-block');
 
@@ -6,4 +9,24 @@ const hideMenuAction = () => {
   }
 };
 
-export { hideMenuAction };
+/**
+ * Hide the form is opening
+ */
+const hideForm = () => {
+  const formOpening = document.querySelector(
+    '.form-item:not(.visually-hidden), #new-group-form'
+  );
+
+  if (formOpening) {
+    formOpening.classList.add('visually-hidden');
+  }
+};
+
+const showNameIsHiding = () => {
+  const nameHiding = document.querySelector('.group-name.visually-hidden');
+  if (nameHiding) {
+    nameHiding.classList.remove('visually-hidden');
+  }
+};
+
+export { hideMenuAction, hideForm, showNameIsHiding };

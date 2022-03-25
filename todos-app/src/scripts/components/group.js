@@ -26,7 +26,7 @@ const Group = (listData = []) => `
               aria-controls="group-${index}"
             >
               <i class="bi bi-collection fs-4 px-2"></i>
-              <form id="${data.id}" class="group-form-item visually-hidden">
+              <form id="${data.id}" class="form-item visually-hidden">
                 <input 
                   type="text" 
                   value="${data.name}" 
@@ -36,9 +36,9 @@ const Group = (listData = []) => `
               <span class="group-name" data-value="${data.name}">${
           data.name
         }</span>
-        <ul class="dropdown-menu"></ul>
-            </button>
+          </button>
           </p>
+          <ul id="${data.id}" class="dropdown-menu"></ul>
         <div
           id="group-${index}"
           class="accordion-collapse collapse"
