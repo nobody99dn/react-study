@@ -28,6 +28,12 @@ export default class GroupsModel {
     return await post(urlGroup, newGroup);
   }
 
+  /**
+   * This using for update group to database
+   *
+   * @param {object} updateGroup
+   * @returns object
+   */
   async renameGroup(updateGroup) {
     return await update(`${urlGroup}/${updateGroup.id}`, updateGroup);
   }

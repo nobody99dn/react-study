@@ -26,19 +26,19 @@ const Group = (listData = []) => `
               aria-controls="group-${index}"
             >
               <i class="bi bi-collection fs-4 px-2"></i>
-              <form id="${data.id}" class="form-item visually-hidden">
-                <input 
+              <form class="form-item visually-hidden">
+                <input
                   type="text" 
                   value="${data.name}" 
-                  class="form-control"
-                  id="${data.id}">
+                  class="group-name-input form-control"
+                />
               </form>
               <span class="group-name" data-value="${data.name}">${
           data.name
         }</span>
           </button>
           </p>
-          <ul id="${data.id}" class="dropdown-menu"></ul>
+          <ul class="dropdown-menu"></ul>
         <div
           id="group-${index}"
           class="accordion-collapse collapse"

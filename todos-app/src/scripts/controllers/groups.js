@@ -15,7 +15,6 @@ export default class GroupsController {
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindOpenActionMenu();
     this.groupsView.bindClickOutsideAction();
-    this.groupsView.bindClickActionMenu();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
   }
 
@@ -35,6 +34,7 @@ export default class GroupsController {
 
   /**
    * Add new group database and bind data
+   *
    * @param {string} groupName
    */
   handleAddNewGroup = (groupName) => {
@@ -42,6 +42,11 @@ export default class GroupsController {
     this.onGroupsListChanged();
   };
 
+  /**
+   * Execute rename group and re-render UI
+   *
+   * @param {object} updateGroup
+   */
   handleRenameGroup = (updateGroup) => {
     this.groupsModel.renameGroup(updateGroup); // #4
     this.onGroupsListChanged();

@@ -16,12 +16,6 @@ export default class GroupsView {
 
     // The form of group
     this.groupForm = this.getElement('#new-group-form');
-
-    // The group name
-    this.groupName = this.getElement('.group-name');
-
-    //The group items
-    this.formItems = this.getElements('.form-item') || [];
   }
 
   getElement(selector) {
@@ -32,40 +26,61 @@ export default class GroupsView {
     return document.querySelectorAll(selector);
   }
 
-  // TODO: Get value of group input
+  /**
+   * Get value of group input
+   */
   get _groupText() {
     return this.groupInput.value;
   }
 
-  // TODO: Reset value of group input
+  /**
+   * Reset input method
+   */
   _resetGroupInput() {
     this.groupInput.value = '';
   }
 
   /**
-   * This will render groups data to UI and add event to form
-   *  */
+   * Render groups data to UI
+   *
+   * @param {array} groupsListData
+   * @param {callback} handler
+   */
   displayGroupsList(groupsListData, handler) {
     this.groupsList.innerHTML = Group(groupsListData);
 
-    [...this.groupsList.querySelectorAll('.form-item')].forEach((form) => {
-      this.bindSubmitRenameGroup(form, handler); // #2
+    [...this.groupsList.querySelectorAll('.group-button')].forEach((button) => {
+      const groupId = button.id;
+      const form = button.querySelector('.form-item');
+
+      this.bindSubmitRenameGroup(form, groupId, handler); // #2
     });
   }
 
-  bindSubmitRenameGroup(form, handler) {
+  /**
+   * This using for trigger event submit in rename input
+   *
+   * @param {DOM} form
+   * @param {callback} handler
+   */
+  bindSubmitRenameGroup(form, groupId, handler) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      const groupName = e.target.querySelector('.group-name-input').value;
+
       const updateGroup = {
-        id: e.target.querySelector('input').id,
-        name: e.target.querySelector('input').value
+        id: groupId,
+        name: groupName
       };
 
       handler(updateGroup); // #1
     });
   }
 
+  /**
+   * Trigger open form new group
+   */
   bindOpenAddGroup() {
     this.newGroupBtn.addEventListener('click', (e) => {
       this.groupForm.classList.remove('visually-hidden');
@@ -73,6 +88,11 @@ export default class GroupsView {
     });
   }
 
+  /**
+   * Trigger event submit new group
+   *
+   * @param {callback} handler
+   */
   bindAddNewGroup(handler) {
     this.groupForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -85,6 +105,9 @@ export default class GroupsView {
     });
   }
 
+  /**
+   * This using for trigger right click into group item
+   */
   bindOpenActionMenu() {
     this.groupsList.addEventListener('contextmenu', (e) => {
       e.preventDefault();
@@ -94,7 +117,11 @@ export default class GroupsView {
       if (e.target.classList.contains('group-button')) {
         // Group ID
         const id = e.target.id;
-        const menu = document.querySelector(`.dropdown-menu[id="${id}"]`) || [];
+
+        // Query parent both of ul and button then query to ul
+        const menu =
+          e.target.closest('.accordion-item').querySelector('.dropdown-menu') ||
+          [];
 
         // Render Action Menu to Group
         menu.innerHTML = MenuAction(ACTION_ITEMS);
@@ -113,7 +140,7 @@ export default class GroupsView {
    * @param {object} menu
    * @param {string} id
    */
-  bindClickActionMenu(menu, id) {
+  bindClickActionMenu(menu = {}, id) {
     [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
       item.addEventListener('click', (e) => {
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
@@ -121,8 +148,13 @@ export default class GroupsView {
 
           hideMenuAction();
 
-          // show form
+          // Set value input = name of group
+          buttonGroup.querySelector('.group-name-input').value =
+            buttonGroup.querySelector('.group-name').dataset.value;
+
+          // show form and focus input
           buttonGroup.querySelector('form').classList.remove('visually-hidden');
+          buttonGroup.querySelector('.group-name-input').focus();
 
           // hide name
           buttonGroup

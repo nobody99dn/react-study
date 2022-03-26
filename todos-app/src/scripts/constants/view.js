@@ -22,6 +22,9 @@ const hideForm = () => {
   }
 };
 
+/**
+ * Show the names is hiding when click outside
+ */
 const showNameIsHiding = () => {
   const nameHiding = document.querySelector('.group-name.visually-hidden');
   if (nameHiding) {
