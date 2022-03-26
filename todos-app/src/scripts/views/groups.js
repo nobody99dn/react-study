@@ -108,7 +108,7 @@ export default class GroupsView {
   /**
    * This using for trigger right click into group item
    */
-  bindOpenActionMenu() {
+  bindOpenActionMenu(deleteGroupHandler) {
     this.groupsList.addEventListener('contextmenu', (e) => {
       e.preventDefault();
       hideForm();
@@ -130,17 +130,18 @@ export default class GroupsView {
         hideMenuAction();
         menu.classList.add('d-block');
 
-        this.bindClickActionMenu(menu, id);
+        this.bindClickActionMenu(menu, id, deleteGroupHandler);
       }
     });
   }
 
   /**
    * Bind click event to menu item after render menu action
+   *
    * @param {object} menu
    * @param {string} id
    */
-  bindClickActionMenu(menu = {}, id) {
+  bindClickActionMenu(menu, id, deleteGroupHandler) {
     [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
       item.addEventListener('click', (e) => {
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
@@ -160,6 +161,8 @@ export default class GroupsView {
           buttonGroup
             .querySelector('.group-name')
             .classList.add('visually-hidden');
+        } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
+          deleteGroupHandler(id);
         }
       });
     });

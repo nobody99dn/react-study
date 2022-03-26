@@ -47,4 +47,15 @@ const update = async (url, updateGroup) => {
 
   return await response.json();
 };
-export { get, post, update };
+
+const remove = async (url, groupId) => {
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  return await response.json();
+};
+export { get, post, update, remove };
