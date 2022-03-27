@@ -13,6 +13,7 @@ export default class GroupsController {
 
     // Explicit this binding
     this.groupsView.bindOpenAddGroup();
+    this.groupsView.bindOpenAddList();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
   }
 

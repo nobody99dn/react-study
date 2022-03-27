@@ -8,11 +8,20 @@ export default class GroupsView {
     // The add new group button
     this.newGroupBtn = this.getElement('.group-btn');
 
-    // The input group
-    this.groupInput = this.getElement('.group-input');
+    // The add new list button
+    this.newListBtn = this.getElement('.new-list-container');
 
     // The form of group
     this.groupForm = this.getElement('#new-group-form');
+
+    // The input group
+    this.groupInput = this.getElement('.group-input');
+
+    // The form of list
+    this.listForm = this.getElement('#new-list-form');
+
+    // The input list
+    this.listInput = this.getElement('.list-input');
 
     // The group name
     this.groupName = this.getElement('.group-name');
@@ -65,6 +74,15 @@ export default class GroupsView {
         this._resetGroupInput();
         this.groupForm.classList.add('visually-hidden');
       }
+    });
+  }
+
+  bindOpenAddList() {
+    this.newListBtn.addEventListener('click', (e) => {
+      //TODO: handle hide other input is opening soon
+
+      this.listForm.classList.remove('visually-hidden');
+      this.listInput.focus();
     });
   }
 }
