@@ -1,4 +1,5 @@
 import Group from '../components/group';
+import taskLine from '../components/taskLine';
 
 export default class GroupsView {
   constructor() {
@@ -16,6 +17,9 @@ export default class GroupsView {
 
     // The group name
     this.groupName = this.getElement('.group-name');
+
+    // The task container
+    this.tasksList = this.getElement('.task-list');
   }
 
   getElement(selector) {
@@ -66,5 +70,45 @@ export default class GroupsView {
         this.groupForm.classList.add('visually-hidden');
       }
     });
+  }
+
+  /**
+   * Bind click list
+   *
+   * @param {callback} handler
+   */
+  bindShowTasks(handler) {
+    this.groupsList.addEventListener('click', (e) => {
+      const listElement = e.target.closest('.list-group-item');
+
+      if (listElement) {
+        const parentGroup = listElement.closest('.accordion-item');
+        const listId = listElement.id || '';
+
+        if (listElement && !parentGroup) {
+          handler(listId);
+        } else {
+          const groupId = parentGroup.querySelector('.accordion-button').id;
+
+          handler(listId, groupId);
+        }
+      }
+    });
+  }
+
+  /**
+   * Render task list
+   *
+   * @param {array} tasksListData
+   */
+  displayTasksList(tasksListData) {
+    if (tasksListData.length) {
+      this.tasksList.innerHTML = tasksListData
+        .map((task) => taskLine(task.name, task.id))
+        .join('');
+    } else {
+      // TODO: This should handle with message constant soon
+      this.tasksList.innerHTML = 'This list is empty';
+    }
   }
 }

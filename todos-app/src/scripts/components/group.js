@@ -17,6 +17,7 @@ const Group = (listData = []) => `
         <div class="accordion-item border-0 mb-1">
           <p class="accordion-header" id="heading-${index}">
             <button
+              id="${data.id}"
               class="accordion-button collapsed py-1 rounded-1"
               type="button"
               data-bs-toggle="collapse"

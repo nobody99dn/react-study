@@ -72,6 +72,12 @@
       "id": "82a7d2c0-4abe-4180-9c49-3ba1d50f12312",
       "type": "group",
       "name": "Group 2"
+    },
+    {
+      "id": "f5ab43e8-0867-4ea0-85cf-654c0a3fa753",
+      "type": "list",
+      "name": "List 2",
+      "tasks": []
     }
   ]
 }
