@@ -15,6 +15,7 @@ export default class GroupsController {
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindOpenAddList();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
+    this.groupsView.bindAddNewList(this.handleAddNewList);
   }
 
   // NOTE: 2.2
@@ -33,6 +34,11 @@ export default class GroupsController {
    */
   handleAddNewGroup = (groupName) => {
     this.groupsModel.addNewGroup(groupName);
+    this.onGroupsListChanged();
+  };
+
+  handleAddNewList = async (listName) => {
+    await this.groupsModel.addNewList(listName);
     this.onGroupsListChanged();
   };
 }

@@ -32,15 +32,32 @@ export default class GroupsView {
     return element;
   }
 
+  /**
+   * Get group input
+   */
   get _groupText() {
     return this.groupInput.value;
   }
 
   /**
-   * Reset input
+   * Reset group input
    */
   _resetGroupInput() {
     this.groupInput.value = '';
+  }
+
+  /**
+   * Get list input
+   */
+  get _listText() {
+    return this.listInput.value;
+  }
+
+  /**
+   * Reset list input
+   */
+  _resetListInput() {
+    this.listInput.value = '';
   }
 
   /**
@@ -77,12 +94,31 @@ export default class GroupsView {
     });
   }
 
+  /**
+   * Bind click add new list button
+   */
   bindOpenAddList() {
     this.newListBtn.addEventListener('click', (e) => {
       //TODO: handle hide other input is opening soon
 
       this.listForm.classList.remove('visually-hidden');
       this.listInput.focus();
+    });
+  }
+
+  /**
+   * Bind submit event add new list
+   * @param {callback} handler
+   */
+  bindAddNewList(handler) {
+    this.listForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (this._listText) {
+        handler(this._listText);
+        this._resetListInput();
+        this.listForm.classList.add('visually-hidden');
+      }
     });
   }
 }
