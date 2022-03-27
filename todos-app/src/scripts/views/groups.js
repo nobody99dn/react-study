@@ -116,7 +116,7 @@ export default class GroupsView {
 
       if (e.target.classList.contains('group-button')) {
         // Group ID
-        const id = e.target.id;
+        const groupId = e.target.id;
 
         // Query parent both of ul and button then query to ul
         const menu =
@@ -130,7 +130,22 @@ export default class GroupsView {
         hideMenuAction();
         menu.classList.add('d-block');
 
-        this.bindClickActionMenu(menu, id);
+        this.bindClickActionMenu(menu, groupId);
+      } else if (e.target.closest('.list-group-item')) {
+        // List id
+        const id = e.target.closest('.list-group-item').id;
+
+        // Query to ul
+        const menu = e.target
+          .closest('.list-group-item')
+          .parentNode.querySelector('.dropdown-menu');
+
+        menu.innerHTML = MenuAction(ACTION_ITEMS);
+
+        // Display Action menu
+        hideMenuAction();
+        menu.classList.add('d-block');
+        this.bindClickListActionMenu(menu, id);
       }
     });
   }
@@ -140,7 +155,7 @@ export default class GroupsView {
    * @param {object} menu
    * @param {string} id
    */
-  bindClickActionMenu(menu = {}, id) {
+  bindClickActionMenu(menu, id) {
     [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
       item.addEventListener('click', (e) => {
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
@@ -159,6 +174,33 @@ export default class GroupsView {
           // hide name
           buttonGroup
             .querySelector('.group-name')
+            .classList.add('visually-hidden');
+        }
+      });
+    });
+  }
+
+  bindClickListActionMenu(menu, id) {
+    [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (e.target.dataset.value === NAME_ACTION.RENAME) {
+          const listContainer = document.getElementById(id);
+
+          hideMenuAction();
+
+          // Set value input = name of group
+          listContainer.querySelector('.list-name-input').value =
+            listContainer.dataset.value;
+
+          // show form and focus input
+          listContainer
+            .querySelector('form')
+            .classList.remove('visually-hidden');
+          listContainer.querySelector('.list-name-input').focus();
+
+          // hide name
+          listContainer
+            .querySelector('.list-name')
             .classList.add('visually-hidden');
         }
       });
