@@ -18,7 +18,11 @@ const Group = (listData = []) => `
           <p class="accordion-header" id="heading-${index}">
             <button
               id="${data.id}"
+<<<<<<< HEAD
               class="group-button accordion-button collapsed py-1 rounded-1"
+=======
+              class="accordion-button collapsed py-1 rounded-1"
+>>>>>>> ed8230ad0df6d48acec2555551a90109e305427c
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#group-${index}"

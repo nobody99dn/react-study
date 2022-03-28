@@ -15,8 +15,17 @@ export default class GroupsController {
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindOpenAddList();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
+<<<<<<< HEAD
     this.groupsView.bindAddNewList(this.handleAddNewList);
   };
+=======
+    this.groupsView.bindShowTasks(this.handleShowTasks);
+  }
+
+  onTaskListChange(tasksListData) {
+    this.groupsView.displayTasksList(tasksListData);
+  }
+>>>>>>> ed8230ad0df6d48acec2555551a90109e305427c
 
   // NOTE: 2.2
   /**
@@ -65,5 +74,15 @@ export default class GroupsController {
   handleAddNewList = async (listName) => {
     await this.groupsModel.addNewList(listName);
     this.onGroupsListChanged();
+  };
+
+  /**
+   * Handle get task list and render UI
+   *
+   * @param {string} listId
+   * @param {string} groupId (optional)
+   */
+  handleShowTasks = async (listId, groupId) => {
+    this.onTaskListChange(await this.groupsModel.getTasksById(listId, groupId));
   };
 }

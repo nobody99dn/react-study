@@ -29,6 +29,7 @@ export default class GroupsModel {
   }
 
   /**
+<<<<<<< HEAD
    * Add new list to database
    *
    * @param {string} listName
@@ -42,5 +43,31 @@ export default class GroupsModel {
     };
 
     return await post(urlGroup, newList);
+=======
+   * Get task list by group id and list id
+   *
+   * @param {string} listId
+   * @param {string} groupId (optional)
+   * @returns array
+   */
+  getTasksById(listId = '', groupId = '') {
+    let group = {};
+    let list = {};
+    if (!groupId) {
+      list = this.groupsListData.find(
+        (list) => list.type === TODO_TYPE.LIST && list.id === listId
+      );
+    } else {
+      group = this.groupsListData.find(
+        (group) => group.type === TODO_TYPE.GROUP && group.id === groupId
+      );
+
+      list = group.lists.find(
+        (list) => list.type === TODO_TYPE.LIST && list.id === listId
+      );
+    }
+
+    return list.tasks;
+>>>>>>> ed8230ad0df6d48acec2555551a90109e305427c
   }
 }
