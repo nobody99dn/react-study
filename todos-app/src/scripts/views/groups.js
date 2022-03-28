@@ -1,11 +1,11 @@
-import Group from '../components/group';
-<<<<<<< HEAD
-import MenuAction from '../components/menuAction';
+// Constants
 import { ACTION_ITEMS, NAME_ACTION } from '../constants/todo';
 import { hideForm, hideMenuAction, showNameIsHiding } from '../constants/view';
-=======
+
+// Components
+import MenuAction from '../components/menuAction';
+import Group from '../components/group';
 import taskLine from '../components/taskLine';
->>>>>>> ed8230ad0df6d48acec2555551a90109e305427c
 
 export default class GroupsView {
   constructor() {
@@ -135,7 +135,6 @@ export default class GroupsView {
   }
 
   /**
-<<<<<<< HEAD
    * Bind click add new list button
    */
   bindOpenAddList() {
@@ -162,7 +161,8 @@ export default class GroupsView {
       }
     });
   }
-=======
+
+  /*
    * Bind click list
    *
    * @param {callback} handler
@@ -201,5 +201,4 @@ export default class GroupsView {
       this.tasksList.innerHTML = 'This list is empty';
     }
   }
->>>>>>> ed8230ad0df6d48acec2555551a90109e305427c
 }

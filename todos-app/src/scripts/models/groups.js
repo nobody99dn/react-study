@@ -29,7 +29,6 @@ export default class GroupsModel {
   }
 
   /**
-<<<<<<< HEAD
    * Add new list to database
    *
    * @param {string} listName
@@ -43,7 +42,9 @@ export default class GroupsModel {
     };
 
     return await post(urlGroup, newList);
-=======
+  }
+
+  /**
    * Get task list by group id and list id
    *
    * @param {string} listId
@@ -68,6 +69,5 @@ export default class GroupsModel {
     }
 
     return list.tasks;
->>>>>>> ed8230ad0df6d48acec2555551a90109e305427c
   }
 }

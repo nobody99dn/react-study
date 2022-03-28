@@ -15,17 +15,12 @@ export default class GroupsController {
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindOpenAddList();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
-<<<<<<< HEAD
-    this.groupsView.bindAddNewList(this.handleAddNewList);
-  };
-=======
     this.groupsView.bindShowTasks(this.handleShowTasks);
-  }
+  };
 
   onTaskListChange(tasksListData) {
     this.groupsView.displayTasksList(tasksListData);
   }
->>>>>>> ed8230ad0df6d48acec2555551a90109e305427c
 
   // NOTE: 2.2
   /**
