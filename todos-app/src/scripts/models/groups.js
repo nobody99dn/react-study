@@ -37,4 +37,6 @@ export default class GroupsModel {
   async renameGroup(updateGroup) {
     return await update(`${urlGroup}/${updateGroup.id}`, updateGroup);
   }
+
+  async renameList(updateList) {}
 }

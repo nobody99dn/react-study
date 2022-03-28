@@ -46,15 +46,24 @@ export default class GroupsView {
    * @param {array} groupsListData
    * @param {callback} handler
    */
-  displayGroupsList(groupsListData, handler) {
+  displayGroupsList(groupsListData, renameGroupHandler, renameListHandler) {
     this.groupsList.innerHTML = Group(groupsListData);
 
     [...this.groupsList.querySelectorAll('.group-button')].forEach((button) => {
       const groupId = button.id;
       const form = button.querySelector('.form-item');
 
-      this.bindSubmitRenameGroup(form, groupId, handler); // #2
+      this.bindSubmitRenameGroup(form, groupId, renameGroupHandler); // #2
     });
+
+    [...this.groupsList.querySelectorAll('.list-group-item')].forEach(
+      (list) => {
+        const listId = list.id;
+        const form = list.querySelector('.form-item');
+
+        this.bindSubmitRenameList(form, listId, renameListHandler);
+      }
+    );
   }
 
   /**
@@ -75,6 +84,22 @@ export default class GroupsView {
       };
 
       handler(updateGroup); // #1
+    });
+  }
+
+  bindSubmitRenameList(form, listId, handler) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      console.log(listId);
+      const listName = e.target.querySelector('.list-name-input').value;
+
+      const updateList = {
+        id: listId,
+        name: listName
+      };
+
+      handler(updateList);
     });
   }
 
@@ -130,7 +155,7 @@ export default class GroupsView {
         hideMenuAction();
         menu.classList.add('d-block');
 
-        this.bindClickActionMenu(menu, groupId);
+        this.bindClickGroupActionMenu(menu, groupId);
       } else if (e.target.closest('.list-group-item')) {
         // List id
         const id = e.target.closest('.list-group-item').id;
@@ -155,7 +180,7 @@ export default class GroupsView {
    * @param {object} menu
    * @param {string} id
    */
-  bindClickActionMenu(menu, id) {
+  bindClickGroupActionMenu(menu, id) {
     [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
       item.addEventListener('click', (e) => {
         if (e.target.dataset.value === NAME_ACTION.RENAME) {

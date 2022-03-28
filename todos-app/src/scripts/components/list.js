@@ -10,7 +10,7 @@ const List = (list) => `
       id="${list.id}"
     >
       <i class="bi bi-list fs-3 px-2"></i>
-      <form class="visually-hidden">
+      <form class="form-item visually-hidden">
         <input 
           type="text" 
           value="${list.name}" 

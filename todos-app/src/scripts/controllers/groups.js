@@ -28,7 +28,8 @@ export default class GroupsController {
     // NOTE: 1. Rename Flow
     this.groupsView.displayGroupsList(
       this.groupsModel.groupsListData,
-      this.handleRenameGroup // #3
+      this.handleRenameGroup, // #3
+      this.handleRenameList
     );
   }
 
@@ -49,6 +50,11 @@ export default class GroupsController {
    */
   handleRenameGroup = (updateGroup) => {
     this.groupsModel.renameGroup(updateGroup); // #4
+    this.onGroupsListChanged();
+  };
+
+  handleRenameList = (updateList) => {
+    this.groupsModel.renameList(updateList);
     this.onGroupsListChanged();
   };
 }
