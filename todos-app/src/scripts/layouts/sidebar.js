@@ -21,6 +21,12 @@ const Sidebar = () => `
             class="group-input form-control"
             id="">
         </form>
+        <form id="new-list-form" class="visually-hidden">
+          <input 
+            type="text"
+            class="list-input form-control"
+            id="">
+        </form>
       </div>
     </div>
     <div class="add-new-container position-absolute bottom-0 pb-1 row w-100">

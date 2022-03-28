@@ -30,4 +30,20 @@ export default class GroupsModel {
     // await this.groupsListData.push(group);
     return await post(urlGroup, newGroup);
   }
+
+  /**
+   * Add new list to database
+   *
+   * @param {string} listName
+   * @returns object
+   */
+  async addNewList(listName) {
+    const newList = {
+      id: uuidv4(),
+      type: TODO_TYPE.LIST,
+      name: listName
+    };
+
+    return await post(urlGroup, newList);
+  }
 }
