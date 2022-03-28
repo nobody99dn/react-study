@@ -13,16 +13,23 @@ export default class GroupsController {
 
     // Explicit this binding
     this.groupsView.bindOpenAddGroup();
+    this.groupsView.bindOpenActionMenu();
+    this.groupsView.bindClickOutsideAction();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
   }
 
   // NOTE: 2.2
   /**
    * Call data and render to UI
-   *  */
+   **/
   async getGroups() {
     this.groupsModel.groupsListData = await this.groupsModel.getGroupsList();
-    this.groupsView.displayGroupsList(this.groupsModel.groupsListData);
+
+    // NOTE: 1. Rename Flow
+    this.groupsView.displayGroupsList(
+      this.groupsModel.groupsListData,
+      this.handleRenameGroup // #3
+    );
   }
 
   /**
@@ -32,6 +39,16 @@ export default class GroupsController {
    */
   handleAddNewGroup = (groupName) => {
     this.groupsModel.addNewGroup(groupName);
+    this.onGroupsListChanged();
+  };
+
+  /**
+   * Execute rename group and re-render UI
+   *
+   * @param {object} updateGroup
+   */
+  handleRenameGroup = (updateGroup) => {
+    this.groupsModel.renameGroup(updateGroup); // #4
     this.onGroupsListChanged();
   };
 }
