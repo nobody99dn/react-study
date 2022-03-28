@@ -4,7 +4,8 @@ import taskInput from '../components/taskInput';
 export default class TasksView {
   constructor() {
     this.tasksList = this.getElement('.task-list');
-    this.tasksInput = this.getElement('.form-input');
+    this.tasksForm = this.getElement('.form-input');
+    this.tasksInput = this.getElement('.task-input');
     this.openTaskList = this.getElement('.list-group');
   }
 
@@ -27,6 +28,16 @@ export default class TasksView {
   }
 
   /**
+   * Bind submit task
+   */
+  bindSubmitTaskForm() {
+    this.tasksForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log(this.taskInput.value);
+    });
+  }
+
+  /**
    * Show data with loop task list
    */
   displayTasksList(tasksListData) {
@@ -39,6 +50,6 @@ export default class TasksView {
    * Show data from task input
    */
   displayTasksInput(tasksInputData) {
-    this.tasksInput.innerHTML = taskInput();
+    this.tasksForm.innerHTML = taskInput();
   }
 }

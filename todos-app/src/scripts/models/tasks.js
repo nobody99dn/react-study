@@ -1,5 +1,5 @@
 import { urlGroup } from '../constants/apis';
-import { get } from '../helpers/fetchApi';
+import { get, post } from '../helpers/fetchApi';
 import { TODO_TYPE } from '../constants/todo';
 
 export default class TasksModel {
@@ -18,7 +18,6 @@ export default class TasksModel {
     // Find first List in data
     for (const group of [...todos]) {
       if (group.type === TODO_TYPE.GROUP && 'lists' in group) {
-        console.log('list in group');
         if (group.lists.length) {
           for (const list of group.lists) {
             if (list.tasks.length) {
@@ -28,7 +27,6 @@ export default class TasksModel {
           }
         }
       } else if (group.type === TODO_TYPE.LIST && 'tasks' in group) {
-        console.log('list outside');
         if (group.tasks.length) {
           tasks = group.tasks;
         }
@@ -37,6 +35,29 @@ export default class TasksModel {
         return tasks;
       }
     }
+  }
+
+  /**
+   * Get Task By Id
+   */
+  getTasksById(listId = '', groupId = '') {
+    let group = {};
+    let list = {};
+    if (!groupId) {
+      list = this.todos.find(
+        (list) => list.type === TODO_TYPE.LIST && list.id === listId
+      );
+    } else {
+      group = this.todos.find(
+        (group) => group.type === TODO_TYPE.GROUP && group.id === groupId
+      );
+
+      list = group.lists.find(
+        (list) => list.type === TODO_TYPE.LIST && list.id === listId
+      );
+    }
+
+    return list.tasks;
   }
 
   /**

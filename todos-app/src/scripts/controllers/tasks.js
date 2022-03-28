@@ -1,3 +1,4 @@
+import List from '../components/list';
 import { TODO_TYPE } from '../constants/todo';
 
 export default class TasksController {
@@ -22,6 +23,12 @@ export default class TasksController {
     );
   }
 
+  async renderTasksByListId(listId, groupId) {
+    this.tasksView.displayTasksList(
+      this.tasksModel.getTasksById(listId, groupId)
+    );
+  }
+
   /**
    * Call data and render task list to UI
    */
@@ -32,6 +39,8 @@ export default class TasksController {
       this.renderDefault();
     } else {
       this.tasksModel.todos = await this.tasksModel.getTodosData();
+      // To do pass parameter
+      this.renderTasksByListId();
     }
   }
 
@@ -40,13 +49,15 @@ export default class TasksController {
    */
   onTasksListChanged(tasksListData) {
     this.getTask();
+    this.tasksView.bindSubmitTaskForm();
   }
 
   /**
-   * Handle render task input data
+   * Handle render task input data and  render task to UI
    */
   onTasksInputChanged(tasksInputData) {
-    this.getInput();
+    this.tasksModel.tasksInputData = this.tasksModel.getTasksInput();
+    this.tasksView.displayTasksInput(this.tasksModel.tasksInputData);
   }
 
   /**
@@ -57,11 +68,8 @@ export default class TasksController {
     this.tasksView.displayTasksList(this.tasksModel.tasksListData);
   }
 
-  /**
-   *  Call data and render task from input to UI
-   */
-  async getInput() {
-    this.tasksModel.tasksInputData = await this.tasksModel.getTasksInput();
-    this.tasksView.displayTasksInput(this.tasksModel.tasksInputData);
-  }
+  handleAddNewTask = async (taskName) => {
+    await this.tasksModel.handleAddNewTask(taskName);
+    this.onTasksListChanged();
+  };
 }
