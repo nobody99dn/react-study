@@ -1,4 +1,7 @@
 import Group from '../components/group';
+import MenuAction from '../components/menuAction';
+import { ACTION_ITEMS, NAME_ACTION } from '../constants/todo';
+import { hideForm, hideMenuAction, showNameIsHiding } from '../constants/view';
 
 export default class GroupsView {
   constructor() {
@@ -28,8 +31,7 @@ export default class GroupsView {
   }
 
   getElement(selector) {
-    const element = document.querySelector(selector);
-    return element;
+    return document.querySelector(selector);
   }
 
   /**
@@ -62,14 +64,44 @@ export default class GroupsView {
 
   /**
    * Render groups data to UI
+   *
    * @param {array} groupsListData
+   * @param {callback} handler
    */
-  displayGroupsList(groupsListData) {
+  displayGroupsList(groupsListData, handler) {
     this.groupsList.innerHTML = Group(groupsListData);
+
+    [...this.groupsList.querySelectorAll('.group-button')].forEach((button) => {
+      const groupId = button.id;
+      const form = button.querySelector('.form-item');
+
+      this.bindSubmitRenameGroup(form, groupId, handler); // #2
+    });
   }
 
   /**
-   * Bind open add input group
+   * This using for trigger event submit in rename input
+   *
+   * @param {DOM} form
+   * @param {callback} handler
+   */
+  bindSubmitRenameGroup(form, groupId, handler) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const groupName = e.target.querySelector('.group-name-input').value;
+
+      const updateGroup = {
+        id: groupId,
+        name: groupName
+      };
+
+      handler(updateGroup); // #1
+    });
+  }
+
+  /**
+   * Trigger open form new group
    */
   bindOpenAddGroup() {
     this.newGroupBtn.addEventListener('click', (e) => {
@@ -79,7 +111,8 @@ export default class GroupsView {
   }
 
   /**
-   * Bind submit a new group
+   * Trigger event submit new group
+   *
    * @param {callback} handler
    */
   bindAddNewGroup(handler) {

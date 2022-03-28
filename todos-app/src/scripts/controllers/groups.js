@@ -7,7 +7,7 @@ export default class GroupsController {
     this.onGroupsListChanged();
   }
 
-  onGroupsListChanged() {
+  onGroupsListChanged = () => {
     // NOTE: 2.2
     this.getGroups();
 
@@ -16,24 +16,49 @@ export default class GroupsController {
     this.groupsView.bindOpenAddList();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
     this.groupsView.bindAddNewList(this.handleAddNewList);
-  }
+  };
 
   // NOTE: 2.2
   /**
    * Call data and render to UI
-   *  */
-  async getGroups() {
+   **/
+  getGroups = async () => {
     this.groupsModel.groupsListData = await this.groupsModel.getGroupsList();
-    this.groupsView.displayGroupsList(this.groupsModel.groupsListData);
-  }
+
+    // NOTE: 1. Rename Flow
+    this.groupsView.displayGroupsList(
+      this.groupsModel.groupsListData,
+      this.handleRenameGroup // #3
+    );
+  };
 
   /**
    * Add new group database and bind data
    *
    * @param {string} groupName
    */
-  handleAddNewGroup = (groupName) => {
-    this.groupsModel.addNewGroup(groupName);
+  handleAddNewGroup = async (groupName) => {
+    await this.groupsModel.addNewGroup(groupName);
+    this.onGroupsListChanged();
+  };
+
+  /**
+   * Execute rename group and re-render UI
+   *
+   * @param {object} updateGroup
+   */
+  handleRenameGroup = async (updateGroup) => {
+    await this.groupsModel.renameGroup(updateGroup); // #4
+    this.onGroupsListChanged();
+  };
+
+  /**
+   * Execute delete group from database by group id
+   *
+   * @param {string} groupId
+   */
+  handleDeleteGroup = async (groupId) => {
+    await this.groupsModel.deleteGroup(groupId);
     this.onGroupsListChanged();
   };
 

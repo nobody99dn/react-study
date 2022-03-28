@@ -1,5 +1,5 @@
 import { urlGroup } from '../constants/apis';
-import { get, post } from '../helpers/fetchApi';
+import { get, post, remove, update } from '../helpers/fetchApi';
 import { v4 as uuidv4 } from 'uuid';
 import { TODO_TYPE } from '../constants/todo';
 
@@ -10,8 +10,7 @@ export default class GroupsModel {
 
   // Get Groups List data
   async getGroupsList() {
-    this.groupsListData = (await get(urlGroup))[0] || [];
-    return (this.groupsListData = await get(urlGroup));
+    return await get(urlGroup);
   }
 
   /**
@@ -26,8 +25,6 @@ export default class GroupsModel {
       name: groupName
     };
 
-    // const group = await post(urlGroup, newGroup);
-    // await this.groupsListData.push(group);
     return await post(urlGroup, newGroup);
   }
 

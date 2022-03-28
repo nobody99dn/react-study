@@ -6,7 +6,7 @@
  */
 const get = async (url) => {
   const response = await fetch(url);
-  return response.json();
+  return await response.json();
 };
 
 const post = async (url, data) => {
@@ -22,4 +22,33 @@ const post = async (url, data) => {
   return await response.json();
 };
 
-export { get, post, getTasks };
+/**
+ * Update group to server
+ *
+ * @param {string} url
+ * @param {object} updateGroup
+ * @returns object
+ */
+const update = async (url, updateGroup) => {
+  const response = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updateGroup)
+  });
+
+  return await response.json();
+};
+
+const remove = async (url, groupId) => {
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  return await response.json();
+};
+export { get, post, update, remove };

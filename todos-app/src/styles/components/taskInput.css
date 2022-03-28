@@ -18,11 +18,6 @@
   outline: none;
 }
 
-.task-form .form-control:focus {
-  border-color: transparent;
-  box-shadow: none;
-}
-
 .input-group {
   background-color: var(--light-white-color);
 }
