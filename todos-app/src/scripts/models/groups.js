@@ -1,5 +1,5 @@
 import { urlGroup } from '../constants/apis';
-import { get, post, update } from '../helpers/fetchApi';
+import { get, post, remove, update } from '../helpers/fetchApi';
 import { v4 as uuidv4 } from 'uuid';
 import { TODO_TYPE } from '../constants/todo';
 
@@ -36,5 +36,9 @@ export default class GroupsModel {
    */
   async renameGroup(updateGroup) {
     return await update(`${urlGroup}/${updateGroup.id}`, updateGroup);
+  }
+
+  async deleteGroup(groupId) {
+    return await remove(`${urlGroup}/${groupId}`);
   }
 }
