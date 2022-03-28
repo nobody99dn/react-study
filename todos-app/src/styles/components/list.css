@@ -5,6 +5,7 @@
 
 .list-group-item {
   border: none;
+  cursor: pointer;
 }
 
 .list-group-item.active {

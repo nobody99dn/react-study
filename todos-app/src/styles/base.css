@@ -28,3 +28,8 @@ html {
   background-color: var(--theme-color-button-focus);
   color: var(--dark-gray-color);
 }
+
+.form-control:focus {
+  border-color: var(--dark-purple-color);
+  box-shadow: none;
+}
