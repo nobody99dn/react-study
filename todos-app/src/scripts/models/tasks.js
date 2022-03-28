@@ -18,7 +18,6 @@ export default class TasksModel {
     // Find first List in data
     for (const group of [...todos]) {
       if (group.type === TODO_TYPE.GROUP && 'lists' in group) {
-        console.log('list in group');
         if (group.lists.length) {
           for (const list of group.lists) {
             if (list.tasks.length) {
@@ -28,7 +27,6 @@ export default class TasksModel {
           }
         }
       } else if (group.type === TODO_TYPE.LIST && 'tasks' in group) {
-        console.log('list outside');
         if (group.tasks.length) {
           tasks = group.tasks;
         }
