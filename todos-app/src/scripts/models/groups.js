@@ -38,5 +38,18 @@ export default class GroupsModel {
     return await update(`${urlGroup}/${updateGroup.id}`, updateGroup);
   }
 
-  async renameList(updateList) {}
+  async renameList(updateList, groupId) {
+    if (!groupId) {
+      await update(`${urlGroup}/${updateList.id}`, updateList);
+    } else {
+      const groupContainList = await get(`${urlGroup}/${groupId}`);
+
+      const listIndex = groupContainList.lists.findIndex(
+        (list) => list.id === updateList.id
+      );
+
+      groupContainList.lists[listIndex].name = updateList.name;
+      await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
+    }
+  }
 }

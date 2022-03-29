@@ -53,8 +53,8 @@ export default class GroupsController {
     this.onGroupsListChanged();
   };
 
-  handleRenameList = (updateList) => {
-    this.groupsModel.renameList(updateList);
+  handleRenameList = async (updateList, groupId) => {
+    await this.groupsModel.renameList(updateList, groupId);
     this.onGroupsListChanged();
   };
 }

@@ -91,7 +91,15 @@ export default class GroupsView {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      console.log(listId);
+      // Parent group
+      const parent = form.closest('.accordion-item');
+      let groupId = '';
+
+      // Get group id if exist
+      if (parent) {
+        groupId = parent.querySelector('.group-button').id;
+      }
+
       const listName = e.target.querySelector('.list-name-input').value;
 
       const updateList = {
@@ -99,7 +107,7 @@ export default class GroupsView {
         name: listName
       };
 
-      handler(updateList);
+      handler(updateList, groupId);
     });
   }
 
