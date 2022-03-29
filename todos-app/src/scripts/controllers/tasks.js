@@ -14,8 +14,10 @@ export default class TasksController {
 
   onTodosChanged() {
     this.getTodos();
-  }
 
+    // Explicit this binding
+    this.tasksView.bindAddNewTask();
+  }
   renderDefault() {
     this.tasksView.displayTasksList(
       this.tasksModel.getFirstList(this.tasksModel.todos)
@@ -64,4 +66,12 @@ export default class TasksController {
     this.tasksModel.tasksInputData = await this.tasksModel.getTasksInput();
     this.tasksView.displayTasksInput(this.tasksModel.tasksInputData);
   }
+
+  /**
+   * Handle Add new task and bind data
+   */
+  handleAddNewTask = async (taskName) => {
+    await this.tasksModel.addNewTask(taskName);
+    this.onTodosChanged;
+  };
 }

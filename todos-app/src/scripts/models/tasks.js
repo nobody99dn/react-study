@@ -1,5 +1,5 @@
 import { urlGroup } from '../constants/apis';
-import { get } from '../helpers/fetchApi';
+import { get, post } from '../helpers/fetchApi';
 import { TODO_TYPE } from '../constants/todo';
 
 export default class TasksModel {
@@ -50,5 +50,17 @@ export default class TasksModel {
   async getTasksInput() {
     this.tasksInputData = await get(urlGroup);
     return this.tasksInputData;
+  }
+
+  /**
+   * Add new task to db
+   */
+  async addNewTask(listTask) {
+    const newTask = {
+      id: uuidv4(),
+      type: TODO_TYPE.LIST,
+      name: listTask
+    };
+    return await post(urlGroup, newTask);
   }
 }

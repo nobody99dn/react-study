@@ -78,6 +78,16 @@
       "type": "list",
       "name": "List 2",
       "tasks": []
+    },
+    {
+      "id": "32167702-d19b-4385-a24f-6c44c3b0f8cc",
+      "type": "group",
+      "name": "xxxxxxx"
+    },
+    {
+      "id": "334da092-95b9-4950-a43d-794d9f9ff743",
+      "type": "group",
+      "name": "ADDNEWGROUP"
     }
   ]
 }

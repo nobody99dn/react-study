@@ -6,14 +6,29 @@ export default class TasksView {
     this.tasksList = this.getElement('.task-list');
     this.tasksInput = this.getElement('.form-input');
     this.openTaskList = this.getElement('.list-group');
+    this.taskForm = this.getElement('#task-input-form');
+    this.taskGetValue = this.getElement('.task-input');
   }
 
   /**
    * Get element
    */
   getElement(selector) {
-    const element = document.querySelector(selector);
-    return element;
+    return document.querySelector(selector);
+  }
+
+  /**
+   * Get task input
+   */
+  get _taskInput() {
+    return this.taskGetValue.value;
+  }
+
+  /**
+   * Reset task input
+   */
+  _resetTaskInput() {
+    this.taskGetValue.value = '';
   }
 
   /**
@@ -38,7 +53,23 @@ export default class TasksView {
   /**
    * Show data from task input
    */
-  displayTasksInput(tasksInputData) {
+  displayTasksInput() {
     this.tasksInput.innerHTML = taskInput();
+  }
+
+  /**
+   * Trigger event submit new task
+   */
+  bindAddNewTask(handler) {
+    console.log('He');
+    console.log(this.taskGetValue.value);
+    //   this.taskForm.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+
+    //     if (this._taskInput) {
+    //       handler(this._taskInput);
+    //       this._resetTaskInput();
+    //     }
+    //   });
   }
 }
