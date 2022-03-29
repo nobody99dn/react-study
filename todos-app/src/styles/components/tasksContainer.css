@@ -9,6 +9,5 @@
 
 .task-title {
   color: var(--dark-gray-color);
-  font-size: 24px;
-  text-shadow: 1px 1px lightgrey;
+  font-size: 34px;
 }

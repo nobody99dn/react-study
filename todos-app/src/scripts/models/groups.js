@@ -29,16 +29,45 @@ export default class GroupsModel {
   }
 
   /**
-   * This using for update group to database
+   * Add new list to database
    *
-   * @param {object} updateGroup
+   * @param {string} listName
    * @returns object
    */
-  async renameGroup(updateGroup) {
-    return await update(`${urlGroup}/${updateGroup.id}`, updateGroup);
+  async addNewList(listName) {
+    const newList = {
+      id: uuidv4(),
+      type: TODO_TYPE.LIST,
+      name: listName
+    };
+
+    return await post(urlGroup, newList);
   }
 
-  async deleteGroup(groupId) {
-    return await remove(`${urlGroup}/${groupId}`);
+  /**
+   * Get task list by group id and list id
+   *
+   * @param {string} listId
+   * @param {string} groupId (optional)
+   * @returns array
+   */
+  getTasksById(listId = '', groupId = '') {
+    let group = {};
+    let list = {};
+    if (!groupId) {
+      list = this.groupsListData.find(
+        (list) => list.type === TODO_TYPE.LIST && list.id === listId
+      );
+    } else {
+      group = this.groupsListData.find(
+        (group) => group.type === TODO_TYPE.GROUP && group.id === groupId
+      );
+
+      list = group.lists.find(
+        (list) => list.type === TODO_TYPE.LIST && list.id === listId
+      );
+    }
+
+    return list.tasks;
   }
 }

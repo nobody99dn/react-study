@@ -9,13 +9,6 @@ const get = async (url) => {
   return await response.json();
 };
 
-/**
- * Add data to server
- *
- * @param {string} url the resource that you wish to fetch
- * @param {object} data the the data that you wish to into server
- * @returns object
- */
 const post = async (url, data) => {
   const response = await fetch(url, {
     method: 'POST',

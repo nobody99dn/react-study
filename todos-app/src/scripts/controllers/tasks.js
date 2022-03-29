@@ -1,3 +1,5 @@
+import { TODO_TYPE } from '../constants/todo';
+
 export default class TasksController {
   constructor(tasksView, tasksModel) {
     this.tasksView = tasksView;
@@ -5,6 +7,32 @@ export default class TasksController {
     // Init app to render list
     this.onTasksListChanged(this.tasksModel.tasksListData);
     this.onTasksInputChanged(this.tasksModel.tasksInputData);
+
+    // Get todos data
+    this.onTodosChanged();
+  }
+
+  onTodosChanged() {
+    this.getTodos();
+  }
+
+  renderDefault() {
+    this.tasksView.displayTasksList(
+      this.tasksModel.getFirstList(this.tasksModel.todos)
+    );
+  }
+
+  /**
+   * Call data and render task list to UI
+   */
+  async getTodos() {
+    // Render default task list in first time
+    if (!this.tasksModel.todos.length) {
+      this.tasksModel.todos = await this.tasksModel.getTodosData();
+      this.renderDefault();
+    } else {
+      this.tasksModel.todos = await this.tasksModel.getTodosData();
+    }
   }
 
   /**

@@ -1,7 +1,11 @@
-import Group from '../components/group';
-import MenuAction from '../components/menuAction';
+// Constants
 import { ACTION_ITEMS, NAME_ACTION } from '../constants/todo';
 import { hideForm, hideMenuAction, showNameIsHiding } from '../constants/view';
+
+// Components
+import MenuAction from '../components/menuAction';
+import Group from '../components/group';
+import taskLine from '../components/taskLine';
 
 export default class GroupsView {
   constructor() {
@@ -11,33 +15,58 @@ export default class GroupsView {
     // The add new group button
     this.newGroupBtn = this.getElement('.group-btn');
 
-    // The input group
-    this.groupInput = this.getElement('.group-input');
+    // The add new list button
+    this.newListBtn = this.getElement('.new-list-container');
 
     // The form of group
     this.groupForm = this.getElement('#new-group-form');
+
+    // The input group
+    this.groupInput = this.getElement('.group-input');
+
+    // The form of list
+    this.listForm = this.getElement('#new-list-form');
+
+    // The input list
+    this.listInput = this.getElement('.list-input');
+
+    // The group name
+    this.groupName = this.getElement('.group-name');
+
+    // The task container
+    this.tasksList = this.getElement('.task-list');
   }
 
   getElement(selector) {
     return document.querySelector(selector);
   }
 
-  getElements(selector) {
-    return document.querySelectorAll(selector);
-  }
-
   /**
-   * Get value of group input
+   * Get group input
    */
   get _groupText() {
     return this.groupInput.value;
   }
 
   /**
-   * Reset input method
+   * Reset group input
    */
   _resetGroupInput() {
     this.groupInput.value = '';
+  }
+
+  /**
+   * Get list input
+   */
+  get _listText() {
+    return this.listInput.value;
+  }
+
+  /**
+   * Reset list input
+   */
+  _resetListInput() {
+    this.listInput.value = '';
   }
 
   /**
@@ -106,79 +135,70 @@ export default class GroupsView {
   }
 
   /**
-   * This using for trigger right click into group item
+   * Bind click add new list button
    */
-  bindOpenActionMenu(deleteGroupHandler) {
-    this.groupsList.addEventListener('contextmenu', (e) => {
+  bindOpenAddList() {
+    this.newListBtn.addEventListener('click', (e) => {
+      //TODO: handle hide other input is opening soon
+
+      this.listForm.classList.remove('visually-hidden');
+      this.listInput.focus();
+    });
+  }
+
+  /**
+   * Bind submit event add new list
+   * @param {callback} handler
+   */
+  bindAddNewList(handler) {
+    this.listForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      hideForm();
-      showNameIsHiding();
 
-      if (e.target.classList.contains('group-button')) {
-        // Group ID
-        const id = e.target.id;
-
-        // Query parent both of ul and button then query to ul
-        const menu =
-          e.target.closest('.accordion-item').querySelector('.dropdown-menu') ||
-          [];
-
-        // Render Action Menu to Group
-        menu.innerHTML = MenuAction(ACTION_ITEMS);
-
-        // Display Action menu
-        hideMenuAction();
-        menu.classList.add('d-block');
-
-        this.bindClickActionMenu(menu, id, deleteGroupHandler);
+      if (this._listText) {
+        handler(this._listText);
+        this._resetListInput();
+        this.listForm.classList.add('visually-hidden');
       }
     });
   }
 
-  /**
-   * Bind click event to menu item after render menu action
+  /*
+   * Bind click list
    *
-   * @param {object} menu
-   * @param {string} id
+   * @param {callback} handler
    */
-  bindClickActionMenu(menu, id, deleteGroupHandler) {
-    [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
-      item.addEventListener('click', (e) => {
-        if (e.target.dataset.value === NAME_ACTION.RENAME) {
-          const buttonGroup = document.getElementById(id);
+  bindShowTasks(handler) {
+    this.groupsList.addEventListener('click', (e) => {
+      const listElement = e.target.closest('.list-group-item');
 
-          hideMenuAction();
+      if (listElement) {
+        const parentGroup = listElement.closest('.accordion-item');
+        const listId = listElement.id || '';
 
-          // Set value input = name of group
-          buttonGroup.querySelector('.group-name-input').value =
-            buttonGroup.querySelector('.group-name').dataset.value;
+        if (listElement && !parentGroup) {
+          handler(listId);
+        } else {
+          const groupId = parentGroup.querySelector('.accordion-button').id;
 
-          // show form and focus input
-          buttonGroup.querySelector('form').classList.remove('visually-hidden');
-          buttonGroup.querySelector('.group-name-input').focus();
-
-          // hide name
-          buttonGroup
-            .querySelector('.group-name')
-            .classList.add('visually-hidden');
-        } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
-          deleteGroupHandler(id);
+          handler(listId, groupId);
         }
-      });
+      }
     });
   }
 
   /**
-   * Binding close action menu
+   * Render task list
+   *
+   * @param {array} tasksListData
    */
-  bindClickOutsideAction() {
-    document.querySelector('body').addEventListener('click', (e) => {
-      !e.target.closest('.dropdown-menu') && hideMenuAction();
-
-      if (!e.target.closest('.form-item, .rename-option, .group-btn')) {
-        hideForm();
-        showNameIsHiding();
-      }
-    });
+  displayTasksList(tasksListData) {
+    if (tasksListData.length) {
+      this.tasksList.innerHTML = tasksListData
+        .map((task) => taskLine(task.name, task.id))
+        .join('');
+    } else {
+      // TODO: This should handle with message constant soon
+      this.tasksList.innerHTML = 'This list is empty';
+    }
   }
 }
