@@ -1,6 +1,7 @@
 // Components
 import Sidebar from '../layouts/sidebar';
 import TasksContainer from '../layouts/tasksContainer';
+import TaskInput from '../components/taskInput';
 
 export default class AppView {
   constructor() {
@@ -22,5 +23,9 @@ export default class AppView {
     // Render Sidebar
     this.getElement('#root').insertAdjacentHTML('afterbegin', Sidebar());
     this.getElement('#root').insertAdjacentHTML('beforeend', TasksContainer());
+    this.getElement('.form-input').insertAdjacentHTML(
+      'afterbegin',
+      TaskInput()
+    );
   }
 }

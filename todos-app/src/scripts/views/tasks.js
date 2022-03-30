@@ -1,12 +1,14 @@
 import taskLine from '../components/taskLine';
-import taskInput from '../components/taskInput';
+import TaskInput from '../components/taskInput';
+import bindShowTasks from '../views/groups';
+import handleShowTasks from '../controllers/groups';
 
 export default class TasksView {
   constructor() {
     this.tasksList = this.getElement('.task-list');
-    this.tasksInput = this.getElement('.form-input');
+    this.formInput = this.getElement('.form-input');
     this.openTaskList = this.getElement('.list-group');
-    this.taskForm = this.getElement('#task-input-form');
+    this.taskForm = this.getElement('.task-input-form');
     this.taskGetValue = this.getElement('.task-input');
   }
 
@@ -51,25 +53,15 @@ export default class TasksView {
   }
 
   /**
-   * Show data from task input
-   */
-  displayTasksInput() {
-    this.tasksInput.innerHTML = taskInput();
-  }
-
-  /**
    * Trigger event submit new task
    */
   bindAddNewTask(handler) {
-    console.log('He');
-    console.log(this.taskGetValue.value);
-    //   this.taskForm.addEventListener('submit', (e) => {
-    //     e.preventDefault();
-
-    //     if (this._taskInput) {
-    //       handler(this._taskInput);
-    //       this._resetTaskInput();
-    //     }
-    //   });
+    this.taskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (this._taskInput) {
+        handler(this._taskInput);
+        this._resetTaskInput();
+      }
+    });
   }
 }
