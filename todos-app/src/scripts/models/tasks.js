@@ -1,5 +1,6 @@
 import { urlGroup } from '../constants/apis';
 import { get, post } from '../helpers/fetchApi';
+import { v4 as uuidv4 } from 'uuid';
 import { TODO_TYPE } from '../constants/todo';
 
 export default class TasksModel {
@@ -55,12 +56,20 @@ export default class TasksModel {
   /**
    * Add new task to db
    */
-  async addNewTask(listTask) {
+  async addNewTask(taskName, idList, idGroup) {
     const newTask = {
       id: uuidv4(),
-      type: TODO_TYPE.LIST,
-      name: listTask
+      type: TODO_TYPE.TASK,
+      name: taskName
     };
     return await post(urlGroup, newTask);
+  }
+
+  getListById(listId = '') {
+    let list = {};
+    if (listId) {
+      (list) => list.type === TODO_TYPE.LIST && list.id == listId;
+    }
+    return list;
   }
 }

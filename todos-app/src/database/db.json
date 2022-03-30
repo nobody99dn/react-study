@@ -80,14 +80,29 @@
       "tasks": []
     },
     {
-      "id": "32167702-d19b-4385-a24f-6c44c3b0f8cc",
-      "type": "group",
-      "name": "xxxxxxx"
+      "id": "ad32c9d1-9a87-40bd-a9dd-3f2f2ae96686",
+      "type": "task",
+      "name": "ádasd"
     },
     {
-      "id": "334da092-95b9-4950-a43d-794d9f9ff743",
-      "type": "group",
-      "name": "ADDNEWGROUP"
+      "id": "9a2db6fc-e2a9-4b43-99bb-1435d86d92d8",
+      "type": "task",
+      "name": "sdgsdg"
+    },
+    {
+      "id": "ca9c4706-1923-4e92-9c18-3be7dfb7d22e",
+      "type": "task",
+      "name": "asdasd"
+    },
+    {
+      "id": "58d144a6-d343-4b59-a443-8e7af9e30f55",
+      "type": "task",
+      "name": "sadasd"
+    },
+    {
+      "id": "afccc79b-8678-4a60-b10f-3627ffa52e78",
+      "type": "task",
+      "name": "asdasd"
     }
   ]
 }

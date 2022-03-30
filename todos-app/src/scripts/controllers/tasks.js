@@ -16,8 +16,9 @@ export default class TasksController {
     this.getTodos();
 
     // Explicit this binding
-    this.tasksView.bindAddNewTask();
+    this.tasksView.bindAddNewTask(this.handleAddNewTask);
   }
+
   renderDefault() {
     this.tasksView.displayTasksList(
       this.tasksModel.getFirstList(this.tasksModel.todos)
@@ -64,7 +65,6 @@ export default class TasksController {
    */
   async getInput() {
     this.tasksModel.tasksInputData = await this.tasksModel.getTasksInput();
-    this.tasksView.displayTasksInput(this.tasksModel.tasksInputData);
   }
 
   /**

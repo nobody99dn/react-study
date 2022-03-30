@@ -1,6 +1,7 @@
 const TODO_TYPE = {
   GROUP: 'group',
-  LIST: 'list'
+  LIST: 'list',
+  TASK: 'task'
 };
 
 const ACTION_ITEMS = [
