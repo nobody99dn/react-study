@@ -110,4 +110,25 @@ export default class GroupsModel {
   async deleteGroup(groupId) {
     await remove(`${urlGroup}/${groupId}`);
   }
+
+  /**
+   * Delete list from database
+   *
+   * @param {string} listId
+   * @param {string} groupId
+   */
+  async deleteList(listId, groupId) {
+    if (!groupId) {
+      await remove(`${urlGroup}/${listId}`);
+    } else {
+      const groupContainList = await get(`${urlGroup}/${groupId}`);
+      const listIndex = groupContainList.lists.findIndex(
+        (list) => list.id === listId
+      );
+
+      groupContainList.lists.splice(listIndex, 1);
+
+      await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
+    }
+  }
 }

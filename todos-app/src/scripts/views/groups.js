@@ -191,7 +191,7 @@ export default class GroupsView {
   /**
    * This using for trigger right click into group item
    */
-  bindOpenGroupActionMenu(deleteGroupHandler) {
+  bindOpenActionMenu(deleteGroupHandler, deleteListHandler) {
     this.groupsList.addEventListener('contextmenu', (e) => {
       e.preventDefault();
       hideForm();
@@ -216,7 +216,14 @@ export default class GroupsView {
         this.bindClickGroupActionMenu(menu, groupId, deleteGroupHandler);
       } else if (e.target.closest('.list-group-item')) {
         // List id
-        const id = e.target.closest('.list-group-item').id;
+        const listId = e.target.closest('.list-group-item').id;
+
+        // Get group id if exist
+        const parent = e.target.closest('.accordion-item');
+        let groupId = '';
+        if (parent) {
+          groupId = parent.querySelector('.group-button').id;
+        }
 
         // Query to ul
         const menu = e.target
@@ -228,7 +235,7 @@ export default class GroupsView {
         // Display Action menu
         hideMenuAction();
         menu.classList.add('d-block');
-        this.bindClickListActionMenu(menu, id);
+        this.bindClickListActionMenu(menu, listId, groupId, deleteListHandler);
       }
     });
   }
@@ -252,11 +259,11 @@ export default class GroupsView {
           buttonGroup.querySelector('.group-name-input').value =
             buttonGroup.querySelector('.group-name').dataset.value;
 
-          // show form and focus input
+          // Show form and focus input
           buttonGroup.querySelector('form').classList.remove('visually-hidden');
           buttonGroup.querySelector('.group-name-input').focus();
 
-          // hide name
+          // Hide name
           buttonGroup
             .querySelector('.group-name')
             .classList.add('visually-hidden');
@@ -314,11 +321,11 @@ export default class GroupsView {
    * @param {object} menu
    * @param {string} id
    */
-  bindClickListActionMenu(menu, id) {
+  bindClickListActionMenu(menu, listId, groupId, deleteListHandler) {
     [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
       item.addEventListener('click', (e) => {
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
-          const listContainer = document.getElementById(id);
+          const listContainer = document.getElementById(listId);
 
           hideMenuAction();
 
@@ -336,6 +343,8 @@ export default class GroupsView {
           listContainer
             .querySelector('.list-name')
             .classList.add('visually-hidden');
+        } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
+          deleteListHandler(listId, groupId);
         }
       });
     });
