@@ -1,5 +1,7 @@
 const TasksContainer = () => `
-  <div class="task-container vh-100 p-5 d-flex flex-column">
+  <div class="task-container vh-100 p-5 d-flex flex-column"
+  data-list=""
+  data-group="">
     <div class="title row">  
       <div class="col-md-10 task-title">Title</div>
       <div class="col-md-2"></div>

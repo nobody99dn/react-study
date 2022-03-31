@@ -70,8 +70,8 @@ export default class TasksController {
   /**
    * Handle Add new task and bind data
    */
-  handleAddNewTask = async (taskName) => {
-    await this.tasksModel.addNewTask(taskName);
-    this.onTodosChanged;
+  handleAddNewTask = async (taskName, listId, groupId) => {
+    await this.tasksModel.addNewTask(taskName, listId, groupId);
+    this.onTasksListChanged();
   };
 }

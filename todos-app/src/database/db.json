@@ -15,12 +15,6 @@
               "name": "Practice",
               "dueDate": "2022-03-17",
               "dateModified": "2022-02-12"
-            },
-            {
-              "id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
-              "name": "ES6 syntax",
-              "dueDate": "2022-03-19",
-              "dateModified": "2022-02-12"
             }
           ]
         },
@@ -35,36 +29,22 @@
               "dueDate": "2022-03-17",
               "dateCreated": "2022-02-12",
               "dateModified": "2022-02-12"
-            },
-            {
-              "id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
-              "name": "Task 2",
-              "dueDate": "2022-03-19",
-              "dateCreated": "2022-02-12",
-              "dateModified": "2022-02-12"
             }
           ]
         }
       ]
     },
     {
-      "id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa753",
+      "id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa711",
       "type": "list",
       "name": "List 1",
       "tasks": [
         {
-          "id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
-          "name": "Task 3",
-          "dueDate": "2022-03-17",
-          "dateCreated": "2022-02-12",
-          "dateModified": "2022-02-12"
-        },
-        {
-          "id": "7fce1750-cc35-43c6-9bc2-826989f5afcd",
-          "name": "Task 4",
-          "dueDate": "2022-03-19",
-          "dateCreated": "2022-02-12",
-          "dateModified": "2022-02-13"
+          "id": "476144b2-a7fb-48e1-82d7-850e6b5d720f",
+          "name": "zxczxc",
+          "dueDate": "",
+          "dateCreated": "",
+          "dateModified": ""
         }
       ]
     },
@@ -72,37 +52,6 @@
       "id": "82a7d2c0-4abe-4180-9c49-3ba1d50f12312",
       "type": "group",
       "name": "Group 2"
-    },
-    {
-      "id": "f5ab43e8-0867-4ea0-85cf-654c0a3fa753",
-      "type": "list",
-      "name": "List 2",
-      "tasks": []
-    },
-    {
-      "id": "ad32c9d1-9a87-40bd-a9dd-3f2f2ae96686",
-      "type": "task",
-      "name": "ádasd"
-    },
-    {
-      "id": "9a2db6fc-e2a9-4b43-99bb-1435d86d92d8",
-      "type": "task",
-      "name": "sdgsdg"
-    },
-    {
-      "id": "ca9c4706-1923-4e92-9c18-3be7dfb7d22e",
-      "type": "task",
-      "name": "asdasd"
-    },
-    {
-      "id": "58d144a6-d343-4b59-a443-8e7af9e30f55",
-      "type": "task",
-      "name": "sadasd"
-    },
-    {
-      "id": "afccc79b-8678-4a60-b10f-3627ffa52e78",
-      "type": "task",
-      "name": "asdasd"
     }
   ]
 }

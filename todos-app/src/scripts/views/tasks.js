@@ -58,8 +58,12 @@ export default class TasksView {
   bindAddNewTask(handler) {
     this.taskForm.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      const TasksContainer = document.querySelector('.task-container');
+      const listId = TasksContainer.dataset.list;
+      const groupId = TasksContainer.dataset.group;
       if (this._taskInput) {
-        handler(this._taskInput);
+        handler(this._taskInput, listId, groupId);
         this._resetTaskInput();
       }
     });
