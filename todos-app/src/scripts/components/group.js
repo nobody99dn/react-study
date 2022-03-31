@@ -50,6 +50,9 @@ const Group = (listData = []) => `
         `${(data.lists || []).map((list) => List(list)).join('')}` ||
         '<p class="empty-text m-0"><small>This group is empty.</small></p>'
       }
+      <form class="new-list-form-inside visually-hidden">
+        <input class="form-control" type="text">
+      </form>
           </div>
         </div>
       </div>

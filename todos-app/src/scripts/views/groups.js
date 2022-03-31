@@ -1,5 +1,5 @@
 // Constants
-import { ACTION_ITEMS, NAME_ACTION } from '../constants/todo';
+import { GROUP_ACTION, LIST_ACTION, NAME_ACTION } from '../constants/todo';
 import { hideForm, hideMenuAction, showNameIsHiding } from '../constants/view';
 
 // Components
@@ -207,7 +207,7 @@ export default class GroupsView {
           [];
 
         // Render Action Menu to Group
-        menu.innerHTML = MenuAction(ACTION_ITEMS);
+        menu.innerHTML = MenuAction(GROUP_ACTION);
 
         // Display Action menu
         hideMenuAction();
@@ -230,7 +230,8 @@ export default class GroupsView {
           .closest('.list-group-item')
           .parentNode.querySelector('.dropdown-menu');
 
-        menu.innerHTML = MenuAction(ACTION_ITEMS);
+        // Render menu action item for list
+        menu.innerHTML = MenuAction(LIST_ACTION);
 
         // Display Action menu
         hideMenuAction();
@@ -269,6 +270,8 @@ export default class GroupsView {
             .classList.add('visually-hidden');
         } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
           deleteGroupHandler(id);
+        } else if (e.target.dataset.value === NAME_ACTION.NEW_LIST) {
+          console.log('here');
         }
       });
     });
