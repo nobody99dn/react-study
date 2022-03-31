@@ -2,13 +2,20 @@
  * Get data form server
  *
  * @param {string} url the resource that you wish to fetch
- * @returns promise
+ * @returns object
  */
 const get = async (url) => {
   const response = await fetch(url);
   return await response.json();
 };
 
+/**
+ * Add new object to database
+ *
+ * @param {string} url
+ * @param {object} data
+ * @returns object
+ */
 const post = async (url, data) => {
   const response = await fetch(url, {
     method: 'POST',
@@ -23,7 +30,7 @@ const post = async (url, data) => {
 };
 
 /**
- * Update group to server
+ * Update to  database
  *
  * @param {string} url
  * @param {object} updateGroup
@@ -41,7 +48,13 @@ const update = async (url, updateGroup) => {
   return await response.json();
 };
 
-const remove = async (url, groupId) => {
+/**
+ * Remove  to database
+ *
+ * @param {string} url
+ * @param {string} groupId
+ */
+const remove = async (url) => {
   const response = await fetch(url, {
     method: 'DELETE',
     headers: {
@@ -49,6 +62,7 @@ const remove = async (url, groupId) => {
     }
   });
 
-  return await response.json();
+  await response.json();
 };
+
 export { get, post, update, remove };

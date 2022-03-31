@@ -82,7 +82,7 @@ export default class GroupsView {
       const groupId = button.id;
       const form = button.querySelector('.form-item');
 
-      this.bindSubmitRenameGroup(form, groupId, renameGroupHandler); // #2
+      this.bindSubmitRenameGroup(form, groupId, renameGroupHandler);
     });
 
     [...this.groupsList.querySelectorAll('.list-group-item')].forEach(
@@ -112,7 +112,7 @@ export default class GroupsView {
         name: groupName
       };
 
-      handler(updateGroup); // #1
+      handler(updateGroup);
     });
   }
 
@@ -191,7 +191,7 @@ export default class GroupsView {
   /**
    * This using for trigger right click into group item
    */
-  bindOpenActionMenu(deleteGroupHandler) {
+  bindOpenGroupActionMenu(deleteGroupHandler) {
     this.groupsList.addEventListener('contextmenu', (e) => {
       e.preventDefault();
       hideForm();
@@ -213,9 +213,7 @@ export default class GroupsView {
         hideMenuAction();
         menu.classList.add('d-block');
 
-        this.bindClickActionMenu(menu, groupId, deleteGroupHandler);
-
-        this.bindClickGroupActionMenu(menu, groupId);
+        this.bindClickGroupActionMenu(menu, groupId, deleteGroupHandler);
       } else if (e.target.closest('.list-group-item')) {
         // List id
         const id = e.target.closest('.list-group-item').id;
@@ -235,7 +233,14 @@ export default class GroupsView {
     });
   }
 
-  bindClickActionMenu(menu, id, deleteGroupHandler) {
+  /**
+   * * Trigger click event in action menu of group
+   *
+   * @param {object} menu
+   * @param {string} id
+   * @param {callback} deleteGroupHandler
+   */
+  bindClickGroupActionMenu(menu, id, deleteGroupHandler) {
     [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
       item.addEventListener('click', (e) => {
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
@@ -279,36 +284,11 @@ export default class GroupsView {
     });
   }
 
-  /*
-   * Bind click list
+  /**
+   * Trigger click event on list
    *
    * @param {callback} handler
    */
-  bindClickGroupActionMenu(menu, id) {
-    [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
-      item.addEventListener('click', (e) => {
-        if (e.target.dataset.value === NAME_ACTION.RENAME) {
-          const buttonGroup = document.getElementById(id);
-
-          hideMenuAction();
-
-          // Set value input = name of group
-          buttonGroup.querySelector('.group-name-input').value =
-            buttonGroup.querySelector('.group-name').dataset.value;
-
-          // show form and focus input
-          buttonGroup.querySelector('form').classList.remove('visually-hidden');
-          buttonGroup.querySelector('.group-name-input').focus();
-
-          // hide name
-          buttonGroup
-            .querySelector('.group-name')
-            .classList.add('visually-hidden');
-        }
-      });
-    });
-  }
-
   bindShowTasks(handler) {
     this.groupsList.addEventListener('click', (e) => {
       const listElement = e.target.closest('.list-group-item');
@@ -328,6 +308,12 @@ export default class GroupsView {
     });
   }
 
+  /**
+   * Trigger click event in action menu of list
+   *
+   * @param {object} menu
+   * @param {string} id
+   */
   bindClickListActionMenu(menu, id) {
     [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
       item.addEventListener('click', (e) => {
