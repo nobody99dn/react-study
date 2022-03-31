@@ -116,6 +116,13 @@ export default class GroupsView {
     });
   }
 
+  /**
+   * Trigger submit rename action
+   *
+   * @param {object} form
+   * @param {string} listId
+   * @param {callback} handler
+   */
   bindSubmitRenameList(form, listId, handler) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -145,6 +152,8 @@ export default class GroupsView {
    */
   bindOpenAddGroup() {
     this.newGroupBtn.addEventListener('click', (e) => {
+      hideForm();
+
       this.groupForm.classList.remove('visually-hidden');
       this.groupInput.focus();
     });
@@ -172,7 +181,7 @@ export default class GroupsView {
    */
   bindOpenAddList() {
     this.newListBtn.addEventListener('click', (e) => {
-      //TODO: handle hide other input is opening soon
+      hideForm();
 
       this.listForm.classList.remove('visually-hidden');
       this.listInput.focus();
@@ -182,7 +191,7 @@ export default class GroupsView {
   /**
    * This using for trigger right click into group item
    */
-  bindOpenActionMenu() {
+  bindOpenActionMenu(deleteGroupHandler) {
     this.groupsList.addEventListener('contextmenu', (e) => {
       e.preventDefault();
       hideForm();
@@ -204,6 +213,8 @@ export default class GroupsView {
         hideMenuAction();
         menu.classList.add('d-block');
 
+        this.bindClickActionMenu(menu, groupId, deleteGroupHandler);
+
         this.bindClickGroupActionMenu(menu, groupId);
       } else if (e.target.closest('.list-group-item')) {
         // List id
@@ -224,8 +235,36 @@ export default class GroupsView {
     });
   }
 
+  bindClickActionMenu(menu, id, deleteGroupHandler) {
+    [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (e.target.dataset.value === NAME_ACTION.RENAME) {
+          const buttonGroup = document.getElementById(id);
+
+          hideMenuAction();
+
+          // Set value input = name of group
+          buttonGroup.querySelector('.group-name-input').value =
+            buttonGroup.querySelector('.group-name').dataset.value;
+
+          // show form and focus input
+          buttonGroup.querySelector('form').classList.remove('visually-hidden');
+          buttonGroup.querySelector('.group-name-input').focus();
+
+          // hide name
+          buttonGroup
+            .querySelector('.group-name')
+            .classList.add('visually-hidden');
+        } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
+          deleteGroupHandler(id);
+        }
+      });
+    });
+  }
+
   /**
    * Bind submit event add new list
+   *
    * @param {callback} handler
    */
   bindAddNewList(handler) {
@@ -236,51 +275,6 @@ export default class GroupsView {
         handler(this._listText);
         this._resetListInput();
         this.listForm.classList.add('visually-hidden');
-      }
-    });
-  }
-
-  /**
-   * This using for trigger right click into group item
-   */
-  bindOpenActionMenu() {
-    this.groupsList.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-      hideForm();
-      showNameIsHiding();
-
-      if (e.target.classList.contains('group-button')) {
-        // Group ID
-        const groupId = e.target.id;
-
-        // Query parent both of ul and button then query to ul
-        const menu =
-          e.target.closest('.accordion-item').querySelector('.dropdown-menu') ||
-          [];
-
-        // Render Action Menu to Group
-        menu.innerHTML = MenuAction(ACTION_ITEMS);
-
-        // Display Action menu
-        hideMenuAction();
-        menu.classList.add('d-block');
-
-        this.bindClickGroupActionMenu(menu, groupId);
-      } else if (e.target.closest('.list-group-item')) {
-        // List id
-        const id = e.target.closest('.list-group-item').id;
-
-        // Query to ul
-        const menu = e.target
-          .closest('.list-group-item')
-          .parentNode.querySelector('.dropdown-menu');
-
-        menu.innerHTML = MenuAction(ACTION_ITEMS);
-
-        // Display Action menu
-        hideMenuAction();
-        menu.classList.add('d-block');
-        this.bindClickListActionMenu(menu, id);
       }
     });
   }
@@ -366,7 +360,7 @@ export default class GroupsView {
    *
    * @param {array} tasksListData
    */
-  displayTasksList(tasksListData) {
+  displayTasksList(tasksListData = []) {
     if (tasksListData.length) {
       this.tasksList.innerHTML = tasksListData
         .map((task) => taskLine(task.name, task.id))
@@ -375,5 +369,23 @@ export default class GroupsView {
       // TODO: This should handle with message constant soon
       this.tasksList.innerHTML = 'This list is empty';
     }
+  }
+
+  /**
+   * Binding click outside action
+   */
+  bindClickOutsideAction() {
+    document.querySelector('body').addEventListener('click', (e) => {
+      !e.target.closest('.dropdown-menu') && hideMenuAction();
+
+      if (
+        !e.target.closest(
+          '.form-item, .rename-option, .group-btn, .new-list-container'
+        )
+      ) {
+        hideForm();
+        showNameIsHiding();
+      }
+    });
   }
 }
