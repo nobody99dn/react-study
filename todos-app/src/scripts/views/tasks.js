@@ -5,6 +5,7 @@ export default class TasksView {
   constructor() {
     this.tasksList = this.getElement('.task-list');
     this.tasksInput = this.getElement('.form-input');
+    this.openTaskList = this.getElement('.list-group');
   }
 
   /**
@@ -13,6 +14,16 @@ export default class TasksView {
   getElement(selector) {
     const element = document.querySelector(selector);
     return element;
+  }
+
+  /**
+   * Bind open task in list
+   */
+  bindOpenTaskList() {
+    this.openTaskList.addEventListener('click', (e) => {
+      this.tasksList.classList.target();
+      this.tasksList.focus();
+    });
   }
 
   /**

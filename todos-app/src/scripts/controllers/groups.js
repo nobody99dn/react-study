@@ -7,22 +7,26 @@ export default class GroupsController {
     this.onGroupsListChanged();
   }
 
-  onGroupsListChanged() {
+  onGroupsListChanged = () => {
     // NOTE: 2.2
     this.getGroups();
 
     // Explicit this binding
     this.groupsView.bindOpenAddGroup();
-    this.groupsView.bindOpenActionMenu();
-    this.groupsView.bindClickOutsideAction();
+    this.groupsView.bindOpenAddList();
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
+    this.groupsView.bindShowTasks(this.handleShowTasks);
+  };
+
+  onTaskListChange(tasksListData) {
+    this.groupsView.displayTasksList(tasksListData);
   }
 
   // NOTE: 2.2
   /**
    * Call data and render to UI
    **/
-  async getGroups() {
+  getGroups = async () => {
     this.groupsModel.groupsListData = await this.groupsModel.getGroupsList();
 
     // NOTE: 1. Rename Flow
@@ -31,15 +35,15 @@ export default class GroupsController {
       this.handleRenameGroup, // #3
       this.handleRenameList
     );
-  }
+  };
 
   /**
    * Add new group database and bind data
    *
    * @param {string} groupName
    */
-  handleAddNewGroup = (groupName) => {
-    this.groupsModel.addNewGroup(groupName);
+  handleAddNewGroup = async (groupName) => {
+    await this.groupsModel.addNewGroup(groupName);
     this.onGroupsListChanged();
   };
 
@@ -48,13 +52,38 @@ export default class GroupsController {
    *
    * @param {object} updateGroup
    */
-  handleRenameGroup = (updateGroup) => {
-    this.groupsModel.renameGroup(updateGroup); // #4
+  handleRenameGroup = async (updateGroup) => {
+    await this.groupsModel.renameGroup(updateGroup); // #4
+    this.onGroupsListChanged();
+  };
+
+  /**
+   * Execute delete group from database by group id
+   *
+   * @param {string} groupId
+   */
+  handleDeleteGroup = async (groupId) => {
+    await this.groupsModel.deleteGroup(groupId);
     this.onGroupsListChanged();
   };
 
   handleRenameList = async (updateList, groupId) => {
     await this.groupsModel.renameList(updateList, groupId);
     this.onGroupsListChanged();
+  };
+
+  handleAddNewList = async (listName) => {
+    await this.groupsModel.addNewList(listName);
+    this.onGroupsListChanged();
+  };
+
+  /**
+   * Handle get task list and render UI
+   *
+   * @param {string} listId
+   * @param {string} groupId (optional)
+   */
+  handleShowTasks = async (listId, groupId) => {
+    this.onTaskListChange(await this.groupsModel.getTasksById(listId, groupId));
   };
 }
