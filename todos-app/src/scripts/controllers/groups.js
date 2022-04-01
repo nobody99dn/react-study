@@ -15,7 +15,10 @@ export default class GroupsController {
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindOpenAddList();
     this.groupsView.bindClickOutsideAction();
-    this.groupsView.bindOpenGroupActionMenu(this.handleDeleteGroup);
+    this.groupsView.bindOpenActionMenu(
+      this.handleDeleteGroup,
+      this.handleDeleteList
+    );
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
     this.groupsView.bindAddNewList(this.handleAddNewList);
     this.groupsView.bindShowTasks(this.handleShowTasks);
@@ -101,6 +104,17 @@ export default class GroupsController {
    */
   handleDeleteGroup = async (groupId) => {
     await this.groupsModel.deleteGroup(groupId);
+    this.onGroupsListChanged();
+  };
+
+  /**
+   * Handle action delete list and bind to database
+   *
+   * @param {string} listId
+   * @param {string} groupId
+   */
+  handleDeleteList = async (listId, groupId) => {
+    await this.groupsModel.deleteList(listId, groupId);
     this.onGroupsListChanged();
   };
 }
