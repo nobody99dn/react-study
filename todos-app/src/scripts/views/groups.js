@@ -294,6 +294,13 @@ export default class GroupsView {
       const listElement = e.target.closest('.list-group-item');
 
       if (listElement) {
+        // Remove active class current list and active selected list
+        const currentList = document.querySelector('.list-group-item.active');
+        if (currentList) {
+          currentList.classList.remove('active');
+        }
+        listElement.classList.add('active');
+
         const parentGroup = listElement.closest('.accordion-item');
         const listId = listElement.id || '';
 
