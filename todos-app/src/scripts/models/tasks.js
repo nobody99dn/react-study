@@ -13,7 +13,9 @@ export default class TasksModel {
   /**
    * Get Tasks List data
    */
-  async getTasksList() {
+  async getTasksList(listId, groupId) {
+    console.log('listId', listId);
+    console.log('groupId', groupId);
     return await get(urlGroup);
   }
 

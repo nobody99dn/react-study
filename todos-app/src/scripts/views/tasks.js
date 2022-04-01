@@ -52,9 +52,10 @@ export default class TasksView {
       .join('');
 
     // Active list
-    this.getElement(`li#${tasksListData.listId}`).classList.add('active');
+    if (tasksListData.listId) {
+      this.getElement(`li#${tasksListData.listId}`).classList.add('active');
+    }
   }
-
   /**
    * Trigger event submit new task
    */

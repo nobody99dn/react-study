@@ -41,8 +41,8 @@ export default class TasksController {
   /**
    * Handle render task list data
    */
-  onTasksListChanged(tasksListData) {
-    this.getTask();
+  onTasksListChanged(listId, groupId) {
+    this.getTask(listId, groupId);
   }
 
   /**
@@ -55,9 +55,15 @@ export default class TasksController {
   /**
    *  Call data and render task from list to UI
    */
-  async getTask() {
-    this.tasksModel.tasksListData = await this.tasksModel.getTasksList();
-    this.tasksView.displayTasksList(this.tasksModel.tasksListData);
+  async getTask(listId, groupId) {
+    this.tasksModel.tasksListData = await this.tasksModel.getTasksList(
+      listId,
+      groupId
+    );
+    this.tasksView.displayTasksList({
+      tasks: [...this.tasksModel.tasksListData],
+      listId: ''
+    });
   }
 
   /**
@@ -72,6 +78,6 @@ export default class TasksController {
    */
   handleAddNewTask = async (taskName, listId, groupId) => {
     await this.tasksModel.addNewTask(taskName, listId, groupId);
-    this.onTasksListChanged();
+    this.onTasksListChanged(listId, groupId);
   };
 }
