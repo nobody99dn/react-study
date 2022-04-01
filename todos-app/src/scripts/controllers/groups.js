@@ -3,12 +3,10 @@ export default class GroupsController {
     this.groupsView = groupsView;
     this.groupsModel = groupsModel;
 
-    // NOTE: 2.1 Run this method when init app to render groups
     this.onGroupsListChanged();
   }
 
   onGroupsListChanged = () => {
-    // NOTE: 2.2
     this.getGroups();
 
     // Explicit this binding
@@ -24,6 +22,7 @@ export default class GroupsController {
     this.groupsView.bindShowTasks(this.handleShowTasks);
   };
 
+  // Render data to sidebar
   onTaskListChange(tasksListData) {
     this.groupsView.displayTasksList(tasksListData);
   }
@@ -37,7 +36,8 @@ export default class GroupsController {
     this.groupsView.displayGroupsList(
       this.groupsModel.groupsListData,
       this.handleRenameGroup,
-      this.handleRenameList
+      this.handleRenameList,
+      this.handleAddNewListInsideGroup
     );
   };
 
@@ -82,6 +82,11 @@ export default class GroupsController {
     this.onGroupsListChanged();
   };
 
+  /**
+   * Handle add new List outside action and bind to database
+   *
+   * @param {string} listName
+   */
   handleAddNewList = async (listName) => {
     await this.groupsModel.addNewList(listName);
     this.onGroupsListChanged();
@@ -115,6 +120,17 @@ export default class GroupsController {
    */
   handleDeleteList = async (listId, groupId) => {
     await this.groupsModel.deleteList(listId, groupId);
+    this.onGroupsListChanged();
+  };
+
+  /**
+   * Handle add new list in group and bind to database
+   *
+   * @param {string} listName
+   * @param {string} groupId
+   */
+  handleAddNewListInsideGroup = async (listName, groupId) => {
+    await this.groupsModel.newListInGroup(listName, groupId);
     this.onGroupsListChanged();
   };
 }
