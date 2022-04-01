@@ -14,6 +14,7 @@ export default class TasksModel {
    */
   getFirstList(todos) {
     let tasks = [];
+    let listId = '';
 
     // Find first List in data
     for (const group of [...todos]) {
@@ -22,6 +23,7 @@ export default class TasksModel {
           for (const list of group.lists) {
             if (list.tasks.length) {
               tasks = list.tasks;
+              listId = list.id;
               break;
             }
           }
@@ -29,10 +31,11 @@ export default class TasksModel {
       } else if (group.type === TODO_TYPE.LIST && 'tasks' in group) {
         if (group.tasks.length) {
           tasks = group.tasks;
+          listId = group.id;
         }
       }
-      if (tasks.length) {
-        return tasks;
+      if (tasks.length && listId) {
+        return { tasks, listId };
       }
     }
   }

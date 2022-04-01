@@ -5,7 +5,7 @@
 const List = (list) => `
   <li
     data-value="${list.name}" 
-    class="list-group-item list-group-item-action d-flex align-items-center justify-content-start rounded-0 py-0 mb-1 rounded-1 active"
+    class="list-group-item list-group-item-action d-flex align-items-center justify-content-start rounded-0 py-0 mb-1 rounded-1"
     id="${list.id}"
   >
     <i class="bi bi-list fs-3 px-2"></i>

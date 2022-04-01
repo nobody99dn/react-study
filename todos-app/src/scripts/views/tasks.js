@@ -30,9 +30,12 @@ export default class TasksView {
    * Show data with loop task list
    */
   displayTasksList(tasksListData) {
-    this.tasksList.innerHTML = tasksListData
+    this.tasksList.innerHTML = tasksListData.tasks
       .map((task) => taskLine(task.name, task.id))
       .join('');
+
+    // Active list
+    this.getElement(`li#${tasksListData.listId}`).classList.add('active');
   }
 
   /**
