@@ -43,8 +43,8 @@ export default class TasksModel {
           TasksContainer.setAttribute('data-group', '');
         }
       }
-      if (tasks.length) {
-        return tasks;
+      if (tasks.length && listId) {
+        return { tasks, listId };
       }
     }
   }

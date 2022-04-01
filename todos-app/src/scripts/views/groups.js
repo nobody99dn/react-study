@@ -75,15 +75,24 @@ export default class GroupsView {
    * @param {array} groupsListData
    * @param {callback} handler
    */
-  displayGroupsList(groupsListData, handler) {
+  displayGroupsList(groupsListData, renameGroupHandler, renameListHandler) {
     this.groupsList.innerHTML = Group(groupsListData);
 
     [...this.groupsList.querySelectorAll('.group-button')].forEach((button) => {
       const groupId = button.id;
       const form = button.querySelector('.form-item');
 
-      this.bindSubmitRenameGroup(form, groupId, handler); // #2
+      this.bindSubmitRenameGroup(form, groupId, renameGroupHandler);
     });
+
+    [...this.groupsList.querySelectorAll('.list-group-item')].forEach(
+      (list) => {
+        const listId = list.id;
+        const form = list.querySelector('.form-item');
+
+        this.bindSubmitRenameList(form, listId, renameListHandler);
+      }
+    );
   }
 
   /**
@@ -103,7 +112,38 @@ export default class GroupsView {
         name: groupName
       };
 
-      handler(updateGroup); // #1
+      handler(updateGroup);
+    });
+  }
+
+  /**
+   * Trigger submit rename action
+   *
+   * @param {object} form
+   * @param {string} listId
+   * @param {callback} handler
+   */
+  bindSubmitRenameList(form, listId, handler) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Parent group
+      const parent = form.closest('.accordion-item');
+      let groupId = '';
+
+      // Get group id if exist
+      if (parent) {
+        groupId = parent.querySelector('.group-button').id;
+      }
+
+      const listName = e.target.querySelector('.list-name-input').value;
+
+      const updateList = {
+        id: listId,
+        name: listName
+      };
+
+      handler(updateList, groupId);
     });
   }
 
@@ -112,6 +152,8 @@ export default class GroupsView {
    */
   bindOpenAddGroup() {
     this.newGroupBtn.addEventListener('click', (e) => {
+      hideForm();
+
       this.groupForm.classList.remove('visually-hidden');
       this.groupInput.focus();
     });
@@ -139,7 +181,7 @@ export default class GroupsView {
    */
   bindOpenAddList() {
     this.newListBtn.addEventListener('click', (e) => {
-      //TODO: handle hide other input is opening soon
+      hideForm();
 
       this.listForm.classList.remove('visually-hidden');
       this.listInput.focus();
@@ -147,7 +189,94 @@ export default class GroupsView {
   }
 
   /**
+   * This using for trigger right click into group item
+   */
+  bindOpenActionMenu(deleteGroupHandler, deleteListHandler) {
+    this.groupsList.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      hideForm();
+      showNameIsHiding();
+
+      if (e.target.classList.contains('group-button')) {
+        // Group ID
+        const groupId = e.target.id;
+
+        // Query parent both of ul and button then query to ul
+        const menu =
+          e.target.closest('.accordion-item').querySelector('.dropdown-menu') ||
+          [];
+
+        // Render Action Menu to Group
+        menu.innerHTML = MenuAction(ACTION_ITEMS);
+
+        // Display Action menu
+        hideMenuAction();
+        menu.classList.add('d-block');
+
+        this.bindClickGroupActionMenu(menu, groupId, deleteGroupHandler);
+      } else if (e.target.closest('.list-group-item')) {
+        // List id
+        const listId = e.target.closest('.list-group-item').id;
+
+        // Get group id if exist
+        const parent = e.target.closest('.accordion-item');
+        let groupId = '';
+        if (parent) {
+          groupId = parent.querySelector('.group-button').id;
+        }
+
+        // Query to ul
+        const menu = e.target
+          .closest('.list-group-item')
+          .parentNode.querySelector('.dropdown-menu');
+
+        menu.innerHTML = MenuAction(ACTION_ITEMS);
+
+        // Display Action menu
+        hideMenuAction();
+        menu.classList.add('d-block');
+        this.bindClickListActionMenu(menu, listId, groupId, deleteListHandler);
+      }
+    });
+  }
+
+  /**
+   * * Trigger click event in action menu of group
+   *
+   * @param {object} menu
+   * @param {string} id
+   * @param {callback} deleteGroupHandler
+   */
+  bindClickGroupActionMenu(menu, id, deleteGroupHandler) {
+    [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (e.target.dataset.value === NAME_ACTION.RENAME) {
+          const buttonGroup = document.getElementById(id);
+
+          hideMenuAction();
+
+          // Set value input = name of group
+          buttonGroup.querySelector('.group-name-input').value =
+            buttonGroup.querySelector('.group-name').dataset.value;
+
+          // Show form and focus input
+          buttonGroup.querySelector('form').classList.remove('visually-hidden');
+          buttonGroup.querySelector('.group-name-input').focus();
+
+          // Hide name
+          buttonGroup
+            .querySelector('.group-name')
+            .classList.add('visually-hidden');
+        } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
+          deleteGroupHandler(id);
+        }
+      });
+    });
+  }
+
+  /**
    * Bind submit event add new list
+   *
    * @param {callback} handler
    */
   bindAddNewList(handler) {
@@ -162,8 +291,8 @@ export default class GroupsView {
     });
   }
 
-  /*
-   * Bind click list
+  /**
+   * Trigger click event on list
    *
    * @param {callback} handler
    */
@@ -172,6 +301,13 @@ export default class GroupsView {
       const listElement = e.target.closest('.list-group-item');
       const TasksContainer = document.querySelector('.task-container');
       if (listElement) {
+        // Remove active class current list and active selected list
+        const currentList = document.querySelector('.list-group-item.active');
+        if (currentList) {
+          currentList.classList.remove('active');
+        }
+        listElement.classList.add('active');
+
         const parentGroup = listElement.closest('.accordion-item');
         const listId = listElement.id || '';
         if (listElement && !parentGroup) {
@@ -189,11 +325,46 @@ export default class GroupsView {
   }
 
   /**
+   * Trigger click event in action menu of list
+   *
+   * @param {object} menu
+   * @param {string} id
+   */
+  bindClickListActionMenu(menu, listId, groupId, deleteListHandler) {
+    [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (e.target.dataset.value === NAME_ACTION.RENAME) {
+          const listContainer = document.getElementById(listId);
+
+          hideMenuAction();
+
+          // Set value input = name of group
+          listContainer.querySelector('.list-name-input').value =
+            listContainer.dataset.value;
+
+          // show form and focus input
+          listContainer
+            .querySelector('form')
+            .classList.remove('visually-hidden');
+          listContainer.querySelector('.list-name-input').focus();
+
+          // hide name
+          listContainer
+            .querySelector('.list-name')
+            .classList.add('visually-hidden');
+        } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
+          deleteListHandler(listId, groupId);
+        }
+      });
+    });
+  }
+
+  /**
    * Render task list
    *
    * @param {array} tasksListData
    */
-  displayTasksList(tasksListData) {
+  displayTasksList(tasksListData = []) {
     if (tasksListData.length) {
       this.tasksList.innerHTML = tasksListData
         .map((task) => taskLine(task.name, task.id))
@@ -202,5 +373,23 @@ export default class GroupsView {
       // TODO: This should handle with message constant soon
       this.tasksList.innerHTML = 'This list is empty';
     }
+  }
+
+  /**
+   * Binding click outside action
+   */
+  bindClickOutsideAction() {
+    document.querySelector('body').addEventListener('click', (e) => {
+      !e.target.closest('.dropdown-menu') && hideMenuAction();
+
+      if (
+        !e.target.closest(
+          '.form-item, .rename-option, .group-btn, .new-list-container'
+        )
+      ) {
+        hideForm();
+        showNameIsHiding();
+      }
+    });
   }
 }
