@@ -1,5 +1,5 @@
 import { urlGroup } from '../constants/apis';
-import { get } from '../helpers/fetchApi';
+import { get, post } from '../helpers/fetchApi';
 import { TODO_TYPE } from '../constants/todo';
 
 export default class TasksModel {
@@ -38,6 +38,29 @@ export default class TasksModel {
         return { tasks, listId };
       }
     }
+  }
+
+  /**
+   * Get Task By Id
+   */
+  getTasksById(listId = '', groupId = '') {
+    let group = {};
+    let list = {};
+    if (!groupId) {
+      list = this.todos.find(
+        (list) => list.type === TODO_TYPE.LIST && list.id === listId
+      );
+    } else {
+      group = this.todos.find(
+        (group) => group.type === TODO_TYPE.GROUP && group.id === groupId
+      );
+
+      list = group.lists.find(
+        (list) => list.type === TODO_TYPE.LIST && list.id === listId
+      );
+    }
+
+    return list.tasks;
   }
 
   /**
