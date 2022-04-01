@@ -14,7 +14,10 @@ export default class GroupsController {
     // Explicit this binding
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindOpenAddList();
+    this.groupsView.bindClickOutsideAction();
+    this.groupsView.bindOpenGroupActionMenu(this.handleDeleteGroup);
     this.groupsView.bindAddNewGroup(this.handleAddNewGroup);
+    this.groupsView.bindAddNewList(this.handleAddNewList);
     this.groupsView.bindShowTasks(this.handleShowTasks);
   };
 
@@ -22,17 +25,16 @@ export default class GroupsController {
     this.groupsView.displayTasksList(tasksListData);
   }
 
-  // NOTE: 2.2
   /**
    * Call data and render to UI
    **/
   getGroups = async () => {
     this.groupsModel.groupsListData = await this.groupsModel.getGroupsList();
 
-    // NOTE: 1. Rename Flow
     this.groupsView.displayGroupsList(
       this.groupsModel.groupsListData,
-      this.handleRenameGroup // #3
+      this.handleRenameGroup,
+      this.handleRenameList
     );
   };
 
@@ -52,7 +54,7 @@ export default class GroupsController {
    * @param {object} updateGroup
    */
   handleRenameGroup = async (updateGroup) => {
-    await this.groupsModel.renameGroup(updateGroup); // #4
+    await this.groupsModel.renameGroup(updateGroup);
     this.onGroupsListChanged();
   };
 
@@ -63,6 +65,17 @@ export default class GroupsController {
    */
   handleDeleteGroup = async (groupId) => {
     await this.groupsModel.deleteGroup(groupId);
+    this.onGroupsListChanged();
+  };
+
+  /**
+   * Handle rename and change database
+   *
+   * @param {object} updateList
+   * @param {string} groupId
+   */
+  handleRenameList = async (updateList, groupId) => {
+    await this.groupsModel.renameList(updateList, groupId);
     this.onGroupsListChanged();
   };
 
@@ -79,5 +92,15 @@ export default class GroupsController {
    */
   handleShowTasks = async (listId, groupId) => {
     this.onTaskListChange(await this.groupsModel.getTasksById(listId, groupId));
+  };
+
+  /**
+   * Execute delete group from database by group id
+   *
+   * @param {string} groupId
+   */
+  handleDeleteGroup = async (groupId) => {
+    await this.groupsModel.deleteGroup(groupId);
+    this.onGroupsListChanged();
   };
 }
