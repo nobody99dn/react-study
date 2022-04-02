@@ -50,6 +50,17 @@ export default class TasksModel {
     }
   }
 
+  getTasksById(todos, listId, groupId) {
+    if (groupId) {
+      const group = todos.find((group) => group.id === groupId);
+      const list = group.lists.find((list) => list.id === listId);
+      return { tasks: list.tasks, listId };
+    } else {
+      const list = todos.find((list) => list.id === listId);
+      return { tasks: list.tasks, listId };
+    }
+  }
+
   /**
    * Get data from list
    */
