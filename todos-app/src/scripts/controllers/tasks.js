@@ -5,7 +5,6 @@ export default class TasksController {
     this.tasksView = tasksView;
     this.tasksModel = tasksModel;
     // Init app to render list
-    this.onTasksListChanged(this.tasksModel.tasksListData);
     this.onTasksInputChanged(this.tasksModel.tasksInputData);
 
     // Get todos data

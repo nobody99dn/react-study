@@ -24,7 +24,8 @@ export default class TasksModel {
    */
   getFirstList(todos) {
     let tasks = [];
-    const TasksContainer = document.querySelector('.task-container');
+    let listId = '';
+    const tasksContainer = document.querySelector('.task-container');
     // Find first List in data
     for (const group of [...todos]) {
       if (group.type === TODO_TYPE.GROUP && 'lists' in group) {
@@ -32,8 +33,7 @@ export default class TasksModel {
           for (const list of group.lists) {
             if (list.tasks.length) {
               tasks = list.tasks;
-              TasksContainer.setAttribute('data-list', list.id);
-              TasksContainer.setAttribute('data-group', group.id);
+              listId = list.id;
               break;
             }
           }
@@ -41,8 +41,7 @@ export default class TasksModel {
       } else if (group.type === TODO_TYPE.LIST && 'tasks' in group) {
         if (group.tasks.length) {
           tasks = group.tasks;
-          TasksContainer.setAttribute('data-list', list.id);
-          TasksContainer.setAttribute('data-group', '');
+          listId = group.id;
         }
       }
       if (tasks.length && listId) {
@@ -79,7 +78,6 @@ export default class TasksModel {
     };
     if (!groupId) {
       const listContainTask = await get(`${urlGroup}/${listId}`);
-      console.log(listContainTask);
       // listContainTask.tasks = newTask;
       listContainTask.tasks.push(newTask);
       await update(`${urlGroup}/${listContainTask.id}`, listContainTask);
