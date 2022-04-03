@@ -1,6 +1,6 @@
 // Constants
 import { GROUP_ACTION, LIST_ACTION, NAME_ACTION } from '../constants/todo';
-import { hideForm, hideMenuAction, showNameIsHiding } from '../constants/view';
+import { hideForm, hideMenuAction, showNameIsHiding } from '../helpers/view';
 
 // Components
 import MenuAction from '../components/menuAction';
@@ -35,6 +35,12 @@ export default class GroupsView {
 
     // The task container
     this.tasksList = this.getElement('.task-list');
+
+    // The fail message
+    this.failMessage = this.getElement('.fail-message');
+
+    // The success message
+    this.successMessage = this.getElement('.success-message');
   }
 
   getElement(selector) {
@@ -67,6 +73,34 @@ export default class GroupsView {
    */
   _resetListInput() {
     this.listInput.value = '';
+  }
+
+  /**
+   * Display fail message
+   *
+   * @param {string} message
+   */
+  showFailMessage(message) {
+    this.failMessage.classList.remove('d-none');
+    this.failMessage.textContent = message;
+
+    setTimeout(() => {
+      this.failMessage.classList.add('d-none');
+    }, 3000);
+  }
+
+  /**
+   * Display success message
+   *
+   * @param {string} message
+   */
+  showSuccessMessage(message) {
+    this.successMessage.classList.remove('d-none');
+    this.successMessage.textContent = message;
+
+    setTimeout(() => {
+      this.successMessage.classList.add('d-none');
+    }, 3000);
   }
 
   /**
@@ -120,14 +154,11 @@ export default class GroupsView {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const groupName = e.target.querySelector('.group-name-input').value;
+      const groupName = e.target
+        .querySelector('.group-name-input')
+        .value.trim();
 
-      const updateGroup = {
-        id: groupId,
-        name: groupName
-      };
-
-      handler(updateGroup);
+      handler(groupId, groupName);
     });
   }
 
@@ -151,14 +182,9 @@ export default class GroupsView {
         groupId = parent.querySelector('.group-button').id;
       }
 
-      const listName = e.target.querySelector('.list-name-input').value;
+      const listName = e.target.querySelector('.list-name-input').value.trim();
 
-      const updateList = {
-        id: listId,
-        name: listName
-      };
-
-      handler(updateList, groupId);
+      handler(listId, listName, groupId);
     });
   }
 
@@ -183,8 +209,8 @@ export default class GroupsView {
     this.groupForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      handler(this._groupText);
       if (this._groupText) {
-        handler(this._groupText);
         this._resetGroupInput();
         this.groupForm.classList.add('visually-hidden');
       }
@@ -314,8 +340,8 @@ export default class GroupsView {
     this.listForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      handler(this._listText);
       if (this._listText) {
-        handler(this._listText);
         this._resetListInput();
         this.listForm.classList.add('visually-hidden');
       }
@@ -433,7 +459,9 @@ export default class GroupsView {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const listName = e.target.querySelector('.list-name-input-inside').value;
+      const listName = e.target
+        .querySelector('.list-name-input-inside')
+        .value.trim();
       newListInGroupHandler(listName, groupId);
     });
   }

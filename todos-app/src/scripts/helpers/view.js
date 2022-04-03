@@ -19,6 +19,7 @@ const hideForm = () => {
 
   if (formOpening) {
     formOpening.classList.add('visually-hidden');
+    formOpening.querySelector('input[type="text"]').blur();
   }
 };
 
