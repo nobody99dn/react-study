@@ -6,6 +6,7 @@ import { hideForm, hideMenuAction, showNameIsHiding } from '../helpers/view';
 import MenuAction from '../components/menuAction';
 import Group from '../components/group';
 import taskLine from '../components/taskLine';
+import { STATUS } from '../constants/messages';
 
 export default class GroupsView {
   constructor() {
@@ -425,8 +426,7 @@ export default class GroupsView {
         .map((task) => taskLine(task.name, task.id))
         .join('');
     } else {
-      // TODO: This should handle with message constant soon
-      this.tasksList.innerHTML = 'This list is empty';
+      this.tasksList.innerHTML = STATUS.EMPTY_LIST;
     }
   }
 

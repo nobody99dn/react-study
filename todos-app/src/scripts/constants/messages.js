@@ -11,4 +11,8 @@ const SUCCESS_MESSAGE = {
   REMOVE_LIST_SUCCESS: 'The list was deleted!'
 };
 
-export { FAIL_MESSAGES, SUCCESS_MESSAGE };
+const STATUS = {
+  EMPTY_LIST: 'This list is empty'
+};
+
+export { FAIL_MESSAGES, SUCCESS_MESSAGE, STATUS };
