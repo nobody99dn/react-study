@@ -1,6 +1,5 @@
 // Constants
 import { GROUP_ACTION, LIST_ACTION, NAME_ACTION } from '../constants/todo';
-import { hideForm, hideMenuAction, showNameIsHiding } from '../helpers/view';
 
 // Components
 import MenuAction from '../components/menuAction';
@@ -194,7 +193,7 @@ export default class GroupsView {
    */
   bindOpenAddGroup() {
     this.newGroupBtn.addEventListener('click', (e) => {
-      hideForm();
+      this.hideForm();
 
       this.groupForm.classList.remove('visually-hidden');
       this.groupInput.focus();
@@ -223,7 +222,7 @@ export default class GroupsView {
    */
   bindOpenAddList() {
     this.newListBtn.addEventListener('click', (e) => {
-      hideForm();
+      this.hideForm();
 
       this.listForm.classList.remove('visually-hidden');
       this.listInput.focus();
@@ -236,8 +235,8 @@ export default class GroupsView {
   bindOpenActionMenu(deleteGroupHandler, deleteListHandler) {
     this.groupsList.addEventListener('contextmenu', (e) => {
       e.preventDefault();
-      hideForm();
-      showNameIsHiding();
+      this.hideForm();
+      this.showNameIsHiding();
 
       if (e.target.classList.contains('group-button')) {
         // Group ID
@@ -252,7 +251,7 @@ export default class GroupsView {
         menu.innerHTML = MenuAction(GROUP_ACTION);
 
         // Display Action menu
-        hideMenuAction();
+        this.hideMenuAction();
         menu.classList.add('d-block');
 
         this.bindClickGroupActionMenu(menu, groupId, deleteGroupHandler);
@@ -276,7 +275,7 @@ export default class GroupsView {
         menu.innerHTML = MenuAction(LIST_ACTION);
 
         // Display Action menu
-        hideMenuAction();
+        this.hideMenuAction();
         menu.classList.add('d-block');
         this.bindClickListActionMenu(menu, listId, groupId, deleteListHandler);
       }
@@ -295,7 +294,7 @@ export default class GroupsView {
       item.addEventListener('click', (e) => {
         const buttonGroup = document.getElementById(id);
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
-          hideMenuAction();
+          this.hideMenuAction();
 
           // Set value input = name of group
           buttonGroup.querySelector('.group-name-input').value =
@@ -312,7 +311,7 @@ export default class GroupsView {
         } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
           deleteGroupHandler(id);
         } else if (e.target.dataset.value === NAME_ACTION.NEW_LIST) {
-          hideMenuAction();
+          this.hideMenuAction();
 
           // Check open group
           if (buttonGroup.classList.contains('collapsed')) {
@@ -360,7 +359,7 @@ export default class GroupsView {
 
       if (listElement) {
         // Remove active class current list and active selected list
-        const currentList = document.querySelector('.list-group-item.active');
+        const currentList = this.getElement('.list-group-item.active');
         if (currentList) {
           currentList.classList.remove('active');
         }
@@ -392,7 +391,7 @@ export default class GroupsView {
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
           const listContainer = document.getElementById(listId);
 
-          hideMenuAction();
+          this.hideMenuAction();
 
           // Set value input = name of group
           listContainer.querySelector('.list-name-input').value =
@@ -435,15 +434,15 @@ export default class GroupsView {
    */
   bindClickOutsideAction() {
     document.querySelector('body').addEventListener('click', (e) => {
-      !e.target.closest('.dropdown-menu') && hideMenuAction();
+      !e.target.closest('.dropdown-menu') && this.hideMenuAction();
 
       if (
         !e.target.closest(
           '.form-item, .rename-option, .group-btn, .new-list-container, .new-list-option'
         )
       ) {
-        hideForm();
-        showNameIsHiding();
+        this.hideForm();
+        this.showNameIsHiding();
       }
     });
   }
@@ -465,4 +464,41 @@ export default class GroupsView {
       newListInGroupHandler(listName, groupId);
     });
   }
+
+  /**
+   * Hide the menu is opening
+   */
+  hideMenuAction = () => {
+    const openMenu = this.getElement('.dropdown-menu.d-block');
+
+    if (openMenu) {
+      openMenu.classList.remove('d-block');
+    }
+  };
+
+  /**
+   * Hide the form is opening
+   */
+  hideForm = () => {
+    const formIsOpening = this.getElement(
+      '.form-item:not(.visually-hidden), #new-group-form:not(.visually-hidden), #new-list-form:not(.visually-hidden), .new-list-form-inside:not(.visually-hidden)'
+    );
+
+    if (formIsOpening) {
+      formIsOpening.classList.add('visually-hidden');
+      formIsOpening.querySelector('input[type="text"]').blur();
+    }
+  };
+
+  /**
+   * Show the names is hiding when click outside
+   */
+  showNameIsHiding = () => {
+    const nameHiding = this.getElement(
+      '.group-name.visually-hidden, .list-name.visually-hidden'
+    );
+    if (nameHiding) {
+      nameHiding.classList.remove('visually-hidden');
+    }
+  };
 }
