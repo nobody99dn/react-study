@@ -14,7 +14,7 @@ const hideMenuAction = () => {
  */
 const hideForm = () => {
   const formOpening = document.querySelector(
-    '.form-item:not(.visually-hidden), #new-group-form:not(.visually-hidden), #new-list-form:not(.visually-hidden)'
+    '.form-item:not(.visually-hidden), #new-group-form:not(.visually-hidden), #new-list-form:not(.visually-hidden), .new-list-form-inside:not(.visually-hidden)'
   );
 
   if (formOpening) {

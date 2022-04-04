@@ -1,5 +1,5 @@
 // Constants
-import { ACTION_ITEMS, NAME_ACTION } from '../constants/todo';
+import { GROUP_ACTION, LIST_ACTION, NAME_ACTION } from '../constants/todo';
 import { hideForm, hideMenuAction, showNameIsHiding } from '../constants/view';
 
 // Components
@@ -75,14 +75,29 @@ export default class GroupsView {
    * @param {array} groupsListData
    * @param {callback} handler
    */
-  displayGroupsList(groupsListData, renameGroupHandler, renameListHandler) {
+  displayGroupsList(
+    groupsListData,
+    renameGroupHandler,
+    renameListHandler,
+    newListInGroupHandler
+  ) {
     this.groupsList.innerHTML = Group(groupsListData);
 
     [...this.groupsList.querySelectorAll('.group-button')].forEach((button) => {
+      // Group
       const groupId = button.id;
       const form = button.querySelector('.form-item');
 
+      // List in group
+      const newListInGroupForm = button
+        .closest('.accordion-item')
+        .querySelector('.new-list-form-inside');
       this.bindSubmitRenameGroup(form, groupId, renameGroupHandler);
+      this.bindSubmitNewListInGroup(
+        newListInGroupForm,
+        groupId,
+        newListInGroupHandler
+      );
     });
 
     [...this.groupsList.querySelectorAll('.list-group-item')].forEach(
@@ -207,7 +222,7 @@ export default class GroupsView {
           [];
 
         // Render Action Menu to Group
-        menu.innerHTML = MenuAction(ACTION_ITEMS);
+        menu.innerHTML = MenuAction(GROUP_ACTION);
 
         // Display Action menu
         hideMenuAction();
@@ -230,7 +245,8 @@ export default class GroupsView {
           .closest('.list-group-item')
           .parentNode.querySelector('.dropdown-menu');
 
-        menu.innerHTML = MenuAction(ACTION_ITEMS);
+        // Render menu action item for list
+        menu.innerHTML = MenuAction(LIST_ACTION);
 
         // Display Action menu
         hideMenuAction();
@@ -250,9 +266,8 @@ export default class GroupsView {
   bindClickGroupActionMenu(menu, id, deleteGroupHandler) {
     [...menu.querySelectorAll('.dropdown-item')].forEach((item) => {
       item.addEventListener('click', (e) => {
+        const buttonGroup = document.getElementById(id);
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
-          const buttonGroup = document.getElementById(id);
-
           hideMenuAction();
 
           // Set value input = name of group
@@ -269,6 +284,22 @@ export default class GroupsView {
             .classList.add('visually-hidden');
         } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
           deleteGroupHandler(id);
+        } else if (e.target.dataset.value === NAME_ACTION.NEW_LIST) {
+          hideMenuAction();
+
+          // Check open group
+          if (buttonGroup.classList.contains('collapsed')) {
+            buttonGroup.click();
+          }
+
+          // Show form and focus
+          const parent = buttonGroup.closest('.accordion-item');
+
+          parent
+            .querySelector('.new-list-form-inside')
+            .classList.remove('visually-hidden');
+
+          parent.querySelector('.list-name-input-inside ').focus();
         }
       });
     });
@@ -384,12 +415,28 @@ export default class GroupsView {
 
       if (
         !e.target.closest(
-          '.form-item, .rename-option, .group-btn, .new-list-container'
+          '.form-item, .rename-option, .group-btn, .new-list-container, .new-list-option'
         )
       ) {
         hideForm();
         showNameIsHiding();
       }
+    });
+  }
+
+  /**
+   * Trigger submit event to new list in group
+   *
+   * @param {object} form
+   * @param {string} groupId
+   * @param {callback} newListInGroupHandler
+   */
+  bindSubmitNewListInGroup(form, groupId, newListInGroupHandler) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const listName = e.target.querySelector('.list-name-input-inside').value;
+      newListInGroupHandler(listName, groupId);
     });
   }
 }

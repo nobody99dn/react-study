@@ -15,14 +15,14 @@ const Group = (listData = []) => `
         // This will return block DOM contain list
         return `
         <div class="accordion-item border-0 mb-1">
-          <p class="accordion-header" id="heading-${index}">
+          <p class="accordion-header " id="heading-${index}">
             <button
               id="${data.id}"
               class="group-button accordion-button collapsed py-1 rounded-1"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#group-${index}"
-              aria-expanded="true"
+              aria-expanded="false"
               aria-controls="group-${index}"
             >
               <i class="bi bi-collection fs-4 px-2"></i>
@@ -50,6 +50,9 @@ const Group = (listData = []) => `
         `${(data.lists || []).map((list) => List(list)).join('')}` ||
         '<p class="empty-text m-0"><small>This group is empty.</small></p>'
       }
+      <form class="new-list-form-inside form-item visually-hidden">
+        <input class="list-name-input-inside form-control" type="text">
+      </form>
           </div>
         </div>
       </div>

@@ -131,4 +131,30 @@ export default class GroupsModel {
       await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
     }
   }
+
+  /**
+   * Add new list in group and update group to database
+   *
+   * @param {string} listName
+   * @param {sring} groupId
+   */
+  async newListInGroup(listName, groupId) {
+    const newList = {
+      id: uuidv4(),
+      name: listName,
+      type: TODO_TYPE.LIST,
+      tasks: []
+    };
+
+    const groupContainList = await get(`${urlGroup}/${groupId}`);
+
+    // Define lists if not exist
+    if (!groupContainList.lists) {
+      groupContainList.lists = [];
+    }
+
+    groupContainList.lists.push(newList);
+
+    await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
+  }
 }

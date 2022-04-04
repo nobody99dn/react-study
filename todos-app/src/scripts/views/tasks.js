@@ -44,6 +44,16 @@ export default class TasksView {
   }
 
   /**
+   * Bind submit task
+   */
+  bindSubmitTaskForm() {
+    this.tasksForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log(this.taskInput.value);
+    });
+  }
+
+  /**
    * Show data with loop task list
    */
   displayTasksList(tasksListData) {

@@ -13,6 +13,12 @@ export default class TasksController {
     this.tasksView.bindAddNewTask(this.handleAddNewTask);
   }
 
+  async renderTasksByListId(listId, groupId) {
+    this.tasksView.displayTasksList(
+      this.tasksModel.getTasksById(listId, groupId)
+    );
+  }
+
   /**
    * Call data and render task list to UI
    */
