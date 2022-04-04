@@ -14,8 +14,6 @@ export default class TasksModel {
    * Get Tasks List data
    */
   async getTasksList(listId, groupId) {
-    console.log('listId', listId);
-    console.log('groupId', groupId);
     return await get(urlGroup);
   }
 
@@ -50,6 +48,9 @@ export default class TasksModel {
     }
   }
 
+  /**
+   * Find task and return task object
+   */
   getTasksById(todos, listId, groupId) {
     if (groupId) {
       const group = todos.find((group) => group.id === groupId);
@@ -102,6 +103,9 @@ export default class TasksModel {
     }
   }
 
+  /**
+   * Get list data
+   */
   getListById(listId = '') {
     let list = {};
     if (listId) {
