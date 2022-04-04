@@ -27,11 +27,11 @@
 - HTML5
 - CSS3
 - JavaScript (ES6 syntax)
-- [ESlint](https://eslint.org/)
-- [Commitlint](https://github.com/conventional-changelog/commitlint)
-- [Parcel](https://parceljs.org/docs/)
-- [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 - [Json server](https://www.npmjs.com/package/json-server)
+- [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+- [Bootstrap-icons](https://www.npmjs.com/package/bootstrap-icons)
+- [ESlint](https://eslint.org/)
+- [Concurrently](https://www.npmjs.com/package/concurrently)
 
 ## REQUIREMENT DETAILS
 
@@ -45,6 +45,56 @@
 
 - [Visual studio code](https://code.visualstudio.com)
 
-## FOLDER STRUCTURE
+## DIRECTORY STRUCTURE
+
+```
+└── src
+    ├── assets
+    │   ├── icons
+    │   └── images
+    ├── database
+    ├── scripts
+    │   ├── components
+    │   ├── constants
+    │   ├── controllers
+    │   ├── helpers
+    │   ├── layout
+    │   ├── models
+    │   └── views
+    └── styles
+        └── components
+```
 
 ## GET STARTED
+
+- Clone project:
+
+  ```bash
+  $ git clone git@gitlab.asoft-python.com:van.tran/javascript-training.git
+  ```
+
+- Checkout branch:
+
+  ```bash
+  $ git checkout practice/todo-app
+  ```
+
+- Change directory:
+
+  ```bash
+  $ cd todos-app
+  ```
+
+- Install packages:
+
+  ```bash
+  $ npm install
+  ```
+
+- Start project
+
+  ```bash
+  $ npm start
+  ```
+
+- Open browser and and type http://localhost:1234 in address bar
