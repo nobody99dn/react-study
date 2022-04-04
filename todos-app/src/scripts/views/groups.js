@@ -330,7 +330,7 @@ export default class GroupsView {
   bindShowTasks(handler) {
     this.groupsList.addEventListener('click', (e) => {
       const listElement = e.target.closest('.list-group-item');
-
+      const TasksContainer = document.querySelector('.task-container');
       if (listElement) {
         // Remove active class current list and active selected list
         const currentList = document.querySelector('.list-group-item.active');
@@ -341,13 +341,15 @@ export default class GroupsView {
 
         const parentGroup = listElement.closest('.accordion-item');
         const listId = listElement.id || '';
-
         if (listElement && !parentGroup) {
           handler(listId);
+          TasksContainer.setAttribute('data-list', listId);
+          TasksContainer.setAttribute('data-group', '');
         } else {
           const groupId = parentGroup.querySelector('.accordion-button').id;
-
           handler(listId, groupId);
+          TasksContainer.setAttribute('data-list', listId);
+          TasksContainer.setAttribute('data-group', groupId);
         }
       }
     });

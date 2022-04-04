@@ -1,20 +1,36 @@
 import taskLine from '../components/taskLine';
-import taskInput from '../components/taskInput';
+import TaskInput from '../components/taskInput';
+import bindShowTasks from '../views/groups';
+import handleShowTasks from '../controllers/groups';
 
 export default class TasksView {
   constructor() {
     this.tasksList = this.getElement('.task-list');
-    this.tasksForm = this.getElement('.form-input');
-    this.tasksInput = this.getElement('.task-input');
+    this.formInput = this.getElement('.form-input');
     this.openTaskList = this.getElement('.list-group');
+    this.taskForm = this.getElement('.task-input-form');
+    this.taskGetValue = this.getElement('.task-input');
   }
 
   /**
    * Get element
    */
   getElement(selector) {
-    const element = document.querySelector(selector);
-    return element;
+    return document.querySelector(selector);
+  }
+
+  /**
+   * Get task input
+   */
+  get _taskInput() {
+    return this.taskGetValue.value;
+  }
+
+  /**
+   * Reset task input
+   */
+  _resetTaskInput() {
+    this.taskGetValue.value = '';
   }
 
   /**
@@ -46,13 +62,24 @@ export default class TasksView {
       .join('');
 
     // Active list
-    this.getElement(`li#${tasksListData.listId}`).classList.add('active');
+    if (tasksListData.listId) {
+      this.getElement(`li#${tasksListData.listId}`).classList.add('active');
+    }
   }
-
   /**
-   * Show data from task input
+   * Trigger event submit new task
    */
-  displayTasksInput(tasksInputData) {
-    this.tasksForm.innerHTML = taskInput();
+  bindAddNewTask(handler) {
+    this.taskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const TasksContainer = document.querySelector('.task-container');
+      const listId = TasksContainer.dataset.list;
+      const groupId = TasksContainer.dataset.group;
+      if (this._taskInput) {
+        handler(this._taskInput, listId, groupId);
+        this._resetTaskInput();
+      }
+    });
   }
 }

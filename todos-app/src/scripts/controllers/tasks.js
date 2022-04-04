@@ -1,26 +1,16 @@
-import List from '../components/list';
-import { TODO_TYPE } from '../constants/todo';
-
 export default class TasksController {
   constructor(tasksView, tasksModel) {
     this.tasksView = tasksView;
     this.tasksModel = tasksModel;
-    // Init app to render list
-    this.onTasksListChanged(this.tasksModel.tasksListData);
-    this.onTasksInputChanged(this.tasksModel.tasksInputData);
 
-    // Get todos data
-    this.onTodosChanged();
+    this.onTasksChange();
   }
 
-  onTodosChanged() {
-    this.getTodos();
-  }
+  onTasksChange(listId = '', groupId = '') {
+    this.getTodos(listId, groupId);
 
-  renderDefault() {
-    this.tasksView.displayTasksList(
-      this.tasksModel.getFirstList(this.tasksModel.todos)
-    );
+    // Explicit this binding
+    this.tasksView.bindAddNewTask(this.handleAddNewTask);
   }
 
   async renderTasksByListId(listId, groupId) {
@@ -32,44 +22,44 @@ export default class TasksController {
   /**
    * Call data and render task list to UI
    */
-  async getTodos() {
+  async getTodos(listId, groupId) {
     // Render default task list in first time
     if (!this.tasksModel.todos.length) {
       this.tasksModel.todos = await this.tasksModel.getTodosData();
-      this.renderDefault();
+      this.renderTasksDefault();
     } else {
       this.tasksModel.todos = await this.tasksModel.getTodosData();
-      // To do pass parameter
-      this.renderTasksByListId();
+      this.renderTasksById(listId, groupId);
     }
   }
 
   /**
-   * Handle render task list data
+   * Render tasks in first list
    */
-  onTasksListChanged(tasksListData) {
-    this.getTask();
-    this.tasksView.bindSubmitTaskForm();
+  renderTasksDefault() {
+    this.tasksView.displayTasksList(
+      this.tasksModel.getFirstList(this.tasksModel.todos)
+    );
   }
 
   /**
-   * Handle render task input data and  render task to UI
+   * Render tasks by group id and list id to DOM
+   *
+   * @param {string} listId
+   * @param {string} groupId
    */
-  onTasksInputChanged(tasksInputData) {
-    this.tasksModel.tasksInputData = this.tasksModel.getTasksInput();
-    this.tasksView.displayTasksInput(this.tasksModel.tasksInputData);
+  renderTasksById(listId, groupId) {
+    // TODO: Handle re-render here
+    this.tasksView.displayTasksList(
+      this.tasksModel.getTasksById(this.tasksModel.todos, listId, groupId)
+    );
   }
 
   /**
-   *  Call data and render task from list to UI
+   * Handle Add new task and bind data
    */
-  async getTask() {
-    this.tasksModel.tasksListData = await this.tasksModel.getTasksList();
-    this.tasksView.displayTasksList(this.tasksModel.tasksListData);
-  }
-
-  handleAddNewTask = async (taskName) => {
-    await this.tasksModel.handleAddNewTask(taskName);
-    this.onTasksListChanged();
+  handleAddNewTask = async (taskName, listId, groupId) => {
+    await this.tasksModel.addNewTask(taskName, listId, groupId);
+    this.onTasksChange(listId, groupId);
   };
 }
