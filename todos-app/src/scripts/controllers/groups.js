@@ -1,3 +1,6 @@
+import { FAIL_MESSAGES, SUCCESS_MESSAGE } from '../constants/messages';
+import { isRequired } from '../helpers/validation';
+
 export default class GroupsController {
   constructor(groupsView, groupsModel) {
     this.groupsView = groupsView;
@@ -47,18 +50,37 @@ export default class GroupsController {
    * @param {string} groupName
    */
   handleAddNewGroup = async (groupName) => {
-    await this.groupsModel.addNewGroup(groupName);
-    this.onGroupsListChanged();
+    try {
+      if (!isRequired(groupName)) {
+        throw FAIL_MESSAGES.FIELD_EMPTY;
+      }
+
+      await this.groupsModel.addNewGroup(groupName);
+      this.onGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.ADD_GROUP_SUCCESS);
+    } catch (error) {
+      this.groupsView.showFailMessage(error);
+    }
   };
 
   /**
    * Execute rename group and re-render UI
    *
-   * @param {object} updateGroup
+   * @param {string} groupId
+   * @param {string} groupName
    */
-  handleRenameGroup = async (updateGroup) => {
-    await this.groupsModel.renameGroup(updateGroup);
-    this.onGroupsListChanged();
+  handleRenameGroup = async (groupId, groupName) => {
+    try {
+      if (!isRequired(groupName)) {
+        throw FAIL_MESSAGES.FIELD_EMPTY;
+      }
+
+      await this.groupsModel.renameGroup(groupId, groupName);
+      this.onGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_GROUP_SUCCESS);
+    } catch (error) {
+      this.groupsView.showFailMessage(error);
+    }
   };
 
   /**
@@ -67,19 +89,34 @@ export default class GroupsController {
    * @param {string} groupId
    */
   handleDeleteGroup = async (groupId) => {
-    await this.groupsModel.deleteGroup(groupId);
-    this.onGroupsListChanged();
+    try {
+      await this.groupsModel.deleteGroup(groupId);
+      await this.onGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_GROUP_SUCCESS);
+    } catch (error) {
+      this.groupsView.showFailMessage(error);
+    }
   };
 
   /**
    * Handle rename and change database
    *
-   * @param {object} updateList
+   * @param {string} groupId
+   * @param {string} listName
    * @param {string} groupId
    */
-  handleRenameList = async (updateList, groupId) => {
-    await this.groupsModel.renameList(updateList, groupId);
-    this.onGroupsListChanged();
+  handleRenameList = async (listId, listName, groupId) => {
+    try {
+      if (!isRequired(listName)) {
+        throw FAIL_MESSAGES.FIELD_EMPTY;
+      }
+
+      await this.groupsModel.renameList(listId, listName, groupId);
+      this.onGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.RENAME_SUCCESS);
+    } catch (error) {
+      this.groupsView.showFailMessage(error);
+    }
   };
 
   /**
@@ -88,8 +125,17 @@ export default class GroupsController {
    * @param {string} listName
    */
   handleAddNewList = async (listName) => {
-    await this.groupsModel.addNewList(listName);
-    this.onGroupsListChanged();
+    try {
+      if (!isRequired(listName)) {
+        throw FAIL_MESSAGES.FIELD_EMPTY;
+      }
+
+      await this.groupsModel.addNewList(listName);
+      this.onGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.ADD_LIST_SUCCESS);
+    } catch (error) {
+      this.groupsView.showFailMessage(error);
+    }
   };
 
   /**
@@ -103,24 +149,19 @@ export default class GroupsController {
   };
 
   /**
-   * Execute delete group from database by group id
-   *
-   * @param {string} groupId
-   */
-  handleDeleteGroup = async (groupId) => {
-    await this.groupsModel.deleteGroup(groupId);
-    this.onGroupsListChanged();
-  };
-
-  /**
    * Handle action delete list and bind to database
    *
    * @param {string} listId
    * @param {string} groupId
    */
   handleDeleteList = async (listId, groupId) => {
-    await this.groupsModel.deleteList(listId, groupId);
-    this.onGroupsListChanged();
+    try {
+      await this.groupsModel.deleteList(listId, groupId);
+      this.onGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_LIST_SUCCESS);
+    } catch (error) {
+      this.groupsView.showFailMessage(error);
+    }
   };
 
   /**
@@ -130,7 +171,16 @@ export default class GroupsController {
    * @param {string} groupId
    */
   handleAddNewListInsideGroup = async (listName, groupId) => {
-    await this.groupsModel.newListInGroup(listName, groupId);
-    this.onGroupsListChanged();
+    try {
+      if (!isRequired(listName)) {
+        throw FAIL_MESSAGES.FIELD_EMPTY;
+      }
+
+      await this.groupsModel.newListInGroup(listName, groupId);
+      this.onGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_LIST_SUCCESS);
+    } catch (error) {
+      this.groupsView.showFailMessage(error);
+    }
   };
 }
