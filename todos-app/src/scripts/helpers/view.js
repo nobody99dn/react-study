@@ -13,13 +13,13 @@ const hideMenuAction = () => {
  * Hide the form is opening
  */
 const hideForm = () => {
-  const formOpening = document.querySelector(
+  const formIsOpening = document.querySelector(
     '.form-item:not(.visually-hidden), #new-group-form:not(.visually-hidden), #new-list-form:not(.visually-hidden), .new-list-form-inside:not(.visually-hidden)'
   );
 
-  if (formOpening) {
-    formOpening.classList.add('visually-hidden');
-    formOpening.querySelector('input[type="text"]').blur();
+  if (formIsOpening) {
+    formIsOpening.classList.add('visually-hidden');
+    formIsOpening.querySelector('input[type="text"]').blur();
   }
 };
 
