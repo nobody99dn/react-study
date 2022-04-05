@@ -1,11 +1,11 @@
 // Constants
 import { GROUP_ACTION, LIST_ACTION, NAME_ACTION } from '../constants/todo';
-import { hideForm, hideMenuAction, showNameIsHiding } from '../constants/view';
 
 // Components
 import MenuAction from '../components/menuAction';
 import Group from '../components/group';
 import taskLine from '../components/taskLine';
+import { STATUS } from '../constants/messages';
 
 export default class GroupsView {
   constructor() {
@@ -35,6 +35,12 @@ export default class GroupsView {
 
     // The task container
     this.tasksList = this.getElement('.task-list');
+
+    // The fail message
+    this.failMessage = this.getElement('.fail-message');
+
+    // The success message
+    this.successMessage = this.getElement('.success-message');
   }
 
   getElement(selector) {
@@ -67,6 +73,34 @@ export default class GroupsView {
    */
   _resetListInput() {
     this.listInput.value = '';
+  }
+
+  /**
+   * Display fail message
+   *
+   * @param {string} message
+   */
+  showFailMessage(message) {
+    this.failMessage.classList.remove('d-none');
+    this.failMessage.textContent = message;
+
+    setTimeout(() => {
+      this.failMessage.classList.add('d-none');
+    }, 3000);
+  }
+
+  /**
+   * Display success message
+   *
+   * @param {string} message
+   */
+  showSuccessMessage(message) {
+    this.successMessage.classList.remove('d-none');
+    this.successMessage.textContent = message;
+
+    setTimeout(() => {
+      this.successMessage.classList.add('d-none');
+    }, 3000);
   }
 
   /**
@@ -120,14 +154,11 @@ export default class GroupsView {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const groupName = e.target.querySelector('.group-name-input').value;
+      const groupName = e.target
+        .querySelector('.group-name-input')
+        .value.trim();
 
-      const updateGroup = {
-        id: groupId,
-        name: groupName
-      };
-
-      handler(updateGroup);
+      handler(groupId, groupName);
     });
   }
 
@@ -151,14 +182,9 @@ export default class GroupsView {
         groupId = parent.querySelector('.group-button').id;
       }
 
-      const listName = e.target.querySelector('.list-name-input').value;
+      const listName = e.target.querySelector('.list-name-input').value.trim();
 
-      const updateList = {
-        id: listId,
-        name: listName
-      };
-
-      handler(updateList, groupId);
+      handler(listId, listName, groupId);
     });
   }
 
@@ -167,7 +193,7 @@ export default class GroupsView {
    */
   bindOpenAddGroup() {
     this.newGroupBtn.addEventListener('click', (e) => {
-      hideForm();
+      this.hideForm();
 
       this.groupForm.classList.remove('visually-hidden');
       this.groupInput.focus();
@@ -183,8 +209,8 @@ export default class GroupsView {
     this.groupForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      handler(this._groupText);
       if (this._groupText) {
-        handler(this._groupText);
         this._resetGroupInput();
         this.groupForm.classList.add('visually-hidden');
       }
@@ -196,7 +222,7 @@ export default class GroupsView {
    */
   bindOpenAddList() {
     this.newListBtn.addEventListener('click', (e) => {
-      hideForm();
+      this.hideForm();
 
       this.listForm.classList.remove('visually-hidden');
       this.listInput.focus();
@@ -209,8 +235,8 @@ export default class GroupsView {
   bindOpenActionMenu(deleteGroupHandler, deleteListHandler) {
     this.groupsList.addEventListener('contextmenu', (e) => {
       e.preventDefault();
-      hideForm();
-      showNameIsHiding();
+      this.hideForm();
+      this.showNameIsHiding();
 
       if (e.target.classList.contains('group-button')) {
         // Group ID
@@ -225,7 +251,7 @@ export default class GroupsView {
         menu.innerHTML = MenuAction(GROUP_ACTION);
 
         // Display Action menu
-        hideMenuAction();
+        this.hideMenuAction();
         menu.classList.add('d-block');
 
         this.bindClickGroupActionMenu(menu, groupId, deleteGroupHandler);
@@ -249,7 +275,7 @@ export default class GroupsView {
         menu.innerHTML = MenuAction(LIST_ACTION);
 
         // Display Action menu
-        hideMenuAction();
+        this.hideMenuAction();
         menu.classList.add('d-block');
         this.bindClickListActionMenu(menu, listId, groupId, deleteListHandler);
       }
@@ -268,7 +294,7 @@ export default class GroupsView {
       item.addEventListener('click', (e) => {
         const buttonGroup = document.getElementById(id);
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
-          hideMenuAction();
+          this.hideMenuAction();
 
           // Set value input = name of group
           buttonGroup.querySelector('.group-name-input').value =
@@ -285,7 +311,7 @@ export default class GroupsView {
         } else if (e.target.dataset.value === NAME_ACTION.DELETE) {
           deleteGroupHandler(id);
         } else if (e.target.dataset.value === NAME_ACTION.NEW_LIST) {
-          hideMenuAction();
+          this.hideMenuAction();
 
           // Check open group
           if (buttonGroup.classList.contains('collapsed')) {
@@ -314,8 +340,8 @@ export default class GroupsView {
     this.listForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      handler(this._listText);
       if (this._listText) {
-        handler(this._listText);
         this._resetListInput();
         this.listForm.classList.add('visually-hidden');
       }
@@ -333,7 +359,7 @@ export default class GroupsView {
       const TasksContainer = document.querySelector('.task-container');
       if (listElement) {
         // Remove active class current list and active selected list
-        const currentList = document.querySelector('.list-group-item.active');
+        const currentList = this.getElement('.list-group-item.active');
         if (currentList) {
           currentList.classList.remove('active');
         }
@@ -367,7 +393,7 @@ export default class GroupsView {
         if (e.target.dataset.value === NAME_ACTION.RENAME) {
           const listContainer = document.getElementById(listId);
 
-          hideMenuAction();
+          this.hideMenuAction();
 
           // Set value input = name of group
           listContainer.querySelector('.list-name-input').value =
@@ -401,8 +427,7 @@ export default class GroupsView {
         .map((task) => taskLine(task.name, task.id))
         .join('');
     } else {
-      // TODO: This should handle with message constant soon
-      this.tasksList.innerHTML = 'This list is empty';
+      this.tasksList.innerHTML = STATUS.EMPTY_LIST;
     }
   }
 
@@ -411,15 +436,15 @@ export default class GroupsView {
    */
   bindClickOutsideAction() {
     document.querySelector('body').addEventListener('click', (e) => {
-      !e.target.closest('.dropdown-menu') && hideMenuAction();
+      !e.target.closest('.dropdown-menu') && this.hideMenuAction();
 
       if (
         !e.target.closest(
           '.form-item, .rename-option, .group-btn, .new-list-container, .new-list-option'
         )
       ) {
-        hideForm();
-        showNameIsHiding();
+        this.hideForm();
+        this.showNameIsHiding();
       }
     });
   }
@@ -435,8 +460,47 @@ export default class GroupsView {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const listName = e.target.querySelector('.list-name-input-inside').value;
+      const listName = e.target
+        .querySelector('.list-name-input-inside')
+        .value.trim();
       newListInGroupHandler(listName, groupId);
     });
   }
+
+  /**
+   * Hide the menu is opening
+   */
+  hideMenuAction = () => {
+    const openMenu = this.getElement('.dropdown-menu.d-block');
+
+    if (openMenu) {
+      openMenu.classList.remove('d-block');
+    }
+  };
+
+  /**
+   * Hide the form is opening
+   */
+  hideForm = () => {
+    const formIsOpening = this.getElement(
+      '.form-item:not(.visually-hidden), #new-group-form:not(.visually-hidden), #new-list-form:not(.visually-hidden), .new-list-form-inside:not(.visually-hidden)'
+    );
+
+    if (formIsOpening) {
+      formIsOpening.classList.add('visually-hidden');
+      formIsOpening.querySelector('input[type="text"]').blur();
+    }
+  };
+
+  /**
+   * Show the names is hiding when click outside
+   */
+  showNameIsHiding = () => {
+    const nameHiding = this.getElement(
+      '.group-name.visually-hidden, .list-name.visually-hidden'
+    );
+    if (nameHiding) {
+      nameHiding.classList.remove('visually-hidden');
+    }
+  };
 }

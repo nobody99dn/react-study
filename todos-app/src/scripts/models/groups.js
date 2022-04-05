@@ -25,7 +25,7 @@ export default class GroupsModel {
       name: groupName
     };
 
-    return await post(urlGroup, newGroup);
+    await post(urlGroup, newGroup);
   }
 
   /**
@@ -77,27 +77,33 @@ export default class GroupsModel {
    * @param {object} updateGroup
    * @returns object
    */
-  async renameGroup(updateGroup) {
-    return await update(`${urlGroup}/${updateGroup.id}`, updateGroup);
+  async renameGroup(groupId, groupName) {
+    const updateGroup = await get(`${urlGroup}/${groupId}`);
+    updateGroup.name = groupName;
+
+    await update(`${urlGroup}/${updateGroup.id}`, updateGroup);
   }
 
   /**
    * This function using for update list to database
    *
-   * @param {object} updateList
+   * @param {string} listId
+   * @param {string} listName
    * @param {string} groupId
    */
-  async renameList(updateList, groupId) {
+  async renameList(listId, listName, groupId) {
     if (!groupId) {
-      await update(`${urlGroup}/${updateList.id}`, updateList);
+      const list = await get(`${urlGroup}/${listId}`);
+      list.name = listName;
+      await update(`${urlGroup}/${list.id}`, list);
     } else {
       const groupContainList = await get(`${urlGroup}/${groupId}`);
 
       const listIndex = groupContainList.lists.findIndex(
-        (list) => list.id === updateList.id
+        (list) => list.id === listId
       );
 
-      groupContainList.lists[listIndex].name = updateList.name;
+      groupContainList.lists[listIndex].name = listName;
       await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
     }
   }

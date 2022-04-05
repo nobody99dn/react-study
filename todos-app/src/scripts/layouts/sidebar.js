@@ -29,6 +29,8 @@ const Sidebar = () => `
         </form>
       </div>
     </div>
+    <p class="fail-message text-danger px-4 d-none"></p>
+    <p class="success-message text-success px-4 d-none"></p>
     <div class="add-new-container position-absolute bottom-0 pb-1 row w-100">
       <hr class="my-1">
       <div class="new-list-container btn col-10 py-0 d-flex align-items-center">
