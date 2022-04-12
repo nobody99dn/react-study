@@ -186,7 +186,7 @@ export default class GroupsController {
 
       await this.groupsModel.newListInGroup(listName, groupId);
       this.onGroupsListChanged();
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_LIST_SUCCESS);
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.ADD_LIST_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }

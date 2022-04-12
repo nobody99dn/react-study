@@ -4,7 +4,7 @@ import logo from '../../assets/images/todo-logo.png';
  * Sidebar() returns a new element
  * based on the passed-in tag name
  */
-const Sidebar = () => `
+const SideBar = () => `
   <div class="sidebar position-relative d-flex flex-column vh-100 p-1 float-start">
     <div class="text-center">
       <a class="logo-container" href="#"><img class="w-75" src="${logo}" alt="Icon" /></a>
@@ -43,4 +43,4 @@ const Sidebar = () => `
       </div>
   </div>
 `;
-export default Sidebar;
+export default SideBar;

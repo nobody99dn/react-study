@@ -69,7 +69,7 @@ export default class GroupsModel {
       );
     }
 
-    return list.tasks;
+    return list;
   }
 
   /**

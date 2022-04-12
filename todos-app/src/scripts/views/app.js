@@ -1,5 +1,5 @@
 // Components
-import Sidebar from '../layouts/sidebar';
+import SideBar from '../layouts/sidebar';
 import TasksContainer from '../layouts/tasksContainer';
 import TaskInput from '../components/taskInput';
 
@@ -15,13 +15,14 @@ export default class AppView {
     return element;
   }
 
-  // NOTE: 1.4 Flow render App
   /**
    * Render Layout to root
    */
   displayApp() {
-    // Render Sidebar
-    this.getElement('#root').insertAdjacentHTML('afterbegin', Sidebar());
+    // Render Side Bar
+    this.getElement('#root').insertAdjacentHTML('afterbegin', SideBar());
+
+    // Render Task Container
     this.getElement('#root').insertAdjacentHTML('beforeend', TasksContainer());
     this.getElement('.form-input').insertAdjacentHTML(
       'afterbegin',
