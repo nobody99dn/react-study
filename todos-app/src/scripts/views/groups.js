@@ -358,7 +358,7 @@ export default class GroupsView {
   bindShowTasks(handler) {
     this.groupsList.addEventListener('click', (e) => {
       const listElement = e.target.closest('.list-group-item');
-      const TasksContainer = document.querySelector('.task-container');
+      const TasksContainer = this.getElement('.task-container');
       if (listElement) {
         // Remove active class current list and active selected list
         const currentList = this.getElement('.list-group-item.active');
@@ -423,11 +423,13 @@ export default class GroupsView {
    *
    * @param {array} tasksListData
    */
-  displayTasksList(tasksListData = []) {
-    if (tasksListData.length) {
-      this.tasksList.innerHTML = tasksListData
+  displayTasksList(tasksListData = {}) {
+    if (tasksListData.tasks.length) {
+      this.tasksList.innerHTML = tasksListData.tasks
         .map((task) => taskLine(task.name, task.id))
         .join('');
+
+      this.getElement('.task-title').textContent = tasksListData.name;
     } else {
       this.tasksList.innerHTML = STATUS.EMPTY_LIST;
     }
@@ -437,7 +439,7 @@ export default class GroupsView {
    * Binding click outside action
    */
   bindClickOutsideAction() {
-    document.querySelector('body').addEventListener('mouseup', (e) => {
+    this.getElement('body').addEventListener('mouseup', (e) => {
       !e.target.closest('.dropdown-menu') && this.hideMenuAction();
 
       if (

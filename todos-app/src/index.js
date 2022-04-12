@@ -11,7 +11,7 @@ import AppView from './scripts/views/app';
 import GroupsView from './scripts/views/groups';
 import TasksView from './scripts/views/tasks';
 
-// NOTE: 1. Flow render App
+// NOTE: 1. Flow render App Layout
 new AppController(new AppView());
 
 // NOTE: 2. Flow render Groups List
