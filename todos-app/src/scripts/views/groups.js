@@ -435,7 +435,7 @@ export default class GroupsView {
    * Binding click outside action
    */
   bindClickOutsideAction() {
-    document.querySelector('body').addEventListener('click', (e) => {
+    document.querySelector('body').addEventListener('mouseup', (e) => {
       !e.target.closest('.dropdown-menu') && this.hideMenuAction();
 
       if (
