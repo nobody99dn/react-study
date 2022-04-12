@@ -15,6 +15,7 @@ export default class GroupsModel {
 
   /**
    * Add a new group to database
+   *
    * @param {string} groupName
    * @returns object
    */
@@ -25,7 +26,7 @@ export default class GroupsModel {
       name: groupName
     };
 
-    await post(urlGroup, newGroup);
+    return await post(urlGroup, newGroup);
   }
 
   /**
