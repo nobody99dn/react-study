@@ -55,7 +55,11 @@ export default class GroupsController {
         throw FAIL_MESSAGES.FIELD_EMPTY;
       }
 
-      await this.groupsModel.addNewGroup(groupName);
+      const newGroup = await this.groupsModel.addNewGroup(groupName);
+      if (!newGroup) {
+        throw FAIL_MESSAGES.ADD_GROUP_FAIL;
+      }
+
       this.onGroupsListChanged();
       this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.ADD_GROUP_SUCCESS);
     } catch (error) {
@@ -77,7 +81,7 @@ export default class GroupsController {
 
       await this.groupsModel.renameGroup(groupId, groupName);
       this.onGroupsListChanged();
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_GROUP_SUCCESS);
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.RENAME_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }
@@ -130,7 +134,11 @@ export default class GroupsController {
         throw FAIL_MESSAGES.FIELD_EMPTY;
       }
 
-      await this.groupsModel.addNewList(listName);
+      const newList = await this.groupsModel.addNewList(listName);
+      if (!newList) {
+        throw FAIL_MESSAGES.ADD_LIST_FAIL;
+      }
+
       this.onGroupsListChanged();
       this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.ADD_LIST_SUCCESS);
     } catch (error) {

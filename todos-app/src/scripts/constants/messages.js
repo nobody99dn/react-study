@@ -1,6 +1,8 @@
 const FAIL_MESSAGES = {
   ERROR: 'Something went wrong!',
-  FIELD_EMPTY: 'Please fill up the field!'
+  FIELD_EMPTY: 'Please fill up the field!',
+  ADD_GROUP_FAIL: 'Add group failed!',
+  ADD_LIST_FAIL: 'Add list failed!'
 };
 
 const SUCCESS_MESSAGE = {

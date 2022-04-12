@@ -19,13 +19,13 @@ const Sidebar = () => `
           <input 
             type="text"
             class="group-input form-control"
-            id="">
+          >
         </form>
         <form id="new-list-form" class="visually-hidden">
           <input 
             type="text"
             class="list-input form-control"
-            id="">
+          >
         </form>
       </div>
     </div>

@@ -208,6 +208,7 @@ export default class GroupsView {
   bindAddNewGroup(handler) {
     this.groupForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      e.stopImmediatePropagation();
 
       handler(this._groupText);
       if (this._groupText) {
@@ -339,6 +340,7 @@ export default class GroupsView {
   bindAddNewList(handler) {
     this.listForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      e.stopImmediatePropagation();
 
       handler(this._listText);
       if (this._listText) {
