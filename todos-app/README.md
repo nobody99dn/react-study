@@ -6,7 +6,8 @@
 
 ## TIMELINE
 
-- **8 days (2022/03/15 - 2022/03/24)**
+- Estimate time: **8 days (2022/03/15 - 2022/03/24)**
+- Actual time: **Actual time: 20 days (2022/03/15 - 2022/04/12)**
 
 ## TEAM SIZE
 
