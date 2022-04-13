@@ -9,6 +9,9 @@ export default class GroupsController {
     this.onGroupsListChanged();
   }
 
+  /**
+   * Re-render Group if has change
+   */
   onGroupsListChanged = () => {
     this.getGroups();
 
@@ -25,7 +28,7 @@ export default class GroupsController {
     this.groupsView.bindShowTasks(this.handleShowTasks);
   };
 
-  // Render data to sidebar
+  // Render data to Tasks container
   onTaskListChange(tasksListData) {
     this.groupsView.displayTasksList(tasksListData);
   }
@@ -80,6 +83,7 @@ export default class GroupsController {
       }
 
       await this.groupsModel.renameGroup(groupId, groupName);
+
       this.onGroupsListChanged();
       this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.RENAME_SUCCESS);
     } catch (error) {
@@ -96,6 +100,7 @@ export default class GroupsController {
     try {
       await this.groupsModel.deleteGroup(groupId);
       await this.onGroupsListChanged();
+
       this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_GROUP_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
@@ -116,6 +121,7 @@ export default class GroupsController {
       }
 
       await this.groupsModel.renameList(listId, listName, groupId);
+
       this.onGroupsListChanged();
       this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.RENAME_SUCCESS);
     } catch (error) {
@@ -165,6 +171,7 @@ export default class GroupsController {
   handleDeleteList = async (listId, groupId) => {
     try {
       await this.groupsModel.deleteList(listId, groupId);
+
       this.onGroupsListChanged();
       this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_LIST_SUCCESS);
     } catch (error) {

@@ -1,11 +1,11 @@
 // Constants
 import { GROUP_ACTION, LIST_ACTION, NAME_ACTION } from '../constants/todo';
+import { STATUS } from '../constants/messages';
 
 // Components
 import MenuAction from '../components/menuAction';
 import Group from '../components/group';
 import taskLine from '../components/taskLine';
-import { STATUS } from '../constants/messages';
 
 export default class GroupsView {
   constructor() {
@@ -107,7 +107,9 @@ export default class GroupsView {
    * Render groups data to UI
    *
    * @param {array} groupsListData
-   * @param {callback} handler
+   * @param {callback} renameGroupHandler
+   * @param {callback} renameListHandler
+   * @param {callback} newListInGroupHandler
    */
   displayGroupsList(
     groupsListData,
@@ -503,6 +505,7 @@ export default class GroupsView {
     const nameHiding = this.getElement(
       '.group-name.visually-hidden, .list-name.visually-hidden'
     );
+
     if (nameHiding) {
       nameHiding.classList.remove('visually-hidden');
     }
