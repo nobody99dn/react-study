@@ -1,5 +1,5 @@
 import { URL_GROUP } from '../constants/apis';
-import { get, post, remove, update } from '../models/fetchApi';
+import { get, post, remove, update } from './hireRequest';
 import { v4 as uuidv4 } from 'uuid';
 import { TODO_TYPE } from '../constants/todo';
 
