@@ -5,7 +5,7 @@ const FAIL_MESSAGES = {
   ADD_LIST_FAIL: 'Add list failed!'
 };
 
-const SUCCESS_MESSAGE = {
+const SUCCESS_MESSAGES = {
   RENAME_SUCCESS: 'Rename successful!',
   ADD_GROUP_SUCCESS: 'Add group successful!',
   REMOVE_GROUP_SUCCESS: 'The group was deleted!',
@@ -17,4 +17,4 @@ const STATUS = {
   EMPTY_LIST: 'This list is empty'
 };
 
-export { FAIL_MESSAGES, SUCCESS_MESSAGE, STATUS };
+export { FAIL_MESSAGES, SUCCESS_MESSAGES, STATUS };

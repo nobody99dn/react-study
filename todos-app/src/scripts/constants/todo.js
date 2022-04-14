@@ -6,19 +6,19 @@ const TODO_TYPE = {
 
 const ACTION_ITEMS = {
   RENAME: {
-    content: 'rename',
-    iconClass: 'bi bi-cursor-text',
-    class: 'rename-option'
+    CONTENT: 'rename',
+    ICON_CLASS: 'bi bi-cursor-text',
+    CLASS: 'rename-option'
   },
   DELETE: {
-    content: 'delete',
-    iconClass: 'bi bi-trash3',
-    class: 'delete-option'
+    CONTENT: 'delete',
+    ICON_CLASS: 'bi bi-trash3',
+    CLASS: 'delete-option'
   },
   NEW_LIST: {
-    content: 'add new list',
-    iconClass: 'bi bi-plus-square',
-    class: 'new-list-option'
+    CONTENT: 'add new list',
+    ICON_CLASS: 'bi bi-plus-square',
+    CLASS: 'new-list-option'
   }
 };
 

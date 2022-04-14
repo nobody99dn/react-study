@@ -1,7 +1,4 @@
 import taskLine from '../components/taskLine';
-import TaskInput from '../components/taskInput';
-import bindShowTasks from '../views/groups';
-import handleShowTasks from '../controllers/groups';
 
 export default class TasksView {
   constructor() {
@@ -49,7 +46,6 @@ export default class TasksView {
   bindSubmitTaskForm() {
     this.tasksForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      console.log(this.taskInput.value);
     });
   }
 
