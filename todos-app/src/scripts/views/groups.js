@@ -106,18 +106,18 @@ export default class GroupsView {
   /**
    * Render groups data to UI
    *
-   * @param {array} groupsListData
+   * @param {array} groupsList
    * @param {callback} renameGroupHandler
    * @param {callback} renameListHandler
    * @param {callback} newListInGroupHandler
    */
   displayGroupsList(
-    groupsListData,
+    groupsList,
     renameGroupHandler,
     renameListHandler,
     newListInGroupHandler
   ) {
-    this.groupsList.innerHTML = Group(groupsListData);
+    this.groupsList.innerHTML = Group(groupsList);
 
     [...this.groupsList.querySelectorAll('.group-button')].forEach((button) => {
       // Group
@@ -440,7 +440,7 @@ export default class GroupsView {
   /**
    * Binding click outside action
    */
-  bindClickOutsideAction() {
+  bindClickOutside() {
     this.getElement('body').addEventListener('mouseup', (e) => {
       !e.target.closest('.dropdown-menu') && this.hideMenuAction();
 

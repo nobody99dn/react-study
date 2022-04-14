@@ -2,7 +2,7 @@ const MenuAction = (listItems) => `
   ${listItems
     .map(
       (item) => `
-        <li class="d-flex"><a data-value="${item.content}" class="dropdown-item text-capitalize ${item.class}" href="#"><i class="${item.iconClass} px-2"></i>${item.content}</a></li>
+        <li class="d-flex"><a data-value="${item.CONTENT}" class="dropdown-item text-capitalize ${item.CLASS}" href="#"><i class="${item.ICON_CLASS} px-2"></i>${item.CONTENT}</a></li>
       `
     )
     .join('')}

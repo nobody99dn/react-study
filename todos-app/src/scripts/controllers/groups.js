@@ -1,24 +1,23 @@
-import { FAIL_MESSAGES, SUCCESS_MESSAGE } from '../constants/messages';
-import { isRequired } from '../helpers/validation';
+import { FAIL_MESSAGES, SUCCESS_MESSAGES } from '../constants/messages';
 
 export default class GroupsController {
   constructor(groupsView, groupsModel) {
     this.groupsView = groupsView;
     this.groupsModel = groupsModel;
 
-    this.onGroupsListChanged();
+    this.callGroupsListChanged();
   }
 
   /**
    * Re-render Group if has change
    */
-  onGroupsListChanged = () => {
-    this.getGroups();
+  callGroupsListChanged = () => {
+    this.renderGroups();
 
     // Explicit this binding
     this.groupsView.bindOpenAddGroup();
     this.groupsView.bindOpenAddList();
-    this.groupsView.bindClickOutsideAction();
+    this.groupsView.bindClickOutside();
     this.groupsView.bindOpenActionMenu(
       this.handleDeleteGroup,
       this.handleDeleteList
@@ -29,14 +28,14 @@ export default class GroupsController {
   };
 
   // Render data to Tasks container
-  onTaskListChange(tasksListData) {
+  callTaskListChanged = (tasksListData) => {
     this.groupsView.displayTasksList(tasksListData);
-  }
+  };
 
   /**
    * Call data and render to UI
    **/
-  getGroups = async () => {
+  renderGroups = async () => {
     this.groupsModel.groupsListData = await this.groupsModel.getGroupsList();
 
     this.groupsView.displayGroupsList(
@@ -54,7 +53,7 @@ export default class GroupsController {
    */
   handleAddNewGroup = async (groupName) => {
     try {
-      if (!isRequired(groupName)) {
+      if (!groupName) {
         throw FAIL_MESSAGES.FIELD_EMPTY;
       }
 
@@ -63,8 +62,8 @@ export default class GroupsController {
         throw FAIL_MESSAGES.ADD_GROUP_FAIL;
       }
 
-      this.onGroupsListChanged();
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.ADD_GROUP_SUCCESS);
+      this.callGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGES.ADD_GROUP_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }
@@ -78,14 +77,21 @@ export default class GroupsController {
    */
   handleRenameGroup = async (groupId, groupName) => {
     try {
-      if (!isRequired(groupName)) {
+      if (!groupName) {
         throw FAIL_MESSAGES.FIELD_EMPTY;
       }
 
-      await this.groupsModel.renameGroup(groupId, groupName);
+      const updatedGroup = await this.groupsModel.renameGroup(
+        groupId,
+        groupName
+      );
 
-      this.onGroupsListChanged();
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.RENAME_SUCCESS);
+      if (!updatedGroup) {
+        throw FAIL_MESSAGES.RENAME_FAIL;
+      }
+
+      this.callGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGES.RENAME_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }
@@ -99,9 +105,9 @@ export default class GroupsController {
   handleDeleteGroup = async (groupId) => {
     try {
       await this.groupsModel.deleteGroup(groupId);
-      await this.onGroupsListChanged();
+      await this.callGroupsListChanged();
 
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_GROUP_SUCCESS);
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGES.REMOVE_GROUP_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }
@@ -116,14 +122,22 @@ export default class GroupsController {
    */
   handleRenameList = async (listId, listName, groupId) => {
     try {
-      if (!isRequired(listName)) {
+      if (!listName) {
         throw FAIL_MESSAGES.FIELD_EMPTY;
       }
 
-      await this.groupsModel.renameList(listId, listName, groupId);
+      const updatedList = await this.groupsModel.renameList(
+        listId,
+        listName,
+        groupId
+      );
 
-      this.onGroupsListChanged();
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.RENAME_SUCCESS);
+      if (!updatedList) {
+        throw FAIL_MESSAGES.RENAME_FAIL;
+      }
+
+      this.callGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGES.RENAME_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }
@@ -136,7 +150,7 @@ export default class GroupsController {
    */
   handleAddNewList = async (listName) => {
     try {
-      if (!isRequired(listName)) {
+      if (!listName) {
         throw FAIL_MESSAGES.FIELD_EMPTY;
       }
 
@@ -145,8 +159,8 @@ export default class GroupsController {
         throw FAIL_MESSAGES.ADD_LIST_FAIL;
       }
 
-      this.onGroupsListChanged();
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.ADD_LIST_SUCCESS);
+      this.callGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGES.ADD_LIST_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }
@@ -159,7 +173,9 @@ export default class GroupsController {
    * @param {string} groupId (optional)
    */
   handleShowTasks = async (listId, groupId) => {
-    this.onTaskListChange(await this.groupsModel.getTasksById(listId, groupId));
+    this.callTaskListChanged(
+      await this.groupsModel.getTasksById(listId, groupId)
+    );
   };
 
   /**
@@ -172,8 +188,8 @@ export default class GroupsController {
     try {
       await this.groupsModel.deleteList(listId, groupId);
 
-      this.onGroupsListChanged();
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.REMOVE_LIST_SUCCESS);
+      this.callGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGES.REMOVE_LIST_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }
@@ -187,13 +203,18 @@ export default class GroupsController {
    */
   handleAddNewListInsideGroup = async (listName, groupId) => {
     try {
-      if (!isRequired(listName)) {
+      if (!listName) {
         throw FAIL_MESSAGES.FIELD_EMPTY;
       }
 
-      await this.groupsModel.newListInGroup(listName, groupId);
-      this.onGroupsListChanged();
-      this.groupsView.showSuccessMessage(SUCCESS_MESSAGE.ADD_LIST_SUCCESS);
+      const newList = await this.groupsModel.newListInGroup(listName, groupId);
+
+      if (!newList) {
+        throw FAIL_MESSAGES.ADD_LIST_FAIL;
+      }
+
+      this.callGroupsListChanged();
+      this.groupsView.showSuccessMessage(SUCCESS_MESSAGES.ADD_LIST_SUCCESS);
     } catch (error) {
       this.groupsView.showFailMessage(error);
     }

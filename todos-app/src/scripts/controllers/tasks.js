@@ -49,7 +49,6 @@ export default class TasksController {
    * @param {string} groupId
    */
   renderTasksById(listId, groupId) {
-    // TODO: Handle re-render here
     this.tasksView.displayTasksList(
       this.tasksModel.getTasksById(this.tasksModel.todos, listId, groupId)
     );

@@ -1,5 +1,5 @@
-import { urlGroup } from '../constants/apis';
-import { get, post, update } from '../helpers/fetchApi';
+import { URL_GROUP } from '../constants/apis';
+import { get, update } from './hireRequest';
 import { v4 as uuidv4 } from 'uuid';
 import { TODO_TYPE } from '../constants/todo';
 
@@ -14,7 +14,7 @@ export default class TasksModel {
    * Get Tasks List data
    */
   async getTasksList(listId, groupId) {
-    return await get(urlGroup);
+    return await get(URL_GROUP);
   }
 
   /**
@@ -66,14 +66,14 @@ export default class TasksModel {
    * Get data from list
    */
   async getTodosData() {
-    return await get(urlGroup);
+    return await get(URL_GROUP);
   }
 
   /**
    * Get data from input text
    */
   async getTasksInput() {
-    this.tasksInputData = await get(urlGroup);
+    this.tasksInputData = await get(URL_GROUP);
     return this.tasksInputData;
   }
 
@@ -89,17 +89,17 @@ export default class TasksModel {
       dateModified: ''
     };
     if (!groupId) {
-      const listContainTask = await get(`${urlGroup}/${listId}`);
+      const listContainTask = await get(`${URL_GROUP}/${listId}`);
       // listContainTask.tasks = newTask;
       listContainTask.tasks.push(newTask);
-      await update(`${urlGroup}/${listContainTask.id}`, listContainTask);
+      await update(`${URL_GROUP}/${listContainTask.id}`, listContainTask);
     } else {
-      const groupContainList = await get(`${urlGroup}/${groupId}`);
+      const groupContainList = await get(`${URL_GROUP}/${groupId}`);
       const listIndex = groupContainList.lists.findIndex(
         (list) => list.id === listId
       );
       groupContainList.lists[listIndex].tasks.push(newTask);
-      await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
+      await update(`${URL_GROUP}/${groupContainList.id}`, groupContainList);
     }
   }
 
