@@ -1,0 +1,8 @@
+.task-line:hover {
+  background-color: var(--theme-color-button-focus);
+  transition: 0.4s;
+}
+
+.task-line {
+  background-color: var(--theme-color-task);
+}
