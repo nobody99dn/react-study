@@ -6,13 +6,7 @@ import TaskInput from '../components/taskInput';
 export default class AppView {
   constructor() {
     // The root element
-    this.app = this.getElement('#root');
-  }
-
-  getElement(selector) {
-    const element = document.querySelector(selector);
-
-    return element;
+    this.app = document.querySelector('#root');
   }
 
   /**
@@ -20,13 +14,14 @@ export default class AppView {
    */
   displayApp() {
     // Render Side Bar
-    this.getElement('#root').insertAdjacentHTML('afterbegin', SideBar());
+    document.querySelector('#root').insertAdjacentHTML('afterbegin', SideBar());
 
     // Render Task Container
-    this.getElement('#root').insertAdjacentHTML('beforeend', TasksContainer());
-    this.getElement('.form-input').insertAdjacentHTML(
-      'afterbegin',
-      TaskInput()
-    );
+    document
+      .querySelector('#root')
+      .insertAdjacentHTML('beforeend', TasksContainer());
+    document
+      .querySelector('.form-input')
+      .insertAdjacentHTML('afterbegin', TaskInput());
   }
 }

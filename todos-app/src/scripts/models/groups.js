@@ -1,5 +1,5 @@
-import { urlGroup } from '../constants/apis';
-import { get, post, remove, update } from '../helpers/fetchApi';
+import { URL_GROUP } from '../constants/apis';
+import { get, post, remove, update } from '../models/fetchApi';
 import { v4 as uuidv4 } from 'uuid';
 import { TODO_TYPE } from '../constants/todo';
 
@@ -10,7 +10,7 @@ export default class GroupsModel {
 
   // Get Groups List data
   async getGroupsList() {
-    return await get(urlGroup);
+    return await get(URL_GROUP);
   }
 
   /**
@@ -26,7 +26,7 @@ export default class GroupsModel {
       name: groupName
     };
 
-    return await post(urlGroup, newGroup);
+    return await post(URL_GROUP, newGroup);
   }
 
   /**
@@ -42,7 +42,7 @@ export default class GroupsModel {
       name: listName
     };
 
-    return await post(urlGroup, newList);
+    return await post(URL_GROUP, newList);
   }
 
   /**
@@ -79,10 +79,10 @@ export default class GroupsModel {
    * @returns object
    */
   async renameGroup(groupId, groupName) {
-    const updateGroup = await get(`${urlGroup}/${groupId}`);
+    const updateGroup = await get(`${URL_GROUP}/${groupId}`);
     updateGroup.name = groupName;
 
-    await update(`${urlGroup}/${updateGroup.id}`, updateGroup);
+    await update(`${URL_GROUP}/${updateGroup.id}`, updateGroup);
   }
 
   /**
@@ -94,18 +94,21 @@ export default class GroupsModel {
    */
   async renameList(listId, listName, groupId) {
     if (!groupId) {
-      const list = await get(`${urlGroup}/${listId}`);
+      const list = await get(`${URL_GROUP}/${listId}`);
       list.name = listName;
-      await update(`${urlGroup}/${list.id}`, list);
+      return await update(`${URL_GROUP}/${list.id}`, list);
     } else {
-      const groupContainList = await get(`${urlGroup}/${groupId}`);
+      const groupContainList = await get(`${URL_GROUP}/${groupId}`);
 
       const listIndex = groupContainList.lists.findIndex(
         (list) => list.id === listId
       );
 
       groupContainList.lists[listIndex].name = listName;
-      await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
+      return await update(
+        `${URL_GROUP}/${groupContainList.id}`,
+        groupContainList
+      );
     }
   }
 
@@ -115,7 +118,7 @@ export default class GroupsModel {
    * @param {string} groupId
    */
   async deleteGroup(groupId) {
-    await remove(`${urlGroup}/${groupId}`);
+    await remove(`${URL_GROUP}/${groupId}`);
   }
 
   /**
@@ -126,16 +129,16 @@ export default class GroupsModel {
    */
   async deleteList(listId, groupId) {
     if (!groupId) {
-      await remove(`${urlGroup}/${listId}`);
+      await remove(`${URL_GROUP}/${listId}`);
     } else {
-      const groupContainList = await get(`${urlGroup}/${groupId}`);
+      const groupContainList = await get(`${URL_GROUP}/${groupId}`);
       const listIndex = groupContainList.lists.findIndex(
         (list) => list.id === listId
       );
 
       groupContainList.lists.splice(listIndex, 1);
 
-      await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
+      await update(`${URL_GROUP}/${groupContainList.id}`, groupContainList);
     }
   }
 
@@ -153,7 +156,7 @@ export default class GroupsModel {
       tasks: []
     };
 
-    const groupContainList = await get(`${urlGroup}/${groupId}`);
+    const groupContainList = await get(`${URL_GROUP}/${groupId}`);
 
     // Define lists if not exist
     if (!groupContainList.lists) {
@@ -162,6 +165,9 @@ export default class GroupsModel {
 
     groupContainList.lists.push(newList);
 
-    await update(`${urlGroup}/${groupContainList.id}`, groupContainList);
+    return await update(
+      `${URL_GROUP}/${groupContainList.id}`,
+      groupContainList
+    );
   }
 }

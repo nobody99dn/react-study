@@ -62,7 +62,7 @@ const remove = async (url) => {
     }
   });
 
-  await response.json();
+  return await response.json();
 };
 
 export { get, post, update, remove };
