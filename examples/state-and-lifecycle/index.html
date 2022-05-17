@@ -27,14 +27,12 @@
           this.state = { date: new Date() };
         }
         componentDidMount() {
-          console.log(123);
           this.timerID = setInterval(() => {
             this.tick();
           }, 1000);
         }
 
         componentWillUnmount() {
-          console.log(456);
           clearInterval(this.timerID);
         }
 
