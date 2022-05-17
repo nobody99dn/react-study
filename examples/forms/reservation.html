@@ -24,30 +24,32 @@
     <script type="text/babel">
       class Reservation extends React.Component {
         constructor(props) {
-          super(props)
+          super(props);
           this.state = {
             isGoing: true,
             numberOfGuests: 2
-          }
-          this.handleInputChange = this.handleInputChange.bind(this)
+          };
+          this.handleInputChange = this.handleInputChange.bind(this);
         }
 
         handleInputChange(event) {
-          const target = event.target
+          const target = event.target;
           const value =
-            target.type === 'checkbox' ? target.checked : target.value
-          const name = target.name
+            target.type === 'checkbox' ? target.checked : Number(target.value);
+          const name = target.name;
 
+          console.log(this.state);
           this.setState({
             [name]: value
-          })
+          });
+          console.log(this.state);
         }
 
         render() {
           return (
             <form>
               <label>
-                Is going:
+                Is going: {console.log('state', this.state)}
                 <input
                   name='isGoing'
                   type='checkbox'
@@ -67,11 +69,11 @@
                 />
               </label>
             </form>
-          )
+          );
         }
       }
 
-      ReactDOM.render(<Reservation />, document.getElementById('root'))
+      ReactDOM.render(<Reservation />, document.getElementById('root'));
     </script>
   </body>
 </html>
