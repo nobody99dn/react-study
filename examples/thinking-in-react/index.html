@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thinking in React</title>
+  </head>
+  <style>
+    .table td,
+    .table th,
+    table {
+      border: 1px solid #ddd;
+    }
+    .red {
+      color: red;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      const products = [
+        {
+          category: 'Sporting Goods',
+          price: '$49.99',
+          stocked: true,
+          name: 'Football'
+        },
+        {
+          category: 'Sporting Goods',
+          price: '$9.99',
+          stocked: true,
+          name: 'Baseball'
+        },
+        {
+          category: 'Sporting Goods',
+          price: '$29.99',
+          stocked: false,
+          name: 'Basketball'
+        },
+        {
+          category: 'Electronics',
+          price: '$99.99',
+          stocked: true,
+          name: 'iPod Touch'
+        },
+        {
+          category: 'Electronics',
+          price: '$399.99',
+          stocked: false,
+          name: 'iPhone 5'
+        },
+        {
+          category: 'Electronics',
+          price: '$199.99',
+          stocked: true,
+          name: 'Nexus 7'
+        }
+      ];
+
+      /**
+       * Parent component
+       */
+      class FilterableProductTable extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.state = {
+            filterText: '',
+            inStockOnly: false
+          };
+
+          this.handleInputChange = this.handleInputChange.bind(this);
+        }
+
+        handleInputChange(name, value) {
+          this.setState({ [name]: value });
+        }
+
+        render() {
+          return (
+            <div>
+              <SearchBar
+                filterText={this.state.filterText}
+                inStockOnly={this.state.inStockOnly}
+                onSearchBarChange={this.handleInputChange}
+              />
+              <ProductTable
+                products={this.props.products}
+                filterText={this.state.filterText}
+                inStockOnly={this.state.inStockOnly}
+              />
+            </div>
+          );
+        }
+      }
+
+      /**
+       * Product table component contain content
+       */
+      class ProductTable extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+
+        render() {
+          const rows = [];
+          const filterCategory = [];
+          const filterText = this.props.filterText;
+          const inStockOnly = this.props.inStockOnly;
+
+          // filter in stock
+          let products = inStockOnly
+            ? this.props.products.filter((product) => product.stocked)
+            : this.props.products;
+
+          //filter in text
+          if (filterText) {
+            products = products.filter((product) =>
+              product.name.includes(filterText)
+            );
+          }
+
+          // filter category
+          products.forEach((product) => {
+            const foundIndex = filterCategory.findIndex(
+              (filter) => filter === product.category
+            );
+
+            if (foundIndex === -1) {
+              filterCategory.push(product.category);
+            }
+          });
+
+          filterCategory.forEach((category) => {
+            rows.push(
+              <ProductCategoryRow category={category} key={category} />
+            );
+
+            const productRows = products.map(
+              (product) =>
+                product.category === category && (
+                  <ProductRow product={product} key={product.name} />
+                )
+            );
+
+            rows.push(productRows);
+          });
+
+          return (
+            <table className='table'>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>{rows}</tbody>
+            </table>
+          );
+        }
+      }
+
+      class SearchBar extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.handleChange = this.handleChange.bind(this);
+        }
+
+        handleChange(e) {
+          const target = e.target;
+          const value =
+            target.type === 'checkbox' ? target.checked : target.value;
+          const name = target.name;
+
+          this.props.onSearchBarChange(name, value);
+        }
+
+        render() {
+          return (
+            <div>
+              <input
+                name='filterText'
+                type='text'
+                value={this.props.filterText}
+                onChange={this.handleChange}
+                placeholder='Search...'
+              />
+              <br />
+              <input
+                name='inStockOnly'
+                type='checkbox'
+                checked={this.props.inStockOnly}
+                onChange={this.handleChange}
+              />
+              Only show products in stock
+            </div>
+          );
+        }
+      }
+
+      class ProductCategoryRow extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+
+        render() {
+          return (
+            <tr>
+              <th colSpan='2'>{this.props.category}</th>
+            </tr>
+          );
+        }
+      }
+
+      class ProductRow extends React.Component {
+        constructor({ props }) {
+          super(props);
+        }
+
+        render() {
+          const { name, price, stocked } = this.props.product;
+          return (
+            <tr>
+              <td className={!stocked ? `red` : ''}>{name}</td>
+              <td>{price}</td>
+            </tr>
+          );
+        }
+      }
+
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+
+        render() {
+          return <FilterableProductTable products={products} />;
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
