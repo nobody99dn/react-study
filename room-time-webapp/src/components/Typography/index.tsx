@@ -1,9 +1,19 @@
 import { ReactNode } from "react";
+import { render } from '@testing-library/react';
+import React from "react";
 
 interface TypographyProps {
   children: ReactNode;
   [props: string]: any;
 }
 
-export const Typography: React.FC<TypographyProps> = ({ children, ...props }) => (<div>{children}</div>)
-  
+export class Typography extends React.Component {
+  constructor(props: TypographyProps) {
+    super(props);
+  }
+
+  render() {
+    return (<p className="" >{this.props.children}</p>);
+  }
+}
+
