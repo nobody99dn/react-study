@@ -21,6 +21,12 @@
   text-transform: uppercase;
 }
 
+.text-highlight { 
+  color: var(--highlight-color);
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
 /*------------------------------------*\
 # TITLE
 \*------------------------------------*/

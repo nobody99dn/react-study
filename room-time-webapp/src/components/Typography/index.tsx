@@ -10,6 +10,7 @@ export enum ThemeTypes {
   Outline = 'outline',
   Title = 'title',
   Caption = 'caption',
+  Highlight = 'highlight'
 }
 
 interface TypographyProps {
@@ -17,11 +18,17 @@ interface TypographyProps {
   theme?: ThemeTypes;
   [props: string]: any;
 }
-export const Typography = ({ children, theme = ThemeTypes.Primary, ...props }: TypographyProps) => {
+export const Typography = ({
+  children,
+  theme = ThemeTypes.Primary,
+  ...props }: TypographyProps) => {
   switch (theme) {
-    case ThemeTypes.Primary || ThemeTypes.Secondary || ThemeTypes.Outline:
+    case ThemeTypes.Primary || ThemeTypes.Secondary || ThemeTypes.Outline || ThemeTypes.Highlight:
       return (
-        <p className={`text text-${theme}`} {...props}>
+        <p
+          className={`text text-${theme}}`}
+          {...props}
+        >
           {children}
         </p>
       );
