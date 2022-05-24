@@ -4,7 +4,7 @@ import './variables.css';
 function App() {
   return (
     <div>
-      Init app
+      React app
     </div>
   );
 }
