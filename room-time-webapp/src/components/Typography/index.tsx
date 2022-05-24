@@ -5,9 +5,24 @@ import React from "react";
 // Styles
 import './index.css';
 
+enum themeType {
+  body1 = 'body1',
+  body2 = 'body2',
+  outline = 'outline',
+  h1 = 'h1',
+  h2 = 'h2',
+  h3 = 'h3',
+  subtitle = 'subtitle',
+  caption = 'caption'
+}
+
 interface TypographyProps {
   children: ReactNode;
-  theme: 'primary' | 'secondary';
+  theme?: 'body1' |
+  'body2' |
+  'outline' |
+  'title' |
+  'caption';
   [props: string]: any;
 }
 
@@ -17,11 +32,20 @@ export class Typography extends React.Component<TypographyProps> {
   }
 
   render() {
-    const { children, theme = 'primary', ...props }: TypographyProps = this.props;
+    const { children, theme = 'body1', ...props }: TypographyProps = this.props;
 
-    return (<p className={`text text-${theme}`} {...props}>
-      {children}
-    </p>);
+    if (theme === 'body1' || theme === 'body2' || theme === 'outline') {
+      return (<p className={`text text-${theme}`} {...props}>
+        {children}
+      </p>);
+    } else if (theme === 'title') {
+      return (
+        <h3 className={`${theme}`} {...props}>{children}</h3>
+      );
+    } else if (theme === 'caption') {
+      return (
+        <caption className={`${theme}`} {...props}>{children}</caption>
+      );
+    }
   }
 }
-

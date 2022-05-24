@@ -10,17 +10,34 @@ export default {
   component: Typography
 } as ComponentMeta<typeof Typography>;
 
-//👇 We create a “template” of how args map to rendering
 const Template: ComponentStory<typeof Typography> = (args) => <Typography {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Body1 = Template.bind({});
+Body1.args = {
   children: 'Typography',
-  theme: 'primary'
+  theme: 'body1'
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
+export const Body2 = Template.bind({});
+Body2.args = {
   children: 'Typography',
-  theme: 'secondary'
+  theme: 'body2'
+};
+
+export const Title = Template.bind({});
+Title.args = {
+  children: 'Typography',
+  theme: 'title'
+};
+
+export const Caption = Template.bind({});
+Caption.args = {
+  children: 'Typography',
+  theme: 'caption'
+};
+
+export const Outline = Template.bind({});
+Outline.args = {
+  children: 'Typography',
+  theme: 'outline'
 };

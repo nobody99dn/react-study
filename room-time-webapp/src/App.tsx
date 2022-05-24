@@ -6,8 +6,8 @@ import { Typography } from './components/Typography/index';
 
 function App() {
   return (
-    <div className="">
-      <Typography theme='secondary'>Text</Typography>
+    <div>
+      <Typography theme='body1'>Text</Typography>
     </div>
   );
 }
