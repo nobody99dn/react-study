@@ -1,51 +1,44 @@
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 import { ReactNode } from "react";
-import React from "react";
 
 // Styles
 import './index.css';
 
-enum themeType {
-  body1 = 'body1',
-  body2 = 'body2',
-  outline = 'outline',
-  h1 = 'h1',
-  h2 = 'h2',
-  h3 = 'h3',
-  subtitle = 'subtitle',
-  caption = 'caption'
+export enum ThemeTypes {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Outline = 'outline',
+  Title = 'title',
+  Caption = 'caption',
 }
 
 interface TypographyProps {
   children: ReactNode;
-  theme?: 'body1' |
-  'body2' |
-  'outline' |
-  'title' |
-  'caption';
+  theme?: ThemeTypes;
   [props: string]: any;
 }
+export const Typography = ({ children, theme = ThemeTypes.Primary, ...props }: TypographyProps) => {
+  switch (theme) {
+    case ThemeTypes.Primary || ThemeTypes.Secondary || ThemeTypes.Outline:
+      return (
+        <p className={`text text-${theme}`} {...props}>
+          {children}
+        </p>
+      );
 
-export class Typography extends React.Component<TypographyProps> {
-  constructor(props: TypographyProps) {
-    super(props);
-  }
+    case ThemeTypes.Title:
+      return (
+        <h3 className={theme} {...props}>{children}</h3>
+      );
 
-  render() {
-    const { children, theme = 'body1', ...props }: TypographyProps = this.props;
+    case ThemeTypes.Caption:
+      return (
+        <caption className={theme} {...props}>{children}</caption>
+      );
 
-    if (theme === 'body1' || theme === 'body2' || theme === 'outline') {
+    default:
       return (<p className={`text text-${theme}`} {...props}>
         {children}
       </p>);
-    } else if (theme === 'title') {
-      return (
-        <h3 className={`${theme}`} {...props}>{children}</h3>
-      );
-    } else if (theme === 'caption') {
-      return (
-        <caption className={`${theme}`} {...props}>{children}</caption>
-      );
-    }
   }
-}
+};

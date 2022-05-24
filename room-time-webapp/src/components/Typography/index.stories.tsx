@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Typography } from './index';
+import { Typography, ThemeTypes } from './index';
 
 import '../../variables.css';
 import '../../App.css';
@@ -12,32 +12,31 @@ export default {
 
 const Template: ComponentStory<typeof Typography> = (args) => <Typography {...args} />;
 
-export const Body1 = Template.bind({});
-Body1.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   children: 'Typography',
-  theme: 'body1'
 };
 
-export const Body2 = Template.bind({});
-Body2.args = {
+export const Secondary = Template.bind({});
+Secondary.args = {
   children: 'Typography',
-  theme: 'body2'
+  theme: ThemeTypes.Secondary
 };
 
 export const Title = Template.bind({});
 Title.args = {
   children: 'Typography',
-  theme: 'title'
+  theme: ThemeTypes.Title
 };
 
 export const Caption = Template.bind({});
 Caption.args = {
   children: 'Typography',
-  theme: 'caption'
+  theme: ThemeTypes.Caption
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
   children: 'Typography',
-  theme: 'outline'
+  theme: ThemeTypes.Outline
 };
