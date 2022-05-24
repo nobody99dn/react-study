@@ -37,8 +37,10 @@ export const Typography = ({ children, theme = ThemeTypes.Primary, ...props }: T
       );
 
     default:
-      return (<p className={`text text-${theme}`} {...props}>
-        {children}
-      </p>);
+      return (
+        <p className={`text text-${theme}`} {...props}>
+          {children}
+        </p>
+      );
   }
 };
