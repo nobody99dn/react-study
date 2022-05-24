@@ -4,4 +4,5 @@
   --dark-green-color: #0F4555;
   --light-gray-color: #CBCBCB;
   --highlight-color: #F5A623;
+  --invisible-color: rgba(255, 255, 255, 0)
 }
