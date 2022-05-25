@@ -5,8 +5,8 @@ import { User } from './index';
 import '../../variables.css';
 import '../../App.css';
 
-import activeAvatar from '../../assets/images/img-01user.jpg';
-import deactivateAvatar from '../../assets/images/img-02user.jpg';
+import activeAvatar from '../../assets/images/anna.jpg';
+import deactivateAvatar from '../../assets/images/bella.jpg';
 
 export default {
   title: 'Components/User',
