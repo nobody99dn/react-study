@@ -16,9 +16,15 @@
 }
 
 .text-outline {
-  color: var(--light-gray-color);
+  color: var(--dark-gray-color);
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.text-highlight { 
+  color: var(--highlight-color);
+  text-transform: uppercase;
+  font-size: 24px;
 }
 
 /*------------------------------------*\

@@ -40,3 +40,9 @@ Outline.args = {
   children: 'Typography',
   theme: ThemeTypes.Outline
 };
+
+export const Highlight = Template.bind({});
+Highlight.args = {
+  children: 'Typography',
+  theme: ThemeTypes.Highlight
+};
