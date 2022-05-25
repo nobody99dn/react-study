@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Icon } from './index';
+import { Icon, IconVariants } from './index';
 
 import googleIcon from '../../assets/icons/google-plus.svg';
 import freeIcon from '../../assets/icons/icon-free.svg';
@@ -17,14 +17,14 @@ const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 
 export const Social = Template.bind({});
 Social.args = {
-  variant: 'social',
+  variant: IconVariants.Social,
   iconUrl: googleIcon,
   hint: 'Google Plus'
 };
 
 export const Product = Template.bind({});
 Product.args = {
-  variant: 'product',
+  variant: IconVariants.Product,
   iconUrl: freeIcon,
   hint: 'Free Icon'
 };
