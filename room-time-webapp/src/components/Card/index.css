@@ -28,14 +28,8 @@
 }
 
 .card-subtitle {
-  color: #9b9da0;
   font-size: 12px;
   text-transform: uppercase;
-}
-
-.card-value {
-  padding-top: 7px;
-  font-size: 18px;
 }
 
 .card-body-text {
