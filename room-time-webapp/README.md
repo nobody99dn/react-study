@@ -7,6 +7,7 @@
 ## TIMELINE
 
 - Estimate time: **3 days (2022/05/23 - 2022/05/25)**
+- Actual time: **4 days (2022/05/23 - 2022/05/26)**
 
 ## TEAM SIZE
 
@@ -39,7 +40,20 @@
 ## DIRECTORY STRUCTURE
 
 ```
-Update soon!
+├── src
+│ ├── assets
+│ │   ├── icons
+│ │   └── images
+│ ├── components
+│ │   └── commons
+│ │         ├── Button
+│ │         ├── Card
+│ │         ├── Icon
+│ │         ├── Typography
+│ │         └── UserInfo
+│ └── constants
+├── public
+└── .storybook
 ```
 
 ## GET STARTED

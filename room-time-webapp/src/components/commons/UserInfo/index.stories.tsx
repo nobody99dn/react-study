@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { User } from './index';
+import { UserInfo } from './index';
 
 import '../../variables.css';
 import '../../App.css';
@@ -9,11 +9,11 @@ import activeAvatar from '../../assets/images/anna.jpg';
 import deactivateAvatar from '../../assets/images/bella.jpg';
 
 export default {
-  title: 'Components/User',
-  component: User
-} as ComponentMeta<typeof User>;
+  title: 'Components/UserInfo',
+  component: UserInfo
+} as ComponentMeta<typeof UserInfo>;
 
-const Template: ComponentStory<typeof User> = (args) => <User {...args} />;
+const Template: ComponentStory<typeof UserInfo> = (args) => <UserInfo {...args} />;
 
 export const Active = Template.bind({});
 Active.args = {

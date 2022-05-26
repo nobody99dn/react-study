@@ -4,7 +4,7 @@ import './index.css';
 
 import { Typography, VariantsTypes } from '../Typography/index';
 
-import { Currency, RoomTypes } from '../../constants/type';
+import { Currency, RoomTypes } from '../../../constants/type';
 
 interface CardProps {
   imageUrl: string;

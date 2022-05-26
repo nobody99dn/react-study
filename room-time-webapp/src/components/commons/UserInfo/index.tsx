@@ -10,7 +10,7 @@ interface UserProps {
   active?: boolean;
 }
 
-export const User: React.FC<UserProps> = ({
+export const UserInfo: React.FC<UserProps> = ({
   avatar,
   name,
   role,

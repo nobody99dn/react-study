@@ -6,7 +6,7 @@ import '../../variables.css';
 import '../../App.css';
 
 import stargarderImg from '../../assets/images/post-stargarder.jpg';
-import { Currency, RoomTypes } from '../../constants/type';
+import { Currency, RoomTypes } from '..//../../constants/type';
 
 export default {
   title: 'Components/Card',
