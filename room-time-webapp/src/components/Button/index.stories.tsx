@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button } from './index';
+import { Button, ButtonVariants } from './index';
 
 import '../../variables.css';
 import '../../App.css';
@@ -27,17 +27,17 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   children: 'Button',
-  theme: 'secondary'
+  variant: ButtonVariants.Secondary
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
   children: 'Button',
-  theme: 'outline'
+  variant: ButtonVariants.Outline
 };
 
 export const Ghost = Template.bind({});
 Ghost.args = {
   children: 'Button',
-  theme: 'ghost'
+  variant: ButtonVariants.Ghost
 };

@@ -1,3 +1,4 @@
+import React from 'react';
 import './index.css';
 
 export enum IconVariants {
@@ -8,7 +9,7 @@ export enum IconVariants {
 interface IconProps {
   iconUrl: string;
   variant: IconVariants;
-  hint: string;
+  hint?: string;
   [props: string]: any;
 }
 

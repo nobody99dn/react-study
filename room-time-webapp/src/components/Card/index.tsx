@@ -1,33 +1,34 @@
-import './index.css';
-import { Typography, ThemeTypes } from '../Typography/index';
+import React from 'react';
 
-export enum RoomTypes {
-  Kreuzberg = 'KREUZBERG',
-  BrenzlauerBerg = 'PRENZLAUER BERG',
-  Miite = 'MITTE'
-}
+import './index.css';
+
+import { Typography, VariantsTypes } from '../Typography/index';
+
+import { Currency, RoomTypes } from '../../constants/type';
 
 interface CardProps {
   imageUrl: string;
-  name: string;
-  type: RoomTypes,
+  title: string;
+  roomType: RoomTypes,
   square: number,
   room: number,
   price: number,
+  currency?: Currency;
 }
 
 export const Card: React.FC<CardProps> = ({
   imageUrl,
-  name,
-  type,
+  title,
+  roomType,
   square,
   room,
   price,
+  currency = Currency.Dollar
 }) => (
   <article className="post-content">
     <div className="card">
       <div className="card-img">
-        <img src={imageUrl} alt={name} />
+        <img src={imageUrl} alt={title} />
       </div>
 
       <div className="card-body">
@@ -35,37 +36,37 @@ export const Card: React.FC<CardProps> = ({
           <div className="card-body-content">
             <p>
               <a href="javascript:void(0)" className="card-subtitle">
-                <Typography theme={ThemeTypes.Outline}>sq.meters</Typography>
+                <Typography variant={VariantsTypes.Outline}>{roomType}</Typography>
               </a>
             </p>
 
             <h5 className="card-title">
-              <a href="javascript:void(0)">{name}</a>
+              <a href="javascript:void(0)">{title}</a>
             </h5>
           </div>
         </div>
 
         <div className="card-body-parameter display-center">
           <div className="card-body-info display-center">
-            <Typography theme={ThemeTypes.Outline}>sq.meters</Typography>
+            <Typography variant={VariantsTypes.Outline}>sq.meters</Typography>
 
-            <Typography theme={ThemeTypes.Highlight}>{square}</Typography>
+            <Typography variant={VariantsTypes.Highlight}>{square}</Typography>
           </div>
 
           <div className="card-body-info display-center">
-            <Typography theme={ThemeTypes.Outline}>rooms</Typography>
+            <Typography variant={VariantsTypes.Outline}>rooms</Typography>
 
-            <Typography theme={ThemeTypes.Highlight}>{room}</Typography>
+            <Typography variant={VariantsTypes.Highlight}>{room}</Typography>
           </div>
 
           <div className="card-body-info display-center">
-            <Typography theme={ThemeTypes.Outline}>price</Typography>
+            <Typography variant={VariantsTypes.Outline}>price</Typography>
 
             <Typography
-              theme={ThemeTypes.Highlight}
+              variant={VariantsTypes.Highlight}
             >
               {price}
-              <sup>€</sup>
+              <sup>{currency}</sup>
             </Typography>
           </div>
         </div>

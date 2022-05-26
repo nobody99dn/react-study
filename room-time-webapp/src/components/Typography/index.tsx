@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-useless-constructor */
 import { ReactNode } from "react";
 
 // Styles
 import './index.css';
 
-export enum ThemeTypes {
+export enum VariantsTypes {
   Primary = 'primary',
   Secondary = 'secondary',
   Outline = 'outline',
@@ -15,37 +14,34 @@ export enum ThemeTypes {
 
 interface TypographyProps {
   children: ReactNode;
-  theme?: ThemeTypes;
+  variant?: VariantsTypes;
   [props: string]: any;
 }
-export const Typography = ({
-  children,
-  theme = ThemeTypes.Primary,
-  ...props }: TypographyProps) => {
-  switch (theme) {
-    case ThemeTypes.Primary || ThemeTypes.Secondary || ThemeTypes.Outline || ThemeTypes.Highlight:
+
+export const Typography: React.FC<TypographyProps> = (
+  {
+    children,
+    variant = VariantsTypes.Primary,
+    ...props
+  }
+) => {
+  switch (variant) {
+    case VariantsTypes.Title:
       return (
-        <p
-          className={`text text-${theme}}`}
-          {...props}
-        >
-          {children}
-        </p>
+        <h3 className={variant} {...props}>{children}</h3>
       );
 
-    case ThemeTypes.Title:
+    case VariantsTypes.Caption:
       return (
-        <h3 className={theme} {...props}>{children}</h3>
-      );
-
-    case ThemeTypes.Caption:
-      return (
-        <caption className={theme} {...props}>{children}</caption>
+        <caption className={variant} {...props}>{children}</caption>
       );
 
     default:
       return (
-        <p className={`text text-${theme}`} {...props}>
+        <p
+          className={`text text-${variant}`}
+          {...props}
+        >
           {children}
         </p>
       );

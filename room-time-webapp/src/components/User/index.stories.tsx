@@ -18,7 +18,6 @@ const Template: ComponentStory<typeof User> = (args) => <User {...args} />;
 export const Active = Template.bind({});
 Active.args = {
   avatar: activeAvatar,
-  hint: 'Anna avatar',
   name: 'Anna',
   role: 'Student'
 };
@@ -26,7 +25,6 @@ Active.args = {
 export const Deactivate = Template.bind({});
 Deactivate.args = {
   avatar: deactivateAvatar,
-  hint: 'Bella avatar',
   name: 'Bella',
   role: 'Teacher',
   active: true

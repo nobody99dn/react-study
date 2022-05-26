@@ -1,21 +1,34 @@
-/* eslint-disable @typescript-eslint/no-useless-constructor */
-
 // Libraries
-import { ReactNode } from "react";
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 // Style
 import './index.css';
 
+export enum ButtonVariants {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Outline = 'outline',
+  Ghost = 'ghost'
+}
+
 interface ButtonProps {
   children: ReactNode;
-  theme?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: ButtonVariants;
   [props: string]: any;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  theme = 'primary',
+  variant = ButtonVariants.Primary,
   ...props
-}) => (<button className={`btn btn-${theme}`} {...props}>{children}</button>);
+}) => {
+  const handleButtonClick = () => { };
 
+  return (
+    <button
+      className={`btn btn-${variant}`} {...props}
+      onClick={handleButtonClick}
+    >
+      {children}
+    </button>);
+};
