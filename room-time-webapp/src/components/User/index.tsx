@@ -1,34 +1,32 @@
+import React from 'react';
+
 import './index.css';
-import { Typography, ThemeTypes } from '../Typography/index';
+import { Typography, VariantsTypes } from '../Typography/index';
 
 interface UserProps {
   avatar: string;
-  hint: string;
   name: string;
   role: string;
-  active: boolean;
-  [props: string]: any;
+  active?: boolean;
 }
 
 export const User: React.FC<UserProps> = ({
   avatar,
-  hint,
   name,
   role,
   active = false,
-  ...props
 }) => (
   <div className={`user display-center ${active === true ? 'active' : ''}`}>
     <div className="user-img display-center">
-      <img src={avatar} alt={hint} />
+      <img src={avatar} alt={name} />
     </div>
 
     <div className='user-name'>
-      <Typography theme={ThemeTypes.Title}>{name}</Typography>
+      <Typography variant={VariantsTypes.Title}>{name}</Typography>
     </div>
 
     <div className='user-role'>
-      <Typography theme={ThemeTypes.Highlight}>{role}</Typography>
-    </div>
-  </div>
+      <Typography variant={VariantsTypes.Highlight}>{role}</Typography>
+    </div >
+  </div >
 );
