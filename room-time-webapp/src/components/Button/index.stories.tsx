@@ -14,7 +14,12 @@ export default {
         <Story />
       </div>
     ),
-  ]
+  ],
+  parameters: {
+    myAddon: {
+      data: 'This data is passed to the addon'
+    }
+  }
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
