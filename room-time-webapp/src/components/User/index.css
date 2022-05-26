@@ -3,6 +3,9 @@
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.user{
   flex-direction: column;
 }
 

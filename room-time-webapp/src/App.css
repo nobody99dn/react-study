@@ -10,3 +10,7 @@ html {
   font-family: 'Roboto', sans-serif;
   font-size: 100%;
 }
+
+a {
+  text-decoration: none;
+}
