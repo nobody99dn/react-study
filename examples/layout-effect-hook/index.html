@@ -21,7 +21,7 @@
 
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
-      const { useLayoutEffect, useState } = React;
+      const { useLayoutEffect, useState, useDebugValue } = React;
 
       function App() {
         const [count, setCount] = useState(0);
@@ -32,6 +32,8 @@
             setCount(0);
           }
         }, [count]);
+
+        useDebugValue(count === 3 ? 'OK' : 'No OK');
 
         const handleRun = () => {
           setCount(count + 1);
