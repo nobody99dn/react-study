@@ -21,15 +21,33 @@
 
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
-      const { useRef, forwardRef } = React;
-      import video1 from './video-1.mp4';
+      // import video1 from './video-1.mp4';
+      const { useRef, forwardRef, useImperativeHandle, useEffect } = React;
 
-      Video = forwardRef(function (props, ref) {
-        return <video src={video1} width={250} ref={ref} />;
-      });
+      function Video(props, ref) {
+        const videoRef = useRef();
+
+        // gán object từ param 2 vào param 1
+        useImperativeHandle(ref, () => ({
+          play() {
+            videoRef.current.play();
+          },
+          pause() {
+            videoRef.current.pause();
+          }
+        }));
+
+        return <video src='./video-1.mp4' width={250} ref={videoRef} />;
+      }
+
+      Video = forwardRef(Video);
 
       function App() {
         const videoRef = useRef();
+
+        useEffect(() => {
+          console.log(videoRef);
+        });
 
         const handlePlay = () => {
           videoRef.current.play();
@@ -43,8 +61,8 @@
           <div>
             <Video ref={videoRef} />
 
-            <button onClick={handlePlay}></button>
-            <button onClick={handlePause}></button>
+            <button onClick={handlePlay}>Play</button>
+            <button onClick={handlePause}>Pause</button>
           </div>
         );
       }
