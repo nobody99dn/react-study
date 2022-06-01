@@ -25,7 +25,7 @@
 - Storybook
 - TypeScript
 - HTML/CSS
-- MockAPI
+- [MockAPI](https://mockapi.io/)
 
 ## REQUIREMENT DETAILS
 
