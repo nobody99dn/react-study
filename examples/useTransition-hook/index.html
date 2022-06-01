@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>useTransition</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      const { useState, useTransition, useEffect } = React;
+
+      function SlowComponent({ value = 1000 }) {
+        return (
+          <div>
+            <h2>Slow Component</h2>
+            {Array(value)
+              .fill(1)
+              .map((_, index) => (
+                <p key={index}>{value + index}</p>
+              ))}
+          </div>
+        );
+      }
+
+      function App() {
+        const [isPending, startTransition] = useTransition();
+        const [count, setCount] = useState(0);
+
+        useEffect(() => {
+          console.log('count', count);
+        }, [count]);
+
+        function handleClick() {
+          console.log('click', count);
+          startTransition(() => {
+            setCount((c) => c + 1);
+            console.log('startTransition', count);
+          });
+        }
+
+        return (
+          <div>
+            {console.log('in render', count)}
+            {isPending && <SlowComponent />}
+            <button onClick={handleClick}>Click to add + 1: {count}</button>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

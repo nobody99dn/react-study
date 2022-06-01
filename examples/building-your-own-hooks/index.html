@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building a Hook</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Import React -->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      function useFriendStatus(friendID) {
+        const [isOnline, setIsOnline] = useState(null);
+
+        useEffect(() => {
+          function handleStatusChange(status) {
+            setIsOnline(status.isOnline);
+          }
+
+          ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
+          return () => {
+            ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
+          };
+        });
+
+        return isOnline;
+      }
+
+      function FriendStatus(props) {
+        const isOnline = useFriendStatus(props.friend.id);
+
+        if (isOnline === null) {
+          return 'Loading...';
+        }
+
+        return isOnline ? 'Online' : 'Offline';
+      }
+
+      function FriendListItem(props) {
+        const isOnline = useFriendStatus(props.friend.id);
+
+        return (
+          <li style={{ color: isOnline ? 'green' : 'black' }}>
+            {props.friend.name}
+          </li>
+        );
+      }
+
+      // Tip: Pass information between hooks
+      const friendList = [
+        { id: 1, name: 'Phoebe' },
+        { id: 2, name: 'Rachel' },
+        { id: 3, name: 'Ross' }
+      ];
+
+      function ChatRecipientPicker() {
+        const [recipientID, setRecipientID] = useState(1);
+        const isRecipientOnline = useFriendStatus(recipientID);
+
+        return (
+          <>
+            <Circle color={isRecipientOnline ? 'green' : 'red'} />
+            <select
+              value={recipientID}
+              onChange={(e) => setRecipientID(Number(e.target.value))}
+            >
+              {friendList.map((friend) => (
+                <option key={friend.id} value={friend.id}>
+                  {friend.name}
+                </option>
+              ))}
+            </select>
+          </>
+        );
+      }
+
+      // Reducer
+      function useReducer(reducer, initialState) {
+        const [state, setState] = useState(initialState);
+
+        function dispatch(action) {
+          const nextState = reducer(state, action);
+          setState(nextState);
+        }
+      }
+
+      function Todos() {
+        const [todos, dispatch] = useReducer(todoReducer, []);
+
+        function handleAddClick(text) {
+          dispatch({ type: 'add', text });
+        }
+
+        // ...
+      }
+
+      ReactDOM.render(
+        <FriendListItem friend={{ id: 1 }} />,
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>
