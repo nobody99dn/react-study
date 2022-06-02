@@ -1,6 +1,6 @@
 import React from 'react';
-import './reset.css';
-import './App.css';
+import './assets/styles/reset.css';
+import './assets/styles/App.css';
 
 function App() {
 
