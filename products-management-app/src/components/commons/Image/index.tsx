@@ -1,6 +1,7 @@
 export enum ImageTypes {
   Default = 'default',
-  Logo = 'logo'
+  Logo = 'logo',
+  Icon = 'icon'
 }
 
 interface ImageProps {

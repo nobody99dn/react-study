@@ -8,6 +8,7 @@ import './index.css';
 
 import logo from '../../../assets/images/logo.png';
 import iPhoneImage from '../../../assets/images/iphone-13-promax-alpine-green-alpine-green-color.jpg';
+import deleteIcon from '../../../assets/images/icons/trash-fill.svg';
 
 export default {
   title: 'Components/Image',
@@ -27,4 +28,11 @@ Logo.args = {
   imageUrl: logo,
   alt: 'Logo',
   variant: ImageTypes.Logo
+};
+
+export const Icon = Template.bind({});
+Icon.args = {
+  imageUrl: deleteIcon,
+  alt: 'Delete icon',
+  variant: ImageTypes.Icon
 };
