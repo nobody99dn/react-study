@@ -2,8 +2,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Typography, VariantsTypes } from './index';
 
-import '../../../variables.css';
-import '../../../App.css';
+import '../../../assets/styles/reset.css';
+import '../../../assets/styles/App.css';
 
 export default {
   title: 'Components/Typography',
