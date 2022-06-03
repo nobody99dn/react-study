@@ -22,7 +22,6 @@ export const Image: React.FC<ImageProps> = (
     imageUrl,
     width,
     variant = ImageTypes.Default,
-    ...props
   }
 ) => (
   <img
@@ -36,6 +35,5 @@ export const Image: React.FC<ImageProps> = (
     alt={alt}
     src={imageUrl}
     style={{ width: width, height: height }}
-    {...props}
   />
 );
