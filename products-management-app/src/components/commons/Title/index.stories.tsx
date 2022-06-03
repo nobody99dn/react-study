@@ -1,7 +1,10 @@
+// Libraries
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+// Components
 import { VariantsTypes, Title, FwType } from './index';
 
+// Styles
 import '../../../assets/styles/reset.css';
 import '../../../assets/styles/App.css';
 import '../../../assets/styles/variables.css';
