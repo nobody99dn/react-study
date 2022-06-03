@@ -1,11 +1,14 @@
+// Libraries
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+// Components
 import { Text, VariantsTypes } from './index';
+import { FwType } from '@components/commons/Title/index';
 
+// Styles
 import '../../../assets/styles/reset.css';
 import '../../../assets/styles/App.css';
 import '../../../assets/styles/variables.css';
-import { FwType } from '../Title/index';
 
 export default {
   title: 'Components/Text',

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { FwType } from "@components/commons/Title/index";
+import { FwType } from '@components/commons/Title/index';
 
 // Styles
 import './index.css';
