@@ -1,14 +1,9 @@
 // Libraries
+import { ButtonVariants } from '@constants/types';
 import React, { ReactNode, useState } from 'react';
 
 // Style
 import './index.css';
-
-export enum ButtonVariants {
-  Default = 'default',
-  Primary = 'primary',
-  Secondary = 'secondary'
-}
 
 interface ButtonProps {
   children: ReactNode;

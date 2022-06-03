@@ -2,11 +2,12 @@
 import React, { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Button, ButtonVariants } from './index';
+import { Button } from './index';
 
 // Styles
 import '../../../assets/styles/App.css';
 import '../../../assets/styles/variables.css';
+import { ButtonVariants } from '@constants/types';
 
 export default {
   title: 'Components/Button',

@@ -3,7 +3,7 @@
   cursor: pointer;
   font-size: 16px;
   letter-spacing: 0.03rem;
-  padding: 0.75rem 2.125rem;
+  padding: 0.75rem 2.25rem;
 }
 
 .btn:hover, .disabled{ 
