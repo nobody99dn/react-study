@@ -1,3 +1,5 @@
+import React from 'react';
+
 export enum ImageTypes {
   Default = 'default',
   Logo = 'logo',
