@@ -6,8 +6,8 @@
   padding: 0.75rem 2.125rem;
 }
 
-.btn:hover{ 
-  opacity: 0.8;
+.btn:hover, .disabled{ 
+  opacity: 0.5;
 }
 
 .btn-default {
@@ -26,4 +26,10 @@
   background-color: var(--danger);
   border: 1px solid var(--danger);
   color: var(--white);
+}
+
+.disabled {
+  background-color: var(--light-gray);
+  border: 1px solid var(--light-gray);
+  cursor: auto;
 }

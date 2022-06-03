@@ -31,3 +31,9 @@ Secondary.args = {
   children: 'Button',
   variant: ButtonVariants.Secondary
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  children: 'Button',
+  isDisabled: true
+};
