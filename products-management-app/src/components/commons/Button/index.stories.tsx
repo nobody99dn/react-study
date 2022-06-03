@@ -1,7 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+// Libraries
+import React, { ComponentStory, ComponentMeta } from '@storybook/react';
 
+// Components
 import { Button, ButtonVariants } from './index';
 
+// Styles
 import '../../../assets/styles/App.css';
 import '../../../assets/styles/variables.css';
 
