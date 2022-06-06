@@ -15,3 +15,9 @@ export enum TextFieldVariants {
   Outline = 'outline',
   Error = 'error'
 }
+
+export enum Currencies {
+  Dollar = '$',
+  Euro = '€',
+  VND = '₫'
+}

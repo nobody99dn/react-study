@@ -18,6 +18,7 @@ interface TitleProps {
   fw?: FwType,
   size?: string;
   fs?: 'inherit' | 'italic';
+  p?: string;
   variant?: VariantsTypes;
 }
 
@@ -28,6 +29,7 @@ export const Title: React.FC<TitleProps> = (
     fw,
     size,
     fs = 'inherit',
+    p,
     variant = VariantsTypes.Default,
   }
 ) => (
@@ -37,7 +39,8 @@ export const Title: React.FC<TitleProps> = (
       fontSize: size,
       color: color,
       fontStyle: fs,
-      fontWeight: fw
+      fontWeight: fw,
+      padding: p
     }}
   >
     {children}

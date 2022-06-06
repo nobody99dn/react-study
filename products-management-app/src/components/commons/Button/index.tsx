@@ -20,7 +20,9 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const [loading, setLoading] = useState(false);
 
-  const handleButtonClick = () => { };
+  const handleButtonClick = () => {
+    setLoading(true);
+  };
 
   return (
     <button
