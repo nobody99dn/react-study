@@ -1,0 +1,16 @@
+.card {
+  cursor: pointer;
+  width: 25%;
+  max-width: 17.3rem;
+  border: 3px;
+}
+
+.card-body {
+  padding: 0.5rem;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
+}
