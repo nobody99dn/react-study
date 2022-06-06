@@ -8,7 +8,7 @@ export enum ImageTypes {
 
 interface ImageProps {
   alt: string;
-  className: string;
+  className?: string;
   height?: string;
   imageUrl: string;
   width?: string;

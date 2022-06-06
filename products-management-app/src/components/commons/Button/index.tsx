@@ -1,6 +1,8 @@
 // Libraries
-import { ButtonVariants } from '@/constants/types';
 import React, { ReactNode, useState } from 'react';
+
+// Constants
+import { ButtonVariants } from '@/constants/types';
 
 // Style
 import './index.css';
@@ -16,9 +18,11 @@ export const Button: React.FC<ButtonProps> = ({
   variant = ButtonVariants.Default,
   isDisabled = false,
 }) => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleButtonClick = () => { };
+  const handleButtonClick = () => {
+    setIsLoading(true);
+  };
 
   return (
     <button
@@ -26,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={handleButtonClick}
       disabled={isDisabled}
     >
-      {loading ? 'Loading...' : children}
+      {isLoading ? 'Loading...' : children}
     </button>
   );
 };
