@@ -10,13 +10,16 @@ export enum ImageTypes {
   Icon = 'icon'
 }
 
+// Constants
+import { ImageVariants } from '@/constants/types';
+
 interface ImageProps {
   alt: string;
   className?: string;
   height?: string;
   imageUrl: string;
   width?: string;
-  variants?: ImageTypes;
+  variants?: ImageVariants;
   [props: string]: any;
 }
 
@@ -27,13 +30,13 @@ export const Image: React.FC<ImageProps> = (
     height,
     imageUrl,
     width,
-    variant = ImageTypes.Default,
+    variant = ImageVariants.Default,
   }
 ) => (
   <img
     className={
       ['image',
-        variant !== ImageTypes.Default
+        variant !== ImageVariants.Default
           ? `image-${variant} `
           : '',
         className
