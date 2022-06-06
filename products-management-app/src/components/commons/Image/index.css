@@ -15,3 +15,8 @@
   display: block;
   width: 1rem;
 }
+
+.icon-left {
+  position: absolute;
+  right: 1.5rem;
+}

@@ -48,7 +48,7 @@ export const TextField: React.FC<TextFieldProps> = (
     <div>
       {label && <label htmlFor={`input-${variant}`}>{label}</label>}
       <div className={'input-wrapper'}>
-        <Image imageUrl={iconUrl} variants={ImageTypes.Icon} />
+        {iconUrl && <Image className={'icon-left'} imageUrl={iconUrl} variants={ImageTypes.Icon} />}
         <input
           id={`input-${variant}`}
           className={['field', `field-${variant}`].join(' ').trim()}

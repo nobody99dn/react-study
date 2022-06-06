@@ -7,17 +7,19 @@ export enum ImageTypes {
 }
 
 interface ImageProps {
-  alt?: string,
-  height?: string,
-  imageUrl: string,
-  width?: string,
-  variants?: ImageTypes,
+  alt?: string;
+  className: string;
+  height?: string;
+  imageUrl: string;
+  width?: string;
+  variants?: ImageTypes;
   [props: string]: any;
 }
 
 export const Image: React.FC<ImageProps> = (
   {
     alt = 'Image',
+    className,
     height,
     imageUrl,
     width,
@@ -29,7 +31,8 @@ export const Image: React.FC<ImageProps> = (
       ['image',
         variant !== ImageTypes.Default
           ? `image-${variant} `
-          : ''
+          : '',
+        className
       ].join(' ').trim()
     }
     alt={alt}
