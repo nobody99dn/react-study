@@ -36,8 +36,11 @@ export const TextField: React.FC<TextFieldProps> = (
     required = false,
     placeholder,
     iconUrl,
+<<<<<<< HEAD
     iconHeight,
     iconWidth,
+=======
+>>>>>>> aa26033b7b6263be0ab69f1e8112085680113a67
     variant = TextFieldVariants.Standard
   }
 ) => {
@@ -46,28 +49,34 @@ export const TextField: React.FC<TextFieldProps> = (
   return (
     <div>
       {label && <label htmlFor={`input-${variant}`}>{label}</label>}
-      <div className={'input-wrapper'}>
-        {iconUrl && <Image
-          alt={'icon'}
-          className={'icon-left'}
-          imageUrl={iconUrl}
-          variants={ImageTypes.Icon}
-          width={iconWidth}
-          height={iconHeight}
-        />}
-        <input
-          id={`input-${variant}`}
-          className={['field', `field-${variant}`].join(' ').trim()}
-          type={type}
-          style={{ width: width, height: height }}
-          placeholder={placeholder}
-          value={defaultValue}
-          disabled={disabled}
-          readOnly={readonly}
-          required={required}
-          onChange={handleChange}
-        />
-      </div>
-    </div>
+      <div className={'input-wrapper'}>;
+<<<<<<< HEAD
+  {
+    iconUrl && <Image
+      alt={'icon'}
+      className={'icon-left'}
+      imageUrl={iconUrl}
+      variants={ImageTypes.Icon}
+      width={iconWidth}
+      height={iconHeight}
+    />;
+  }
+=======
+        {iconUrl && <Image alt={'icon'} className={'icon-left'} imageUrl={iconUrl} variants={ImageTypes.Icon} />}
+>>>>>>> aa26033b7b6263be0ab69f1e8112085680113a67
+  <input
+    id={`input-${variant}`}
+    className={['field', `field-${variant}`].join(' ').trim()}
+    type={type}
+    style={{ width: width, height: height }}
+    placeholder={placeholder}
+    value={defaultValue}
+    disabled={disabled}
+    readOnly={readonly}
+    required={required}
+    onChange={handleChange}
+  />
+      </div >
+    </div >
   );
 };
