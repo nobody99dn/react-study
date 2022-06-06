@@ -21,3 +21,8 @@ export enum Currencies {
   Euro = '€',
   VND = '₫'
 }
+
+export enum FormVariants {
+  Create = 'Create',
+  Edit = 'Edit'
+}

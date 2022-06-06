@@ -17,9 +17,9 @@ interface TextFieldProps {
   required?: boolean,
   type?: 'text' | 'number' | 'email' | 'tel';
   placeholder: string;
-  iconUrl: string;
-  iconHeight: string;
-  iconWidth: string;
+  iconUrl?: string;
+  iconHeight?: string;
+  iconWidth?: string;
   variant?: TextFieldVariants,
   label?: string;
 }
