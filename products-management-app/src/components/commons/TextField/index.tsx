@@ -6,12 +6,7 @@ import { Image } from "@/components/commons/Image/index";
 // Styles
 import './index.css';
 import { ImageTypes } from '../Image/index';
-
-export enum VariantsTypes {
-  Standard = 'standard',
-  Outline = 'outline',
-  Error = 'error'
-}
+import { TextFieldVariants } from "@/constants/types";
 
 interface TextFieldProps {
   defaultValue?: string,
@@ -23,7 +18,7 @@ interface TextFieldProps {
   type?: 'text' | 'number' | 'email' | 'tel';
   placeholder: string;
   iconUrl: string;
-  variant?: VariantsTypes,
+  variant?: TextFieldVariants,
   label?: string;
 }
 
@@ -39,7 +34,7 @@ export const TextField: React.FC<TextFieldProps> = (
     required = false,
     placeholder,
     iconUrl,
-    variant = VariantsTypes.Standard
+    variant = TextFieldVariants.Standard
   }
 ) => {
   const handleChange = () => { };
@@ -48,7 +43,7 @@ export const TextField: React.FC<TextFieldProps> = (
     <div>
       {label && <label htmlFor={`input-${variant}`}>{label}</label>}
       <div className={'input-wrapper'}>
-        {iconUrl && <Image className={'icon-left'} imageUrl={iconUrl} variants={ImageTypes.Icon} />}
+        {iconUrl && <Image alt={'icon'} className={'icon-left'} imageUrl={iconUrl} variants={ImageTypes.Icon} />}
         <input
           id={`input-${variant}`}
           className={['field', `field-${variant}`].join(' ').trim()}

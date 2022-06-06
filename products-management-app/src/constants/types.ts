@@ -9,3 +9,9 @@ export enum FwType {
   Normal = 400,
   Light = 300
 }
+
+export enum TextFieldVariants {
+  Standard = 'standard',
+  Outline = 'outline',
+  Error = 'error'
+}
