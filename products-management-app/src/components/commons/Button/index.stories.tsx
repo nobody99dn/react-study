@@ -5,8 +5,10 @@ import React, { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from './index';
 
 // Styles
-import '../../../assets/styles/App.css';
-import '../../../assets/styles/variables.css';
+import '@assets/styles/App.css';
+import '@assets/styles/variables.css';
+
+// Constants
 import { ButtonVariants } from '@constants/types';
 
 export default {
