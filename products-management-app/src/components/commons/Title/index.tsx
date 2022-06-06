@@ -4,16 +4,12 @@ import React, { ReactNode } from "react";
 // Styles
 import './index.css';
 
+// Constants
+import { FwType } from '@constants/types';
+
 export enum VariantsTypes {
   Default = 'title',
   Subtitle = 'subtitle'
-}
-
-export enum FwType {
-  bold = 700,
-  semibold = 600,
-  normal = 400,
-  light = 300
 }
 
 interface TitleProps {
