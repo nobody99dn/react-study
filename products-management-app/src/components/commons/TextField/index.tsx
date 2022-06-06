@@ -5,8 +5,7 @@ import { Image } from "@/components/commons/Image/index";
 
 // Styles
 import './index.css';
-import { ImageTypes } from '../Image/index';
-import { TextFieldVariants } from "@/constants/types";
+import { ImageVariants, TextFieldVariants } from "@/constants/types";
 
 interface TextFieldProps {
   defaultValue?: string,
@@ -52,7 +51,7 @@ export const TextField: React.FC<TextFieldProps> = (
             alt={'icon'}
             className={'icon-left'}
             imageUrl={iconUrl}
-            variants={ImageTypes.Icon}
+            variants={ImageVariants.Icon}
             width={iconWidth}
             height={iconHeight}
           />
