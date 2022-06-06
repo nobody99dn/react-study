@@ -18,10 +18,10 @@ export const Button: React.FC<ButtonProps> = ({
   variant = ButtonVariants.Default,
   isDisabled = false,
 }) => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonClick = () => {
-    setLoading(true);
+    setIsLoading(true);
   };
 
   return (
@@ -30,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={handleButtonClick}
       disabled={isDisabled}
     >
-      {loading ? 'Loading...' : children}
+      {isLoading ? 'Loading...' : children}
     </button>
   );
 };
