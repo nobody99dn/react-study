@@ -24,7 +24,7 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  color: 'green',
+  type: 'green',
   imageUrl: iPhoneImage,
   title: 'iPhone 13 promax',
   price: 30000000,
