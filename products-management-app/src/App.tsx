@@ -5,9 +5,9 @@ import './assets/styles/App.css';
 function App() {
 
   return (
-    <div>
+    <p>
       Product Management Application
-    </div>
+    </p>
   );
 }
 
