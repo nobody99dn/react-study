@@ -3,12 +3,14 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
 import { Text, VariantsTypes } from './index';
-import { FwType } from '@components/commons/Title/index';
+
+// Constants
+import { FwType } from '@constants/types';
 
 // Styles
-import '../../../assets/styles/reset.css';
-import '../../../assets/styles/App.css';
-import '../../../assets/styles/variables.css';
+import '@assets/styles/reset.css';
+import '@assets/styles/App.css';
+import '@assets/styles/variables.css';
 
 export default {
   title: 'Components/Text',
@@ -26,6 +28,5 @@ export const Highlight = Template.bind({});
 Highlight.args = {
   children: 'Text',
   variant: VariantsTypes.Highlight,
-  fw: FwType.semibold,
-  fs: 'italic'
+  fw: FwType.Bold
 };

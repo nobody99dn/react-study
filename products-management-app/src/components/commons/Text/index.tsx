@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { FwType } from '@components/commons/Title/index';
+import { FwType } from '@constants/types';
 
 // Styles
 import './index.css';
@@ -22,7 +22,7 @@ export const Text: React.FC<TextProps> = (
   {
     children,
     color,
-    fw,
+    fw = FwType.Normal,
     size,
     fs = 'inherit',
     variant = VariantsTypes.Default,
