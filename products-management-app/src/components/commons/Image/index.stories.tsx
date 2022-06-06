@@ -24,6 +24,7 @@ const Template: ComponentStory<typeof Image> = (args) => <Image {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   imageUrl: iPhoneImage,
+  alt: 'iPhone 13 promax image',
   width: '10rem'
 };
 

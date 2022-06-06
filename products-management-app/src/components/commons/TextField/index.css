@@ -1,0 +1,44 @@
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-top: 0.25rem;
+}
+
+.field {
+  border-radius: 3px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  padding: 0.5rem;
+  text-indent: 0.5rem;
+}
+
+.field:disabled {
+  background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3));
+  color: -internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
+}
+
+.field-standard {
+  background: var(--light-gray);
+  border: 1px solid var(--light-gray);
+}
+
+.field-standard:hover {
+  border: 1px solid var(--light-gray);
+}
+
+.field-outline {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+}
+
+.field-outline:hover, .field-outline:focus {
+  border-color: var(--dark);
+}
+
+.field-error {
+  background: var(--white);
+  border: 1px solid var(--danger);
+}
+
