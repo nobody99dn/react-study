@@ -27,10 +27,15 @@ export enum FormVariants {
   Edit = 'Edit'
 }
 
-export const PRODUCT_TYPES: string[] = [ 'Phone', 'Tablet', 'Laptop']
+export const PRODUCT_TYPES: string[] = ['Phone', 'Tablet', 'Laptop'];
 
 export enum ImageVariants {
   Default = 'default',
   Logo = 'logo',
   Icon = 'icon'
+}
+
+export enum ModalVariants {
+  Create = 'create',
+  Edit = 'delete'
 }
