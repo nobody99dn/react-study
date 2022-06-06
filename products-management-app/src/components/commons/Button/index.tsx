@@ -11,22 +11,20 @@ interface ButtonProps {
   children: ReactNode;
   variant?: ButtonVariants;
   isDisabled?: boolean;
+  handleButtonClick(): void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   children,
   variant = ButtonVariants.Default,
   isDisabled = false,
+  handleButtonClick
 }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleButtonClick = () => {
-    setIsLoading(true);
-  };
-
   return (
     <button
-      className={['btn', `btn-${variant}`, `${isDisabled && 'disabled' || ''}`].join(' ').trim()}
+      className={['btn', `btn-${variant}`, `${isDisabled && 'disabled' || ''}`].join(' ')}
       onClick={handleButtonClick}
       disabled={isDisabled}
     >

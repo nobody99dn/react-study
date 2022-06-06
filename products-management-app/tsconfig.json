@@ -23,7 +23,8 @@
       "@components/*": ["./components/*"],
       "@layouts/*": ["./layouts/*"],
       "@services/*": ["./services/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@helpers/*": ["./helpers/*"]
     },
   },
   "include": ["src"],
