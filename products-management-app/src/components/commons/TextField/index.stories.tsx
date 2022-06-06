@@ -60,7 +60,8 @@ export const IconField = Template.bind({});
 IconField.args = {
   placeholder: 'Placeholder',
   iconUrl: searchIcon,
-  height: '4.25rem'
+  height: '4.25rem',
+  iconWidth: '2rem'
 };
 
 

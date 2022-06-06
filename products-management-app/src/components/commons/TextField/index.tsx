@@ -18,6 +18,8 @@ interface TextFieldProps {
   type?: 'text' | 'number' | 'email' | 'tel';
   placeholder: string;
   iconUrl: string;
+  iconHeight: string;
+  iconWidth: string;
   variant?: TextFieldVariants,
   label?: string;
 }
@@ -34,6 +36,8 @@ export const TextField: React.FC<TextFieldProps> = (
     required = false,
     placeholder,
     iconUrl,
+    iconHeight,
+    iconWidth,
     variant = TextFieldVariants.Standard
   }
 ) => {
@@ -43,7 +47,14 @@ export const TextField: React.FC<TextFieldProps> = (
     <div>
       {label && <label htmlFor={`input-${variant}`}>{label}</label>}
       <div className={'input-wrapper'}>
-        {iconUrl && <Image alt={'icon'} className={'icon-left'} imageUrl={iconUrl} variants={ImageTypes.Icon} />}
+        {iconUrl && <Image
+          alt={'icon'}
+          className={'icon-left'}
+          imageUrl={iconUrl}
+          variants={ImageTypes.Icon}
+          width={iconWidth}
+          height={iconHeight}
+        />}
         <input
           id={`input-${variant}`}
           className={['field', `field-${variant}`].join(' ').trim()}
