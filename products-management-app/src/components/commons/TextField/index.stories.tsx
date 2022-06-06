@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { TextField, VariantsTypes } from './index';
+import { TextField } from './index';
 
 // Styles
 import '@assets/styles/reset.css';
@@ -11,6 +11,9 @@ import '@assets/styles/variables.css';
 
 // Icons
 import { searchIcon } from '@/assets';
+
+// Constants
+import { TextFieldVariants } from '@/constants/types';
 
 export default {
   title: 'Components/TextField',
@@ -29,14 +32,14 @@ export const Outline = Template.bind({});
 Outline.args = {
   label: 'Text field',
   placeholder: 'Placeholder',
-  variant: VariantsTypes.Outline
+  variant: TextFieldVariants.Outline
 };
 
 export const Error = Template.bind({});
 Error.args = {
   label: 'Text field',
   placeholder: 'Placeholder',
-  variant: VariantsTypes.Error
+  variant: TextFieldVariants.Error
 };
 
 export const Disabled = Template.bind({});

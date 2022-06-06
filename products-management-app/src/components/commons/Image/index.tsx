@@ -7,7 +7,7 @@ export enum ImageTypes {
 }
 
 interface ImageProps {
-  alt?: string;
+  alt: string;
   className: string;
   height?: string;
   imageUrl: string;
@@ -18,7 +18,7 @@ interface ImageProps {
 
 export const Image: React.FC<ImageProps> = (
   {
-    alt = 'Image',
+    alt,
     className,
     height,
     imageUrl,
