@@ -21,3 +21,14 @@ export enum Currencies {
   Euro = '€',
   VND = '₫'
 }
+
+export enum ImageVariants {
+  Default = 'default',
+  Logo = 'logo',
+  Icon = 'icon'
+}
+
+export enum ModalVariants {
+  Create = 'create',
+  Edit = 'delete'
+}
