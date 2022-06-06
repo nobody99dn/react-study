@@ -16,12 +16,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./src",
+    "types": ["node"],
     "paths": {
-      "@constants/*": ["constants/*"],
-      "@components/*": ["components/*"],
-      "@layouts/*": ["layouts/*"],
-      "@services/*": ["services/*"],
-      "@assets/*": ["assets/*"]
+      "@/*": ["./*"],
+      "@constants/*": ["./constants/*"],
+      "@components/*": ["./components/*"],
+      "@layouts/*": ["./layouts/*"],
+      "@services/*": ["./services/*"],
+      "@assets/*": ["./assets/*"]
     },
   },
   "include": ["src"],

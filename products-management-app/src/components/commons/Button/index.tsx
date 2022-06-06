@@ -1,5 +1,5 @@
 // Libraries
-import { ButtonVariants } from '@constants/types';
+import { ButtonVariants } from '@/constants/types';
 import React, { ReactNode, useState } from 'react';
 
 // Style
