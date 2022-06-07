@@ -24,8 +24,10 @@ const Template: ComponentStory<typeof TextField> = (args) => <TextField {...args
 
 export const Standard = Template.bind({});
 Standard.args = {
+  id: 'standard-form',
   label: 'Text field',
-  placeholder: 'Placeholder'
+  placeholder: 'Placeholder',
+  name: 'standard form'
 };
 
 export const Outline = Template.bind({});

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { useCallback } from "react";
 
 // Components
 import { Image } from "@/components/commons/Image/index";
@@ -9,7 +9,9 @@ import { ImageTypes } from '../Image/index';
 import { TextFieldVariants } from "@/constants/types";
 
 interface TextFieldProps {
-  defaultValue?: string,
+  id?: string;
+  name?: string;
+  defaultValue?: string | number,
   disabled?: boolean,
   height?: string;
   width?: string;
@@ -22,10 +24,13 @@ interface TextFieldProps {
   iconWidth?: string;
   variant?: TextFieldVariants,
   label?: string;
+  onChange?: (value: string | number) => void;
 }
 
 export const TextField: React.FC<TextFieldProps> = (
   {
+    id,
+    name,
     defaultValue,
     disabled = false,
     height,
@@ -38,14 +43,20 @@ export const TextField: React.FC<TextFieldProps> = (
     iconUrl,
     iconHeight,
     iconWidth,
-    variant = TextFieldVariants.Standard
+    variant = TextFieldVariants.Standard,
+    onChange
   }
 ) => {
-  const handleChange = () => { };
+  const handleChange = useCallback(
+    (e: { target: { value: string | number; }; }) => {
+      onChange?.(e.target.value);
+    },
+    [onChange],
+  );
 
   return (
-    <div>
-      {label && <label htmlFor={`input-${variant}`}>{label}</label>}
+    <div className="field-wrapper">
+      {label && <label htmlFor={id}>{label}: </label>}
       <div className={'input-wrapper'}>
         {
           iconUrl && <Image
@@ -58,7 +69,8 @@ export const TextField: React.FC<TextFieldProps> = (
           />
         }
         <input
-          id={`input-${variant}`}
+          id={id}
+          name={name}
           className={['field', `field-${variant}`].join(' ').trim()}
           type={type}
           style={{ width: width, height: height }}
