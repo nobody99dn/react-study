@@ -19,3 +19,7 @@ export function currencyFormat(price: number): string {
 
   return result
 }
+
+export function generateId(): string {
+  return `${'product'}-${Date.now()}`;
+};

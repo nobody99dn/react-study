@@ -24,3 +24,7 @@
   position: absolute;
   right: 1.5rem;
 }
+
+.card-image {
+  border-radius: 5px;
+}

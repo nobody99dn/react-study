@@ -1,0 +1,12 @@
+.product-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.products-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
