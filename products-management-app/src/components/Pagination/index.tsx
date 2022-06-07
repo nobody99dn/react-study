@@ -1,5 +1,5 @@
 // Library
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 // Styles
 import './index.css';
@@ -22,11 +22,17 @@ export const Pagination: React.FC<PaginationProps> = ({
     pageNumbers.push(i);
   }
 
-  const handleClick = (number: number) => {
-    setCurrentPage(number);
+  const handleClick = useCallback(
+    (number: number) => {
+      setCurrentPage(number);
+      console.log(currentPage);
 
-    paginate(number);
-  };
+
+      paginate(number);
+    },
+    [currentPage],
+  );
+
 
   return (
     <nav>
