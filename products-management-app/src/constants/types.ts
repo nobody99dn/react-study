@@ -34,8 +34,3 @@ export enum ImageVariants {
   Logo = 'logo',
   Icon = 'icon'
 }
-
-export enum ModalVariants {
-  Create = 'create',
-  Edit = 'delete'
-}
