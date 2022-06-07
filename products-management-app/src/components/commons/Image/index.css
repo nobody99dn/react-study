@@ -24,3 +24,10 @@
   position: absolute;
   right: 1.5rem;
 }
+
+.close-icon {
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+  top: 1rem;
+}
