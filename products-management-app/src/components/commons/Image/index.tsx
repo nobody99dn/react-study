@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './index.css';
+
 // Constants
 import { ImageVariants } from '@/constants/types';
 
@@ -9,8 +11,8 @@ interface ImageProps {
   height?: string;
   imageUrl: string;
   width?: string;
-  variants?: ImageVariants;
-  [props: string]: any;
+  variant?: ImageVariants;
+  onImageClick?: () => void;
 }
 
 export const Image: React.FC<ImageProps> = (
@@ -21,6 +23,7 @@ export const Image: React.FC<ImageProps> = (
     imageUrl,
     width,
     variant = ImageVariants.Default,
+    onImageClick
   }
 ) => (
   <img
@@ -35,5 +38,6 @@ export const Image: React.FC<ImageProps> = (
     alt={alt}
     src={imageUrl}
     style={{ width: width, height: height }}
+    onClick={onImageClick}
   />
 );
