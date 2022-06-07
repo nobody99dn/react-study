@@ -29,4 +29,12 @@
   border-radius: 5px;
   object-fit: cover;
   overflow: hidden;
+
+}
+
+.close-icon {
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+  top: 1rem;
 }
