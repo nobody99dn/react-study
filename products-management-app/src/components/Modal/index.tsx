@@ -1,16 +1,15 @@
 // Libraries
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 
 // Components
-import { Button } from '@components/commons/Button';
+import { Image } from '@components/commons/Image';
 
-// Constants
-import { ButtonVariants, ModalVariants } from '@/constants/types';
+// Assets
+import { closeIcon } from '@/assets';
 
 interface ModalProps {
   children: ReactNode;
   show: boolean;
-  variant: ModalVariants;
   handleClose(): void;
   handleSubmitForm(): void;
 }
@@ -18,15 +17,19 @@ interface ModalProps {
 export const Modal: React.FC<ModalProps> = ({
   children,
   show,
-  variant,
-  handleClose,
-  handleSubmitForm
+  handleClose
 }) => {
   const showHideClassName: string = show ? 'modal show' : 'modal hide';
 
   return (
     <div className={showHideClassName}>
       <div className='modal-dialog'>
+        <Image
+          alt={'close icon'}
+          className={'close-icon'}
+          imageUrl={closeIcon}
+          onImageClick={handleClose}
+        />
         <div className='modal-body'>
           {children}
         </div>

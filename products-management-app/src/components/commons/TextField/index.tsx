@@ -62,7 +62,7 @@ export const TextField: React.FC<TextFieldProps> = (
             alt={'icon'}
             className={'icon-left'}
             imageUrl={iconUrl}
-            variants={ImageVariants.Icon}
+            variant={ImageVariants.Icon}
             width={iconWidth}
             height={iconHeight}
           />
