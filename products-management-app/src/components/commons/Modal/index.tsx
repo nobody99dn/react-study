@@ -31,15 +31,8 @@ export const Modal: React.FC<ModalProps> = ({
           {children}
         </div>
         <div className='button-group'>
-          <Button handleButtonClick={handleClose}>Close</Button>
-          <Button
-            variant={ButtonVariants.Primary}
-            handleButtonClick={handleSubmitForm}
-          >
-            {variant}
-          </Button>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
