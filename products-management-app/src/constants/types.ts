@@ -26,3 +26,6 @@ export enum FormVariants {
   Create = 'Create',
   Edit = 'Edit'
 }
+
+export const PRODUCT_TYPES: string[] = [ 'Phone', 'Tablet', 'Laptop']
+
