@@ -1,13 +1,17 @@
 import React from 'react';
-import './assets/styles/reset.css';
+
+// Styles
 import './assets/styles/App.css';
+import './assets/styles/reset.css';
+import './assets/styles/variables.css';
+
+// Layouts
+import { Header } from './layouts/Header';
 
 function App() {
 
   return (
-    <p>
-      Product Management Application
-    </p>
+    <Header />
   );
 }
 
