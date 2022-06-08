@@ -30,3 +30,9 @@ Default.args = {
   isLoading: false,
   products: products
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  isLoading: true,
+  products: products
+};

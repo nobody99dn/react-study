@@ -1,17 +1,13 @@
 // Libraries
-import axios from 'axios'
+import { ERROR_MESSAGES } from '@/constants/messages';
+import axios from 'axios';
 
 export const get = async (url: string) => {
   try {
-    const response = await axios.get(url)
-  
-    console.log(response.data);
-    
+    const response = await axios.get(url);
+
     return response.data;
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-
+    return error;
   }
-}
+};

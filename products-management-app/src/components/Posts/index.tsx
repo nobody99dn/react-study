@@ -6,6 +6,7 @@ import Product from "@/models/product";
 
 // Components
 import { Card } from "@components/commons/Card";
+import { LoadingIndicator } from "@components/LoadingIndicator";
 
 // Styles
 import './index.css';
@@ -44,8 +45,17 @@ export const Posts: React.FC<PostsProps> = ({
   return (
     <div className="product-group">
       {isLoading
-        ? <p>Loading...</p>
-        : rows
+        ? <div className={'loading-container'}><LoadingIndicator /></div>
+        : products
+          .map(product => (
+            <Card
+              title={product.name}
+              type={product.type}
+              price={product.price}
+              imageUrl={product.imageUrl}
+              currency={Currencies.VND}
+            />
+          ))
       }
     </div>
   );
