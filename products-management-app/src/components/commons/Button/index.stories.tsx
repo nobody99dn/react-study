@@ -20,23 +20,23 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'Button'
+  title: 'Button'
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'Button',
+  title: 'Button',
   variant: ButtonVariants.Primary
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  children: 'Button',
+  title: 'Button',
   variant: ButtonVariants.Secondary
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  children: 'Button',
+  title: 'Button',
   isDisabled: true
 };

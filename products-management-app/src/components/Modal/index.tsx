@@ -1,5 +1,5 @@
 // Libraries
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 // Components
 import { Image } from '@components/commons/Image';
@@ -10,8 +10,7 @@ import { closeIcon } from '@/assets';
 interface ModalProps {
   children: ReactNode;
   show: boolean;
-  handleClose(): void;
-  handleSubmitForm(): void;
+  handleClose: () => void;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -19,7 +18,14 @@ export const Modal: React.FC<ModalProps> = ({
   show,
   handleClose
 }) => {
-  const showHideClassName: string = show ? 'modal show' : 'modal hide';
+
+  const showHideClassName: string = useMemo(() => {
+    if (show) {
+      return 'model show';
+    }
+
+    return 'model hide';
+  }, [show]);
 
   return (
     <div className={showHideClassName}>

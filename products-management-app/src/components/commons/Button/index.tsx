@@ -8,14 +8,14 @@ import { ButtonVariants } from '@/constants/types';
 import './index.css';
 
 interface ButtonProps {
-  children: ReactNode;
+  title: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
   handleButtonClick(): void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  children,
+  title,
   variant = ButtonVariants.Default,
   isDisabled = false,
   handleButtonClick
@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={handleButtonClick}
       disabled={isDisabled}
     >
-      {isLoading ? 'Loading...' : children}
+      {isLoading ? 'Loading...' : title}
     </button>
   );
 };
