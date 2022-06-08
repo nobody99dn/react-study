@@ -14,6 +14,7 @@ export enum VariantsTypes {
 
 interface TitleProps {
   children: ReactNode;
+  className?: string;
   color?: string;
   fw?: FwType,
   size?: string;
@@ -25,6 +26,7 @@ interface TitleProps {
 export const Title: React.FC<TitleProps> = (
   {
     children,
+    className,
     color,
     fw,
     size,
@@ -34,7 +36,7 @@ export const Title: React.FC<TitleProps> = (
   }
 ) => (
   <div
-    className={variant}
+    className={[variant, className].join(' ')}
     style={{
       fontSize: size,
       color: color,
