@@ -9,7 +9,7 @@ interface SelectProps {
   value?: string | number;
   label: string;
   options: string[];
-  onChange: (value: string) => void;
+  onChange: (value: any) => void;
 }
 
 export const Select: React.FC<SelectProps> = ({

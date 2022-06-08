@@ -13,7 +13,7 @@ import '@assets/styles/variables.css';
 import { searchIcon } from '@/assets';
 
 // Constants
-import { PRODUCT_TYPES, TextFieldVariants } from '@/constants/types';
+import { PRODUCT_TYPE_LIST, TextFieldVariants } from '@/constants/types';
 
 export default {
   title: 'Components/Select',
@@ -26,5 +26,5 @@ export const Default = Template.bind({});
 Default.args = {
   label: 'Select label',
   name: 'select',
-  options: PRODUCT_TYPES
+  options: PRODUCT_TYPE_LIST
 };
