@@ -70,7 +70,11 @@ export const Form: React.FC<FormProps> = ({
             onChange={handlePriceChange}
           />
         </fieldset>
-        <Button variant={ButtonVariants.Primary} handleButtonClick={() => { }}>{variants}</Button>
+        <Button
+          variant={ButtonVariants.Primary}
+          handleButtonClick={() => { }}
+          title={variants}
+        />
       </form>
     </div>
   );
