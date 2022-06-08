@@ -21,15 +21,13 @@ export const Posts: React.FC<PostsProps> = ({
   products,
   isLoading
 }) => {
-  const rows = [];
-
-  // Add 3 products into 1 row
-  for (let i = 0; i < products.length; i += 3) {
-    rows.push(
-      <div className="products-row">
-        {
-          products.slice(i, i + 3)
-            .map(product => (
+  return (
+    <div className="product-group">
+      {isLoading
+        ? <div className={'loading-container'}><LoadingIndicator /></div>
+        : products
+          .map(product => (
+            <div className="products-row">
               <Card
                 title={product.name}
                 type={product.type}
@@ -37,24 +35,7 @@ export const Posts: React.FC<PostsProps> = ({
                 imageUrl={product.imageUrl}
                 currency={Currencies.VND}
               />
-            ))
-        }
-      </div>);
-  }
-
-  return (
-    <div className="product-group">
-      {isLoading
-        ? <div className={'loading-container'}><LoadingIndicator /></div>
-        : products
-          .map(product => (
-            <Card
-              title={product.name}
-              type={product.type}
-              price={product.price}
-              imageUrl={product.imageUrl}
-              currency={Currencies.VND}
-            />
+            </div>
           ))
       }
     </div>
