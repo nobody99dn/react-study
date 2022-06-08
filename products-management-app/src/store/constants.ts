@@ -1,0 +1,3 @@
+const ADD_BOOKING = 'ADD_BOOKING';
+
+export { ADD_BOOKING }
