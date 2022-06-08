@@ -27,10 +27,26 @@ export enum FormVariants {
   Edit = 'Edit'
 }
 
-export const PRODUCT_TYPES: string[] = ['Phone', 'Tablet', 'Laptop'];
-
 export enum ImageVariants {
   Default = 'default',
   Logo = 'logo',
   Icon = 'icon'
 }
+export enum ProductTypes {
+  Phone = 'Phone',
+  Tablet = 'Tablet',
+  Laptop = 'Laptop'
+}
+
+export const PRODUCT_TYPE_LIST: ProductTypes[] = [
+  ProductTypes.Phone,
+  ProductTypes.Tablet,
+  ProductTypes.Laptop
+];
+
+export enum FilterOrderOptions {
+  Asc = 'Ascending',
+  Desc = 'Descending'
+}
+
+export const ORDER_OPTIONS = [FilterOrderOptions.Asc, FilterOrderOptions.Desc];

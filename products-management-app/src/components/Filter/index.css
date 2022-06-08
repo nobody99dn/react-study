@@ -1,0 +1,9 @@
+.filter-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.filter-item {
+  padding: 1rem 2rem;
+}
