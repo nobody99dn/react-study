@@ -1,4 +1,4 @@
-import { generateId } from "@/helpers/string";
+import { generateId } from '@/helpers/string';
 
 export default class Product {
   readonly id: string;
@@ -7,11 +7,11 @@ export default class Product {
   price: number;
   imageUrl: string;
 
-  constructor({name, type, price, imageUrl}: Product) {
+  constructor({ name, type, price, imageUrl }: Product) {
     this.id = generateId();
     this.name = name;
     this.type = type;
     this.price = price;
-    this.imageUrl = imageUrl
+    this.imageUrl = imageUrl;
   }
 }

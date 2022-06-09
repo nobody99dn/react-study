@@ -7,6 +7,7 @@ import { Image } from './index';
 // Styles
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
+import '@assets/styles/reset.css';
 import './index.css';
 
 // Images

@@ -1,4 +1,7 @@
+// Library
 import { ReactNode } from "react";
+
+// Constants
 import { FwType } from '@constants/types';
 
 // Styles

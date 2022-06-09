@@ -1,4 +1,4 @@
-// Libraries
+// Library
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
