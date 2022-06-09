@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback } from 'react';
 
 // Components
-import { Image } from "@/components/commons/Image/index";
+import { Image } from '@/components/commons/Image/index';
 
 // Styles
 import './index.css';
@@ -54,7 +54,7 @@ export const TextField: React.FC<TextFieldProps> = (
   );
 
   return (
-    <div className="field-wrapper">
+    <div className='field-wrapper'>
       {label && <label htmlFor={id}>{label}: </label>}
       <div className={'input-wrapper'}>
         {

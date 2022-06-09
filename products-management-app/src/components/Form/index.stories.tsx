@@ -9,7 +9,8 @@ import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 
 // Constants
-import { ButtonVariants, FormVariants } from '@constants/types';
+import { FormVariants } from '@constants/types';
+import { PRODUCT_TYPE_LIST } from '../../constants/types';
 
 export default {
   title: 'Components/Form',
@@ -21,6 +22,7 @@ const Template: ComponentStory<typeof Form> = (args) => <Form {...args} />;
 export const CreateForm = Template.bind({});
 CreateForm.args = {
   variants: FormVariants.Create,
+  options: PRODUCT_TYPE_LIST,
   handleSubmit() { },
   productItem: {
     id: '',
@@ -33,6 +35,7 @@ CreateForm.args = {
 export const EditForm = Template.bind({});
 EditForm.args = {
   variants: FormVariants.Edit,
+  options: PRODUCT_TYPE_LIST,
   handleSubmit() { },
   productItem: {
     id: 'product-01',

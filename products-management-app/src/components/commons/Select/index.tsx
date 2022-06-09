@@ -9,7 +9,7 @@ interface SelectProps {
   value?: string | number;
   label: string;
   options: string[];
-  onChange: (value: string) => void;
+  onChange: (value: any) => void;
 }
 
 export const Select: React.FC<SelectProps> = ({
@@ -29,7 +29,7 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <div className='select-wrapper'>
-      <label htmlFor="">{label}:</label>
+      <label htmlFor={id}>{label}:</label>
       <select className='select'
         name={name}
         id={id}

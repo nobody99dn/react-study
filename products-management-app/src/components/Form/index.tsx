@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './index.css';
 
 // Constants
-import { ButtonVariants, FormVariants, PRODUCT_TYPES } from '@/constants/types';
+import { ButtonVariants, FormVariants, ProductTypes } from '@/constants/types';
 
 // Components
 import { Title } from '@components/commons/Title';
@@ -14,18 +14,20 @@ import { Select } from '@components/commons/Select';
 
 interface FormProps {
   variants: FormVariants;
-  handleSubmit(): void;
+  options: ProductTypes[];
   productItem: {
     id: string,
     name: string,
     type: string,
     price: number;
   };
+  handleSubmit(): void;
 }
 
 export const Form: React.FC<FormProps> = ({
   variants,
   productItem,
+  options,
   handleSubmit
 }) => {
   const [product, setProduct] = useState(productItem);
@@ -56,7 +58,7 @@ export const Form: React.FC<FormProps> = ({
           />
           <Select
             label='Product type'
-            options={PRODUCT_TYPES}
+            options={options}
             value={product.type}
             onChange={handleTypeChange}
             name={'type'}
