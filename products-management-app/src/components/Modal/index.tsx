@@ -1,4 +1,4 @@
-// Libraries
+// Library
 import React, { ReactNode, useMemo } from 'react';
 
 // Components
@@ -27,8 +27,8 @@ export const Modal: React.FC<ModalProps> = ({
     <div className={showHideClassName}>
       <div className='modal-dialog'>
         <Image
-          alt={'close icon'}
-          className={'close-icon'}
+          alt='close icon'
+          className='close-icon'
           imageUrl={closeIcon}
           onImageClick={handleClose}
         />

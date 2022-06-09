@@ -10,6 +10,7 @@ import { FwType } from '@constants/types';
 import '@assets/styles/reset.css';
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
+import './index.css';
 
 export default {
   title: 'Components/Title',

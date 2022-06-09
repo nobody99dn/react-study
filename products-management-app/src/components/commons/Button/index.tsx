@@ -1,5 +1,5 @@
 // Libraries
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 
 // Constants
 import { ButtonVariants } from '@/constants/types';

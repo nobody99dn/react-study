@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// Library
+import React, { useState } from 'react';
 
 // Styles
 import './index.css';
@@ -59,7 +60,7 @@ export const Form: React.FC<FormProps> = ({
             options={PRODUCT_TYPES}
             value={product.type}
             onChange={handleTypeChange}
-            name={'type'}
+            name='type'
           />
           <TextField
             defaultValue={product.price}

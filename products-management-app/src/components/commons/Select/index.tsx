@@ -1,3 +1,4 @@
+// Library
 import React, { useCallback } from 'react';
 
 // Styles
@@ -29,7 +30,7 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <div className='select-wrapper'>
-      <label htmlFor="">{label}:</label>
+      <label htmlFor={id}>{label}:</label>
       <select className='select'
         name={name}
         id={id}

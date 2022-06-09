@@ -1,16 +1,16 @@
 // Library
-import React from "react";
+import React from 'react';
 
 // Model
-import Product from "@/models/product";
+import Product from '@/models/product';
 
 // Components
-import { Card } from "@components/commons/Card";
-import { LoadingIndicator } from "@components/LoadingIndicator";
+import { Card } from '@components/commons/Card';
+import { LoadingIndicator } from '@components/LoadingIndicator';
 
 // Styles
 import './index.css';
-import { Currencies } from "@/constants/types";
+import { Currencies } from '@/constants/types';
 
 type PostsProps = {
   products: Product[];
@@ -22,12 +22,12 @@ export const Posts: React.FC<PostsProps> = ({
   isLoading
 }) => {
   return (
-    <div className={'product-group'}>
+    <div className='product-group'>
       {(isLoading
-        && <div className={'loading-container'}><LoadingIndicator /></div>)
+        && <div className='loading-container'><LoadingIndicator /></div>)
         || products
           .map(product => (
-            <div className={'products-row'}>
+            <div className='products-row'>
               <Card
                 title={product.name}
                 type={product.type}

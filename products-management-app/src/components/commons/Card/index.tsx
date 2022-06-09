@@ -1,5 +1,5 @@
 // Libraries
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 
 // Components
 import { Image } from '@components/commons/Image';
@@ -31,41 +31,41 @@ export const Card: React.FC<CardProps> = ({
   title,
 }) => {
   return (
-    <div className="card">
+    <div className='card'>
       <Image
         imageUrl={imageUrl}
         alt={title}
-        className={'card-image'}
+        className='card-image'
       />
-      <div className="card-body">
-        <div className={'title-wrapper'}>
-          <Title className={'card-title'} p={'0.5rem 0.5rem 0 0.5rem'}>{title}</Title>
+      <div className='card-body'>
+        <div className='title-wrapper'>
+          <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>{title}</Title>
         </div>
         <Title
-          color={'var(--dark)'}
+          color='var(--dark)'
           variant={VariantsTypes.Subtitle}
           fs='italic'
-          p={'0 0.5rem'}
-          size={'16px'}
+          p='0 0.5rem'
+          size='16px'
         >
           {type}
         </Title>
         <Title
           variant={VariantsTypes.Subtitle}
           fw={FwType.Bold}
-          p={'0.5rem'}
+          p='0.5rem'
         >
           {currencyFormat(price)}
           <span> {currency}</span>
         </Title>
         <div className='button-wrapper'>
           <Button
-            title={'Edit'}
+            title='Edit'
             handleButtonClick={() => { }}
           />
           <Button
             variant={ButtonVariants.Secondary}
-            title={'Delete'}
+            title='Delete'
             handleButtonClick={() => { }}
           />
         </div>
