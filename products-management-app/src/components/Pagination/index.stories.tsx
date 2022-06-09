@@ -1,4 +1,4 @@
-// Libraries
+// Library
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
@@ -8,6 +8,7 @@ import { Pagination } from './index';
 import '@assets/styles/reset.css';
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
+import './index.css';
 
 export default {
   title: 'Components/Pagination',

@@ -1,5 +1,5 @@
-// Libraries
-import React, { ComponentStory, ComponentMeta } from '@storybook/react';
+// Library
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
 import { Form } from './index';
@@ -7,6 +7,8 @@ import { Form } from './index';
 // Styles
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
+import '@assets/styles/reset.css';
+import './index.css';
 
 // Constants
 import { FormVariants } from '@constants/types';

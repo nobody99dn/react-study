@@ -9,11 +9,8 @@ import '@assets/styles/reset.css';
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 
-// Icons
-import { searchIcon } from '@/assets';
-
 // Constants
-import { PRODUCT_TYPE_LIST, TextFieldVariants } from '@/constants/types';
+import { PRODUCT_TYPE_LIST } from '@/constants/types';
 
 export default {
   title: 'Components/Select',

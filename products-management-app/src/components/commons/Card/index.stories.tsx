@@ -7,12 +7,11 @@ import { Card } from './index';
 // Styles
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
+import '@assets/styles/reset.css';
 import './index.css';
 
 // Images
-import logo from '@assets/images/logo.png';
 import iPhoneImage from '@assets/images/iphone-13-promax-alpine-green-alpine-green-color.jpg';
-import deleteIcon from '@assets/images/icons/trash-fill.svg';
 import { Currencies } from '@/constants/types';
 
 export default {

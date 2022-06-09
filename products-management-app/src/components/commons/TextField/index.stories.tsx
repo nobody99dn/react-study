@@ -7,6 +7,7 @@ import { TextField } from './index';
 // Styles
 import '@assets/styles/reset.css';
 import '@assets/styles/App.css';
+import '@assets/styles/resetw.css';
 import '@assets/styles/variables.css';
 
 // Icons
