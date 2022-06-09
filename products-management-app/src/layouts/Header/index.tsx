@@ -10,13 +10,15 @@ import { logo } from '@assets/index';
 // Style
 import './index.css';
 
-interface HeaderProps { }
+interface HeaderProps {
+  href?: string;
+}
 
-export const Header: React.FC<HeaderProps> = () => (
+export const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
   <header className={'header'}>
     <div className={'container'}>
-      <a href="#">
-        <Image variants={ImageTypes.Logo} imageUrl={logo} alt={'Page logo'} />
+      <a href={href}>
+        <Image variants={ImageTypes.Logo} imageUrl={logo} alt='Page logo' />
       </a>
     </div>
   </header>
