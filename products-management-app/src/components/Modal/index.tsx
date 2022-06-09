@@ -19,13 +19,9 @@ export const Modal: React.FC<ModalProps> = ({
   handleClose
 }) => {
 
-  const showHideClassName: string = useMemo(() => {
-    if (show) {
-      return 'model show';
-    }
-
-    return 'model hide';
-  }, [show]);
+  const showHideClassName: string = useMemo(
+    () => show ? 'model show' : 'model hide'
+    , [show]);
 
   return (
     <div className={showHideClassName}>
