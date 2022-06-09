@@ -31,21 +31,16 @@ export const Form: React.FC<FormProps> = ({
   const [product, setProduct] = useState(productItem);
 
   const handleNameChange = (value: string | number): void => {
-    setProduct({ ...product, name: value });
+    setProduct({ ...product, name: value as string });
   };
 
   const handlePriceChange = (value: string | number): void => {
-    setProduct({ ...product, price: value });
+    setProduct({ ...product, price: value as number });
   };
 
   const handleTypeChange = (value: string | number): void => {
-    setProduct({ ...product, type: value });
+    setProduct({ ...product, type: value as string });
   };
-
-  useEffect(() => {
-    console.log(product);
-
-  }, [product]);
 
   return (
     <div className='form-wrapper'>
@@ -75,7 +70,11 @@ export const Form: React.FC<FormProps> = ({
             onChange={handlePriceChange}
           />
         </fieldset>
-        <Button variant={ButtonVariants.Primary}>{variants}</Button>
+        <Button
+          variant={ButtonVariants.Primary}
+          handleButtonClick={() => { }}
+          title={variants}
+        />
       </form>
     </div>
   );

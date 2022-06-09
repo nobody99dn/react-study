@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Image, ImageTypes } from './index';
+import { Image } from './index';
 
 // Styles
 import '@assets/styles/App.css';
@@ -13,6 +13,9 @@ import './index.css';
 import logo from '@assets/images/logo.png';
 import iPhoneImage from '@assets/images/iphone-13-promax-alpine-green-alpine-green-color.jpg';
 import deleteIcon from '@assets/images/icons/trash-fill.svg';
+
+// Constants
+import { ImageVariants } from '@/constants/types';
 
 export default {
   title: 'Components/Image',
@@ -32,12 +35,12 @@ export const Logo = Template.bind({});
 Logo.args = {
   imageUrl: logo,
   alt: 'Logo',
-  variant: ImageTypes.Logo
+  variant: ImageVariants.Logo
 };
 
 export const Icon = Template.bind({});
 Icon.args = {
   imageUrl: deleteIcon,
   alt: 'Delete icon',
-  variant: ImageTypes.Icon
+  variant: ImageVariants.Icon
 };
