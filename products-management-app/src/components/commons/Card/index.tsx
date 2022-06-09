@@ -12,6 +12,9 @@ import { ButtonVariants, Currencies, FwType } from '@/constants/types';
 // Helpers
 import { currencyFormat } from '@helpers/string';
 
+// Styles
+import './index.css';
+
 interface CardProps {
   type: string;
   currency: Currencies;
@@ -32,9 +35,12 @@ export const Card: React.FC<CardProps> = ({
       <Image
         imageUrl={imageUrl}
         alt={title}
+        className={'card-image'}
       />
       <div className="card-body">
-        <Title p={'0.5rem 0.5rem 0 0.5rem'}>{title}</Title>
+        <div className={'title-wrapper'}>
+          <Title className={'card-title'} p={'0.5rem 0.5rem 0 0.5rem'}>{title}</Title>
+        </div>
         <Title
           color={'var(--dark)'}
           variant={VariantsTypes.Subtitle}

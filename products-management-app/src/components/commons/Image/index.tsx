@@ -1,4 +1,8 @@
+// Library
 import React from 'react';
+
+// Styles
+import './index.css';
 
 export enum ImageTypes {
   Default = 'default',

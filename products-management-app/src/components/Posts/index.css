@@ -1,0 +1,9 @@
+.product-group {
+  display: block;
+  text-align: center;
+}
+
+.products-row {
+  display: inline-block;
+  padding: 2rem;
+}
