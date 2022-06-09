@@ -4,12 +4,6 @@ import React from 'react';
 // Styles
 import './index.css';
 
-export enum ImageTypes {
-  Default = 'default',
-  Logo = 'logo',
-  Icon = 'icon'
-}
-
 // Constants
 import { ImageVariants } from '@/constants/types';
 
