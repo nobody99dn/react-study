@@ -1,23 +1,56 @@
 // Constants
-import { ADD_BOOKING } from './constants';
+import {
+  ADD_PRODUCT,
+  DELETE_PRODUCT,
+  EDIT_PRODUCT,
+  FILTER_PRODUCTS
+} from './constants';
 
 export interface InitialState {
-  bookings: [];
+  // TODO: It will update to be Product[]
+  products: any[];
 }
 
 const initialState: InitialState = {
-  bookings: []
+  products: []
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: any): {} => {
   switch (action.type) {
-    case ADD_BOOKING:
-      console.log('state.bookings', state.bookings);
+    case ADD_PRODUCT:
+      // console.log(state, action);
+      return {
+        ...state,
+        products: [...state.products, action.payload]
+      };
+
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        products: [
+          ...state.products.filter((product) => product !== action.payload)
+        ]
+      };
+
+    case EDIT_PRODUCT: {
+      const productIndex: number = state.products.findIndex(
+        (product) => product.id === action.payload.id
+      );
+
+      state.products[productIndex] = action.payload;
 
       return {
         ...state,
-        bookings: [...state.bookings, action.payload]
+        products: state.products
       };
+    }
+
+    case FILTER_PRODUCTS:
+      return {
+        ...state,
+        products: [...state.products]
+      };
+
     default:
       return state;
   }
