@@ -17,11 +17,11 @@ const Main = () => (
       />
     </section>
     <section className={'filter-container'}>
-      TODO: Filter container...
+      // TODO: Filter container...
     </section>
 
     <section className={'posts-container'}>
-      TODO: Posts container...
+      // TODO: Posts container...
     </section>
   </main>
 );
