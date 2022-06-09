@@ -59,8 +59,15 @@ export const Card: React.FC<CardProps> = ({
           <span> {currency}</span>
         </Title>
         <div className='button-wrapper'>
-          <Button>Edit</Button>
-          <Button variant={ButtonVariants.Secondary}>Delete</Button>
+          <Button
+            title={'Edit'}
+            handleButtonClick={() => { }}
+          />
+          <Button
+            variant={ButtonVariants.Secondary}
+            title={'Delete'}
+            handleButtonClick={() => { }}
+          />
         </div>
       </div>
     </div >
