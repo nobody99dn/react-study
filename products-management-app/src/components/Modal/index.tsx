@@ -7,6 +7,9 @@ import { Image } from '@components/commons/Image';
 // Assets
 import { closeIcon } from '@assets/index';
 
+// Style
+import './index.css';
+
 interface ModalProps {
   children: ReactNode;
   show: boolean;
@@ -18,13 +21,8 @@ export const Modal: React.FC<ModalProps> = ({
   show,
   handleClose
 }) => {
-
-  const showHideClassName: string = useMemo(
-    () => show ? 'model show' : 'model hide'
-    , [show]);
-
-  return (
-    <div className={showHideClassName}>
+  return show ? (
+    <div className='modal'>
       <div className='modal-dialog'>
         <Image
           alt='close icon'
@@ -39,5 +37,5 @@ export const Modal: React.FC<ModalProps> = ({
         </div>
       </div>
     </div >
-  );
+  ) : null;
 };
