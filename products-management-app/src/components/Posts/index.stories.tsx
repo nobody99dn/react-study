@@ -11,13 +11,13 @@ import '@assets/styles/variables.css';
 import './index.css';
 
 // Helper
-import { get } from '@/helpers/clientRequests';
+import { get } from '@helpers/clientRequests';
 
 // Constant
-import { URL_PRODUCTS } from '@/constants/api';
+import { URL_PRODUCTS } from '@constants/api';
 
 // Model
-import Product from '@/models/product';
+import Product from '@models/product';
 
 const products: Product[] = await get(URL_PRODUCTS);
 

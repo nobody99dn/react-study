@@ -1,5 +1,5 @@
 // Libraries
-import react from 'React';
+import React from 'react';
 
 // Component 
 import { Image } from '@components/commons/Image';
@@ -11,7 +11,7 @@ import { logo } from '@assets/index';
 import './index.css';
 
 // Constant
-import { ImageVariants } from '@/constants/types';
+import { ImageVariants } from '@constants/types';
 
 interface HeaderProps {
   href?: string;
@@ -19,8 +19,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
   <header className='header'>
-    <div className='container'>
-      <a href={href}>
+    <div className='container header-content'>
+      <a className='logo-link' href={href}>
         <Image variant={ImageVariants.Logo} imageUrl={logo} alt='Page logo' />
       </a>
     </div>

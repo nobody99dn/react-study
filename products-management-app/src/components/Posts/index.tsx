@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Model
-import Product from '@/models/product';
+import Product from '@models/product';
 
 // Components
 import { Card } from '@components/commons/Card';
@@ -10,7 +10,7 @@ import { LoadingIndicator } from '@components/LoadingIndicator';
 
 // Styles
 import './index.css';
-import { Currencies } from '@/constants/types';
+import { Currencies } from '@constants/types';
 
 type PostsProps = {
   products: Product[];

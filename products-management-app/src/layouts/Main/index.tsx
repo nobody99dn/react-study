@@ -3,7 +3,7 @@ import React from 'react';
 // Styles
 import "./index.css";
 import { TextField } from '@components/commons/TextField';
-import { searchIcon } from '@/assets';
+import { searchIcon } from '@assets/index';
 
 const Main = () => (
   <main className={'main container'}>
@@ -17,11 +17,11 @@ const Main = () => (
       />
     </section>
     <section className={'filter-container'}>
-      // TODO: Filter container...
+      {/* // TODO: Filter container... */}
     </section>
 
     <section className={'posts-container'}>
-      // TODO: Posts container...
+      {/* // TODO: Posts container... */}
     </section>
   </main>
 );

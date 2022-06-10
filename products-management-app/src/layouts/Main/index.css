@@ -3,8 +3,9 @@
   height: 100vh;
 }
 
-.search-container, .filter-container, .posts-container {
-  display: flex;
-  justify-content: center;
+.search-container,
+.filter-container,
+.posts-container {
+  display: block;
   padding: 1rem 1.5rem;
 }

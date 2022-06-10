@@ -10,7 +10,7 @@ import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 
 // Constants
-import { PRODUCT_TYPE_LIST, ORDER_OPTIONS } from '@/constants/types';
+import { PRODUCT_TYPE_LIST, ORDER_OPTIONS } from '@constants/types';
 
 export default {
   title: 'Components/Filter',

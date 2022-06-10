@@ -1,5 +1,5 @@
 // Constants
-import Product from '@/models/product';
+import Product from '@models/product';
 import { ACTIONS } from './constants';
 
 export interface InitialState {

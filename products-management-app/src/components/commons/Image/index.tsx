@@ -5,7 +5,7 @@ import React from 'react';
 import './index.css';
 
 // Constants
-import { ImageVariants } from '@/constants/types';
+import { ImageVariants } from '@constants/types';
 
 interface ImageProps {
   alt: string;

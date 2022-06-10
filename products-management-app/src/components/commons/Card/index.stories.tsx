@@ -12,7 +12,7 @@ import './index.css';
 
 // Images
 import iPhoneImage from '@assets/images/iphone-13-promax-alpine-green-alpine-green-color.jpg';
-import { Currencies } from '@/constants/types';
+import { Currencies } from '@constants/types';
 
 export default {
   title: 'Components/Card',

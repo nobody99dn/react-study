@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import './index.css';
 
 // Constants
-import { ButtonVariants, FormVariants, ProductTypes } from '@/constants/types';
+import { ButtonVariants, FormVariants, ProductTypes } from '@constants/types';
 
 // Components
 import { Title } from '@components/commons/Title';
@@ -15,7 +15,7 @@ import { Select } from '@components/commons/Select';
 
 interface FormProps {
   variants: FormVariants;
-  options: ProductTypes[];
+  options?: ProductTypes[];
   productItem: {
     id: string,
     name: string,
@@ -28,7 +28,7 @@ interface FormProps {
 export const Form: React.FC<FormProps> = ({
   variants,
   productItem,
-  options,
+  options = [],
   handleSubmit
 }) => {
   const [product, setProduct] = useState(productItem);
