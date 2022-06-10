@@ -4,6 +4,7 @@ import React from 'react';
 import "./index.css";
 import { TextField } from '@components/commons/TextField';
 import { searchIcon } from '@assets/index';
+import { Posts } from '@components/Posts/index';
 
 const Main = () => (
   <main className={'main container'}>
@@ -20,8 +21,8 @@ const Main = () => (
       {/* // TODO: Filter container... */}
     </section>
 
-    <section className={'posts-container'}>
-      {/* // TODO: Posts container... */}
+    <section className='posts-container'>
+      <Posts />
     </section>
   </main>
 );
