@@ -1,5 +1,5 @@
 // Library
-import React, { ReactNode, useMemo } from 'react';
+import React, { ReactNode } from 'react';
 
 // Components
 import { Image } from '@components/commons/Image';
