@@ -1,6 +1,12 @@
-const ADD_PRODUCT = 'ADD_PRODUCT';
-const DELETE_PRODUCT = 'DELETE_PRODUCT';
-const EDIT_PRODUCT = 'EDIT_PRODUCT';
-const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
+const ACTIONS = {
+  CALL_API: 'call-api',
+  SUCCESS: 'success',
+  ERROR: 'error',
+  GET_PRODUCTS: 'get_products',
+  ADD_PRODUCT: 'add-product',
+  DELETE_PRODUCT: 'delete-product',
+  EDIT_PRODUCT: 'edit-product',
+  FILTER_PRODUCTS: 'filter-product'
+};
 
-export { ADD_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT, FILTER_PRODUCTS };
+export { ACTIONS };

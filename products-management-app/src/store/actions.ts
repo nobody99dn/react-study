@@ -1,24 +1,46 @@
 // Constants
-import { ADD_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT } from './constants';
+import { ACTIONS } from './constants';
+
+const callApi = () => ({
+  type: ACTIONS.CALL_API
+});
+
+const error = (payload: any) => ({
+  type: ACTIONS.ERROR,
+  payload
+});
+
+const getProducts = (payload: any) => ({
+  type: ACTIONS.GET_PRODUCTS,
+  payload
+});
 
 const addProduct = (payload: any) => ({
-  type: ADD_PRODUCT,
+  type: ACTIONS.ADD_PRODUCT,
   payload
 });
 
 const deleteProduct = (payload: any) => ({
-  type: DELETE_PRODUCT,
+  type: ACTIONS.DELETE_PRODUCT,
   payload
 });
 
 const editProduct = (payload: any) => ({
-  type: EDIT_PRODUCT,
+  type: ACTIONS.EDIT_PRODUCT,
   payload
 });
 
 const filterProducts = (payload: any) => ({
-  type: ADD_PRODUCT,
+  type: ACTIONS.ADD_PRODUCT,
   payload
 });
 
-export { addProduct, deleteProduct, editProduct, filterProducts };
+export {
+  getProducts,
+  addProduct,
+  deleteProduct,
+  editProduct,
+  filterProducts,
+  callApi,
+  error
+};

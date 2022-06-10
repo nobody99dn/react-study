@@ -17,7 +17,7 @@ interface HeaderProps {
   href?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
+const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
   <header className={'header'}>
     <div className={'container'}>
       <a href={href}>
@@ -26,3 +26,5 @@ export const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
     </div>
   </header>
 );
+
+export default Header;

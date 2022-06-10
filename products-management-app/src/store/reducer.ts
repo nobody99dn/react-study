@@ -1,38 +1,58 @@
 // Constants
-import {
-  ADD_PRODUCT,
-  DELETE_PRODUCT,
-  EDIT_PRODUCT,
-  FILTER_PRODUCTS
-} from './constants';
+import { ACTIONS } from './constants';
 
 export interface InitialState {
   // TODO: It will update to be Product[]
   products: any[];
+  loading: boolean;
+  error: string | null;
 }
 
 const initialState: InitialState = {
-  products: []
+  products: [],
+  loading: false,
+  error: null
 };
 
 const reducer = (state = initialState, action: any): {} => {
   switch (action.type) {
-    case ADD_PRODUCT:
-      // console.log(state, action);
+    case ACTIONS.CALL_API:
       return {
         ...state,
-        products: [...state.products, action.payload]
+        loading: true
       };
 
-    case DELETE_PRODUCT:
+    case ACTIONS.ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false
+      };
+
+    case ACTIONS.GET_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+        loading: false
+      };
+
+    case ACTIONS.ADD_PRODUCT:
+      return {
+        ...state,
+        products: [...state.products, action.payload],
+        loading: false
+      };
+
+    case ACTIONS.DELETE_PRODUCT:
       return {
         ...state,
         products: [
           ...state.products.filter((product) => product !== action.payload)
-        ]
+        ],
+        loading: false
       };
 
-    case EDIT_PRODUCT: {
+    case ACTIONS.EDIT_PRODUCT: {
       const productIndex: number = state.products.findIndex(
         (product) => product.id === action.payload.id
       );
@@ -41,14 +61,16 @@ const reducer = (state = initialState, action: any): {} => {
 
       return {
         ...state,
-        products: state.products
+        products: state.products,
+        loading: false
       };
     }
 
-    case FILTER_PRODUCTS:
+    case ACTIONS.FILTER_PRODUCTS:
       return {
         ...state,
-        products: [...state.products]
+        products: [...state.products],
+        loading: false
       };
 
     default:

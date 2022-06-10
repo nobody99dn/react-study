@@ -1,5 +1,5 @@
 // Libraries
-import React, { ReactNode, useReducer } from 'react';
+import React, { ReactNode, useReducer, useContext } from 'react';
 
 // Reducer
 import { InitialState } from './reducer';
@@ -12,7 +12,7 @@ interface ContextProps {
 const Store = React.createContext({} as ContextProps);
 Store.displayName = 'Store';
 
-const useStore = () => React.useContext(Store);
+const useStore = () => useContext(Store);
 
 interface StoreProviderProps {
   children: ReactNode;
