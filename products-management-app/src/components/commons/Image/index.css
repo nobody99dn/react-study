@@ -7,7 +7,6 @@
 /* - ---------------------------------------------- */
 .image-logo {
   background-repeat: no-repeat;
-  display: block;
   width: 6.25rem;
   text-indent: -9999px;
 }
@@ -17,11 +16,6 @@
 .image-icon {
   background-repeat: no-repeat;
   display: block;
-}
-
-.icon-left {
-  position: absolute;
-  right: 1.5rem;
 }
 
 .icon-left {
@@ -42,5 +36,4 @@
   border-radius: 5px;
   object-fit: cover;
   overflow: hidden;
-
 }

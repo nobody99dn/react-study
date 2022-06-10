@@ -5,7 +5,7 @@ import React, { ReactNode, useMemo } from 'react';
 import { Image } from '@components/commons/Image';
 
 // Assets
-import { closeIcon } from '@/assets';
+import { closeIcon } from '@assets/index';
 
 interface ModalProps {
   children: ReactNode;

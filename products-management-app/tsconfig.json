@@ -18,13 +18,13 @@
     "baseUrl": "./src",
     "types": ["node"],
     "paths": {
-      "@/*": ["./*"],
       "@constants/*": ["./constants/*"],
       "@components/*": ["./components/*"],
       "@layouts/*": ["./layouts/*"],
       "@services/*": ["./services/*"],
       "@assets/*": ["./assets/*"],
-      "@helpers/*": ["./helpers/*"]
+      "@helpers/*": ["./helpers/*"],
+      "@models/*": ["./models/*"]
     },
   },
   "include": ["src"],

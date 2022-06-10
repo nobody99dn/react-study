@@ -2,11 +2,11 @@
 import React, { useCallback } from 'react';
 
 // Components
-import { Image } from '@/components/commons/Image/index';
+import { Image } from '@components/commons/Image/index';
 
 // Styles
 import './index.css';
-import { ImageVariants, TextFieldVariants } from '@/constants/types';
+import { ImageVariants, TextFieldVariants } from '@constants/types';
 
 interface TextFieldProps {
   id?: string;

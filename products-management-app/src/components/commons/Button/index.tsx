@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 // Constants
-import { ButtonVariants } from '@/constants/types';
+import { ButtonVariants } from '@constants/types';
 
 // Style
 import './index.css';

@@ -1,7 +1,13 @@
-// Libraries
+// Library
 import React, { useState, useCallback } from 'react';
-import { FilterOrderOptions, ProductTypes } from '@/constants/types';
-import { Select } from '../commons/Select';
+
+// Constants
+import { FilterOrderOptions, ProductTypes } from '@constants/types';
+
+// Components
+import { Select } from '@components/commons/Select';
+
+// Styles
 import './index.css';
 
 type FilterProps = {

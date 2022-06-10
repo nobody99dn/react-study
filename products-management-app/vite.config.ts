@@ -30,6 +30,10 @@ export default defineConfig({
       {
         find: '@helpers',
         replacement: path.resolve(__dirname, 'src/helpers')
+      },
+      {
+        find: '@models',
+        replacement: path.resolve(__dirname, 'src/models')
       }
     ]
   }

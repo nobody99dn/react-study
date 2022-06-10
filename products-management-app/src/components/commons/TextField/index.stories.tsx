@@ -7,14 +7,14 @@ import { TextField } from './index';
 // Styles
 import '@assets/styles/reset.css';
 import '@assets/styles/App.css';
-import '@assets/styles/resetw.css';
+import '@assets/styles/reset.css';
 import '@assets/styles/variables.css';
 
 // Icons
-import { searchIcon } from '@/assets';
+import { searchIcon } from '@assets/index';
 
 // Constants
-import { TextFieldVariants } from '@/constants/types';
+import { TextFieldVariants } from '@constants/types';
 
 export default {
   title: 'Components/TextField',

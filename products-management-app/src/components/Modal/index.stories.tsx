@@ -11,7 +11,7 @@ import '@assets/styles/variables.css';
 import './index.css';
 
 // Constant
-import { FormVariants } from '@/constants/types';
+import { FormVariants } from '@constants/types';
 
 export default {
   title: 'Components/Modal',

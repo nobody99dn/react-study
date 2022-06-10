@@ -1,4 +1,4 @@
-import { generateId } from '@/helpers/string';
+import { generateId } from '@helpers/string';
 
 export default class Product {
   readonly id: string;

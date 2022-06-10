@@ -7,7 +7,7 @@ import { Title, VariantsTypes } from '@components/commons/Title';
 import { Button } from '@components/commons/Button';
 
 // Constants
-import { ButtonVariants, Currencies, FwType } from '@/constants/types';
+import { ButtonVariants, Currencies, FwType } from '@constants/types';
 
 // Helpers
 import { currencyFormat } from '@helpers/string';
