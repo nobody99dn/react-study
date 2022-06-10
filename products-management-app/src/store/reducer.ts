@@ -1,9 +1,9 @@
 // Constants
+import Product from '@/models/product';
 import { ACTIONS } from './constants';
 
 export interface InitialState {
-  // TODO: It will update to be Product[]
-  products: any[];
+  products: Product[];
   loading: boolean;
   error: string | null;
 }

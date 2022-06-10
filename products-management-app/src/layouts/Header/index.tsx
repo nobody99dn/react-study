@@ -18,8 +18,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
-  <header className={'header'}>
-    <div className={'container'}>
+  <header className='header'>
+    <div className='container'>
       <a href={href}>
         <Image variant={ImageVariants.Logo} imageUrl={logo} alt='Page logo' />
       </a>
