@@ -17,12 +17,14 @@ interface HeaderProps {
   href?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
-  <header className={'header'}>
-    <div className={'container'}>
+const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
+  <header className='header'>
+    <div className='container'>
       <a href={href}>
         <Image variant={ImageVariants.Logo} imageUrl={logo} alt='Page logo' />
       </a>
     </div>
   </header>
 );
+
+export default Header;

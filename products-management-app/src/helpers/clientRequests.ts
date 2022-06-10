@@ -1,13 +1,14 @@
-// Libraries
-import { ERROR_MESSAGES } from '@/constants/messages';
+// Library
 import axios from 'axios';
 
-export const get = async (url: string) => {
+export const get = async (url: string): Promise<any> => {
   try {
-    const response = await axios.get(url);
+    const res = await axios.get(url);
 
-    return response.data;
+    return res.data;
   } catch (error) {
-    return error;
+    if (error instanceof Error) {
+      return error;
+    }
   }
 };
