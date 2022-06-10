@@ -17,7 +17,7 @@ const Main = () => (
         iconWidth='2rem'
       />
     </div>
-    <div className='filter-container'>
+    <div className='sidebar'>
       {/* // TODO: Filter container... */}
     </div>
 
