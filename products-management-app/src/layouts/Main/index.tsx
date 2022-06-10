@@ -7,24 +7,24 @@ import { searchIcon } from '@assets/index';
 import { Posts } from '@components/Posts/index';
 
 const Main = () => (
-  <main className={'main container'}>
-    <section className={'search-container'}>
+  <main className='main'>
+    <div className='search-container container'>
       {/* SEARCHING AREA */}
       <TextField
-        placeholder={'Searching...'}
+        placeholder='Searching...'
         iconUrl={searchIcon}
         height='4.25rem'
         iconWidth='2rem'
       />
-    </section>
-    <section className={'filter-container'}>
+    </div>
+    <div className='filter-container'>
       {/* // TODO: Filter container... */}
-    </section>
+    </div>
 
-    <section className='posts-container'>
+    <div className='posts-container'>
       <Posts />
-    </section>
-  </main>
+    </div>
+  </main >
 );
 
 export default Main;

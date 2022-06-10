@@ -9,3 +9,12 @@
   display: block;
   padding: 1rem 1.5rem;
 }
+
+.posts-container {
+  margin-left: 15%;
+}
+
+.filter-container {
+  position: fixed;
+  width: 15%;
+}
