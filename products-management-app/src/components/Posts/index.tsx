@@ -73,8 +73,12 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
           </Modal>
           : products
             .map((product: Product) => (
-              <div className='products-row'>
+              <div
+                className='products-row'
+                key={product.id}
+              >
                 <Card
+
                   title={product.name}
                   type={product.type}
                   price={product.price}
