@@ -78,11 +78,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
                 key={product.id}
               >
                 <Card
-
-                  title={product.name}
-                  type={product.type}
-                  price={product.price}
-                  imageUrl={product.imageUrl}
+                  product={product}
                   currency={Currencies.VND}
                 />
               </div>

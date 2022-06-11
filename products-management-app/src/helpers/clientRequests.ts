@@ -1,7 +1,7 @@
 // Library
 import axios from 'axios';
 
-export const get = async (url: string): Promise<any> => {
+const get = async (url: string): Promise<any> => {
   try {
     const res = await axios.get(url);
 
@@ -12,3 +12,17 @@ export const get = async (url: string): Promise<any> => {
     }
   }
 };
+
+const remove = async (url: string): Promise<any> => {
+  try {
+    const res = await axios.delete(url);
+
+    return res.data;
+  } catch (error) {
+    if (error instanceof Error) {
+      return error;
+    }
+  }
+};
+
+export { get, remove };
