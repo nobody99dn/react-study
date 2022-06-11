@@ -71,22 +71,15 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
           >
             {errorMessage}
           </Modal>
-          :
-          products.length &&
-          products.map((product: Product) => (
-            <div
-              className='products-row'
-              key={product.id}
-            >
-              <Card
-                title={product.name}
-                type={product.type}
-                price={product.price}
-                imageUrl={product.imageUrl}
-                currency={Currencies.VND}
-              />
-            </div>
-          ))
+          : products
+            .map((product: Product) => (
+              <div className='products-row'>
+                <Card
+                  product={product}
+                  currency={Currencies.VND}
+                />
+              </div>
+            ))
       }
     </div>
   );
