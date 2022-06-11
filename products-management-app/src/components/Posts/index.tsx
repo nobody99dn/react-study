@@ -75,10 +75,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
             .map((product: Product) => (
               <div className='products-row'>
                 <Card
-                  title={product.name}
-                  type={product.type}
-                  price={product.price}
-                  imageUrl={product.imageUrl}
+                  product={product}
                   currency={Currencies.VND}
                 />
               </div>

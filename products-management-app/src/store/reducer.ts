@@ -21,6 +21,7 @@ const reducer = (state = initialState, action: any): {} => {
     case ACTIONS.CALL_API:
       return {
         ...state,
+        error: null,
         loading: true
       };
 
@@ -35,14 +36,16 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: action.payload,
-        loading: false
+        loading: false,
+        error: null
       };
 
     case ACTIONS.ADD_PRODUCT:
       return {
         ...state,
         products: [...state.products, action.payload],
-        loading: false
+        loading: false,
+        error: null
       };
 
     case ACTIONS.DELETE_PRODUCT:
@@ -51,7 +54,8 @@ const reducer = (state = initialState, action: any): {} => {
         products: [
           ...state.products.filter((product) => product !== action.payload)
         ],
-        loading: false
+        loading: false,
+        error: null
       };
 
     case ACTIONS.EDIT_PRODUCT: {
@@ -64,7 +68,8 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: state.products,
-        loading: false
+        loading: false,
+        error: null
       };
     }
 
@@ -72,7 +77,8 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: [...state.products],
-        loading: false
+        loading: false,
+        error: null
       };
 
     default:

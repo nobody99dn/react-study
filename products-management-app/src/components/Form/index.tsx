@@ -19,10 +19,10 @@ import { Text, VariantsTypes } from '@components/commons/Text';
 import { Product } from 'type/product';
 
 // Store
-import { addProduct, callApi, error as errorAction, useStore } from '@store/index';
+import { addProduct, editProduct, error as errorAction, useStore } from '@store/index';
 
 // Service
-import { addNewProduct } from '@services/product.service';
+import { addNewProduct, updateProduct } from '@services/product.service';
 
 interface FormProps {
   variants: FormVariants;
@@ -61,22 +61,28 @@ export const Form: React.FC<FormProps> = ({
 
   const handleSubmitForm = async (event: FormEvent) => {
     event.preventDefault();
-    if (!productItem.id) {
-      try {
-        dispatch(callApi());
 
+    try {
+      if (!productItem.id) {
         const newProduct: Product = await addNewProduct(product);
 
-        if (newProduct instanceof Error) {
+        if (!newProduct) {
           throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
         }
 
         dispatch(addProduct(newProduct));
-      } catch (error) {
-        if (error instanceof Error) {
-          dispatch(errorAction(error.message));
-          return;
+      } else {
+        const updatedProduct: Product = await updateProduct(product);
+        if (!updatedProduct) {
+          throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
         }
+
+        dispatch(editProduct(product));
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(errorAction(error.message));
+        return;
       }
     }
 

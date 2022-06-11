@@ -2,7 +2,7 @@
 import { URL_PRODUCTS } from '@constants/api';
 
 // Helper
-import { get, post } from '@helpers/clientRequests';
+import { get, post, update } from '@helpers/clientRequests';
 
 // Type
 import { Product } from 'type/product';
@@ -15,4 +15,8 @@ async function addNewProduct(product: Product): Promise<Product> {
   return await post(URL_PRODUCTS, product);
 }
 
-export { getAllProduct, addNewProduct };
+async function updateProduct(product: Product): Promise<Product> {
+  return await update(`${URL_PRODUCTS}/${product.id}`, product);
+}
+
+export { getAllProduct, addNewProduct, updateProduct };
