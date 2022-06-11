@@ -1,7 +1,7 @@
 // Library
 import React, { useCallback } from 'react';
 
-// Styles
+// Style
 import './index.css';
 
 interface SelectProps {
@@ -37,7 +37,7 @@ export const Select: React.FC<SelectProps> = ({
         value={value}
         onChange={handleChange}
       >
-        <option value="">Select:</option>
+        <option value="">Select</option>
         {options.map(option => (
           <option value={option}>{option}</option>
         ))}

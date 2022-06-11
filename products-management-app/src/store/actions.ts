@@ -1,6 +1,9 @@
 // Constants
 import { ACTIONS } from './constants';
 
+// Type
+import { Product } from 'type/product';
+
 const error = (payload: any) => ({
   type: ACTIONS.ERROR,
   payload
@@ -15,12 +18,12 @@ const getProductsSuccess = (payload: any) => ({
   payload
 });
 
-const getProductsFailed = (payload: any) => ({
+const getProductsFailed = (payload: Product[]) => ({
   type: ACTIONS.GET_PRODUCTS_FAILED,
   payload
 });
 
-const addProduct = (payload: any) => ({
+const addProduct = (payload: Product) => ({
   type: ACTIONS.ADD_PRODUCT,
   payload
 });

@@ -1,7 +1,7 @@
 // Library
 import axios from 'axios';
 
-export const get = async (url: string): Promise<any> => {
+const get = async (url: string): Promise<any> => {
   try {
     const res = await axios.get(url);
 
@@ -12,3 +12,17 @@ export const get = async (url: string): Promise<any> => {
     }
   }
 };
+
+const post = async (url: string, data: any): Promise<any> => {
+  try {
+    const res = await axios.post(url, data);
+
+    return res.data;
+  } catch (error) {
+    if (error instanceof Error) {
+      return error;
+    }
+  }
+};
+
+export { get, post };

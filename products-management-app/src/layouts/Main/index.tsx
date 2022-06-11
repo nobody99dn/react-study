@@ -1,10 +1,14 @@
+// Library
 import React from 'react';
 
 // Styles
 import "./index.css";
-import { TextField } from '@components/commons/TextField';
 import { searchIcon } from '@assets/index';
+
+// Components
+import { TextField } from '@components/commons/TextField';
 import { Posts } from '@components/Posts/index';
+import { SideBar } from '../../components/SideBar/index';
 
 const Main = () => (
   <main className='main'>
@@ -17,9 +21,7 @@ const Main = () => (
         iconWidth='2rem'
       />
     </div>
-    <div className='sidebar'>
-      {/* // TODO: Filter container... */}
-    </div>
+    <SideBar />
 
     <div className='posts-container'>
       <Posts />
