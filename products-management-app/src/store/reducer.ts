@@ -49,7 +49,7 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: [
-          ...state.products.filter((product) => product !== action.payload)
+          ...state.products.filter((product) => product.id !== action.payload)
         ],
         isLoading: false
       };

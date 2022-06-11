@@ -2,7 +2,7 @@
 import { URL_PRODUCTS } from '@constants/api';
 
 // Helper
-import { get, post } from '@helpers/clientRequests';
+import { get, post, remove } from '@helpers/clientRequests';
 
 // Type
 import { Product } from 'type/product';
@@ -15,4 +15,8 @@ async function addNewProduct(product: Product): Promise<Product> {
   return await post(URL_PRODUCTS, product);
 }
 
-export { getAllProduct, addNewProduct };
+async function removeProduct(id: string): Promise<Product> {
+  return await remove(`${URL_PRODUCTS}/${id}`);
+}
+
+export { removeProduct, getAllProduct, addNewProduct };
