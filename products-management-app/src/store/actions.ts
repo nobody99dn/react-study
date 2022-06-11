@@ -1,6 +1,9 @@
 // Constants
 import { ACTIONS } from './constants';
 
+// Type
+import { Product } from 'type/product';
+
 const callApi = () => ({
   type: ACTIONS.CALL_API
 });
@@ -15,7 +18,7 @@ const getProducts = (payload: any) => ({
   payload
 });
 
-const addProduct = (payload: any) => ({
+const addProduct = (payload: Product) => ({
   type: ACTIONS.ADD_PRODUCT,
   payload
 });

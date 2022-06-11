@@ -11,4 +11,5 @@
   text-indent: 0.25rem;
   background: var(--light-gray);
   border: 1px solid var(--light-gray);
+  margin-top: 0.25rem;
 }

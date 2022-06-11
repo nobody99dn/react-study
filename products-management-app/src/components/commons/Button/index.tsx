@@ -11,7 +11,7 @@ interface ButtonProps {
   title: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
-  handleButtonClick(): void;
+  handleButtonClick?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({

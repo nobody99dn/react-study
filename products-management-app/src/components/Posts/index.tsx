@@ -19,8 +19,8 @@ import { get } from '@helpers/clientRequests';
 import { URL_PRODUCTS } from '@constants/api';
 import { ERROR_MESSAGES } from '@constants/messages';
 
-// Models
-import Product from '@models/product';
+// Types
+import { Product } from 'type/product';
 
 // Store
 import { callApi, getProducts, useStore, error as errorAction } from '@store/index';

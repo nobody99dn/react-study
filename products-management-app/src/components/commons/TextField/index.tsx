@@ -6,6 +6,8 @@ import { Image } from '@components/commons/Image/index';
 
 // Styles
 import './index.css';
+
+// Constant
 import { ImageVariants, TextFieldVariants } from '@constants/types';
 
 interface TextFieldProps {
