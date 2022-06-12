@@ -1,21 +1,17 @@
 import React from 'react';
 
-// Styles
-import "./index.css";
-import { TextField } from '@components/commons/TextField';
-import { searchIcon } from '@assets/index';
+// Style
+import './index.css';
+
+// Components
 import { Posts } from '@components/Posts/index';
+import { Search } from '@components/Search';
 
 const Main = () => (
   <main className='main'>
     <div className='search-container container'>
       {/* SEARCHING AREA */}
-      <TextField
-        placeholder='Searching...'
-        iconUrl={searchIcon}
-        height='4.25rem'
-        iconWidth='2rem'
-      />
+      <Search />
     </div>
     <div className='sidebar'>
       {/* // TODO: Filter container... */}

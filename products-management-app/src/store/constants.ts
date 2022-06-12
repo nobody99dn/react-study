@@ -6,7 +6,8 @@ const ACTIONS = {
   ADD_PRODUCT: 'add-product',
   DELETE_PRODUCT: 'delete-product',
   EDIT_PRODUCT: 'edit-product',
-  FILTER_PRODUCTS: 'filter-product'
+  FILTER_PRODUCTS: 'filter-product',
+  SEARCH_PRODUCTS: 'search-products'
 };
 
 export { ACTIONS };

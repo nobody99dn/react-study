@@ -4,12 +4,14 @@ import { ACTIONS } from './constants';
 
 export interface InitialState {
   products: Product[];
+  filterBox: Product[] | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: InitialState = {
   products: [],
+  filterBox: null,
   loading: false,
   error: null
 };
@@ -33,6 +35,7 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: action.payload,
+        filterBox: null,
         loading: false
       };
 
@@ -40,6 +43,7 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: [...state.products, action.payload],
+        filterBox: null,
         loading: false
       };
 
@@ -49,6 +53,7 @@ const reducer = (state = initialState, action: any): {} => {
         products: [
           ...state.products.filter((product) => product !== action.payload)
         ],
+        filterBox: null,
         loading: false
       };
 
@@ -62,6 +67,7 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: state.products,
+        filterBox: null,
         loading: false
       };
     }
@@ -70,6 +76,17 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: [...state.products],
+        loading: false
+      };
+
+    case ACTIONS.SEARCH_PRODUCTS:
+      return {
+        ...state,
+        filterBox: [
+          ...state.products.filter((product: Product) =>
+            product.name.includes(action.payload)
+          )
+        ],
         loading: false
       };
 
