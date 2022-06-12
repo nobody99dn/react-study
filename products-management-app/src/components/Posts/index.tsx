@@ -32,7 +32,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   const [isModalShow, setIsModalShow] = useState<boolean>(true);
 
-  const { products, isLoading, errorMessage } = globalState || {};
+  const { products, isLoading, errorMessage, filterBox } = globalState || {};
 
   useEffect(() => {
     getAllProducts();
