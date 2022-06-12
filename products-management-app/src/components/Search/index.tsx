@@ -7,6 +7,12 @@ import { searchIcon } from '@assets/index';
 // Component
 import { TextField } from '@components/commons/TextField';
 
+<<<<<<< HEAD
+=======
+// Style
+import './index.css';
+
+>>>>>>> 4280522 (Implement Search product item feature)
 // Store
 import { useStore } from '@store/store';
 import { searchProducts } from '@store/actions';

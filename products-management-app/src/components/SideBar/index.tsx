@@ -33,23 +33,16 @@ export const SideBar: React.FC<SideBarProps> = ({ }) => {
   return (
     <>
       <div className='sidebar'>
-<<<<<<< HEAD
-        <Button
-          title='Add new product'
-          variant={ButtonVariants.Primary}
-          onClick={handleOpenForm}
-=======
         <div className='add-button'>
           <Button
             title='Add new product'
             variant={ButtonVariants.Primary}
-            handleButtonClick={handleOpenForm}
+            onClick={handleOpenForm}
           />
         </div>
         <Filter
           typeFilterOptions={PRODUCT_TYPE_LIST}
           priceFilterOptions={ORDER_OPTIONS}
->>>>>>> ab101cd (Implement filter products)
         />
       </div>
       <Modal
