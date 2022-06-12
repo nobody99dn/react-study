@@ -8,12 +8,14 @@ export interface InitialState {
   products: Product[];
   isLoading: boolean;
   errorMessage: string | null;
+  filterBox: Product[] | null;
 }
 
 const initialState: InitialState = {
   products: [],
   isLoading: false,
-  errorMessage: null
+  errorMessage: null,
+  filterBox: null
 };
 
 const reducer = (state = initialState, action: any): {} => {
@@ -35,14 +37,16 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         errorMessage: action.payload,
-        isLoading: false
+        isLoading: false,
+        filterBox: null
       };
 
     case ACTIONS.ADD_PRODUCT:
       return {
         ...state,
         products: [...state.products, action.payload],
-        isLoading: false
+        isLoading: false,
+        filterBox: null
       };
 
     case ACTIONS.DELETE_PRODUCT:
@@ -51,7 +55,8 @@ const reducer = (state = initialState, action: any): {} => {
         products: [
           ...state.products.filter((product) => product !== action.payload)
         ],
-        isLoading: false
+        isLoading: false,
+        filterBox: null
       };
 
     case ACTIONS.EDIT_PRODUCT: {
@@ -64,7 +69,8 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: state.products,
-        isLoading: false
+        isLoading: false,
+        filterBox: null
       };
     }
 
@@ -73,6 +79,17 @@ const reducer = (state = initialState, action: any): {} => {
         ...state,
         products: [...state.products],
         isLoading: false
+      };
+
+    case ACTIONS.SEARCH_PRODUCTS:
+      return {
+        ...state,
+        filterBox: [
+          ...state.products.filter((product: Product) =>
+            product.name.includes(action.payload)
+          )
+        ],
+        loading: false
       };
 
     default:

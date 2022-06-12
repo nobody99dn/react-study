@@ -32,7 +32,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   const [isModalShow, setIsModalShow] = useState<boolean>(true);
 
-  const { products, isLoading, errorMessage } = globalState || {};
+  const { products, isLoading, errorMessage, filterBox } = globalState || {};
 
   useEffect(() => {
     getAllProducts();
@@ -87,6 +87,22 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
               />
             </div>
           ))
+          : (filterBox || products)
+            .map((product: Product) => (
+      <div
+        className='products-row'
+        key={product.id}
+      >
+        <Card
+
+          title={product.name}
+          type={product.type}
+          price={product.price}
+          imageUrl={product.imageUrl}
+          currency={Currencies.VND}
+        />
+      </div>
+      ))
       }
     </div>
   );
