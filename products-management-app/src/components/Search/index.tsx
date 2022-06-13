@@ -7,9 +7,6 @@ import { searchIcon } from '@assets/index';
 // Component
 import { TextField } from '@components/commons/TextField';
 
-// Style
-import './index.css';
-
 // Store
 import { useStore } from '@store/store';
 import { searchProducts } from '@store/actions';

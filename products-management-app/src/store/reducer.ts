@@ -3,6 +3,7 @@ import { ACTIONS } from './constants';
 
 // Type
 import { Product } from 'type/product';
+import { FilterOrderOptions } from '@constants/types';
 
 export interface InitialState {
   products: Product[];
@@ -80,11 +81,33 @@ const reducer = (state = initialState, action: any): {} => {
     }
 
     case ACTIONS.FILTER_PRODUCTS:
+      const { currentFilterTypeParam, currentFilterPriceParam } =
+        action.payload;
+
+      const filteredProducts: Product[] = [
+        ...state.products.filter((product: Product) =>
+          product.type.includes(currentFilterTypeParam)
+        )
+      ];
+
+      if (currentFilterPriceParam === FilterOrderOptions.Asc) {
+        filteredProducts.sort(
+          (firstProduct: Product, secondProduct: Product) =>
+            firstProduct.price - secondProduct.price
+        );
+      } else if (currentFilterPriceParam === FilterOrderOptions.Desc) {
+        filteredProducts.sort(
+          (firstProduct: Product, secondProduct: Product) =>
+            secondProduct.price - firstProduct.price
+        );
+      }
+
       return {
         ...state,
         products: [...state.products],
         isLoading: false,
-        errorMessage: null
+        errorMessage: null,
+        filterBox: filteredProducts
       };
 
     case ACTIONS.SEARCH_PRODUCTS:

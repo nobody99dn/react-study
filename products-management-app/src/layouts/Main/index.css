@@ -1,6 +1,5 @@
 .main {
   width: 100%;
-  height: 100vh;
 }
 
 .search-container,
@@ -11,5 +10,7 @@
 }
 
 .posts-container {
-  margin-left: 15%;
+  display: block;
+  width: 85%;
+  float: right;
 }
