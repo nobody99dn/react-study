@@ -1,17 +1,22 @@
 // Constants
 import { ACTIONS } from './constants';
 
-const callApi = () => ({
-  type: ACTIONS.CALL_API
-});
-
 const error = (payload: any) => ({
   type: ACTIONS.ERROR,
   payload
 });
 
-const getProducts = (payload: any) => ({
-  type: ACTIONS.GET_PRODUCTS,
+const getProductsRequest = () => ({
+  type: ACTIONS.GET_PRODUCTS_REQUEST
+});
+
+const getProductsSuccess = (payload: any) => ({
+  type: ACTIONS.GET_PRODUCTS_SUCCESS,
+  payload
+});
+
+const getProductsFailed = (payload: any) => ({
+  type: ACTIONS.GET_PRODUCTS_FAILED,
   payload
 });
 
@@ -36,11 +41,12 @@ const filterProducts = (payload: any) => ({
 });
 
 export {
-  getProducts,
+  getProductsRequest,
+  getProductsSuccess,
+  getProductsFailed,
   addProduct,
   deleteProduct,
   editProduct,
   filterProducts,
-  callApi,
   error
 };

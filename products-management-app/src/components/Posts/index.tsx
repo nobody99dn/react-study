@@ -23,7 +23,7 @@ import { ERROR_MESSAGES } from '@constants/messages';
 import Product from '@models/product';
 
 // Store
-import { callApi, getProducts, useStore, error as errorAction } from '@store/index';
+import { useStore, getProductsRequest, getProductsSuccess, getProductsFailed } from '@store/index';
 
 type PostsProps = {};
 
@@ -44,7 +44,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   const getAllProducts = async () => {
     try {
-      dispatch(callApi());
+      dispatch(getProductsRequest());
 
       const products: Product[] = await get(URL_PRODUCTS);
 
@@ -52,10 +52,10 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
         throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
       }
 
-      dispatch(getProducts(products));
+      dispatch(getProductsSuccess(products));
     } catch (err) {
       if (err instanceof Error) {
-        dispatch(errorAction(err.message));
+        dispatch(getProductsFailed(err.message));
       }
     }
   };

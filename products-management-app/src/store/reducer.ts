@@ -18,23 +18,23 @@ const initialState: InitialState = {
 
 const reducer = (state = initialState, action: any): {} => {
   switch (action.type) {
-    case ACTIONS.CALL_API:
+    case ACTIONS.GET_PRODUCTS_REQUEST:
       return {
         ...state,
         isLoading: true
       };
 
-    case ACTIONS.ERROR:
-      return {
-        ...state,
-        errorMessage: action.payload,
-        isLoading: false
-      };
-
-    case ACTIONS.GET_PRODUCTS:
+    case ACTIONS.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
         products: action.payload,
+        isLoading: false
+      };
+
+    case ACTIONS.GET_PRODUCTS_FAILED:
+      return {
+        ...state,
+        errorMessage: action.payload,
         isLoading: false
       };
 
