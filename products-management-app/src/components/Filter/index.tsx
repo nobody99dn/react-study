@@ -13,27 +13,27 @@ import './index.css';
 type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  onTypeFilterChange: (value: ProductTypes) => void;
-  onPriceFilterChange: (value: FilterOrderOptions) => void;
+  // onTypeFilterChange: (value: ProductTypes) => void;
+  // onPriceFilterChange: (value: FilterOrderOptions) => void;
 };
 
 export const Filter: React.FC<FilterProps> = ({
   typeFilterOptions,
   priceFilterOptions,
-  onTypeFilterChange,
-  onPriceFilterChange
+  // onTypeFilterChange,
+  // onPriceFilterChange
 }) => {
   const [currentFilterPriceParam, setCurrentFilterPriceParam] = useState<string>('');
   const [currentFilterTypeParam, setCurrentFilterTypeParam] = useState<string>('');
 
   const handleTypeChange = useCallback((value: ProductTypes): void => {
-    onTypeFilterChange(value);
-
     setCurrentFilterTypeParam(value);
+    console.log(value);
+
   }, [currentFilterTypeParam]);
 
   const handlePriceChange = useCallback((value: FilterOrderOptions): void => {
-    onPriceFilterChange(value);
+    // onPriceFilterChange(value);
 
     setCurrentFilterPriceParam(value);
   }, [currentFilterPriceParam]);

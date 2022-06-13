@@ -34,7 +34,12 @@ const editProduct = (payload: any) => ({
 });
 
 const filterProducts = (payload: any) => ({
-  type: ACTIONS.ADD_PRODUCT,
+  type: ACTIONS.FILTER_PRODUCTS,
+  payload
+});
+
+const searchProducts = (payload: any) => ({
+  type: ACTIONS.SEARCH_PRODUCTS,
   payload
 });
 
@@ -44,6 +49,7 @@ export {
   deleteProduct,
   editProduct,
   filterProducts,
+  searchProducts,
   callApi,
   error
 };

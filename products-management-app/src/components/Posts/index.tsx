@@ -32,7 +32,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   const [isModalShow, setIsModalShow] = useState(true);
 
-  const { products, loading, error } = globalState;
+  const { products, filterBox, loading, error } = globalState;
 
   useEffect(() => {
     dispatch(callApi());
@@ -71,10 +71,14 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
             show={isModalShow}>
             {error}
           </Modal>
-          : products
+          : (filterBox || products)
             .map((product: Product) => (
-              <div className='products-row'>
+              <div
+                className='products-row'
+                key={product.id}
+              >
                 <Card
+
                   title={product.name}
                   type={product.type}
                   price={product.price}
