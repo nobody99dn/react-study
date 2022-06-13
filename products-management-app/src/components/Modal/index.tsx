@@ -12,30 +12,30 @@ import './index.css';
 
 interface ModalProps {
   children: ReactNode;
-  show: boolean;
+  isVisible: boolean;
   handleClose: () => void;
 }
 
 export const Modal: React.FC<ModalProps> = ({
   children,
-  show,
+  isVisible,
   handleClose
 }) => {
-  return show ? (
+  return isVisible ? (
     <div className='modal'>
       <div className='modal-dialog'>
         <Image
           alt='close icon'
           className='close-icon'
           imageUrl={closeIcon}
-          onImageClick={handleClose}
-        />
+          onImageClick={handleClose} />
         <div className='modal-body'>
           {children}
         </div>
         <div className='button-group'>
         </div>
       </div>
-    </div >
+    </div>
   ) : null;
 };
+;

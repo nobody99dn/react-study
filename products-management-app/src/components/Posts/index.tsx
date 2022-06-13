@@ -1,5 +1,5 @@
 // Library
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 // Components
 import { Card } from '@components/commons/Card';
@@ -30,9 +30,9 @@ type PostsProps = {};
 export const Posts: React.FC<PostsProps> = ({ }) => {
   const { globalState, dispatch } = useStore();
 
-  const [isModalShow, setIsModalShow] = useState(true);
+  const [isModalShow, setIsModalShow] = useState<boolean>(true);
 
-  const { products, loading, error } = globalState;
+  const { products, loading, error } = globalState || {};
 
   useEffect(() => {
     dispatch(callApi());
@@ -41,7 +41,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
       try {
         const response = await get(URL_PRODUCTS);
 
-        if (response instanceof Error) {
+        if (response && response.data) {
           throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
         }
 
@@ -57,36 +57,40 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   }, []);
 
-  const handleCloseModal = () => {
-    setIsModalShow(false);
-  };
+  const toggleModal = useCallback(() => {
+    setIsModalShow(!isModalShow);
+  }, [isModalShow]);
 
   return (
     <div className='product-group'>
-      {loading
-        ? <div className='loading-container'><LoadingIndicator /></div>
-        : error !== null
-          ? <Modal
-            handleClose={handleCloseModal}
-            show={isModalShow}>
-            {error}
-          </Modal>
-          : products
-            .map((product: Product) => (
-              <div
-                className='products-row'
-                key={product.id}
-              >
-                <Card
-
-                  title={product.name}
-                  type={product.type}
-                  price={product.price}
-                  imageUrl={product.imageUrl}
-                  currency={Currencies.VND}
-                />
-              </div>
-            ))
+      {
+        loading && <LoadingIndicator />
+      }
+      {
+        error &&
+        <Modal
+          handleClose={toggleModal}
+          isVisible={isModalShow}
+        >
+          {error}
+        </Modal>
+      }
+      {
+        products &&
+        products.map((product: Product) => (
+          <div
+            className='products-row'
+            key={product.id}
+          >
+            <Card
+              title={product.name}
+              type={product.type}
+              price={product.price}
+              imageUrl={product.imageUrl}
+              currency={Currencies.VND}
+            />
+          </div>
+        ))
       }
     </div>
   );
