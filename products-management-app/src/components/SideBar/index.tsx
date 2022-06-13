@@ -10,7 +10,8 @@ import { Form } from '@components/Form';
 import './index.css';
 
 // Constants
-import { ButtonVariants, FormVariants, PRODUCT_TYPE_LIST } from '@constants/types';
+import { ButtonVariants, FormVariants, ORDER_OPTIONS, PRODUCT_TYPE_LIST } from '@constants/types';
+import { Filter } from '@components/Filter';
 
 interface SideBarProps { }
 
@@ -32,10 +33,16 @@ export const SideBar: React.FC<SideBarProps> = ({ }) => {
   return (
     <>
       <div className='sidebar'>
-        <Button
-          title='Add new product'
-          variant={ButtonVariants.Primary}
-          handleButtonClick={handleOpenForm}
+        <div className='add-button'>
+          <Button
+            title='Add new product'
+            variant={ButtonVariants.Primary}
+            handleButtonClick={handleOpenForm}
+          />
+        </div>
+        <Filter
+          typeFilterOptions={PRODUCT_TYPE_LIST}
+          priceFilterOptions={ORDER_OPTIONS}
         />
       </div>
       <Modal

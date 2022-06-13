@@ -38,8 +38,8 @@ export const Select: React.FC<SelectProps> = ({
         onChange={handleChange}
       >
         <option value="">Select</option>
-        {options.map(option => (
-          <option value={option}>{option}</option>
+        {options.map((option: string, index: number) => (
+          <option key={index} value={option}>{option}</option>
         ))}
       </select>
     </div>
