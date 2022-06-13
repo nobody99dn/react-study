@@ -35,31 +35,30 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
   const { products, isLoading, errorMessage } = globalState || {};
 
   useEffect(() => {
-    dispatch(callApi());
-
-    const getAllProducts = async () => {
-      try {
-        const products: Product[] = await get(URL_PRODUCTS);
-
-        if (!products.length) {
-          throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-        }
-
-        dispatch(getProducts(products));
-      } catch (err) {
-        if (err instanceof Error) {
-          dispatch(errorAction(err.message));
-        }
-      }
-    };
-
     getAllProducts();
-
   }, []);
 
   const toggleModal = useCallback(() => {
     setIsModalShow(!isModalShow);
   }, [isModalShow]);
+
+  const getAllProducts = async () => {
+    try {
+      dispatch(callApi());
+
+      const products: Product[] = await get(URL_PRODUCTS);
+
+      if (!products.length) {
+        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+      }
+
+      dispatch(getProducts(products));
+    } catch (err) {
+      if (err instanceof Error) {
+        dispatch(errorAction(err.message));
+      }
+    }
+  };
 
   return (
     <div className='product-group'>
