@@ -32,20 +32,20 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   const [isModalShow, setIsModalShow] = useState<boolean>(true);
 
-  const { products, loading, error } = globalState || {};
+  const { products, isLoading, errorMessage } = globalState || {};
 
   useEffect(() => {
     dispatch(callApi());
 
     const getAllProducts = async () => {
       try {
-        const response = await get(URL_PRODUCTS);
+        const products: Product[] = await get(URL_PRODUCTS);
 
-        if (response && response.data) {
+        if (!products.length) {
           throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
         }
 
-        dispatch(getProducts(response));
+        dispatch(getProducts(products));
       } catch (err) {
         if (err instanceof Error) {
           dispatch(errorAction(err.message));
@@ -63,34 +63,31 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   return (
     <div className='product-group'>
+      {isLoading && <LoadingIndicator />}
       {
-        loading && <LoadingIndicator />
-      }
-      {
-        error &&
-        <Modal
-          handleClose={toggleModal}
-          isVisible={isModalShow}
-        >
-          {error}
-        </Modal>
-      }
-      {
-        products &&
-        products.map((product: Product) => (
-          <div
-            className='products-row'
-            key={product.id}
+        errorMessage ?
+          <Modal
+            handleClose={toggleModal}
+            isVisible={isModalShow}
           >
-            <Card
-              title={product.name}
-              type={product.type}
-              price={product.price}
-              imageUrl={product.imageUrl}
-              currency={Currencies.VND}
-            />
-          </div>
-        ))
+            {errorMessage}
+          </Modal>
+          :
+          products.length &&
+          products.map((product: Product) => (
+            <div
+              className='products-row'
+              key={product.id}
+            >
+              <Card
+                title={product.name}
+                type={product.type}
+                price={product.price}
+                imageUrl={product.imageUrl}
+                currency={Currencies.VND}
+              />
+            </div>
+          ))
       }
     </div>
   );
