@@ -1,46 +1,48 @@
 // Constants
-import Product from '@models/product';
 import { ACTIONS } from './constants';
+
+// Type
+import Product from '@models/product';
 
 export interface InitialState {
   products: Product[];
-  loading: boolean;
-  error: string | null;
+  isLoading: boolean;
+  errorMessage: string | null;
 }
 
 const initialState: InitialState = {
   products: [],
-  loading: false,
-  error: null
+  isLoading: false,
+  errorMessage: null
 };
 
 const reducer = (state = initialState, action: any): {} => {
   switch (action.type) {
-    case ACTIONS.CALL_API:
+    case ACTIONS.GET_PRODUCTS_REQUEST:
       return {
         ...state,
-        loading: true
+        isLoading: true
       };
 
-    case ACTIONS.ERROR:
-      return {
-        ...state,
-        error: action.payload,
-        loading: false
-      };
-
-    case ACTIONS.GET_PRODUCTS:
+    case ACTIONS.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
         products: action.payload,
-        loading: false
+        isLoading: false
+      };
+
+    case ACTIONS.GET_PRODUCTS_FAILED:
+      return {
+        ...state,
+        errorMessage: action.payload,
+        isLoading: false
       };
 
     case ACTIONS.ADD_PRODUCT:
       return {
         ...state,
         products: [...state.products, action.payload],
-        loading: false
+        isLoading: false
       };
 
     case ACTIONS.DELETE_PRODUCT:
@@ -49,7 +51,7 @@ const reducer = (state = initialState, action: any): {} => {
         products: [
           ...state.products.filter((product) => product !== action.payload)
         ],
-        loading: false
+        isLoading: false
       };
 
     case ACTIONS.EDIT_PRODUCT: {
@@ -62,7 +64,7 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: state.products,
-        loading: false
+        isLoading: false
       };
     }
 
@@ -70,7 +72,7 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: [...state.products],
-        loading: false
+        isLoading: false
       };
 
     default:

@@ -4,26 +4,27 @@ import React from 'react';
 import "./index.css";
 import { TextField } from '@components/commons/TextField';
 import { searchIcon } from '@assets/index';
+import { Posts } from '@components/Posts/index';
 
 const Main = () => (
-  <main className={'main container'}>
-    <section className={'search-container'}>
+  <main className='main'>
+    <div className='search-container container'>
       {/* SEARCHING AREA */}
       <TextField
-        placeholder={'Searching...'}
+        placeholder='Searching...'
         iconUrl={searchIcon}
         height='4.25rem'
         iconWidth='2rem'
       />
-    </section>
-    <section className={'filter-container'}>
+    </div>
+    <div className='sidebar'>
       {/* // TODO: Filter container... */}
-    </section>
+    </div>
 
-    <section className={'posts-container'}>
-      {/* // TODO: Posts container... */}
-    </section>
-  </main>
+    <div className='posts-container'>
+      <Posts />
+    </div>
+  </main >
 );
 
 export default Main;
