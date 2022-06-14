@@ -29,13 +29,7 @@ export const Image: React.FC<ImageProps> = (
   }
 ) => (
   <img
-    className={
-      ['image',
-        variant !== ImageVariants.Default
-          ? `image-${variant} `
-          : '',
-        className
-      ].join(' ').trim()
+    className={`image ${variant !== ImageVariants.Default ? `image-${variant} ` : ''} ${className}`
     }
     alt={alt}
     src={imageUrl}

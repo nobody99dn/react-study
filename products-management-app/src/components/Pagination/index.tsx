@@ -40,11 +40,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         {pageNumbers.map((number: number) => (
           <li
             key={number}
-            className={
-              [
-                'page-item', `${(currentPage === number) && 'active'}`
-              ].join(' ')
-            }
+            className={`page-item ${(currentPage === number) && 'active'}`}
             onClick={() => handleClick(number)}
           >
             {number}

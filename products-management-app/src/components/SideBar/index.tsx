@@ -35,7 +35,7 @@ export const SideBar: React.FC<SideBarProps> = ({ }) => {
         <Button
           title='Add new product'
           variant={ButtonVariants.Primary}
-          handleButtonClick={handleOpenForm}
+          onClick={handleOpenForm}
         />
       </div>
       <Modal
