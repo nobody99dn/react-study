@@ -11,17 +11,17 @@ interface ButtonProps {
   title: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
-  handleButtonClick(): void;
+  isLoading?: boolean;
+  handleButtonClick?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   title,
   variant = ButtonVariants.Default,
   isDisabled = false,
+  isLoading = false,
   handleButtonClick
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
-
   return (
     <button
       className={['btn', `btn-${variant}`, `${isDisabled && 'disabled' || ''}`].join(' ')}

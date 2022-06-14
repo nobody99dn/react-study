@@ -19,8 +19,8 @@ import { get } from '@helpers/clientRequests';
 import { URL_PRODUCTS } from '@constants/api';
 import { ERROR_MESSAGES } from '@constants/messages';
 
-// Models
-import Product from '@models/product';
+// Types
+import { Product } from 'type/product';
 
 // Store
 import { useStore, getProductsRequest, getProductsSuccess, getProductsFailed } from '@store/index';
@@ -62,7 +62,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   return (
     <div className='product-group'>
-      {isLoading && <LoadingIndicator />}
+      {isLoading && <LoadingIndicator /> || null}
       {
         errorMessage ?
           <Modal

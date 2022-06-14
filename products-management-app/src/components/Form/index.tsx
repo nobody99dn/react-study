@@ -1,27 +1,33 @@
 // Library
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
-// Styles
+// Style
 import './index.css';
 
 // Constants
 import { ButtonVariants, FormVariants, ProductTypes } from '@constants/types';
+import { ERROR_MESSAGES } from '@constants/messages';
 
 // Components
 import { Title } from '@components/commons/Title';
 import { TextField } from '@components/commons/TextField';
 import { Button } from '@components/commons/Button';
 import { Select } from '@components/commons/Select';
+import { Text, VariantsTypes } from '@components/commons/Text';
+
+// Type
+import { Product } from 'type/product';
+
+// Store
+import { addProduct, error as errorAction, useStore } from '@store/index';
+
+// Service
+import { addNewProduct } from '@services/product.service';
 
 interface FormProps {
   variants: FormVariants;
   options?: ProductTypes[];
-  productItem: {
-    id: string,
-    name: string,
-    type: string,
-    price: number;
-  };
+  productItem: Product;
   handleSubmit(): void;
 }
 
@@ -31,7 +37,13 @@ export const Form: React.FC<FormProps> = ({
   options = [],
   handleSubmit
 }) => {
-  const [product, setProduct] = useState(productItem);
+  const { globalState, dispatch } = useStore();
+
+  const { error } = globalState || {};
+
+  const [product, setProduct] = useState<Product>(productItem);
+
+  const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
 
   const handleNameChange = (value: string | number): void => {
     setProduct({ ...product, name: value as string });
@@ -45,10 +57,41 @@ export const Form: React.FC<FormProps> = ({
     setProduct({ ...product, type: value as string });
   };
 
+  const handleImageChange = (value: string | number): void => {
+    setProduct({ ...product, imageUrl: value as string });
+  };
+
+  const handleSubmitForm = async (event: FormEvent) => {
+    event.preventDefault();
+
+    setIsButtonLoading(true);
+
+    if (!productItem.id) {
+      try {
+
+        const newProduct: Product = await addNewProduct(product);
+
+        if (newProduct instanceof Error) {
+          throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+        }
+
+        dispatch(addProduct(newProduct));
+      } catch (error) {
+        if (error instanceof Error) {
+          dispatch(errorAction(error.message));
+          return;
+        }
+      }
+    }
+
+    handleSubmit();
+  };
+
+
   return (
     <div className='form-wrapper'>
       <Title>{variants} Form</Title>
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmitForm}>
         <fieldset className='field-group'>
           <TextField
             defaultValue={product.name}
@@ -72,11 +115,26 @@ export const Form: React.FC<FormProps> = ({
             placeholder='Enter price...'
             onChange={handlePriceChange}
           />
+          <TextField
+            defaultValue={product.imageUrl}
+            name='Image link'
+            type='text'
+            label='Image link'
+            placeholder='Enter image link...'
+            onChange={handleImageChange}
+          />
+          {error &&
+            <Text
+              variant={VariantsTypes.Highlight}
+              color='var(--danger)'>
+              {error}
+            </Text>
+          }
         </fieldset>
         <Button
           variant={ButtonVariants.Primary}
-          handleButtonClick={() => { }}
           title={variants}
+          isLoading={isButtonLoading}
         />
       </form>
     </div>

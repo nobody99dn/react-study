@@ -2,7 +2,7 @@
 import { ACTIONS } from './constants';
 
 // Type
-import Product from '@models/product';
+import { Product } from 'type/product';
 
 export interface InitialState {
   products: Product[];
