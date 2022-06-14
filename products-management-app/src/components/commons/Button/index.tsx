@@ -21,14 +21,12 @@ export const Button: React.FC<ButtonProps> = ({
   isDisabled = false,
   isLoading = false,
   handleButtonClick
-}) => {
-  return (
-    <button
-      className={['btn', `btn-${variant}`, `${isDisabled && 'disabled' || ''}`].join(' ')}
-      onClick={handleButtonClick}
-      disabled={isDisabled}
-    >
-      {isLoading ? 'Loading...' : title}
-    </button>
-  );
-};
+}) => (
+  <button
+    className={['btn', `btn-${variant}`, `${isDisabled && 'disabled' || ''}`].join(' ')}
+    onClick={handleButtonClick}
+    disabled={isDisabled}
+  >
+    {isLoading ? 'Loading...' : title}
+  </button>
+);

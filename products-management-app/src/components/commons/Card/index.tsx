@@ -91,7 +91,7 @@ export const Card: React.FC<CardProps> = ({
         </div>
       </div >
       <Modal
-        show={isModalShow}
+        isVisible={isModalShow}
         handleClose={handleCloseModal}
       >
         <Form
