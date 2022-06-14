@@ -15,31 +15,30 @@ import { currencyFormat } from '@helpers/string';
 // Styles
 import './index.css';
 
+// Types
+import { Product } from 'type/product';
+
 interface CardProps {
-  type: string;
+  product: Product;
   currency: Currencies;
-  price: number;
-  imageUrl: string;
-  title: string;
 }
 
 export const Card: React.FC<CardProps> = ({
-  type,
-  currency,
-  imageUrl,
-  price,
-  title,
+  product,
+  currency
 }) => {
+  const { name, imageUrl, price, id, type } = product || {};
+
   return (
     <div className='card'>
       <Image
         imageUrl={imageUrl}
-        alt={title}
+        alt={name}
         className='card-image'
       />
       <div className='card-body'>
         <div className='title-wrapper'>
-          <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>{title}</Title>
+          <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>{name}</Title>
         </div>
         <Title
           color='var(--dark)'

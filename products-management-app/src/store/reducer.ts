@@ -31,7 +31,8 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         products: action.payload,
-        isLoading: false
+        isLoading: false,
+        filterBox: null
       };
 
     case ACTIONS.GET_PRODUCTS_FAILED:
