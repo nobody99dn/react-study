@@ -39,11 +39,11 @@ export const Form: React.FC<FormProps> = ({
 }) => {
   const { globalState, dispatch } = useStore();
 
-  const { error } = globalState;
+  const { error } = globalState || {};
 
   const [product, setProduct] = useState<Product>(productItem);
 
-  const [isButtonLoading, setIsButtonLoading] = useState(false);
+  const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
 
   const handleNameChange = (value: string | number): void => {
     setProduct({ ...product, name: value as string });
