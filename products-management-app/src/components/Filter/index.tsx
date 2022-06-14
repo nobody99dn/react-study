@@ -29,10 +29,10 @@ export const Filter: React.FC<FilterProps> = ({
   const [currentFilterPriceParam, setCurrentFilterPriceParam] = useState<string>('');
   const [currentFilterTypeParam, setCurrentFilterTypeParam] = useState<string>('');
 
-  const handleClearFilters = () => {
+  const handleClearFilters = useCallback(() => {
     setCurrentFilterPriceParam('');
     setCurrentFilterTypeParam('');
-  };
+  }, [currentFilterTypeParam, currentFilterPriceParam]);
 
   const handleTypeChange = useCallback((value: ProductTypes): void => {
     setCurrentFilterTypeParam(value);
@@ -70,7 +70,7 @@ export const Filter: React.FC<FilterProps> = ({
       </div>
       <Button
         title='Clear filter'
-        handleButtonClick={handleClearFilters}
+        onClick={handleClearFilters}
       />
     </div>
   );

@@ -7,16 +7,11 @@ import { searchIcon } from '@assets/index';
 // Component
 import { TextField } from '@components/commons/TextField';
 
-// Style
-import './index.css';
-
 // Store
 import { useStore } from '@store/store';
 import { searchProducts } from '@store/actions';
 
-interface SearchProps { }
-
-export const Search: React.FC<SearchProps> = () => {
+export const Search: React.FC = () => {
   const { dispatch } = useStore();
 
   const handleSearchProduct = (value: string | number) => {

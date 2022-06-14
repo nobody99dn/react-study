@@ -57,9 +57,5 @@ export {
   editProduct,
   filterProducts,
   searchProducts,
-<<<<<<< HEAD
-=======
-  callApi,
->>>>>>> 4280522 (Implement Search product item feature)
   error
 };
