@@ -25,8 +25,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   const handleClick = useCallback(
     (number: number) => {
       setCurrentPage(number);
-      console.log(currentPage);
-
 
       paginate(number);
     },

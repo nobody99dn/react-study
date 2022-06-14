@@ -1,5 +1,5 @@
 // Library
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 // Constants
 import { FilterOrderOptions, ProductTypes } from '@constants/types';
@@ -10,33 +10,43 @@ import { Select } from '@components/commons/Select';
 // Styles
 import './index.css';
 
+// Store
+import { useStore } from '@store/store';
+import { filterProducts } from '@store/actions';
+import { Button } from '@components/commons/Button';
+
 type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  onTypeFilterChange: (value: ProductTypes) => void;
-  onPriceFilterChange: (value: FilterOrderOptions) => void;
 };
 
 export const Filter: React.FC<FilterProps> = ({
   typeFilterOptions,
-  priceFilterOptions,
-  onTypeFilterChange,
-  onPriceFilterChange
+  priceFilterOptions
 }) => {
+  const { dispatch } = useStore();
+
   const [currentFilterPriceParam, setCurrentFilterPriceParam] = useState<string>('');
   const [currentFilterTypeParam, setCurrentFilterTypeParam] = useState<string>('');
 
-  const handleTypeChange = useCallback((value: ProductTypes): void => {
-    onTypeFilterChange(value);
+  const handleClearFilters = useCallback(() => {
+    setCurrentFilterPriceParam('');
+    setCurrentFilterTypeParam('');
+  }, [currentFilterTypeParam, currentFilterPriceParam]);
 
+  const handleTypeChange = useCallback((value: ProductTypes): void => {
     setCurrentFilterTypeParam(value);
   }, [currentFilterTypeParam]);
 
   const handlePriceChange = useCallback((value: FilterOrderOptions): void => {
-    onPriceFilterChange(value);
-
     setCurrentFilterPriceParam(value);
   }, [currentFilterPriceParam]);
+
+  useEffect(() => {
+    dispatch(
+      filterProducts({ currentFilterTypeParam, currentFilterPriceParam })
+    );
+  }, [currentFilterPriceParam, currentFilterTypeParam]);
 
   return (
     <div className='filter-container'>
@@ -58,6 +68,10 @@ export const Filter: React.FC<FilterProps> = ({
           value={currentFilterPriceParam}
         />
       </div>
+      <Button
+        title='Clear filter'
+        onClick={handleClearFilters}
+      />
     </div>
   );
 };

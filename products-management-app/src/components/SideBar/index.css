@@ -1,8 +1,10 @@
 .sidebar {
+  display: inline-block;
   width: 15%;
+  padding: 1rem 1.5rem;
 }
 
-.sidebar {
-  display: block;
-  padding: 1rem 1.5rem;
+.add-button {
+  display: flex;
+  justify-content: center;
 }
