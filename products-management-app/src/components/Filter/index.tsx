@@ -18,15 +18,11 @@ import { Button } from '@components/commons/Button';
 type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  onTypeFilterChange: (value: ProductTypes) => void;
-  onPriceFilterChange: (value: FilterOrderOptions) => void;
 };
 
 export const Filter: React.FC<FilterProps> = ({
   typeFilterOptions,
-  priceFilterOptions,
-  onTypeFilterChange,
-  onPriceFilterChange
+  priceFilterOptions
 }) => {
   const { dispatch } = useStore();
 
@@ -39,14 +35,10 @@ export const Filter: React.FC<FilterProps> = ({
   };
 
   const handleTypeChange = useCallback((value: ProductTypes): void => {
-    onTypeFilterChange(value);
-
     setCurrentFilterTypeParam(value);
   }, [currentFilterTypeParam]);
 
   const handlePriceChange = useCallback((value: FilterOrderOptions): void => {
-    onPriceFilterChange(value);
-
     setCurrentFilterPriceParam(value);
   }, [currentFilterPriceParam]);
 

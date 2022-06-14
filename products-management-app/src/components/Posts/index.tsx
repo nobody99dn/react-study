@@ -33,6 +33,9 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
   const [isModalShow, setIsModalShow] = useState<boolean>(true);
 
   const { products, isLoading, errorMessage, filterBox } = globalState || {};
+  console.log(filterBox);
+
+  console.log(products);
 
   useEffect(() => {
     getAllProducts();
@@ -71,7 +74,8 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
           >
             {errorMessage}
           </Modal>
-          : products
+          :
+          (filterBox || products)
             .map((product: Product) => (
               <div
                 className='products-row'

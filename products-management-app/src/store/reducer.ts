@@ -33,7 +33,8 @@ const reducer = (state = initialState, action: any): {} => {
         ...state,
         products: action.payload,
         isLoading: false,
-        errorMessage: null
+        errorMessage: null,
+        filterBox: null
       };
 
     case ACTIONS.GET_PRODUCTS_FAILED:
