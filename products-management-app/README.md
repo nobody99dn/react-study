@@ -78,3 +78,18 @@ Update soon!
   ```
 
 - Open browser and and type http://localhost:3000 in address bar
+
+# Issues:
+
+- SearchInput naming
+- SelectItem naming
+- Remove generateId
+- Create ModalForm Component
+- Change package.json
+- Export default memo()
+- Export default Components
+- Check Action for each features
+- Remove Pagination
+- Change error showing
+- Set timeout for searching input
+- Fix UI search input
