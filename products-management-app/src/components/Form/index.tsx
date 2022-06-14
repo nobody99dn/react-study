@@ -64,6 +64,8 @@ export const Form: React.FC<FormProps> = ({
   const handleSubmitForm = async (event: FormEvent) => {
     event.preventDefault();
 
+    setIsButtonLoading(true);
+
     try {
       if (!productItem.id) {
         const newProduct: Product = await addNewProduct(product);
