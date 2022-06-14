@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { useState } from 'react';
 
 // Components
 import { Image } from '@components/commons/Image';
@@ -8,6 +8,7 @@ import { Button } from '@components/commons/Button';
 
 // Constants
 import { ButtonVariants, Currencies, FwType } from '@constants/types';
+import { ERROR_MESSAGES } from '@constants/messages';
 
 // Helpers
 import { currencyFormat } from '@helpers/string';
@@ -15,31 +16,60 @@ import { currencyFormat } from '@helpers/string';
 // Styles
 import './index.css';
 
+// Type
+import { Product } from '@type/product';
+
+// Service
+import { removeProduct } from '@services/product.service';
+
+// Store
+import { deleteProduct, error as errorAction, useStore } from '@store/index';
+
 interface CardProps {
-  type: string;
+  product: Product;
   currency: Currencies;
-  price: number;
-  imageUrl: string;
-  title: string;
 }
 
 export const Card: React.FC<CardProps> = ({
-  type,
+  product: { name, imageUrl, price, id, type },
   currency,
-  imageUrl,
-  price,
-  title,
 }) => {
+  const { globalState, dispatch } = useStore();
+
+  const [isDeleteLoading, setIsDeleteLoading] = useState(false);
+
+  const handleDeleteProduct = async () => {
+    setIsDeleteLoading(true);
+    try {
+      const deletedProduct: Product = await removeProduct(id);
+
+      if (deletedProduct instanceof Error) {
+        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+      }
+
+      dispatch(deleteProduct(deletedProduct.id));
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(errorAction(error.message));
+        return;
+      }
+    }
+
+    setIsDeleteLoading(false);
+  };
+
+  const handleEditProduct = () => { };
+
   return (
     <div className='card'>
       <Image
         imageUrl={imageUrl}
-        alt={title}
+        alt={name}
         className='card-image'
       />
       <div className='card-body'>
         <div className='title-wrapper'>
-          <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>{title}</Title>
+          <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>{name}</Title>
         </div>
         <Title
           color='var(--dark)'
@@ -61,12 +91,13 @@ export const Card: React.FC<CardProps> = ({
         <div className='button-wrapper'>
           <Button
             title='Edit'
-            handleButtonClick={() => { }}
+            onClick={handleEditProduct}
           />
           <Button
             variant={ButtonVariants.Secondary}
             title='Delete'
-            handleButtonClick={() => { }}
+            isLoading={isDeleteLoading}
+            onClick={handleDeleteProduct}
           />
         </div>
       </div>

@@ -12,7 +12,7 @@ interface ButtonProps {
   variant?: ButtonVariants;
   isDisabled?: boolean;
   isLoading?: boolean;
-  handleButtonClick?: () => void;
+  onClick?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -20,12 +20,12 @@ export const Button: React.FC<ButtonProps> = ({
   variant = ButtonVariants.Default,
   isDisabled = false,
   isLoading = false,
-  handleButtonClick
+  onClick
 }) => {
   return (
     <button
       className={['btn', `btn-${variant}`, `${isDisabled && 'disabled' || ''}`].join(' ')}
-      onClick={handleButtonClick}
+      onClick={onClick}
       disabled={isDisabled}
     >
       {isLoading ? 'Loading...' : title}
