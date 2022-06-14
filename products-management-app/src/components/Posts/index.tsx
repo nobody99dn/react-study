@@ -24,6 +24,7 @@ import { Product } from 'type/product';
 
 // Store
 import { useStore, getProductsRequest, getProductsSuccess, getProductsFailed } from '@store/index';
+import Text, { VariantsTypes } from '@components/commons/Text';
 
 const Posts: React.FC = () => {
   const { globalState, dispatch } = useStore();
@@ -63,12 +64,11 @@ const Posts: React.FC = () => {
       {isLoading && <LoadingIndicator />}
       {
         errorMessage &&
-        <Modal
-          handleClose={toggleModal}
-          isVisible={isModalShow}
-        >
+        <Text
+          variant={VariantsTypes.Highlight}
+          color='var(--danger)'>
           {errorMessage}
-        </Modal>
+        </Text>
       }
       {(filterBox || products.length) &&
         (filterBox || products)
