@@ -26,20 +26,18 @@ import { Product } from 'type/product';
 import { useStore, getProductsRequest, getProductsSuccess, getProductsFailed } from '@store/index';
 import Text, { VariantsTypes } from '@components/commons/Text';
 
-const Posts: React.FC = () => {
-  const { globalState, dispatch } = useStore();
+interface PostsProps {
+  handleOpenModalForm: (product: Product) => void;
+}
 
-  const [isModalShow, setIsModalShow] = useState<boolean>(true);
+const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
+  const { globalState, dispatch } = useStore();
 
   const { products, isLoading, errorMessage, filterBox } = globalState || {};
 
   useEffect(() => {
     getAllProducts();
   }, []);
-
-  const toggleModal = useCallback(() => {
-    setIsModalShow(!isModalShow);
-  }, [isModalShow]);
 
   const getAllProducts = async () => {
     try {
@@ -60,30 +58,33 @@ const Posts: React.FC = () => {
   };
 
   return (
-    <div className='product-group'>
-      {isLoading && <LoadingIndicator />}
-      {
-        errorMessage &&
-        <Text
-          variant={VariantsTypes.Highlight}
-          color='var(--danger)'>
-          {errorMessage}
-        </Text>
-      }
-      {(filterBox || products.length) &&
-        (filterBox || products)
-          .map((product: Product) => (
-            <div
-              className='products-row'
-              key={product.id}
-            >
-              <Card
-                product={product}
-                currency={Currencies.VND}
-              />
-            </div>
-          ))
-      }
+    <div className='posts-container'>
+      <div className='product-group'>
+        {isLoading && <LoadingIndicator />}
+        {
+          errorMessage &&
+          <Text
+            variant={VariantsTypes.Highlight}
+            color='var(--danger)'>
+            {errorMessage}
+          </Text>
+        }
+        {(filterBox || products.length) &&
+          (filterBox || products)
+            .map((product: Product) => (
+              <div
+                className='products-row'
+                key={product.id}
+              >
+                <Card
+                  product={product}
+                  currency={Currencies.VND}
+                  handleOpenModalForm={handleOpenModalForm}
+                />
+              </div>
+            ))
+        }
+      </div>
     </div>
   );
 };

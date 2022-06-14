@@ -30,11 +30,13 @@ import { deleteProduct, error as errorAction, useStore } from '@store/index';
 interface CardProps {
   product: Product;
   currency: Currencies;
+  handleOpenModalForm: (product: Product) => void;
 }
 
 const Card: React.FC<CardProps> = ({
   product,
   currency,
+  handleOpenModalForm
 }) => {
   const { name, imageUrl, price, id, type } = product || {};
   const { globalState, dispatch } = useStore();
@@ -43,12 +45,8 @@ const Card: React.FC<CardProps> = ({
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
 
   const handleToggleModal = useCallback(() => {
-    setIsModalShow(!isModalShow);
+    handleOpenModalForm(product);
   }, []);
-
-  const handleSubmitForm = () => {
-    setIsModalShow(false);
-  };
 
   const handleDeleteProduct = async () => {
     setIsDeleteLoading(true);
@@ -71,60 +69,47 @@ const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <>
-      <div className='card'>
-        <Image
-          imageUrl={imageUrl}
-          alt={name}
-          className='card-image'
-        />
-        <div className='card-body'>
-          <div className='title-wrapper'>
-            <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>{name}</Title>
-          </div>
-          <Title
-            color='var(--dark)'
-            variant={VariantTypes.Subtitle}
-            fs='italic'
-            p='0 0.5rem'
-            size='16px'
-          >
-            {type}
-          </Title>
-          <Title
-            variant={VariantTypes.Subtitle}
-            fw={FwType.Bold}
-            p='0.5rem'
-          >
-            {currencyFormat(price)}
-            <span> {currency}</span>
-          </Title>
-          <div className='button-wrapper'>
-            <Button
-              title='Edit'
-              onClick={handleToggleModal}
-            />
-            <Button
-              variant={ButtonVariants.Secondary}
-              title='Delete'
-              isLoading={isDeleteLoading}
-              onClick={handleDeleteProduct}
-            />
-          </div>
+    <div className='card'>
+      <Image
+        imageUrl={imageUrl}
+        alt={name}
+        className='card-image'
+      />
+      <div className='card-body'>
+        <div className='title-wrapper'>
+          <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>{name}</Title>
         </div>
-      </div >
-      <Modal
-        isVisible={isModalShow}
-        handleClose={handleToggleModal}
-      >
-        <Form
-          handleSubmit={handleSubmitForm}
-          variants={FormVariants.Edit}
-          options={PRODUCT_TYPE_LIST}
-          productItem={product}
-        />
-      </Modal>
-    </>
+        <Title
+          color='var(--dark)'
+          variant={VariantTypes.Subtitle}
+          fs='italic'
+          p='0 0.5rem'
+          size='16px'
+        >
+          {type}
+        </Title>
+        <Title
+          variant={VariantTypes.Subtitle}
+          fw={FwType.Bold}
+          p='0.5rem'
+        >
+          {currencyFormat(price)}
+          <span> {currency}</span>
+        </Title>
+        <div className='button-wrapper'>
+          <Button
+            title='Edit'
+            onClick={handleToggleModal}
+          />
+          <Button
+            variant={ButtonVariants.Secondary}
+            title='Delete'
+            isLoading={isDeleteLoading}
+            onClick={handleDeleteProduct}
+          />
+        </div>
+      </div>
+    </div >
   );
 };
 

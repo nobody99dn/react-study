@@ -12,56 +12,38 @@ import './index.css';
 
 // Constants
 import { ButtonVariants, FormVariants, ORDER_OPTIONS, PRODUCT_TYPE_LIST } from '@constants/types';
+import { Product } from '@type/product';
 
+interface SideBarProps {
+  handleOpenModalForm: (product: Product) => void;
+}
 
-const SideBar: React.FC = () => {
-  const [isModalShow, setIsModalShow] = useState(false);
-
-  const handleOpenForm = () => {
-    setIsModalShow(true);
-  };
-
-  const handleAddProduct = () => {
-    setIsModalShow(false);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalShow(false);
+const SideBar: React.FC<SideBarProps> = ({ handleOpenModalForm }) => {
+  const handleClick = () => {
+    handleOpenModalForm({
+      id: '',
+      name: '',
+      type: '',
+      price: 0,
+      imageUrl: ''
+    });
   };
 
   return (
-    <>
-      <div className='sidebar'>
-        <div className='add-button'>
-          <Button
-            title='Add new product'
-            variant={ButtonVariants.Primary}
-            onClick={handleOpenForm}
-          />
-        </div>
-        <Filter
-          typeFilterOptions={PRODUCT_TYPE_LIST}
-          priceFilterOptions={ORDER_OPTIONS}
+    <div className='sidebar'>
+      <div className='add-button'>
+        <Button
+          title='Add new product'
+          variant={ButtonVariants.Primary}
+          onClick={handleClick}
         />
       </div>
-      <Modal
-        isVisible={isModalShow}
-        handleClose={handleCloseModal}
-      >
-        <Form
-          handleSubmit={handleAddProduct}
-          variants={FormVariants.Create}
-          options={PRODUCT_TYPE_LIST}
-          productItem={{
-            id: '',
-            name: '',
-            type: '',
-            price: 0,
-            imageUrl: ''
-          }}
-        />
-      </Modal>
-    </>
+      <Filter
+        typeFilterOptions={PRODUCT_TYPE_LIST}
+        priceFilterOptions={ORDER_OPTIONS}
+      />
+    </div>
+
   );
 };
 
