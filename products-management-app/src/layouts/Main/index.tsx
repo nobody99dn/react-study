@@ -1,13 +1,13 @@
 // Library
-import React from 'react';
+import React, { memo } from 'react';
 
 // Styles
 import "./index.css";
 
 // Components
-import { Posts } from '@components/Posts/index';
-import { SideBar } from '../../components/SideBar/index';
-import { Search } from '@components/Search';
+import Posts from '@components/Posts/index';
+import SideBar from '../../components/SideBar/index';
+import Search from '@components/SearchInput';
 
 // Style
 import './index.css';
@@ -25,4 +25,4 @@ const Main = () => (
   </main >
 );
 
-export default Main;
+export default memo(Main);

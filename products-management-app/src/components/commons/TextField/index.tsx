@@ -1,8 +1,8 @@
 // Library
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 
 // Components
-import { Image } from '@components/commons/Image/index';
+import Image from '@components/commons/Image/index';
 
 // Styles
 import './index.css';
@@ -29,7 +29,7 @@ interface TextFieldProps {
   onChange?: (value: string | number) => void;
 }
 
-export const TextField: React.FC<TextFieldProps> = (
+const TextField: React.FC<TextFieldProps> = (
   {
     id,
     name,
@@ -87,3 +87,5 @@ export const TextField: React.FC<TextFieldProps> = (
     </div >
   );
 };;
+
+export default memo(TextField);

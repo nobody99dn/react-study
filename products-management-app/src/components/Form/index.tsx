@@ -9,11 +9,11 @@ import { ButtonVariants, FormVariants, ProductTypes } from '@constants/types';
 import { ERROR_MESSAGES } from '@constants/messages';
 
 // Components
-import { Title } from '@components/commons/Title';
-import { TextField } from '@components/commons/TextField';
-import { Button } from '@components/commons/Button';
-import { Select } from '@components/commons/Select';
-import { Text, VariantsTypes } from '@components/commons/Text';
+import Title from '@components/commons/Title';
+import TextField from '@components/commons/TextField';
+import Button from '@components/commons/Button';
+import Select from '@components/commons/SelectItem';
+import Text, { VariantsTypes } from '@components/commons/Text';
 
 // Type
 import { Product } from 'type/product';
@@ -31,7 +31,7 @@ interface FormProps {
   handleSubmit(): void;
 }
 
-export const Form: React.FC<FormProps> = ({
+const Form: React.FC<FormProps> = ({
   variants,
   productItem,
   options = [],
@@ -146,3 +146,5 @@ export const Form: React.FC<FormProps> = ({
     </div>
   );
 };
+
+export default Form;

@@ -5,7 +5,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { FilterOrderOptions, ProductTypes } from '@constants/types';
 
 // Components
-import { Select } from '@components/commons/Select';
+import Select from '@components/commons/SelectItem';
+import Button from '@components/commons/Button';
 
 // Styles
 import './index.css';
@@ -13,14 +14,13 @@ import './index.css';
 // Store
 import { useStore } from '@store/store';
 import { filterProducts } from '@store/actions';
-import { Button } from '@components/commons/Button';
 
 type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
 };
 
-export const Filter: React.FC<FilterProps> = ({
+const Filter: React.FC<FilterProps> = ({
   typeFilterOptions,
   priceFilterOptions
 }) => {
@@ -75,3 +75,5 @@ export const Filter: React.FC<FilterProps> = ({
     </div>
   );
 };
+
+export default Filter;

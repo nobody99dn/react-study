@@ -1,10 +1,10 @@
 // Library
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 
 // Style
 import './index.css';
 
-interface SelectProps {
+interface SelectItemProps {
   id?: string,
   name: string,
   value?: string | number;
@@ -13,7 +13,7 @@ interface SelectProps {
   onChange: (value: any) => void;
 }
 
-export const Select: React.FC<SelectProps> = ({
+const SelectItem: React.FC<SelectItemProps> = ({
   id,
   name,
   value,
@@ -45,3 +45,5 @@ export const Select: React.FC<SelectProps> = ({
     </div>
   );
 };
+
+export default memo(SelectItem);

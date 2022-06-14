@@ -1,10 +1,12 @@
 // Libraries
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 
 // Components
-import { Image } from '@components/commons/Image';
-import { Title, VariantsTypes } from '@components/commons/Title';
-import { Button } from '@components/commons/Button';
+import Image from '@components/commons/Image';
+import Title, { VariantTypes } from '@components/commons/Title';
+import Button from '@components/commons/Button';
+import Modal from '@components/Modal';
+import Form from '@components/Form';
 
 // Constants
 import { ERROR_MESSAGES } from '@constants/messages';
@@ -25,16 +27,12 @@ import { removeProduct } from '@services/product.service';
 // Store
 import { deleteProduct, error as errorAction, useStore } from '@store/index';
 
-// Components
-import { Modal } from '@components/Modal';
-import { Form } from '@components/Form';
-
 interface CardProps {
   product: Product;
   currency: Currencies;
 }
 
-export const Card: React.FC<CardProps> = ({
+const Card: React.FC<CardProps> = ({
   product,
   currency,
 }) => {
@@ -86,7 +84,7 @@ export const Card: React.FC<CardProps> = ({
           </div>
           <Title
             color='var(--dark)'
-            variant={VariantsTypes.Subtitle}
+            variant={VariantTypes.Subtitle}
             fs='italic'
             p='0 0.5rem'
             size='16px'
@@ -94,7 +92,7 @@ export const Card: React.FC<CardProps> = ({
             {type}
           </Title>
           <Title
-            variant={VariantsTypes.Subtitle}
+            variant={VariantTypes.Subtitle}
             fw={FwType.Bold}
             p='0.5rem'
           >
@@ -129,3 +127,5 @@ export const Card: React.FC<CardProps> = ({
     </>
   );
 };
+
+export default memo(Card);

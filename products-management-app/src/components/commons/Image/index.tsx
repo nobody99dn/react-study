@@ -1,5 +1,5 @@
 // Library
-import React from 'react';
+import React, { memo } from 'react';
 
 // Styles
 import './index.css';
@@ -17,7 +17,7 @@ interface ImageProps {
   onImageClick?: () => void;
 }
 
-export const Image: React.FC<ImageProps> = (
+const Image: React.FC<ImageProps> = (
   {
     alt,
     className,
@@ -37,3 +37,5 @@ export const Image: React.FC<ImageProps> = (
     onClick={onImageClick}
   />
 );
+
+export default memo(Image);

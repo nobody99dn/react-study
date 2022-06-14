@@ -1,21 +1,20 @@
 // Library
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 // Components
-import { Button } from '@components/commons/Button';
-import { Modal } from '@components/Modal';
-import { Form } from '@components/Form';
+import Button from '@components/commons/Button';
+import Modal from '@components/Modal';
+import Form from '@components/Form';
+import Filter from '@components/Filter';
 
 // Style
 import './index.css';
 
 // Constants
 import { ButtonVariants, FormVariants, ORDER_OPTIONS, PRODUCT_TYPE_LIST } from '@constants/types';
-import { Filter } from '@components/Filter';
 
-interface SideBarProps { }
 
-export const SideBar: React.FC<SideBarProps> = ({ }) => {
+const SideBar: React.FC = () => {
   const [isModalShow, setIsModalShow] = useState(false);
 
   const handleOpenForm = () => {
@@ -65,3 +64,5 @@ export const SideBar: React.FC<SideBarProps> = ({ }) => {
     </>
   );
 };
+
+export default memo(SideBar);

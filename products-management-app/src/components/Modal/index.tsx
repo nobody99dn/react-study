@@ -1,8 +1,8 @@
 // Library
-import React, { ReactNode } from 'react';
+import React, { memo, ReactNode } from 'react';
 
 // Components
-import { Image } from '@components/commons/Image';
+import Image from '@components/commons/Image';
 
 // Assets
 import { closeIcon } from '@assets/index';
@@ -16,7 +16,7 @@ interface ModalProps {
   handleClose: () => void;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+const Modal: React.FC<ModalProps> = ({
   children,
   isVisible,
   handleClose
@@ -37,3 +37,4 @@ export const Modal: React.FC<ModalProps> = ({
   </div>
 ) : null;
 
+export default memo(Modal);

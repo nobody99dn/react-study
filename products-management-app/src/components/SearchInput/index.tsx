@@ -1,17 +1,17 @@
 // Library
-import React from 'react';
+import React, { memo } from 'react';
 
 // Asset
 import { searchIcon } from '@assets/index';
 
 // Component
-import { TextField } from '@components/commons/TextField';
+import TextField from '@components/commons/TextField';
 
 // Store
 import { useStore } from '@store/store';
 import { searchProducts } from '@store/actions';
 
-export const Search: React.FC = () => {
+const SearchInput: React.FC = () => {
   const { dispatch } = useStore();
 
   const handleSearchProduct = (value: string | number) => {
@@ -27,3 +27,5 @@ export const Search: React.FC = () => {
     />
   );
 };
+
+export default memo(SearchInput);

@@ -1,8 +1,8 @@
 // Libraries
-import React from 'react';
+import React, { memo } from 'react';
 
 // Component 
-import { Image } from '@components/commons/Image';
+import Image from '@components/commons/Image';
 
 // Assets
 import { logo } from '@assets/index';
@@ -27,4 +27,4 @@ const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
   </header>
 );
 
-export default Header;
+export default memo(Header);

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 // Style
 import './index.css';
 
-interface LoadingIndicatorProps { }
-
-export const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
+const LoadingIndicator: React.FC = () => {
   return (
     <div className='spinner-container'>
       <div className='loading-indicator' />
     </div>
   );
 };
+
+export default memo(LoadingIndicator);

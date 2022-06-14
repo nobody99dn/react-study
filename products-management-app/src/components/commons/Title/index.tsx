@@ -1,5 +1,5 @@
 // Libraries
-import React, { ReactNode } from "react";
+import React, { memo, ReactNode } from "react";
 
 // Styles
 import './index.css';
@@ -7,7 +7,7 @@ import './index.css';
 // Constants
 import { FwType } from '@constants/types';
 
-export enum VariantsTypes {
+export enum VariantTypes {
   Default = 'title',
   Subtitle = 'subtitle'
 }
@@ -20,10 +20,10 @@ interface TitleProps {
   size?: string;
   fs?: 'inherit' | 'italic';
   p?: string;
-  variant?: VariantsTypes;
+  variant?: VariantTypes;
 }
 
-export const Title: React.FC<TitleProps> = (
+const Title: React.FC<TitleProps> = (
   {
     children,
     className,
@@ -32,7 +32,7 @@ export const Title: React.FC<TitleProps> = (
     size,
     fs = 'inherit',
     p,
-    variant = VariantsTypes.Default,
+    variant = VariantTypes.Default,
   }
 ) => (
   <div
@@ -49,3 +49,4 @@ export const Title: React.FC<TitleProps> = (
   </div>
 );
 
+export default memo(Title);

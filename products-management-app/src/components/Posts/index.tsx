@@ -2,9 +2,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 // Components
-import { Card } from '@components/commons/Card';
-import { LoadingIndicator } from '@components/LoadingIndicator';
-import { Modal } from '@components/Modal';
+import Card from '@components/commons/Card';
+import LoadingIndicator from '@components/LoadingIndicator';
+import Modal from '@components/Modal';
 
 // Styles
 import './index.css';
@@ -25,9 +25,7 @@ import { Product } from 'type/product';
 // Store
 import { useStore, getProductsRequest, getProductsSuccess, getProductsFailed } from '@store/index';
 
-type PostsProps = {};
-
-export const Posts: React.FC<PostsProps> = ({ }) => {
+const Posts: React.FC = () => {
   const { globalState, dispatch } = useStore();
 
   const [isModalShow, setIsModalShow] = useState<boolean>(true);
@@ -89,3 +87,5 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
     </div>
   );
 };
+
+export default Posts;

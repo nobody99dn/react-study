@@ -1,5 +1,5 @@
 // Library
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 
 // Constants
 import { FwType } from '@constants/types';
@@ -21,7 +21,7 @@ interface TextProps {
   variant?: VariantsTypes;
 }
 
-export const Text: React.FC<TextProps> = (
+const Text: React.FC<TextProps> = (
   {
     children,
     color,
@@ -44,3 +44,4 @@ export const Text: React.FC<TextProps> = (
   </p>
 );
 
+export default memo(Text);

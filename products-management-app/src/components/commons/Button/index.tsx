@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 // Constants
 import { ButtonVariants } from '@constants/types';
@@ -15,7 +15,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   title,
   variant = ButtonVariants.Default,
   isDisabled = false,
@@ -32,3 +32,5 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };;
+
+export default memo(Button);
