@@ -24,11 +24,11 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={['btn', `btn-${variant}`, `${isDisabled && 'disabled' || ''}`].join(' ')}
+      className={`btn btn-${variant} ${isDisabled && 'disabled'}`}
       onClick={onClick}
       disabled={isDisabled}
     >
       {isLoading ? 'Loading...' : title}
     </button>
   );
-};
+};;

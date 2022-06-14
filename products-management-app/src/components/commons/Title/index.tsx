@@ -36,7 +36,7 @@ export const Title: React.FC<TitleProps> = (
   }
 ) => (
   <div
-    className={[variant, className].join(' ')}
+    className={`${variant} ${className}`}
     style={{
       fontSize: size,
       color: color,

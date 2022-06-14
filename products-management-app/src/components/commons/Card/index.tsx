@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 // Components
 import { Image } from '@components/commons/Image';
@@ -44,12 +44,11 @@ export const Card: React.FC<CardProps> = ({
   const [isModalShow, setIsModalShow] = useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
 
+  const handleToggleModal = useCallback(() => {
+    setIsModalShow(!isModalShow);
+  }, []);
 
-  const handleEditProduct = () => {
-    setIsModalShow(true);
-  };
-
-  const handleCloseModal = () => {
+  const handleSubmitForm = () => {
     setIsModalShow(false);
   };
 
@@ -105,7 +104,7 @@ export const Card: React.FC<CardProps> = ({
           <div className='button-wrapper'>
             <Button
               title='Edit'
-              onClick={handleEditProduct}
+              onClick={handleToggleModal}
             />
             <Button
               variant={ButtonVariants.Secondary}
@@ -118,10 +117,10 @@ export const Card: React.FC<CardProps> = ({
       </div >
       <Modal
         isVisible={isModalShow}
-        handleClose={handleCloseModal}
+        handleClose={handleToggleModal}
       >
         <Form
-          handleSubmit={handleCloseModal}
+          handleSubmit={handleSubmitForm}
           variants={FormVariants.Edit}
           options={PRODUCT_TYPE_LIST}
           productItem={product}

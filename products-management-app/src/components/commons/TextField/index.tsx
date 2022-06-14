@@ -73,7 +73,7 @@ export const TextField: React.FC<TextFieldProps> = (
         <input
           id={id}
           name={name}
-          className={['field', `field-${variant}`].join(' ').trim()}
+          className={`field field-${variant}`}
           type={type}
           style={{ width: width, height: height }}
           placeholder={placeholder}
@@ -86,4 +86,4 @@ export const TextField: React.FC<TextFieldProps> = (
       </div >
     </div >
   );
-};
+};;
