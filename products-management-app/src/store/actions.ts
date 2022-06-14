@@ -13,12 +13,12 @@ const getProductsRequest = () => ({
   type: ACTIONS.GET_PRODUCTS_REQUEST
 });
 
-const getProductsSuccess = (payload: any) => ({
+const getProductsSuccess = (payload: Product[]) => ({
   type: ACTIONS.GET_PRODUCTS_SUCCESS,
   payload
 });
 
-const getProductsFailed = (payload: Product[]) => ({
+const getProductsFailed = (payload: string) => ({
   type: ACTIONS.GET_PRODUCTS_FAILED,
   payload
 });

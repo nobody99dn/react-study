@@ -39,7 +39,7 @@ export const SideBar: React.FC<SideBarProps> = ({ }) => {
         />
       </div>
       <Modal
-        show={isModalShow}
+        isVisible={isModalShow}
         handleClose={handleCloseModal}
       >
         <Form

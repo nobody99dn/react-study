@@ -19,7 +19,7 @@ import { Text, VariantsTypes } from '@components/commons/Text';
 import { Product } from 'type/product';
 
 // Store
-import { addProduct, callApi, error as errorAction, useStore } from '@store/index';
+import { addProduct, error as errorAction, useStore } from '@store/index';
 
 // Service
 import { addNewProduct } from '@services/product.service';
@@ -43,6 +43,8 @@ export const Form: React.FC<FormProps> = ({
 
   const [product, setProduct] = useState<Product>(productItem);
 
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
+
   const handleNameChange = (value: string | number): void => {
     setProduct({ ...product, name: value as string });
   };
@@ -61,9 +63,11 @@ export const Form: React.FC<FormProps> = ({
 
   const handleSubmitForm = async (event: FormEvent) => {
     event.preventDefault();
+
+    setIsButtonLoading(true);
+
     if (!productItem.id) {
       try {
-        dispatch(callApi());
 
         const newProduct: Product = await addNewProduct(product);
 
@@ -130,6 +134,7 @@ export const Form: React.FC<FormProps> = ({
         <Button
           variant={ButtonVariants.Primary}
           title={variants}
+          isLoading={isButtonLoading}
         />
       </form>
     </div>

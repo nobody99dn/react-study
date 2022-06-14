@@ -62,7 +62,7 @@ export const Posts: React.FC<PostsProps> = ({ }) => {
 
   return (
     <div className='product-group'>
-      {isLoading && <LoadingIndicator />}
+      {isLoading && <LoadingIndicator /> || null}
       {
         errorMessage ?
           <Modal
