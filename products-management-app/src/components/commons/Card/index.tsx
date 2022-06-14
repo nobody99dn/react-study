@@ -17,7 +17,7 @@ import { currencyFormat } from '@helpers/string';
 import './index.css';
 
 // Type
-import Product from '@models/product';
+import { Product } from '@type/product';
 
 // Service
 import { removeProduct } from '@services/product.service';
@@ -91,13 +91,13 @@ export const Card: React.FC<CardProps> = ({
         <div className='button-wrapper'>
           <Button
             title='Edit'
-            handleButtonClick={handleEditProduct}
+            onClick={handleEditProduct}
           />
           <Button
             variant={ButtonVariants.Secondary}
             title='Delete'
             isLoading={isDeleteLoading}
-            handleButtonClick={handleDeleteProduct}
+            onClick={handleDeleteProduct}
           />
         </div>
       </div>
