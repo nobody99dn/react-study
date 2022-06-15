@@ -50,3 +50,8 @@ export enum FilterOrderOptions {
 }
 
 export const ORDER_OPTIONS = [FilterOrderOptions.Asc, FilterOrderOptions.Desc];
+
+export enum MessagePopUpVariants {
+  Success = 'success',
+  Failed = 'failed'
+}

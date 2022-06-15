@@ -23,7 +23,7 @@ import { Product } from '@type/product';
 import { removeProduct } from '@services/product.service';
 
 // Store
-import { deleteProduct, error as errorAction, useStore } from '@store/index';
+import { deleteProductFailed, deleteProductSuccess, useStore } from '@store/index';
 
 interface CardProps {
   product: Product;
@@ -55,10 +55,10 @@ const Card: React.FC<CardProps> = ({
         throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
       }
 
-      dispatch(deleteProduct(deletedProduct.id));
+      dispatch(deleteProductSuccess(deletedProduct.id));
     } catch (error) {
       if (error instanceof Error) {
-        dispatch(errorAction(error.message));
+        dispatch(deleteProductFailed(error.message));
         return;
       }
     }

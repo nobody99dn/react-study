@@ -45,7 +45,14 @@ const reducer = (state = initialState, action: any): {} => {
         filterBox: null
       };
 
-    case ACTIONS.ADD_PRODUCT:
+    case ACTIONS.ADD_PRODUCT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: null
+      };
+
+    case ACTIONS.ADD_PRODUCT_SUCCESS:
       return {
         ...state,
         products: [...state.products, action.payload],
@@ -54,7 +61,23 @@ const reducer = (state = initialState, action: any): {} => {
         filterBox: null
       };
 
-    case ACTIONS.DELETE_PRODUCT:
+    case ACTIONS.ADD_PRODUCT_FAILED:
+      return {
+        ...state,
+        products: [...state.products, action.payload],
+        isLoading: false,
+        errorMessage: null,
+        filterBox: null
+      };
+
+    case ACTIONS.DELETE_PRODUCT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: null
+      };
+
+    case ACTIONS.DELETE_PRODUCT_SUCCESS:
       return {
         ...state,
         products: [
@@ -65,7 +88,23 @@ const reducer = (state = initialState, action: any): {} => {
         filterBox: null
       };
 
-    case ACTIONS.EDIT_PRODUCT: {
+    case ACTIONS.DELETE_PRODUCT_FAILED:
+      return {
+        ...state,
+        errorMessage: action.payload,
+        isLoading: false,
+        filterBox: null
+      };
+
+    case ACTIONS.EDIT_PRODUCT_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: null
+      };
+    }
+
+    case ACTIONS.EDIT_PRODUCT_SUCCESS: {
       const productIndex: number = state.products.findIndex(
         (product) => product.id === action.payload.id
       );
@@ -81,7 +120,54 @@ const reducer = (state = initialState, action: any): {} => {
       };
     }
 
-    case ACTIONS.FILTER_PRODUCTS:
+    case ACTIONS.EDIT_PRODUCT_FAILED: {
+      return {
+        ...state,
+        errorMessage: action.payload,
+        isLoading: false,
+        filterBox: null
+      };
+    }
+
+    case ACTIONS.FILTER_PRODUCTS_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: null
+      };
+
+    case ACTIONS.FILTER_PRODUCTS_SUCCESS: {
+      const { currentFilterTypeParam, currentFilterPriceParam } =
+        action.payload;
+
+      const filteredProducts: Product[] = [
+        ...state.products.filter((product: Product) =>
+          product.type.includes(currentFilterTypeParam)
+        )
+      ];
+
+      if (currentFilterPriceParam === FilterOrderOptions.Asc) {
+        filteredProducts.sort(
+          (firstProduct: Product, secondProduct: Product) =>
+            firstProduct.price - secondProduct.price
+        );
+      } else if (currentFilterPriceParam === FilterOrderOptions.Desc) {
+        filteredProducts.sort(
+          (firstProduct: Product, secondProduct: Product) =>
+            secondProduct.price - firstProduct.price
+        );
+      }
+
+      return {
+        ...state,
+        products: [...state.products],
+        isLoading: false,
+        errorMessage: null,
+        filterBox: filteredProducts
+      };
+    }
+
+    case ACTIONS.FILTER_PRODUCTS_FAILED:
       const { currentFilterTypeParam, currentFilterPriceParam } =
         action.payload;
 
@@ -111,7 +197,25 @@ const reducer = (state = initialState, action: any): {} => {
         filterBox: filteredProducts
       };
 
-    case ACTIONS.SEARCH_PRODUCTS:
+    case ACTIONS.SEARCH_PRODUCTS_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: null
+      };
+
+    case ACTIONS.SEARCH_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        filterBox: [
+          ...state.products.filter((product: Product) =>
+            product.name.includes(action.payload)
+          )
+        ],
+        loading: false
+      };
+
+    case ACTIONS.SEARCH_PRODUCTS_FAILED:
       return {
         ...state,
         filterBox: [

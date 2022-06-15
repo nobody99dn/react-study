@@ -19,7 +19,7 @@ import Text, { VariantsTypes } from '@components/commons/Text';
 import { Product } from 'type/product';
 
 // Store
-import { addProduct, editProduct, error as errorAction, useStore } from '@store/index';
+import { addProductSuccess, editProductFailed, editProductSuccess, useStore } from '@store/index';
 
 // Service
 import { addNewProduct, updateProduct } from '@services/product.service';
@@ -74,18 +74,18 @@ const Form: React.FC<FormProps> = ({
           throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
         }
 
-        dispatch(addProduct(newProduct));
+        dispatch(addProductSuccess(newProduct));
       } else {
         const updatedProduct: Product = await updateProduct(product);
         if (!updatedProduct) {
           throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
         }
 
-        dispatch(editProduct(product));
+        dispatch(editProductSuccess(product));
       }
     } catch (error) {
       if (error instanceof Error) {
-        dispatch(errorAction(error.message));
+        dispatch(editProductFailed(error.message));
         return;
       }
     }

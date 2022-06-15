@@ -4,11 +4,6 @@ import { ACTIONS } from './constants';
 // Type
 import { Product } from 'type/product';
 
-const error = (payload: any) => ({
-  type: ACTIONS.ERROR,
-  payload
-});
-
 const getProductsRequest = () => ({
   type: ACTIONS.GET_PRODUCTS_REQUEST
 });
@@ -23,28 +18,73 @@ const getProductsFailed = (payload: string) => ({
   payload
 });
 
-const addProduct = (payload: Product) => ({
-  type: ACTIONS.ADD_PRODUCT,
+const addProductRequest = () => ({
+  type: ACTIONS.ADD_PRODUCT_REQUEST
+});
+
+const addProductSuccess = (payload: Product) => ({
+  type: ACTIONS.ADD_PRODUCT_SUCCESS,
   payload
 });
 
-const deleteProduct = (payload: any) => ({
-  type: ACTIONS.DELETE_PRODUCT,
+const addProductFailed = (payload: string) => ({
+  type: ACTIONS.ADD_PRODUCT_FAILED,
   payload
 });
 
-const editProduct = (payload: any) => ({
-  type: ACTIONS.EDIT_PRODUCT,
+const deleteProductRequest = () => ({
+  type: ACTIONS.DELETE_PRODUCT_REQUEST
+});
+
+const deleteProductSuccess = (payload: string) => ({
+  type: ACTIONS.DELETE_PRODUCT_SUCCESS,
   payload
 });
 
-const filterProducts = (payload: any) => ({
-  type: ACTIONS.FILTER_PRODUCTS,
+const deleteProductFailed = (payload: string) => ({
+  type: ACTIONS.DELETE_PRODUCT_FAILED,
   payload
 });
 
-const searchProducts = (payload: any) => ({
-  type: ACTIONS.SEARCH_PRODUCTS,
+const editProductRequest = () => ({
+  type: ACTIONS.EDIT_PRODUCT_REQUEST
+});
+
+const editProductSuccess = (payload: Product) => ({
+  type: ACTIONS.EDIT_PRODUCT_SUCCESS,
+  payload
+});
+
+const editProductFailed = (payload: string) => ({
+  type: ACTIONS.EDIT_PRODUCT_FAILED,
+  payload
+});
+
+const filterProductsRequest = () => ({
+  type: ACTIONS.FILTER_PRODUCTS_REQUEST
+});
+
+const filterProductsSuccess = (payload: any) => ({
+  type: ACTIONS.FILTER_PRODUCTS_SUCCESS,
+  payload
+});
+
+const filterProductsFailed = (payload: string) => ({
+  type: ACTIONS.FILTER_PRODUCTS_FAILED,
+  payload
+});
+
+const searchProductsRequest = () => ({
+  type: ACTIONS.SEARCH_PRODUCTS_REQUEST
+});
+
+const searchProductsSuccess = (payload: any) => ({
+  type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,
+  payload
+});
+
+const searchProductsFailed = (payload: string) => ({
+  type: ACTIONS.SEARCH_PRODUCTS_FAILED,
   payload
 });
 
@@ -52,10 +92,19 @@ export {
   getProductsRequest,
   getProductsSuccess,
   getProductsFailed,
-  addProduct,
-  deleteProduct,
-  editProduct,
-  filterProducts,
-  searchProducts,
-  error
+  addProductRequest,
+  addProductSuccess,
+  addProductFailed,
+  deleteProductRequest,
+  deleteProductSuccess,
+  deleteProductFailed,
+  editProductRequest,
+  editProductSuccess,
+  editProductFailed,
+  filterProductsRequest,
+  filterProductsSuccess,
+  filterProductsFailed,
+  searchProductsRequest,
+  searchProductsSuccess,
+  searchProductsFailed
 };

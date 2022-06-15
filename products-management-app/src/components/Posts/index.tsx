@@ -29,7 +29,7 @@ interface PostsProps {
 const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
   const { globalState, dispatch } = useStore();
 
-  const { products, isLoading, errorMessage, filterBox } = globalState || {};
+  const { products, filterBox } = globalState || {};
 
   useEffect(() => {
     getAllProducts();
@@ -55,15 +55,6 @@ const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
 
   return (
     <div className='product-group'>
-      {isLoading && <LoadingIndicator />}
-      {
-        errorMessage &&
-        <Text
-          variant={VariantsTypes.Highlight}
-          color='var(--danger)'>
-          {errorMessage}
-        </Text>
-      }
       {(filterBox || products.length) &&
         (filterBox || products)
           .map((product: Product) => (
@@ -77,7 +68,7 @@ const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
                 handleOpenModalForm={handleOpenModalForm}
               />
             </div>
-          ))
+          )) || null
       }
     </div>
   );

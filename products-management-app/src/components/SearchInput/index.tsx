@@ -9,14 +9,14 @@ import TextField from '@components/commons/TextField';
 
 // Store
 import { useStore } from '@store/store';
-import { searchProducts } from '@store/actions';
+import { searchProductsSuccess } from '@store/actions';
 
 const SearchInput: React.FC = () => {
   const { dispatch } = useStore();
 
   const handleSearchProduct = (value: string | number) => {
     setTimeout(() => {
-      dispatch(searchProducts(value));
+      dispatch(searchProductsSuccess(value));
     }, 500);
   };
   return (
