@@ -15,7 +15,9 @@ const SearchInput: React.FC = () => {
   const { dispatch } = useStore();
 
   const handleSearchProduct = (value: string | number) => {
-    dispatch(searchProducts(value));
+    setTimeout(() => {
+      dispatch(searchProducts(value));
+    }, 500);
   };
   return (
     <TextField

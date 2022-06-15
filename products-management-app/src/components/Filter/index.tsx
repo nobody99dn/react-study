@@ -43,9 +43,11 @@ const Filter: React.FC<FilterProps> = ({
   }, [currentFilterPriceParam]);
 
   useEffect(() => {
-    dispatch(
-      filterProducts({ currentFilterTypeParam, currentFilterPriceParam })
-    );
+    setTimeout(() => {
+      dispatch(
+        filterProducts({ currentFilterTypeParam, currentFilterPriceParam })
+      );
+    }, 500);
   }, [currentFilterPriceParam, currentFilterTypeParam]);
 
   return (
