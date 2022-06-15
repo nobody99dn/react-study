@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Text, VariantsTypes } from './index';
+import Text, { VariantsTypes } from './index';
 
 // Constants
 import { FwType } from '@constants/types';

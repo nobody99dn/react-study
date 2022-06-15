@@ -2,8 +2,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
-import { Modal } from './index';
-import { Form } from '@components/Form';
+import Modal from './index';
+import Form from '@components/Form';
 
 // Styles
 import '@assets/styles/App.css';
@@ -22,7 +22,7 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  show: true,
+  isVisible: true,
   children:
     <Form
       handleSubmit={() => { }}
@@ -31,7 +31,8 @@ Default.args = {
         id: '',
         name: '',
         type: '',
-        price: 0
+        price: 0,
+        imageUrl: ''
       }}
     />
 };

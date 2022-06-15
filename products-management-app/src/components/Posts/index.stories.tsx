@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Posts } from './index';
+import Posts from './index';
 
 // Styles
 import '@assets/styles/reset.css';
@@ -30,12 +30,10 @@ const Template: ComponentStory<typeof Posts> = (args) => <Posts {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  isLoading: false,
-  products: products
+  handleOpenModalForm: () => { }
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  isLoading: true,
-  products: products
+  handleOpenModalForm: () => { }
 };

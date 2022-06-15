@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { VariantsTypes, Title } from './index';
+import Title, { VariantTypes } from './index';
 
 import { FwType } from '@constants/types';
 
@@ -22,13 +22,13 @@ const Template: ComponentStory<typeof Title> = (args) => <Title {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   children: 'Title',
-  variant: VariantsTypes.Default
+  variant: VariantTypes.Default
 };
 
 export const Subtitle = Template.bind({});
 Subtitle.args = {
   children: 'Title',
-  variant: VariantsTypes.Subtitle,
+  variant: VariantTypes.Subtitle,
   fw: FwType.Bold,
   fs: 'italic'
 };

@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { TextField } from './index';
+import TextField from './index';
 
 // Styles
 import '@assets/styles/reset.css';

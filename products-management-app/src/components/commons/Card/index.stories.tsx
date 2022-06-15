@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Card } from './index';
+import Card from './index';
 
 // Styles
 import '@assets/styles/App.css';
@@ -23,9 +23,6 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  type: 'green',
-  imageUrl: iPhoneImage,
-  title: 'iPhone 13 promax',
-  price: 30000000,
+  handleOpenModalForm: () => { },
   currency: Currencies.VND
 };

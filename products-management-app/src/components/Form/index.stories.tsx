@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Form } from './index';
+import Form from './index';
 
 // Styles
 import '@assets/styles/App.css';
@@ -30,7 +30,8 @@ CreateForm.args = {
     id: '',
     name: '',
     type: '',
-    price: 0
+    price: 0,
+    imageUrl: ''
   }
 };
 
@@ -43,6 +44,7 @@ EditForm.args = {
     id: 'product-01',
     name: 'iPhone X',
     type: 'Phone',
-    price: 10000000
+    price: 10000000,
+    imageUrl: 'link image'
   }
 };

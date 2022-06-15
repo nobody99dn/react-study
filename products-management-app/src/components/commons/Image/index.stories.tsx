@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Image } from './index';
+import Image from './index';
 
 // Styles
 import '@assets/styles/App.css';

@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Select } from './index';
+import Select from './index';
 
 // Styles
 import '@assets/styles/reset.css';

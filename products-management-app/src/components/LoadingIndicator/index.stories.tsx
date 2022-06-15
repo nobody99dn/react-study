@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { LoadingIndicator } from './index';
+import LoadingIndicator from './index';
 
 // Styles
 import '@assets/styles/reset.css';

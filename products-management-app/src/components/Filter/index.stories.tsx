@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import { Filter } from './index';
+import Filter from './index';
 
 // Styles
 import '@assets/styles/reset.css';
@@ -22,7 +22,5 @@ const Template: ComponentStory<typeof Filter> = (args) => <Filter {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   typeFilterOptions: PRODUCT_TYPE_LIST,
-  priceFilterOptions: ORDER_OPTIONS,
-  onPriceFilterChange: () => { },
-  onTypeFilterChange: () => { }
+  priceFilterOptions: ORDER_OPTIONS
 };
