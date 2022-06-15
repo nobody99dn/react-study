@@ -1,12 +1,10 @@
 // Libraries
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
 // Components
 import Image from '@components/commons/Image';
 import Title, { VariantTypes } from '@components/commons/Title';
 import Button from '@components/commons/Button';
-import Modal from '@components/Modal';
-import Form from '@components/Form';
 
 // Constants
 import { ERROR_MESSAGES } from '@constants/messages';
@@ -38,15 +36,15 @@ const Card: React.FC<CardProps> = ({
   currency,
   handleOpenModalForm
 }) => {
-  const { name, imageUrl, price, id, type } = product || {};
-  const { globalState, dispatch } = useStore();
+  const { dispatch } = useStore();
 
-  const [isModalShow, setIsModalShow] = useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
 
-  const handleToggleModal = useCallback(() => {
+  const { name, imageUrl, price, id, type } = product || {};
+
+  const handleToggleModal = () => {
     handleOpenModalForm(product);
-  }, []);
+  };
 
   const handleDeleteProduct = async () => {
     setIsDeleteLoading(true);
@@ -113,4 +111,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default memo(Card);
+export default Card;
