@@ -54,33 +54,31 @@ const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
   };
 
   return (
-    <div className='posts-container'>
-      <div className='product-group'>
-        {isLoading && <LoadingIndicator />}
-        {
-          errorMessage &&
-          <Text
-            variant={VariantsTypes.Highlight}
-            color='var(--danger)'>
-            {errorMessage}
-          </Text>
-        }
-        {(filterBox || products.length) &&
-          (filterBox || products)
-            .map((product: Product) => (
-              <div
-                className='products-row'
-                key={product.id}
-              >
-                <Card
-                  product={product}
-                  currency={Currencies.VND}
-                  handleOpenModalForm={handleOpenModalForm}
-                />
-              </div>
-            ))
-        }
-      </div>
+    <div className='product-group'>
+      {isLoading && <LoadingIndicator />}
+      {
+        errorMessage &&
+        <Text
+          variant={VariantsTypes.Highlight}
+          color='var(--danger)'>
+          {errorMessage}
+        </Text>
+      }
+      {(filterBox || products.length) &&
+        (filterBox || products)
+          .map((product: Product) => (
+            <div
+              className='products-row'
+              key={product.id}
+            >
+              <Card
+                product={product}
+                currency={Currencies.VND}
+                handleOpenModalForm={handleOpenModalForm}
+              />
+            </div>
+          ))
+      }
     </div>
   );
 };

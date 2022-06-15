@@ -36,12 +36,17 @@ const Main: React.FC = () => {
 
   return (
     <main className='main'>
-      <div className='search-container container'>
-        <Search />
+      <div className='right-container'>
+        <div className='right-content'>
+          <Search />
+          <Posts handleOpenModalForm={handleToggleModal} />
+        </div>
       </div>
-      <SideBar handleOpenModalForm={handleToggleModal} />
+      <div className='left-container'>
+        <SideBar handleOpenModalForm={handleToggleModal} />
+      </div>
 
-      <Posts handleOpenModalForm={handleToggleModal} />
+
       {isModalShow && <ModalForm
         isModalShow={isModalShow}
         product={product}

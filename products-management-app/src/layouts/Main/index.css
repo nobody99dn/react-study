@@ -2,9 +2,18 @@
   width: 100%;
 }
 
-.search-container,
-.sidebar,
-.posts-container {
+.right-container {
   display: block;
-  padding: 1rem 1.5rem;
+  width: 85%;
+  float: right;
+}
+
+.right-content {
+  padding: 0 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.left-container {
+  width: 15%;
 }
