@@ -83,11 +83,6 @@ const reducer = (state = initialState, action: any): {} => {
             (product) => product.id !== action.payload.productId
           )
         ],
-        filterBox: [
-          ...(state.filterBox || []).filter(
-            (product) => product.id !== action.payload.productId
-          )
-        ],
         isLoading: false,
         successMessage: action.payload.message
       };

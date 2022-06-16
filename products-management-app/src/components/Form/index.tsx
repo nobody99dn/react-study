@@ -37,11 +37,11 @@ const Form: React.FC<FormProps> = ({
   options = [],
   handleSubmit
 }) => {
-  const { globalState, dispatch } = useStore();
-
-  const { error } = globalState || {};
+  const { dispatch } = useStore();
 
   const [product, setProduct] = useState<Product>(productItem);
+
+  const [validateMessage, setValidateMessage] = useState('');
 
   const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
 
@@ -53,6 +53,35 @@ const Form: React.FC<FormProps> = ({
     event.preventDefault();
 
     setIsButtonLoading(true);
+
+    // Validate form
+    if (!product.name) {
+      setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
+      setIsButtonLoading(false);
+
+      return;
+    }
+
+    if (!product.type) {
+      setValidateMessage(ERROR_MESSAGES.PRODUCT_TYPE_REQUIRED);
+      setIsButtonLoading(false);
+
+      return;
+    }
+
+    if (!product.price) {
+      setValidateMessage(ERROR_MESSAGES.PRODUCT_PRICE_REQUIRED);
+      setIsButtonLoading(false);
+
+      return;
+    }
+
+    if (!product.imageUrl) {
+      setValidateMessage(ERROR_MESSAGES.PRODUCT_IMAGE_REQUIRED);
+      setIsButtonLoading(false);
+
+      return;
+    }
 
     if (!productItem.id) {
       try {
@@ -124,11 +153,11 @@ const Form: React.FC<FormProps> = ({
             placeholder='Enter image link...'
             onChange={handleOnChange}
           />
-          {error &&
+          {validateMessage &&
             <Text
               variant={VariantsTypes.Highlight}
               color='var(--danger)'>
-              {error}
+              {validateMessage}
             </Text>
           }
         </fieldset>
