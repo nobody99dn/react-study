@@ -1,6 +1,6 @@
 .popup-message {
+  display: none;
   position: fixed;
-  display: inline-block;
   border-radius: 10px;
   line-height: 2rem;
   padding: 0 1rem;
@@ -14,4 +14,8 @@
 
 .popup-success {
   background-color: var(--success);
+}
+
+.popup-message.active {
+  display: block;
 }

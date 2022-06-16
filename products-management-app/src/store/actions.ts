@@ -22,7 +22,7 @@ const addProductRequest = () => ({
   type: ACTIONS.ADD_PRODUCT_REQUEST
 });
 
-const addProductSuccess = (payload: Product) => ({
+const addProductSuccess = (payload: { product: Product; message: string }) => ({
   type: ACTIONS.ADD_PRODUCT_SUCCESS,
   payload
 });
@@ -36,7 +36,10 @@ const deleteProductRequest = () => ({
   type: ACTIONS.DELETE_PRODUCT_REQUEST
 });
 
-const deleteProductSuccess = (payload: string) => ({
+const deleteProductSuccess = (payload: {
+  productId: string;
+  message: string;
+}) => ({
   type: ACTIONS.DELETE_PRODUCT_SUCCESS,
   payload
 });
@@ -50,7 +53,10 @@ const editProductRequest = () => ({
   type: ACTIONS.EDIT_PRODUCT_REQUEST
 });
 
-const editProductSuccess = (payload: Product) => ({
+const editProductSuccess = (payload: {
+  product: Product;
+  message: string;
+}) => ({
   type: ACTIONS.EDIT_PRODUCT_SUCCESS,
   payload
 });
@@ -69,23 +75,13 @@ const filterProductsSuccess = (payload: any) => ({
   payload
 });
 
-const filterProductsFailed = (payload: string) => ({
-  type: ACTIONS.FILTER_PRODUCTS_FAILED,
-  payload
-});
-
-const searchProductsRequest = () => ({
-  type: ACTIONS.SEARCH_PRODUCTS_REQUEST
-});
-
 const searchProductsSuccess = (payload: any) => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,
   payload
 });
 
-const searchProductsFailed = (payload: string) => ({
-  type: ACTIONS.SEARCH_PRODUCTS_FAILED,
-  payload
+const clearMessages = () => ({
+  type: ACTIONS.CLEAR_MESSAGES
 });
 
 export {
@@ -103,8 +99,6 @@ export {
   editProductFailed,
   filterProductsRequest,
   filterProductsSuccess,
-  filterProductsFailed,
-  searchProductsRequest,
   searchProductsSuccess,
-  searchProductsFailed
+  clearMessages
 };

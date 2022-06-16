@@ -9,6 +9,7 @@ export interface InitialState {
   products: Product[];
   isLoading: boolean;
   errorMessage: string | null;
+  successMessage: string | null;
   filterBox: Product[] | null;
 }
 
@@ -16,6 +17,7 @@ const initialState: InitialState = {
   products: [],
   isLoading: false,
   errorMessage: null,
+  successMessage: null,
   filterBox: null
 };
 
@@ -48,75 +50,73 @@ const reducer = (state = initialState, action: any): {} => {
     case ACTIONS.ADD_PRODUCT_REQUEST:
       return {
         ...state,
-        isLoading: true,
-        errorMessage: null
+        isLoading: true
       };
 
     case ACTIONS.ADD_PRODUCT_SUCCESS:
       return {
         ...state,
-        products: [...state.products, action.payload],
+        products: [...state.products, action.payload.product],
         isLoading: false,
-        errorMessage: null,
-        filterBox: null
+        successMessage: action.payload.message
       };
 
     case ACTIONS.ADD_PRODUCT_FAILED:
       return {
         ...state,
-        products: [...state.products, action.payload],
         isLoading: false,
-        errorMessage: null,
-        filterBox: null
+        errorMessage: action.payload
       };
 
     case ACTIONS.DELETE_PRODUCT_REQUEST:
       return {
         ...state,
-        isLoading: true,
-        errorMessage: null
+        isLoading: true
       };
 
     case ACTIONS.DELETE_PRODUCT_SUCCESS:
       return {
         ...state,
         products: [
-          ...state.products.filter((product) => product.id !== action.payload)
+          ...state.products.filter(
+            (product) => product.id !== action.payload.productId
+          )
+        ],
+        filterBox: [
+          ...(state.filterBox || []).filter(
+            (product) => product.id !== action.payload.productId
+          )
         ],
         isLoading: false,
-        errorMessage: null,
-        filterBox: null
+        successMessage: action.payload.message
       };
 
     case ACTIONS.DELETE_PRODUCT_FAILED:
       return {
         ...state,
         errorMessage: action.payload,
-        isLoading: false,
-        filterBox: null
+        isLoading: false
       };
 
     case ACTIONS.EDIT_PRODUCT_REQUEST: {
       return {
         ...state,
-        isLoading: true,
-        errorMessage: null
+        isLoading: true
       };
     }
 
     case ACTIONS.EDIT_PRODUCT_SUCCESS: {
       const productIndex: number = state.products.findIndex(
-        (product) => product.id === action.payload.id
+        (product) => product.id === action.payload.product.id
       );
 
-      state.products[productIndex] = action.payload;
+      state.products[productIndex] = action.payload.product;
 
       return {
         ...state,
         products: state.products,
         isLoading: false,
-        errorMessage: null,
-        filterBox: null
+        successMessage: action.payload.message
       };
     }
 
@@ -124,16 +124,14 @@ const reducer = (state = initialState, action: any): {} => {
       return {
         ...state,
         errorMessage: action.payload,
-        isLoading: false,
-        filterBox: null
+        isLoading: false
       };
     }
 
     case ACTIONS.FILTER_PRODUCTS_REQUEST:
       return {
         ...state,
-        isLoading: true,
-        errorMessage: null
+        isLoading: true
       };
 
     case ACTIONS.FILTER_PRODUCTS_SUCCESS: {
@@ -162,47 +160,9 @@ const reducer = (state = initialState, action: any): {} => {
         ...state,
         products: [...state.products],
         isLoading: false,
-        errorMessage: null,
         filterBox: filteredProducts
       };
     }
-
-    case ACTIONS.FILTER_PRODUCTS_FAILED:
-      const { currentFilterTypeParam, currentFilterPriceParam } =
-        action.payload;
-
-      const filteredProducts: Product[] = [
-        ...state.products.filter((product: Product) =>
-          product.type.includes(currentFilterTypeParam)
-        )
-      ];
-
-      if (currentFilterPriceParam === FilterOrderOptions.Asc) {
-        filteredProducts.sort(
-          (firstProduct: Product, secondProduct: Product) =>
-            firstProduct.price - secondProduct.price
-        );
-      } else if (currentFilterPriceParam === FilterOrderOptions.Desc) {
-        filteredProducts.sort(
-          (firstProduct: Product, secondProduct: Product) =>
-            secondProduct.price - firstProduct.price
-        );
-      }
-
-      return {
-        ...state,
-        products: [...state.products],
-        isLoading: false,
-        errorMessage: null,
-        filterBox: filteredProducts
-      };
-
-    case ACTIONS.SEARCH_PRODUCTS_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-        errorMessage: null
-      };
 
     case ACTIONS.SEARCH_PRODUCTS_SUCCESS:
       return {
@@ -211,20 +171,16 @@ const reducer = (state = initialState, action: any): {} => {
           ...state.products.filter((product: Product) =>
             product.name.includes(action.payload)
           )
-        ],
-        loading: false
+        ]
       };
 
-    case ACTIONS.SEARCH_PRODUCTS_FAILED:
+    case ACTIONS.CLEAR_MESSAGES: {
       return {
         ...state,
-        filterBox: [
-          ...state.products.filter((product: Product) =>
-            product.name.includes(action.payload)
-          )
-        ],
-        loading: false
+        errorMessage: null,
+        successMessage: null
       };
+    }
 
     default:
       return state;

@@ -27,7 +27,6 @@ const Main: React.FC = () => {
   const handleToggleModal = useCallback((product: Product) => {
     setIsModalShow(!isModalShow);
     setProduct(product);
-    console.log('product', product);
   }, [isModalShow]);
 
   const handleCloseModal = useCallback(() => {
@@ -45,8 +44,6 @@ const Main: React.FC = () => {
       <div className='left-container'>
         <SideBar handleOpenModalForm={handleToggleModal} />
       </div>
-
-
       {isModalShow && <ModalForm
         isModalShow={isModalShow}
         product={product}

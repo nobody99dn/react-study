@@ -7,7 +7,7 @@ import Title, { VariantTypes } from '@components/commons/Title';
 import Button from '@components/commons/Button';
 
 // Constants
-import { ERROR_MESSAGES } from '@constants/messages';
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
 import { ButtonVariants, Currencies, FormVariants, FwType, PRODUCT_TYPE_LIST } from '@constants/types';
 
 // Helpers
@@ -51,11 +51,13 @@ const Card: React.FC<CardProps> = ({
     try {
       const deletedProduct: Product = await removeProduct(id);
 
-      if (deletedProduct instanceof Error) {
+      if (!deletedProduct) {
         throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
       }
 
-      dispatch(deleteProductSuccess(deletedProduct.id));
+      dispatch(deleteProductSuccess({
+        productId: deletedProduct.id, message: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
+      }));
     } catch (error) {
       if (error instanceof Error) {
         dispatch(deleteProductFailed(error.message));

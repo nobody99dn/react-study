@@ -28,7 +28,7 @@ const ModalForm: React.FC<ModalFormProps> = ({
     >
       <Form
         handleSubmit={handleSubmitForm}
-        variants={FormVariants.Edit}
+        variants={!product.id ? FormVariants.Create : FormVariants.Edit}
         options={PRODUCT_TYPE_LIST}
         productItem={product}
       />

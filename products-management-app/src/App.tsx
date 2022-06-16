@@ -1,3 +1,4 @@
+// Library
 import React from 'react';
 
 // Styles
@@ -22,22 +23,24 @@ function App() {
   const { globalState } = useStore();
 
   const { isLoading, errorMessage, successMessage } = globalState || {};
+
   return (
     <>
       <Header />
       <Main />
+
       {isLoading && <LoadingIndicator />}
+
       {
-        errorMessage &&
-        <MessagePopUp
+        errorMessage && <MessagePopUp
           text={errorMessage}
           messagePopUpVariant={MessagePopUpVariants.Failed}
         />
       }
+
       {
-        successMessage &&
-        <MessagePopUp
-          text={errorMessage}
+        successMessage && <MessagePopUp
+          text={successMessage}
           messagePopUpVariant={MessagePopUpVariants.Success}
         />
       }

@@ -1,7 +1,16 @@
-import Text, { VariantsTypes } from "@components/commons/Text";
-import { MessagePopUpVariants } from "@constants/types";
+// Library
 import React, { useEffect, useState } from "react";
 
+// Constant
+import { MessagePopUpVariants } from "@constants/types";
+
+// Store
+import { clearMessages, useStore } from "@store/index";
+
+// Component
+import Text from "@components/commons/Text";
+
+// Style
 import './index.css';
 
 export interface MessagePopUpProps {
@@ -13,20 +22,23 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
   text,
   messagePopUpVariant
 }) => {
+  const { dispatch } = useStore();
   const [isVisible, setIsVisible] = useState<boolean>(true);
 
   useEffect(() => {
+    setIsVisible(true);
     const timer = setTimeout(() => {
       setIsVisible(false);
+      dispatch(clearMessages());
     }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
-
   return (
-    isVisible ? <div className={
-      `popup-message 
+    <div className={
+      `popup-message
+      ${isVisible ? 'active' : ''}
       ${messagePopUpVariant === MessagePopUpVariants.Failed
         ? 'popup-error'
         : 'popup-success'
@@ -37,7 +49,6 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
         {text}
       </Text>
     </div>
-      : null
   );
 };
 

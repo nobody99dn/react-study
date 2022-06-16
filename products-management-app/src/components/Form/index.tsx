@@ -6,7 +6,7 @@ import './index.css';
 
 // Constants
 import { ButtonVariants, FormVariants, ProductTypes } from '@constants/types';
-import { ERROR_MESSAGES } from '@constants/messages';
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
 
 // Components
 import Title from '@components/commons/Title';
@@ -19,7 +19,7 @@ import Text, { VariantsTypes } from '@components/commons/Text';
 import { Product } from 'type/product';
 
 // Store
-import { addProductSuccess, editProductFailed, editProductSuccess, useStore } from '@store/index';
+import { addProductFailed, addProductSuccess, editProductFailed, editProductSuccess, useStore } from '@store/index';
 
 // Service
 import { addNewProduct, updateProduct } from '@services/product.service';
@@ -66,27 +66,34 @@ const Form: React.FC<FormProps> = ({
 
     setIsButtonLoading(true);
 
-    try {
-      if (!productItem.id) {
+    if (!productItem.id) {
+      try {
         const newProduct: Product = await addNewProduct(product);
 
         if (!newProduct) {
-          throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+          throw new Error(ERROR_MESSAGES.ADD_PRODUCT_FAILED);
         }
 
-        dispatch(addProductSuccess(newProduct));
-      } else {
+        dispatch(addProductSuccess({ product: newProduct, message: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS }));
+      } catch (error) {
+        if (error instanceof Error) {
+          dispatch(addProductFailed(error.message));
+          return;
+        }
+      }
+    } else {
+      try {
         const updatedProduct: Product = await updateProduct(product);
         if (!updatedProduct) {
-          throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+          throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
         }
 
-        dispatch(editProductSuccess(product));
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        dispatch(editProductFailed(error.message));
-        return;
+        dispatch(editProductSuccess({ product: product, message: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS }));
+      } catch (error) {
+        if (error instanceof Error) {
+          dispatch(editProductFailed(error.message));
+          return;
+        }
       }
     }
 

@@ -13,7 +13,7 @@ import './index.css';
 
 // Store
 import { useStore } from '@store/store';
-import { filterProductsSuccess } from '@store/actions';
+import { filterProductsRequest, filterProductsSuccess } from '@store/actions';
 
 type FilterProps = {
   typeFilterOptions: ProductTypes[];
@@ -43,9 +43,13 @@ const Filter: React.FC<FilterProps> = ({
   }, [currentFilterPriceParam]);
 
   useEffect(() => {
+    dispatch(filterProductsRequest());
     setTimeout(() => {
       dispatch(
-        filterProductsSuccess({ currentFilterTypeParam, currentFilterPriceParam })
+        filterProductsSuccess({
+          currentFilterTypeParam,
+          currentFilterPriceParam
+        })
       );
     }, 500);
   }, [currentFilterPriceParam, currentFilterTypeParam]);
