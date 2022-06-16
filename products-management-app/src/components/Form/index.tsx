@@ -45,20 +45,8 @@ const Form: React.FC<FormProps> = ({
 
   const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
 
-  const handleNameChange = (value: string | number): void => {
-    setProduct({ ...product, name: value as string });
-  };
-
-  const handlePriceChange = (value: string | number): void => {
-    setProduct({ ...product, price: value as number });
-  };
-
-  const handleTypeChange = (value: string | number): void => {
-    setProduct({ ...product, type: value as string });
-  };
-
-  const handleImageChange = (value: string | number): void => {
-    setProduct({ ...product, imageUrl: value as string });
+  const handleOnChange = (value: string | number, fieldName: string): void => {
+    setProduct({ ...product, [fieldName]: value });
   };
 
   const handleSubmitForm = async (event: FormEvent) => {
@@ -111,13 +99,13 @@ const Form: React.FC<FormProps> = ({
             name='name'
             label='Product name'
             placeholder='Enter product name...'
-            onChange={handleNameChange}
+            onChange={handleOnChange}
           />
           <Select
             label='Product type'
             options={options}
             value={product.type}
-            onChange={handleTypeChange}
+            onChange={handleOnChange}
             name='type'
           />
           <TextField
@@ -126,15 +114,15 @@ const Form: React.FC<FormProps> = ({
             type='number'
             label='Price'
             placeholder='Enter price...'
-            onChange={handlePriceChange}
+            onChange={handleOnChange}
           />
           <TextField
             defaultValue={product.imageUrl}
-            name='Image link'
+            name='imageUrl'
             type='text'
             label='Image link'
             placeholder='Enter image link...'
-            onChange={handleImageChange}
+            onChange={handleOnChange}
           />
           {error &&
             <Text

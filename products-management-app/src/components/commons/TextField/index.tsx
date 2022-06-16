@@ -26,7 +26,7 @@ interface TextFieldProps {
   iconWidth?: string;
   variant?: TextFieldVariants,
   label?: string;
-  onChange?: (value: string | number) => void;
+  onChange?: (value: string | number, fieldName: string) => void;
 }
 
 const TextField: React.FC<TextFieldProps> = (
@@ -50,8 +50,8 @@ const TextField: React.FC<TextFieldProps> = (
   }
 ) => {
   const handleChange = useCallback(
-    (e: { target: { value: string | number; }; }) => {
-      onChange?.(e.target.value);
+    (e: { target: { value: string | number, name: string; }; }) => {
+      onChange?.(e.target.value, e.target.name);
     },
     [onChange],
   );

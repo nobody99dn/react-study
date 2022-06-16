@@ -15,7 +15,7 @@ import './index.css';
 import { useStore } from '@store/store';
 import { filterProductsRequest, filterProductsSuccess } from '@store/actions';
 
-type FilterProps = {
+export type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
 };

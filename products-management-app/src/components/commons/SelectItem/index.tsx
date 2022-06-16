@@ -10,7 +10,7 @@ interface SelectItemProps {
   value?: string | number;
   label: string;
   options: string[];
-  onChange: (value: any) => void;
+  onChange: (value: string, fieldName: string) => void;
 }
 
 const SelectItem: React.FC<SelectItemProps> = ({
@@ -22,8 +22,8 @@ const SelectItem: React.FC<SelectItemProps> = ({
   onChange
 }) => {
   const handleChange = useCallback(
-    (e: { target: { value: string; }; }) => {
-      onChange?.(e.target.value);
+    (e: { target: { value: string, name: string; }; }) => {
+      onChange?.(e.target.value, e.target.name);
     },
     [onChange],
   );
