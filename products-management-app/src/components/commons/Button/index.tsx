@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useState } from 'react';
+import React from 'react';
 
 // Constants
 import { ButtonVariants } from '@constants/types';
@@ -33,4 +33,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };;
 
-export default memo(Button);
+export default Button;

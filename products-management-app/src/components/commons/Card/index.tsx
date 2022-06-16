@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // Components
 import Image from '@components/commons/Image';
@@ -8,7 +8,7 @@ import Button from '@components/commons/Button';
 
 // Constants
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
-import { ButtonVariants, Currencies, FormVariants, FwType, PRODUCT_TYPE_LIST } from '@constants/types';
+import { ButtonVariants, Currencies, FwType } from '@constants/types';
 
 // Helpers
 import { currencyFormat } from '@helpers/string';

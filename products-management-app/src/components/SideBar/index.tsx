@@ -1,17 +1,15 @@
 // Library
-import React, { memo, useState } from 'react';
+import React from 'react';
 
 // Components
 import Button from '@components/commons/Button';
-import Modal from '@components/Modal';
-import Form from '@components/Form';
 import Filter from '@components/Filter';
 
 // Style
 import './index.css';
 
 // Constants
-import { ButtonVariants, FormVariants, ORDER_OPTIONS, PRODUCT_TYPE_LIST } from '@constants/types';
+import { ButtonVariants, ORDER_OPTIONS, PRODUCT_TYPE_LIST } from '@constants/types';
 import { Product } from '@type/product';
 
 interface SideBarProps {
@@ -47,4 +45,4 @@ const SideBar: React.FC<SideBarProps> = ({ handleOpenModalForm }) => {
   );
 };
 
-export default memo(SideBar);
+export default SideBar;

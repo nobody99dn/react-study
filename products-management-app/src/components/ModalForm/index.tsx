@@ -1,7 +1,7 @@
 import Form from '@components/Form';
 import Modal from '@components/Modal';
 import { FormVariants, PRODUCT_TYPE_LIST } from '@constants/types';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Product } from '@type/product';
 
 interface ModalFormProps {

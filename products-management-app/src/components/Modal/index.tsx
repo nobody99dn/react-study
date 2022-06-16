@@ -1,5 +1,5 @@
 // Library
-import React, { memo, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 // Components
 import Image from '@components/commons/Image';
@@ -37,4 +37,4 @@ const Modal: React.FC<ModalProps> = ({
   </div>
 ) : null;
 
-export default memo(Modal);
+export default Modal;

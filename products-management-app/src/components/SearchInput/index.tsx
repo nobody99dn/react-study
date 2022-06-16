@@ -1,5 +1,5 @@
 // Library
-import React, { memo } from 'react';
+import React from 'react';
 
 // Asset
 import { searchIcon } from '@assets/index';
@@ -30,4 +30,4 @@ const SearchInput: React.FC = () => {
   );
 };
 
-export default memo(SearchInput);
+export default SearchInput;

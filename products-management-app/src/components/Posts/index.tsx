@@ -1,10 +1,8 @@
 // Library
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 // Components
 import Card from '@components/commons/Card';
-import LoadingIndicator from '@components/LoadingIndicator';
-import Text, { VariantsTypes } from '@components/commons/Text';
 
 // Styles
 import './index.css';
