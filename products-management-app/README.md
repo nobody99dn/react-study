@@ -102,13 +102,13 @@
 - Install packages:
 
   ```bash
-  $ pnpm install
+  $ yarn install
   ```
 
 - Start project
 
   ```bash
-  $ pnpm dev
+  $ yarn dev
   ```
 
 - Open browser and and type http://localhost:3000 in address bar
