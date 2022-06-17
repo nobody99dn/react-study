@@ -7,6 +7,7 @@
 ## TIMELINE
 
 - Estimate time: **6 days (2022/06/01 - 2022/06/08)**
+- Actual time: **13 days (2022/06/01 - 2022/06/17)**
 
 ## TEAM SIZE
 
@@ -42,7 +43,40 @@
 ## DIRECTORY STRUCTURE
 
 ```
-Update soon!
+├── .storybook
+│
+└── src
+    ├── assets
+    │   ├── styles
+    │   └── images
+    |       └── icons
+    ├── components
+    │   ├── commons
+    │   │   ├── Button
+    │   │   ├── Card
+    │   │   ├── Image
+    │   │   ├── SelectItem
+    │   │   ├── Text
+    │   │   ├── TextField
+    │   │   └── Title
+    │   ├── Filter
+    │   ├── Form
+    │   ├── LoadingIndicator
+    │   ├── MessagePopUp
+    │   ├── Modal
+    │   ├── ModalForm
+    │   ├── Posts
+    │   ├── SearchInput
+    │   └── SideBar
+    ├── constants
+    ├── helpers
+    ├── layouts
+    │   ├── Header
+    │   └── Main
+    ├── services
+    ├── store
+    └── type
+
 ```
 
 ## GET STARTED

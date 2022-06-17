@@ -13,7 +13,7 @@ import Main from '@layouts/Main';
 
 // Component
 import LoadingIndicator from '@components/LoadingIndicator';
-import MessagePopUp from '@components/MessagePop/index';
+import MessagePopUp from '@components/MessagePopUp/index';
 
 // Store
 import { useStore } from './store';
