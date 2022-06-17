@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 // Components
 import Image from '@components/commons/Image';
@@ -28,13 +28,13 @@ import { deleteProductFailed, deleteProductSuccess, useStore } from '@store/inde
 interface CardProps {
   product: Product;
   currency: Currencies;
-  handleOpenModalForm: (product: Product) => void;
+  onOpenModalForm: (product: Product) => void;
 }
 
 const Card: React.FC<CardProps> = ({
   product,
   currency,
-  handleOpenModalForm
+  onOpenModalForm
 }) => {
   const { dispatch } = useStore();
 
@@ -43,8 +43,17 @@ const Card: React.FC<CardProps> = ({
   const { name, imageUrl, price, id, type } = product || {};
 
   const handleToggleModal = () => {
-    handleOpenModalForm(product);
+    onOpenModalForm(product);
   };
+
+
+  useEffect(() => {
+
+
+  }, []);
+
+  console.log('Card re-render...');
+
 
   const handleDeleteProduct = async () => {
     setIsDeleteLoading(true);

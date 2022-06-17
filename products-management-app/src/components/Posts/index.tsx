@@ -1,5 +1,5 @@
 // Library
-import React, { useEffect } from 'react';
+import React, { memo, useCallback, useEffect, useRef } from 'react';
 
 // Components
 import Card from '@components/commons/Card';
@@ -21,10 +21,10 @@ import { useStore, getProductsRequest, getProductsSuccess, getProductsFailed } f
 import { getAllProduct } from '@services/product.service';
 
 interface PostsProps {
-  handleOpenModalForm: (product: Product) => void;
+  onOpenModalForm: (product: Product) => void;
 }
 
-const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
+const Posts: React.FC<PostsProps> = ({ onOpenModalForm }) => {
   const { globalState, dispatch } = useStore();
 
   const { products, filterBox } = globalState || {};
@@ -32,6 +32,8 @@ const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
   useEffect(() => {
     getAllProducts();
   }, []);
+
+  console.log('Posts re-render');
 
   const getAllProducts = async () => {
     try {
@@ -63,7 +65,7 @@ const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
               <Card
                 product={product}
                 currency={Currencies.VND}
-                handleOpenModalForm={handleOpenModalForm}
+                onOpenModalForm={onOpenModalForm}
               />
             </div>
           )) || null
@@ -72,4 +74,4 @@ const Posts: React.FC<PostsProps> = ({ handleOpenModalForm }) => {
   );
 };
 
-export default Posts;
+export default memo(Posts);

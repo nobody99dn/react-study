@@ -117,7 +117,6 @@ const Form: React.FC<FormProps> = ({
     handleSubmit();
   };
 
-
   return (
     <div className='form-wrapper'>
       <Title>{variants} Form</Title>

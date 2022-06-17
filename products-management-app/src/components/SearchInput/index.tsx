@@ -1,5 +1,5 @@
 // Library
-import React from 'react';
+import React, { memo } from 'react';
 
 // Asset
 import { searchIcon } from '@assets/index';
@@ -19,6 +19,7 @@ const SearchInput: React.FC = () => {
       dispatch(searchProductsSuccess(value));
     }, 500);
   };
+
   return (
     <TextField
       placeholder='Searching...'
@@ -30,4 +31,4 @@ const SearchInput: React.FC = () => {
   );
 };
 
-export default SearchInput;
+export default memo(SearchInput);

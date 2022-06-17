@@ -1,5 +1,5 @@
 // Library
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 
 // Components
 import Image from '@components/commons/Image/index';
@@ -88,4 +88,4 @@ const TextField: React.FC<TextFieldProps> = (
   );
 };;
 
-export default TextField;
+export default memo(TextField);

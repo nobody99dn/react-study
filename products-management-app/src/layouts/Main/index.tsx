@@ -1,5 +1,5 @@
 // Library
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 
 // Styles
 import "./index.css";
@@ -7,11 +7,13 @@ import "./index.css";
 // Components
 import Posts from '@components/Posts/index';
 import SideBar from '../../components/SideBar/index';
-import Search from '@components/SearchInput';
+import SearchInput from '@components/SearchInput';
+import ModalForm from '@components/ModalForm';
 
 // Style
 import './index.css';
-import ModalForm from '@components/ModalForm';
+
+// Type
 import { Product } from '@type/product';
 
 const Main: React.FC = () => {
@@ -27,18 +29,21 @@ const Main: React.FC = () => {
   const handleToggleModal = useCallback((product: Product) => {
     setIsModalShow(!isModalShow);
     setProduct(product);
-  }, [isModalShow]);
+  }, []);
 
   const handleCloseModal = useCallback(() => {
-    setIsModalShow(!isModalShow);
-  }, [isModalShow]);
+    setIsModalShow(false);
+  }, []);
+
+  console.log('Main re-render');
+
 
   return (
     <main className='main'>
       <div className='right-container'>
         <div className='right-content'>
-          <Search />
-          <Posts handleOpenModalForm={handleToggleModal} />
+          <SearchInput />
+          <Posts onOpenModalForm={handleToggleModal} />
         </div>
       </div>
       <div className='left-container'>
@@ -53,4 +58,4 @@ const Main: React.FC = () => {
   );
 };
 
-export default Main;
+export default memo(Main);
