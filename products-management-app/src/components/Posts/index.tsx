@@ -33,8 +33,6 @@ const Posts: React.FC<PostsProps> = ({ onOpenModalForm }) => {
     getAllProducts();
   }, []);
 
-  console.log('Posts re-render');
-
   const getAllProducts = async () => {
     try {
       dispatch(getProductsRequest());
@@ -55,7 +53,7 @@ const Posts: React.FC<PostsProps> = ({ onOpenModalForm }) => {
 
   return (
     <div className='product-group'>
-      {(filterBox || products.length) &&
+      {
         (filterBox || products)
           .map((product: Product) => (
             <div
@@ -68,7 +66,7 @@ const Posts: React.FC<PostsProps> = ({ onOpenModalForm }) => {
                 onOpenModalForm={onOpenModalForm}
               />
             </div>
-          )) || null
+          ))
       }
     </div>
   );

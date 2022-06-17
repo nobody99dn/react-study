@@ -46,15 +46,6 @@ const Card: React.FC<CardProps> = ({
     onOpenModalForm(product);
   };
 
-
-  useEffect(() => {
-
-
-  }, []);
-
-  console.log('Card re-render...');
-
-
   const handleDeleteProduct = async () => {
     setIsDeleteLoading(true);
     try {

@@ -134,22 +134,26 @@ const reducer = (state = initialState, action: any): {} => {
       const { currentFilterTypeParam, currentFilterPriceParam } =
         action.payload;
 
-      const filteredProducts: Product[] = [
-        ...state.products.filter((product: Product) =>
-          product.type.includes(currentFilterTypeParam)
-        )
-      ];
+      let filteredProducts: Product[] | null = null;
 
-      if (currentFilterPriceParam === FilterOrderOptions.Asc) {
-        filteredProducts.sort(
-          (firstProduct: Product, secondProduct: Product) =>
-            firstProduct.price - secondProduct.price
-        );
-      } else if (currentFilterPriceParam === FilterOrderOptions.Desc) {
-        filteredProducts.sort(
-          (firstProduct: Product, secondProduct: Product) =>
-            secondProduct.price - firstProduct.price
-        );
+      if (currentFilterPriceParam || currentFilterTypeParam) {
+        filteredProducts = [
+          ...state.products.filter((product: Product) =>
+            product.type.includes(currentFilterTypeParam)
+          )
+        ];
+
+        if (currentFilterPriceParam === FilterOrderOptions.Asc) {
+          filteredProducts.sort(
+            (firstProduct: Product, secondProduct: Product) =>
+              firstProduct.price - secondProduct.price
+          );
+        } else if (currentFilterPriceParam === FilterOrderOptions.Desc) {
+          filteredProducts.sort(
+            (firstProduct: Product, secondProduct: Product) =>
+              secondProduct.price - firstProduct.price
+          );
+        }
       }
 
       return {
@@ -163,11 +167,13 @@ const reducer = (state = initialState, action: any): {} => {
     case ACTIONS.SEARCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        filterBox: [
-          ...state.products.filter((product: Product) =>
-            product.name.includes(action.payload)
-          )
-        ]
+        filterBox: !action.payload
+          ? null
+          : [
+              ...state.products.filter((product: Product) =>
+                product.name.includes(action.payload)
+              )
+            ]
       };
 
     case ACTIONS.CLEAR_MESSAGES: {

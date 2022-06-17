@@ -35,9 +35,6 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   }, []);
 
-  console.log('Main re-render');
-
-
   return (
     <main className='main'>
       <div className='right-container'>
