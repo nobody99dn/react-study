@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // Components
 import Image from '@components/commons/Image';
@@ -7,7 +7,6 @@ import Title, { VariantTypes } from '@components/commons/Title';
 import Button from '@components/commons/Button';
 
 // Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
 import { ButtonVariants, Currencies, FwType } from '@constants/types';
 
 // Helpers
@@ -17,55 +16,32 @@ import { currencyFormat } from '@helpers/string';
 import './index.css';
 
 // Type
-import { Product } from '@type/product';
-
-// Service
-import { removeProduct } from '@services/product.service';
-
-// Store
-import { deleteProductFailed, deleteProductSuccess, useStore } from '@store/index';
+import { Product } from '@models/product';
 
 interface CardProps {
   product: Product;
   currency: Currencies;
   onOpenModalForm: (product: Product) => void;
+  onDeleteProduct: (id: string) => void;
 }
 
 const Card: React.FC<CardProps> = ({
   product,
   currency,
-  onOpenModalForm
+  onOpenModalForm,
+  onDeleteProduct
 }) => {
-  const { dispatch } = useStore();
+  const { name, imageUrl, price, id, type } = product || {};
 
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
-
-  const { name, imageUrl, price, id, type } = product || {};
 
   const handleToggleModal = () => {
     onOpenModalForm(product);
   };
 
-  const handleDeleteProduct = async () => {
+  const handleDeleteProduct = () => {
     setIsDeleteLoading(true);
-    try {
-      const deletedProduct: Product = await removeProduct(id);
-
-      if (!deletedProduct) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
-      dispatch(deleteProductSuccess({
-        productId: deletedProduct.id, message: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
-      }));
-    } catch (error) {
-      if (error instanceof Error) {
-        dispatch(deleteProductFailed(error.message));
-        return;
-      }
-    }
-
-    setIsDeleteLoading(false);
+    onDeleteProduct(id);
   };
 
   return (

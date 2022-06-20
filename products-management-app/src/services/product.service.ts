@@ -5,7 +5,7 @@ import { URL_PRODUCTS } from '@constants/api';
 import { get, post, remove, update } from '@helpers/clientRequests';
 
 // Type
-import { Product } from 'type/product';
+import { Product } from '@models/product';
 
 const getAllProduct = async (): Promise<Product[]> => {
   return await get(URL_PRODUCTS);

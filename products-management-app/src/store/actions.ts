@@ -2,7 +2,7 @@
 import { ACTIONS } from './constants';
 
 // Type
-import { Product } from 'type/product';
+import { Product } from '@models/product';
 import { FilterOrderOptions, ProductTypes } from '@constants/types';
 
 export interface Action {

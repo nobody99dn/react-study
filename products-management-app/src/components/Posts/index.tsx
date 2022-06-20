@@ -1,5 +1,5 @@
 // Library
-import React, { memo, useCallback, useEffect, useRef } from 'react';
+import React, { memo } from 'react';
 
 // Components
 import Card from '@components/commons/Card';
@@ -9,67 +9,39 @@ import './index.css';
 
 // Constants
 import { Currencies } from '@constants/types';
-import { ERROR_MESSAGES } from '@constants/messages';
 
 // Type
-import { Product } from 'type/product';
-
-// Store
-import { useStore, getProductsRequest, getProductsSuccess, getProductsFailed } from '@store/index';
-
-// Service
-import { getAllProduct } from '@services/product.service';
+import { Product } from '@models/product';
 
 interface PostsProps {
+  products: Product[];
   onOpenModalForm: (product: Product) => void;
+  onDeleteProduct: (id: string) => void;
 }
 
-const Posts: React.FC<PostsProps> = ({ onOpenModalForm }) => {
-  const { globalState, dispatch } = useStore();
-
-  const { products, filterBox } = globalState || {};
-
-  useEffect(() => {
-    getAllProducts();
-  }, []);
-
-  const getAllProducts = async () => {
-    try {
-      dispatch(getProductsRequest());
-
-      const products: Product[] = await getAllProduct();
-
-      if (!products.length) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
-      dispatch(getProductsSuccess(products));
-    } catch (err) {
-      if (err instanceof Error) {
-        dispatch(getProductsFailed(err.message));
-      }
+const Posts: React.FC<PostsProps> = ({
+  products,
+  onOpenModalForm,
+  onDeleteProduct
+}) => (
+  <div className='product-group'>
+    {
+      products
+        .map((product: Product) => (
+          <div
+            className='products-row'
+            key={product.id}
+          >
+            <Card
+              product={product}
+              currency={Currencies.VND}
+              onOpenModalForm={onOpenModalForm}
+              onDeleteProduct={onDeleteProduct}
+            />
+          </div>
+        ))
     }
-  };
-
-  return (
-    <div className='product-group'>
-      {
-        (filterBox || products)
-          .map((product: Product) => (
-            <div
-              className='products-row'
-              key={product.id}
-            >
-              <Card
-                product={product}
-                currency={Currencies.VND}
-                onOpenModalForm={onOpenModalForm}
-              />
-            </div>
-          ))
-      }
-    </div>
-  );
-};
+  </div>
+);
 
 export default memo(Posts);

@@ -33,7 +33,7 @@ const TextField: React.FC<TextFieldProps> = (
   {
     id,
     name,
-    defaultValue,
+    defaultValue = '',
     disabled = false,
     height,
     label,

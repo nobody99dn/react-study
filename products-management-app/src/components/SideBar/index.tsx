@@ -10,22 +10,12 @@ import './index.css';
 
 // Constants
 import { ButtonVariants, ORDER_OPTIONS, PRODUCT_TYPE_LIST } from '@constants/types';
-import { Product } from '@type/product';
 
 interface SideBarProps {
-  handleOpenModalForm: (product: Product) => void;
+  handleOpenModalForm: () => void;
 }
 
 const SideBar: React.FC<SideBarProps> = ({ handleOpenModalForm }) => {
-  const handleClick = () => {
-    handleOpenModalForm({
-      id: '',
-      name: '',
-      type: '',
-      price: 0,
-      imageUrl: ''
-    });
-  };
 
   return (
     <div className='sidebar'>
@@ -33,7 +23,7 @@ const SideBar: React.FC<SideBarProps> = ({ handleOpenModalForm }) => {
         <Button
           title='Add new product'
           variant={ButtonVariants.Primary}
-          onClick={handleClick}
+          onClick={handleOpenModalForm}
         />
       </div>
       <Filter
