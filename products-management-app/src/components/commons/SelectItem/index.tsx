@@ -10,7 +10,7 @@ interface SelectItemProps {
   value?: string | number;
   label: string;
   options: string[];
-  onChange: (value: any, fieldName: string) => void;
+  onChange: (value: string, fieldName: string) => void;
 }
 
 const SelectItem: React.FC<SelectItemProps> = ({

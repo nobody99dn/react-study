@@ -3,6 +3,12 @@ import { ACTIONS } from './constants';
 
 // Type
 import { Product } from 'type/product';
+import { FilterOrderOptions, ProductTypes } from '@constants/types';
+
+export interface Action {
+  type: string;
+  payload: any;
+}
 
 const getProductsRequest = () => ({
   type: ACTIONS.GET_PRODUCTS_REQUEST
@@ -70,12 +76,15 @@ const filterProductsRequest = () => ({
   type: ACTIONS.FILTER_PRODUCTS_REQUEST
 });
 
-const filterProductsSuccess = (payload: any) => ({
+const filterProductsSuccess = (payload: {
+  currentFilterTypeParam: ProductTypes;
+  currentFilterPriceParam: FilterOrderOptions;
+}) => ({
   type: ACTIONS.FILTER_PRODUCTS_SUCCESS,
   payload
 });
 
-const searchProductsSuccess = (payload: any) => ({
+const searchProductsSuccess = (payload: { productName: string | number }) => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,
   payload
 });

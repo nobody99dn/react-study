@@ -14,9 +14,9 @@ import { searchProductsSuccess } from '@store/actions';
 const SearchInput: React.FC = () => {
   const { dispatch } = useStore();
 
-  const handleSearchProduct = (value: string | number) => {
+  const handleSearchProduct = (productName: string | number) => {
     setTimeout(() => {
-      dispatch(searchProductsSuccess(value));
+      dispatch(searchProductsSuccess({ productName }));
     }, 500);
   };
 

@@ -1,11 +1,11 @@
-// Libraries
+// Library
 import React, { ReactNode, useReducer, useContext } from 'react';
 
 // Reducer
 import { InitialState } from './reducer';
 
 interface ContextProps {
-  globalState: any;
+  globalState: InitialState;
   dispatch: ({ type }: { type: string; }) => void;
 }
 
@@ -25,7 +25,7 @@ const StoreProvider: React.FC<StoreProviderProps> = ({
   reducer,
   initialState
 }) => {
-  const [globalState, dispatch] = useReducer(reducer, initialState);
+  const [globalState, dispatch] = useReducer(reducer, initialState) as [InitialState, any];
 
   return (
     <Store.Provider value={{ globalState, dispatch }}>

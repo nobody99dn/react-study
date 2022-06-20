@@ -6,7 +6,7 @@ import "./index.css";
 
 // Components
 import Posts from '@components/Posts/index';
-import SideBar from '../../components/SideBar/index';
+import SideBar from '@components/SideBar/index';
 import SearchInput from '@components/SearchInput';
 import ModalForm from '@components/ModalForm';
 

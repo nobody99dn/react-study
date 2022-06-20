@@ -1,9 +1,10 @@
 // Constants
 import { ACTIONS } from './constants';
+import { FilterOrderOptions } from '@constants/types';
 
 // Type
-import { Product } from 'type/product';
-import { FilterOrderOptions } from '@constants/types';
+import { Product } from '@models/product';
+import { Action } from './actions';
 
 export interface InitialState {
   products: Product[];
@@ -21,7 +22,7 @@ const initialState: InitialState = {
   filterBox: null
 };
 
-const reducer = (state = initialState, action: any): {} => {
+const reducer = (state = initialState, action: Action): InitialState => {
   switch (action.type) {
     case ACTIONS.GET_PRODUCTS_REQUEST:
       return {
@@ -167,11 +168,11 @@ const reducer = (state = initialState, action: any): {} => {
     case ACTIONS.SEARCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        filterBox: !action.payload
+        filterBox: !action.payload.productName
           ? null
           : [
               ...state.products.filter((product: Product) =>
-                product.name.includes(action.payload)
+                product.name.includes(action.payload.productName)
               )
             ]
       };
