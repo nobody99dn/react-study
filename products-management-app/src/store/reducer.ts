@@ -175,13 +175,7 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
     case ACTIONS.SEARCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        filterBox: !action.payload.productName
-          ? null
-          : [
-              ...state.products.filter((product: Product) =>
-                product.name.includes(action.payload.productName)
-              )
-            ]
+        filterBox: !action.payload.input ? null : action.payload.productsFound
       };
 
     case ACTIONS.CLEAR_MESSAGES: {

@@ -4,6 +4,7 @@ import { ACTIONS } from './constants';
 // Type
 import { Product } from '@models/product';
 import { FilterOrderOptions, ProductTypes } from '@constants/types';
+import * as path from 'path';
 
 export interface ActionProps {
   type: string;
@@ -88,7 +89,8 @@ const filterProductsSuccess = (payload: {
 });
 
 const searchProductsSuccess = (payload: {
-  productName: string | number;
+  productsFound: Product[];
+  input: string;
 }): ActionProps => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,
   payload

@@ -40,7 +40,7 @@ const Main: React.FC = () => {
     createProduct,
     editProduct,
     filterProducts,
-    searchProducts
+    searchingProducts
   } = useProducts();
 
   // States
@@ -200,7 +200,7 @@ const Main: React.FC = () => {
    */
   useEffect(() => {
     const timer = setTimeout(() => {
-      searchProducts(productName);
+      searchingProducts(productName);
     }, 500);
 
     return () => clearTimeout(timer);

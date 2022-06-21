@@ -8,8 +8,10 @@ import { Product } from '@models/product';
 // Service
 import {
   addNewProduct,
+  filterProduct,
   getAllProduct,
   removeProduct,
+  searchProducts,
   updateProduct
 } from '@services/product.service';
 
@@ -145,10 +147,11 @@ const useProducts = () => {
   /**
    * Search product by name
    *
-   * @param productName string
+   * @param input string
    */
-  const searchProducts = async (productName: string) => {
-    dispatch(searchProductsSuccess({ productName }));
+  const searchingProducts = async (input: string) => {
+    const productsFound: Product[] = await searchProducts(input);
+    dispatch(searchProductsSuccess({ productsFound, input }));
   };
 
   /**
@@ -175,7 +178,7 @@ const useProducts = () => {
     deleteProduct,
     createProduct,
     editProduct,
-    searchProducts,
+    searchingProducts,
     filterProducts
   };
 };

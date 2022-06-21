@@ -1,5 +1,6 @@
 // Constant
 import { URL_PRODUCTS } from '@constants/api';
+import { FilterOrderOptions, ProductTypes } from '@constants/types';
 
 // Helper
 import { get, post, remove, update } from '@helpers/clientRequests';
@@ -46,4 +47,22 @@ const updateProduct = async (product: Product): Promise<Product> => {
   return await update(`${URL_PRODUCTS}/${product.id}`, product);
 };
 
-export { getAllProduct, addNewProduct, updateProduct, removeProduct };
+const filterProduct = async (
+  type?: ProductTypes,
+  priceOrder?: FilterOrderOptions
+): Promise<Product[]> => {
+  return await get(`${URL_PRODUCTS}?type=${type}`);
+};
+
+const searchProducts = async (productName: string): Promise<Product[]> => {
+  return await get(`${URL_PRODUCTS}?search=${productName}`);
+};
+
+export {
+  getAllProduct,
+  addNewProduct,
+  updateProduct,
+  removeProduct,
+  filterProduct,
+  searchProducts
+};
