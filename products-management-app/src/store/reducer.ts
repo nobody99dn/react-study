@@ -4,7 +4,7 @@ import { FilterOrderOptions } from '@constants/types';
 
 // Type
 import { Product } from '@models/product';
-import { Action } from './actions';
+import { ActionProps } from './actions';
 
 export interface InitialState {
   products: Product[];
@@ -22,7 +22,14 @@ const initialState: InitialState = {
   filterBox: null
 };
 
-const reducer = (state = initialState, action: Action): InitialState => {
+/**
+ * Reducer: execute with global states
+ *
+ * @param state InitialState
+ * @param action ActionProps
+ * @returns InitialState
+ */
+const reducer = (state = initialState, action: ActionProps): InitialState => {
   switch (action.type) {
     case ACTIONS.GET_PRODUCTS_REQUEST:
       return {

@@ -49,6 +49,7 @@ const Main: React.FC = () => {
 
   const { products, filterBox } = globalState || {};
 
+  // States
   const [isModalShow, setIsModalShow] = useState<boolean>(false);
   const [validateMessage, setValidateMessage] = useState<string>('');
   const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
@@ -125,7 +126,7 @@ const Main: React.FC = () => {
    * @param product Product
    * @returns void
    */
-  const handleSubmitProduct = async (event: FormEvent, product: Product) => {
+  const handleSubmitProduct = async (event: FormEvent, product: Product): Promise<void> => {
     event.preventDefault();
 
     setIsButtonLoading(true);
@@ -194,7 +195,10 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   };
 
-  const handleCloseModal = () => {
+  /**
+   * Handle close modal
+   */
+  const handleCloseModal = (): void => {
     setIsModalShow(false);
   };
 
@@ -210,21 +214,31 @@ const Main: React.FC = () => {
     setProduct(product);
   }, []);
 
-  // Handle filter product
+  /**
+   * Handle filter product
+   */
   const handleClearFilters = useCallback(() => {
     setCurrentFilterPriceParam(undefined);
     setCurrentFilterTypeParam(undefined);
   }, [currentFilterTypeParam, currentFilterPriceParam]);
 
+  /**
+   * Handle type change in filter
+   */
   const handleTypeChange = useCallback((value: string): void => {
     setCurrentFilterTypeParam(value as ProductTypes);
   }, [currentFilterTypeParam]);
 
+  /**
+   * Handle price change in filter
+   */
   const handlePriceChange = useCallback((value: string): void => {
     setCurrentFilterPriceParam(value as FilterOrderOptions);
   }, [currentFilterPriceParam]);
 
-  // Filter change
+  /**
+   *  Filter change
+   **/
   useEffect(() => {
     dispatch(filterProductsRequest());
     const timer = setTimeout(() => {
@@ -239,11 +253,16 @@ const Main: React.FC = () => {
     return () => clearTimeout(timer);
   }, [currentFilterPriceParam, currentFilterTypeParam]);
 
+  /**
+   * Handle search input change
+   */
   const handleSearchProduct = (value: string | number) => {
     setProductName(value as string);
   };
 
-  // Search change
+  /**
+   * Handle search change
+   */
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(searchProductsSuccess({ productName }));
