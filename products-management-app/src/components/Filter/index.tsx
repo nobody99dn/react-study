@@ -1,5 +1,5 @@
 // Library
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 
 // Constants
 import { FilterOrderOptions, ProductTypes } from '@constants/types';
@@ -11,75 +11,49 @@ import Button from '@components/commons/Button';
 // Styles
 import './index.css';
 
-// Store
-import { useStore } from '@store/store';
-import { filterProductsRequest, filterProductsSuccess } from '@store/actions';
-
 export type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
+  currentFilterTypeParam: ProductTypes | undefined,
+  currentFilterPriceParam: FilterOrderOptions | undefined,
+  handleTypeChange: (value: string) => void;
+  handlePriceChange: (value: string) => void;
+  handleClearFilters: () => void;
 };
 
 const Filter: React.FC<FilterProps> = ({
   typeFilterOptions,
-  priceFilterOptions
-}) => {
-  const { dispatch } = useStore();
-
-  const [currentFilterPriceParam, setCurrentFilterPriceParam] = useState<string>('');
-  const [currentFilterTypeParam, setCurrentFilterTypeParam] = useState<string>('');
-
-  const handleClearFilters = useCallback(() => {
-    setCurrentFilterPriceParam('');
-    setCurrentFilterTypeParam('');
-  }, [currentFilterTypeParam, currentFilterPriceParam]);
-
-  const handleTypeChange = useCallback((value: ProductTypes): void => {
-    setCurrentFilterTypeParam(value);
-  }, [currentFilterTypeParam]);
-
-  const handlePriceChange = useCallback((value: FilterOrderOptions): void => {
-    setCurrentFilterPriceParam(value);
-  }, [currentFilterPriceParam]);
-
-  useEffect(() => {
-    dispatch(filterProductsRequest());
-    setTimeout(() => {
-      dispatch(
-        filterProductsSuccess({
-          currentFilterTypeParam,
-          currentFilterPriceParam
-        })
-      );
-    }, 500);
-  }, [currentFilterPriceParam, currentFilterTypeParam]);
-
-  return (
-    <div className='filter-container'>
-      <div className='filter-item'>
-        <Select
-          label='Type'
-          options={typeFilterOptions}
-          name='type-option'
-          onChange={handleTypeChange}
-          value={currentFilterTypeParam}
-        />
-      </div>
-      <div className='filter-item'>
-        <Select
-          label='Price'
-          options={priceFilterOptions}
-          name='price-filter'
-          onChange={handlePriceChange}
-          value={currentFilterPriceParam}
-        />
-      </div>
-      <Button
-        title='Clear filter'
-        onClick={handleClearFilters}
+  priceFilterOptions,
+  currentFilterTypeParam,
+  currentFilterPriceParam,
+  handleTypeChange,
+  handlePriceChange,
+  handleClearFilters
+}) => (
+  <div className='filter-container'>
+    <div className='filter-item'>
+      <Select
+        label='Type'
+        options={typeFilterOptions}
+        name='type-option'
+        onChange={handleTypeChange}
+        value={currentFilterTypeParam}
       />
     </div>
-  );
-};
+    <div className='filter-item'>
+      <Select
+        label='Price'
+        options={priceFilterOptions}
+        name='price-filter'
+        onChange={handlePriceChange}
+        value={currentFilterPriceParam}
+      />
+    </div>
+    <Button
+      title='Clear filter'
+      onClick={handleClearFilters}
+    />
+  </div>
+);
 
 export default Filter;

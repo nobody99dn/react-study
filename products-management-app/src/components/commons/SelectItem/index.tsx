@@ -1,4 +1,5 @@
 // Library
+import { FilterOrderOptions, ProductTypes } from '@constants/types';
 import React, { memo, useCallback } from 'react';
 
 // Style
@@ -10,7 +11,7 @@ interface SelectItemProps {
   value?: string | number;
   label: string;
   options: string[];
-  onChange: (value: string, fieldName: string) => void;
+  onChange: (value: string, fieldName?: string) => void;
 }
 
 const SelectItem: React.FC<SelectItemProps> = ({

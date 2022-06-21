@@ -1,5 +1,12 @@
 // Library
-import React, { FormEvent, memo, useCallback, useEffect, useState } from 'react';
+import React,
+{
+  FormEvent,
+  memo,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 
 // Styles
 import "./index.css";
@@ -9,9 +16,6 @@ import Posts from '@components/Posts/index';
 import SideBar from '@components/SideBar/index';
 import SearchInput from '@components/SearchInput';
 import ModalForm from '@components/ModalForm';
-
-// Style
-import './index.css';
 
 // Type
 import { Product } from '@models/product';
@@ -27,20 +31,18 @@ import {
   addProductFailed,
   addProductSuccess,
   editProductFailed,
-  editProductSuccess
+  editProductSuccess,
+  filterProductsRequest,
+  filterProductsSuccess,
+  searchProductsSuccess
 } from '@store/index';
 
 // Service
-import { removeProduct } from '@services/product.service';
-
-// Service
-import { getAllProduct } from '@services/product.service';
+import { removeProduct, getAllProduct, addNewProduct, updateProduct } from '@services/product.service';
 
 // Constants
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
-
-// Service
-import { addNewProduct, updateProduct } from '@services/product.service';
+import { FilterOrderOptions, ProductTypes } from '@constants/types';
 
 const Main: React.FC = () => {
   const { globalState, dispatch } = useStore();
@@ -57,6 +59,9 @@ const Main: React.FC = () => {
     price: 0,
     imageUrl: ''
   });
+  const [currentFilterPriceParam, setCurrentFilterPriceParam] = useState<FilterOrderOptions>();
+  const [currentFilterTypeParam, setCurrentFilterTypeParam] = useState<ProductTypes>();
+  const [productName, setProductName] = useState<string>('');
 
   /**
    * Get all products
@@ -205,11 +210,56 @@ const Main: React.FC = () => {
     setProduct(product);
   }, []);
 
+  // Handle filter product
+  const handleClearFilters = useCallback(() => {
+    setCurrentFilterPriceParam(undefined);
+    setCurrentFilterTypeParam(undefined);
+  }, [currentFilterTypeParam, currentFilterPriceParam]);
+
+  const handleTypeChange = useCallback((value: string): void => {
+    setCurrentFilterTypeParam(value as ProductTypes);
+  }, [currentFilterTypeParam]);
+
+  const handlePriceChange = useCallback((value: string): void => {
+    setCurrentFilterPriceParam(value as FilterOrderOptions);
+  }, [currentFilterPriceParam]);
+
+  // Filter change
+  useEffect(() => {
+    dispatch(filterProductsRequest());
+    const timer = setTimeout(() => {
+      dispatch(
+        filterProductsSuccess({
+          currentFilterTypeParam,
+          currentFilterPriceParam
+        })
+      );
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [currentFilterPriceParam, currentFilterTypeParam]);
+
+  const handleSearchProduct = (value: string | number) => {
+    setProductName(value as string);
+  };
+
+  // Search change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(searchProductsSuccess({ productName }));
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [productName]);
+
   return (
     <main className='main'>
       <div className='right-container'>
         <div className='right-content'>
-          <SearchInput />
+          <SearchInput
+            productName={productName}
+            handleSearchProduct={handleSearchProduct}
+          />
           <Posts
             products={filterBox || products}
             onOpenModalForm={handleToggleModal}
@@ -218,7 +268,14 @@ const Main: React.FC = () => {
         </div>
       </div>
       <div className='left-container'>
-        <SideBar handleOpenModalForm={handleToggleModal} />
+        <SideBar
+          handleOpenModalForm={handleToggleModal}
+          currentFilterTypeParam={currentFilterTypeParam}
+          currentFilterPriceParam={currentFilterPriceParam}
+          handleTypeChange={handleTypeChange}
+          handlePriceChange={handlePriceChange}
+          handleClearFilters={handleClearFilters}
+        />
       </div>
       {isModalShow && <ModalForm
         isModalShow={isModalShow}

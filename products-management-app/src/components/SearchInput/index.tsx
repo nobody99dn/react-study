@@ -7,28 +7,23 @@ import { searchIcon } from '@assets/index';
 // Component
 import TextField from '@components/commons/TextField';
 
-// Store
-import { useStore } from '@store/store';
-import { searchProductsSuccess } from '@store/actions';
+export interface SearchInputProps {
+  productName: string;
+  handleSearchProduct: (value: string | number) => void;
+}
 
-const SearchInput: React.FC = () => {
-  const { dispatch } = useStore();
-
-  const handleSearchProduct = (productName: string | number) => {
-    setTimeout(() => {
-      dispatch(searchProductsSuccess({ productName }));
-    }, 500);
-  };
-
-  return (
-    <TextField
-      placeholder='Searching...'
-      iconUrl={searchIcon}
-      height='4.25rem'
-      iconWidth='2rem'
-      onChange={handleSearchProduct}
-    />
-  );
-};
+const SearchInput: React.FC<SearchInputProps> = ({
+  productName,
+  handleSearchProduct
+}) => (
+  <TextField
+    placeholder='Searching...'
+    iconUrl={searchIcon}
+    height='4.25rem'
+    iconWidth='2rem'
+    onChange={handleSearchProduct}
+    defaultValue={productName}
+  />
+);
 
 export default memo(SearchInput);

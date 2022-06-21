@@ -37,8 +37,8 @@ const Form: React.FC<FormProps> = ({
 
   const [product, setProduct] = useState<Product>(productItem as Product);
 
-  const handleOnChange = (value: string | number, fieldName: string): void => {
-    setProduct({ ...product, [fieldName]: value });
+  const handleOnChange = (value: string | number, fieldName: string | undefined): void => {
+    setProduct({ ...product, [fieldName as string]: value });
   };
 
   return (

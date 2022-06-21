@@ -77,8 +77,8 @@ const filterProductsRequest = () => ({
 });
 
 const filterProductsSuccess = (payload: {
-  currentFilterTypeParam: ProductTypes;
-  currentFilterPriceParam: FilterOrderOptions;
+  currentFilterTypeParam: ProductTypes | undefined;
+  currentFilterPriceParam: FilterOrderOptions | undefined;
 }) => ({
   type: ACTIONS.FILTER_PRODUCTS_SUCCESS,
   payload

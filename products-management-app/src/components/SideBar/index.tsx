@@ -9,13 +9,25 @@ import Filter from '@components/Filter';
 import './index.css';
 
 // Constants
-import { ButtonVariants, ORDER_OPTIONS, PRODUCT_TYPE_LIST } from '@constants/types';
+import { ButtonVariants, FilterOrderOptions, ORDER_OPTIONS, ProductTypes, PRODUCT_TYPE_LIST } from '@constants/types';
 
 interface SideBarProps {
   handleOpenModalForm: () => void;
+  currentFilterTypeParam: ProductTypes | undefined,
+  currentFilterPriceParam: FilterOrderOptions | undefined,
+  handleTypeChange: (value: string) => void;
+  handlePriceChange: (value: string) => void;
+  handleClearFilters: () => void;
 }
 
-const SideBar: React.FC<SideBarProps> = ({ handleOpenModalForm }) => {
+const SideBar: React.FC<SideBarProps> = ({
+  handleOpenModalForm,
+  currentFilterTypeParam,
+  currentFilterPriceParam,
+  handleTypeChange,
+  handlePriceChange,
+  handleClearFilters
+}) => {
 
   return (
     <div className='sidebar'>
@@ -29,6 +41,11 @@ const SideBar: React.FC<SideBarProps> = ({ handleOpenModalForm }) => {
       <Filter
         typeFilterOptions={PRODUCT_TYPE_LIST}
         priceFilterOptions={ORDER_OPTIONS}
+        currentFilterTypeParam={currentFilterTypeParam}
+        currentFilterPriceParam={currentFilterPriceParam}
+        handleTypeChange={handleTypeChange}
+        handlePriceChange={handlePriceChange}
+        handleClearFilters={handleClearFilters}
       />
     </div>
 
