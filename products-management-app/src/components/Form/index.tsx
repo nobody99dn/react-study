@@ -1,12 +1,11 @@
 // Library
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 
 // Style
 import './index.css';
 
 // Constants
 import { ButtonVariants, FormVariants, ProductTypes } from '@constants/types';
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
 
 // Components
 import Title from '@components/commons/Title';
@@ -16,111 +15,39 @@ import Select from '@components/commons/SelectItem';
 import Text, { VariantsTypes } from '@components/commons/Text';
 
 // Type
-import { Product } from 'type/product';
-
-// Store
-import { addProductFailed, addProductSuccess, editProductFailed, editProductSuccess, useStore } from '@store/index';
-
-// Service
-import { addNewProduct, updateProduct } from '@services/product.service';
+import { Product } from '@models/product';
 
 interface FormProps {
   variants: FormVariants;
   options?: ProductTypes[];
   productItem: Product;
-  handleSubmit(): void;
+  validateMessage: string;
+  isButtonLoading: boolean;
+  onSubmit(event: FormEvent, product: Product): void;
 }
 
 const Form: React.FC<FormProps> = ({
   variants,
   productItem,
   options = [],
-  handleSubmit
+  validateMessage,
+  isButtonLoading = false,
+  onSubmit
 }) => {
-  const { dispatch } = useStore();
 
-  const [product, setProduct] = useState<Product>(productItem);
+  const [product, setProduct] = useState<Product>(productItem as Product);
 
-  const [validateMessage, setValidateMessage] = useState('');
-
-  const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
-
-  const handleOnChange = (value: string | number, fieldName: string): void => {
-    setProduct({ ...product, [fieldName]: value });
-  };
-
-  const handleSubmitForm = async (event: FormEvent) => {
-    event.preventDefault();
-
-    setIsButtonLoading(true);
-
-    // Validate form
-    if (!product.name) {
-      setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
-      setIsButtonLoading(false);
-
-      return;
-    }
-
-    if (!product.type) {
-      setValidateMessage(ERROR_MESSAGES.PRODUCT_TYPE_REQUIRED);
-      setIsButtonLoading(false);
-
-      return;
-    }
-
-    if (!product.price) {
-      setValidateMessage(ERROR_MESSAGES.PRODUCT_PRICE_REQUIRED);
-      setIsButtonLoading(false);
-
-      return;
-    }
-
-    if (!product.imageUrl) {
-      setValidateMessage(ERROR_MESSAGES.PRODUCT_IMAGE_REQUIRED);
-      setIsButtonLoading(false);
-
-      return;
-    }
-
-    if (!productItem.id) {
-      try {
-        const newProduct: Product = await addNewProduct(product);
-
-        if (!newProduct) {
-          throw new Error(ERROR_MESSAGES.ADD_PRODUCT_FAILED);
-        }
-
-        dispatch(addProductSuccess({ product: newProduct, message: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS }));
-      } catch (error) {
-        if (error instanceof Error) {
-          dispatch(addProductFailed(error.message));
-          return;
-        }
-      }
-    } else {
-      try {
-        const updatedProduct: Product = await updateProduct(product);
-        if (!updatedProduct) {
-          throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
-        }
-
-        dispatch(editProductSuccess({ product: product, message: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS }));
-      } catch (error) {
-        if (error instanceof Error) {
-          dispatch(editProductFailed(error.message));
-          return;
-        }
-      }
-    }
-
-    handleSubmit();
+  const handleOnChange = (value: string | number, fieldName: string | undefined): void => {
+    setProduct({ ...product, [fieldName as string]: value });
   };
 
   return (
     <div className='form-wrapper'>
       <Title>{variants} Form</Title>
-      <form className='form' onSubmit={handleSubmitForm}>
+      <form
+        className='form'
+        onSubmit={(event: FormEvent) => onSubmit(event, product)}
+      >
         <fieldset className='field-group'>
           <TextField
             defaultValue={product.name}

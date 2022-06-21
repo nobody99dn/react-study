@@ -8,6 +8,7 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -25,8 +26,7 @@
       "@assets/*": ["./assets/*"],
       "@helpers/*": ["./helpers/*"],
       "@models/*": ["./models/*"],
-      "@store/*": ["./store/*"],
-      "@type/*": ["./type/*"]
+      "@store/*": ["./store/*"]
     },
   },
   "include": ["src"],

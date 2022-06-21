@@ -13,13 +13,13 @@ import './index.css';
 interface ModalProps {
   children: ReactNode;
   isVisible: boolean;
-  handleClose: () => void;
+  onClose: () => void;
 }
 
 const Modal: React.FC<ModalProps> = ({
   children,
   isVisible,
-  handleClose
+  onClose
 }) => isVisible ? (
   <div className='modal'>
     <div className='modal-dialog'>
@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
         alt='close icon'
         className='close-icon'
         imageUrl={closeIcon}
-        onImageClick={handleClose} />
+        onImageClick={onClose} />
       <div className='modal-body'>
         {children}
       </div>

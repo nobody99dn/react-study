@@ -1,3 +1,4 @@
+// Define action constant
 const ACTIONS = {
   SUCCESS: 'success',
   ERROR: 'error',

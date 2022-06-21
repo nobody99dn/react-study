@@ -17,7 +17,7 @@ import { get } from '@helpers/clientRequests';
 import { URL_PRODUCTS } from '@constants/api';
 
 // Type
-import { Product } from 'type/product';
+import { Product } from '@models/product';
 
 const products: Product[] = await get(URL_PRODUCTS);
 

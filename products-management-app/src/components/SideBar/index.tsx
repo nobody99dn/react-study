@@ -9,23 +9,25 @@ import Filter from '@components/Filter';
 import './index.css';
 
 // Constants
-import { ButtonVariants, ORDER_OPTIONS, PRODUCT_TYPE_LIST } from '@constants/types';
-import { Product } from '@type/product';
+import { ButtonVariants, FilterOrderOptions, ORDER_OPTIONS, ProductTypes, PRODUCT_TYPE_LIST } from '@constants/types';
 
 interface SideBarProps {
-  handleOpenModalForm: (product: Product) => void;
+  handleOpenModalForm: () => void;
+  currentFilterTypeParam: ProductTypes | undefined,
+  currentFilterPriceParam: FilterOrderOptions | undefined,
+  handleTypeChange: (value: string) => void;
+  handlePriceChange: (value: string) => void;
+  handleClearFilters: () => void;
 }
 
-const SideBar: React.FC<SideBarProps> = ({ handleOpenModalForm }) => {
-  const handleClick = () => {
-    handleOpenModalForm({
-      id: '',
-      name: '',
-      type: '',
-      price: 0,
-      imageUrl: ''
-    });
-  };
+const SideBar: React.FC<SideBarProps> = ({
+  handleOpenModalForm,
+  currentFilterTypeParam,
+  currentFilterPriceParam,
+  handleTypeChange,
+  handlePriceChange,
+  handleClearFilters
+}) => {
 
   return (
     <div className='sidebar'>
@@ -33,12 +35,17 @@ const SideBar: React.FC<SideBarProps> = ({ handleOpenModalForm }) => {
         <Button
           title='Add new product'
           variant={ButtonVariants.Primary}
-          onClick={handleClick}
+          onClick={handleOpenModalForm}
         />
       </div>
       <Filter
         typeFilterOptions={PRODUCT_TYPE_LIST}
         priceFilterOptions={ORDER_OPTIONS}
+        currentFilterTypeParam={currentFilterTypeParam}
+        currentFilterPriceParam={currentFilterPriceParam}
+        handleTypeChange={handleTypeChange}
+        handlePriceChange={handlePriceChange}
+        handleClearFilters={handleClearFilters}
       />
     </div>
 
