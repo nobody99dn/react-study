@@ -20,34 +20,28 @@ import ModalForm from '@components/ModalForm';
 // Type
 import { Product } from '@models/product';
 
-// Store
-import {
-  useStore,
-  getProductsRequest,
-  getProductsSuccess,
-  getProductsFailed,
-  deleteProductFailed,
-  deleteProductSuccess,
-  addProductFailed,
-  addProductSuccess,
-  editProductFailed,
-  editProductSuccess,
-  filterProductsRequest,
-  filterProductsSuccess,
-  searchProductsSuccess
-} from '@store/index';
-
-// Service
-import { removeProduct, getAllProduct, addNewProduct, updateProduct } from '@services/product.service';
-
 // Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
+import { ERROR_MESSAGES } from '@constants/messages';
 import { FilterOrderOptions, ProductTypes } from '@constants/types';
+import useProducts from '../../hooks/useProducts';
+
+// Store
+import { useStore } from '@store/index';
+
 
 const Main: React.FC = () => {
-  const { globalState, dispatch } = useStore();
+  const { globalState } = useStore();
 
   const { products, filterBox } = globalState || {};
+
+  const {
+    getProducts,
+    deleteProduct,
+    createProduct,
+    editProduct,
+    filterProducts,
+    searchProducts
+  } = useProducts();
 
   // States
   const [isModalShow, setIsModalShow] = useState<boolean>(false);
@@ -68,21 +62,7 @@ const Main: React.FC = () => {
    * Get all products
    */
   const getAllProducts = async (): Promise<void> => {
-    try {
-      dispatch(getProductsRequest());
-
-      const products: Product[] = await getAllProduct();
-
-      if (!products.length) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
-      dispatch(getProductsSuccess(products));
-    } catch (err) {
-      if (err instanceof Error) {
-        dispatch(getProductsFailed(err.message));
-      }
-    }
+    getProducts();
   };
 
   /**
@@ -99,24 +79,7 @@ const Main: React.FC = () => {
    * @returns void
    */
   const handleDeleteProduct = async (id: string): Promise<void> => {
-    try {
-      const deletedProduct: Product = await removeProduct(id);
-
-      if (!deletedProduct) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
-      dispatch(deleteProductSuccess({
-        productId: deletedProduct.id,
-        message: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
-      }));
-    } catch (error) {
-      if (error instanceof Error) {
-        dispatch(deleteProductFailed(error.message));
-        return;
-      }
-    }
-
+    deleteProduct(id);
   };
 
   /**
@@ -161,34 +124,9 @@ const Main: React.FC = () => {
     }
 
     if (!product.id) {
-      try {
-        const newProduct: Product = await addNewProduct(product);
-
-        if (!newProduct) {
-          throw new Error(ERROR_MESSAGES.ADD_PRODUCT_FAILED);
-        }
-
-        dispatch(addProductSuccess({ product: newProduct, message: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS }));
-      } catch (error) {
-        if (error instanceof Error) {
-          dispatch(addProductFailed(error.message));
-          return;
-        }
-      }
+      createProduct(product);
     } else {
-      try {
-        const updatedProduct: Product = await updateProduct(product);
-        if (!updatedProduct) {
-          throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
-        }
-
-        dispatch(editProductSuccess({ product: product, message: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS }));
-      } catch (error) {
-        if (error instanceof Error) {
-          dispatch(editProductFailed(error.message));
-          return;
-        }
-      }
+      editProduct(product);
     }
 
     setIsButtonLoading(false);
@@ -240,13 +178,10 @@ const Main: React.FC = () => {
    *  Filter change
    **/
   useEffect(() => {
-    dispatch(filterProductsRequest());
     const timer = setTimeout(() => {
-      dispatch(
-        filterProductsSuccess({
-          currentFilterTypeParam,
-          currentFilterPriceParam
-        })
+      filterProducts(
+        currentFilterTypeParam,
+        currentFilterPriceParam
       );
     }, 500);
 
@@ -265,7 +200,7 @@ const Main: React.FC = () => {
    */
   useEffect(() => {
     const timer = setTimeout(() => {
-      dispatch(searchProductsSuccess({ productName }));
+      searchProducts(productName);
     }, 500);
 
     return () => clearTimeout(timer);
