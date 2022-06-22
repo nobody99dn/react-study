@@ -47,11 +47,15 @@ const updateProduct = async (product: Product): Promise<Product> => {
   return await update(`${URL_PRODUCTS}/${product.id}`, product);
 };
 
-const filterProduct = async (
-  type?: ProductTypes,
-  priceOrder?: FilterOrderOptions
+const filterProductsByTypeAndPrice = async (
+  type: ProductTypes,
+  priceOrder: FilterOrderOptions
 ): Promise<Product[]> => {
-  return await get(`${URL_PRODUCTS}?type=${type}`);
+  return await get(
+    `${URL_PRODUCTS}?${`type=${type}`}${priceOrder ? '&' : ''}${
+      priceOrder ? `sortBy=price&order=${priceOrder}` : ''
+    }`
+  );
 };
 
 const searchProducts = async (productName: string): Promise<Product[]> => {
@@ -63,6 +67,6 @@ export {
   addNewProduct,
   updateProduct,
   removeProduct,
-  filterProduct,
+  filterProductsByTypeAndPrice,
   searchProducts
 };

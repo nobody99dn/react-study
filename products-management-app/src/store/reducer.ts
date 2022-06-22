@@ -139,36 +139,19 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       };
 
     case ACTIONS.FILTER_PRODUCTS_SUCCESS: {
-      const { currentFilterTypeParam, currentFilterPriceParam } =
-        action.payload;
-
-      let filteredProducts: Product[] | null = null;
-
-      if (currentFilterPriceParam || currentFilterTypeParam) {
-        filteredProducts = [
-          ...state.products.filter((product: Product) =>
-            product.type.includes(currentFilterTypeParam)
-          )
-        ];
-
-        if (currentFilterPriceParam === FilterOrderOptions.Asc) {
-          filteredProducts.sort(
-            (firstProduct: Product, secondProduct: Product) =>
-              firstProduct.price - secondProduct.price
-          );
-        } else if (currentFilterPriceParam === FilterOrderOptions.Desc) {
-          filteredProducts.sort(
-            (firstProduct: Product, secondProduct: Product) =>
-              secondProduct.price - firstProduct.price
-          );
-        }
-      }
-
+      const {
+        currentFilterTypeParam,
+        currentFilterPriceParam,
+        filteredProducts
+      } = action.payload;
       return {
         ...state,
         products: [...state.products],
         isLoading: false,
-        filterBox: filteredProducts
+        filterBox:
+          !currentFilterTypeParam && !currentFilterPriceParam
+            ? null
+            : filteredProducts
       };
     }
 

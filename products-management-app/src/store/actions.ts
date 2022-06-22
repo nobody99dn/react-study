@@ -81,8 +81,9 @@ const filterProductsRequest = (): ActionProps => ({
 });
 
 const filterProductsSuccess = (payload: {
-  currentFilterTypeParam: ProductTypes | undefined;
-  currentFilterPriceParam: FilterOrderOptions | undefined;
+  filteredProducts: Product[];
+  currentFilterTypeParam: ProductTypes;
+  currentFilterPriceParam: FilterOrderOptions;
 }): ActionProps => ({
   type: ACTIONS.FILTER_PRODUCTS_SUCCESS,
   payload

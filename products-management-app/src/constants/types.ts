@@ -45,8 +45,8 @@ export const PRODUCT_TYPE_LIST: ProductTypes[] = [
 ];
 
 export enum FilterOrderOptions {
-  Asc = 'Ascending',
-  Desc = 'Descending'
+  Asc = 'asc',
+  Desc = 'desc'
 }
 
 export const ORDER_OPTIONS = [FilterOrderOptions.Asc, FilterOrderOptions.Desc];

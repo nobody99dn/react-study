@@ -180,8 +180,8 @@ const Main: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       filterProducts(
-        currentFilterTypeParam,
-        currentFilterPriceParam
+        currentFilterTypeParam as ProductTypes,
+        currentFilterPriceParam as FilterOrderOptions
       );
     }, 500);
 

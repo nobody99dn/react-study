@@ -8,7 +8,7 @@ import { Product } from '@models/product';
 // Service
 import {
   addNewProduct,
-  filterProduct,
+  filterProductsByTypeAndPrice,
   getAllProduct,
   removeProduct,
   searchProducts,
@@ -161,14 +161,20 @@ const useProducts = () => {
    * @param currentFilterPriceParam FilterOrderOptions
    */
   const filterProducts = async (
-    currentFilterTypeParam: ProductTypes | undefined,
-    currentFilterPriceParam: FilterOrderOptions | undefined
+    currentFilterTypeParam: ProductTypes,
+    currentFilterPriceParam: FilterOrderOptions
   ) => {
+    const filteredProducts: Product[] = await filterProductsByTypeAndPrice(
+      currentFilterTypeParam,
+      currentFilterPriceParam
+    );
+
     dispatch(filterProductsRequest());
     dispatch(
       filterProductsSuccess({
         currentFilterTypeParam,
-        currentFilterPriceParam
+        currentFilterPriceParam,
+        filteredProducts
       })
     );
   };
