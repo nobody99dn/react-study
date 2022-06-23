@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Context</title>
+    <title>forwardRef</title>
   </head>
   <body>
     <div id="root"></div>
@@ -25,17 +25,18 @@
         <button ref={ref} className='FancyButton'>
           {props.children}
         </button>
-      ))
+      ));
 
       //you can nwo get a ref directly to the DOM button
-      const ref = React.createRef()
+      const ref = React.createRef();
 
-      console.dir(FancyButton)
+      FancyButton.displayName = 'ref';
+      console.dir(FancyButton.displayName);
 
       ReactDOM.render(
         <FancyButton ref={ref}>Click me!</FancyButton>,
         document.getElementById('root')
-      )
+      );
     </script>
   </body>
 </html>
