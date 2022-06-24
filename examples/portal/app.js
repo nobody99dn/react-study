@@ -1,28 +1,28 @@
 //These 2 components are sibling in the DOM
-const appRoot = document.getElementById('app-root')
-const modalRoot = document.getElementById('modal-root')
+const appRoot = document.getElementById('app-root');
+const modalRoot = document.getElementById('modal-root');
 
 //Let's create a Modal component that is an abstraction around
 //the portal API
 class Modal extends React.Component {
   constructor(props) {
-    super(props)
-    //Create a div that we'll render the modal into. Because each element
+    super(props);
+    // Create a div that we'll render the modal into. Because each element
     // Modal component has its own element, we can render multiple model
     // modal components into the modal container
-    this.el = document.createElement('div')
-    console.log(this)
+    this.el = document.createElement('div');
+    console.log(this);
   }
 
   componentDidMount() {
     //Append the element into the DOM on mount. We'll render into the modal
     // container element (see the HTML tab)
-    modalRoot.appendChild(this.el)
+    modalRoot.appendChild(this.el);
   }
 
   componentWillUnmount() {
     //Remove the element from the DOM when we unmount
-    modalRoot.removeChild(this.el)
+    modalRoot.removeChild(this.el);
   }
 
   render() {
@@ -32,7 +32,7 @@ class Modal extends React.Component {
       this.props.children,
       //A DOM element
       this.el
-    )
+    );
   }
 }
 
@@ -41,19 +41,14 @@ class Modal extends React.Component {
 //implement with Portals
 class App extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = { showModal: false }
+    super(props);
+    this.state = { showModal: false };
 
-    this.handleShow = this.handleShow.bind(this)
-    this.handleHide = this.handleHide.bind(this)
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
-  handleShow() {
-    this.setState({ showModal: true })
-  }
-
-  handleHide() {
-    this.setState({ showModal: false })
+  handleToggle() {
+    this.setState({ showModal: !this.state.showModal });
   }
 
   render() {
@@ -67,18 +62,18 @@ class App extends React.Component {
           as if it were any other React child.
         </div>
         This is being rendered inside the #modal-container div
-        <button onClick={this.handleHide}>Hide modal</button>
+        <button onClick={this.handleToggle}>Hide modal</button>
       </Modal>
-    ) : null
+    ) : null;
 
     return (
       <div className='app'>
         This div has overflow: hidden
-        <button onClick={this.handleShow}>Show modal</button>
+        <button onClick={this.handleToggle}>Show modal</button>
         {modal}
       </div>
-    )
+    );
   }
 }
 
-ReactDOM.render(<App />, appRoot)
+ReactDOM.render(<App />, appRoot);
