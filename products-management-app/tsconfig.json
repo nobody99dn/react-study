@@ -17,7 +17,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./src",
-    "types": ["node"],
+    "types": ["node", "jest"],
     "paths": {
       "@constants/*": ["./constants/*"],
       "@components/*": ["./components/*"],
@@ -30,5 +30,6 @@
     },
   },
   "include": ["src"],
+  "exclude": ["**/*.test.*", "**/__mocks__/*", "**/__tests__/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
