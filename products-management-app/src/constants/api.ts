@@ -1,2 +1,2 @@
-const URL_BASE = 'https://62943cf0a7203b3ed0650c9b.mockapi.io';
+const URL_BASE = import.meta.env.VITE_BASE_URL;
 export const URL_PRODUCTS = `${URL_BASE}/products`;
