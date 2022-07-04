@@ -19,10 +19,6 @@ import MessagePopUp from '@components/MessagePopUp/index';
 import { useStore } from './store';
 import { MessagePopUpVariants } from '@constants/types';
 
-// import whyDidYouRender from '@welldone-software/why-did-you-render';
-
-import.meta.env.BASE_URL;
-
 function App() {
   // console.log(process.env.BASE_URL);
 
