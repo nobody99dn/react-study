@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>forwardRef</title>
+    <title>Web Components</title>
   </head>
   <body>
     <div id="root"></div>
@@ -21,22 +21,32 @@
 
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
-      const FancyButton = React.forwardRef((props, ref) => (
-        <button ref={ref} className='FancyButton'>
-          {props.children}
-        </button>
-      ));
+      class HelloMessage extends React.Component {
+        render() {
+          return (
+            <div>
+              Hello <x-search>{this.props.name}</x-search>!
+            </div>
+          );
+        }
+      }
 
-      //you can nwo get a ref directly to the DOM button
-      const ref = React.createRef();
+      function BrickFlipbox() {
+        return (
+          <brick-flipbox class='demo'>
+            <div>front</div>
+            <div>back</div>
+          </brick-flipbox>
+        );
+      }
 
-      FancyButton.displayName = 'ref';
-      console.dir(FancyButton.displayName);
-
-      ReactDOM.render(
-        <FancyButton ref={ref}>Click me!</FancyButton>,
-        document.getElementById('root')
+      const App = () => (
+        <div>
+          <BrickFlipbox />
+          <HelloMessage />
+        </div>
       );
+      ReactDOM.render(<App />, document.getElementById('root'));
     </script>
   </body>
 </html>

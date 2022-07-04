@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>refs and DOM</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      // Callback refs
+      class CustomTextInput extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.textInput = null;
+
+          this.setTextInputRef = (element) => {
+            this.textInput = element;
+          };
+
+          this.focusTextInput = () => {
+            // Focus the text input using the raw DOM API
+            if (this.textInput) this.textInput.focus();
+          };
+        }
+
+        componentDidMount() {
+          // autofocus the input on mount
+          this.focusTextInput();
+        }
+
+        render() {
+          // Use the `ref` callback to store a reference to the text input DOM
+          // element in an instance field (for example, this.textInput).
+          return (
+            <div>
+              <input type='text' ref={this.setTextInputRef} />
+              <input
+                type='button'
+                value='Focus the text input'
+                onClick={this.focusTextInput}
+              />
+            </div>
+          );
+        }
+      }
+
+      const App = () => (
+        <div>
+          <CustomTextInput />
+        </div>
+      );
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
