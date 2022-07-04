@@ -1,5 +1,5 @@
 // Library
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 
 // Style
 import './index.css';

@@ -1,3 +1,6 @@
+// why did you rerender
+import './wydr';
+
 // Libraries
 import React from 'react';
 import ReactDOM from "react-dom";
@@ -7,6 +10,7 @@ import { StoreProvider, initialState, reducer } from './store';
 
 // App
 import App from './App';
+
 
 ReactDOM.render(
   <React.StrictMode>

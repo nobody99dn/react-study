@@ -104,7 +104,7 @@ const useProducts = () => {
 
       dispatch(
         editProductSuccess({
-          product: product,
+          product: updatedProduct,
           message: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
         })
       );

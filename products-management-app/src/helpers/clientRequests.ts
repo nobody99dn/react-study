@@ -29,6 +29,7 @@ const get = async (url: string): Promise<any> => {
 const post = async (url: string, data: any): Promise<any> => {
   try {
     const res = await axios.post(url, data);
+
     return res.data;
   } catch (error) {
     if (error instanceof Error) {
