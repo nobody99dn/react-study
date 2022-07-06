@@ -55,3 +55,10 @@ export enum MessagePopUpVariants {
   Success = 'success',
   Failed = 'failed'
 }
+
+export enum TypeVariables {
+  Text = 'text',
+  Number = 'number',
+  Email = 'email',
+  Tel = 'tel'
+}

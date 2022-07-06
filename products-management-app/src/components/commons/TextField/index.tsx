@@ -8,60 +8,62 @@ import Image from '@components/commons/Image/index';
 import './index.css';
 
 // Constant
-import { ImageVariants, TextFieldVariants } from '@constants/types';
+import {
+  ImageVariants,
+  TextFieldVariants,
+  TypeVariables
+} from '@constants/types';
 
 interface TextFieldProps {
   id?: string;
   name?: string;
-  defaultValue?: string | number,
-  disabled?: boolean,
+  defaultValue?: string | number;
+  disabled?: boolean;
   height?: string;
   width?: string;
   readonly?: boolean;
-  required?: boolean,
-  type?: 'text' | 'number' | 'email' | 'tel';
+  required?: boolean;
+  type?: TypeVariables;
   placeholder: string;
   iconUrl?: string;
   iconHeight?: string;
   iconWidth?: string;
-  variant?: TextFieldVariants,
+  variant?: TextFieldVariants;
   label?: string;
   onChange?: (value: string | number, fieldName: string) => void;
 }
 
-const TextField: React.FC<TextFieldProps> = (
-  {
-    id,
-    name,
-    defaultValue = '',
-    disabled = false,
-    height,
-    label,
-    width,
-    type,
-    readonly = false,
-    required = false,
-    placeholder,
-    iconUrl,
-    iconHeight,
-    iconWidth,
-    variant = TextFieldVariants.Standard,
-    onChange
-  }
-) => {
+const TextField: React.FC<TextFieldProps> = ({
+  id,
+  name,
+  defaultValue = '',
+  disabled = false,
+  height,
+  label,
+  width,
+  type = TypeVariables.Text,
+  readonly = false,
+  required = false,
+  placeholder,
+  iconUrl,
+  iconHeight,
+  iconWidth,
+  variant = TextFieldVariants.Standard,
+  onChange
+}) => {
   const handleChange = useCallback(
-    (e: { target: { value: string | number, name: string; }; }) => {
+    (e: { target: { value: string | number; name: string } }) => {
       onChange?.(e.target.value, e.target.name);
     },
-    [onChange],
+    [onChange]
   );
 
   return (
     <div className='field-wrapper'>
       {label && <label htmlFor={id}>{label}: </label>}
       <div className={'input-wrapper'}>
-        {
-          iconUrl && <Image
+        {iconUrl && (
+          <Image
             alt={'icon'}
             className={'icon-left'}
             imageUrl={iconUrl}
@@ -69,7 +71,7 @@ const TextField: React.FC<TextFieldProps> = (
             width={iconWidth}
             height={iconHeight}
           />
-        }
+        )}
         <input
           id={id}
           name={name}
@@ -83,9 +85,9 @@ const TextField: React.FC<TextFieldProps> = (
           required={required}
           onChange={handleChange}
         />
-      </div >
-    </div >
+      </div>
+    </div>
   );
-};;
+};
 
 export default memo(TextField);
