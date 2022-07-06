@@ -1,25 +1,25 @@
 // Constants
 import { ACTIONS } from './constants';
-import { FilterOrderOptions } from '@constants/types';
 
 // Type
 import { Product } from '@models/product';
 import { ActionProps } from './actions';
+import { FilterOrderOptions, ProductTypes } from '@constants/types';
 
 export interface InitialState {
   products: Product[];
   isLoading: boolean;
-  errorMessage: string | null;
-  successMessage: string | null;
-  filterBox: Product[] | null;
+  errorMessage: string;
+  successMessage: string;
+  filterBox: Product[];
 }
 
 const initialState: InitialState = {
   products: [],
   isLoading: false,
-  errorMessage: null,
-  successMessage: null,
-  filterBox: null
+  errorMessage: '',
+  successMessage: '',
+  filterBox: []
 };
 
 /**
@@ -35,24 +35,24 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       return {
         ...state,
         isLoading: true,
-        errorMessage: null
+        errorMessage: ''
       };
 
     case ACTIONS.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
-        products: action.payload,
+        products: action.payload?.products as Product[],
         isLoading: false,
-        errorMessage: null,
-        filterBox: null
+        errorMessage: '',
+        filterBox: []
       };
 
     case ACTIONS.GET_PRODUCTS_FAILED:
       return {
         ...state,
-        errorMessage: action.payload,
+        errorMessage: action.payload?.errorMessage as string,
         isLoading: false,
-        filterBox: null
+        filterBox: []
       };
 
     case ACTIONS.ADD_PRODUCT_REQUEST:
@@ -64,17 +64,17 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
     case ACTIONS.ADD_PRODUCT_SUCCESS:
       return {
         ...state,
-        products: [...state.products, action.payload.product],
+        products: [...state.products, action.payload?.product as Product],
         isLoading: false,
-        successMessage: action.payload.message,
-        filterBox: null
+        successMessage: action.payload?.successMessage as string,
+        filterBox: []
       };
 
     case ACTIONS.ADD_PRODUCT_FAILED:
       return {
         ...state,
         isLoading: false,
-        errorMessage: action.payload
+        errorMessage: action.payload?.errorMessage as string
       };
 
     case ACTIONS.DELETE_PRODUCT_REQUEST:
@@ -88,17 +88,17 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
         ...state,
         products: [
           ...state.products.filter(
-            (product) => product.id !== action.payload.productId
+            (product) => product.id !== (action.payload?.productId as string)
           )
         ],
         isLoading: false,
-        successMessage: action.payload.message
+        successMessage: action.payload?.successMessage as string
       };
 
     case ACTIONS.DELETE_PRODUCT_FAILED:
       return {
         ...state,
-        errorMessage: action.payload,
+        errorMessage: action.payload?.errorMessage as string,
         isLoading: false
       };
 
@@ -111,23 +111,23 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
 
     case ACTIONS.EDIT_PRODUCT_SUCCESS: {
       const productIndex: number = state.products.findIndex(
-        (product) => product.id === action.payload.product.id
+        (product) => product.id === (action.payload?.product as Product).id
       );
 
-      state.products[productIndex] = action.payload.product;
+      state.products[productIndex] = action.payload?.product as Product;
 
       return {
         ...state,
         products: state.products,
         isLoading: false,
-        successMessage: action.payload.message
+        successMessage: action.payload?.successMessage as string
       };
     }
 
     case ACTIONS.EDIT_PRODUCT_FAILED: {
       return {
         ...state,
-        errorMessage: action.payload,
+        errorMessage: action.payload?.errorMessage as string,
         isLoading: false
       };
     }
@@ -139,33 +139,30 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       };
 
     case ACTIONS.FILTER_PRODUCTS_SUCCESS: {
-      const {
-        currentFilterTypeParam,
-        currentFilterPriceParam,
-        filteredProducts
-      } = action.payload;
       return {
         ...state,
-        products: [...state.products],
         isLoading: false,
         filterBox:
-          !currentFilterTypeParam && !currentFilterPriceParam
-            ? null
-            : filteredProducts
+          !!action.payload?.currentFilterTypeParam ||
+          !!action.payload?.currentFilterPriceParam
+            ? (action.payload?.filteredProducts as Product[])
+            : []
       };
     }
 
     case ACTIONS.SEARCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        filterBox: !action.payload.input ? null : action.payload.productsFound
+        filterBox: !!action.payload?.input
+          ? (action.payload?.filteredProducts as Product[])
+          : []
       };
 
     case ACTIONS.CLEAR_MESSAGES: {
       return {
         ...state,
-        errorMessage: null,
-        successMessage: null
+        errorMessage: '',
+        successMessage: ''
       };
     }
 

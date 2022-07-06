@@ -1,6 +1,5 @@
 // Library
-import React,
-{
+import React, {
   FormEvent,
   memo,
   useCallback,
@@ -9,7 +8,7 @@ import React,
 } from 'react';
 
 // Styles
-import "./index.css";
+import './index.css';
 
 // Components
 import Posts from '@components/Posts/index';
@@ -23,16 +22,20 @@ import { Product } from '@models/product';
 // Constants
 import { ERROR_MESSAGES } from '@constants/messages';
 import { FilterOrderOptions, ProductTypes } from '@constants/types';
+
+// Hook
 import useProducts from '../../hooks/useProducts';
 
 // Store
 import { useStore } from '@store/index';
 
-
 const Main: React.FC = () => {
   const { globalState } = useStore();
 
   const { products, filterBox } = globalState || {};
+
+  console.log('products', products);
+  console.log('filterBox', filterBox);
 
   const {
     getProducts,
@@ -54,8 +57,10 @@ const Main: React.FC = () => {
     price: 0,
     imageUrl: ''
   });
-  const [currentFilterPriceParam, setCurrentFilterPriceParam] = useState<FilterOrderOptions>();
-  const [currentFilterTypeParam, setCurrentFilterTypeParam] = useState<ProductTypes>();
+  const [currentFilterPriceParam, setCurrentFilterPriceParam] =
+    useState<FilterOrderOptions>();
+  const [currentFilterTypeParam, setCurrentFilterTypeParam] =
+    useState<ProductTypes>();
   const [productName, setProductName] = useState<string>('');
 
   /**
@@ -74,7 +79,7 @@ const Main: React.FC = () => {
 
   /**
    * Handle delete product
-   * 
+   *
    * @param id string
    * @returns void
    */
@@ -84,12 +89,15 @@ const Main: React.FC = () => {
 
   /**
    * Handle create new product and edit product
-   * 
+   *
    * @param event FormEvent
    * @param product Product
    * @returns void
    */
-  const handleSubmitProduct = async (event: FormEvent, product: Product): Promise<void> => {
+  const handleSubmitProduct = async (
+    event: FormEvent,
+    product: Product
+  ): Promise<void> => {
     event.preventDefault();
 
     setIsButtonLoading(true);
@@ -140,17 +148,21 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   };
 
-  const handleToggleModal = useCallback((product: Product = {
-    id: '',
-    name: '',
-    type: '',
-    price: 0,
-    imageUrl: ''
-  }) => {
-
-    setIsModalShow(!isModalShow);
-    setProduct(product);
-  }, []);
+  const handleToggleModal = useCallback(
+    (
+      product: Product = {
+        id: '',
+        name: '',
+        type: '',
+        price: 0,
+        imageUrl: ''
+      }
+    ) => {
+      setIsModalShow(!isModalShow);
+      setProduct(product);
+    },
+    []
+  );
 
   /**
    * Handle filter product
@@ -163,16 +175,22 @@ const Main: React.FC = () => {
   /**
    * Handle type change in filter
    */
-  const handleTypeChange = useCallback((value: string): void => {
-    setCurrentFilterTypeParam(value as ProductTypes);
-  }, [currentFilterTypeParam]);
+  const handleTypeChange = useCallback(
+    (value: string): void => {
+      setCurrentFilterTypeParam(value as ProductTypes);
+    },
+    [currentFilterTypeParam]
+  );
 
   /**
    * Handle price change in filter
    */
-  const handlePriceChange = useCallback((value: string): void => {
-    setCurrentFilterPriceParam(value as FilterOrderOptions);
-  }, [currentFilterPriceParam]);
+  const handlePriceChange = useCallback(
+    (value: string): void => {
+      setCurrentFilterPriceParam(value as FilterOrderOptions);
+    },
+    [currentFilterPriceParam]
+  );
 
   /**
    *  Filter change
@@ -215,7 +233,7 @@ const Main: React.FC = () => {
             handleSearchProduct={handleSearchProduct}
           />
           <Posts
-            products={filterBox || products}
+            products={filterBox.length ? filterBox : products}
             onOpenModalForm={handleToggleModal}
             onDeleteProduct={handleDeleteProduct}
           />
@@ -231,15 +249,17 @@ const Main: React.FC = () => {
           handleClearFilters={handleClearFilters}
         />
       </div>
-      {isModalShow && <ModalForm
-        isModalShow={isModalShow}
-        product={product}
-        isButtonLoading={isButtonLoading}
-        validateMessage={validateMessage}
-        handleSubmitForm={handleSubmitProduct}
-        handleCloseModal={handleCloseModal}
-      />}
-    </main >
+      {isModalShow && (
+        <ModalForm
+          isModalShow={isModalShow}
+          product={product}
+          isButtonLoading={isButtonLoading}
+          validateMessage={validateMessage}
+          handleSubmitForm={handleSubmitProduct}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
+    </main>
   );
 };
 
