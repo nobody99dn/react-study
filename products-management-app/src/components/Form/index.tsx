@@ -5,7 +5,12 @@ import React, { FormEvent, useState } from 'react';
 import './index.css';
 
 // Constants
-import { ButtonVariants, FormVariants, ProductTypes } from '@constants/types';
+import {
+  ButtonVariants,
+  FormVariants,
+  ProductTypes,
+  TypeVariables
+} from '@constants/index';
 
 // Components
 import Title from '@components/commons/Title';
@@ -34,10 +39,12 @@ const Form: React.FC<FormProps> = ({
   isButtonLoading = false,
   onSubmit
 }) => {
-
   const [product, setProduct] = useState<Product>(productItem as Product);
 
-  const handleOnChange = (value: string | number, fieldName: string | undefined): void => {
+  const handleOnChange = (
+    value: string | number,
+    fieldName: string | undefined
+  ): void => {
     setProduct({ ...product, [fieldName as string]: value });
   };
 
@@ -55,6 +62,7 @@ const Form: React.FC<FormProps> = ({
             label='Product name'
             placeholder='Enter product name...'
             onChange={handleOnChange}
+            type={TypeVariables.Text}
           />
           <Select
             label='Product type'
@@ -66,7 +74,7 @@ const Form: React.FC<FormProps> = ({
           <TextField
             defaultValue={product.price}
             name='price'
-            type='number'
+            type={TypeVariables.Number}
             label='Price'
             placeholder='Enter price...'
             onChange={handleOnChange}
@@ -74,18 +82,16 @@ const Form: React.FC<FormProps> = ({
           <TextField
             defaultValue={product.imageUrl}
             name='imageUrl'
-            type='text'
+            type={TypeVariables.Text}
             label='Image link'
             placeholder='Enter image link...'
             onChange={handleOnChange}
           />
-          {validateMessage &&
-            <Text
-              variant={VariantsTypes.Highlight}
-              color='var(--danger)'>
+          {validateMessage && (
+            <Text variant={VariantsTypes.Highlight} color='var(--danger)'>
               {validateMessage}
             </Text>
-          }
+          )}
         </fieldset>
         <Button
           variant={ButtonVariants.Primary}

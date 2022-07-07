@@ -1,5 +1,5 @@
 const ERROR_MESSAGES = {
-  SERVER_RESPONSE_ERROR: 'Some thing went wrong. Please try again.',
+  SERVER_RESPONSE_ERROR: 'Some thing went wrong. Please try again!',
   ADD_PRODUCT_FAILED: 'Add product failed. Please try again!',
   EDIT_PRODUCT_FAILED: 'Edit product failed. Please try again!',
   REMOVE_PRODUCT_FAILED: 'Remove product failed. Please try again!',

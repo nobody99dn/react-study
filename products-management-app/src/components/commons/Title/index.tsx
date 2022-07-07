@@ -1,11 +1,11 @@
 // Libraries
-import React, { memo, ReactNode } from "react";
+import React, { memo, ReactNode } from 'react';
 
 // Styles
 import './index.css';
 
 // Constants
-import { FwType } from '@constants/types';
+import { FwType } from '@constants/index';
 
 export enum VariantTypes {
   Default = 'title',
@@ -16,25 +16,23 @@ interface TitleProps {
   children: ReactNode;
   className?: string;
   color?: string;
-  fw?: FwType,
+  fw?: FwType;
   size?: string;
   fs?: 'inherit' | 'italic';
   p?: string;
   variant?: VariantTypes;
 }
 
-const Title: React.FC<TitleProps> = (
-  {
-    children,
-    className,
-    color,
-    fw,
-    size,
-    fs = 'inherit',
-    p,
-    variant = VariantTypes.Default,
-  }
-) => (
+const Title: React.FC<TitleProps> = ({
+  children,
+  className,
+  color,
+  fw,
+  size,
+  fs = 'inherit',
+  p,
+  variant = VariantTypes.Default
+}) => (
   <div
     className={`${variant} ${className}`}
     style={{

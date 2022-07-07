@@ -12,7 +12,7 @@ import {
   ImageVariants,
   TextFieldVariants,
   TypeVariables
-} from '@constants/types';
+} from '@constants/index';
 
 interface TextFieldProps {
   id?: string;

@@ -6,7 +6,7 @@ import Modal from '@components/Modal';
 import React, { FormEvent } from 'react';
 
 // Constants
-import { FormVariants, PRODUCT_TYPE_LIST } from '@constants/types';
+import { FormVariants, PRODUCT_TYPE_LIST } from '@constants/index';
 
 // Type
 import { Product } from '@models/product';
@@ -28,10 +28,7 @@ const ModalForm: React.FC<ModalFormProps> = ({
   handleSubmitForm,
   handleCloseModal
 }) => (
-  <Modal
-    isVisible={isModalShow}
-    onClose={handleCloseModal}
-  >
+  <Modal isVisible={isModalShow} onClose={handleCloseModal}>
     <Form
       variants={!product.id ? FormVariants.Create : FormVariants.Edit}
       options={PRODUCT_TYPE_LIST}
