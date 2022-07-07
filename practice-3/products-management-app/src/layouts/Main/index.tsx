@@ -145,21 +145,18 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   };
 
-  const handleToggleModal = useCallback(
-    (
-      product: Product = {
-        id: '',
-        name: '',
-        type: '',
-        price: 0,
-        imageUrl: ''
-      }
-    ) => {
-      setIsModalShow(!isModalShow);
-      setProduct(product);
-    },
-    []
-  );
+  const handleToggleModal = (
+    product: Product = {
+      id: '',
+      name: '',
+      type: '',
+      price: 0,
+      imageUrl: ''
+    }
+  ) => {
+    setIsModalShow(!isModalShow);
+    setProduct(product);
+  };
 
   /**
    * Handle filter product
