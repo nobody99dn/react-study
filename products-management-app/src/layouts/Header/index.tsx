@@ -1,7 +1,7 @@
 // Libraries
 import React, { memo } from 'react';
 
-// Component 
+// Component
 import Image from '@components/commons/Image';
 
 // Assets
@@ -11,7 +11,7 @@ import { logo } from '@assets/index';
 import './index.css';
 
 // Constant
-import { ImageVariants } from '@constants/types';
+import { ImageVariants } from '@constants/index';
 
 interface HeaderProps {
   href?: string;

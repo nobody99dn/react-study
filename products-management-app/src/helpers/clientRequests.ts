@@ -1,53 +1,37 @@
 // Library
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+
+import { Product } from '@models/product';
 
 /**
  * Get data from server
  *
  * @param url string
- * @returns any
+ * @returns Product[]
  */
-const get = async (url: string): Promise<any> => {
-  try {
-    const res = await axios.get(url);
+const get = async (url: string): Promise<Product[]> => {
+  const res: AxiosResponse<Product[]> = await axios.get(url);
 
-    return res.data;
-  } catch (error) {
-    if (error instanceof Error) {
-      return error;
-    }
-  }
+  return res.data;
 };
 
 /**
  * Add new data to server
  *
  * @param url string
- * @param data any
- * @returns add data to server
+ * @param data Product
+ * @returns Product
  */
-const post = async (url: string, data: any): Promise<any> => {
-  try {
-    const res = await axios.post(url, data);
+const post = async (url: string, data: Product): Promise<Product> => {
+  const res: AxiosResponse<Product> = await axios.post(url, data);
 
-    return res.data;
-  } catch (error) {
-    if (error instanceof Error) {
-      return error;
-    }
-  }
+  return res.data;
 };
 
-const remove = async (url: string): Promise<any> => {
-  try {
-    const res = await axios.delete(url);
+const remove = async (url: string): Promise<Product> => {
+  const res: AxiosResponse<Product> = await axios.delete(url);
 
-    return res.data;
-  } catch (error) {
-    if (error instanceof Error) {
-      return error;
-    }
-  }
+  return res.data;
 };
 
 /**
@@ -57,16 +41,10 @@ const remove = async (url: string): Promise<any> => {
  * @param data any
  * @returns any
  */
-const update = async (url: string, data: any): Promise<any> => {
-  try {
-    const res = await axios.put(url, data);
+const update = async (url: string, data: Product): Promise<Product> => {
+  const res: AxiosResponse<Product> = await axios.put(url, data);
 
-    return res.data;
-  } catch (error) {
-    if (error instanceof Error) {
-      return error;
-    }
-  }
+  return res.data;
 };
 
 export { get, post, update, remove };

@@ -5,7 +5,7 @@ import React, { memo } from 'react';
 import './index.css';
 
 // Constants
-import { ImageVariants } from '@constants/types';
+import { ImageVariants } from '@constants/index';
 
 interface ImageProps {
   alt: string;
@@ -17,20 +17,19 @@ interface ImageProps {
   onImageClick?: () => void;
 }
 
-const Image: React.FC<ImageProps> = (
-  {
-    alt,
-    className,
-    height,
-    imageUrl,
-    width,
-    variant = ImageVariants.Default,
-    onImageClick
-  }
-) => (
+const Image: React.FC<ImageProps> = ({
+  alt,
+  className,
+  height,
+  imageUrl,
+  width,
+  variant = ImageVariants.Default,
+  onImageClick
+}) => (
   <img
-    className={`image ${variant !== ImageVariants.Default ? `image-${variant} ` : ''} ${className}`
-    }
+    className={`image ${
+      variant !== ImageVariants.Default ? `image-${variant} ` : ''
+    } ${className}`}
     alt={alt}
     src={imageUrl}
     style={{ width: width, height: height }}

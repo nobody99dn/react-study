@@ -4,23 +4,32 @@ import { ACTIONS } from './constants';
 // Type
 import { Product } from '@models/product';
 import { FilterOrderOptions, ProductTypes } from '@constants/types';
-import * as path from 'path';
 
 export interface ActionProps {
   type: string;
-  payload?: any;
+  payload?: {
+    products?: Product[];
+    successMessage?: string;
+    errorMessage?: string;
+    product?: Product;
+    productId?: string;
+    currentFilterTypeParam?: ProductTypes;
+    currentFilterPriceParam?: FilterOrderOptions;
+    filteredProducts?: Product[];
+    input?: string;
+  };
 }
 
 const getProductsRequest = (): ActionProps => ({
   type: ACTIONS.GET_PRODUCTS_REQUEST
 });
 
-const getProductsSuccess = (payload: Product[]): ActionProps => ({
+const getProductsSuccess = (payload: { products: Product[] }): ActionProps => ({
   type: ACTIONS.GET_PRODUCTS_SUCCESS,
   payload
 });
 
-const getProductsFailed = (payload: string): ActionProps => ({
+const getProductsFailed = (payload: { errorMessage: string }): ActionProps => ({
   type: ACTIONS.GET_PRODUCTS_FAILED,
   payload
 });
@@ -31,13 +40,13 @@ const addProductRequest = (): ActionProps => ({
 
 const addProductSuccess = (payload: {
   product: Product;
-  message: string;
+  successMessage: string;
 }): ActionProps => ({
   type: ACTIONS.ADD_PRODUCT_SUCCESS,
   payload
 });
 
-const addProductFailed = (payload: string): ActionProps => ({
+const addProductFailed = (payload: { errorMessage: string }): ActionProps => ({
   type: ACTIONS.ADD_PRODUCT_FAILED,
   payload
 });
@@ -48,13 +57,15 @@ const deleteProductRequest = (): ActionProps => ({
 
 const deleteProductSuccess = (payload: {
   productId: string;
-  message: string;
+  successMessage: string;
 }): ActionProps => ({
   type: ACTIONS.DELETE_PRODUCT_SUCCESS,
   payload
 });
 
-const deleteProductFailed = (payload: string): ActionProps => ({
+const deleteProductFailed = (payload: {
+  errorMessage: string;
+}): ActionProps => ({
   type: ACTIONS.DELETE_PRODUCT_FAILED,
   payload
 });
@@ -65,13 +76,13 @@ const editProductRequest = (): ActionProps => ({
 
 const editProductSuccess = (payload: {
   product: Product;
-  message: string;
+  successMessage: string;
 }): ActionProps => ({
   type: ACTIONS.EDIT_PRODUCT_SUCCESS,
   payload
 });
 
-const editProductFailed = (payload: string): ActionProps => ({
+const editProductFailed = (payload: { errorMessage: string }): ActionProps => ({
   type: ACTIONS.EDIT_PRODUCT_FAILED,
   payload
 });
@@ -90,7 +101,7 @@ const filterProductsSuccess = (payload: {
 });
 
 const searchProductsSuccess = (payload: {
-  productsFound: Product[];
+  filterProducts: Product[];
   input: string;
 }): ActionProps => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,

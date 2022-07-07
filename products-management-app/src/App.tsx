@@ -17,12 +17,9 @@ import MessagePopUp from '@components/MessagePopUp/index';
 
 // Store
 import { useStore } from './store';
-import { MessagePopUpVariants } from '@constants/types';
+import { MessagePopUpVariants } from '@constants/index';
 
 function App() {
-  // console.log(process.env.BASE_URL);
-
-
   const { globalState } = useStore();
 
   const { isLoading, errorMessage, successMessage } = globalState || {};
@@ -34,19 +31,19 @@ function App() {
 
       {isLoading && <LoadingIndicator />}
 
-      {
-        errorMessage && <MessagePopUp
+      {errorMessage && (
+        <MessagePopUp
           text={errorMessage}
           messagePopUpVariant={MessagePopUpVariants.Failed}
         />
-      }
+      )}
 
-      {
-        successMessage && <MessagePopUp
+      {successMessage && (
+        <MessagePopUp
           text={successMessage}
           messagePopUpVariant={MessagePopUpVariants.Success}
         />
-      }
+      )}
     </>
   );
 }

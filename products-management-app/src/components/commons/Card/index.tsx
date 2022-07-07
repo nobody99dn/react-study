@@ -7,7 +7,7 @@ import Title, { VariantTypes } from '@components/commons/Title';
 import Button from '@components/commons/Button';
 
 // Constants
-import { ButtonVariants, Currencies, FwType } from '@constants/types';
+import { ButtonVariants, Currencies, FwType } from '@constants/index';
 
 // Helpers
 import { currencyFormat } from '@helpers/string';
@@ -46,14 +46,12 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div className='card'>
-      <Image
-        imageUrl={imageUrl}
-        alt={name}
-        className='card-image'
-      />
+      <Image imageUrl={imageUrl} alt={name} className='card-image' />
       <div className='card-body'>
         <div className='title-wrapper'>
-          <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>{name}</Title>
+          <Title className='card-title' p='0.5rem 0.5rem 0 0.5rem'>
+            {name}
+          </Title>
         </div>
         <Title
           color='var(--dark)'
@@ -64,19 +62,12 @@ const Card: React.FC<CardProps> = ({
         >
           {type}
         </Title>
-        <Title
-          variant={VariantTypes.Subtitle}
-          fw={FwType.Bold}
-          p='0.5rem'
-        >
+        <Title variant={VariantTypes.Subtitle} fw={FwType.Bold} p='0.5rem'>
           {currencyFormat(price)}
           <span> {currency}</span>
         </Title>
         <div className='button-wrapper'>
-          <Button
-            title='Edit'
-            onClick={handleToggleModal}
-          />
+          <Button title='Edit' onClick={handleToggleModal} />
           <Button
             variant={ButtonVariants.Secondary}
             title='Delete'
@@ -85,7 +76,7 @@ const Card: React.FC<CardProps> = ({
           />
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

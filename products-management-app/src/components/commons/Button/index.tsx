@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Constants
-import { ButtonVariants } from '@constants/types';
+import { ButtonVariants } from '@constants/index';
 
 // Style
 import './index.css';

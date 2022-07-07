@@ -1,14 +1,14 @@
 // Library
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 // Constant
-import { MessagePopUpVariants } from "@constants/types";
+import { MessagePopUpVariants } from '@constants/index';
 
 // Store
-import { clearMessages, useStore } from "@store/index";
+import { clearMessages, useStore } from '@store/index';
 
 // Component
-import Text from "@components/commons/Text";
+import Text from '@components/commons/Text';
 
 // Style
 import './index.css';
@@ -36,18 +36,16 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
   }, []);
 
   return (
-    <div className={
-      `popup-message
+    <div
+      className={`popup-message
       ${isVisible ? 'active' : ''}
-      ${messagePopUpVariant === MessagePopUpVariants.Failed
-        ? 'popup-error'
-        : 'popup-success'
-      }`
-    }>
-      <Text
-        color='var(--white)'>
-        {text}
-      </Text>
+      ${
+        messagePopUpVariant === MessagePopUpVariants.Failed
+          ? 'popup-error'
+          : 'popup-success'
+      }`}
+    >
+      <Text color='var(--white)'>{text}</Text>
     </div>
   );
 };

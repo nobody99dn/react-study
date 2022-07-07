@@ -53,10 +53,10 @@ const useProducts = () => {
         throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
       }
 
-      dispatch(getProductsSuccess(products));
+      dispatch(getProductsSuccess({ products }));
     } catch (err) {
       if (err instanceof Error) {
-        dispatch(getProductsFailed(err.message));
+        dispatch(getProductsFailed({ errorMessage: err.message }));
       }
     }
   };
@@ -78,12 +78,12 @@ const useProducts = () => {
       dispatch(
         addProductSuccess({
           product: newProduct,
-          message: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS
+          successMessage: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS
         })
       );
     } catch (error) {
       if (error instanceof Error) {
-        dispatch(addProductFailed(error.message));
+        dispatch(addProductFailed({ errorMessage: error.message }));
         return;
       }
     }
@@ -105,12 +105,12 @@ const useProducts = () => {
       dispatch(
         editProductSuccess({
           product: updatedProduct,
-          message: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
+          successMessage: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
         })
       );
     } catch (error) {
       if (error instanceof Error) {
-        dispatch(editProductFailed(error.message));
+        dispatch(editProductFailed({ errorMessage: error.message }));
         return;
       }
     }
@@ -133,12 +133,12 @@ const useProducts = () => {
       dispatch(
         deleteProductSuccess({
           productId: deletedProduct.id,
-          message: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
+          successMessage: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
         })
       );
     } catch (error) {
       if (error instanceof Error) {
-        dispatch(deleteProductFailed(error.message));
+        dispatch(deleteProductFailed({ errorMessage: error.message }));
         return;
       }
     }
@@ -150,8 +150,8 @@ const useProducts = () => {
    * @param input string
    */
   const searchingProducts = async (input: string) => {
-    const productsFound: Product[] = await searchProducts(input);
-    dispatch(searchProductsSuccess({ productsFound, input }));
+    const filterProducts: Product[] = await searchProducts(input);
+    dispatch(searchProductsSuccess({ filterProducts, input }));
   };
 
   /**
@@ -170,6 +170,7 @@ const useProducts = () => {
     );
 
     dispatch(filterProductsRequest());
+
     dispatch(
       filterProductsSuccess({
         currentFilterTypeParam,
