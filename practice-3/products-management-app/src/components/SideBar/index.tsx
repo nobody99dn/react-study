@@ -40,7 +40,7 @@ const SideBar: React.FC<SideBarProps> = ({
         <Button
           title='Add new product'
           variant={ButtonVariants.Primary}
-          onClick={handleOpenModalForm}
+          onClick={() => handleOpenModalForm()}
         />
       </div>
       <Filter
