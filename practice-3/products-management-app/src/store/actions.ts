@@ -1,9 +1,9 @@
 // Constants
 import { ACTIONS } from './constants';
+import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
-// Type
+// Model
 import { Product } from '@models/product';
-import { FilterOrderOptions, ProductTypes } from '@constants/types';
 
 export interface ActionProps {
   type: string;
@@ -20,6 +20,7 @@ export interface ActionProps {
   };
 }
 
+//* GET PRODUCTS ACTION *\\
 const getProductsRequest = (): ActionProps => ({
   type: ACTIONS.GET_PRODUCTS_REQUEST
 });
@@ -34,6 +35,7 @@ const getProductsFailed = (payload: { errorMessage: string }): ActionProps => ({
   payload
 });
 
+//* ADD PRODUCT ACTION *\\
 const addProductRequest = (): ActionProps => ({
   type: ACTIONS.ADD_PRODUCT_REQUEST
 });
@@ -51,6 +53,7 @@ const addProductFailed = (payload: { errorMessage: string }): ActionProps => ({
   payload
 });
 
+//* DELETE PRODUCT ACTION *\\
 const deleteProductRequest = (): ActionProps => ({
   type: ACTIONS.DELETE_PRODUCT_REQUEST
 });
@@ -70,6 +73,7 @@ const deleteProductFailed = (payload: {
   payload
 });
 
+//* EDIT PRODUCT ACTION *\\
 const editProductRequest = (): ActionProps => ({
   type: ACTIONS.EDIT_PRODUCT_REQUEST
 });
@@ -87,6 +91,7 @@ const editProductFailed = (payload: { errorMessage: string }): ActionProps => ({
   payload
 });
 
+//* FILTER PRODUCTS ACTION *\\
 const filterProductsRequest = (): ActionProps => ({
   type: ACTIONS.FILTER_PRODUCTS_REQUEST
 });
@@ -100,6 +105,7 @@ const filterProductsSuccess = (payload: {
   payload
 });
 
+//* SEARCH PRODUCTS ACTION *\\
 const searchProductsSuccess = (payload: {
   filterProducts: Product[];
   input: string;
@@ -108,6 +114,7 @@ const searchProductsSuccess = (payload: {
   payload
 });
 
+//* CLEAR MESSAGE ACTION *\\
 const clearMessages = (): ActionProps => ({
   type: ACTIONS.CLEAR_MESSAGES
 });

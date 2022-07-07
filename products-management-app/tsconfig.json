@@ -26,7 +26,8 @@
       "@assets/*": ["./assets/*"],
       "@helpers/*": ["./helpers/*"],
       "@models/*": ["./models/*"],
-      "@store/*": ["./store/*"]
+      "@store/*": ["./store/*"],
+      "@hooks/*": ["./hooks/*"]
     },
   },
   "include": ["src"],

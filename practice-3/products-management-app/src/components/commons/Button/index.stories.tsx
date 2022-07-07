@@ -9,7 +9,7 @@ import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 
 // Constants
-import { ButtonVariants } from '@constants/types';
+import { ButtonVariants } from '@constants/index';
 
 export default {
   title: 'Components/Button',

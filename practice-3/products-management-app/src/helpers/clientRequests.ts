@@ -1,6 +1,7 @@
 // Library
 import axios, { AxiosResponse } from 'axios';
 
+// Model
 import { Product } from '@models/product';
 
 /**
@@ -28,6 +29,12 @@ const post = async (url: string, data: Product): Promise<Product> => {
   return res.data;
 };
 
+/**
+ * Remove Product in server
+ *
+ * @param url string
+ * @returns Product
+ */
 const remove = async (url: string): Promise<Product> => {
   const res: AxiosResponse<Product> = await axios.delete(url);
 
@@ -38,8 +45,8 @@ const remove = async (url: string): Promise<Product> => {
  * Update data to server
  *
  * @param url string
- * @param data any
- * @returns any
+ * @param data Product
+ * @returns Product
  */
 const update = async (url: string, data: Product): Promise<Product> => {
   const res: AxiosResponse<Product> = await axios.put(url, data);

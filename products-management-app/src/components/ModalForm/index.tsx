@@ -8,7 +8,7 @@ import React, { FormEvent } from 'react';
 // Constants
 import { FormVariants, PRODUCT_TYPE_LIST } from '@constants/index';
 
-// Type
+// Model
 import { Product } from '@models/product';
 
 interface ModalFormProps {

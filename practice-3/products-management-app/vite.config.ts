@@ -38,6 +38,14 @@ export default defineConfig({
       {
         find: '@store',
         replacement: path.resolve(__dirname, 'src/store')
+      },
+      {
+        find: '@hooks',
+        replacement: path.resolve(__dirname, 'src/hooks')
+      },
+      {
+        find: '@pages',
+        replacement: path.resolve(__dirname, 'src/pages')
       }
     ]
   }

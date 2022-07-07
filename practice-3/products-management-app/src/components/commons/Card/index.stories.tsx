@@ -10,9 +10,8 @@ import '@assets/styles/variables.css';
 import '@assets/styles/reset.css';
 import './index.css';
 
-// Images
-import iPhoneImage from '@assets/images/iphone-13-promax-alpine-green-alpine-green-color.jpg';
-import { Currencies } from '@constants/types';
+// Constants
+import { Currencies, ProductTypes } from '@constants/index';
 
 export default {
   title: 'Components/Card',
@@ -23,6 +22,15 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  handleOpenModalForm: () => { },
-  currency: Currencies.VND
+  product: {
+    id: '1',
+    name: 'iPhone 13 Promax',
+    imageUrl:
+      'https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-991ea96/wp-content/uploads/2022/04/iPhone-13-pro-max.png',
+    price: 14000000,
+    type: ProductTypes.Phone
+  },
+  currency: Currencies.VND,
+  onOpenModalForm: () => {},
+  onDeleteProduct: () => {}
 };

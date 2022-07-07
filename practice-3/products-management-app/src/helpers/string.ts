@@ -1,3 +1,9 @@
+/**
+ * Format currency each 3 characters
+ *
+ * @param price number
+ * @returns string
+ */
 export function currencyFormat(price: number): string {
   //convert the string to an array
   let arr = price.toString().split('');

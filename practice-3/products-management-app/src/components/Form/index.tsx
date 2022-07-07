@@ -19,7 +19,7 @@ import Button from '@components/commons/Button';
 import Select from '@components/commons/SelectItem';
 import Text, { VariantsTypes } from '@components/commons/Text';
 
-// Type
+// Model
 import { Product } from '@models/product';
 
 interface FormProps {
@@ -27,7 +27,7 @@ interface FormProps {
   options?: ProductTypes[];
   productItem: Product;
   validateMessage: string;
-  isButtonLoading: boolean;
+  isButtonLoading?: boolean;
   onSubmit(event: FormEvent, product: Product): void;
 }
 

@@ -1,11 +1,11 @@
 // Constant
 import { URL_PRODUCTS } from '@constants/api';
-import { FilterOrderOptions, ProductTypes } from '@constants/types';
+import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 // Helper
 import { get, post, remove, update } from '@helpers/clientRequests';
 
-// Type
+// Model
 import { Product } from '@models/product';
 
 /**

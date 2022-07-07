@@ -14,14 +14,16 @@ import '@assets/styles/variables.css';
 import { searchIcon } from '@assets/index';
 
 // Constants
-import { TextFieldVariants } from '@constants/types';
+import { TextFieldVariants } from '@constants/index';
 
 export default {
   title: 'Components/TextField',
   component: TextField
 } as ComponentMeta<typeof TextField>;
 
-const Template: ComponentStory<typeof TextField> = (args) => <TextField {...args} />;
+const Template: ComponentStory<typeof TextField> = (args) => (
+  <TextField {...args} />
+);
 
 export const Standard = Template.bind({});
 Standard.args = {
@@ -58,7 +60,6 @@ Readonly.args = {
   readonly: true
 };
 
-
 export const IconField = Template.bind({});
 IconField.args = {
   placeholder: 'Placeholder',
@@ -66,6 +67,3 @@ IconField.args = {
   height: '4.25rem',
   iconWidth: '2rem'
 };
-
-
-

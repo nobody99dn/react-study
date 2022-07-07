@@ -6,8 +6,7 @@
 
 ## TIMELINE
 
-- Estimate time: **6 days (2022/06/01 - 2022/06/08)**
-- Actual time: **13 days (2022/06/01 - 2022/06/17)**
+- Estimate time: **7 days (2022/07/07 - 2022/07/14)**
 
 ## TEAM SIZE
 
@@ -16,21 +15,26 @@
 
 ## TARGETS
 
-- Understanding react component flow
-- Understanding and apply react hooks
-- Get familiar with api in react
+- Optimize re-render
+- Apply useContext and useReducer for state management
+- Apply SWR for fetching data
+- Apply unit test
 
 ## TECHNICAL STACK
 
-- React hooks
-- Storybook
-- TypeScript
+- React/React hooks: Hooks are the new feature introduced in the React 16.8 version. It allows you to use state and other React features without writing a class. Hooks are the functions which "hook into" React state and lifecycle features from function components. It does not work inside classes.
+- Storybook: Storybook is a tool for UI development. It makes development faster and easier by isolating components.
+- TypeScript: TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
 - HTML/CSS
-- [MockAPI](https://mockapi.io/)
+- [Mockapi](https://mockapi.io/): MockAPI is a simple tool that lets you easily mock up APIs, generate custom data, and preform operations on it using RESTful interface. MockAPI is meant to be used as a prototyping/testing/learning tool.
+- Axios: Axios is a promise-based HTTP Client for node.js and the browser.
+- SWR: The name “SWR” is derived from stale-while-revalidate, a HTTP cache invalidation strategy popularized by HTTP RFC 5861.
+- Jest: Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
+- React Testing Library: React Testing Library builds on top of DOM Testing Library by adding APIs for working with React components.
 
 ## REQUIREMENT DETAILS
 
-- Read more detail requirement in [here](https://docs.google.com/document/d/1vw7m1xdUVb9JkFnHjGbrsN6eYUaduxDZgd2QOl8H59c/edit?usp=sharing).
+- Read more detail requirement in [here](https://docs.google.com/document/d/129n2dhTinppdSKM7Pb_7MIP3ZyIYDiamli1h6k7N2ug/edit?usp=sharing).
 
 ## ENVIRONMENT
 
@@ -43,8 +47,8 @@
 ## DIRECTORY STRUCTURE
 
 ```
+├── __mocks__
 ├── .storybook
-│
 └── src
     ├── assets
     │   ├── styles
@@ -70,12 +74,16 @@
     │   └── SideBar
     ├── constants
     ├── helpers
+    ├── hooks
     ├── layouts
     │   ├── Header
     │   └── Main
+    ├── models
+    ├── pages
+    │   ├── Home
+    │   └── ProductDetail
     ├── services
-    ├── store
-    └── type
+    └── store
 
 ```
 
@@ -96,7 +104,7 @@
 - Change directory:
 
   ```bash
-  $ cd products-management-app
+  $ cd practice-3/products-management-app
   ```
 
 - Install packages:
@@ -109,6 +117,12 @@
 
   ```bash
   $ yarn dev
+  ```
+
+- Run test
+
+  ```
+  $ yarn test
   ```
 
 - Open browser and and type http://localhost:3000 in address bar

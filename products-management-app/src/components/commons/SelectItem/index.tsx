@@ -1,13 +1,13 @@
 // Library
-import { FilterOrderOptions, ProductTypes } from '@constants/types';
+import { FilterOrderOptions, ProductTypes } from '@constants/index';
 import React, { memo, useCallback } from 'react';
 
 // Style
 import './index.css';
 
 interface SelectItemProps {
-  id?: string,
-  name: string,
+  id?: string;
+  name: string;
   value?: string | number;
   label: string;
   options: string[];
@@ -23,24 +23,27 @@ const SelectItem: React.FC<SelectItemProps> = ({
   onChange
 }) => {
   const handleChange = useCallback(
-    (e: { target: { value: string, name: string; }; }) => {
+    (e: { target: { value: string; name: string } }) => {
       onChange?.(e.target.value, e.target.name);
     },
-    [onChange],
+    [onChange]
   );
 
   return (
     <div className='select-wrapper'>
       <label htmlFor={id}>{label}:</label>
-      <select className='select'
+      <select
+        className='select'
         name={name}
         id={id}
         value={value}
         onChange={handleChange}
       >
-        <option value="">Select</option>
+        <option value=''>Select</option>
         {options.map((option: string, index: number) => (
-          <option key={index} value={option}>{option}</option>
+          <option key={index} value={option}>
+            {option}
+          </option>
         ))}
       </select>
     </div>

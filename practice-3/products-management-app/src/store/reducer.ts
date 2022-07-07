@@ -1,10 +1,11 @@
 // Constants
 import { ACTIONS } from './constants';
 
-// Type
+// Model
 import { Product } from '@models/product';
+
+// Action
 import { ActionProps } from './actions';
-import { FilterOrderOptions, ProductTypes } from '@constants/types';
 
 export interface InitialState {
   products: Product[];

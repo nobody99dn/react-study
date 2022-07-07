@@ -11,7 +11,7 @@ import '@assets/styles/variables.css';
 import './index.css';
 
 // Constant
-import { FormVariants } from '@constants/types';
+import { FormVariants } from '@constants/index';
 
 export default {
   title: 'Components/Modal',
@@ -23,9 +23,10 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   isVisible: true,
-  children:
+  children: (
     <Form
-      handleSubmit={() => { }}
+      validateMessage=''
+      onSubmit={() => {}}
       variants={FormVariants.Create}
       productItem={{
         id: '',
@@ -35,4 +36,5 @@ Default.args = {
         imageUrl: ''
       }}
     />
+  )
 };

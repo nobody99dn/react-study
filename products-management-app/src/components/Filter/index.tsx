@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Constants
-import { FilterOrderOptions, ProductTypes } from '@constants/types';
+import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 // Components
 import Select from '@components/commons/SelectItem';
@@ -14,8 +14,8 @@ import './index.css';
 export type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  currentFilterTypeParam: ProductTypes | undefined,
-  currentFilterPriceParam: FilterOrderOptions | undefined,
+  currentFilterTypeParam: ProductTypes | undefined;
+  currentFilterPriceParam: FilterOrderOptions | undefined;
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;
   handleClearFilters: () => void;
@@ -49,10 +49,7 @@ const Filter: React.FC<FilterProps> = ({
         value={currentFilterPriceParam}
       />
     </div>
-    <Button
-      title='Clear filter'
-      onClick={handleClearFilters}
-    />
+    <Button title='Clear filter' onClick={handleClearFilters} />
   </div>
 );
 

@@ -18,18 +18,18 @@ import {
 } from '@constants/index';
 
 interface SideBarProps {
-  handleOpenModalForm: () => void;
   currentFilterTypeParam: ProductTypes | undefined;
   currentFilterPriceParam: FilterOrderOptions | undefined;
+  handleOpenModalForm: () => void;
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;
   handleClearFilters: () => void;
 }
 
 const SideBar: React.FC<SideBarProps> = ({
-  handleOpenModalForm,
   currentFilterTypeParam,
   currentFilterPriceParam,
+  handleOpenModalForm,
   handleTypeChange,
   handlePriceChange,
   handleClearFilters

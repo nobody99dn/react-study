@@ -4,7 +4,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 // Components
 import Title, { VariantTypes } from './index';
 
-import { FwType } from '@constants/types';
+// Constant
+import { FwType } from '@constants/index';
 
 // Styles
 import '@assets/styles/reset.css';
@@ -32,4 +33,3 @@ Subtitle.args = {
   fw: FwType.Bold,
   fs: 'italic'
 };
-

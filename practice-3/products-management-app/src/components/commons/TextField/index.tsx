@@ -7,7 +7,7 @@ import Image from '@components/commons/Image/index';
 // Styles
 import './index.css';
 
-// Constant
+// Constants
 import {
   ImageVariants,
   TextFieldVariants,

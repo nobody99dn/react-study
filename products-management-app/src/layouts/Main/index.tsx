@@ -16,15 +16,15 @@ import SideBar from '@components/SideBar/index';
 import SearchInput from '@components/SearchInput';
 import ModalForm from '@components/ModalForm';
 
-// Type
+// Model
 import { Product } from '@models/product';
 
 // Constants
 import { ERROR_MESSAGES } from '@constants/messages';
-import { FilterOrderOptions, ProductTypes } from '@constants/types';
+import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 // Hook
-import useProducts from '../../hooks/useProducts';
+import useProducts from '@hooks/useProducts';
 
 // Store
 import { useStore } from '@store/index';
@@ -33,9 +33,6 @@ const Main: React.FC = () => {
   const { globalState } = useStore();
 
   const { products, filterBox } = globalState || {};
-
-  console.log('products', products);
-  console.log('filterBox', filterBox);
 
   const {
     getProducts,

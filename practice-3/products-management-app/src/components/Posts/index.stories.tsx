@@ -16,10 +16,11 @@ import { get } from '@helpers/clientRequests';
 // Constant
 import { URL_PRODUCTS } from '@constants/api';
 
-// Type
+// Model
 import { Product } from '@models/product';
+import { ProductTypes } from '@constants/types';
 
-const products: Product[] = await get(URL_PRODUCTS);
+const getProducts = async (): Promise<Product[]> => await get(URL_PRODUCTS);
 
 export default {
   title: 'Components/Posts',
@@ -29,11 +30,26 @@ export default {
 const Template: ComponentStory<typeof Posts> = (args) => <Posts {...args} />;
 
 export const Default = Template.bind({});
+const products: Product[] = [
+  {
+    id: '1',
+    name: 'iPhone 13 Promax',
+    imageUrl:
+      'https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-991ea96/wp-content/uploads/2022/04/iPhone-13-pro-max.png',
+    price: 14000000,
+    type: ProductTypes.Phone
+  },
+  {
+    id: '2',
+    name: 'MacBook Pro 13 M2 2022',
+    imageUrl:
+      'https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-991ea96/wp-content/uploads/2022/06/mac-m2.png',
+    price: 35990000,
+    type: ProductTypes.Laptop
+  }
+];
 Default.args = {
-  handleOpenModalForm: () => { }
-};
-
-export const Loading = Template.bind({});
-Loading.args = {
-  handleOpenModalForm: () => { }
+  products,
+  onOpenModalForm: () => {},
+  onDeleteProduct: () => {}
 };

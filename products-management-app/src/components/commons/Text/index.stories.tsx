@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Text, { VariantsTypes } from './index';
 
 // Constants
-import { FwType } from '@constants/types';
+import { FwType } from '@constants/index';
 
 // Styles
 import '@assets/styles/reset.css';
@@ -21,7 +21,7 @@ const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'Text',
+  children: 'Text'
 };
 
 export const Highlight = Template.bind({});

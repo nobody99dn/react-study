@@ -1,7 +1,10 @@
-import Button from './index';
+// Libraries
 import { render, act, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
+
+// Components
+import Button from './index';
 
 describe('button component', () => {
   let container: HTMLElement;
