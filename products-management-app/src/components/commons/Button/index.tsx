@@ -24,7 +24,9 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`btn btn-${variant} ${isDisabled && 'disabled'}`}
+      className={`btn btn-${variant} ${
+        isDisabled ? 'btn-disabled' : ''
+      }`.trim()}
       onClick={onClick}
       disabled={isDisabled}
     >
