@@ -1,11 +1,18 @@
+// Library
 import { memo, useState } from 'react';
 
 // Components
 import Image from '@components/commons/Image';
 import Form from '@components/Form';
-import { Product } from '@models/product';
-import { FormVariants } from '@constants/index';
 import Title, { VariantTypes } from '@components/commons/Title';
+
+// Model
+import { Product } from '@models/product';
+
+// Constant
+import { FormVariants } from '@constants/index';
+
+// Style
 import './index.css';
 
 interface ProductDetailProps {

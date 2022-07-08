@@ -30,7 +30,10 @@ import {
   getProductsRequest,
   getProductsSuccess,
   getProductsFailed,
-  filterProductsRequest
+  filterProductsRequest,
+  getProductRequest,
+  getProductSuccess,
+  getProductFailed
 } from '@store/index';
 
 /**
@@ -68,12 +71,16 @@ const useProducts = () => {
    * @param id string
    * @returns Product
    */
-  const getProductById = async (id: string): Promise<Product | undefined> => {
+  const getProductById = async (id: string): Promise<void> => {
     try {
-      return (await getProduct(id)) as Product;
+      dispatch(getProductRequest());
+
+      const product: Product = await getProduct(id);
+
+      dispatch(getProductSuccess({ product }));
     } catch (error) {
       if (error instanceof Error) {
-        dispatch(getProductsFailed({ errorMessage: error.message }));
+        dispatch(getProductFailed({ errorMessage: error.message }));
       }
     }
   };

@@ -1,26 +1,35 @@
 // Libraries
+import React, { memo, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+// Hooks
 import useProducts from '@hooks/useProducts';
+
+// Layouts
 import Header from '@layouts/Header';
 import ProductDetail from '@layouts/ProductDetail';
-import { Product } from '@models/product';
-import React, { memo, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+
+// Constant
 import { ERROR_MESSAGES } from '@constants/messages';
+
+// Store
+import { useStore } from '@store/store';
+
+// Style
 import './index.css';
 
 const Detail: React.FC = () => {
-  const { id } = useParams() as { id: string };
+  const { globalState } = useStore();
 
   const { getProductById } = useProducts();
 
-  const [currentProduct, setCurrentProduct] = useState<Product | undefined>();
+  const { id } = useParams() as { id: string };
+
+  const { currentProduct } = globalState;
 
   useEffect(() => {
     const getProduct = async (): Promise<void> => {
-      const product: Product | undefined = await getProductById(id);
-
-      setCurrentProduct(product);
+      await getProductById(id);
     };
 
     getProduct();

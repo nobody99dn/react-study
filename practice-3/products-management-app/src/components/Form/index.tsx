@@ -1,5 +1,5 @@
 // Library
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 
 // Style
 import './index.css';
@@ -53,6 +53,10 @@ const Form: React.FC<FormProps> = ({
       onChangeImage(value as string);
     }
   };
+
+  useEffect(() => {
+    onChangeImage(product.imageUrl);
+  }, []);
 
   return (
     <div className='form-wrapper'>

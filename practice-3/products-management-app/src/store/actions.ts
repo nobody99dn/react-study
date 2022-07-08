@@ -35,6 +35,21 @@ const getProductsFailed = (payload: { errorMessage: string }): ActionProps => ({
   payload
 });
 
+//* GET PRODUCT ACTION *\\
+const getProductRequest = (): ActionProps => ({
+  type: ACTIONS.GET_PRODUCT_REQUEST
+});
+
+const getProductSuccess = (payload: { product: Product }): ActionProps => ({
+  type: ACTIONS.GET_PRODUCT_SUCCESS,
+  payload
+});
+
+const getProductFailed = (payload: { errorMessage: string }): ActionProps => ({
+  type: ACTIONS.GET_PRODUCT_FAILED,
+  payload
+});
+
 //* ADD PRODUCT ACTION *\\
 const addProductRequest = (): ActionProps => ({
   type: ACTIONS.ADD_PRODUCT_REQUEST
@@ -123,6 +138,9 @@ export {
   getProductsRequest,
   getProductsSuccess,
   getProductsFailed,
+  getProductRequest,
+  getProductSuccess,
+  getProductFailed,
   addProductRequest,
   addProductSuccess,
   addProductFailed,

@@ -149,21 +149,13 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   };
 
-  const handleToggleModal = (
-    product: Product = {
-      id: '',
-      name: '',
-      type: '',
-      price: 0,
-      imageUrl: ''
-    }
-  ) => {
-    if (product.id) {
-      navigate(`/product-detail/${product.id}`);
-    } else {
-      setIsModalShow(!isModalShow);
-      setProduct(product);
-    }
+  const handleShowProductDetail = (product: Product) => {
+    navigate(`/product-detail/${product.id}`);
+  };
+
+  const handleToggleModal = () => {
+    setIsModalShow(!isModalShow);
+    setProduct(product);
   };
 
   /**
@@ -236,7 +228,7 @@ const Main: React.FC = () => {
           />
           <Posts
             products={filterBox.length ? filterBox : products}
-            onOpenModalForm={handleToggleModal}
+            onOpenProductDetail={handleShowProductDetail}
             onDeleteProduct={handleDeleteProduct}
           />
         </div>

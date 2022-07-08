@@ -15,13 +15,13 @@ import { Product } from '@models/product';
 
 interface PostsProps {
   products: Product[];
-  onOpenModalForm: (product: Product) => void;
+  onOpenProductDetail: (product: Product) => void;
   onDeleteProduct: (id: string) => void;
 }
 
 const Posts: React.FC<PostsProps> = ({
   products,
-  onOpenModalForm,
+  onOpenProductDetail,
   onDeleteProduct
 }) => (
   <div className='product-group'>
@@ -30,7 +30,7 @@ const Posts: React.FC<PostsProps> = ({
         <Card
           product={product}
           currency={Currencies.VND}
-          onOpenModalForm={onOpenModalForm}
+          onOpenProductDetail={onOpenProductDetail}
           onDeleteProduct={onDeleteProduct}
         />
       </div>

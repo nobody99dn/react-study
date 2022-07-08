@@ -21,14 +21,14 @@ import { Product } from '@models/product';
 interface CardProps {
   product: Product;
   currency: Currencies;
-  onOpenModalForm: (product: Product) => void;
+  onOpenProductDetail: (product: Product) => void;
   onDeleteProduct: (id: string) => void;
 }
 
 const Card: React.FC<CardProps> = ({
   product,
   currency,
-  onOpenModalForm,
+  onOpenProductDetail,
   onDeleteProduct
 }) => {
   const { name, imageUrl, price, id, type } = product || {};
@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
 
   const handleToggleModal = () => {
-    onOpenModalForm(product);
+    onOpenProductDetail(product);
   };
 
   const handleDeleteProduct = () => {

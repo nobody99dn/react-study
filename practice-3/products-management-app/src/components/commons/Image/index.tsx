@@ -31,8 +31,6 @@ const Image: React.FC<ImageProps> = ({
   onImageClick,
   onImageError
 }) => {
-  console.log(imageUrl);
-
   return !isError ? (
     <img
       className={`image ${
