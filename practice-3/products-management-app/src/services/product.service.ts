@@ -1,6 +1,10 @@
 // Constant
 import { URL_PRODUCTS } from '@constants/api';
-import { FilterOrderOptions, ProductTypes } from '@constants/index';
+import {
+  FilterOrderOptions,
+  ProductTypes,
+  ERROR_MESSAGES
+} from '@constants/index';
 
 // Helper
 import { get, post, remove, update } from '@helpers/clientRequests';
@@ -14,7 +18,15 @@ import { Product } from '@models/product';
  * @returns Product[]
  */
 const getAllProduct = async (): Promise<Product[]> => {
-  return await get(URL_PRODUCTS);
+  return (await get(URL_PRODUCTS)) as Product[];
+};
+
+const getProduct = async (id: string): Promise<Product> => {
+  try {
+    return (await get(`${URL_PRODUCTS}/${id}`)) as Product;
+  } catch (error) {
+    throw new Error(ERROR_MESSAGES.PRODUCT_NOT_FOUND);
+  }
 };
 
 /**
@@ -51,19 +63,20 @@ const filterProductsByTypeAndPrice = async (
   type: ProductTypes,
   priceOrder: FilterOrderOptions
 ): Promise<Product[]> => {
-  return await get(
+  return (await get(
     `${URL_PRODUCTS}?${`type=${type}`}${priceOrder ? '&' : ''}${
       priceOrder ? `sortBy=price&order=${priceOrder}` : ''
     }`
-  );
+  )) as Product[];
 };
 
 const searchProducts = async (productName: string): Promise<Product[]> => {
-  return await get(`${URL_PRODUCTS}?search=${productName}`);
+  return (await get(`${URL_PRODUCTS}?search=${productName}`)) as Product[];
 };
 
 export {
   getAllProduct,
+  getProduct,
   addNewProduct,
   updateProduct,
   removeProduct,

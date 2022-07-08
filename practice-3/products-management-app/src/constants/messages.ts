@@ -6,7 +6,9 @@ const ERROR_MESSAGES = {
   PRODUCT_NAME_REQUIRED: 'Product name is required!',
   PRODUCT_TYPE_REQUIRED: 'Product type is required!',
   PRODUCT_PRICE_REQUIRED: 'Price is required!',
-  PRODUCT_IMAGE_REQUIRED: 'Image link is required!'
+  PRODUCT_IMAGE_REQUIRED: 'Image link is required!',
+  PRODUCT_NOT_FOUND: 'Product was not exist!',
+  IMAGE_NOT_FOUND: 'Cannot load image. Please check URL again!'
 };
 
 const SUCCESS_MESSAGES = {

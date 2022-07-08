@@ -38,3 +38,7 @@
   overflow: hidden;
   height: 18rem;
 }
+
+.image-error {
+  line-height: 10rem;
+}

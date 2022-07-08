@@ -28,7 +28,8 @@ interface FormProps {
   productItem: Product;
   validateMessage: string;
   isButtonLoading?: boolean;
-  onSubmit(event: FormEvent, product: Product): void;
+  onSubmit: (event: FormEvent, product: Product) => void;
+  onChangeImage: (value: string) => void;
 }
 
 const Form: React.FC<FormProps> = ({
@@ -37,7 +38,8 @@ const Form: React.FC<FormProps> = ({
   options = [],
   validateMessage,
   isButtonLoading = false,
-  onSubmit
+  onSubmit,
+  onChangeImage
 }) => {
   const [product, setProduct] = useState<Product>(productItem as Product);
 
@@ -46,6 +48,10 @@ const Form: React.FC<FormProps> = ({
     fieldName: string | undefined
   ): void => {
     setProduct({ ...product, [fieldName as string]: value });
+
+    if (fieldName === 'imageUrl') {
+      onChangeImage(value as string);
+    }
   };
 
   return (

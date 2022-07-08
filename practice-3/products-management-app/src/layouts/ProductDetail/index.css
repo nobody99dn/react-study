@@ -1,0 +1,26 @@
+.product-detail {
+  display: block;
+  width: 1366px;
+  margin: 0 auto;
+}
+
+.product-image {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+}
+
+.product-form {
+  display: block;
+  width: 70%;
+  float: right;
+}
+
+.product-form,
+.product-image {
+  padding: 2rem;
+}
+
+.error-container {
+  text-align: center;
+}

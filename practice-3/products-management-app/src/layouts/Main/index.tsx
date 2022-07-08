@@ -29,10 +29,14 @@ import useProducts from '@hooks/useProducts';
 // Store
 import { useStore } from '@store/index';
 
+import { useNavigate } from 'react-router-dom';
+
 const Main: React.FC = () => {
   const { globalState } = useStore();
 
   const { products, filterBox } = globalState || {};
+
+  const navigate = useNavigate();
 
   const {
     getProducts,
@@ -154,8 +158,12 @@ const Main: React.FC = () => {
       imageUrl: ''
     }
   ) => {
-    setIsModalShow(!isModalShow);
-    setProduct(product);
+    if (product.id) {
+      navigate(`/product-detail/${product.id}`);
+    } else {
+      setIsModalShow(!isModalShow);
+      setProduct(product);
+    }
   };
 
   /**

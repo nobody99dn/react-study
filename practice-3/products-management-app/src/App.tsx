@@ -17,6 +17,7 @@ import { useStore } from './store';
 import { MessagePopUpVariants } from '@constants/index';
 
 const Home = lazy(() => import('@pages/Home'));
+const Detail = lazy(() => import('@pages/Detail'));
 
 function App() {
   const { globalState } = useStore();
@@ -26,10 +27,10 @@ function App() {
   return (
     <>
       <Router>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingIndicator />}>
           <Routes>
             <Route path='/' element={<Home />} />
-            {/* <Route path='/product-detail' element={<ProductDetail />} /> */}
+            <Route path='/product-detail/:id' element={<Detail />} />
           </Routes>
         </Suspense>
       </Router>
@@ -54,4 +55,5 @@ function App() {
 }
 
 App.whyDidYouRender = true;
+
 export default App;

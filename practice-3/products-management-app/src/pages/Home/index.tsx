@@ -1,5 +1,5 @@
 // Library
-import React from 'react';
+import React, { memo } from 'react';
 
 // Layouts
 import Header from '@layouts/Header';
@@ -14,4 +14,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default memo(Home);

@@ -10,6 +10,7 @@ import {
   addNewProduct,
   filterProductsByTypeAndPrice,
   getAllProduct,
+  getProduct,
   removeProduct,
   searchProducts,
   updateProduct
@@ -43,7 +44,7 @@ const useProducts = () => {
   /**
    * Get all products and save to local
    */
-  const getProducts = async () => {
+  const getProducts = async (): Promise<void> => {
     try {
       dispatch(getProductsRequest());
 
@@ -54,9 +55,25 @@ const useProducts = () => {
       }
 
       dispatch(getProductsSuccess({ products }));
-    } catch (err) {
-      if (err instanceof Error) {
-        dispatch(getProductsFailed({ errorMessage: err.message }));
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(getProductsFailed({ errorMessage: error.message }));
+      }
+    }
+  };
+
+  /**
+   * Get Product by Id
+   *
+   * @param id string
+   * @returns Product
+   */
+  const getProductById = async (id: string): Promise<Product | undefined> => {
+    try {
+      return (await getProduct(id)) as Product;
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(getProductsFailed({ errorMessage: error.message }));
       }
     }
   };
@@ -182,6 +199,7 @@ const useProducts = () => {
 
   return {
     getProducts,
+    getProductById,
     deleteProduct,
     createProduct,
     editProduct,
