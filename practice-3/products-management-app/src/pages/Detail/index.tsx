@@ -19,9 +19,6 @@ import { useStore, clearCurrentProduct } from '@store/index';
 import './index.css';
 import Text, { VariantsTypes } from '@components/commons/Text';
 
-// Component
-import Text, { VariantsTypes } from '@components/commons/Text';
-
 const Detail: React.FC = () => {
   const { globalState, dispatch } = useStore();
 

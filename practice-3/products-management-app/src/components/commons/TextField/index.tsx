@@ -51,8 +51,6 @@ const TextField: React.FC<TextFieldProps> = forwardRef<
       required = false,
       placeholder,
       iconUrl,
-      iconHeight,
-      iconWidth,
       variant = TextFieldVariants.Standard,
       onChange
     },
