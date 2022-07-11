@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useState
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Styles
 import './index.css';
@@ -21,15 +22,13 @@ import { Product } from '@models/product';
 
 // Constants
 import { ERROR_MESSAGES } from '@constants/messages';
-import { FilterOrderOptions, ProductTypes } from '@constants/index';
+import { FilterOrderOptions, ProductTypes, URL } from '@constants/index';
 
 // Hook
 import useProducts from '@hooks/useProducts';
 
 // Store
 import { useStore } from '@store/index';
-
-import { useNavigate } from 'react-router-dom';
 
 const Main: React.FC = () => {
   const { globalState } = useStore();
@@ -42,7 +41,6 @@ const Main: React.FC = () => {
     getProducts,
     deleteProduct,
     createProduct,
-    editProduct,
     filterProducts,
     searchingProducts
   } = useProducts();
@@ -95,7 +93,7 @@ const Main: React.FC = () => {
    * @param product Product
    * @returns void
    */
-  const handleSubmitProduct = async (
+  const handleCreateProduct = async (
     event: FormEvent,
     product: Product
   ): Promise<void> => {
@@ -132,11 +130,7 @@ const Main: React.FC = () => {
       return;
     }
 
-    if (!product.id) {
-      createProduct(product);
-    } else {
-      editProduct(product);
-    }
+    createProduct(product);
 
     setIsButtonLoading(false);
     setIsModalShow(false);
@@ -149,8 +143,8 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   };
 
-  const handleShowProductDetail = (product: Product) => {
-    navigate(`/product-detail/${product.id}`);
+  const handleShowProductDetail = (productId: string) => {
+    navigate(`${URL.DETAIL_PAGE}/${productId}`);
   };
 
   const handleToggleModal = () => {
@@ -164,7 +158,7 @@ const Main: React.FC = () => {
   const handleClearFilters = useCallback(() => {
     setCurrentFilterPriceParam(undefined);
     setCurrentFilterTypeParam(undefined);
-  }, [currentFilterTypeParam, currentFilterPriceParam]);
+  }, []);
 
   /**
    * Handle type change in filter
@@ -249,7 +243,7 @@ const Main: React.FC = () => {
           product={product}
           isButtonLoading={isButtonLoading}
           validateMessage={validateMessage}
-          handleSubmitForm={handleSubmitProduct}
+          handleSubmitForm={handleCreateProduct}
           handleCloseModal={handleCloseModal}
         />
       )}

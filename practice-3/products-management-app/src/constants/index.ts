@@ -19,11 +19,15 @@ import { FwType } from './component-types/title';
 // Messages
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from './messages';
 
+// Url
+import { URL } from './routes';
+
 export {
   ERROR_MESSAGES,
   SUCCESS_MESSAGES,
   PRODUCT_TYPE_LIST,
   ORDER_OPTIONS,
+  URL,
   Currencies,
   ProductTypes,
   FilterOrderOptions,

@@ -7,7 +7,7 @@ const ERROR_MESSAGES = {
   PRODUCT_TYPE_REQUIRED: 'Product type is required!',
   PRODUCT_PRICE_REQUIRED: 'Price is required!',
   PRODUCT_IMAGE_REQUIRED: 'Image link is required!',
-  PRODUCT_NOT_FOUND: 'Product was not exist!',
+  PRODUCT_NOT_FOUND: 'The product was not exist!',
   IMAGE_NOT_FOUND: 'Cannot load image. Please check URL again!'
 };
 
