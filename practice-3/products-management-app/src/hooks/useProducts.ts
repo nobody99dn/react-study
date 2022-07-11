@@ -35,6 +35,7 @@ import {
   getProductSuccess,
   getProductFailed
 } from '@store/index';
+import useLocalStorage from './useLocalStorage';
 
 /**
  * This hook help execute product data
@@ -44,6 +45,11 @@ import {
 const useProducts = () => {
   const { dispatch } = useStore();
 
+  const [storedValue, setValue] = useLocalStorage(
+    'localStates',
+    {} as { product: Product }
+  );
+
   /**
    * Get all products and save to local
    */
@@ -51,13 +57,15 @@ const useProducts = () => {
     try {
       dispatch(getProductsRequest());
 
-      const products: Product[] = await getAllProduct();
+      const products: Product[] =
+        storedValue.products || (await getAllProduct());
 
       if (!products.length) {
         throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
       }
 
       dispatch(getProductsSuccess({ products }));
+      setValue({ ...products });
     } catch (error) {
       if (error instanceof Error) {
         dispatch(getProductsFailed({ errorMessage: error.message }));
