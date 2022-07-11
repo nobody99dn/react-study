@@ -10,6 +10,7 @@ import {
   addNewProduct,
   filterProductsByTypeAndPrice,
   getAllProduct,
+  getProduct,
   removeProduct,
   searchProducts,
   updateProduct
@@ -29,7 +30,10 @@ import {
   getProductsRequest,
   getProductsSuccess,
   getProductsFailed,
-  filterProductsRequest
+  filterProductsRequest,
+  getProductRequest,
+  getProductSuccess,
+  getProductFailed
 } from '@store/index';
 
 /**
@@ -43,7 +47,7 @@ const useProducts = () => {
   /**
    * Get all products and save to local
    */
-  const getProducts = async () => {
+  const getProducts = async (): Promise<void> => {
     try {
       dispatch(getProductsRequest());
 
@@ -54,9 +58,29 @@ const useProducts = () => {
       }
 
       dispatch(getProductsSuccess({ products }));
-    } catch (err) {
-      if (err instanceof Error) {
-        dispatch(getProductsFailed({ errorMessage: err.message }));
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(getProductsFailed({ errorMessage: error.message }));
+      }
+    }
+  };
+
+  /**
+   * Get Product by Id
+   *
+   * @param id string
+   * @returns Product
+   */
+  const getProductById = async (id: string): Promise<void> => {
+    try {
+      dispatch(getProductRequest());
+
+      const product: Product = await getProduct(id);
+
+      dispatch(getProductSuccess({ product }));
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(getProductFailed({ errorMessage: error.message }));
       }
     }
   };
@@ -182,6 +206,7 @@ const useProducts = () => {
 
   return {
     getProducts,
+    getProductById,
     deleteProduct,
     createProduct,
     editProduct,

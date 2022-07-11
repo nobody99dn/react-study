@@ -29,10 +29,14 @@ import useProducts from '@hooks/useProducts';
 // Store
 import { useStore } from '@store/index';
 
+import { useNavigate } from 'react-router-dom';
+
 const Main: React.FC = () => {
   const { globalState } = useStore();
 
   const { products, filterBox } = globalState || {};
+
+  const navigate = useNavigate();
 
   const {
     getProducts,
@@ -145,15 +149,11 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   };
 
-  const handleToggleModal = (
-    product: Product = {
-      id: '',
-      name: '',
-      type: '',
-      price: 0,
-      imageUrl: ''
-    }
-  ) => {
+  const handleShowProductDetail = (product: Product) => {
+    navigate(`/product-detail/${product.id}`);
+  };
+
+  const handleToggleModal = () => {
     setIsModalShow(!isModalShow);
     setProduct(product);
   };
@@ -228,7 +228,7 @@ const Main: React.FC = () => {
           />
           <Posts
             products={filterBox.length ? filterBox : products}
-            onOpenModalForm={handleToggleModal}
+            onOpenProductDetail={handleShowProductDetail}
             onDeleteProduct={handleDeleteProduct}
           />
         </div>

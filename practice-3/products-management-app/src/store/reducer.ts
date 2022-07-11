@@ -9,6 +9,7 @@ import { ActionProps } from './actions';
 
 export interface InitialState {
   products: Product[];
+  currentProduct: Product | null;
   isLoading: boolean;
   errorMessage: string;
   successMessage: string;
@@ -17,6 +18,7 @@ export interface InitialState {
 
 const initialState: InitialState = {
   products: [],
+  currentProduct: null,
   isLoading: false,
   errorMessage: '',
   successMessage: '',
@@ -54,6 +56,27 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
         errorMessage: action.payload?.errorMessage as string,
         isLoading: false,
         filterBox: []
+      };
+
+    case ACTIONS.GET_PRODUCT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: ''
+      };
+
+    case ACTIONS.GET_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        currentProduct: action.payload?.product as Product
+      };
+
+    case ACTIONS.GET_PRODUCT_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: action.payload?.errorMessage as string
       };
 
     case ACTIONS.ADD_PRODUCT_REQUEST:
