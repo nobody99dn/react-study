@@ -69,10 +69,6 @@ const Form: React.FC<FormProps> = ({
     }
   };
 
-  useEffect(() => {
-    onChangeImage && onChangeImage(product.imageUrl);
-  }, []);
-
   const handleEnableEditButton = () => {
     setIsDisable(false);
 
