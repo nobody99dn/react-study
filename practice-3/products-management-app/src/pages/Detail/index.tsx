@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Hooks
@@ -13,13 +13,14 @@ import ProductDetail from '@layouts/ProductDetail';
 import { ERROR_MESSAGES } from '@constants/messages';
 
 // Store
-import { useStore } from '@store/store';
+import { useStore, clearCurrentProduct } from '@store/index';
 
 // Style
 import './index.css';
+import Text, { VariantsTypes } from '@components/commons/Text';
 
 const Detail: React.FC = () => {
-  const { globalState } = useStore();
+  const { globalState, dispatch } = useStore();
 
   const { getProductById } = useProducts();
 
@@ -33,6 +34,10 @@ const Detail: React.FC = () => {
     };
 
     getProduct();
+
+    return () => {
+      dispatch(clearCurrentProduct());
+    };
   }, []);
 
   return (
@@ -42,7 +47,11 @@ const Detail: React.FC = () => {
       {currentProduct ? (
         <ProductDetail product={currentProduct} />
       ) : (
-        <div>{ERROR_MESSAGES.PRODUCT_NOT_FOUND}</div>
+        <div className='error-message'>
+          <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
+            {ERROR_MESSAGES.PRODUCT_NOT_FOUND}
+          </Text>
+        </div>
       )}
     </>
   );

@@ -1,5 +1,11 @@
 // Library
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, {
+  FormEvent,
+  RefObject,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 
 // Style
 import './index.css';
@@ -28,6 +34,7 @@ interface FormProps {
   productItem: Product;
   validateMessage: string;
   isButtonLoading?: boolean;
+  isDisableForm?: boolean;
   onSubmit: (event: FormEvent, product: Product) => void;
   onChangeImage: (value: string) => void;
 }
@@ -38,10 +45,18 @@ const Form: React.FC<FormProps> = ({
   options = [],
   validateMessage,
   isButtonLoading = false,
+  isDisableForm = false,
   onSubmit,
   onChangeImage
 }) => {
   const [product, setProduct] = useState<Product>(productItem as Product);
+  const [isDisable, setIsDisable] = useState<boolean>(isDisableForm);
+
+  const nameRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    onChangeImage(product.imageUrl);
+  }, []);
 
   const handleOnChange = (
     value: string | number,
@@ -54,13 +69,15 @@ const Form: React.FC<FormProps> = ({
     }
   };
 
-  useEffect(() => {
-    onChangeImage(product.imageUrl);
-  }, []);
+  const handleEnableEditButton = () => {
+    setIsDisable(false);
+
+    nameRef.current && nameRef.current.focus();
+  };
 
   return (
     <div className='form-wrapper'>
-      <Title>{variants} Form</Title>
+      <Title>{variants} Product</Title>
       <form
         className='form'
         onSubmit={(event: FormEvent) => onSubmit(event, product)}
@@ -71,8 +88,10 @@ const Form: React.FC<FormProps> = ({
             name='name'
             label='Product name'
             placeholder='Enter product name...'
-            onChange={handleOnChange}
             type={TypeVariables.Text}
+            readonly={isDisable}
+            onChange={handleOnChange}
+            ref={nameRef}
           />
           <Select
             label='Product type'
@@ -80,6 +99,7 @@ const Form: React.FC<FormProps> = ({
             value={product.type}
             onChange={handleOnChange}
             name='type'
+            disable={isDisable}
           />
           <TextField
             defaultValue={product.price}
@@ -87,6 +107,7 @@ const Form: React.FC<FormProps> = ({
             type={TypeVariables.Number}
             label='Price'
             placeholder='Enter price...'
+            readonly={isDisable}
             onChange={handleOnChange}
           />
           <TextField
@@ -95,6 +116,7 @@ const Form: React.FC<FormProps> = ({
             type={TypeVariables.Text}
             label='Image link'
             placeholder='Enter image link...'
+            readonly={isDisable}
             onChange={handleOnChange}
           />
           {validateMessage && (
@@ -103,11 +125,21 @@ const Form: React.FC<FormProps> = ({
             </Text>
           )}
         </fieldset>
-        <Button
-          variant={ButtonVariants.Primary}
-          title={variants}
-          isLoading={isButtonLoading}
-        />
+        {!isDisable && (
+          <Button
+            variant={ButtonVariants.Primary}
+            title={variants}
+            isLoading={isButtonLoading}
+            isDisabled={isDisable}
+          />
+        )}
+        {isDisable && (
+          <Button
+            title='Enable Edit'
+            variant={ButtonVariants.Default}
+            onClick={handleEnableEditButton}
+          />
+        )}
       </form>
     </div>
   );

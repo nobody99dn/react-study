@@ -11,6 +11,7 @@ interface SelectItemProps {
   value?: string | number;
   label: string;
   options: string[];
+  disable?: boolean;
   onChange: (value: string, fieldName?: string) => void;
 }
 
@@ -20,6 +21,7 @@ const SelectItem: React.FC<SelectItemProps> = ({
   value,
   label,
   options,
+  disable = false,
   onChange
 }) => {
   const handleChange = useCallback(
@@ -37,6 +39,7 @@ const SelectItem: React.FC<SelectItemProps> = ({
         name={name}
         id={id}
         value={value}
+        disabled={disable}
         onChange={handleChange}
       >
         <option value=''>Select</option>

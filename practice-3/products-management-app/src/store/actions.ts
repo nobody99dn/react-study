@@ -134,6 +134,9 @@ const clearMessages = (): ActionProps => ({
   type: ACTIONS.CLEAR_MESSAGES
 });
 
+const clearCurrentProduct = (): ActionProps => ({
+  type: ACTIONS.CLEAR_CURRENT_PRODUCT
+});
 export {
   getProductsRequest,
   getProductsSuccess,
@@ -153,5 +156,6 @@ export {
   filterProductsRequest,
   filterProductsSuccess,
   searchProductsSuccess,
-  clearMessages
+  clearMessages,
+  clearCurrentProduct
 };

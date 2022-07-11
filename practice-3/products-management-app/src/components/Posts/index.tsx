@@ -15,7 +15,7 @@ import { Product } from '@models/product';
 
 interface PostsProps {
   products: Product[];
-  onOpenProductDetail: (product: Product) => void;
+  onOpenProductDetail: (productId: string) => void;
   onDeleteProduct: (id: string) => void;
 }
 

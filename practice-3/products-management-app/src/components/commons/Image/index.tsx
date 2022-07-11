@@ -44,7 +44,7 @@ const Image: React.FC<ImageProps> = ({
     />
   ) : (
     <div className='image-error'>
-      <Text color='red'>{ERROR_MESSAGES.IMAGE_NOT_FOUND}</Text>
+      <Text color='var(--danger)'>{ERROR_MESSAGES.IMAGE_NOT_FOUND}</Text>
     </div>
   );
 };
