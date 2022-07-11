@@ -1,8 +1,20 @@
 // Library
 import { useState } from 'react';
 
+// Model
+import { Product } from '@models/product';
+
+// LocalStorage interface
+export interface InitValue {
+  productList: Product[];
+}
+
+export const initValue: InitValue = {
+  productList: []
+};
+
 // Hook
-function useLocalStorage<T>(key: string, initialValue: T) {
+const useLocalStorage = <T>(key: string, initialValue: T) => {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState<T>(() => {
@@ -45,6 +57,6 @@ function useLocalStorage<T>(key: string, initialValue: T) {
   };
 
   return [storedValue, setValue] as const;
-}
+};
 
 export default useLocalStorage;

@@ -35,7 +35,9 @@ import {
   getProductSuccess,
   getProductFailed
 } from '@store/index';
-import useLocalStorage from './useLocalStorage';
+
+// Hook
+import useLocalStorage, { initValue, InitValue } from './useLocalStorage';
 
 /**
  * This hook help execute product data
@@ -45,9 +47,9 @@ import useLocalStorage from './useLocalStorage';
 const useProducts = () => {
   const { dispatch } = useStore();
 
-  const [storedValue, setValue] = useLocalStorage(
+  const [storedValue, setValue] = useLocalStorage<InitValue>(
     'localStates',
-    {} as { product: Product }
+    initValue
   );
 
   /**
@@ -57,15 +59,18 @@ const useProducts = () => {
     try {
       dispatch(getProductsRequest());
 
-      const products: Product[] =
-        storedValue.products || (await getAllProduct());
+      const localProducts: Product[] = storedValue.productList;
+
+      const products: Product[] = localProducts?.length
+        ? localProducts
+        : await getAllProduct();
 
       if (!products.length) {
         throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
       }
 
       dispatch(getProductsSuccess({ products }));
-      setValue({ ...products });
+      setValue(Object.assign(storedValue, { productList: products }));
     } catch (error) {
       if (error instanceof Error) {
         dispatch(getProductsFailed({ errorMessage: error.message }));
@@ -83,7 +88,10 @@ const useProducts = () => {
     try {
       dispatch(getProductRequest());
 
-      const product: Product = await getProduct(id);
+      const product: Product =
+        (storedValue.productList.length &&
+          storedValue.productList.find((product) => product.id === id)) ||
+        (await getProduct(id));
 
       dispatch(getProductSuccess({ product }));
     } catch (error) {
