@@ -14,8 +14,9 @@
 /* - Icon */
 /* - ---------------------------------------------- */
 .image-icon {
-  background-repeat: no-repeat;
   display: block;
+  background-repeat: no-repeat;
+  width: 2.25rem;
 }
 
 .icon-left {
@@ -34,7 +35,7 @@
 /* - ---------------------------------------------- */
 .card-image {
   border-radius: 5px;
-  object-fit: cover;
+  object-fit: contain;
   overflow: hidden;
   height: 18rem;
 }

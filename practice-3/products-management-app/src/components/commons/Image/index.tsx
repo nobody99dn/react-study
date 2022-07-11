@@ -11,9 +11,7 @@ import Text from '@components/commons/Text';
 interface ImageProps {
   alt: string;
   className?: string;
-  height?: string;
   imageUrl: string;
-  width?: string;
   variant?: ImageVariants;
   isError?: boolean;
   onImageClick?: () => void;
@@ -23,9 +21,7 @@ interface ImageProps {
 const Image: React.FC<ImageProps> = ({
   alt,
   className,
-  height,
   imageUrl,
-  width,
   variant = ImageVariants.Default,
   isError = false,
   onImageClick,
@@ -38,7 +34,6 @@ const Image: React.FC<ImageProps> = ({
       } ${className}`}
       alt={alt}
       src={imageUrl}
-      style={{ width: width, height: height }}
       onClick={onImageClick}
       onError={onImageError}
     />

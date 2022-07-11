@@ -46,8 +46,6 @@ const TextField: React.FC<TextFieldProps> = ({
   required = false,
   placeholder,
   iconUrl,
-  iconHeight,
-  iconWidth,
   variant = TextFieldVariants.Standard,
   onChange
 }) => {
@@ -68,8 +66,6 @@ const TextField: React.FC<TextFieldProps> = ({
             className={'icon-left'}
             imageUrl={iconUrl}
             variant={ImageVariants.Icon}
-            width={iconWidth}
-            height={iconHeight}
           />
         )}
         <input

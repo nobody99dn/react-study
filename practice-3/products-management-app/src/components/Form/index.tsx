@@ -39,7 +39,7 @@ const Form: React.FC<FormProps> = ({
   validateMessage,
   isButtonLoading = false,
   onSubmit,
-  onChangeImage = () => {}
+  onChangeImage
 }) => {
   const [product, setProduct] = useState<Product>(productItem as Product);
 
@@ -50,12 +50,12 @@ const Form: React.FC<FormProps> = ({
     setProduct({ ...product, [fieldName as string]: value });
 
     if (fieldName === 'imageUrl') {
-      onChangeImage(value as string);
+      onChangeImage && onChangeImage(value as string);
     }
   };
 
   useEffect(() => {
-    onChangeImage(product.imageUrl);
+    onChangeImage && onChangeImage(product.imageUrl);
   }, []);
 
   return (
