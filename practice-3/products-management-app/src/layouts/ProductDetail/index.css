@@ -1,19 +1,22 @@
 .product-detail {
-  display: block;
-  width: 1366px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .product-image {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 30%;
+  max-width: 25rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
 .product-form {
-  display: block;
   width: 70%;
-  float: right;
+  max-width: 50rem;
 }
 
 .product-form,

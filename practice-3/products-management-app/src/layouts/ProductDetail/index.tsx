@@ -48,6 +48,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           productItem={product}
           validateMessage=''
           variants={FormVariants.Edit}
+          // TODO: handle submit edit product
           onSubmit={() => {}}
           onChangeImage={onChangeProductImage}
         />

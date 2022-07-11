@@ -29,7 +29,7 @@ interface FormProps {
   validateMessage: string;
   isButtonLoading?: boolean;
   onSubmit: (event: FormEvent, product: Product) => void;
-  onChangeImage: (value: string) => void;
+  onChangeImage?: (value: string) => void;
 }
 
 const Form: React.FC<FormProps> = ({
@@ -39,7 +39,7 @@ const Form: React.FC<FormProps> = ({
   validateMessage,
   isButtonLoading = false,
   onSubmit,
-  onChangeImage
+  onChangeImage = () => {}
 }) => {
   const [product, setProduct] = useState<Product>(productItem as Product);
 

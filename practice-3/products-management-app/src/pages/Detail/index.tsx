@@ -18,6 +18,9 @@ import { useStore } from '@store/store';
 // Style
 import './index.css';
 
+// Component
+import Text, { VariantsTypes } from '@components/commons/Text';
+
 const Detail: React.FC = () => {
   const { globalState } = useStore();
 
@@ -42,7 +45,11 @@ const Detail: React.FC = () => {
       {currentProduct ? (
         <ProductDetail product={currentProduct} />
       ) : (
-        <div>{ERROR_MESSAGES.PRODUCT_NOT_FOUND}</div>
+        <div className='error-message'>
+          <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
+            {ERROR_MESSAGES.PRODUCT_NOT_FOUND}
+          </Text>
+        </div>
       )}
     </>
   );
