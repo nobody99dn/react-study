@@ -1,31 +1,41 @@
 // Library
-import React, { ReactNode, useReducer, useContext } from 'react';
+import React, {
+  ReactNode,
+  useReducer,
+  useContext,
+  Reducer,
+  Dispatch
+} from 'react';
+import { ActionProps } from './actions';
 
 // Reducer
-import { InitialState } from './reducer';
+import { initialState, InitialState } from './reducer';
 
 interface ContextProps {
   globalState: InitialState;
-  dispatch: ({ type }: { type: string; }) => void;
+  dispatch: Dispatch<ActionProps>;
 }
 
-const Store = React.createContext({} as ContextProps);
+const Store: React.Context<ContextProps> = React.createContext<ContextProps>({
+  globalState: initialState,
+  dispatch: () => {}
+});
 Store.displayName = 'Store';
 
 const useStore = () => useContext(Store);
 
 interface StoreProviderProps {
   children: ReactNode;
-  reducer: any;
+  reducer: Reducer<InitialState, ActionProps>;
   initialState: InitialState;
 }
 
 const StoreProvider: React.FC<StoreProviderProps> = ({
   children,
-  reducer,
-  initialState
+  initialState,
+  reducer
 }) => {
-  const [globalState, dispatch] = useReducer(reducer, initialState) as [InitialState, any];
+  const [globalState, dispatch] = useReducer(reducer, initialState);
 
   return (
     <Store.Provider value={{ globalState, dispatch }}>

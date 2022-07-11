@@ -7,7 +7,7 @@ import { Product } from '@models/product';
 // Action
 import { ActionProps } from './actions';
 
-export interface InitialState {
+interface InitialState {
   products: Product[];
   currentProduct: Product | null;
   isLoading: boolean;
@@ -195,4 +195,4 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
   }
 };
 
-export { reducer, initialState };
+export { reducer, initialState, InitialState };
