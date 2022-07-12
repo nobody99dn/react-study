@@ -48,7 +48,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
    * @param product Product
    * @returns void
    */
-  const handleEditProduct = async (
+  const handleSubmitEdit = async (
     event: FormEvent,
     product: Product
   ): Promise<void> => {
@@ -122,7 +122,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           options={PRODUCT_TYPE_LIST}
           isButtonLoading={isButtonLoading}
           isDisableForm={true}
-          onSubmit={handleEditProduct}
+          handleSubmit={handleSubmitEdit}
         />
       </div>
     </div>

@@ -222,8 +222,8 @@ const Main: React.FC = () => {
           />
           <Posts
             products={filterBox.length ? filterBox : products}
-            onOpenProductDetail={handleShowProductDetail}
-            onDeleteProduct={handleDeleteProduct}
+            handleOpenProductDetail={handleShowProductDetail}
+            handleDeleteProduct={handleDeleteProduct}
           />
         </div>
       </div>

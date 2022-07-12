@@ -26,7 +26,7 @@ Default.args = {
   children: (
     <Form
       validateMessage=''
-      onSubmit={() => {}}
+      handleSubmit={() => {}}
       variants={FormVariants.Create}
       productItem={{
         id: '',
