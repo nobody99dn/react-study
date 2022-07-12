@@ -46,11 +46,7 @@ const Form: React.FC<FormProps> = ({
 
   const nameRef = useRef<HTMLInputElement>(null);
 
-  const handleOnChange = (
-    value: string | number,
-    //TODO: check undefined
-    fieldName: string | undefined
-  ): void => {
+  const handleOnChange = (value: string | number, fieldName: string): void => {
     setProduct({ ...product, [fieldName as string]: value });
   };
 

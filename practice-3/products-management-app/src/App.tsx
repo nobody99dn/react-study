@@ -40,14 +40,14 @@ function App() {
       {errorMessage && (
         <MessagePopUp
           text={errorMessage}
-          messagePopUpVariant={MessagePopUpVariants.Failed}
+          variant={MessagePopUpVariants.Failed}
         />
       )}
 
       {successMessage && (
         <MessagePopUp
           text={successMessage}
-          messagePopUpVariant={MessagePopUpVariants.Success}
+          variant={MessagePopUpVariants.Success}
         />
       )}
     </>

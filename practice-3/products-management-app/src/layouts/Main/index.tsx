@@ -193,6 +193,8 @@ const Main: React.FC = () => {
       );
     }, 500);
 
+    !currentFilterPriceParam && !currentFilterTypeParam && getAllProducts();
+
     return () => clearTimeout(timer);
   }, [currentFilterPriceParam, currentFilterTypeParam]);
 
