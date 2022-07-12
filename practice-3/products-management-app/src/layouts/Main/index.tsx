@@ -38,6 +38,7 @@ const Main: React.FC = () => {
   const navigate = useNavigate();
 
   const {
+    data,
     getProducts,
     deleteProduct,
     createProduct,
