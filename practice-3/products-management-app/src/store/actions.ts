@@ -122,7 +122,7 @@ const filterProductsSuccess = (payload: {
 
 //* SEARCH PRODUCTS ACTION *\\
 const searchProductsSuccess = (payload: {
-  filterProducts: Product[];
+  filteredProducts: Product[];
   input: string;
 }): ActionProps => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,

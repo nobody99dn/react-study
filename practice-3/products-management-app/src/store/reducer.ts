@@ -179,7 +179,7 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
         ...state,
         filterBox: !!action.payload?.input
           ? (action.payload?.filteredProducts as Product[])
-          : []
+          : state.filterBox
       };
 
     case ACTIONS.CLEAR_MESSAGES: {

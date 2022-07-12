@@ -178,8 +178,9 @@ const useProducts = () => {
    * @param input string
    */
   const searchingProducts = async (input: string) => {
-    const filterProducts: Product[] = await searchProducts(input);
-    dispatch(searchProductsSuccess({ filterProducts, input }));
+    const filteredProducts: Product[] = await searchProducts(input);
+
+    dispatch(searchProductsSuccess({ filteredProducts, input }));
   };
 
   /**
