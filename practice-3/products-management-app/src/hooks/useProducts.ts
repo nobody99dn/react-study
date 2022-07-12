@@ -1,3 +1,6 @@
+// Library
+import useSWR from 'swr';
+
 // Constants
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
 import { ProductTypes, FilterOrderOptions } from '@constants/index';
@@ -35,6 +38,9 @@ import {
   getProductSuccess,
   getProductFailed
 } from '@store/index';
+import { URL_PRODUCTS } from '@constants/api';
+import { get } from '@helpers/clientRequests';
+import { useEffect } from 'react';
 
 /**
  * This hook help execute product data
@@ -44,14 +50,21 @@ import {
 const useProducts = () => {
   const { dispatch } = useStore();
 
+  const { data, error } = useSWR<Product[]>(URL_PRODUCTS, get);
+
+  useEffect(() => {
+    getProducts();
+  }, [data]);
+
   /**
    * Get all products and save to local
    */
   const getProducts = async (): Promise<void> => {
     try {
       dispatch(getProductsRequest());
+      console.log('data', data);
 
-      const products: Product[] = await getAllProduct();
+      const products: Product[] = data || [];
 
       if (!products.length) {
         throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
@@ -211,7 +224,8 @@ const useProducts = () => {
     createProduct,
     editProduct,
     searchingProducts,
-    filterProducts
+    filterProducts,
+    data
   };
 };
 

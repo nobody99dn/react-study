@@ -1,6 +1,7 @@
 // Library
+import { SWRConfig } from 'swr';
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Styles
 import './assets/styles/reset.css';
@@ -26,14 +27,16 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Suspense fallback={<LoadingIndicator />}>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/product-detail/:id' element={<Detail />} />
-          </Routes>
-        </Suspense>
-      </Router>
+      <SWRConfig value={{ provider: () => new Map() }}>
+        <BrowserRouter>
+          <Suspense fallback={<LoadingIndicator />}>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/product-detail/:id' element={<Detail />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </SWRConfig>
 
       {isLoading && <LoadingIndicator />}
 
