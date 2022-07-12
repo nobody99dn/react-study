@@ -66,9 +66,12 @@ const useProducts = () => {
 
       const localProducts: Product[] = storedValue.productList;
 
-      const products: Product[] = localProducts?.length
-        ? localProducts
-        : await getAllProduct();
+      // Render products from local storage first
+      if (localProducts && localProducts.length) {
+        dispatch(getProductsSuccess({ products: localProducts }));
+      }
+
+      const products: Product[] = await getAllProduct();
 
       if (!products.length) {
         throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
@@ -93,6 +96,7 @@ const useProducts = () => {
     try {
       dispatch(getProductRequest());
 
+      // Query from local storage first
       const product: Product =
         (storedValue.productList.length &&
           storedValue.productList.find((product) => product.id === id)) ||
