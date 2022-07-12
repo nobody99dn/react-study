@@ -33,7 +33,7 @@ import { useStore } from '@store/index';
 const Main: React.FC = () => {
   const { globalState } = useStore();
 
-  const { products, filterBox } = globalState || {};
+  const { products } = globalState || {};
 
   const navigate = useNavigate();
 
@@ -57,17 +57,10 @@ const Main: React.FC = () => {
     imageUrl: ''
   });
   const [currentFilterPriceParam, setCurrentFilterPriceParam] =
-    useState<FilterOrderOptions>();
+    useState<FilterOrderOptions | ''>('');
   const [currentFilterTypeParam, setCurrentFilterTypeParam] =
-    useState<ProductTypes>();
+    useState<ProductTypes | ''>('');
   const [productName, setProductName] = useState<string>('');
-
-  /**
-   * Get all products
-   */
-  const getAllProducts = async (): Promise<void> => {
-    getProducts();
-  };
 
   /**
    * Run first times when init app
@@ -75,6 +68,13 @@ const Main: React.FC = () => {
   useEffect(() => {
     getAllProducts();
   }, []);
+
+  /**
+   * Get all products
+   */
+  const getAllProducts = async (): Promise<void> => {
+    getProducts();
+  };
 
   /**
    * Handle delete product
@@ -156,8 +156,10 @@ const Main: React.FC = () => {
    * Handle filter product
    */
   const handleClearFilters = useCallback(() => {
-    setCurrentFilterPriceParam(undefined);
-    setCurrentFilterTypeParam(undefined);
+    setCurrentFilterPriceParam('');
+    setCurrentFilterTypeParam('');
+
+    getAllProducts();
   }, []);
 
   /**
@@ -199,6 +201,8 @@ const Main: React.FC = () => {
    */
   const handleSearchProduct = (value: string | number) => {
     setProductName(value as string);
+
+    !value && getAllProducts();
   };
 
   /**
@@ -221,7 +225,7 @@ const Main: React.FC = () => {
             handleSearchProduct={handleSearchProduct}
           />
           <Posts
-            products={filterBox.length ? filterBox : products}
+            products={products}
             handleOpenProductDetail={handleShowProductDetail}
             handleDeleteProduct={handleDeleteProduct}
           />
@@ -229,9 +233,9 @@ const Main: React.FC = () => {
       </div>
       <div className='left-container'>
         <SideBar
-          handleOpenModalForm={handleToggleModal}
           currentFilterTypeParam={currentFilterTypeParam}
           currentFilterPriceParam={currentFilterPriceParam}
+          handleOpenModalForm={handleToggleModal}
           handleTypeChange={handleTypeChange}
           handlePriceChange={handlePriceChange}
           handleClearFilters={handleClearFilters}
