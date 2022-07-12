@@ -20,8 +20,6 @@ import { URL_PRODUCTS } from '@constants/api';
 import { Product } from '@models/product';
 import { ProductTypes } from '@constants/types';
 
-const getProducts = async (): Promise<Product[]> => await get(URL_PRODUCTS);
-
 export default {
   title: 'Components/Posts',
   component: Posts
@@ -49,7 +47,5 @@ const products: Product[] = [
   }
 ];
 Default.args = {
-  products,
-  onOpenModalForm: () => {},
-  onDeleteProduct: () => {}
+  products
 };

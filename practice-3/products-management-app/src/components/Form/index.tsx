@@ -1,5 +1,9 @@
 // Library
+<<<<<<< HEAD
 import React, { FormEvent, useCallback, useRef, useState } from 'react';
+=======
+import React, { FormEvent, useRef, useState } from 'react';
+>>>>>>> 4f10064 (Fix naming on event)
 
 // Style
 import './index.css';
@@ -29,7 +33,7 @@ interface FormProps {
   validateMessage: string;
   isButtonLoading?: boolean;
   isDisableForm?: boolean;
-  onSubmit: (event: FormEvent, product: Product) => void;
+  handleSubmit: (event: FormEvent, product: Product) => void;
 }
 
 const Form: React.FC<FormProps> = ({
@@ -39,7 +43,7 @@ const Form: React.FC<FormProps> = ({
   validateMessage,
   isButtonLoading = false,
   isDisableForm = false,
-  onSubmit
+  handleSubmit
 }) => {
   const [product, setProduct] = useState<Product>(productItem);
   const [isDisable, setIsDisable] = useState<boolean>(isDisableForm);
@@ -70,7 +74,7 @@ const Form: React.FC<FormProps> = ({
       <Title>{variants} Product</Title>
       <form
         className='form'
-        onSubmit={(event: FormEvent) => onSubmit(event, product)}
+        onSubmit={(event: FormEvent) => handleSubmit(event, product)}
       >
         <fieldset className='field-group'>
           <TextField
@@ -80,14 +84,14 @@ const Form: React.FC<FormProps> = ({
             placeholder='Enter product name...'
             type={TypeVariables.Text}
             readonly={isDisable}
-            onChange={handleOnChange}
+            handleInputChange={handleOnChange}
             ref={nameRef}
           />
           <Select
             label='Product type'
             options={options}
             value={product.type}
-            onChange={handleOnChange}
+            handleSelectChange={handleOnChange}
             name='type'
             disable={isDisable}
           />
@@ -98,7 +102,7 @@ const Form: React.FC<FormProps> = ({
             label='Price'
             placeholder='Enter price...'
             readonly={isDisable}
-            onChange={handleOnChange}
+            handleInputChange={handleOnChange}
           />
           <TextField
             defaultValue={product.imageUrl}
@@ -107,7 +111,7 @@ const Form: React.FC<FormProps> = ({
             label='Image link'
             placeholder='Enter image link...'
             readonly={isDisable}
-            onChange={handleOnChange}
+            handleInputChange={handleOnChange}
           />
           {validateMessage && (
             <Text variant={VariantsTypes.Highlight} color='var(--danger)'>
