@@ -1,6 +1,6 @@
 // Libraries
 import React, { memo, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // Hooks
 import useProducts from '@hooks/useProducts';
@@ -20,15 +20,18 @@ import './index.css';
 
 // Components
 import Text, { VariantsTypes } from '@components/commons/Text';
+import { URL } from '@constants/routes';
 
 const DetailPage: React.FC = () => {
   const { globalState, dispatch } = useStore();
 
   const { getProductById } = useProducts();
 
-  const { id } = useParams() as { id: string };
+  const { id } = useParams<{ id: string }>();
 
   const { currentProduct } = globalState;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleGetProduct();
@@ -39,21 +42,21 @@ const DetailPage: React.FC = () => {
   }, []);
 
   const handleGetProduct = async (): Promise<void> => {
-    await getProductById(id);
+    if (id) {
+      await getProductById(id);
+    } else {
+      navigate(URL.HOME_PAGE);
+    }
   };
 
   return (
     <>
       <Header />
-
-      {currentProduct ? (
-        <ProductDetail product={currentProduct} />
-      ) : (
-        <div className='error-message'>
-          <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
-            {ERROR_MESSAGES.PRODUCT_NOT_FOUND}
-          </Text>
-        </div>
+      {currentProduct && <ProductDetail product={currentProduct} />}
+      {!currentProduct && (
+        <ProductDetail
+          product={{ id: '', imageUrl: '', name: '', price: 0, type: '' }}
+        />
       )}
     </>
   );

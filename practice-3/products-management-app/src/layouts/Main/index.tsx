@@ -143,9 +143,9 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   };
 
-  const handleShowProductDetail = (productId: string) => {
+  const handleShowProductDetail = useCallback((productId: string) => {
     navigate(`${URL.DETAIL_PAGE}/${productId}`);
-  };
+  }, []);
 
   const handleToggleModal = () => {
     setIsModalShow(!isModalShow);
