@@ -1,5 +1,5 @@
 // Library
-import { FormEvent, memo, useState } from 'react';
+import { FormEvent, memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Components
@@ -14,6 +14,7 @@ import { Product } from '@models/product';
 import {
   ERROR_MESSAGES,
   FormVariants,
+  ImageVariants,
   PRODUCT_TYPE_LIST,
   URL
 } from '@constants/index';
@@ -24,6 +25,9 @@ import './index.css';
 // Hook
 import useProducts from '@hooks/useProducts';
 
+// Icon
+import { BackIcon } from '@assets/index';
+
 interface ProductDetailProps {
   product: Product;
 }
@@ -33,19 +37,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
 
   const navigate = useNavigate();
 
-  const [currentImage, setCurrentImage] = useState<string>('');
-  const [isLoadImageFail, setIsLoadImageFail] = useState<boolean>(false);
   const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
   const [validateMessage, setValidateMessage] = useState<string>('');
-
-  const onChangeProductImage = (imageUrl: string) => {
-    setIsLoadImageFail(false);
-    setCurrentImage(imageUrl);
-  };
-
-  const handleImageError = () => {
-    setIsLoadImageFail(true);
-  };
+  const [currentProduct, setCurrentProduct] = useState<Product>(product);
 
   /**
    * Handle create new product and edit product
@@ -95,30 +89,40 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
 
     setIsButtonLoading(false);
 
-    navigate(URL.HOME_PAGE);
+    // Update state
+    setCurrentProduct(product);
   };
+
+  /**
+   * Handle click back icon
+   */
+  const handleBack = useCallback(() => {
+    navigate(URL.HOME_PAGE);
+  }, []);
 
   return (
     <div className='product-detail'>
-      <div className='product-image'>
+      <div className='back-icon'>
         <Image
-          alt='Product Image'
-          imageUrl={currentImage}
-          onImageError={handleImageError}
-          isError={isLoadImageFail}
+          alt='Back to Home Page'
+          imageUrl={BackIcon}
+          variant={ImageVariants.Icon}
+          handleClick={handleBack}
         />
+      </div>
+      <div className='product-image'>
+        <Image alt='Product Image' imageUrl={currentProduct.imageUrl} />
         <Title variant={VariantTypes.Subtitle} children='Preview image' />
       </div>
       <div className='product-form'>
         <Form
-          productItem={product}
+          productItem={currentProduct}
           validateMessage={validateMessage}
           variants={FormVariants.Edit}
           options={PRODUCT_TYPE_LIST}
           isButtonLoading={isButtonLoading}
           isDisableForm={true}
           onSubmit={handleEditProduct}
-          onChangeImage={onChangeProductImage}
         />
       </div>
     </div>

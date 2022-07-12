@@ -17,9 +17,11 @@ import { useStore, clearCurrentProduct } from '@store/index';
 
 // Style
 import './index.css';
+
+// Components
 import Text, { VariantsTypes } from '@components/commons/Text';
 
-const Detail: React.FC = () => {
+const DetailPage: React.FC = () => {
   const { globalState, dispatch } = useStore();
 
   const { getProductById } = useProducts();
@@ -29,16 +31,16 @@ const Detail: React.FC = () => {
   const { currentProduct } = globalState;
 
   useEffect(() => {
-    const getProduct = async (): Promise<void> => {
-      await getProductById(id);
-    };
-
-    getProduct();
+    handleGetProduct();
 
     return () => {
       dispatch(clearCurrentProduct());
     };
   }, []);
+
+  const handleGetProduct = async (): Promise<void> => {
+    await getProductById(id);
+  };
 
   return (
     <>
@@ -57,4 +59,4 @@ const Detail: React.FC = () => {
   );
 };
 
-export default memo(Detail);
+export default memo(DetailPage);

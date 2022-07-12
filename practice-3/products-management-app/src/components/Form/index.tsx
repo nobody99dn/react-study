@@ -36,7 +36,6 @@ interface FormProps {
   isButtonLoading?: boolean;
   isDisableForm?: boolean;
   onSubmit: (event: FormEvent, product: Product) => void;
-  onChangeImage?: (value: string) => void;
 }
 
 const Form: React.FC<FormProps> = ({
@@ -46,27 +45,19 @@ const Form: React.FC<FormProps> = ({
   validateMessage,
   isButtonLoading = false,
   isDisableForm = false,
-  onSubmit,
-  onChangeImage
+  onSubmit
 }) => {
-  const [product, setProduct] = useState<Product>(productItem as Product);
+  const [product, setProduct] = useState<Product>(productItem);
   const [isDisable, setIsDisable] = useState<boolean>(isDisableForm);
 
   const nameRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    onChangeImage && onChangeImage(product.imageUrl);
-  }, []);
-
   const handleOnChange = (
     value: string | number,
+    //TODO: check undefined
     fieldName: string | undefined
   ): void => {
     setProduct({ ...product, [fieldName as string]: value });
-
-    if (fieldName === 'imageUrl') {
-      onChangeImage && onChangeImage(value as string);
-    }
   };
 
   const handleEnableEditButton = () => {
