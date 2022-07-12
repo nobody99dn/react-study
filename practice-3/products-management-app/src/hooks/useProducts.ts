@@ -1,6 +1,11 @@
 // Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
-import { ProductTypes, FilterOrderOptions } from '@constants/index';
+import {
+  ProductTypes,
+  FilterOrderOptions,
+  LOCAL_KEY,
+  ERROR_MESSAGES,
+  SUCCESS_MESSAGES
+} from '@constants/index';
 
 // Model
 import { Product } from '@models/product';
@@ -48,7 +53,7 @@ const useProducts = () => {
   const { dispatch } = useStore();
 
   const [storedValue, setValue] = useLocalStorage<InitValue>(
-    'localStates',
+    LOCAL_KEY,
     initValue
   );
 
