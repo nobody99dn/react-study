@@ -14,8 +14,8 @@ import './index.css';
 export type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  currentFilterTypeParam: ProductTypes | undefined;
-  currentFilterPriceParam: FilterOrderOptions | undefined;
+  currentFilterTypeParam: ProductTypes | '';
+  currentFilterPriceParam: FilterOrderOptions | '';
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;
   handleClearFilters: () => void;

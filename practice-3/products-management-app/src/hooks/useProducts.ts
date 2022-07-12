@@ -37,7 +37,10 @@ import {
   filterProductsRequest,
   getProductRequest,
   getProductSuccess,
-  getProductFailed
+  getProductFailed,
+  editProductRequest,
+  addProductRequest,
+  deleteProductRequest
 } from '@store/index';
 
 /**
@@ -97,6 +100,7 @@ const useProducts = () => {
    */
   const createProduct = async (product: Product): Promise<void> => {
     try {
+      dispatch(addProductRequest());
       const newProduct: Product = await addNewProduct(product);
 
       if (!newProduct) {
@@ -125,6 +129,7 @@ const useProducts = () => {
    */
   const editProduct = async (product: Product): Promise<void> => {
     try {
+      dispatch(editProductRequest());
       const updatedProduct: Product = await updateProduct(product);
       if (!updatedProduct) {
         throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
@@ -152,6 +157,7 @@ const useProducts = () => {
    */
   const deleteProduct = async (id: string): Promise<void> => {
     try {
+      dispatch(deleteProductRequest());
       const deletedProduct: Product = await removeProduct(id);
 
       if (!deletedProduct) {
@@ -193,12 +199,12 @@ const useProducts = () => {
     currentFilterTypeParam: ProductTypes,
     currentFilterPriceParam: FilterOrderOptions
   ) => {
+    dispatch(filterProductsRequest());
+
     const filteredProducts: Product[] = await filterProductsByTypeAndPrice(
       currentFilterTypeParam,
       currentFilterPriceParam
     );
-
-    dispatch(filterProductsRequest());
 
     dispatch(
       filterProductsSuccess({
