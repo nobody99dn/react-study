@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useState
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Styles
 import './index.css';
@@ -20,16 +21,17 @@ import ModalForm from '@components/ModalForm';
 import { Product } from '@models/product';
 
 // Constants
-import { ERROR_MESSAGES } from '@constants/messages';
-import { FilterOrderOptions, ProductTypes } from '@constants/index';
+import {
+  FilterOrderOptions,
+  ProductTypes,
+  ERROR_MESSAGES
+} from '@constants/index';
 
 // Hook
 import useProducts from '@hooks/useProducts';
 
 // Store
 import { useStore } from '@store/index';
-
-import { useNavigate } from 'react-router-dom';
 
 const Main: React.FC = () => {
   const { globalState } = useStore();
@@ -39,8 +41,6 @@ const Main: React.FC = () => {
   const navigate = useNavigate();
 
   const {
-    data,
-    getProducts,
     deleteProduct,
     createProduct,
     editProduct,
@@ -64,20 +64,6 @@ const Main: React.FC = () => {
   const [currentFilterTypeParam, setCurrentFilterTypeParam] =
     useState<ProductTypes>();
   const [productName, setProductName] = useState<string>('');
-
-  /**
-   * Get all products
-   */
-  const getAllProducts = async (): Promise<void> => {
-    getProducts();
-  };
-
-  /**
-   * Run first times when init app
-   */
-  useEffect(() => {
-    getAllProducts();
-  }, []);
 
   /**
    * Handle delete product
