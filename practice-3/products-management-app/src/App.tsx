@@ -29,7 +29,13 @@ function App() {
 
   return (
     <>
-      <SWRConfig value={{ provider: () => new Map() }}>
+      <SWRConfig
+        value={{
+          revalidateOnFocus: false,
+          shouldRetryOnError: false,
+          provider: () => new Map()
+        }}
+      >
         <BrowserRouter>
           <Suspense fallback={<LoadingIndicator />}>
             <Routes>
