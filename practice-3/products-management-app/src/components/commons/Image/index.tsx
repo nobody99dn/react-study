@@ -1,11 +1,13 @@
 // Library
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 
 // Styles
 import './index.css';
 
 // Constants
 import { ERROR_MESSAGES, ImageVariants } from '@constants/index';
+
+// Component
 import Text from '@components/commons/Text';
 
 interface ImageProps {

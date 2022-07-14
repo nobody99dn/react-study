@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button component should render correctly 1`] = `
+<img
+  alt="image"
+  className="image  undefined"
+/>
+`;
+
+exports[`button component should render correctly 2`] = `
+<img
+  alt="image"
+  className="image image-logo  undefined"
+/>
+`;
+
+exports[`button component should render correctly 3`] = `
+<img
+  alt="image"
+  className="image image-icon  undefined"
+/>
+`;

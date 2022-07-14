@@ -6,5 +6,6 @@ import searchIcon from './images/icons/search.svg';
 import closeIcon from './images/icons/close.svg';
 import logo from './images/logo.png';
 import iPhoneImage from './images/iphone-13-pro-max-alpine-green-alpine-green-color.jpg';
+import blankImage from './images/blank.png';
 
-export { trashFillIcon, searchIcon, closeIcon, logo, iPhoneImage };
+export { trashFillIcon, searchIcon, closeIcon, logo, iPhoneImage, blankImage };
