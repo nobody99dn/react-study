@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Item component should render correctly 1`] = `
+<div
+  className="select-wrapper"
+>
+  <label>
+    Select Item Label
+    :
+  </label>
+  <select
+    className="select"
+    name="select"
+    onChange={[Function]}
+  >
+    <option
+      value=""
+    >
+      Select
+    </option>
+    <option
+      value="option 1"
+    >
+      option 1
+    </option>
+    <option
+      value="option 2"
+    >
+      option 2
+    </option>
+    <option
+      value="option 3"
+    >
+      option 3
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Select Item component should render correctly 2`] = `
+<div
+  className="select-wrapper"
+>
+  <label>
+    Select Item Label
+    :
+  </label>
+  <select
+    className="select"
+    name="select"
+    onChange={[Function]}
+    value="option 2"
+  >
+    <option
+      value=""
+    >
+      Select
+    </option>
+    <option
+      value="option 1"
+    >
+      option 1
+    </option>
+    <option
+      value="option 2"
+    >
+      option 2
+    </option>
+    <option
+      value="option 3"
+    >
+      option 3
+    </option>
+  </select>
+</div>
+`;

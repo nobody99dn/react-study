@@ -53,7 +53,7 @@ describe('button component', () => {
       render(<Button title='Button' onClick={myMock} />, { container });
     });
 
-    const button = screen.getByRole('button');
+    const button: HTMLElement = screen.getByRole('button');
 
     fireEvent.click(button);
     fireEvent.click(button);
