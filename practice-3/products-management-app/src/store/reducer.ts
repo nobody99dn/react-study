@@ -33,6 +33,8 @@ const initialState: InitialState = {
 const reducer = (state = initialState, action: ActionProps): InitialState => {
   switch (action.type) {
     case ACTIONS.GET_PRODUCTS_REQUEST:
+      console.log(9);
+
       return {
         ...state,
         isLoading: true,

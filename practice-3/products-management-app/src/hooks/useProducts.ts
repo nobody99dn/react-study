@@ -46,7 +46,7 @@ import { filterTypeAndPriceOrder, queryProducts } from '@helpers/queries';
  */
 const useProducts = () => {
   const { data, error, isValidating, mutate } = useSWR<Product[]>(
-    [URL_PRODUCTS],
+    URL_PRODUCTS,
     get
   );
 
@@ -54,36 +54,16 @@ const useProducts = () => {
 
   // Handle get all products when loaded
   useEffect(() => {
-    !isValidating && getProducts();
-  }, [isValidating]);
+    isValidating && dispatch(getProductsRequest());
 
-  /**
-   * Get all products and save to local
-   */
-  const getProducts = async (): Promise<void> => {
-    try {
-      dispatch(getProductsRequest());
-
-      // Execute data when loaded
-      const products: Product[] = data || [];
-
-      if (error instanceof AxiosError && error.response?.status === 404) {
-        throw new Error(ERROR_MESSAGES.FILE_NOT_FOUND);
-      }
-
-      if (error instanceof AxiosError) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
-      if (!error && products) {
-        dispatch(getProductsSuccess({ products }));
-      }
-    } catch (error) {
+    if (!isValidating && !error && data) {
+      dispatch(getProductsSuccess({ products: data }));
+    } else if (!isValidating && error) {
       if (error instanceof Error) {
         dispatch(getProductsFailed({ errorMessage: error.message }));
       }
     }
-  };
+  }, [isValidating]);
 
   /**
    * Add new product
@@ -236,7 +216,6 @@ const useProducts = () => {
   };
 
   return {
-    getProducts,
     deleteProduct,
     createProduct,
     editProduct,
