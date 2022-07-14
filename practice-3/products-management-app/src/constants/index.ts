@@ -15,6 +15,7 @@ import { ImageVariants } from './component-types/image';
 import { TextFieldVariants } from './component-types/textField';
 import { TypeVariables } from './component-types/textField';
 import { FwType } from './component-types/title';
+import { FsType } from './component-types/text';
 
 // Messages
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from './messages';
@@ -33,5 +34,6 @@ export {
   ImageVariants,
   TextFieldVariants,
   TypeVariables,
-  FwType
+  FwType,
+  FsType
 };
