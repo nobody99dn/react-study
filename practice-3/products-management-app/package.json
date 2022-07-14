@@ -9,7 +9,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint . --ext .ts",
-    "test": "jest"
+    "test": "jest",
+    "test-cover": "jest --coverage"
   },
   "dependencies": {
     "axios": "^0.27.2",
