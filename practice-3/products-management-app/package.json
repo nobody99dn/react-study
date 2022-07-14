@@ -9,7 +9,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint . --ext .ts",
-    "test": "jest"
+    "test": "jest",
+    "test-cover": "jest --coverage"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -30,6 +31,7 @@
     "@storybook/cli": "^6.5.4",
     "@storybook/react": "^6.5.4",
     "@storybook/testing-library": "^0.0.11",
+    "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@types/jest": "^28.1.1",
     "@types/node": "^17.0.40",
