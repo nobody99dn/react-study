@@ -1,58 +1,51 @@
 // Libraries
 import React, { memo, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 // Hooks
-import useProducts from '@hooks/useProducts';
+import useProductById from '@hooks/useProductById';
 
 // Layouts
 import Header from '@layouts/Header';
 import ProductDetail from '@layouts/ProductDetail';
 
 // Store
-import { useStore, clearCurrentProduct } from '@store/index';
+import { useStore } from '@store/index';
 
 // Style
 import './index.css';
 
 // Components
-import { URL } from '@constants/routes';
+import Text, { VariantsTypes } from '@components/commons/Text';
+import { ERROR_MESSAGES } from '@constants/messages';
 
 const DetailPage: React.FC = () => {
-  const { globalState, dispatch } = useStore();
+  const { globalState } = useStore();
 
-  const { getProductById } = useProducts();
+  const { id } = useParams() as { id: string };
 
-  const { id } = useParams<{ id: string }>();
+  const { getProduct, isValidating } = useProductById(id);
 
   const { currentProduct } = globalState;
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    handleGetProduct();
-
-    return () => {
-      dispatch(clearCurrentProduct());
-    };
-  }, []);
-
-  const handleGetProduct = async (): Promise<void> => {
-    if (id) {
-      await getProductById(id);
-    } else {
-      navigate(URL.HOME_PAGE);
+    if (!isValidating) {
+      getProduct();
     }
-  };
+  }, [isValidating]);
 
   return (
     <>
       <Header />
-      {currentProduct && <ProductDetail product={currentProduct} />}
-      {!currentProduct && (
-        <ProductDetail
-          product={{ id: '', imageUrl: '', name: '', price: 0, type: '' }}
-        />
+
+      {currentProduct ? (
+        <ProductDetail product={currentProduct} />
+      ) : (
+        <div className='error-message'>
+          <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
+            {ERROR_MESSAGES.PRODUCT_NOT_FOUND}
+          </Text>
+        </div>
       )}
     </>
   );
