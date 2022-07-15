@@ -1,9 +1,5 @@
 // Library
-<<<<<<< HEAD
 import React, { FormEvent, useCallback, useRef, useState } from 'react';
-=======
-import React, { FormEvent, useRef, useState } from 'react';
->>>>>>> 4f10064 (Fix naming on event)
 
 // Style
 import './index.css';
