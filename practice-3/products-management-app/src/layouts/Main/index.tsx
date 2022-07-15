@@ -21,8 +21,12 @@ import ModalForm from '@components/ModalForm';
 import { Product } from '@models/product';
 
 // Constants
-import { ERROR_MESSAGES } from '@constants/messages';
-import { FilterOrderOptions, ProductTypes, URL } from '@constants/index';
+import {
+  FilterOrderOptions,
+  ProductTypes,
+  ERROR_MESSAGES,
+  URL
+} from '@constants/index';
 
 // Hook
 import useProducts from '@hooks/useProducts';
@@ -37,13 +41,8 @@ const Main: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const {
-    getProducts,
-    deleteProduct,
-    createProduct,
-    filterProducts,
-    searchingProducts
-  } = useProducts();
+  const { deleteProduct, createProduct, filterProducts, searchingProducts } =
+    useProducts();
 
   // States
   const [isModalShow, setIsModalShow] = useState<boolean>(false);
@@ -61,20 +60,6 @@ const Main: React.FC = () => {
   const [currentFilterTypeParam, setCurrentFilterTypeParam] =
     useState<ProductTypes | ''>('');
   const [productName, setProductName] = useState<string>('');
-
-  /**
-   * Run first times when init app
-   */
-  useEffect(() => {
-    getAllProducts();
-  }, []);
-
-  /**
-   * Get all products
-   */
-  const getAllProducts = async (): Promise<void> => {
-    getProducts();
-  };
 
   /**
    * Handle delete product
@@ -158,8 +143,6 @@ const Main: React.FC = () => {
   const handleClearFilters = useCallback(() => {
     setCurrentFilterPriceParam('');
     setCurrentFilterTypeParam('');
-
-    getAllProducts();
   }, []);
 
   /**
@@ -193,8 +176,6 @@ const Main: React.FC = () => {
       );
     }, 500);
 
-    !currentFilterPriceParam && !currentFilterTypeParam && getAllProducts();
-
     return () => clearTimeout(timer);
   }, [currentFilterPriceParam, currentFilterTypeParam]);
 
@@ -203,8 +184,6 @@ const Main: React.FC = () => {
    */
   const handleSearchProduct = (value: string | number) => {
     setProductName(value as string);
-
-    !value && getAllProducts();
   };
 
   /**

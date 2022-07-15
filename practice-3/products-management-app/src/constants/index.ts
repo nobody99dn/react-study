@@ -22,12 +22,16 @@ import { ERROR_MESSAGES, SUCCESS_MESSAGES } from './messages';
 // Url
 import { URL } from './routes';
 
+// Api
+import { URL_PRODUCTS } from './api';
+
 export {
   ERROR_MESSAGES,
   SUCCESS_MESSAGES,
   PRODUCT_TYPE_LIST,
   ORDER_OPTIONS,
   URL,
+  URL_PRODUCTS,
   Currencies,
   ProductTypes,
   FilterOrderOptions,

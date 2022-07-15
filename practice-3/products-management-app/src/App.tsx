@@ -1,4 +1,5 @@
 // Library
+import { SWRConfig } from 'swr';
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -28,14 +29,22 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Suspense fallback={<LoadingIndicator />}>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/product-detail/:id' element={<DetailPage />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
+      <SWRConfig
+        value={{
+          revalidateOnFocus: false,
+          shouldRetryOnError: false,
+          provider: () => new Map()
+        }}
+      >
+        <BrowserRouter>
+          <Suspense fallback={<LoadingIndicator />}>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/product-detail/:id' element={<DetailPage />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </SWRConfig>
 
       {isLoading && <LoadingIndicator />}
 
