@@ -1,5 +1,5 @@
 // Library
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 
 // Styles
 import './index.css';
@@ -36,9 +36,9 @@ const Image: React.FC<ImageProps> = ({
   /**
    * Handle image loaded
    */
-  const handleImageLoaded = () => {
+  const handleImageLoaded = useCallback(() => {
     setIsLoadImageFail(false);
-  };
+  }, []);
 
   return (
     <>

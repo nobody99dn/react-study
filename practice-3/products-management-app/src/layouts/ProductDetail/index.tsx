@@ -37,7 +37,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
 
   const navigate = useNavigate();
 
-  const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [validateMessage, setValidateMessage] = useState<string>('');
   const [currentProduct, setCurrentProduct] = useState<Product>(product);
 
@@ -54,40 +54,34 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
   ): Promise<void> => {
     event.preventDefault();
 
-    setIsButtonLoading(true);
+    setIsLoading(true);
 
     // Validate form
     if (!product.name) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
-      setIsButtonLoading(false);
+      setIsLoading(false);
 
       return;
-    }
-
-    if (!product.type) {
+    } else if (!product.type) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_TYPE_REQUIRED);
-      setIsButtonLoading(false);
+      setIsLoading(false);
 
       return;
-    }
-
-    if (!product.price) {
+    } else if (!product.price) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_PRICE_REQUIRED);
-      setIsButtonLoading(false);
+      setIsLoading(false);
 
       return;
-    }
-
-    if (!product.imageUrl) {
+    } else if (!product.imageUrl) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_IMAGE_REQUIRED);
-      setIsButtonLoading(false);
+      setIsLoading(false);
 
       return;
     }
 
     editProduct(product);
 
-    setIsButtonLoading(false);
+    setIsLoading(false);
 
     // Update state
     setCurrentProduct(product);
@@ -120,7 +114,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           validateMessage={validateMessage}
           variants={FormVariants.Edit}
           options={PRODUCT_TYPE_LIST}
-          isButtonLoading={isButtonLoading}
+          isButtonLoading={isLoading}
           isDisableForm={true}
           onSubmit={handleEditProduct}
         />

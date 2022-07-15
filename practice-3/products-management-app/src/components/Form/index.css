@@ -1,5 +1,6 @@
 .form-wrapper,
 .form {
+  position: relative;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -13,4 +14,9 @@
   padding: 1rem 0.5rem;
   margin-bottom: 1rem;
   text-align: start;
+}
+
+.enable-edit {
+  position: absolute;
+  right: 2rem;
 }

@@ -1,11 +1,5 @@
 // Library
-import React, {
-  FormEvent,
-  RefObject,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { FormEvent, useCallback, useRef, useState } from 'react';
 
 // Style
 import './index.css';
@@ -60,14 +54,19 @@ const Form: React.FC<FormProps> = ({
     setProduct({ ...product, [fieldName as string]: value });
   };
 
-  const handleEnableEditButton = () => {
+  const handleEnableEditButton = useCallback(() => {
     setIsDisable(false);
 
     nameRef.current && nameRef.current.focus();
-  };
+  }, []);
 
   return (
     <div className='form-wrapper'>
+      {isDisable && (
+        <a href='#' className='enable-edit' onClick={handleEnableEditButton}>
+          Enable edit
+        </a>
+      )}
       <Title>{variants} Product</Title>
       <form
         className='form'
@@ -116,22 +115,13 @@ const Form: React.FC<FormProps> = ({
             </Text>
           )}
         </fieldset>
-        {!isDisable && (
-          <Button
-            variant={ButtonVariants.Primary}
-            title={variants}
-            isLoading={isButtonLoading}
-            isDisabled={isDisable}
-          />
-        )}
-        {isDisable && (
-          <Button
-            title='Enable Edit'
-            variant={ButtonVariants.Default}
-            onClick={handleEnableEditButton}
-            isDisabled={!product.id}
-          />
-        )}
+
+        <Button
+          variant={ButtonVariants.Primary}
+          title={variants}
+          isLoading={isButtonLoading}
+          isDisabled={isDisable}
+        />
       </form>
     </div>
   );
