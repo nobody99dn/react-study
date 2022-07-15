@@ -1,7 +1,6 @@
 // Library
 import { useEffect } from 'react';
 import useSWR from 'swr';
-import { AxiosError } from 'axios';
 
 // Constants
 import {
