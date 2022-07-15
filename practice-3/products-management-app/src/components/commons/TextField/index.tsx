@@ -14,7 +14,7 @@ import {
   TypeVariables
 } from '@constants/index';
 
-interface TextFieldProps {
+export interface TextFieldProps {
   id?: string;
   name?: string;
   defaultValue?: string | number;
