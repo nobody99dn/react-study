@@ -1,6 +1,6 @@
 // Library
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Styles
 import './assets/styles/reset.css';
@@ -8,12 +8,14 @@ import './assets/styles/App.css';
 import './assets/styles/reset.css';
 import './assets/styles/variables.css';
 
-// Component
+// Components
 import LoadingIndicator from '@components/LoadingIndicator';
 import MessagePopUp from '@components/MessagePopUp/index';
 
 // Store
 import { useStore } from './store';
+
+// Constant
 import { MessagePopUpVariants } from '@constants/index';
 
 const Home = lazy(() => import('@pages/Home'));
@@ -26,28 +28,28 @@ function App() {
 
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <Suspense fallback={<LoadingIndicator />}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/product-detail/:id' element={<DetailPage />} />
           </Routes>
         </Suspense>
-      </Router>
+      </BrowserRouter>
 
       {isLoading && <LoadingIndicator />}
 
       {errorMessage && (
         <MessagePopUp
           text={errorMessage}
-          messagePopUpVariant={MessagePopUpVariants.Failed}
+          variant={MessagePopUpVariants.Failed}
         />
       )}
 
       {successMessage && (
         <MessagePopUp
           text={successMessage}
-          messagePopUpVariant={MessagePopUpVariants.Success}
+          variant={MessagePopUpVariants.Success}
         />
       )}
     </>

@@ -25,7 +25,7 @@ export const CreateForm = Template.bind({});
 CreateForm.args = {
   variants: FormVariants.Create,
   options: PRODUCT_TYPE_LIST,
-  onSubmit() {},
+  handleSubmit: () => {},
   productItem: {
     id: '',
     name: '',
@@ -39,7 +39,7 @@ export const EditForm = Template.bind({});
 EditForm.args = {
   variants: FormVariants.Edit,
   options: PRODUCT_TYPE_LIST,
-  onSubmit() {},
+  handleSubmit: () => {},
   productItem: {
     id: 'product-01',
     name: 'iPhone X',

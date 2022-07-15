@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // Hooks
@@ -9,9 +9,6 @@ import useProducts from '@hooks/useProducts';
 import Header from '@layouts/Header';
 import ProductDetail from '@layouts/ProductDetail';
 
-// Constant
-import { ERROR_MESSAGES } from '@constants/messages';
-
 // Store
 import { useStore, clearCurrentProduct } from '@store/index';
 
@@ -19,7 +16,6 @@ import { useStore, clearCurrentProduct } from '@store/index';
 import './index.css';
 
 // Components
-import Text, { VariantsTypes } from '@components/commons/Text';
 import { URL } from '@constants/routes';
 
 const DetailPage: React.FC = () => {
