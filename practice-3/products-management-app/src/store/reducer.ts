@@ -190,6 +190,13 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       };
     }
 
+    case ACTIONS.CLEAR_CURRENT_PRODUCT: {
+      return {
+        ...state,
+        currentProduct: null
+      };
+    }
+
     default:
       return state;
   }

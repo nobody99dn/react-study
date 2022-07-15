@@ -1,6 +1,10 @@
 // Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
-import { ProductTypes, FilterOrderOptions } from '@constants/index';
+import {
+  ProductTypes,
+  FilterOrderOptions,
+  ERROR_MESSAGES,
+  SUCCESS_MESSAGES
+} from '@constants/index';
 
 // Model
 import { Product } from '@models/product';

@@ -21,7 +21,7 @@ import { Product } from '@models/product';
 interface CardProps {
   product: Product;
   currency: Currencies;
-  onOpenProductDetail: (product: Product) => void;
+  onOpenProductDetail: (productId: string) => void;
   onDeleteProduct: (id: string) => void;
 }
 
@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
 
   const handleToggleModal = () => {
-    onOpenProductDetail(product);
+    onOpenProductDetail(id);
   };
 
   const handleDeleteProduct = () => {

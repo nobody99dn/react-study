@@ -20,7 +20,8 @@ const ACTIONS = {
   FILTER_PRODUCTS_REQUEST: 'filter_product_request',
   FILTER_PRODUCTS_SUCCESS: 'filter_product_success',
   SEARCH_PRODUCTS_SUCCESS: 'search_products_success',
-  CLEAR_MESSAGES: 'clear_messages'
+  CLEAR_MESSAGES: 'clear_messages',
+  CLEAR_CURRENT_PRODUCT: 'clear_current_product'
 };
 
 export { ACTIONS };
