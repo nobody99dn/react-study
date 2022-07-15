@@ -8,6 +8,6 @@ module.exports = {
     '@constants/(.*)': '<rootDir>/src/constants/$1',
     '@assets/(.*)': '<rootDir>/src/assets/$1',
     '@components/(.*)': '<rootDir>/src/components/$1',
-    '\\.(css|scss|svg|png|jpg)$': '<rootDir>/__mocks__/styleMock.ts'
+    '\\.(css|svg|png|jpg)$': '<rootDir>/__mocks__/styleMock.ts'
   }
 };
