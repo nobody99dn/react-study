@@ -18,7 +18,7 @@ import './index.css';
 // Model
 import { Product } from '@models/product';
 
-interface CardProps {
+export interface CardProps {
   product: Product;
   currency: Currencies;
   onOpenProductDetail: (product: Product) => void;

@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should render correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    alt="Product Name"
+    className="image  card-image"
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="title-wrapper"
+    >
+      <div
+        className="title card-title"
+        style={
+          Object {
+            "color": undefined,
+            "fontSize": undefined,
+            "fontStyle": "inherit",
+            "fontWeight": undefined,
+            "padding": "0.5rem 0.5rem 0 0.5rem",
+          }
+        }
+      >
+        Product Name
+      </div>
+    </div>
+    <div
+      className="subtitle undefined"
+      style={
+        Object {
+          "color": "var(--dark)",
+          "fontSize": "16px",
+          "fontStyle": "italic",
+          "fontWeight": undefined,
+          "padding": "0 0.5rem",
+        }
+      }
+    >
+      Phone
+    </div>
+    <div
+      className="subtitle undefined"
+      style={
+        Object {
+          "color": undefined,
+          "fontSize": undefined,
+          "fontStyle": "inherit",
+          "fontWeight": 700,
+          "padding": "0.5rem",
+        }
+      }
+    >
+      1 000 000
+      <span>
+         
+        ₫
+      </span>
+    </div>
+    <div
+      className="button-wrapper"
+    >
+      <button
+        className="btn btn-default"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Edit
+      </button>
+      <button
+        className="btn btn-secondary"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card component should render correctly 2`] = `
+<div
+  className="card"
+>
+  <img
+    alt="Product Name"
+    className="image  card-image"
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="title-wrapper"
+    >
+      <div
+        className="title card-title"
+        style={
+          Object {
+            "color": undefined,
+            "fontSize": undefined,
+            "fontStyle": "inherit",
+            "fontWeight": undefined,
+            "padding": "0.5rem 0.5rem 0 0.5rem",
+          }
+        }
+      >
+        Product Name
+      </div>
+    </div>
+    <div
+      className="subtitle undefined"
+      style={
+        Object {
+          "color": "var(--dark)",
+          "fontSize": "16px",
+          "fontStyle": "italic",
+          "fontWeight": undefined,
+          "padding": "0 0.5rem",
+        }
+      }
+    >
+      Phone
+    </div>
+    <div
+      className="subtitle undefined"
+      style={
+        Object {
+          "color": undefined,
+          "fontSize": undefined,
+          "fontStyle": "inherit",
+          "fontWeight": 700,
+          "padding": "0.5rem",
+        }
+      }
+    >
+      1 000 000
+      <span>
+         
+        €
+      </span>
+    </div>
+    <div
+      className="button-wrapper"
+    >
+      <button
+        className="btn btn-default"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Edit
+      </button>
+      <button
+        className="btn btn-secondary"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card component should render correctly 3`] = `
+<div
+  className="card"
+>
+  <img
+    alt="Product Name"
+    className="image  card-image"
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="title-wrapper"
+    >
+      <div
+        className="title card-title"
+        style={
+          Object {
+            "color": undefined,
+            "fontSize": undefined,
+            "fontStyle": "inherit",
+            "fontWeight": undefined,
+            "padding": "0.5rem 0.5rem 0 0.5rem",
+          }
+        }
+      >
+        Product Name
+      </div>
+    </div>
+    <div
+      className="subtitle undefined"
+      style={
+        Object {
+          "color": "var(--dark)",
+          "fontSize": "16px",
+          "fontStyle": "italic",
+          "fontWeight": undefined,
+          "padding": "0 0.5rem",
+        }
+      }
+    >
+      Phone
+    </div>
+    <div
+      className="subtitle undefined"
+      style={
+        Object {
+          "color": undefined,
+          "fontSize": undefined,
+          "fontStyle": "inherit",
+          "fontWeight": 700,
+          "padding": "0.5rem",
+        }
+      }
+    >
+      1 000 000
+      <span>
+         
+        $
+      </span>
+    </div>
+    <div
+      className="button-wrapper"
+    >
+      <button
+        className="btn btn-default"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Edit
+      </button>
+      <button
+        className="btn btn-secondary"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+`;
