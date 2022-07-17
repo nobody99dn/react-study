@@ -14,7 +14,7 @@ describe('Select Item component', () => {
     label: 'Select Item Label',
     name: 'select',
     options: ['option 1', 'option 2', 'option 3'],
-    onChange: () => {}
+    onChange: jest.fn()
   };
 
   beforeEach(() => {
@@ -52,12 +52,7 @@ describe('Select Item component', () => {
 
     render(<SelectItem {...defaultProps} onChange={myMock} />, { container });
 
-    const select: HTMLElement | null = container.querySelector('select');
-
-    if (!select) {
-      expect(myMock).not.toHaveBeenCalled();
-      return;
-    }
+    const select: HTMLElement = container.getElementsByTagName('select')[0];
 
     fireEvent.change(select);
 
