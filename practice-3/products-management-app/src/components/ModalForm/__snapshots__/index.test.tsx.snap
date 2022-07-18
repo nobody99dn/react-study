@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalForm component should render correctly 1`] = `
+<div
+  className="modal"
+>
+  <div
+    className="modal-dialog"
+  >
+    <img
+      alt="close icon"
+      className="image  close-icon"
+      onClick={[MockFunction]}
+      onError={[Function]}
+      onLoad={[Function]}
+    />
+    <div
+      className="modal-body"
+    >
+      <div
+        className="form-wrapper"
+      >
+        <div
+          className="title"
+          style={
+            Object {
+              "color": undefined,
+              "fontSize": undefined,
+              "fontStyle": "inherit",
+              "fontWeight": undefined,
+              "padding": undefined,
+            }
+          }
+        >
+          Edit
+           Product
+        </div>
+        <form
+          aria-label="form"
+          className="form"
+          onSubmit={[Function]}
+        >
+          <fieldset
+            className="field-group"
+          >
+            <div
+              className="field-wrapper"
+            >
+              <label>
+                Product name
+                : 
+              </label>
+              <div
+                className="input-wrapper"
+              >
+                <input
+                  className="field field-standard"
+                  disabled={false}
+                  name="name"
+                  onChange={[Function]}
+                  placeholder="Enter product name..."
+                  readOnly={false}
+                  required={false}
+                  style={
+                    Object {
+                      "height": undefined,
+                      "width": undefined,
+                    }
+                  }
+                  type="text"
+                  value="Product test"
+                />
+              </div>
+            </div>
+            <div
+              className="select-wrapper"
+            >
+              <label>
+                Product type
+                :
+              </label>
+              <select
+                className="select"
+                disabled={false}
+                name="type"
+                onChange={[Function]}
+                value="Phone"
+              >
+                <option
+                  value=""
+                >
+                  Select
+                </option>
+                <option
+                  value="Phone"
+                >
+                  Phone
+                </option>
+                <option
+                  value="Tablet"
+                >
+                  Tablet
+                </option>
+                <option
+                  value="Laptop"
+                >
+                  Laptop
+                </option>
+              </select>
+            </div>
+            <div
+              className="field-wrapper"
+            >
+              <label>
+                Price
+                : 
+              </label>
+              <div
+                className="input-wrapper"
+              >
+                <input
+                  className="field field-standard"
+                  disabled={false}
+                  name="price"
+                  onChange={[Function]}
+                  placeholder="Enter price..."
+                  readOnly={false}
+                  required={false}
+                  style={
+                    Object {
+                      "height": undefined,
+                      "width": undefined,
+                    }
+                  }
+                  type="number"
+                  value={1000000}
+                />
+              </div>
+            </div>
+            <div
+              className="field-wrapper"
+            >
+              <label>
+                Image link
+                : 
+              </label>
+              <div
+                className="input-wrapper"
+              >
+                <input
+                  className="field field-standard"
+                  disabled={false}
+                  name="imageUrl"
+                  onChange={[Function]}
+                  placeholder="Enter image link..."
+                  readOnly={false}
+                  required={false}
+                  style={
+                    Object {
+                      "height": undefined,
+                      "width": undefined,
+                    }
+                  }
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <p
+              className="text-highlight"
+              style={
+                Object {
+                  "color": "var(--danger)",
+                  "fontSize": undefined,
+                  "fontStyle": "inherit",
+                  "fontWeight": 400,
+                }
+              }
+            >
+              test message
+            </p>
+          </fieldset>
+          <button
+            className="btn btn-primary"
+            disabled={false}
+          >
+            Edit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
