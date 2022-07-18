@@ -6,6 +6,7 @@ module.exports = {
   moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: {
     '@constants/(.*)': '<rootDir>/src/constants/$1',
+    '@components/(.*)': '<rootDir>/src/components/$1',
     '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.ts'
   }
 };

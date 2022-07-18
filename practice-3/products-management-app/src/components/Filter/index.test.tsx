@@ -56,5 +56,27 @@ describe('Filter component', () => {
     expect(getByText(ProductTypes.Tablet)).toBeInTheDocument();
   });
 
-  test('should be change actions', () => {});
+  test('should be change actions', () => {
+    const changeTypeMock = jest.fn();
+    const changePriceMock = jest.fn();
+    const clearMock = jest.fn();
+
+    render(
+      <Filter
+        {...defaultProps}
+        handleClearFilters={clearMock}
+        handlePriceChange={changePriceMock}
+        handleTypeChange={changeTypeMock}
+      />
+    );
+
+    const selects: HTMLSelectElement[] = screen.getAllByTestId('select-option');
+
+    selects.forEach((select) => {
+      fireEvent.change(select);
+    });
+
+    expect(changeTypeMock).toHaveBeenCalled();
+    expect(changePriceMock).toHaveBeenCalled();
+  });
 });
