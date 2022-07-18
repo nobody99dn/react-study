@@ -65,6 +65,7 @@ const Form: React.FC<FormProps> = ({
       )}
       <Title>{variants} Product</Title>
       <form
+        aria-label='form'
         className='form'
         onSubmit={(event: FormEvent) => handleSubmit(event, product)}
       >
