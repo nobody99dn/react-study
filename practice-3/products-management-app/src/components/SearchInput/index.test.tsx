@@ -1,5 +1,5 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
@@ -32,26 +32,11 @@ describe('SearchInput component', () => {
     expect(defaultTree).toMatchSnapshot();
   });
 
-  test('should be change with 2 times', () => {
-    const myMock = jest.fn();
-
-    const { getByRole } = render(
-      <SearchInput {...defaultProps} handleSearchProduct={myMock} />
-    );
-
-    const input: HTMLElement = getByRole('input');
-
-    fireEvent.change(input);
-    fireEvent.change(input);
-
-    expect(myMock).toHaveBeenCalledTimes(2);
-  });
-
   test('should correct value', () => {
     const productName: string = 'This is product testing';
 
     render(<SearchInput {...defaultProps} productName={productName} />);
 
-    expect(screen.getAllByDisplayValue(productName)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(productName)).toBeInTheDocument();
   });
 });

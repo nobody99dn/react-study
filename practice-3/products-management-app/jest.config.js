@@ -10,6 +10,7 @@ module.exports = {
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@helpers/(.*)': '<rootDir>/src/helpers/$1',
     '@models/(.*)': '<rootDir>/src/models/$1',
-    '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.ts'
+    '@assets/(.*)': '<rootDir>/src/assets/$1',
+    '\\.(css|scss|svg|png|jpg)$': '<rootDir>/__mocks__/styleMock.ts'
   }
 };
