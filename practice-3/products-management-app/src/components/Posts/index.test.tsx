@@ -1,0 +1,91 @@
+// Libraries
+import { render, act, fireEvent, cleanup } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
+import { create } from 'react-test-renderer';
+
+// Components
+import Posts, { PostsProps } from './index';
+import { Product } from '@models/product';
+import { ProductTypes } from '@constants/types';
+
+describe('Posts component', () => {
+  let container: HTMLElement;
+
+  const mockProducts: Product[] = [
+    {
+      id: '1',
+      imageUrl: '',
+      name: 'Product test 1',
+      price: 1000000,
+      type: ProductTypes.Phone
+    },
+    {
+      id: '2',
+      imageUrl: '',
+      name: 'Product test 2',
+      price: 2000000,
+      type: ProductTypes.Laptop
+    },
+    {
+      id: '3',
+      imageUrl: '',
+      name: 'Product test 3',
+      price: 3000000,
+      type: ProductTypes.Tablet
+    }
+  ];
+
+  const defaultProps: PostsProps = {
+    products: mockProducts,
+    handleOpenProductDetail: jest.fn(),
+    handleDeleteProduct: jest.fn()
+  };
+  beforeEach(() => {
+    // setup a DOM element as a render target
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    // cleanup on exiting
+    container.remove();
+    jest.clearAllMocks();
+    cleanup();
+  });
+
+  test('should render correctly', () => {
+    const defaultTree = create(<Posts {...defaultProps} />).toJSON();
+    expect(defaultTree).toMatchSnapshot();
+  });
+
+  test('should render correct product amount', () => {
+    render(<Posts {...defaultProps} />, { container });
+
+    expect(container.getElementsByClassName('products-row').length).toBe(
+      defaultProps.products.length
+    );
+  });
+
+  test('should be called by actions', () => {
+    const mockOpenProduct = jest.fn();
+    const mockDeleteProduct = jest.fn();
+
+    render(
+      <Posts
+        {...defaultProps}
+        handleOpenProductDetail={mockOpenProduct}
+        handleDeleteProduct={mockDeleteProduct}
+      />,
+      { container }
+    );
+
+    const buttons: HTMLButtonElement[] = screen.getAllByRole('button');
+
+    buttons.forEach((button) => {
+      fireEvent.click(button);
+    });
+
+    expect(mockOpenProduct).toHaveBeenCalled();
+    expect(mockDeleteProduct).toHaveBeenCalled();
+  });
+});
