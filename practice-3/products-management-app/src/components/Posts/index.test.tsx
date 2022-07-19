@@ -58,7 +58,7 @@ describe('Posts component', () => {
     expect(defaultTree).toMatchSnapshot();
   });
 
-  test('should render correct product amount', () => {
+  test('should render correct products length', () => {
     render(<Posts {...defaultProps} />, { container });
 
     expect(container.getElementsByClassName('products-row').length).toBe(
@@ -66,26 +66,33 @@ describe('Posts component', () => {
     );
   });
 
-  test('should be called by actions', () => {
+  test('should handleOpenProductDetail is called', () => {
     const mockOpenProduct = jest.fn();
-    const mockDeleteProduct = jest.fn();
 
     render(
-      <Posts
-        {...defaultProps}
-        handleOpenProductDetail={mockOpenProduct}
-        handleDeleteProduct={mockDeleteProduct}
-      />,
+      <Posts {...defaultProps} handleOpenProductDetail={mockOpenProduct} />,
       { container }
     );
 
-    const buttons: HTMLButtonElement[] = screen.getAllByRole('button');
+    const button: HTMLButtonElement[] = screen.getAllByText('Edit');
 
-    buttons.forEach((button) => {
-      fireEvent.click(button);
-    });
+    fireEvent.click(button[0]);
 
     expect(mockOpenProduct).toHaveBeenCalled();
+  });
+
+  test('should handleDeleteProduct is called', () => {
+    const mockDeleteProduct = jest.fn();
+
+    render(
+      <Posts {...defaultProps} handleDeleteProduct={mockDeleteProduct} />,
+      { container }
+    );
+
+    const button: HTMLButtonElement[] = screen.getAllByText('Delete');
+
+    fireEvent.click(button[0]);
+
     expect(mockDeleteProduct).toHaveBeenCalled();
   });
 });
