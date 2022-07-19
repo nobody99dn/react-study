@@ -13,7 +13,7 @@ import { Currencies } from '@constants/index';
 // Model
 import { Product } from '@models/product';
 
-interface PostsProps {
+export interface PostsProps {
   products: Product[];
   handleOpenProductDetail: (productId: string) => void;
   handleDeleteProduct: (id: string) => void;
