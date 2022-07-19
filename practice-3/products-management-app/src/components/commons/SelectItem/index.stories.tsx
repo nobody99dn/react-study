@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import Select from './index';
+import SelectItem from './index';
 
 // Styles
 import '@assets/styles/reset.css';
@@ -13,15 +13,17 @@ import '@assets/styles/variables.css';
 import { PRODUCT_TYPE_LIST } from '@constants/index';
 
 export default {
-  title: 'Components/Select',
-  component: Select
-} as ComponentMeta<typeof Select>;
+  title: 'Components/SelectItem',
+  component: SelectItem
+} as ComponentMeta<typeof SelectItem>;
 
-const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
+const Template: ComponentStory<typeof SelectItem> = (args) => (
+  <SelectItem {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Select label',
+  label: 'SelectItem label',
   name: 'select',
   options: PRODUCT_TYPE_LIST
 };

@@ -1,5 +1,5 @@
 // Library
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useCallback, useRef, useState } from 'react';
 
 // Style
 import './index.css';
@@ -28,8 +28,8 @@ interface FormProps {
   productItem: Product;
   validateMessage: string;
   isButtonLoading?: boolean;
-  onSubmit: (event: FormEvent, product: Product) => void;
-  onChangeImage?: (value: string) => void;
+  isDisableForm?: boolean;
+  handleSubmit: (event: FormEvent, product: Product) => void;
 }
 
 const Form: React.FC<FormProps> = ({
@@ -38,32 +38,36 @@ const Form: React.FC<FormProps> = ({
   options = [],
   validateMessage,
   isButtonLoading = false,
-  onSubmit,
-  onChangeImage
+  isDisableForm = false,
+  handleSubmit
 }) => {
-  const [product, setProduct] = useState<Product>(productItem as Product);
+  const [product, setProduct] = useState<Product>(productItem);
+  const [isDisable, setIsDisable] = useState<boolean>(isDisableForm);
 
-  const handleOnChange = (
-    value: string | number,
-    fieldName: string | undefined
-  ): void => {
+  const nameRef = useRef<HTMLInputElement>(null);
+
+  const handleOnChange = (value: string | number, fieldName: string): void => {
     setProduct({ ...product, [fieldName as string]: value });
-
-    if (fieldName === 'imageUrl') {
-      onChangeImage && onChangeImage(value as string);
-    }
   };
 
-  useEffect(() => {
-    onChangeImage && onChangeImage(product.imageUrl);
+  const handleEnableEditButton = useCallback(() => {
+    setIsDisable(false);
+
+    nameRef.current && nameRef.current.focus();
   }, []);
 
   return (
     <div className='form-wrapper'>
-      <Title>{variants} Form</Title>
+      {isDisable && (
+        <a href='#' className='enable-edit' onClick={handleEnableEditButton}>
+          Enable edit
+        </a>
+      )}
+      <Title>{variants} Product</Title>
       <form
+        aria-label='form'
         className='form'
-        onSubmit={(event: FormEvent) => onSubmit(event, product)}
+        onSubmit={(event: FormEvent) => handleSubmit(event, product)}
       >
         <fieldset className='field-group'>
           <TextField
@@ -71,15 +75,18 @@ const Form: React.FC<FormProps> = ({
             name='name'
             label='Product name'
             placeholder='Enter product name...'
-            onChange={handleOnChange}
             type={TypeVariables.Text}
+            readonly={isDisable}
+            handleInputChange={handleOnChange}
+            ref={nameRef}
           />
           <Select
             label='Product type'
             options={options}
             value={product.type}
-            onChange={handleOnChange}
+            handleSelectChange={handleOnChange}
             name='type'
+            disable={isDisable}
           />
           <TextField
             defaultValue={product.price}
@@ -87,7 +94,8 @@ const Form: React.FC<FormProps> = ({
             type={TypeVariables.Number}
             label='Price'
             placeholder='Enter price...'
-            onChange={handleOnChange}
+            readonly={isDisable}
+            handleInputChange={handleOnChange}
           />
           <TextField
             defaultValue={product.imageUrl}
@@ -95,7 +103,8 @@ const Form: React.FC<FormProps> = ({
             type={TypeVariables.Text}
             label='Image link'
             placeholder='Enter image link...'
-            onChange={handleOnChange}
+            readonly={isDisable}
+            handleInputChange={handleOnChange}
           />
           {validateMessage && (
             <Text variant={VariantsTypes.Highlight} color='var(--danger)'>
@@ -103,10 +112,12 @@ const Form: React.FC<FormProps> = ({
             </Text>
           )}
         </fieldset>
+
         <Button
           variant={ButtonVariants.Primary}
           title={variants}
           isLoading={isButtonLoading}
+          isDisabled={isDisable}
         />
       </form>
     </div>
