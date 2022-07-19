@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput component should render correctly 1`] = `
+<div
+  className="field-wrapper"
+>
+  <div
+    className="input-wrapper"
+  >
+    <input
+      className="field field-standard"
+      disabled={false}
+      onChange={[Function]}
+      placeholder="Searching..."
+      readOnly={false}
+      required={false}
+      style={
+        Object {
+          "height": "4.25rem",
+          "width": undefined,
+        }
+      }
+      type="text"
+      value="Product Test"
+    />
+  </div>
+</div>
+`;
