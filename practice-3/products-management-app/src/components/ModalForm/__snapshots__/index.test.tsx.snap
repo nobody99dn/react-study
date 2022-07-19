@@ -81,6 +81,7 @@ exports[`ModalForm component should render correctly 1`] = `
               </label>
               <select
                 className="select"
+                data-testid="select-option"
                 disabled={false}
                 name="type"
                 onChange={[Function]}

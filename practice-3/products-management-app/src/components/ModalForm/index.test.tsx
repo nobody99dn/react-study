@@ -54,28 +54,29 @@ describe('ModalForm component', () => {
     expect(getByText(message)).toBeInTheDocument();
   });
 
-  test('should be click actions', () => {
+  test('should submitMock be called', () => {
     const submitMock = jest.fn();
+
+    render(<ModalForm {...defaultProps} handleSubmitForm={submitMock} />),
+      { container };
+
+    const form: HTMLImageElement = screen.getByRole('form');
+
+    fireEvent.submit(form);
+
+    expect(submitMock).toHaveBeenCalled();
+  });
+
+  test('should handleClose be called', () => {
     const closeMock = jest.fn();
 
-    render(
-      <ModalForm
-        {...defaultProps}
-        handleCloseModal={closeMock}
-        handleSubmitForm={submitMock}
-      />
-    ),
+    render(<ModalForm {...defaultProps} handleCloseModal={closeMock} />),
       { container };
 
     const img: HTMLImageElement = screen.getByRole('img');
 
-    const form: HTMLImageElement = screen.getByRole('form');
-
     fireEvent.click(img);
 
-    fireEvent.submit(form);
-
     expect(closeMock).toHaveBeenCalled();
-    expect(submitMock).toHaveBeenCalled();
   });
 });
