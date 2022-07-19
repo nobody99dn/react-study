@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image component should render correctly 1`] = `
+<img
+  alt="image"
+  className="image"
+  onError={[Function]}
+  onLoad={[Function]}
+/>
+`;
+
+exports[`Image component should render correctly 2`] = `
+<img
+  alt="image"
+  className="image image-logo"
+  onError={[Function]}
+  onLoad={[Function]}
+/>
+`;
+
+exports[`Image component should render correctly 3`] = `
+<img
+  alt="image"
+  className="image image-icon"
+  onError={[Function]}
+  onLoad={[Function]}
+/>
+`;

@@ -12,7 +12,7 @@ export enum VariantTypes {
   Subtitle = 'subtitle'
 }
 
-interface TitleProps {
+export interface TitleProps {
   children: ReactNode;
   className?: string;
   color?: string;

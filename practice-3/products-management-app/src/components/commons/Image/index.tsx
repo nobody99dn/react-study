@@ -6,6 +6,8 @@ import './index.css';
 
 // Constants
 import { ERROR_MESSAGES, ImageVariants } from '@constants/index';
+
+// Component
 import Text from '@components/commons/Text';
 
 interface ImageProps {
@@ -13,7 +15,6 @@ interface ImageProps {
   className?: string;
   imageUrl: string;
   variant?: ImageVariants;
-  isError?: boolean;
   handleClick?: () => void;
 }
 

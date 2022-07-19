@@ -33,10 +33,7 @@ interface TextFieldProps {
   handleInputChange?: (value: string | number, fieldName: string) => void;
 }
 
-const TextField: React.FC<TextFieldProps> = forwardRef<
-  HTMLInputElement,
-  TextFieldProps
->(
+const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
       id,
