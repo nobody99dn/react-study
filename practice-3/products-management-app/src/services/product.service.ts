@@ -8,6 +8,7 @@ import {
 
 // Helper
 import { get, post, remove, update } from '@helpers/clientRequests';
+import { filterTypeAndPriceOrder, queryProducts } from '@helpers/queries';
 
 // Model
 import { Product } from '@models/product';
@@ -63,15 +64,11 @@ const filterProductsByTypeAndPrice = async (
   type: ProductTypes,
   priceOrder: FilterOrderOptions
 ): Promise<Product[]> => {
-  return (await get(
-    `${URL_PRODUCTS}?${`type=${type}`}${priceOrder ? '&' : ''}${
-      priceOrder ? `sortBy=price&order=${priceOrder}` : ''
-    }`
-  )) as Product[];
+  return (await get(filterTypeAndPriceOrder(type, priceOrder))) as Product[];
 };
 
-const searchProducts = async (productName: string): Promise<Product[]> => {
-  return (await get(`${URL_PRODUCTS}?search=${productName}`)) as Product[];
+const searchProducts = async (input: string): Promise<Product[]> => {
+  return (await get(queryProducts(input))) as Product[];
 };
 
 export {

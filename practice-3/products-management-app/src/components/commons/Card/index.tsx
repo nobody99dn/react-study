@@ -18,30 +18,30 @@ import './index.css';
 // Model
 import { Product } from '@models/product';
 
-interface CardProps {
+export interface CardProps {
   product: Product;
   currency: Currencies;
-  onOpenProductDetail: (product: Product) => void;
-  onDeleteProduct: (id: string) => void;
+  handleOpenProductDetail: (productId: string) => void;
+  handleDeleteProduct: (id: string) => void;
 }
 
 const Card: React.FC<CardProps> = ({
   product,
   currency,
-  onOpenProductDetail,
-  onDeleteProduct
+  handleOpenProductDetail,
+  handleDeleteProduct
 }) => {
   const { name, imageUrl, price, id, type } = product || {};
 
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
 
   const handleToggleModal = () => {
-    onOpenProductDetail(product);
+    handleOpenProductDetail(id);
   };
 
-  const handleDeleteProduct = () => {
+  const handleDelete = () => {
     setIsDeleteLoading(true);
-    onDeleteProduct(id);
+    handleDeleteProduct(id);
   };
 
   return (
@@ -67,12 +67,12 @@ const Card: React.FC<CardProps> = ({
           <span> {currency}</span>
         </Title>
         <div className='button-wrapper'>
-          <Button title='Edit' onClick={handleToggleModal} />
+          <Button title='Edit' handleClick={handleToggleModal} />
           <Button
             variant={ButtonVariants.Secondary}
             title='Delete'
             isLoading={isDeleteLoading}
-            onClick={handleDeleteProduct}
+            handleClick={handleDelete}
           />
         </div>
       </div>

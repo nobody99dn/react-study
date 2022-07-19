@@ -11,7 +11,7 @@ import { FormVariants, PRODUCT_TYPE_LIST } from '@constants/index';
 // Model
 import { Product } from '@models/product';
 
-interface ModalFormProps {
+export interface ModalFormProps {
   product: Product;
   isModalShow: boolean;
   validateMessage: string;
@@ -28,14 +28,14 @@ const ModalForm: React.FC<ModalFormProps> = ({
   handleSubmitForm,
   handleCloseModal
 }) => (
-  <Modal isVisible={isModalShow} onClose={handleCloseModal}>
+  <Modal isVisible={isModalShow} handleClose={handleCloseModal}>
     <Form
       variants={!product.id ? FormVariants.Create : FormVariants.Edit}
       options={PRODUCT_TYPE_LIST}
       productItem={product}
       validateMessage={validateMessage}
       isButtonLoading={isButtonLoading}
-      onSubmit={handleSubmitForm}
+      handleSubmit={handleSubmitForm}
     />
   </Modal>
 );

@@ -37,8 +37,6 @@
 
 /* - Disable Button */
 /* - ---------------------------------------------- */
-.disabled {
-  background-color: var(--light-gray);
-  border: 1px solid var(--light-gray);
+.btn-disabled {
   cursor: auto;
 }

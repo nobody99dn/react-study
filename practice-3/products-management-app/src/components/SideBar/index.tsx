@@ -18,8 +18,8 @@ import {
 } from '@constants/index';
 
 interface SideBarProps {
-  currentFilterTypeParam: ProductTypes | undefined;
-  currentFilterPriceParam: FilterOrderOptions | undefined;
+  currentFilterTypeParam: ProductTypes | '';
+  currentFilterPriceParam: FilterOrderOptions | '';
   handleOpenModalForm: () => void;
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;
@@ -40,7 +40,7 @@ const SideBar: React.FC<SideBarProps> = ({
         <Button
           title='Add new product'
           variant={ButtonVariants.Primary}
-          onClick={handleOpenModalForm}
+          handleClick={handleOpenModalForm}
         />
       </div>
       <Filter

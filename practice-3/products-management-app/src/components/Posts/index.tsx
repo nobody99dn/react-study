@@ -13,16 +13,16 @@ import { Currencies } from '@constants/index';
 // Model
 import { Product } from '@models/product';
 
-interface PostsProps {
+export interface PostsProps {
   products: Product[];
-  onOpenProductDetail: (product: Product) => void;
-  onDeleteProduct: (id: string) => void;
+  handleOpenProductDetail: (productId: string) => void;
+  handleDeleteProduct: (id: string) => void;
 }
 
 const Posts: React.FC<PostsProps> = ({
   products,
-  onOpenProductDetail,
-  onDeleteProduct
+  handleOpenProductDetail,
+  handleDeleteProduct
 }) => (
   <div className='product-group'>
     {products.map((product: Product) => (
@@ -30,8 +30,8 @@ const Posts: React.FC<PostsProps> = ({
         <Card
           product={product}
           currency={Currencies.VND}
-          onOpenProductDetail={onOpenProductDetail}
-          onDeleteProduct={onDeleteProduct}
+          handleOpenProductDetail={handleOpenProductDetail}
+          handleDeleteProduct={handleDeleteProduct}
         />
       </div>
     ))}

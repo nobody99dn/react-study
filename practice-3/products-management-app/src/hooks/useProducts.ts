@@ -1,25 +1,19 @@
+// Library
+import { useEffect, useState } from 'react';
+import useSWR from 'swr';
+
 // Constants
 import {
   ProductTypes,
   FilterOrderOptions,
   LOCAL_KEY,
   ERROR_MESSAGES,
-  SUCCESS_MESSAGES
+  SUCCESS_MESSAGES,
+  URL_PRODUCTS
 } from '@constants/index';
 
 // Model
 import { Product } from '@models/product';
-
-// Service
-import {
-  addNewProduct,
-  filterProductsByTypeAndPrice,
-  getAllProduct,
-  getProduct,
-  removeProduct,
-  searchProducts,
-  updateProduct
-} from '@services/product.service';
 
 // Store
 import {
@@ -36,13 +30,17 @@ import {
   getProductsSuccess,
   getProductsFailed,
   filterProductsRequest,
-  getProductRequest,
-  getProductSuccess,
-  getProductFailed
+  editProductRequest,
+  deleteProductRequest,
+  addProductRequest
 } from '@store/index';
 
 // Hook
 import useLocalStorage, { initValue, InitValue } from './useLocalStorage';
+
+// Helpers
+import { get, post, remove, update } from '@helpers/clientRequests';
+import { filterTypeAndPriceOrder, queryProducts } from '@helpers/queries';
 
 /**
  * This hook help execute product data
@@ -50,6 +48,11 @@ import useLocalStorage, { initValue, InitValue } from './useLocalStorage';
  * @returns Actions
  */
 const useProducts = () => {
+  const { data, error, isValidating, mutate } = useSWR<Product[]>(
+    URL_PRODUCTS,
+    get
+  );
+
   const { dispatch } = useStore();
 
   const [storedValue, setValue] = useLocalStorage<InitValue>(
@@ -57,58 +60,24 @@ const useProducts = () => {
     initValue
   );
 
-  /**
-   * Get all products and save to local
-   */
-  const getProducts = async (): Promise<void> => {
-    try {
-      dispatch(getProductsRequest());
+  // Handle get all products when loaded
+  useEffect(() => {
+    isValidating && dispatch(getProductsRequest());
 
-      const localProducts: Product[] = storedValue.productList;
-
-      // Render products from local storage first
-      if (localProducts && localProducts.length) {
-        dispatch(getProductsSuccess({ products: localProducts }));
-      }
-
-      const products: Product[] = await getAllProduct();
-
-      if (!products.length) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
-      dispatch(getProductsSuccess({ products }));
-      setValue(Object.assign(storedValue, { productList: products }));
-    } catch (error) {
+    if (storedValue.productList) {
+      dispatch(getProductsSuccess({ products: storedValue.productList }));
+      return;
+    } else if (!isValidating && !error && data) {
+      dispatch(getProductsSuccess({ products: data }));
+      setValue({ productList: data });
+    } else if (!isValidating && error) {
       if (error instanceof Error) {
         dispatch(getProductsFailed({ errorMessage: error.message }));
       }
     }
-  };
 
-  /**
-   * Get Product by Id
-   *
-   * @param id string
-   * @returns Product
-   */
-  const getProductById = async (id: string): Promise<void> => {
-    try {
-      dispatch(getProductRequest());
-
-      // Query from local storage first
-      const product: Product =
-        (storedValue.productList.length &&
-          storedValue.productList.find((product) => product.id === id)) ||
-        (await getProduct(id));
-
-      dispatch(getProductSuccess({ product }));
-    } catch (error) {
-      if (error instanceof Error) {
-        dispatch(getProductFailed({ errorMessage: error.message }));
-      }
-    }
-  };
+    console.log(123);
+  }, [isValidating]);
 
   /**
    * Add new product
@@ -118,11 +87,15 @@ const useProducts = () => {
    */
   const createProduct = async (product: Product): Promise<void> => {
     try {
-      const newProduct: Product = await addNewProduct(product);
+      dispatch(addProductRequest());
+
+      const newProduct: Product = await post(URL_PRODUCTS, product);
 
       if (!newProduct) {
-        throw new Error(ERROR_MESSAGES.ADD_PRODUCT_FAILED);
+        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
       }
+
+      await mutate([...(data || []), newProduct], false);
 
       dispatch(
         addProductSuccess({
@@ -133,7 +106,6 @@ const useProducts = () => {
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
-        return;
       }
     }
   };
@@ -146,10 +118,25 @@ const useProducts = () => {
    */
   const editProduct = async (product: Product): Promise<void> => {
     try {
-      const updatedProduct: Product = await updateProduct(product);
-      if (!updatedProduct) {
+      dispatch(editProductRequest());
+
+      const updatedProduct: Product = await update(
+        `${URL_PRODUCTS}/${product.id}`,
+        product
+      );
+
+      const updatedProductIndex: number =
+        data?.findIndex(
+          (product: Product) => product.id === updatedProduct.id
+        ) || 0;
+
+      if (!updatedProduct || !updatedProductIndex) {
         throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
       }
+
+      data?.splice(updatedProductIndex, 1, updatedProduct);
+
+      await mutate([...(data || [])], false);
 
       dispatch(
         editProductSuccess({
@@ -173,11 +160,24 @@ const useProducts = () => {
    */
   const deleteProduct = async (id: string): Promise<void> => {
     try {
-      const deletedProduct: Product = await removeProduct(id);
+      dispatch(deleteProductRequest());
 
-      if (!deletedProduct) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+      const deletedProduct: Product = await remove(`${URL_PRODUCTS}/${id}`);
+
+      const updatedProducts: Product[] = [...(data || [])];
+
+      const deletedProductIndex: number =
+        updatedProducts?.findIndex(
+          (product: Product) => product.id === deletedProduct.id
+        ) || 0;
+
+      if (!deletedProduct || !deletedProductIndex) {
+        throw new Error(ERROR_MESSAGES.REMOVE_PRODUCT_FAILED);
       }
+
+      updatedProducts?.splice(deletedProductIndex, 1);
+
+      await mutate([...(updatedProducts || [])], false);
 
       dispatch(
         deleteProductSuccess({
@@ -199,8 +199,9 @@ const useProducts = () => {
    * @param input string
    */
   const searchingProducts = async (input: string) => {
-    const filterProducts: Product[] = await searchProducts(input);
-    dispatch(searchProductsSuccess({ filterProducts, input }));
+    const filteredProducts: Product[] = await get(queryProducts(input));
+
+    dispatch(searchProductsSuccess({ filteredProducts, input }));
   };
 
   /**
@@ -213,12 +214,11 @@ const useProducts = () => {
     currentFilterTypeParam: ProductTypes,
     currentFilterPriceParam: FilterOrderOptions
   ) => {
-    const filteredProducts: Product[] = await filterProductsByTypeAndPrice(
-      currentFilterTypeParam,
-      currentFilterPriceParam
-    );
-
     dispatch(filterProductsRequest());
+
+    const filteredProducts: Product[] = await get(
+      filterTypeAndPriceOrder(currentFilterTypeParam, currentFilterPriceParam)
+    );
 
     dispatch(
       filterProductsSuccess({
@@ -230,8 +230,6 @@ const useProducts = () => {
   };
 
   return {
-    getProducts,
-    getProductById,
     deleteProduct,
     createProduct,
     editProduct,

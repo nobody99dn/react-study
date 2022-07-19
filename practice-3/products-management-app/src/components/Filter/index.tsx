@@ -14,8 +14,8 @@ import './index.css';
 export type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  currentFilterTypeParam: ProductTypes | undefined;
-  currentFilterPriceParam: FilterOrderOptions | undefined;
+  currentFilterTypeParam: ProductTypes | '';
+  currentFilterPriceParam: FilterOrderOptions | '';
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;
   handleClearFilters: () => void;
@@ -36,7 +36,7 @@ const Filter: React.FC<FilterProps> = ({
         label='Type'
         options={typeFilterOptions}
         name='type-option'
-        onChange={handleTypeChange}
+        handleSelectChange={handleTypeChange}
         value={currentFilterTypeParam}
       />
     </div>
@@ -45,11 +45,11 @@ const Filter: React.FC<FilterProps> = ({
         label='Price'
         options={priceFilterOptions}
         name='price-filter'
-        onChange={handlePriceChange}
+        handleSelectChange={handlePriceChange}
         value={currentFilterPriceParam}
       />
     </div>
-    <Button title='Clear filter' onClick={handleClearFilters} />
+    <Button title='Clear filter' handleClick={handleClearFilters} />
   </div>
 );
 

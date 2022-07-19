@@ -12,7 +12,7 @@ export enum VariantTypes {
   Subtitle = 'subtitle'
 }
 
-interface TitleProps {
+export interface TitleProps {
   children: ReactNode;
   className?: string;
   color?: string;
@@ -25,7 +25,7 @@ interface TitleProps {
 
 const Title: React.FC<TitleProps> = ({
   children,
-  className,
+  className = '',
   color,
   fw,
   size,
@@ -34,7 +34,7 @@ const Title: React.FC<TitleProps> = ({
   variant = VariantTypes.Default
 }) => (
   <div
-    className={`${variant} ${className}`}
+    className={`${variant} ${className}`.trim()}
     style={{
       fontSize: size,
       color: color,
