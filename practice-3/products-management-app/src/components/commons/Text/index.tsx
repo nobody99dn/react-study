@@ -2,7 +2,7 @@
 import { memo, ReactNode } from 'react';
 
 // Constants
-import { FwType } from '@constants/index';
+import { FsType, FwType } from '@constants/index';
 
 // Styles
 import './index.css';
@@ -15,7 +15,7 @@ export enum VariantsTypes {
 interface TextProps {
   children: ReactNode;
   color?: string;
-  fs?: 'inherit' | 'italic';
+  fs?: FsType;
   fw?: FwType;
   size?: string;
   variant?: VariantsTypes;
@@ -26,7 +26,7 @@ const Text: React.FC<TextProps> = ({
   color,
   fw = FwType.Normal,
   size,
-  fs = 'inherit',
+  fs = FsType.Inherit,
   variant = VariantsTypes.Default
 }) => (
   <p
