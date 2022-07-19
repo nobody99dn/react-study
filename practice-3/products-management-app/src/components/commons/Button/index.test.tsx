@@ -50,7 +50,7 @@ describe('Button component', () => {
   test('should be click 2 times', () => {
     const myMock = jest.fn();
     act(() => {
-      render(<Button title='Button' onClick={myMock} />, { container });
+      render(<Button title='Button' handleClick={myMock} />, { container });
     });
 
     const button = screen.getByRole('button');

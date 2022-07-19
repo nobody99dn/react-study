@@ -13,28 +13,22 @@ import './index.css';
 interface ModalProps {
   children: ReactNode;
   isVisible: boolean;
-  onClose: () => void;
+  handleClose: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({
-  children,
-  isVisible,
-  onClose
-}) => isVisible ? (
-  <div className='modal'>
-    <div className='modal-dialog'>
-      <Image
-        alt='close icon'
-        className='close-icon'
-        imageUrl={closeIcon}
-        onImageClick={onClose} />
-      <div className='modal-body'>
-        {children}
-      </div>
-      <div className='button-group'>
+const Modal: React.FC<ModalProps> = ({ children, isVisible, handleClose }) =>
+  isVisible ? (
+    <div className='modal'>
+      <div className='modal-dialog'>
+        <Image
+          alt='close icon'
+          className='close-icon'
+          imageUrl={closeIcon}
+          handleClick={handleClose}
+        />
+        <div className='modal-body'>{children}</div>
       </div>
     </div>
-  </div>
-) : null;
+  ) : null;
 
 export default Modal;

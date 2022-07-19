@@ -122,7 +122,7 @@ const filterProductsSuccess = (payload: {
 
 //* SEARCH PRODUCTS ACTION *\\
 const searchProductsSuccess = (payload: {
-  filterProducts: Product[];
+  filteredProducts: Product[];
   input: string;
 }): ActionProps => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,
@@ -134,6 +134,9 @@ const clearMessages = (): ActionProps => ({
   type: ACTIONS.CLEAR_MESSAGES
 });
 
+const clearCurrentProduct = (): ActionProps => ({
+  type: ACTIONS.CLEAR_CURRENT_PRODUCT
+});
 export {
   getProductsRequest,
   getProductsSuccess,
@@ -153,5 +156,6 @@ export {
   filterProductsRequest,
   filterProductsSuccess,
   searchProductsSuccess,
-  clearMessages
+  clearMessages,
+  clearCurrentProduct
 };
