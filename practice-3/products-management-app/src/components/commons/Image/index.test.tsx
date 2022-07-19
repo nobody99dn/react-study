@@ -54,38 +54,10 @@ describe('Image component', () => {
 
     render(<Image {...defaultProps} handleClick={myMock} />, { container });
 
-    const image = screen.getByRole('img');
+    const image: HTMLImageElement = screen.getByRole('img');
 
     fireEvent.click(image);
 
     expect(myMock.mock.calls.length).toEqual(1);
-  });
-
-  test('should call onError when pass bad src', () => {
-    const LOAD_FAILURE_SRC = 'LOAD_FAILURE_SRC';
-
-    const myMock = jest.fn();
-
-    render(
-      <Image
-        {...defaultProps}
-        imageUrl={LOAD_FAILURE_SRC}
-        handleClick={myMock}
-      />
-    );
-
-    const image = screen.getByRole('img');
-
-    fireEvent.error(image);
-
-    expect(myMock).toHaveBeenCalled();
-  });
-
-  test('should render error message if pass isError true', () => {
-    const { getByText } = render(<Image {...defaultProps} isError />, {
-      container
-    });
-
-    expect(getByText(ERROR_MESSAGES.IMAGE_NOT_FOUND)).toBeInTheDocument();
   });
 });

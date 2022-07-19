@@ -15,7 +15,6 @@ interface ImageProps {
   className?: string;
   imageUrl: string;
   variant?: ImageVariants;
-  isError?: boolean;
   handleClick?: () => void;
 }
 
