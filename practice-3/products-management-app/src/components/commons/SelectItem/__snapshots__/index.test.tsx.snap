@@ -10,6 +10,7 @@ exports[`Select Item component should render correctly 1`] = `
   </label>
   <select
     className="select"
+    data-testid="select-option"
     disabled={false}
     name="select"
     onChange={[Function]}
@@ -48,6 +49,7 @@ exports[`Select Item component should render correctly 2`] = `
   </label>
   <select
     className="select"
+    data-testid="select-option"
     disabled={false}
     name="select"
     onChange={[Function]}

@@ -56,27 +56,51 @@ describe('Filter component', () => {
     expect(getByText(ProductTypes.Tablet)).toBeInTheDocument();
   });
 
-  test('should be change actions', () => {
-    const changeTypeMock = jest.fn();
-    const changePriceMock = jest.fn();
+  test('should handleClearFilters be called', () => {
     const clearMock = jest.fn();
 
-    render(
-      <Filter
-        {...defaultProps}
-        handleClearFilters={clearMock}
-        handlePriceChange={changePriceMock}
-        handleTypeChange={changeTypeMock}
-      />
-    );
+    render(<Filter {...defaultProps} handleClearFilters={clearMock} />);
 
-    const selects: HTMLSelectElement[] = screen.getAllByTestId('select-option');
+    const clearBtn: HTMLButtonElement = screen.getByRole('button');
 
-    selects.forEach((select) => {
-      fireEvent.change(select);
+    fireEvent.click(clearBtn);
+
+    expect(clearMock).toHaveBeenCalled();
+  });
+
+  test('should handleTypeChange is called', () => {
+    const changeTypeMock = jest.fn();
+
+    render(<Filter {...defaultProps} handleTypeChange={changeTypeMock} />, {
+      container
     });
 
+    const select: HTMLElement = container.querySelector(
+      'select[name="type-option"]'
+    )!;
+
+    expect(select).toBeTruthy();
+
+    fireEvent.change(select);
+
     expect(changeTypeMock).toHaveBeenCalled();
+  });
+
+  test('should handlePriceChange is called', () => {
+    const changePriceMock = jest.fn();
+
+    render(<Filter {...defaultProps} handlePriceChange={changePriceMock} />, {
+      container
+    });
+
+    const select: HTMLElement = container.querySelector(
+      'select[name="price-filter"]'
+    )!;
+
+    expect(select).toBeTruthy();
+
+    fireEvent.change(select);
+
     expect(changePriceMock).toHaveBeenCalled();
   });
 });
