@@ -26,7 +26,7 @@ const Posts: React.FC<PostsProps> = ({
 }) => (
   <div className='product-group'>
     {products.map((product: Product) => (
-      <div className='products-row' key={product.id}>
+      <div className='products-row' key={product.id.toString()}>
         <Card
           product={product}
           currency={Currencies.VND}
