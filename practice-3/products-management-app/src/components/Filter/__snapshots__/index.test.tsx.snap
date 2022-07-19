@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter component should render correctly 1`] = `
+<div
+  className="filter-container"
+>
+  <div
+    className="filter-item"
+  >
+    <div
+      className="select-wrapper"
+    >
+      <label>
+        Type
+        :
+      </label>
+      <select
+        className="select"
+        data-testid="select-option"
+        disabled={false}
+        name="type-option"
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          value=""
+        >
+          Select
+        </option>
+        <option
+          value="Phone"
+        >
+          Phone
+        </option>
+        <option
+          value="Tablet"
+        >
+          Tablet
+        </option>
+        <option
+          value="Laptop"
+        >
+          Laptop
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="filter-item"
+  >
+    <div
+      className="select-wrapper"
+    >
+      <label>
+        Price
+        :
+      </label>
+      <select
+        className="select"
+        data-testid="select-option"
+        disabled={false}
+        name="price-filter"
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          value=""
+        >
+          Select
+        </option>
+        <option
+          value="asc"
+        >
+          asc
+        </option>
+        <option
+          value="desc"
+        >
+          desc
+        </option>
+      </select>
+    </div>
+  </div>
+  <button
+    className="btn btn-default"
+    disabled={false}
+    onClick={[MockFunction]}
+  >
+    Clear filter
+  </button>
+</div>
+`;

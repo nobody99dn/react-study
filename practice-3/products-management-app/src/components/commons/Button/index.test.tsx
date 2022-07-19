@@ -6,7 +6,7 @@ import { create } from 'react-test-renderer';
 // Components
 import Button from './index';
 
-describe('button component', () => {
+describe('Button component', () => {
   let container: HTMLElement;
   beforeEach(() => {
     // setup a DOM element as a render target
@@ -29,7 +29,7 @@ describe('button component', () => {
     expect(disableTree).toMatchSnapshot();
   });
 
-  test('should render button with Button', () => {
+  test('should render button with content is Button', () => {
     act(() => {
       render(<Button title='Button' />, { container });
     });
@@ -53,7 +53,7 @@ describe('button component', () => {
       render(<Button title='Button' handleClick={myMock} />, { container });
     });
 
-    const button = screen.getByRole('button');
+    const button: HTMLElement = screen.getByRole('button');
 
     fireEvent.click(button);
     fireEvent.click(button);
