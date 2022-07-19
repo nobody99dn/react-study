@@ -1,11 +1,10 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
 
 // Components
 import Modal, { ModalProps } from './index';
-import ReactNode from 'react';
 
 describe('Modal component', () => {
   const defaultProps: ModalProps = {
