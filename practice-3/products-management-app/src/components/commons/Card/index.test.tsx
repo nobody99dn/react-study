@@ -1,13 +1,20 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
-import { screen } from '@testing-library/dom';
+import {
+  render,
+  fireEvent,
+  cleanup,
+  screen,
+  within
+} from '@testing-library/react';
 import { create } from 'react-test-renderer';
+import '@testing-library/jest-dom';
 
 // Components
 import Card, { CardProps } from './index';
 import { Product } from '@models/product';
 import { iPhoneImage } from '@assets/index';
 import { Currencies, ProductTypes } from '@constants/types';
+import { currencyFormat } from '@helpers/string';
 
 describe('Card component', () => {
   const mockProduct: Product = {
@@ -21,8 +28,8 @@ describe('Card component', () => {
   const defaultProps: CardProps = {
     product: mockProduct,
     currency: Currencies.VND,
-    onOpenProductDetail: () => {},
-    onDeleteProduct: () => {}
+    handleOpenProductDetail: () => {},
+    handleDeleteProduct: () => {}
   };
 
   let container: HTMLElement;
@@ -54,11 +61,21 @@ describe('Card component', () => {
     expect(cardWithDollar).toMatchSnapshot();
   });
 
+  test('should render correct amount', () => {
+    render(<Card {...defaultProps} />, { container });
+
+    const expectValue = currencyFormat(mockProduct.price);
+
+    const { getByText } = within(container);
+
+    expect(getByText(expectValue)).toBeInTheDocument();
+  });
+
   test('should be open product detail page', () => {
     const myMock = jest.fn();
 
     const { getByText } = render(
-      <Card {...defaultProps} onOpenProductDetail={myMock} />,
+      <Card {...defaultProps} handleOpenProductDetail={myMock} />,
       { container }
     );
 
@@ -71,7 +88,7 @@ describe('Card component', () => {
     const myMock = jest.fn();
 
     const { getByText } = render(
-      <Card {...defaultProps} onDeleteProduct={myMock} />,
+      <Card {...defaultProps} handleDeleteProduct={myMock} />,
       { container }
     );
 
