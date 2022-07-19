@@ -10,7 +10,7 @@ import { closeIcon } from '@assets/index';
 // Style
 import './index.css';
 
-interface ModalProps {
+export interface ModalProps {
   children: ReactNode;
   isVisible: boolean;
   handleClose: () => void;

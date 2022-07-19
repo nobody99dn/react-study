@@ -11,7 +11,7 @@ import { FormVariants, PRODUCT_TYPE_LIST } from '@constants/index';
 // Model
 import { Product } from '@models/product';
 
-interface ModalFormProps {
+export interface ModalFormProps {
   product: Product;
   isModalShow: boolean;
   validateMessage: string;
