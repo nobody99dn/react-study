@@ -21,7 +21,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     iconUrl={searchIcon}
     height='4.25rem'
     iconWidth='2rem'
-    onChange={handleSearchProduct}
+    handleInputChange={handleSearchProduct}
     defaultValue={productName}
   />
 );

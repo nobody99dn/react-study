@@ -1,10 +1,21 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
+import reactRefresh from '@vitejs/plugin-react-refresh';
+import replace from '@rollup/plugin-replace';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    reactRefresh(),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.BASE_URL': JSON.stringify(
+        'https://62943cf0a7203b3ed0650c9b.mockapi.io'
+      )
+    })
+  ],
   resolve: {
     alias: [
       {

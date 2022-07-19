@@ -1,5 +1,6 @@
 const ERROR_MESSAGES = {
   SERVER_RESPONSE_ERROR: 'Some thing went wrong. Please try again!',
+  FILE_NOT_FOUND: 'File not found!',
   ADD_PRODUCT_FAILED: 'Add product failed. Please try again!',
   EDIT_PRODUCT_FAILED: 'Edit product failed. Please try again!',
   REMOVE_PRODUCT_FAILED: 'Remove product failed. Please try again!',
@@ -7,7 +8,7 @@ const ERROR_MESSAGES = {
   PRODUCT_TYPE_REQUIRED: 'Product type is required!',
   PRODUCT_PRICE_REQUIRED: 'Price is required!',
   PRODUCT_IMAGE_REQUIRED: 'Image link is required!',
-  PRODUCT_NOT_FOUND: 'Product was not exist!',
+  PRODUCT_NOT_FOUND: 'The product was not exist!',
   IMAGE_NOT_FOUND: 'Cannot load image. Please check URL again!'
 };
 

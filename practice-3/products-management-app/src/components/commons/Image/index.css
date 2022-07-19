@@ -17,6 +17,7 @@
   display: block;
   background-repeat: no-repeat;
   width: 2.25rem;
+  cursor: pointer;
 }
 
 .icon-left {

@@ -1,5 +1,5 @@
 // Library
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 
 // Styles
 import './index.css';
@@ -14,33 +14,50 @@ interface ImageProps {
   imageUrl: string;
   variant?: ImageVariants;
   isError?: boolean;
-  onImageClick?: () => void;
-  onImageError?: () => void;
+  handleClick?: () => void;
 }
 
 const Image: React.FC<ImageProps> = ({
   alt,
-  className,
+  className = '',
   imageUrl,
   variant = ImageVariants.Default,
-  isError = false,
-  onImageClick,
-  onImageError
+  handleClick
 }) => {
-  return !isError ? (
-    <img
-      className={`image ${
-        variant !== ImageVariants.Default ? `image-${variant} ` : ''
-      } ${className}`}
-      alt={alt}
-      src={imageUrl}
-      onClick={onImageClick}
-      onError={onImageError}
-    />
-  ) : (
-    <div className='image-error'>
-      <Text color='red'>{ERROR_MESSAGES.IMAGE_NOT_FOUND}</Text>
-    </div>
+  const [isLoadImageFail, setIsLoadImageFail] = useState<boolean>();
+
+  /**
+   * Handle image load error
+   */
+  const handleImageError = () => {
+    setIsLoadImageFail(true);
+  };
+
+  /**
+   * Handle image loaded
+   */
+  const handleImageLoaded = useCallback(() => {
+    setIsLoadImageFail(false);
+  }, []);
+
+  return (
+    <>
+      <img
+        className={`image ${
+          variant !== ImageVariants.Default ? `image-${variant} ` : ''
+        } ${className}`.trim()}
+        alt={alt}
+        src={imageUrl}
+        onClick={handleClick}
+        onError={handleImageError}
+        onLoad={handleImageLoaded}
+      />
+      {isLoadImageFail && (
+        <div className='image-error'>
+          <Text color='var(--danger)'>{ERROR_MESSAGES.IMAGE_NOT_FOUND}</Text>
+        </div>
+      )}
+    </>
   );
 };
 

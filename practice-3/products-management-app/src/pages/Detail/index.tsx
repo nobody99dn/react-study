@@ -20,23 +20,22 @@ import './index.css';
 
 // Component
 import Text, { VariantsTypes } from '@components/commons/Text';
+import useProductById from '@hooks/useProductById';
 
 const Detail: React.FC = () => {
   const { globalState } = useStore();
 
-  const { getProductById } = useProducts();
-
   const { id } = useParams() as { id: string };
+
+  const { getProduct, isValidating } = useProductById(id);
 
   const { currentProduct } = globalState;
 
   useEffect(() => {
-    const getProduct = async (): Promise<void> => {
-      await getProductById(id);
-    };
-
-    getProduct();
-  }, []);
+    if (!isValidating) {
+      getProduct();
+    }
+  }, [isValidating]);
 
   return (
     <>
