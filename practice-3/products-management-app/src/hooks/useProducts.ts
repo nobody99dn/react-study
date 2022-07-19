@@ -41,6 +41,7 @@ import useLocalStorage, { initValue, InitValue } from './useLocalStorage';
 // Helpers
 import { get, post, remove, update } from '@helpers/clientRequests';
 import { filterTypeAndPriceOrder, queryProducts } from '@helpers/queries';
+import { getLocalData } from '@helpers/localStorage';
 
 /**
  * This hook help execute product data
@@ -63,16 +64,16 @@ const useProducts = () => {
   // Handle get all products when loaded
   useEffect(() => {
     isValidating && dispatch(getProductsRequest());
-
-    if (storedValue.productList) {
-      dispatch(getProductsSuccess({ products: storedValue.productList }));
-      return;
-    } else if (!isValidating && !error && data) {
+    if (!isValidating && !error && data) {
       dispatch(getProductsSuccess({ products: data }));
       setValue({ productList: data });
     } else if (!isValidating && error) {
       if (error instanceof Error) {
-        dispatch(getProductsFailed({ errorMessage: error.message }));
+        dispatch(
+          getProductsFailed({
+            errorMessage: error.message
+          })
+        );
       }
     }
 
