@@ -8,4 +8,14 @@ import logo from './images/logo.png';
 import iPhoneImage from './images/iphone-13-pro-max-alpine-green-alpine-green-color.jpg';
 import blankImage from './images/blank.png';
 
-export { trashFillIcon, searchIcon, closeIcon, logo, iPhoneImage, blankImage };
+import BackIcon from './images/icons/arrow-left-short.svg';
+
+export {
+  trashFillIcon,
+  searchIcon,
+  closeIcon,
+  logo,
+  iPhoneImage,
+  BackIcon,
+  blankImage
+};

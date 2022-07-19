@@ -15,15 +15,24 @@ import { ImageVariants } from './component-types/image';
 import { TextFieldVariants } from './component-types/textField';
 import { TypeVariables } from './component-types/textField';
 import { FwType } from './component-types/title';
+import { FsType } from './component-types/text';
 
 // Messages
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from './messages';
+
+// Url
+import { URL } from './routes';
+
+// Api
+import { URL_PRODUCTS } from './api';
 
 export {
   ERROR_MESSAGES,
   SUCCESS_MESSAGES,
   PRODUCT_TYPE_LIST,
   ORDER_OPTIONS,
+  URL,
+  URL_PRODUCTS,
   Currencies,
   ProductTypes,
   FilterOrderOptions,
@@ -33,5 +42,6 @@ export {
   ImageVariants,
   TextFieldVariants,
   TypeVariables,
-  FwType
+  FwType,
+  FsType
 };

@@ -1,20 +1,18 @@
+// Library
+import { useEffect } from 'react';
+import useSWR from 'swr';
+
 // Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
-import { ProductTypes, FilterOrderOptions } from '@constants/index';
+import {
+  ProductTypes,
+  FilterOrderOptions,
+  ERROR_MESSAGES,
+  SUCCESS_MESSAGES,
+  URL_PRODUCTS
+} from '@constants/index';
 
 // Model
 import { Product } from '@models/product';
-
-// Service
-import {
-  addNewProduct,
-  filterProductsByTypeAndPrice,
-  getAllProduct,
-  getProduct,
-  removeProduct,
-  searchProducts,
-  updateProduct
-} from '@services/product.service';
 
 // Store
 import {
@@ -31,10 +29,14 @@ import {
   getProductsSuccess,
   getProductsFailed,
   filterProductsRequest,
-  getProductRequest,
-  getProductSuccess,
-  getProductFailed
+  editProductRequest,
+  deleteProductRequest,
+  addProductRequest
 } from '@store/index';
+
+// Helpers
+import { get, post, remove, update } from '@helpers/clientRequests';
+import { filterTypeAndPriceOrder, queryProducts } from '@helpers/queries';
 
 /**
  * This hook help execute product data
@@ -42,48 +44,25 @@ import {
  * @returns Actions
  */
 const useProducts = () => {
+  const { data, error, isValidating, mutate } = useSWR<Product[]>(
+    URL_PRODUCTS,
+    get
+  );
+
   const { dispatch } = useStore();
 
-  /**
-   * Get all products and save to local
-   */
-  const getProducts = async (): Promise<void> => {
-    try {
-      dispatch(getProductsRequest());
+  // Handle get all products when loaded
+  useEffect(() => {
+    isValidating && dispatch(getProductsRequest());
 
-      const products: Product[] = await getAllProduct();
-
-      if (!products.length) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
-      dispatch(getProductsSuccess({ products }));
-    } catch (error) {
+    if (!isValidating && !error && data) {
+      dispatch(getProductsSuccess({ products: data }));
+    } else if (!isValidating && error) {
       if (error instanceof Error) {
         dispatch(getProductsFailed({ errorMessage: error.message }));
       }
     }
-  };
-
-  /**
-   * Get Product by Id
-   *
-   * @param id string
-   * @returns Product
-   */
-  const getProductById = async (id: string): Promise<void> => {
-    try {
-      dispatch(getProductRequest());
-
-      const product: Product = await getProduct(id);
-
-      dispatch(getProductSuccess({ product }));
-    } catch (error) {
-      if (error instanceof Error) {
-        dispatch(getProductFailed({ errorMessage: error.message }));
-      }
-    }
-  };
+  }, [isValidating]);
 
   /**
    * Add new product
@@ -93,11 +72,15 @@ const useProducts = () => {
    */
   const createProduct = async (product: Product): Promise<void> => {
     try {
-      const newProduct: Product = await addNewProduct(product);
+      dispatch(addProductRequest());
+
+      const newProduct: Product = await post(URL_PRODUCTS, product);
 
       if (!newProduct) {
-        throw new Error(ERROR_MESSAGES.ADD_PRODUCT_FAILED);
+        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
       }
+
+      await mutate([...(data || []), newProduct], false);
 
       dispatch(
         addProductSuccess({
@@ -108,7 +91,6 @@ const useProducts = () => {
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
-        return;
       }
     }
   };
@@ -121,10 +103,25 @@ const useProducts = () => {
    */
   const editProduct = async (product: Product): Promise<void> => {
     try {
-      const updatedProduct: Product = await updateProduct(product);
-      if (!updatedProduct) {
+      dispatch(editProductRequest());
+
+      const updatedProduct: Product = await update(
+        `${URL_PRODUCTS}/${product.id}`,
+        product
+      );
+
+      const updatedProductIndex: number =
+        data?.findIndex(
+          (product: Product) => product.id === updatedProduct.id
+        ) || 0;
+
+      if (!updatedProduct || !updatedProductIndex) {
         throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
       }
+
+      data?.splice(updatedProductIndex, 1, updatedProduct);
+
+      await mutate([...(data || [])], false);
 
       dispatch(
         editProductSuccess({
@@ -148,11 +145,24 @@ const useProducts = () => {
    */
   const deleteProduct = async (id: string): Promise<void> => {
     try {
-      const deletedProduct: Product = await removeProduct(id);
+      dispatch(deleteProductRequest());
 
-      if (!deletedProduct) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+      const deletedProduct: Product = await remove(`${URL_PRODUCTS}/${id}`);
+
+      const updatedProducts: Product[] = [...(data || [])];
+
+      const deletedProductIndex: number =
+        updatedProducts?.findIndex(
+          (product: Product) => product.id === deletedProduct.id
+        ) || 0;
+
+      if (!deletedProduct || !deletedProductIndex) {
+        throw new Error(ERROR_MESSAGES.REMOVE_PRODUCT_FAILED);
       }
+
+      updatedProducts?.splice(deletedProductIndex, 1);
+
+      await mutate([...(updatedProducts || [])], false);
 
       dispatch(
         deleteProductSuccess({
@@ -174,8 +184,9 @@ const useProducts = () => {
    * @param input string
    */
   const searchingProducts = async (input: string) => {
-    const filterProducts: Product[] = await searchProducts(input);
-    dispatch(searchProductsSuccess({ filterProducts, input }));
+    const filteredProducts: Product[] = await get(queryProducts(input));
+
+    dispatch(searchProductsSuccess({ filteredProducts, input }));
   };
 
   /**
@@ -188,12 +199,11 @@ const useProducts = () => {
     currentFilterTypeParam: ProductTypes,
     currentFilterPriceParam: FilterOrderOptions
   ) => {
-    const filteredProducts: Product[] = await filterProductsByTypeAndPrice(
-      currentFilterTypeParam,
-      currentFilterPriceParam
-    );
-
     dispatch(filterProductsRequest());
+
+    const filteredProducts: Product[] = await get(
+      filterTypeAndPriceOrder(currentFilterTypeParam, currentFilterPriceParam)
+    );
 
     dispatch(
       filterProductsSuccess({
@@ -205,8 +215,6 @@ const useProducts = () => {
   };
 
   return {
-    getProducts,
-    getProductById,
     deleteProduct,
     createProduct,
     editProduct,

@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useState
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Styles
 import './index.css';
@@ -20,8 +21,12 @@ import ModalForm from '@components/ModalForm';
 import { Product } from '@models/product';
 
 // Constants
-import { ERROR_MESSAGES } from '@constants/messages';
-import { FilterOrderOptions, ProductTypes } from '@constants/index';
+import {
+  FilterOrderOptions,
+  ProductTypes,
+  ERROR_MESSAGES,
+  URL
+} from '@constants/index';
 
 // Hook
 import useProducts from '@hooks/useProducts';
@@ -29,23 +34,15 @@ import useProducts from '@hooks/useProducts';
 // Store
 import { useStore } from '@store/index';
 
-import { useNavigate } from 'react-router-dom';
-
 const Main: React.FC = () => {
   const { globalState } = useStore();
 
-  const { products, filterBox } = globalState || {};
+  const { products } = globalState || {};
 
   const navigate = useNavigate();
 
-  const {
-    getProducts,
-    deleteProduct,
-    createProduct,
-    editProduct,
-    filterProducts,
-    searchingProducts
-  } = useProducts();
+  const { deleteProduct, createProduct, filterProducts, searchingProducts } =
+    useProducts();
 
   // States
   const [isModalShow, setIsModalShow] = useState<boolean>(false);
@@ -59,24 +56,10 @@ const Main: React.FC = () => {
     imageUrl: ''
   });
   const [currentFilterPriceParam, setCurrentFilterPriceParam] =
-    useState<FilterOrderOptions>();
+    useState<FilterOrderOptions | ''>('');
   const [currentFilterTypeParam, setCurrentFilterTypeParam] =
-    useState<ProductTypes>();
+    useState<ProductTypes | ''>('');
   const [productName, setProductName] = useState<string>('');
-
-  /**
-   * Get all products
-   */
-  const getAllProducts = async (): Promise<void> => {
-    getProducts();
-  };
-
-  /**
-   * Run first times when init app
-   */
-  useEffect(() => {
-    getAllProducts();
-  }, []);
 
   /**
    * Handle delete product
@@ -95,7 +78,7 @@ const Main: React.FC = () => {
    * @param product Product
    * @returns void
    */
-  const handleSubmitProduct = async (
+  const handleCreateProduct = async (
     event: FormEvent,
     product: Product
   ): Promise<void> => {
@@ -132,11 +115,7 @@ const Main: React.FC = () => {
       return;
     }
 
-    if (!product.id) {
-      createProduct(product);
-    } else {
-      editProduct(product);
-    }
+    createProduct(product);
 
     setIsButtonLoading(false);
     setIsModalShow(false);
@@ -149,9 +128,9 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   };
 
-  const handleShowProductDetail = (product: Product) => {
-    navigate(`/product-detail/${product.id}`);
-  };
+  const handleShowProductDetail = useCallback((productId: string) => {
+    navigate(`${URL.DETAIL_PAGE}/${productId}`);
+  }, []);
 
   const handleToggleModal = () => {
     setIsModalShow(!isModalShow);
@@ -162,9 +141,9 @@ const Main: React.FC = () => {
    * Handle filter product
    */
   const handleClearFilters = useCallback(() => {
-    setCurrentFilterPriceParam(undefined);
-    setCurrentFilterTypeParam(undefined);
-  }, [currentFilterTypeParam, currentFilterPriceParam]);
+    setCurrentFilterPriceParam('');
+    setCurrentFilterTypeParam('');
+  }, []);
 
   /**
    * Handle type change in filter
@@ -227,17 +206,17 @@ const Main: React.FC = () => {
             handleSearchProduct={handleSearchProduct}
           />
           <Posts
-            products={filterBox.length ? filterBox : products}
-            onOpenProductDetail={handleShowProductDetail}
-            onDeleteProduct={handleDeleteProduct}
+            products={products}
+            handleOpenProductDetail={handleShowProductDetail}
+            handleDeleteProduct={handleDeleteProduct}
           />
         </div>
       </div>
       <div className='left-container'>
         <SideBar
-          handleOpenModalForm={handleToggleModal}
           currentFilterTypeParam={currentFilterTypeParam}
           currentFilterPriceParam={currentFilterPriceParam}
+          handleOpenModalForm={handleToggleModal}
           handleTypeChange={handleTypeChange}
           handlePriceChange={handlePriceChange}
           handleClearFilters={handleClearFilters}
@@ -249,7 +228,7 @@ const Main: React.FC = () => {
           product={product}
           isButtonLoading={isButtonLoading}
           validateMessage={validateMessage}
-          handleSubmitForm={handleSubmitProduct}
+          handleSubmitForm={handleCreateProduct}
           handleCloseModal={handleCloseModal}
         />
       )}

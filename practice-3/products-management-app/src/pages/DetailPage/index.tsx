@@ -3,26 +3,23 @@ import React, { memo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Hooks
-import useProducts from '@hooks/useProducts';
+import useProductById from '@hooks/useProductById';
 
 // Layouts
 import Header from '@layouts/Header';
 import ProductDetail from '@layouts/ProductDetail';
 
-// Constant
-import { ERROR_MESSAGES } from '@constants/messages';
-
 // Store
-import { useStore } from '@store/store';
+import { useStore } from '@store/index';
 
 // Style
 import './index.css';
 
-// Component
+// Components
 import Text, { VariantsTypes } from '@components/commons/Text';
-import useProductById from '@hooks/useProductById';
+import { ERROR_MESSAGES } from '@constants/messages';
 
-const Detail: React.FC = () => {
+const DetailPage: React.FC = () => {
   const { globalState } = useStore();
 
   const { id } = useParams() as { id: string };
@@ -54,4 +51,4 @@ const Detail: React.FC = () => {
   );
 };
 
-export default memo(Detail);
+export default memo(DetailPage);

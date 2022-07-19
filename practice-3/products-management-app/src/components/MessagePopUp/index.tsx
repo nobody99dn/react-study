@@ -15,13 +15,10 @@ import './index.css';
 
 export interface MessagePopUpProps {
   text: string;
-  messagePopUpVariant: MessagePopUpVariants;
+  variant: MessagePopUpVariants;
 }
 
-const MessagePopUp: React.FC<MessagePopUpProps> = ({
-  text,
-  messagePopUpVariant
-}) => {
+const MessagePopUp: React.FC<MessagePopUpProps> = ({ text, variant }) => {
   const { dispatch } = useStore();
   const [isVisible, setIsVisible] = useState<boolean>(true);
 
@@ -40,7 +37,7 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
       className={`popup-message
       ${isVisible ? 'active' : ''}
       ${
-        messagePopUpVariant === MessagePopUpVariants.Failed
+        variant === MessagePopUpVariants.Failed
           ? 'popup-error'
           : 'popup-success'
       }`}
