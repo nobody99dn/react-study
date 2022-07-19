@@ -41,6 +41,7 @@ const SelectItem: React.FC<SelectItemProps> = ({
         value={value}
         disabled={disable}
         onChange={handleChange}
+        data-testid='select-option'
       >
         <option value=''>Select</option>
         {options.map((option: string, index: number) => (
