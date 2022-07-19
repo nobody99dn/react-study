@@ -7,6 +7,9 @@ import { Product } from '@models/product';
 // Action
 import { ActionProps } from './actions';
 
+// Helper
+import { getLocalProducts } from '@helpers/localStorage';
+
 interface InitialState {
   products: Product[];
   currentProduct: Product | null;
@@ -16,7 +19,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  products: [],
+  products: getLocalProducts<Product[]>() || [],
   currentProduct: null,
   isLoading: false,
   errorMessage: '',

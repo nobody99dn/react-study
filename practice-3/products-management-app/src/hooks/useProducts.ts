@@ -1,12 +1,11 @@
 // Library
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useSWR from 'swr';
 
 // Constants
 import {
   ProductTypes,
   FilterOrderOptions,
-  LOCAL_KEY,
   ERROR_MESSAGES,
   SUCCESS_MESSAGES,
   URL_PRODUCTS
@@ -35,13 +34,16 @@ import {
   addProductRequest
 } from '@store/index';
 
-// Hook
-import useLocalStorage, { initValue, InitValue } from './useLocalStorage';
-
 // Helpers
-import { get, post, remove, update } from '@helpers/clientRequests';
-import { filterTypeAndPriceOrder, queryProducts } from '@helpers/queries';
-import { getLocalData } from '@helpers/localStorage';
+import {
+  get,
+  post,
+  remove,
+  update,
+  filterTypeAndPriceOrder,
+  queryProducts,
+  setLocalProducts
+} from '@helpers/index';
 
 /**
  * This hook help execute product data
@@ -56,17 +58,15 @@ const useProducts = () => {
 
   const { dispatch } = useStore();
 
-  const [storedValue, setValue] = useLocalStorage<InitValue>(
-    LOCAL_KEY,
-    initValue
-  );
-
   // Handle get all products when loaded
   useEffect(() => {
     isValidating && dispatch(getProductsRequest());
+
     if (!isValidating && !error && data) {
       dispatch(getProductsSuccess({ products: data }));
-      setValue({ productList: data });
+
+      // save local
+      setLocalProducts(data);
     } else if (!isValidating && error) {
       if (error instanceof Error) {
         dispatch(
@@ -76,8 +76,6 @@ const useProducts = () => {
         );
       }
     }
-
-    console.log(123);
   }, [isValidating]);
 
   /**
@@ -104,6 +102,9 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS
         })
       );
+
+      // save data local
+      setLocalProducts([...data, newProduct]);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
@@ -145,6 +146,9 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
         })
       );
+
+      // save local data
+      setLocalProducts(data);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(editProductFailed({ errorMessage: error.message }));
@@ -186,6 +190,9 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
         })
       );
+
+      // save local data
+      setLocalProducts(updatedProducts);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(deleteProductFailed({ errorMessage: error.message }));
