@@ -1,5 +1,5 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
@@ -52,7 +52,7 @@ describe('Image component', () => {
   test('should be click 1 times', () => {
     const myMock = jest.fn();
 
-    render(<Image {...defaultProps} onImageClick={myMock} />, { container });
+    render(<Image {...defaultProps} handleClick={myMock} />, { container });
 
     const image = screen.getByRole('img');
 
@@ -70,7 +70,7 @@ describe('Image component', () => {
       <Image
         {...defaultProps}
         imageUrl={LOAD_FAILURE_SRC}
-        onImageError={myMock}
+        handleClick={myMock}
       />
     );
 
