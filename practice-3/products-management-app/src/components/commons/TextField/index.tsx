@@ -14,7 +14,9 @@ import {
   TypeVariables
 } from '@constants/index';
 
+// TODO: check all props
 interface TextFieldProps {
+  // TODO: remove
   id?: string;
   name?: string;
   defaultValue?: string | number;

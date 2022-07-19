@@ -12,6 +12,7 @@ interface ButtonProps {
   variant?: ButtonVariants;
   isDisabled?: boolean;
   isLoading?: boolean;
+  // TODO: check optional
   handleClick?: () => void;
 }
 
@@ -21,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({
   isDisabled = false,
   isLoading = false,
   handleClick
+  // TODO: remove {}
 }) => {
   return (
     <button

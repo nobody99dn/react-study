@@ -124,6 +124,7 @@ const Main: React.FC = () => {
   /**
    * Handle close modal
    */
+  // TODO: useCallback
   const handleCloseModal = (): void => {
     setIsModalShow(false);
   };
@@ -132,6 +133,7 @@ const Main: React.FC = () => {
     navigate(`${URL.DETAIL_PAGE}/${productId}`);
   }, []);
 
+  // TODO: useCallback
   const handleToggleModal = () => {
     setIsModalShow(!isModalShow);
     setProduct(product);
@@ -198,6 +200,7 @@ const Main: React.FC = () => {
   }, [productName]);
 
   return (
+    // TODO: Split to layout component
     <main className='main'>
       <div className='right-container'>
         <div className='right-content'>

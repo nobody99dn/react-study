@@ -95,6 +95,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
   }, []);
 
   return (
+    // TODO: main tag
     <div className='product-detail'>
       <div className='back-icon'>
         <Image

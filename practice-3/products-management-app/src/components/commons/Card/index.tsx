@@ -20,22 +20,26 @@ import { Product } from '@models/product';
 
 export interface CardProps {
   product: Product;
-  currency: Currencies;
+  currency?: Currencies;
   handleOpenProductDetail: (productId: string) => void;
   handleDeleteProduct: (id: string) => void;
 }
 
 const Card: React.FC<CardProps> = ({
   product,
+  // TODO: set default value
   currency,
   handleOpenProductDetail,
   handleDeleteProduct
 }) => {
+  // TODO: remove {}
   const { name, imageUrl, price, id, type } = product || {};
 
+  // TODO: change to loading full page
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
 
   const handleToggleModal = () => {
+    // TODO: handle navigate
     handleOpenProductDetail(id);
   };
 
@@ -56,8 +60,11 @@ const Card: React.FC<CardProps> = ({
         <Title
           color='var(--dark)'
           variant={VariantTypes.Subtitle}
+          // TODO: check naming
           fs='italic'
+          // TODO: change to lineHeight
           p='0 0.5rem'
+          // TODO: fontSize
           size='16px'
         >
           {type}
