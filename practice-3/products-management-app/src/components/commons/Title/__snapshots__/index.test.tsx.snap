@@ -2,7 +2,7 @@
 
 exports[`Title component should render correctly 1`] = `
 <div
-  className="title undefined"
+  className="title"
   style={
     Object {
       "color": undefined,
@@ -19,7 +19,7 @@ exports[`Title component should render correctly 1`] = `
 
 exports[`Title component should render correctly 2`] = `
 <div
-  className="subtitle undefined"
+  className="subtitle"
   style={
     Object {
       "color": undefined,
@@ -36,7 +36,7 @@ exports[`Title component should render correctly 2`] = `
 
 exports[`Title component should render with custom style 1`] = `
 <div
-  className="title undefined"
+  className="title"
   style={
     Object {
       "color": "#0f0",
