@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`button component should render correctly 1`] = `
+exports[`Button component should render correctly 1`] = `
 <button
   className="btn btn-default"
   disabled={false}
@@ -9,7 +9,7 @@ exports[`button component should render correctly 1`] = `
 </button>
 `;
 
-exports[`button component should render correctly 2`] = `
+exports[`Button component should render correctly 2`] = `
 <button
   className="btn btn-default btn-disabled"
   disabled={true}
