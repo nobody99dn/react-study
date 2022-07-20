@@ -1,5 +1,5 @@
 // Library
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 // Model
 import { Product } from '@models/product';

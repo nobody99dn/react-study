@@ -12,7 +12,7 @@ import ProductDetail from '@layouts/ProductDetail';
 // Store
 import { useStore } from '@store/index';
 
-// Style
+// Styles
 import './index.css';
 
 // Components

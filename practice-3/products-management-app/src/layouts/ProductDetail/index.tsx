@@ -1,24 +1,24 @@
-// Library
+// Libraries
 import { FormEvent, memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Components
 import { Image, Form, Title, Layout } from '@components/index';
 
-// Model
+// Models
 import { Product } from '@models/product';
 
-// Constant
+// Constants
 import {
   ERROR_MESSAGES,
   FormVariants,
   ImageVariants,
   PRODUCT_TYPE_LIST,
-  URL
+  URL,
+  VariantTypes
 } from '@constants/index';
-import { VariantTypes } from '@constants/component-types/title';
 
-// Style
+// Styles
 import './index.css';
 
 // Hook

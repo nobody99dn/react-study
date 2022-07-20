@@ -1,4 +1,4 @@
-// Library
+// Libraries
 import React, {
   FormEvent,
   memo,
@@ -17,7 +17,7 @@ import { Posts, SearchInput, ModalForm, Layout } from '@components/index';
 // Layout
 import SideBar from '@layouts/SideBar/index';
 
-// Model
+// Models
 import { Product } from '@models/product';
 
 // Constants
@@ -28,7 +28,7 @@ import {
   URL
 } from '@constants/index';
 
-// Hook
+// Hooks
 import useProducts from '@hooks/useProducts';
 
 // Store
