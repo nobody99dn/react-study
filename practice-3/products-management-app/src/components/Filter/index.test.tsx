@@ -6,6 +6,8 @@ import '@testing-library/jest-dom';
 
 // Components
 import Filter, { FilterProps } from './index';
+
+// Constants
 import {
   FilterOrderOptions,
   ORDER_OPTIONS,

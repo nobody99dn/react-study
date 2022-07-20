@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 // Component
-import Image from '@components/commons/Image';
+import { Image } from '@components/index';
 
 // Assets
 import { logo } from '@assets/index';

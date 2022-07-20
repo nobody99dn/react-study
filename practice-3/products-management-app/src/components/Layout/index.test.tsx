@@ -1,6 +1,5 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
-import { screen } from '@testing-library/dom';
+import { cleanup } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 
 // Components

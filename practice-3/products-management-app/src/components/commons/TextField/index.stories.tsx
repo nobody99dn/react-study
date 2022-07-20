@@ -27,7 +27,6 @@ const Template: ComponentStory<typeof TextField> = (args) => (
 
 export const Standard = Template.bind({});
 Standard.args = {
-  id: 'standard-form',
   label: 'Text field',
   placeholder: 'Placeholder',
   name: 'standard form'

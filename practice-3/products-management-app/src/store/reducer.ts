@@ -22,7 +22,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  products: getLocalProducts<Product[]>(localKey) || [],
+  products: [],
   currentProduct: null,
   isLoading: false,
   errorMessage: '',
@@ -155,7 +155,7 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
           !!action.payload?.currentFilterTypeParam ||
           !!action.payload?.currentFilterPriceParam
             ? (action.payload?.filteredProducts as Product[])
-            : state.products
+            : getLocalProducts<Product[]>(localKey) || []
       };
     }
 

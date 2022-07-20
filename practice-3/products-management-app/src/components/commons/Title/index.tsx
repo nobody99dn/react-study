@@ -5,21 +5,16 @@ import React, { memo, ReactNode } from 'react';
 import './index.css';
 
 // Constants
-import { FwType } from '@constants/index';
-
-export enum VariantTypes {
-  Default = 'title',
-  Subtitle = 'subtitle'
-}
+import { FwType, VariantTypes } from '@constants/index';
 
 export interface TitleProps {
   children: ReactNode;
   className?: string;
   color?: string;
-  fw?: FwType;
-  size?: string;
-  fs?: 'inherit' | 'italic';
-  p?: string;
+  fontWeight?: FwType;
+  fontSize?: string;
+  fontStyle?: 'inherit' | 'italic';
+  lineHeight?: string;
   variant?: VariantTypes;
 }
 
@@ -27,20 +22,20 @@ const Title: React.FC<TitleProps> = ({
   children,
   className = '',
   color,
-  fw,
-  size,
-  fs = 'inherit',
-  p,
+  fontWeight,
+  fontSize,
+  fontStyle = 'inherit',
+  lineHeight,
   variant = VariantTypes.Default
 }) => (
   <div
     className={`${variant} ${className}`.trim()}
     style={{
-      fontSize: size,
+      fontSize: fontSize,
       color: color,
-      fontStyle: fs,
-      fontWeight: fw,
-      padding: p
+      fontStyle: fontStyle,
+      fontWeight: fontWeight,
+      lineHeight: lineHeight
     }}
   >
     {children}

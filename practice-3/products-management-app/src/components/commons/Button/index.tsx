@@ -4,16 +4,15 @@ import React from 'react';
 // Constants
 import { ButtonVariants } from '@constants/index';
 
-// Style
+// Styles
 import './index.css';
 
-interface ButtonProps {
+export interface ButtonProps {
   title: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
   isLoading?: boolean;
-  // TODO: check optional
-  handleClick?: () => void;
+  handleClick: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,19 +21,14 @@ const Button: React.FC<ButtonProps> = ({
   isDisabled = false,
   isLoading = false,
   handleClick
-  // TODO: remove {}
-}) => {
-  return (
-    <button
-      className={`btn btn-${variant} ${
-        isDisabled ? 'btn-disabled' : ''
-      }`.trim()}
-      onClick={handleClick}
-      disabled={isDisabled}
-    >
-      {isLoading ? 'Loading...' : title}
-    </button>
-  );
-};
+}) => (
+  <button
+    className={`btn btn-${variant} ${isDisabled ? 'btn-disabled' : ''}`.trim()}
+    onClick={handleClick}
+    disabled={isDisabled}
+  >
+    {isLoading ? 'Loading...' : title}
+  </button>
+);
 
 export default Button;

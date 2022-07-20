@@ -2,8 +2,7 @@
 import React from 'react';
 
 // Components
-import Button from '@components/commons/Button';
-import Filter from '@components/Filter';
+import { Button, Filter } from '@components/index';
 
 // Style
 import './index.css';
@@ -33,27 +32,25 @@ const SideBar: React.FC<SideBarProps> = ({
   handleTypeChange,
   handlePriceChange,
   handleClearFilters
-}) => {
-  return (
-    <div className='sidebar'>
-      <div className='add-button'>
-        <Button
-          title='Add new product'
-          variant={ButtonVariants.Primary}
-          handleClick={handleOpenModalForm}
-        />
-      </div>
-      <Filter
-        typeFilterOptions={PRODUCT_TYPE_LIST}
-        priceFilterOptions={ORDER_OPTIONS}
-        currentFilterTypeParam={currentFilterTypeParam}
-        currentFilterPriceParam={currentFilterPriceParam}
-        handleTypeChange={handleTypeChange}
-        handlePriceChange={handlePriceChange}
-        handleClearFilters={handleClearFilters}
+}) => (
+  <div className='sidebar'>
+    <div className='add-button'>
+      <Button
+        title='Add new product'
+        variant={ButtonVariants.Primary}
+        handleClick={handleOpenModalForm}
       />
     </div>
-  );
-};
+    <Filter
+      typeFilterOptions={PRODUCT_TYPE_LIST}
+      priceFilterOptions={ORDER_OPTIONS}
+      currentFilterTypeParam={currentFilterTypeParam}
+      currentFilterPriceParam={currentFilterPriceParam}
+      handleTypeChange={handleTypeChange}
+      handlePriceChange={handlePriceChange}
+      handleClearFilters={handleClearFilters}
+    />
+  </div>
+);
 
 export default SideBar;

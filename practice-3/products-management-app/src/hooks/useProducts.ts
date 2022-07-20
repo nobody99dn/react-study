@@ -41,8 +41,8 @@ import {
   post,
   remove,
   update,
-  filterTypeAndPriceOrder,
-  queryProducts,
+  urlFilterGenerate,
+  urlSearchingGenerate,
   setLocalProducts
 } from '@helpers/index';
 
@@ -64,8 +64,6 @@ const useProducts = () => {
     isValidating && dispatch(getProductsRequest());
 
     if (!isValidating && !error && data) {
-      console.log(data);
-
       dispatch(getProductsSuccess({ products: data }));
 
       // save local
@@ -133,9 +131,9 @@ const useProducts = () => {
       const updatedProductIndex: number =
         data?.findIndex(
           (product: Product) => product.id === updatedProduct.id
-        ) || 0;
+        ) || -1;
 
-      if (!updatedProduct || !updatedProductIndex) {
+      if (!updatedProduct) {
         throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
       }
 
@@ -210,7 +208,7 @@ const useProducts = () => {
    * @param input string
    */
   const searchingProducts = async (input: string) => {
-    const filteredProducts: Product[] = await get(queryProducts(input));
+    const filteredProducts: Product[] = await get(urlSearchingGenerate(input));
 
     dispatch(searchProductsSuccess({ filteredProducts, input }));
   };
@@ -228,7 +226,7 @@ const useProducts = () => {
     dispatch(filterProductsRequest());
 
     const filteredProducts: Product[] = await get(
-      filterTypeAndPriceOrder(currentFilterTypeParam, currentFilterPriceParam)
+      urlFilterGenerate(currentFilterTypeParam, currentFilterPriceParam)
     );
 
     dispatch(

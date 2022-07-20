@@ -9,15 +9,12 @@ import {
   ButtonVariants,
   FormVariants,
   ProductTypes,
-  TypeVariables
+  TypeVariables,
+  VariantsTypes
 } from '@constants/index';
 
 // Components
-import Title from '@components/commons/Title';
-import TextField from '@components/commons/TextField';
-import Button from '@components/commons/Button';
-import Select from '@components/commons/SelectItem';
-import Text, { VariantsTypes } from '@components/commons/Text';
+import { Title, TextField, Button, SelectItem, Text } from '@components/index';
 
 // Model
 import { Product } from '@models/product';
@@ -27,7 +24,6 @@ interface FormProps {
   options?: ProductTypes[];
   productItem: Product;
   validateMessage: string;
-  isButtonLoading?: boolean;
   isDisableForm?: boolean;
   handleSubmit: (event: FormEvent, product: Product) => void;
 }
@@ -37,7 +33,6 @@ const Form: React.FC<FormProps> = ({
   productItem,
   options = [],
   validateMessage,
-  isButtonLoading = false,
   isDisableForm = false,
   handleSubmit
 }) => {
@@ -80,7 +75,7 @@ const Form: React.FC<FormProps> = ({
             handleInputChange={handleOnChange}
             ref={nameRef}
           />
-          <Select
+          <SelectItem
             label='Product type'
             options={options}
             value={product.type}
@@ -116,8 +111,8 @@ const Form: React.FC<FormProps> = ({
         <Button
           variant={ButtonVariants.Primary}
           title={variants}
-          isLoading={isButtonLoading}
           isDisabled={isDisable}
+          handleClick={() => {}}
         />
       </form>
     </div>

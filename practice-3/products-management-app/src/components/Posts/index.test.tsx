@@ -1,11 +1,15 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
 
 // Components
 import Posts, { PostsProps } from './index';
+
+// Models
 import { Product } from '@models/product';
+
+// Constants
 import { ProductTypes } from '@constants/types';
 
 describe('Posts component', () => {
@@ -37,7 +41,7 @@ describe('Posts component', () => {
 
   const defaultProps: PostsProps = {
     products: mockProducts,
-    handleOpenProductDetail: jest.fn(),
+    handleNavigate: jest.fn(),
     handleDeleteProduct: jest.fn()
   };
   beforeEach(() => {
@@ -69,10 +73,9 @@ describe('Posts component', () => {
   test('should handleOpenProductDetail is called', () => {
     const mockOpenProduct = jest.fn();
 
-    render(
-      <Posts {...defaultProps} handleOpenProductDetail={mockOpenProduct} />,
-      { container }
-    );
+    render(<Posts {...defaultProps} handleNavigate={mockOpenProduct} />, {
+      container
+    });
 
     const button: HTMLButtonElement[] = screen.getAllByText('Edit');
 

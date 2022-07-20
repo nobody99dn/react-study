@@ -1,4 +1,4 @@
-// Library
+// Libraries
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
@@ -14,8 +14,9 @@ export default {
   component: LoadingIndicator
 } as ComponentMeta<typeof LoadingIndicator>;
 
-const Template: ComponentStory<typeof LoadingIndicator> = (args) => <LoadingIndicator {...args} />;
+const Template: ComponentStory<typeof LoadingIndicator> = (args) => (
+  <LoadingIndicator {...args} />
+);
 
 export const Default = Template.bind({});
-Default.args = {
-};
+Default.args = {};

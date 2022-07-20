@@ -3,3 +3,8 @@ export enum FwType {
   Normal = 400,
   Light = 300
 }
+
+export enum VariantTypes {
+  Default = 'title',
+  Subtitle = 'subtitle'
+}

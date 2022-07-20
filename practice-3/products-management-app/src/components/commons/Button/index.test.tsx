@@ -4,9 +4,13 @@ import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
 
 // Components
-import Button from './index';
+import Button, { ButtonProps } from './index';
 
 describe('Button component', () => {
+  const defaultProps: ButtonProps = {
+    title: 'Button',
+    handleClick: jest.fn()
+  };
   let container: HTMLElement;
   beforeEach(() => {
     // setup a DOM element as a render target
@@ -22,16 +26,16 @@ describe('Button component', () => {
   });
 
   test('should render correctly', () => {
-    const defaultTree = create(<Button title='Button' />).toJSON();
+    const defaultTree = create(<Button {...defaultProps} />).toJSON();
     expect(defaultTree).toMatchSnapshot();
 
-    const disableTree = create(<Button title='Disable Button' isDisabled />);
+    const disableTree = create(<Button {...defaultProps} isDisabled />);
     expect(disableTree).toMatchSnapshot();
   });
 
   test('should render button with content is Button', () => {
     act(() => {
-      render(<Button title='Button' />, { container });
+      render(<Button {...defaultProps} />, { container });
     });
 
     expect(container.textContent).toMatch('Button');
@@ -39,7 +43,7 @@ describe('Button component', () => {
 
   test('should render loading button', () => {
     act(() => {
-      render(<Button title='Button' isLoading />, { container });
+      render(<Button {...defaultProps} isLoading />, { container });
     });
 
     const button: HTMLElement = screen.getByRole('button');
@@ -50,7 +54,7 @@ describe('Button component', () => {
   test('should be click 2 times', () => {
     const myMock = jest.fn();
     act(() => {
-      render(<Button title='Button' handleClick={myMock} />, { container });
+      render(<Button {...defaultProps} handleClick={myMock} />, { container });
     });
 
     const button: HTMLElement = screen.getByRole('button');

@@ -5,8 +5,7 @@ import React from 'react';
 import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 // Components
-import Select from '@components/commons/SelectItem';
-import Button from '@components/commons/Button';
+import { SelectItem, Button } from '@components/index';
 
 // Styles
 import './index.css';
@@ -32,7 +31,7 @@ const Filter: React.FC<FilterProps> = ({
 }) => (
   <div className='filter-container'>
     <div className='filter-item'>
-      <Select
+      <SelectItem
         label='Type'
         options={typeFilterOptions}
         name='type-option'
@@ -41,7 +40,7 @@ const Filter: React.FC<FilterProps> = ({
       />
     </div>
     <div className='filter-item'>
-      <Select
+      <SelectItem
         label='Price'
         options={priceFilterOptions}
         name='price-filter'

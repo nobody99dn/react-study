@@ -1,4 +1,4 @@
-// Library
+// Libraries
 import React, { memo, useState, useCallback } from 'react';
 
 // Styles
@@ -7,10 +7,10 @@ import './index.css';
 // Constants
 import { ERROR_MESSAGES, ImageVariants } from '@constants/index';
 
-// Component
-import Text from '@components/commons/Text';
+// Components
+import { Text } from '@components/index';
 
-interface ImageProps {
+export interface ImageProps {
   alt: string;
   className?: string;
   imageUrl: string;
@@ -42,11 +42,11 @@ const Image: React.FC<ImageProps> = ({
   }, []);
 
   return (
-    <>
+    <div className={className}>
       <img
         className={`image ${
           variant !== ImageVariants.Default ? `image-${variant} ` : ''
-        } ${className}`.trim()}
+        }`.trim()}
         alt={alt}
         src={imageUrl}
         onClick={handleClick}
@@ -58,7 +58,7 @@ const Image: React.FC<ImageProps> = ({
           <Text color='var(--danger)'>{ERROR_MESSAGES.IMAGE_NOT_FOUND}</Text>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

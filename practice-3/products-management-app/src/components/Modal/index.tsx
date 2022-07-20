@@ -1,13 +1,13 @@
-// Library
+// Libraries
 import React, { ReactNode } from 'react';
 
 // Components
-import Image from '@components/commons/Image';
+import { Image } from '@components/index';
 
 // Assets
 import { closeIcon } from '@assets/index';
 
-// Style
+// Styles
 import './index.css';
 
 export interface ModalProps {

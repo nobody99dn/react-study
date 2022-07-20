@@ -1,27 +1,30 @@
-// Library
+// Libraries
 import React, { useEffect, useState } from 'react';
 
-// Constant
-import { MessagePopUpVariants } from '@constants/index';
-
-// Store
+// Stores
 import { clearMessages, useStore } from '@store/index';
 
-// Component
-import Text from '@components/commons/Text';
+// Components
+import { Text } from '@components/index';
 
-// Style
+// Styles
 import './index.css';
 
 export interface MessagePopUpProps {
-  text: string;
-  variant: MessagePopUpVariants;
+  successMessage: string;
+  errorMessage: string;
 }
 
-const MessagePopUp: React.FC<MessagePopUpProps> = ({ text, variant }) => {
+const MessagePopUp: React.FC<MessagePopUpProps> = ({
+  successMessage,
+  errorMessage
+}) => {
   const { dispatch } = useStore();
   const [isVisible, setIsVisible] = useState<boolean>(true);
-
+  const [text, setText] = useState<string>('');
+  useEffect(() => {
+    successMessage ? setText(successMessage) : setText(errorMessage);
+  }, [errorMessage, successMessage]);
   useEffect(() => {
     setIsVisible(true);
     const timer = setTimeout(() => {
@@ -36,11 +39,7 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({ text, variant }) => {
     <div
       className={`popup-message
       ${isVisible ? 'active' : ''}
-      ${
-        variant === MessagePopUpVariants.Failed
-          ? 'popup-error'
-          : 'popup-success'
-      }`}
+      ${errorMessage ? 'popup-error' : 'popup-success'}`}
     >
       <Text color='var(--white)'>{text}</Text>
     </div>

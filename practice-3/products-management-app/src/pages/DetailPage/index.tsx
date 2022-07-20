@@ -16,8 +16,10 @@ import { useStore } from '@store/index';
 import './index.css';
 
 // Components
-import Text, { VariantsTypes } from '@components/commons/Text';
-import { ERROR_MESSAGES } from '@constants/messages';
+import { Text } from '@components/index';
+
+// Constants
+import { ERROR_MESSAGES, VariantsTypes } from '@constants/index';
 
 const DetailPage: React.FC = () => {
   const { globalState } = useStore();

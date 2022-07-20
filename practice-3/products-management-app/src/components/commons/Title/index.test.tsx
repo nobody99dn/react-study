@@ -1,11 +1,12 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
-import { screen } from '@testing-library/dom';
+import { cleanup } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 
 // Components
-import Title, { TitleProps, VariantTypes } from './index';
-import { FwType } from '@constants/index';
+import Title, { TitleProps } from './index';
+
+// Constants
+import { FwType, VariantTypes } from '@constants/index';
 
 describe('Title component', () => {
   let container: HTMLElement;
@@ -35,9 +36,9 @@ describe('Title component', () => {
   test('should render with custom style', () => {
     const customProps: TitleProps = {
       color: '#0f0',
-      fw: FwType.Bold,
-      size: '24px',
-      fs: 'italic',
+      fontWeight: FwType.Bold,
+      fontSize: '24px',
+      fontStyle: 'italic',
       children: 'Title'
     };
 

@@ -2,8 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
-import Modal from './index';
-import Form from '@components/Form';
+import { Form, Modal } from '@components/index';
 
 // Styles
 import '@assets/styles/App.css';

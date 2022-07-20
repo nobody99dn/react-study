@@ -28,7 +28,7 @@ describe('Card component', () => {
   const defaultProps: CardProps = {
     product: mockProduct,
     currency: Currencies.VND,
-    handleOpenProductDetail: () => {},
+    handleNavigate: () => {},
     handleDeleteProduct: () => {}
   };
 
@@ -75,7 +75,7 @@ describe('Card component', () => {
     const myMock = jest.fn();
 
     const { getByText } = render(
-      <Card {...defaultProps} handleOpenProductDetail={myMock} />,
+      <Card {...defaultProps} handleNavigate={myMock} />,
       { container }
     );
 
