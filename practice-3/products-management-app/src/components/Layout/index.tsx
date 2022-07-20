@@ -1,3 +1,4 @@
+import Header from '@layouts/Header';
 import { memo, ReactNode } from 'react';
 
 export interface LayoutProps {
@@ -5,7 +6,10 @@ export interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => (
-  <main className='main'>{children}</main>
+  <>
+    <Header />
+    <main className='main'>{children}</main>
+  </>
 );
 
 export default memo(Layout);

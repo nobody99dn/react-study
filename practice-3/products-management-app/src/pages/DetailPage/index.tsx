@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 import useProductById from '@hooks/useProductById';
 
 // Layouts
-import Header from '@layouts/Header';
 import ProductDetail from '@layouts/ProductDetail';
 
 // Store
@@ -44,8 +43,6 @@ const DetailPage: React.FC = () => {
 
   return (
     <>
-      <Header />
-      <p>{id}</p>
       {currentProduct ? (
         <ProductDetail product={currentProduct} />
       ) : (

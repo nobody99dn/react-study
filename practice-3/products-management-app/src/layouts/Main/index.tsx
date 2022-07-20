@@ -179,7 +179,7 @@ const Main: React.FC = () => {
   }, [productName]);
 
   return (
-    <Layout>
+    <>
       <div className='right-container'>
         <div className='right-content'>
           <SearchInput
@@ -212,7 +212,7 @@ const Main: React.FC = () => {
           handleCloseModal={handleCloseModal}
         />
       )}
-    </Layout>
+    </>
   );
 };
 
