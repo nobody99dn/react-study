@@ -25,3 +25,10 @@
   justify-content: space-around;
   padding: 0.5rem;
 }
+
+.card-image {
+  border-radius: 5px;
+  object-fit: contain;
+  overflow: hidden;
+  height: 18rem;
+}

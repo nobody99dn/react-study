@@ -44,7 +44,9 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div className='card'>
-      <Image imageUrl={imageUrl} alt={name} className='card-image' />
+      <div className='card-image'>
+        <Image imageUrl={imageUrl} alt={name} />
+      </div>
       <div className='card-body'>
         <div className='title-wrapper'>
           <Title className='card-title' lineHeight='1.5rem'>

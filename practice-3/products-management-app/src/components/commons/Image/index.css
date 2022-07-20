@@ -20,25 +20,11 @@
   cursor: pointer;
 }
 
-.icon-left {
-  position: absolute;
-  right: 1.5rem;
-}
-
 .close-icon {
   position: absolute;
   cursor: pointer;
   right: 1rem;
   top: 1rem;
-}
-
-/* - Card image */
-/* - ---------------------------------------------- */
-.card-image {
-  border-radius: 5px;
-  object-fit: contain;
-  overflow: hidden;
-  height: 18rem;
 }
 
 .image-error {

@@ -63,12 +63,13 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {label && <label htmlFor={name}>{label}: </label>}
         <div className={'input-wrapper'}>
           {iconUrl && (
-            <Image
-              alt={'icon'}
-              className={'icon-left'}
-              imageUrl={iconUrl}
-              variant={ImageVariants.Icon}
-            />
+            <div className={'icon-left'}>
+              <Image
+                alt={'icon'}
+                imageUrl={iconUrl}
+                variant={ImageVariants.Icon}
+              />
+            </div>
           )}
           <input
             id={name}
