@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout component should render correctly 1`] = `
+<main
+  className="main"
+>
+  Children
+</main>
+`;
