@@ -31,7 +31,10 @@ import {
   filterProductsRequest,
   editProductRequest,
   deleteProductRequest,
-  addProductRequest
+  addProductRequest,
+  filterProductsFailed,
+  searchProductsRequest,
+  searchProductsFailed
 } from '@store/index';
 
 // Helpers
@@ -187,11 +190,24 @@ const useProducts = () => {
    * @param input string
    */
   const searchingProducts = async (input: string) => {
-    const filteredProducts: Product[] = await get(
-      urlGeneration({ searchInput: input })
-    );
+    try {
+      dispatch(searchProductsRequest());
 
-    dispatch(searchProductsSuccess({ filteredProducts }));
+      const filteredProducts: Product[] = await get(
+        urlGeneration({ searchInput: input })
+      );
+
+      if (!filterProducts) {
+        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+      }
+
+      dispatch(searchProductsSuccess({ filteredProducts }));
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(searchProductsFailed({ errorMessage: error.message }));
+        return;
+      }
+    }
   };
 
   /**
@@ -204,20 +220,31 @@ const useProducts = () => {
     currentFilterTypeParam?: ProductTypes,
     currentFilterPriceParam?: FilterOrderOptions
   ) => {
-    dispatch(filterProductsRequest());
+    try {
+      dispatch(filterProductsRequest());
 
-    const filteredProducts: Product[] = await get(
-      urlGeneration({
-        type: currentFilterTypeParam,
-        priceOrder: currentFilterPriceParam
-      })
-    );
+      const filteredProducts: Product[] = await get(
+        urlGeneration({
+          type: currentFilterTypeParam,
+          priceOrder: currentFilterPriceParam
+        })
+      );
 
-    dispatch(
-      filterProductsSuccess({
-        filteredProducts
-      })
-    );
+      if (!filterProducts) {
+        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+      }
+
+      dispatch(
+        filterProductsSuccess({
+          filteredProducts
+        })
+      );
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(filterProductsFailed({ errorMessage: error.message }));
+        return;
+      }
+    }
   };
 
   return {

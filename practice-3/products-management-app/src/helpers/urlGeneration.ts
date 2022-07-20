@@ -11,29 +11,23 @@ const urlGeneration = (filterOption: filterType) => {
   const { priceOrder, searchInput, type } = filterOption;
 
   let result: string = URL_PRODUCTS;
+
   switch (true) {
     case !!priceOrder && !!type:
-      // TODO: return in case
-      result += `?type=${type}&sortBy=price&order=${priceOrder}`;
-      break;
+      return (result += `?type=${type}&sortBy=price&order=${priceOrder}`);
 
     case !!type:
-      result += `?type=${type}`;
-      break;
+      return (result += `?type=${type}`);
 
     case !!priceOrder:
-      result += `?sortBy=price&order=${priceOrder}`;
-      break;
+      return (result += `?sortBy=price&order=${priceOrder}`);
 
     case searchInput && searchInput !== '':
-      result += `?search=${searchInput}`;
-      break;
+      return (result += `?search=${searchInput}`);
 
     default:
-      break;
+      return result;
   }
-
-  return result;
 };
 
 export { urlGeneration };

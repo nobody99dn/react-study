@@ -58,7 +58,11 @@ const Form: React.FC<FormProps> = ({
   return (
     <div className='form-wrapper'>
       {isDisable && (
-        <a href='#' className='enable-edit' onClick={handleEnableEditButton}>
+        <a
+          href='javascript:void(0)'
+          className='enable-edit'
+          onClick={handleEnableEditButton}
+        >
           Enable edit
         </a>
       )}

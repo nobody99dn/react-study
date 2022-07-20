@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Styles
@@ -163,9 +163,9 @@ const Main: React.FC = () => {
   /**
    * Handle search input change
    */
-  const handleSearchProduct = (value: string | number) => {
+  const handleSearchProduct = useCallback((value: string | number) => {
     setProductName(value as string);
-  };
+  }, []);
 
   /**
    * Handle search change

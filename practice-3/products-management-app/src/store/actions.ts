@@ -1,5 +1,5 @@
 // Constants
-import { ACTIONS } from './constants';
+import { ACTIONS } from '@constants/index';
 import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 // Model
@@ -113,18 +113,34 @@ const filterProductsRequest = (): ActionProps => ({
 
 const filterProductsSuccess = (payload: {
   filteredProducts: Product[];
-  // currentFilterTypeParam: ProductTypes;
-  // currentFilterPriceParam: FilterOrderOptions;
 }): ActionProps => ({
   type: ACTIONS.FILTER_PRODUCTS_SUCCESS,
   payload
 });
 
+const filterProductsFailed = (payload: {
+  errorMessage: string;
+}): ActionProps => ({
+  type: ACTIONS.FILTER_PRODUCTS_FAILED,
+  payload
+});
+
 //* SEARCH PRODUCTS ACTION *\\
+const searchProductsRequest = (): ActionProps => ({
+  type: ACTIONS.SEARCH_PRODUCTS_REQUEST
+});
+
 const searchProductsSuccess = (payload: {
   filteredProducts: Product[];
 }): ActionProps => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,
+  payload
+});
+
+const searchProductsFailed = (payload: {
+  errorMessage: string;
+}): ActionProps => ({
+  type: ACTIONS.SEARCH_PRODUCTS_FAILED,
   payload
 });
 
@@ -154,7 +170,10 @@ export {
   editProductFailed,
   filterProductsRequest,
   filterProductsSuccess,
+  filterProductsFailed,
+  searchProductsRequest,
   searchProductsSuccess,
+  searchProductsFailed,
   clearMessages,
   clearCurrentProduct
 };

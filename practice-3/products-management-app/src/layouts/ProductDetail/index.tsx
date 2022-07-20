@@ -34,7 +34,6 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
 
   const [validateMessage, setValidateMessage] = useState<string>('');
   const [currentProduct, setCurrentProduct] = useState<Product>(product);
-  console.log('product', product);
 
   /**
    * Handle create new product and edit product
@@ -75,7 +74,6 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
   const handleBack = useCallback(() => {
     navigate(-1);
   }, []);
-  console.log('currentProduct', currentProduct);
 
   return (
     <Layout>

@@ -1,5 +1,5 @@
 // Action constant
-import { ACTIONS } from './constants';
+import { ACTIONS } from '@constants/index';
 
 // Model
 import { Product } from '@models/product';
@@ -30,7 +30,6 @@ const INITIAL_STATES: InitialState = {
  * @param action ActionProps
  * @returns InitialState
  */
-// TODO: ERROR for search and filter
 const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
   switch (action.type) {
     case ACTIONS.GET_PRODUCTS_REQUEST:
@@ -40,29 +39,39 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
         errorMessage: INITIAL_STATES.errorMessage
       };
 
-    case ACTIONS.GET_PRODUCTS_SUCCESS:
+    case ACTIONS.SEARCH_PRODUCTS_REQUEST:
+      return {
+        ...state
+      };
+
+    case ACTIONS.GET_PRODUCT_REQUEST:
+    case ACTIONS.ADD_PRODUCT_REQUEST:
+    case ACTIONS.EDIT_PRODUCT_REQUEST:
+    case ACTIONS.DELETE_PRODUCT_REQUEST:
+    case ACTIONS.FILTER_PRODUCTS_REQUEST:
       return {
         ...state,
-        products: action.payload?.products as Product[],
-        isLoading: INITIAL_STATES.isLoading
+        isLoading: true
       };
 
     case ACTIONS.GET_PRODUCTS_FAILED:
+    case ACTIONS.EDIT_PRODUCT_FAILED:
+    case ACTIONS.DELETE_PRODUCT_FAILED:
+    case ACTIONS.FILTER_PRODUCTS_FAILED:
+    case ACTIONS.SEARCH_PRODUCTS_FAILED:
+    case ACTIONS.GET_PRODUCT_FAILED:
+    case ACTIONS.ADD_PRODUCT_FAILED:
       return {
         ...state,
         errorMessage: action.payload?.errorMessage as string,
         isLoading: INITIAL_STATES.isLoading
       };
 
-    case ACTIONS.GET_PRODUCT_REQUEST:
-    case ACTIONS.ADD_PRODUCT_REQUEST:
-    case ACTIONS.DELETE_PRODUCT_REQUEST:
-    case ACTIONS.EDIT_PRODUCT_REQUEST:
+    case ACTIONS.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
-        isLoading: true,
-        errorMessage: INITIAL_STATES.errorMessage,
-        successMessage: INITIAL_STATES.successMessage
+        products: action.payload?.products as Product[],
+        isLoading: INITIAL_STATES.isLoading
       };
 
     case ACTIONS.GET_PRODUCT_SUCCESS:
@@ -72,26 +81,12 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
         currentProduct: action.payload?.product as Product
       };
 
-    case ACTIONS.GET_PRODUCT_FAILED:
-      return {
-        ...state,
-        isLoading: INITIAL_STATES.isLoading,
-        errorMessage: action.payload?.errorMessage as string
-      };
-
     case ACTIONS.ADD_PRODUCT_SUCCESS:
       return {
         ...state,
         products: [...state.products, action.payload?.product as Product],
         isLoading: INITIAL_STATES.isLoading,
         successMessage: action.payload?.successMessage as string
-      };
-
-    case ACTIONS.ADD_PRODUCT_FAILED:
-      return {
-        ...state,
-        isLoading: INITIAL_STATES.isLoading,
-        errorMessage: action.payload?.errorMessage as string
       };
 
     case ACTIONS.DELETE_PRODUCT_SUCCESS:
@@ -104,13 +99,6 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
         ],
         isLoading: INITIAL_STATES.isLoading,
         successMessage: action.payload?.successMessage as string
-      };
-
-    case ACTIONS.DELETE_PRODUCT_FAILED:
-      return {
-        ...state,
-        errorMessage: action.payload?.errorMessage as string,
-        isLoading: INITIAL_STATES.isLoading
       };
 
     case ACTIONS.EDIT_PRODUCT_SUCCESS: {
@@ -128,21 +116,6 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
       };
     }
 
-    case ACTIONS.EDIT_PRODUCT_FAILED: {
-      return {
-        ...state,
-        errorMessage: action.payload?.errorMessage as string,
-        isLoading: INITIAL_STATES.isLoading
-      };
-    }
-
-    // TODO: move up
-    case ACTIONS.FILTER_PRODUCTS_REQUEST:
-      return {
-        ...state,
-        isLoading: true
-      };
-
     case ACTIONS.FILTER_PRODUCTS_SUCCESS: {
       return {
         ...state,
@@ -154,6 +127,7 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
     case ACTIONS.SEARCH_PRODUCTS_SUCCESS:
       return {
         ...state,
+        isLoading: INITIAL_STATES.isLoading,
         products: action.payload?.filteredProducts as Product[]
       };
 

@@ -32,9 +32,6 @@ const DetailPage: React.FC = () => {
 
   const { currentProduct } = globalState;
 
-  console.log('id', id);
-  console.log('currentProduct', currentProduct, globalState);
-
   useEffect(() => {
     if (!isValidating) {
       getProduct();
