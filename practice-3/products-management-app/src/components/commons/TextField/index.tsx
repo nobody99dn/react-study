@@ -7,12 +7,12 @@ import { Image } from '@components/index';
 // Styles
 import './index.css';
 
-// Constants
+// Types
 import {
   ImageVariants,
   TextFieldVariants,
   TypeVariables
-} from '@constants/index';
+} from '@common-types/index';
 
 interface TextFieldProps {
   name?: string;

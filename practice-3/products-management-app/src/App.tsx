@@ -48,6 +48,7 @@ function App() {
         <MessagePopUp
           successMessage={successMessage}
           errorMessage={errorMessage}
+          isError={!!errorMessage}
         />
       )}
     </>

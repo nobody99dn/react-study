@@ -9,16 +9,18 @@ import './index.css';
 
 // Constants
 import {
-  ButtonVariants,
   FilterOrderOptions,
   ORDER_OPTIONS,
   ProductTypes,
   PRODUCT_TYPE_LIST
 } from '@constants/index';
 
+// Types
+import { ButtonVariants } from '@common-types/index';
+
 interface SideBarProps {
-  currentFilterTypeParam: ProductTypes | '';
-  currentFilterPriceParam: FilterOrderOptions | '';
+  currentFilterTypeParam?: ProductTypes;
+  currentFilterPriceParam?: FilterOrderOptions;
   handleOpenModalForm: () => void;
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;

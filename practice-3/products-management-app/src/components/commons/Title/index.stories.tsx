@@ -5,13 +5,13 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Title from './index';
 
 // Constants
-import { FwType, VariantTypes } from '@constants/index';
 
 // Styles
 import '@assets/styles/reset.css';
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 import './index.css';
+import { FwType, VariantTypes } from '@common-types/index';
 
 export default {
   title: 'Components/Title',

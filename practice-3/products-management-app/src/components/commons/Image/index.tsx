@@ -4,14 +4,15 @@ import React, { memo, useState, useCallback } from 'react';
 // Styles
 import './index.css';
 
-// Constants
-import { ERROR_MESSAGES, ImageVariants } from '@constants/index';
+// Types
+import { ImageVariants } from '@common-types/index';
 
-// Components
-import { Text } from '@components/index';
+// Images
+import { blankImage } from '@assets/index';
 
 export interface ImageProps {
   alt: string;
+  // TODO: remove class
   className?: string;
   imageUrl: string;
   variant?: ImageVariants;
@@ -21,45 +22,21 @@ export interface ImageProps {
 const Image: React.FC<ImageProps> = ({
   alt,
   className = '',
-  imageUrl,
+  imageUrl = blankImage,
   variant = ImageVariants.Default,
   handleClick
-}) => {
-  const [isLoadImageFail, setIsLoadImageFail] = useState<boolean>();
-
-  /**
-   * Handle image load error
-   */
-  const handleImageError = () => {
-    setIsLoadImageFail(true);
-  };
-
-  /**
-   * Handle image loaded
-   */
-  const handleImageLoaded = useCallback(() => {
-    setIsLoadImageFail(false);
-  }, []);
-
-  return (
-    <div className={className}>
-      <img
-        className={`image ${
-          variant !== ImageVariants.Default ? `image-${variant} ` : ''
-        }`.trim()}
-        alt={alt}
-        src={imageUrl}
-        onClick={handleClick}
-        onError={handleImageError}
-        onLoad={handleImageLoaded}
-      />
-      {isLoadImageFail && (
-        <div className='image-error'>
-          <Text color='var(--danger)'>{ERROR_MESSAGES.IMAGE_NOT_FOUND}</Text>
-        </div>
-      )}
-    </div>
-  );
-};
+}) => (
+  //TODO: Remove div
+  <div className={className}>
+    <img
+      className={`image${
+        variant !== ImageVariants.Default ? ` image-${variant} ` : ''
+      }`}
+      alt={alt}
+      src={imageUrl}
+      onClick={handleClick}
+    />
+  </div>
+);
 
 export default memo(Image);

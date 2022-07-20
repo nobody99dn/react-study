@@ -4,8 +4,8 @@ import React, { memo, ReactNode } from 'react';
 // Styles
 import './index.css';
 
-// Constants
-import { FwType, VariantTypes } from '@constants/index';
+// Types
+import { FwType, VariantTypes } from '@common-types/index';
 
 export interface TitleProps {
   children: ReactNode;

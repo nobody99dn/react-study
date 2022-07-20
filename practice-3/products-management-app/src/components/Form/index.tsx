@@ -5,19 +5,19 @@ import React, { FormEvent, useCallback, useRef, useState } from 'react';
 import './index.css';
 
 // Constants
-import {
-  ButtonVariants,
-  FormVariants,
-  ProductTypes,
-  TypeVariables,
-  VariantsTypes
-} from '@constants/index';
+import { ProductTypes } from '@constants/index';
 
 // Components
 import { Title, TextField, Button, SelectItem, Text } from '@components/index';
 
 // Model
 import { Product } from '@models/product';
+import {
+  ButtonVariants,
+  FormVariants,
+  TypeVariables,
+  VariantsTypes
+} from '@common-types/index';
 
 interface FormProps {
   variants: FormVariants;
@@ -25,7 +25,7 @@ interface FormProps {
   productItem: Product;
   validateMessage: string;
   isDisableForm?: boolean;
-  handleSubmit: (event: FormEvent, product: Product) => void;
+  handleSubmit: (product: Product) => void;
 }
 
 const Form: React.FC<FormProps> = ({
@@ -51,6 +51,10 @@ const Form: React.FC<FormProps> = ({
     nameRef.current && nameRef.current.focus();
   }, []);
 
+  const handleClick = useCallback(() => {
+    handleSubmit(product);
+  }, [product]);
+
   return (
     <div className='form-wrapper'>
       {isDisable && (
@@ -59,62 +63,56 @@ const Form: React.FC<FormProps> = ({
         </a>
       )}
       <Title>{variants} Product</Title>
-      <form
-        aria-label='form'
-        className='form'
-        onSubmit={(event: FormEvent) => handleSubmit(event, product)}
-      >
-        <fieldset className='field-group'>
-          <TextField
-            defaultValue={product.name}
-            name='name'
-            label='Product name'
-            placeholder='Enter product name...'
-            type={TypeVariables.Text}
-            readonly={isDisable}
-            handleInputChange={handleOnChange}
-            ref={nameRef}
-          />
-          <SelectItem
-            label='Product type'
-            options={options}
-            value={product.type}
-            handleSelectChange={handleOnChange}
-            name='type'
-            disable={isDisable}
-          />
-          <TextField
-            defaultValue={product.price}
-            name='price'
-            type={TypeVariables.Number}
-            label='Price'
-            placeholder='Enter price...'
-            readonly={isDisable}
-            handleInputChange={handleOnChange}
-          />
-          <TextField
-            defaultValue={product.imageUrl}
-            name='imageUrl'
-            type={TypeVariables.Text}
-            label='Image link'
-            placeholder='Enter image link...'
-            readonly={isDisable}
-            handleInputChange={handleOnChange}
-          />
-          {validateMessage && (
-            <Text variant={VariantsTypes.Highlight} color='var(--danger)'>
-              {validateMessage}
-            </Text>
-          )}
-        </fieldset>
-
-        <Button
-          variant={ButtonVariants.Primary}
-          title={variants}
-          isDisabled={isDisable}
-          handleClick={() => {}}
+      <fieldset className='field-group'>
+        <TextField
+          defaultValue={product.name}
+          name='name'
+          label='Product name'
+          placeholder='Enter product name...'
+          type={TypeVariables.Text}
+          readonly={isDisable}
+          handleInputChange={handleOnChange}
+          ref={nameRef}
         />
-      </form>
+        <SelectItem
+          label='Product type'
+          options={options}
+          value={product.type}
+          handleSelectChange={handleOnChange}
+          name='type'
+          disable={isDisable}
+        />
+        <TextField
+          defaultValue={product.price}
+          name='price'
+          type={TypeVariables.Number}
+          label='Price'
+          placeholder='Enter price...'
+          readonly={isDisable}
+          handleInputChange={handleOnChange}
+        />
+        <TextField
+          defaultValue={product.imageUrl}
+          name='imageUrl'
+          type={TypeVariables.Text}
+          label='Image link'
+          placeholder='Enter image link...'
+          readonly={isDisable}
+          handleInputChange={handleOnChange}
+        />
+        {validateMessage && (
+          <Text variant={VariantsTypes.Highlight} color='var(--danger)'>
+            {validateMessage}
+          </Text>
+        )}
+      </fieldset>
+
+      <Button
+        variant={ButtonVariants.Primary}
+        title={variants}
+        isDisabled={isDisable}
+        handleClick={handleClick}
+      />
     </div>
   );
 };

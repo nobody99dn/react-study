@@ -7,7 +7,7 @@ import Layout, { LayoutProps } from './index';
 
 describe('Layout component', () => {
   const defaultProps: LayoutProps = {
-    children: 'Children'
+    children: <p>Children</p>
   };
   let container: HTMLElement;
   beforeEach(() => {

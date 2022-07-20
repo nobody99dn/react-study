@@ -13,8 +13,8 @@ import '@assets/styles/variables.css';
 // Icons
 import { searchIcon } from '@assets/index';
 
-// Constants
-import { TextFieldVariants } from '@constants/index';
+// Types
+import { TextFieldVariants } from '@common-types/index';
 
 export default {
   title: 'Components/TextField',

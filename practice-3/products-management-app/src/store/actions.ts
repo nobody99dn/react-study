@@ -113,8 +113,8 @@ const filterProductsRequest = (): ActionProps => ({
 
 const filterProductsSuccess = (payload: {
   filteredProducts: Product[];
-  currentFilterTypeParam: ProductTypes;
-  currentFilterPriceParam: FilterOrderOptions;
+  // currentFilterTypeParam: ProductTypes;
+  // currentFilterPriceParam: FilterOrderOptions;
 }): ActionProps => ({
   type: ACTIONS.FILTER_PRODUCTS_SUCCESS,
   payload
@@ -123,7 +123,6 @@ const filterProductsSuccess = (payload: {
 //* SEARCH PRODUCTS ACTION *\\
 const searchProductsSuccess = (payload: {
   filteredProducts: Product[];
-  input: string;
 }): ActionProps => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,
   payload

@@ -13,18 +13,17 @@ import './index.css';
 export interface MessagePopUpProps {
   successMessage: string;
   errorMessage: string;
+  isError: boolean;
 }
 
 const MessagePopUp: React.FC<MessagePopUpProps> = ({
   successMessage,
-  errorMessage
+  errorMessage,
+  isError
 }) => {
   const { dispatch } = useStore();
   const [isVisible, setIsVisible] = useState<boolean>(true);
-  const [text, setText] = useState<string>('');
-  useEffect(() => {
-    successMessage ? setText(successMessage) : setText(errorMessage);
-  }, [errorMessage, successMessage]);
+
   useEffect(() => {
     setIsVisible(true);
     const timer = setTimeout(() => {
@@ -39,9 +38,11 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
     <div
       className={`popup-message
       ${isVisible ? 'active' : ''}
-      ${errorMessage ? 'popup-error' : 'popup-success'}`}
+      ${isError ? 'popup-error' : 'popup-success'}`}
     >
-      <Text color='var(--white)'>{text}</Text>
+      <Text color='var(--white)'>
+        {isError ? errorMessage : successMessage}
+      </Text>
     </div>
   );
 };

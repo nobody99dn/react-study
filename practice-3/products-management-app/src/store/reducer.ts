@@ -7,12 +7,6 @@ import { Product } from '@models/product';
 // Action
 import { ActionProps } from './actions';
 
-// Helper
-import { getLocalProducts } from '@helpers/localStorage';
-
-// Constant
-import { localKey } from '@constants/types';
-
 interface InitialState {
   products: Product[];
   currentProduct: Product | null;
@@ -21,7 +15,7 @@ interface InitialState {
   successMessage: string;
 }
 
-const initialState: InitialState = {
+const INITIAL_STATES: InitialState = {
   products: [],
   currentProduct: null,
   isLoading: false,
@@ -36,27 +30,28 @@ const initialState: InitialState = {
  * @param action ActionProps
  * @returns InitialState
  */
-const reducer = (state = initialState, action: ActionProps): InitialState => {
+// TODO: ERROR for search and filter
+const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
   switch (action.type) {
     case ACTIONS.GET_PRODUCTS_REQUEST:
       return {
         ...state,
         isLoading: true,
-        errorMessage: initialState.errorMessage
+        errorMessage: INITIAL_STATES.errorMessage
       };
 
     case ACTIONS.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
         products: action.payload?.products as Product[],
-        isLoading: initialState.isLoading
+        isLoading: INITIAL_STATES.isLoading
       };
 
     case ACTIONS.GET_PRODUCTS_FAILED:
       return {
         ...state,
         errorMessage: action.payload?.errorMessage as string,
-        isLoading: initialState.isLoading
+        isLoading: INITIAL_STATES.isLoading
       };
 
     case ACTIONS.GET_PRODUCT_REQUEST:
@@ -66,21 +61,21 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       return {
         ...state,
         isLoading: true,
-        errorMessage: initialState.errorMessage,
-        successMessage: initialState.successMessage
+        errorMessage: INITIAL_STATES.errorMessage,
+        successMessage: INITIAL_STATES.successMessage
       };
 
     case ACTIONS.GET_PRODUCT_SUCCESS:
       return {
         ...state,
-        isLoading: initialState.isLoading,
+        isLoading: INITIAL_STATES.isLoading,
         currentProduct: action.payload?.product as Product
       };
 
     case ACTIONS.GET_PRODUCT_FAILED:
       return {
         ...state,
-        isLoading: initialState.isLoading,
+        isLoading: INITIAL_STATES.isLoading,
         errorMessage: action.payload?.errorMessage as string
       };
 
@@ -88,14 +83,14 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       return {
         ...state,
         products: [...state.products, action.payload?.product as Product],
-        isLoading: initialState.isLoading,
+        isLoading: INITIAL_STATES.isLoading,
         successMessage: action.payload?.successMessage as string
       };
 
     case ACTIONS.ADD_PRODUCT_FAILED:
       return {
         ...state,
-        isLoading: initialState.isLoading,
+        isLoading: INITIAL_STATES.isLoading,
         errorMessage: action.payload?.errorMessage as string
       };
 
@@ -107,7 +102,7 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
             (product) => product.id !== (action.payload?.productId as string)
           )
         ],
-        isLoading: initialState.isLoading,
+        isLoading: INITIAL_STATES.isLoading,
         successMessage: action.payload?.successMessage as string
       };
 
@@ -115,7 +110,7 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       return {
         ...state,
         errorMessage: action.payload?.errorMessage as string,
-        isLoading: initialState.isLoading
+        isLoading: INITIAL_STATES.isLoading
       };
 
     case ACTIONS.EDIT_PRODUCT_SUCCESS: {
@@ -128,7 +123,7 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       return {
         ...state,
         products: state.products,
-        isLoading: initialState.isLoading,
+        isLoading: INITIAL_STATES.isLoading,
         successMessage: action.payload?.successMessage as string
       };
     }
@@ -137,10 +132,11 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
       return {
         ...state,
         errorMessage: action.payload?.errorMessage as string,
-        isLoading: initialState.isLoading
+        isLoading: INITIAL_STATES.isLoading
       };
     }
 
+    // TODO: move up
     case ACTIONS.FILTER_PRODUCTS_REQUEST:
       return {
         ...state,
@@ -150,35 +146,29 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
     case ACTIONS.FILTER_PRODUCTS_SUCCESS: {
       return {
         ...state,
-        isLoading: initialState.isLoading,
-        products:
-          !!action.payload?.currentFilterTypeParam ||
-          !!action.payload?.currentFilterPriceParam
-            ? (action.payload?.filteredProducts as Product[])
-            : getLocalProducts<Product[]>(localKey) || []
+        isLoading: INITIAL_STATES.isLoading,
+        products: action.payload?.filteredProducts as Product[]
       };
     }
 
     case ACTIONS.SEARCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        products: !!action.payload?.input
-          ? (action.payload?.filteredProducts as Product[])
-          : state.products
+        products: action.payload?.filteredProducts as Product[]
       };
 
     case ACTIONS.CLEAR_MESSAGES: {
       return {
         ...state,
-        errorMessage: initialState.errorMessage,
-        successMessage: initialState.successMessage
+        errorMessage: INITIAL_STATES.errorMessage,
+        successMessage: INITIAL_STATES.successMessage
       };
     }
 
     case ACTIONS.CLEAR_CURRENT_PRODUCT: {
       return {
         ...state,
-        currentProduct: initialState.currentProduct
+        currentProduct: INITIAL_STATES.currentProduct
       };
     }
 
@@ -187,4 +177,4 @@ const reducer = (state = initialState, action: ActionProps): InitialState => {
   }
 };
 
-export { reducer, initialState, InitialState };
+export { reducer, INITIAL_STATES, InitialState };

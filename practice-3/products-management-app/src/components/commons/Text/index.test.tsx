@@ -4,10 +4,10 @@ import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 // Components
-import Text, { VariantsTypes } from './index';
+import Text from './index';
 
-// Constant
-import { FsType, FwType } from '@constants/index';
+// Types
+import { FsType, FwType, VariantsTypes } from '@common-types/index';
 
 describe('Button component', () => {
   let container: HTMLElement;
@@ -33,11 +33,13 @@ describe('Button component', () => {
     ).toJSON();
     expect(highlightText).toMatchSnapshot();
 
-    const boldText = create(<Text fw={FwType.Bold}>Typography</Text>).toJSON();
+    const boldText = create(
+      <Text fontWeight={FwType.Bold}>Typography</Text>
+    ).toJSON();
     expect(boldText).toMatchSnapshot();
 
     const italicText = create(
-      <Text fs={FsType.Italic}>Typography</Text>
+      <Text fontStyle={FsType.Italic}>Typography</Text>
     ).toJSON();
     expect(italicText).toMatchSnapshot();
   });

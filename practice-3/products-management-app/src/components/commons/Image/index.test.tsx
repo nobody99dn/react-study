@@ -10,8 +10,8 @@ import Image, { ImageProps } from './index';
 // Image
 import { blankImage } from '@assets/index';
 
-// Constant
-import { ImageVariants } from '@constants/index';
+// Types
+import { ImageVariants } from '@common-types/index';
 
 describe('Image component', () => {
   let container: HTMLElement;

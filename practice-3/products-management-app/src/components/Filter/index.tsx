@@ -13,8 +13,8 @@ import './index.css';
 export type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  currentFilterTypeParam: ProductTypes | '';
-  currentFilterPriceParam: FilterOrderOptions | '';
+  currentFilterTypeParam?: ProductTypes;
+  currentFilterPriceParam?: FilterOrderOptions;
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;
   handleClearFilters: () => void;
@@ -23,8 +23,8 @@ export type FilterProps = {
 const Filter: React.FC<FilterProps> = ({
   typeFilterOptions,
   priceFilterOptions,
-  currentFilterTypeParam,
-  currentFilterPriceParam,
+  currentFilterTypeParam = '',
+  currentFilterPriceParam = '',
   handleTypeChange,
   handlePriceChange,
   handleClearFilters

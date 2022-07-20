@@ -8,8 +8,7 @@ import {
   FilterOrderOptions,
   ERROR_MESSAGES,
   SUCCESS_MESSAGES,
-  URL_PRODUCTS,
-  localKey
+  URL_PRODUCTS
 } from '@constants/index';
 
 // Model
@@ -36,15 +35,7 @@ import {
 } from '@store/index';
 
 // Helpers
-import {
-  get,
-  post,
-  remove,
-  update,
-  urlFilterGenerate,
-  urlSearchingGenerate,
-  setLocalProducts
-} from '@helpers/index';
+import { get, post, remove, update, urlGeneration } from '@helpers/index';
 
 /**
  * This hook help execute product data
@@ -65,9 +56,6 @@ const useProducts = () => {
 
     if (!isValidating && !error && data) {
       dispatch(getProductsSuccess({ products: data }));
-
-      // save local
-      setLocalProducts(localKey, data);
     } else if (!isValidating && error) {
       if (error instanceof Error) {
         dispatch(
@@ -103,9 +91,6 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS
         })
       );
-
-      // save data local
-      data && setLocalProducts(localKey, [...data, newProduct]);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
@@ -147,9 +132,6 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
         })
       );
-
-      // save local data
-      data && setLocalProducts(localKey, data);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(editProductFailed({ errorMessage: error.message }));
@@ -191,9 +173,6 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
         })
       );
-
-      // save local data
-      setLocalProducts(localKey, updatedProducts);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(deleteProductFailed({ errorMessage: error.message }));
@@ -208,9 +187,11 @@ const useProducts = () => {
    * @param input string
    */
   const searchingProducts = async (input: string) => {
-    const filteredProducts: Product[] = await get(urlSearchingGenerate(input));
+    const filteredProducts: Product[] = await get(
+      urlGeneration({ searchInput: input })
+    );
 
-    dispatch(searchProductsSuccess({ filteredProducts, input }));
+    dispatch(searchProductsSuccess({ filteredProducts }));
   };
 
   /**
@@ -220,19 +201,20 @@ const useProducts = () => {
    * @param currentFilterPriceParam FilterOrderOptions
    */
   const filterProducts = async (
-    currentFilterTypeParam: ProductTypes,
-    currentFilterPriceParam: FilterOrderOptions
+    currentFilterTypeParam?: ProductTypes,
+    currentFilterPriceParam?: FilterOrderOptions
   ) => {
     dispatch(filterProductsRequest());
 
     const filteredProducts: Product[] = await get(
-      urlFilterGenerate(currentFilterTypeParam, currentFilterPriceParam)
+      urlGeneration({
+        type: currentFilterTypeParam,
+        priceOrder: currentFilterPriceParam
+      })
     );
 
     dispatch(
       filterProductsSuccess({
-        currentFilterTypeParam,
-        currentFilterPriceParam,
         filteredProducts
       })
     );

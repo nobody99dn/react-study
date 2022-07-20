@@ -9,7 +9,7 @@ import React, {
 import { ActionProps } from './actions';
 
 // Reducer
-import { initialState, InitialState } from './reducer';
+import { INITIAL_STATES, InitialState } from './reducer';
 
 interface ContextProps {
   globalState: InitialState;
@@ -17,7 +17,7 @@ interface ContextProps {
 }
 
 const Store: React.Context<ContextProps> = React.createContext<ContextProps>({
-  globalState: initialState,
+  globalState: INITIAL_STATES,
   dispatch: () => {}
 });
 Store.displayName = 'Store';

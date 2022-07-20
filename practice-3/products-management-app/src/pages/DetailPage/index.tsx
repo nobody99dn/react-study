@@ -19,7 +19,10 @@ import './index.css';
 import { Text } from '@components/index';
 
 // Constants
-import { ERROR_MESSAGES, VariantsTypes } from '@constants/index';
+import { ERROR_MESSAGES } from '@constants/index';
+
+// Types
+import { VariantsTypes } from '@common-types/index';
 
 const DetailPage: React.FC = () => {
   const { globalState } = useStore();
@@ -30,6 +33,9 @@ const DetailPage: React.FC = () => {
 
   const { currentProduct } = globalState;
 
+  console.log('id', id);
+  console.log('currentProduct', currentProduct, globalState);
+
   useEffect(() => {
     if (!isValidating) {
       getProduct();
@@ -39,7 +45,7 @@ const DetailPage: React.FC = () => {
   return (
     <>
       <Header />
-
+      <p>{id}</p>
       {currentProduct ? (
         <ProductDetail product={currentProduct} />
       ) : (

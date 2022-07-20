@@ -9,8 +9,8 @@ import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 import './index.css';
 
-// Constant
-import { FormVariants } from '@constants/index';
+// Types
+import { FormVariants } from '@common-types/index';
 
 export default {
   title: 'Components/Modal',

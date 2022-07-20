@@ -1,7 +1,6 @@
 // Define action constant
+// TODO: move to constants folder
 const ACTIONS = {
-  SUCCESS: 'success',
-  ERROR: 'error',
   GET_PRODUCTS_REQUEST: 'get_products_request',
   GET_PRODUCTS_SUCCESS: 'get_products_success',
   GET_PRODUCTS_FAILED: 'get_products_failed',

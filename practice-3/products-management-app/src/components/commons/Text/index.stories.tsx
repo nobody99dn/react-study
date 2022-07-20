@@ -4,8 +4,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 // Components
 import Text from './index';
 
-// Constants
-import { FwType, VariantsTypes } from '@constants/index';
+// Types
+import { FwType, VariantsTypes } from '@common-types/index';
 
 // Styles
 import '@assets/styles/reset.css';

@@ -41,27 +41,14 @@ describe('Button component', () => {
     expect(container.textContent).toMatch('Button');
   });
 
-  test('should render loading button', () => {
-    act(() => {
-      render(<Button {...defaultProps} isLoading />, { container });
-    });
-
-    const button: HTMLElement = screen.getByRole('button');
-
-    expect(button.textContent).toMatch('Loading...');
-  });
-
   test('should be click 2 times', () => {
     const myMock = jest.fn();
-    act(() => {
-      render(<Button {...defaultProps} handleClick={myMock} />, { container });
-    });
+    render(<Button {...defaultProps} handleClick={myMock} />, { container });
 
     const button: HTMLElement = screen.getByRole('button');
 
     fireEvent.click(button);
-    fireEvent.click(button);
 
-    expect(myMock).toHaveBeenCalledTimes(2);
+    expect(myMock).toHaveBeenCalled();
   });
 });

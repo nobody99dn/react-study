@@ -1,11 +1,5 @@
 // Libraries
-import React, {
-  FormEvent,
-  memo,
-  useCallback,
-  useEffect,
-  useState
-} from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Styles
@@ -55,9 +49,9 @@ const Main: React.FC = () => {
     imageUrl: ''
   });
   const [currentFilterPriceParam, setCurrentFilterPriceParam] =
-    useState<FilterOrderOptions | ''>('');
+    useState<FilterOrderOptions>();
   const [currentFilterTypeParam, setCurrentFilterTypeParam] =
-    useState<ProductTypes | ''>('');
+    useState<ProductTypes>();
   const [productName, setProductName] = useState<string>('');
 
   /**
@@ -77,12 +71,7 @@ const Main: React.FC = () => {
    * @param product Product
    * @returns void
    */
-  const handleCreateProduct = async (
-    event: FormEvent,
-    product: Product
-  ): Promise<void> => {
-    event.preventDefault();
-
+  const handleCreateProduct = async (product: Product): Promise<void> => {
     // Validate form
     if (!product.name) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
@@ -133,8 +122,8 @@ const Main: React.FC = () => {
    * Handle filter product
    */
   const handleClearFilters = useCallback(() => {
-    setCurrentFilterPriceParam('');
-    setCurrentFilterTypeParam('');
+    setCurrentFilterPriceParam(undefined);
+    setCurrentFilterTypeParam(undefined);
   }, []);
 
   /**

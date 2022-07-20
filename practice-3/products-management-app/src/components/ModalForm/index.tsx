@@ -5,16 +5,19 @@ import React, { FormEvent, memo } from 'react';
 import { Form, Modal } from '@components/index';
 
 // Constants
-import { FormVariants, PRODUCT_TYPE_LIST } from '@constants/index';
+import { PRODUCT_TYPE_LIST } from '@constants/index';
 
 // Models
 import { Product } from '@models/product';
+
+// Types
+import { FormVariants } from '@common-types/index';
 
 export interface ModalFormProps {
   product: Product;
   isModalShow: boolean;
   validateMessage: string;
-  handleSubmitForm: (event: FormEvent, product: Product) => void;
+  handleSubmitForm: (product: Product) => void;
   handleCloseModal: () => void;
 }
 

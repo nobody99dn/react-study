@@ -1,19 +1,21 @@
 // Libraries
-import {
-  render,
-  fireEvent,
-  cleanup,
-  screen,
-  within
-} from '@testing-library/react';
+import { render, fireEvent, cleanup, within } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 // Components
 import Card, { CardProps } from './index';
+
+// Models
 import { Product } from '@models/product';
+
+// Images
 import { iPhoneImage } from '@assets/index';
+
+// Constants
 import { Currencies, ProductTypes } from '@constants/types';
+
+// Helpers
 import { currencyFormat } from '@helpers/string';
 
 describe('Card component', () => {

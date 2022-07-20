@@ -9,14 +9,7 @@ import { Image, Form, Title, Layout } from '@components/index';
 import { Product } from '@models/product';
 
 // Constants
-import {
-  ERROR_MESSAGES,
-  FormVariants,
-  ImageVariants,
-  PRODUCT_TYPE_LIST,
-  URL,
-  VariantTypes
-} from '@constants/index';
+import { ERROR_MESSAGES, PRODUCT_TYPE_LIST, URL } from '@constants/index';
 
 // Styles
 import './index.css';
@@ -26,6 +19,9 @@ import useProducts from '@hooks/useProducts';
 
 // Icon
 import { BackIcon } from '@assets/index';
+
+// Types
+import { FormVariants, ImageVariants, VariantTypes } from '@common-types/index';
 
 interface ProductDetailProps {
   product: Product;
@@ -38,6 +34,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
 
   const [validateMessage, setValidateMessage] = useState<string>('');
   const [currentProduct, setCurrentProduct] = useState<Product>(product);
+  console.log('product', product);
 
   /**
    * Handle create new product and edit product
@@ -46,12 +43,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
    * @param product Product
    * @returns void
    */
-  const handleSubmitEdit = async (
-    event: FormEvent,
-    product: Product
-  ): Promise<void> => {
-    event.preventDefault();
-
+  const handleSubmitEdit = async (product: Product): Promise<void> => {
     // Validate form
     if (!product.name) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
@@ -81,8 +73,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
    * Handle click back icon
    */
   const handleBack = useCallback(() => {
-    navigate(URL.HOME_PAGE);
+    navigate(-1);
   }, []);
+  console.log('currentProduct', currentProduct);
 
   return (
     <Layout>
@@ -114,4 +107,4 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
   );
 };
 
-export default memo(ProductDetail);
+export default ProductDetail;

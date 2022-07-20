@@ -5,12 +5,7 @@ import React from 'react';
 import { Image, Title, Button } from '@components/index';
 
 // Constants
-import {
-  ButtonVariants,
-  Currencies,
-  FwType,
-  VariantTypes
-} from '@constants/index';
+import { Currencies } from '@constants/index';
 
 // Helpers
 import { currencyFormat } from '@helpers/string';
@@ -20,6 +15,9 @@ import './index.css';
 
 // Models
 import { Product } from '@models/product';
+
+// Types
+import { ButtonVariants, FwType, VariantTypes } from '@common-types/index';
 
 export interface CardProps {
   product: Product;
@@ -34,7 +32,7 @@ const Card: React.FC<CardProps> = ({
   handleNavigate,
   handleDeleteProduct
 }) => {
-  const { name, imageUrl, price, id, type } = product;
+  const { name, imageUrl, price, id, type: typeProduct } = product;
 
   const handleToggleModal = () => {
     handleNavigate(id);
@@ -49,7 +47,7 @@ const Card: React.FC<CardProps> = ({
       <Image imageUrl={imageUrl} alt={name} className='card-image' />
       <div className='card-body'>
         <div className='title-wrapper'>
-          <Title className='card-title' lineHeight='1.5'>
+          <Title className='card-title' lineHeight='1.5rem'>
             {name}
           </Title>
         </div>
@@ -57,15 +55,15 @@ const Card: React.FC<CardProps> = ({
           color='var(--dark)'
           variant={VariantTypes.Subtitle}
           fontStyle='italic'
-          lineHeight='1.6'
+          lineHeight='2rem'
           fontSize='16px'
         >
-          {type}
+          {typeProduct}
         </Title>
         <Title
           variant={VariantTypes.Subtitle}
           fontWeight={FwType.Bold}
-          lineHeight='1.6'
+          lineHeight='1.5rem'
         >
           {currencyFormat(price)}
           <span> {currency}</span>

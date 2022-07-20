@@ -2,17 +2,20 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
-// Component
+// Components
 import { Image } from '@components/index';
 
 // Assets
 import { logo } from '@assets/index';
 
-// Style
+// Styles
 import './index.css';
 
-// Constant
-import { ImageVariants, URL } from '@constants/index';
+// Constants
+import { URL } from '@constants/index';
+
+// Types
+import { ImageVariants } from '@common-types/index';
 
 interface HeaderProps {
   href?: string;

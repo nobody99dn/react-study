@@ -3,7 +3,7 @@ Images
 ----------*/
 import logo from './images/logo.png';
 import iPhoneImage from './images/iphone-13-pro-max-alpine-green-alpine-green-color.jpg';
-import blankImage from './images/blank.png';
+import blankImage from './images/blank-image.png';
 
 /*--------
 Icons

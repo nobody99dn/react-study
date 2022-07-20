@@ -1,8 +1,8 @@
 // Library
 import { memo, ReactNode } from 'react';
 
-// Constants
-import { FsType, FwType, VariantsTypes } from '@constants/index';
+// Types
+import { FsType, FwType, VariantsTypes } from '@common-types/index';
 
 // Styles
 import './index.css';

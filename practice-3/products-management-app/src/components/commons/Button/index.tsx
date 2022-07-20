@@ -1,8 +1,10 @@
 // Libraries
 import React from 'react';
 
+// Types
+import { ButtonVariants } from '@common-types/index';
+
 // Constants
-import { ButtonVariants } from '@constants/index';
 
 // Styles
 import './index.css';
@@ -11,7 +13,6 @@ export interface ButtonProps {
   title: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
-  isLoading?: boolean;
   handleClick: () => void;
 }
 
@@ -19,15 +20,14 @@ const Button: React.FC<ButtonProps> = ({
   title,
   variant = ButtonVariants.Default,
   isDisabled = false,
-  isLoading = false,
   handleClick
 }) => (
   <button
-    className={`btn btn-${variant} ${isDisabled ? 'btn-disabled' : ''}`.trim()}
+    className={`btn btn-${variant}${isDisabled ? ' btn-disabled' : ''}`}
     onClick={handleClick}
     disabled={isDisabled}
   >
-    {isLoading ? 'Loading...' : title}
+    {title}
   </button>
 );
 

@@ -5,8 +5,8 @@ import { create } from 'react-test-renderer';
 // Components
 import Title, { TitleProps } from './index';
 
-// Constants
-import { FwType, VariantTypes } from '@constants/index';
+// Types
+import { FwType, VariantTypes } from '@common-types/index';
 
 describe('Title component', () => {
   let container: HTMLElement;
