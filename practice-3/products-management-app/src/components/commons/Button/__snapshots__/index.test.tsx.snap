@@ -4,6 +4,7 @@ exports[`Button component should render correctly 1`] = `
 <button
   className="btn btn-default"
   disabled={false}
+  onClick={[MockFunction]}
 >
   Button
 </button>
@@ -13,7 +14,8 @@ exports[`Button component should render correctly 2`] = `
 <button
   className="btn btn-default btn-disabled"
   disabled={true}
+  onClick={[MockFunction]}
 >
-  Disable Button
+  Button
 </button>
 `;

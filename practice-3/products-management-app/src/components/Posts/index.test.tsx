@@ -65,7 +65,7 @@ describe('Posts component', () => {
   test('should render correct products length', () => {
     render(<Posts {...defaultProps} />, { container });
 
-    expect(container.getElementsByClassName('products-row').length).toBe(
+    expect(container.getElementsByClassName('card').length).toBe(
       defaultProps.products.length
     );
   });

@@ -9,10 +9,8 @@ exports[`ModalForm component should render correctly 1`] = `
   >
     <img
       alt="close icon"
-      className="image  close-icon"
+      className="image"
       onClick={[MockFunction]}
-      onError={[Function]}
-      onLoad={[Function]}
     />
     <div
       className="modal-body"
@@ -28,166 +26,170 @@ exports[`ModalForm component should render correctly 1`] = `
               "fontSize": undefined,
               "fontStyle": "inherit",
               "fontWeight": undefined,
-              "padding": undefined,
+              "lineHeight": undefined,
             }
           }
         >
           Edit
            Product
         </div>
-        <form
-          aria-label="form"
-          className="form"
-          onSubmit={[Function]}
+        <fieldset
+          className="field-group"
         >
-          <fieldset
-            className="field-group"
+          <div
+            className="field-wrapper"
           >
-            <div
-              className="field-wrapper"
+            <label
+              htmlFor="name"
             >
-              <label>
-                Product name
-                : 
-              </label>
-              <div
-                className="input-wrapper"
-              >
-                <input
-                  className="field field-standard"
-                  disabled={false}
-                  name="name"
-                  onChange={[Function]}
-                  placeholder="Enter product name..."
-                  readOnly={false}
-                  required={false}
-                  style={
-                    Object {
-                      "height": undefined,
-                      "width": undefined,
-                    }
-                  }
-                  type="text"
-                  value="Product test"
-                />
-              </div>
-            </div>
+              Product name
+              : 
+            </label>
             <div
-              className="select-wrapper"
+              className="input-wrapper"
             >
-              <label>
-                Product type
-                :
-              </label>
-              <select
-                className="select"
-                data-testid="select-option"
+              <input
+                className="field field-standard"
                 disabled={false}
-                name="type"
+                id="name"
+                name="name"
                 onChange={[Function]}
+                placeholder="Enter product name..."
+                readOnly={false}
+                required={false}
+                style={
+                  Object {
+                    "height": undefined,
+                    "width": undefined,
+                  }
+                }
+                type="text"
+                value="Product test"
+              />
+            </div>
+          </div>
+          <div
+            className="select-wrapper"
+          >
+            <label>
+              Product type
+              :
+            </label>
+            <select
+              className="select"
+              data-testid="select-option"
+              disabled={false}
+              name="type"
+              onChange={[Function]}
+              value="Phone"
+            >
+              <option
+                value=""
+              >
+                Select
+              </option>
+              <option
                 value="Phone"
               >
-                <option
-                  value=""
-                >
-                  Select
-                </option>
-                <option
-                  value="Phone"
-                >
-                  Phone
-                </option>
-                <option
-                  value="Tablet"
-                >
-                  Tablet
-                </option>
-                <option
-                  value="Laptop"
-                >
-                  Laptop
-                </option>
-              </select>
-            </div>
-            <div
-              className="field-wrapper"
-            >
-              <label>
-                Price
-                : 
-              </label>
-              <div
-                className="input-wrapper"
+                Phone
+              </option>
+              <option
+                value="Tablet"
               >
-                <input
-                  className="field field-standard"
-                  disabled={false}
-                  name="price"
-                  onChange={[Function]}
-                  placeholder="Enter price..."
-                  readOnly={false}
-                  required={false}
-                  style={
-                    Object {
-                      "height": undefined,
-                      "width": undefined,
-                    }
-                  }
-                  type="number"
-                  value={1000000}
-                />
-              </div>
-            </div>
-            <div
-              className="field-wrapper"
-            >
-              <label>
-                Image link
-                : 
-              </label>
-              <div
-                className="input-wrapper"
+                Tablet
+              </option>
+              <option
+                value="Laptop"
               >
-                <input
-                  className="field field-standard"
-                  disabled={false}
-                  name="imageUrl"
-                  onChange={[Function]}
-                  placeholder="Enter image link..."
-                  readOnly={false}
-                  required={false}
-                  style={
-                    Object {
-                      "height": undefined,
-                      "width": undefined,
-                    }
-                  }
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-            <p
-              className="text-highlight"
-              style={
-                Object {
-                  "color": "var(--danger)",
-                  "fontSize": undefined,
-                  "fontStyle": "inherit",
-                  "fontWeight": 400,
-                }
-              }
-            >
-              test message
-            </p>
-          </fieldset>
-          <button
-            className="btn btn-primary"
-            disabled={false}
+                Laptop
+              </option>
+            </select>
+          </div>
+          <div
+            className="field-wrapper"
           >
-            Edit
-          </button>
-        </form>
+            <label
+              htmlFor="price"
+            >
+              Price
+              : 
+            </label>
+            <div
+              className="input-wrapper"
+            >
+              <input
+                className="field field-standard"
+                disabled={false}
+                id="price"
+                name="price"
+                onChange={[Function]}
+                placeholder="Enter price..."
+                readOnly={false}
+                required={false}
+                style={
+                  Object {
+                    "height": undefined,
+                    "width": undefined,
+                  }
+                }
+                type="number"
+                value={1000000}
+              />
+            </div>
+          </div>
+          <div
+            className="field-wrapper"
+          >
+            <label
+              htmlFor="imageUrl"
+            >
+              Image link
+              : 
+            </label>
+            <div
+              className="input-wrapper"
+            >
+              <input
+                className="field field-standard"
+                disabled={false}
+                id="imageUrl"
+                name="imageUrl"
+                onChange={[Function]}
+                placeholder="Enter image link..."
+                readOnly={false}
+                required={false}
+                style={
+                  Object {
+                    "height": undefined,
+                    "width": undefined,
+                  }
+                }
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <p
+            className="text-highlight"
+            style={
+              Object {
+                "color": "var(--danger)",
+                "fontSize": undefined,
+                "fontStyle": "inherit",
+                "fontWeight": 400,
+              }
+            }
+          >
+            test message
+          </p>
+        </fieldset>
+        <button
+          className="btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Edit
+        </button>
       </div>
     </div>
   </div>

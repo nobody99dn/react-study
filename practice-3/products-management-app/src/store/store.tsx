@@ -1,10 +1,11 @@
 // Library
-import React, {
+import {
   ReactNode,
   useReducer,
   useContext,
   Reducer,
-  Dispatch
+  Dispatch,
+  createContext
 } from 'react';
 import { ActionProps } from './actions';
 
@@ -16,7 +17,7 @@ interface ContextProps {
   dispatch: Dispatch<ActionProps>;
 }
 
-const Store: React.Context<ContextProps> = React.createContext<ContextProps>({
+const Store: React.Context<ContextProps> = createContext<ContextProps>({
   globalState: INITIAL_STATES,
   dispatch: () => {}
 });

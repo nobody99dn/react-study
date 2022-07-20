@@ -60,9 +60,9 @@ describe('ModalForm component', () => {
     render(<ModalForm {...defaultProps} handleSubmitForm={submitMock} />),
       { container };
 
-    const form: HTMLImageElement = screen.getByRole('form');
+    const button: HTMLImageElement = screen.getByRole('button');
 
-    fireEvent.submit(form);
+    fireEvent.click(button);
 
     expect(submitMock).toHaveBeenCalled();
   });

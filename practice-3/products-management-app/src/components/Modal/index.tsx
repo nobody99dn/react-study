@@ -22,7 +22,6 @@ const Modal: React.FC<ModalProps> = ({ children, isVisible, handleClose }) =>
       <div className='modal-dialog'>
         <Image
           alt='close icon'
-          className='close-icon'
           imageUrl={closeIcon}
           handleClick={handleClose}
         />
