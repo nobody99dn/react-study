@@ -5,7 +5,7 @@ import {
   PRODUCT_TYPE_LIST,
   FilterOrderOptions,
   ORDER_OPTIONS,
-  LOCAL_KEY
+  localKey
 } from './types';
 
 // Component types
@@ -32,7 +32,7 @@ export {
   SUCCESS_MESSAGES,
   PRODUCT_TYPE_LIST,
   ORDER_OPTIONS,
-  LOCAL_KEY,
+  localKey,
   URL,
   URL_PRODUCTS,
   Currencies,

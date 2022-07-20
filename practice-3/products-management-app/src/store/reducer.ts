@@ -1,4 +1,4 @@
-// Constants
+// Action constant
 import { ACTIONS } from './constants';
 
 // Model
@@ -10,6 +10,9 @@ import { ActionProps } from './actions';
 // Helper
 import { getLocalProducts } from '@helpers/localStorage';
 
+// Constant
+import { localKey } from '@constants/types';
+
 interface InitialState {
   products: Product[];
   currentProduct: Product | null;
@@ -19,7 +22,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  products: getLocalProducts<Product[]>() || [],
+  products: getLocalProducts<Product[]>(localKey) || [],
   currentProduct: null,
   isLoading: false,
   errorMessage: '',

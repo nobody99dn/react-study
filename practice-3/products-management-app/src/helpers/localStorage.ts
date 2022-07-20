@@ -1,6 +1,3 @@
-// Constant
-import { LOCAL_KEY } from '@constants/types';
-
 // Model
 import { Product } from '@models/product';
 
@@ -9,8 +6,8 @@ import { Product } from '@models/product';
  *
  * @returns T | null
  */
-const getLocalProducts = <T>(): T => {
-  const item = window.localStorage.getItem(LOCAL_KEY);
+const getLocalProducts = <T>(key: string): T => {
+  const item = window.localStorage.getItem(key);
 
   return item ? JSON.parse(item) : null;
 };
@@ -21,11 +18,11 @@ const getLocalProducts = <T>(): T => {
  * @param data {productList: Product[]}
  * @returns void
  */
-const setLocalProducts = (data: Product[]): void => {
+const setLocalProducts = (key: string, data: Product[]): void => {
   // clear before override
-  window.localStorage.removeItem(LOCAL_KEY);
+  window.localStorage.removeItem(key);
 
-  window.localStorage.setItem(LOCAL_KEY, JSON.stringify(data));
+  window.localStorage.setItem(key, JSON.stringify(data));
 };
 
 export { getLocalProducts, setLocalProducts };

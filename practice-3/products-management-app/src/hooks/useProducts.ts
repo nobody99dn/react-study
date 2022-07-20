@@ -8,7 +8,8 @@ import {
   FilterOrderOptions,
   ERROR_MESSAGES,
   SUCCESS_MESSAGES,
-  URL_PRODUCTS
+  URL_PRODUCTS,
+  localKey
 } from '@constants/index';
 
 // Model
@@ -63,10 +64,12 @@ const useProducts = () => {
     isValidating && dispatch(getProductsRequest());
 
     if (!isValidating && !error && data) {
+      console.log(data);
+
       dispatch(getProductsSuccess({ products: data }));
 
       // save local
-      setLocalProducts(data);
+      setLocalProducts(localKey, data);
     } else if (!isValidating && error) {
       if (error instanceof Error) {
         dispatch(
@@ -104,7 +107,7 @@ const useProducts = () => {
       );
 
       // save data local
-      setLocalProducts([...data, newProduct]);
+      data && setLocalProducts(localKey, [...data, newProduct]);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
@@ -148,7 +151,7 @@ const useProducts = () => {
       );
 
       // save local data
-      setLocalProducts(data);
+      data && setLocalProducts(localKey, data);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(editProductFailed({ errorMessage: error.message }));
@@ -192,7 +195,7 @@ const useProducts = () => {
       );
 
       // save local data
-      setLocalProducts(updatedProducts);
+      setLocalProducts(localKey, updatedProducts);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(deleteProductFailed({ errorMessage: error.message }));
