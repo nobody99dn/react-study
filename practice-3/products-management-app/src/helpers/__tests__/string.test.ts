@@ -1,4 +1,4 @@
-import { currencyFormat } from '../';
+import { currencyFormat } from '..';
 
 describe('Current format', () => {
   test('should format number greater than 3 characters', () => {

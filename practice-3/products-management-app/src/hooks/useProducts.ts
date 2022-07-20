@@ -8,7 +8,8 @@ import {
   FilterOrderOptions,
   ERROR_MESSAGES,
   SUCCESS_MESSAGES,
-  URL_PRODUCTS
+  URL_PRODUCTS,
+  localKey
 } from '@constants/index';
 
 // Model
@@ -35,8 +36,15 @@ import {
 } from '@store/index';
 
 // Helpers
-import { get, post, remove, update } from '@helpers/clientRequests';
-import { filterTypeAndPriceOrder, queryProducts } from '@helpers/queries';
+import {
+  get,
+  post,
+  remove,
+  update,
+  filterTypeAndPriceOrder,
+  queryProducts,
+  setLocalProducts
+} from '@helpers/index';
 
 /**
  * This hook help execute product data
@@ -56,10 +64,19 @@ const useProducts = () => {
     isValidating && dispatch(getProductsRequest());
 
     if (!isValidating && !error && data) {
+      console.log(data);
+
       dispatch(getProductsSuccess({ products: data }));
+
+      // save local
+      setLocalProducts(localKey, data);
     } else if (!isValidating && error) {
       if (error instanceof Error) {
-        dispatch(getProductsFailed({ errorMessage: error.message }));
+        dispatch(
+          getProductsFailed({
+            errorMessage: error.message
+          })
+        );
       }
     }
   }, [isValidating]);
@@ -88,6 +105,9 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS
         })
       );
+
+      // save data local
+      data && setLocalProducts(localKey, [...data, newProduct]);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
@@ -129,6 +149,9 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
         })
       );
+
+      // save local data
+      data && setLocalProducts(localKey, data);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(editProductFailed({ errorMessage: error.message }));
@@ -170,6 +193,9 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
         })
       );
+
+      // save local data
+      setLocalProducts(localKey, updatedProducts);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(deleteProductFailed({ errorMessage: error.message }));
