@@ -25,7 +25,6 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
   const [isVisible, setIsVisible] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsVisible(true);
     const timer = setTimeout(() => {
       setIsVisible(false);
       dispatch(clearMessages());
@@ -36,7 +35,7 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
 
   return (
     <div
-      className={`popup-message
+      className={`popup-messages
       ${isVisible ? 'active' : ''}
       ${isError ? 'popup-error' : 'popup-success'}`}
     >

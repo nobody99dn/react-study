@@ -2,7 +2,7 @@
 
 exports[`MessagePopUp component should render correctly 1`] = `
 <div
-  className="popup-message
+  className="popup-messages
       active
       popup-success"
 >
