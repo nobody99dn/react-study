@@ -87,7 +87,8 @@
     ├── pages
     │   ├── DetailPage
     │   └── Home
-    └── store
+    ├── store
+    └── utils
 
 ```
 
