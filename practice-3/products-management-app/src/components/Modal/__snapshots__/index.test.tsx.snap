@@ -7,13 +7,15 @@ exports[`Modal component should render correctly 1`] = `
   <div
     className="modal-dialog"
   >
-    <img
-      alt="close icon"
-      className="image  close-icon"
-      onClick={[MockFunction]}
-      onError={[Function]}
-      onLoad={[Function]}
-    />
+    <div
+      className="close-icon"
+    >
+      <img
+        alt="close icon"
+        className="image"
+        onClick={[MockFunction]}
+      />
+    </div>
     <div
       className="modal-body"
     />

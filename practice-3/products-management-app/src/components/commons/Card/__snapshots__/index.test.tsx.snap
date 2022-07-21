@@ -4,12 +4,14 @@ exports[`Card component should render correctly 1`] = `
 <div
   className="card"
 >
-  <img
-    alt="Product Name"
-    className="image  card-image"
-    onError={[Function]}
-    onLoad={[Function]}
-  />
+  <div
+    className="card-image"
+  >
+    <img
+      alt="Product Name"
+      className="image"
+    />
+  </div>
   <div
     className="card-body"
   >
@@ -24,7 +26,7 @@ exports[`Card component should render correctly 1`] = `
             "fontSize": undefined,
             "fontStyle": "inherit",
             "fontWeight": undefined,
-            "padding": "0.5rem 0.5rem 0 0.5rem",
+            "lineHeight": "1.5rem",
           }
         }
       >
@@ -39,7 +41,7 @@ exports[`Card component should render correctly 1`] = `
           "fontSize": "16px",
           "fontStyle": "italic",
           "fontWeight": undefined,
-          "padding": "0 0.5rem",
+          "lineHeight": "2rem",
         }
       }
     >
@@ -53,7 +55,7 @@ exports[`Card component should render correctly 1`] = `
           "fontSize": undefined,
           "fontStyle": "inherit",
           "fontWeight": 700,
-          "padding": "0.5rem",
+          "lineHeight": "1.5rem",
         }
       }
     >
@@ -89,12 +91,14 @@ exports[`Card component should render correctly 2`] = `
 <div
   className="card"
 >
-  <img
-    alt="Product Name"
-    className="image  card-image"
-    onError={[Function]}
-    onLoad={[Function]}
-  />
+  <div
+    className="card-image"
+  >
+    <img
+      alt="Product Name"
+      className="image"
+    />
+  </div>
   <div
     className="card-body"
   >
@@ -109,7 +113,7 @@ exports[`Card component should render correctly 2`] = `
             "fontSize": undefined,
             "fontStyle": "inherit",
             "fontWeight": undefined,
-            "padding": "0.5rem 0.5rem 0 0.5rem",
+            "lineHeight": "1.5rem",
           }
         }
       >
@@ -124,7 +128,7 @@ exports[`Card component should render correctly 2`] = `
           "fontSize": "16px",
           "fontStyle": "italic",
           "fontWeight": undefined,
-          "padding": "0 0.5rem",
+          "lineHeight": "2rem",
         }
       }
     >
@@ -138,7 +142,7 @@ exports[`Card component should render correctly 2`] = `
           "fontSize": undefined,
           "fontStyle": "inherit",
           "fontWeight": 700,
-          "padding": "0.5rem",
+          "lineHeight": "1.5rem",
         }
       }
     >
@@ -174,12 +178,14 @@ exports[`Card component should render correctly 3`] = `
 <div
   className="card"
 >
-  <img
-    alt="Product Name"
-    className="image  card-image"
-    onError={[Function]}
-    onLoad={[Function]}
-  />
+  <div
+    className="card-image"
+  >
+    <img
+      alt="Product Name"
+      className="image"
+    />
+  </div>
   <div
     className="card-body"
   >
@@ -194,7 +200,7 @@ exports[`Card component should render correctly 3`] = `
             "fontSize": undefined,
             "fontStyle": "inherit",
             "fontWeight": undefined,
-            "padding": "0.5rem 0.5rem 0 0.5rem",
+            "lineHeight": "1.5rem",
           }
         }
       >
@@ -209,7 +215,7 @@ exports[`Card component should render correctly 3`] = `
           "fontSize": "16px",
           "fontStyle": "italic",
           "fontWeight": undefined,
-          "padding": "0 0.5rem",
+          "lineHeight": "2rem",
         }
       }
     >
@@ -223,7 +229,7 @@ exports[`Card component should render correctly 3`] = `
           "fontSize": undefined,
           "fontStyle": "inherit",
           "fontWeight": 700,
-          "padding": "0.5rem",
+          "lineHeight": "1.5rem",
         }
       }
     >

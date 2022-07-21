@@ -9,7 +9,7 @@ exports[`Title component should render correctly 1`] = `
       "fontSize": undefined,
       "fontStyle": "inherit",
       "fontWeight": undefined,
-      "padding": undefined,
+      "lineHeight": undefined,
     }
   }
 >
@@ -26,7 +26,7 @@ exports[`Title component should render correctly 2`] = `
       "fontSize": undefined,
       "fontStyle": "inherit",
       "fontWeight": undefined,
-      "padding": undefined,
+      "lineHeight": undefined,
     }
   }
 >
@@ -43,7 +43,7 @@ exports[`Title component should render with custom style 1`] = `
       "fontSize": "24px",
       "fontStyle": "italic",
       "fontWeight": 700,
-      "padding": undefined,
+      "lineHeight": undefined,
     }
   }
 >

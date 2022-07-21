@@ -1,5 +1,5 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
@@ -14,6 +14,7 @@ import {
   ProductTypes,
   PRODUCT_TYPE_LIST
 } from '@constants/types';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 describe('Filter component', () => {
   const defaultProps: FilterProps = {
