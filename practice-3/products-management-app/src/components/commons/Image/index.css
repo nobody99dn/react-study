@@ -20,13 +20,6 @@
   cursor: pointer;
 }
 
-.close-icon {
-  position: absolute;
-  cursor: pointer;
-  right: 1rem;
-  top: 1rem;
-}
-
 .image-error {
   line-height: 1.5rem;
 }
