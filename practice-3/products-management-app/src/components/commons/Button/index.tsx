@@ -4,8 +4,6 @@ import React, { memo } from 'react';
 // Types
 import { ButtonVariants } from '@common-types/index';
 
-// Constants
-
 // Styles
 import './index.css';
 
@@ -24,8 +22,8 @@ const Button: React.FC<ButtonProps> = ({
 }) => (
   <button
     className={`btn btn-${variant}${isDisabled ? ' btn-disabled' : ''}`}
-    onClick={handleClick}
     disabled={isDisabled}
+    onClick={handleClick}
   >
     {title}
   </button>

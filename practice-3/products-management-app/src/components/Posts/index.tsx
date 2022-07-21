@@ -13,6 +13,9 @@ import { Currencies } from '@constants/index';
 // Model
 import { Product } from '@models/product';
 
+// Utils
+import { areEqual } from '@utils/areEqual';
+
 export interface PostsProps {
   products: Product[];
   handleNavigate: (productId: string) => void;
@@ -37,4 +40,4 @@ const Posts: React.FC<PostsProps> = ({
   </div>
 );
 
-export default memo(Posts);
+export default memo(Posts, areEqual<PostsProps>);

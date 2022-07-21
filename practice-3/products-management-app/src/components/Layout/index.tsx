@@ -1,5 +1,8 @@
-import Header from '@layouts/Header';
+// Libraries
 import { memo, ReactNode } from 'react';
+
+// Layouts
+import Header from '@layouts/Header';
 
 export interface LayoutProps {
   children: ReactNode;

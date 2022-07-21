@@ -61,6 +61,10 @@ export default defineConfig({
       {
         find: '@common-types',
         replacement: path.resolve(__dirname, 'src/common-types')
+      },
+      {
+        find: '@utils',
+        replacement: path.resolve(__dirname, 'src/utils')
       }
     ]
   }

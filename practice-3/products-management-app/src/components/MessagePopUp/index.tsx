@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 // Stores
 import { clearMessages, useStore } from '@store/index';
@@ -47,4 +47,4 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
   );
 };
 
-export default MessagePopUp;
+export default memo(MessagePopUp);
