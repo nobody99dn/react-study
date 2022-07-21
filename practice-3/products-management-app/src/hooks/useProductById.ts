@@ -38,7 +38,7 @@ const useProductById = (id: string) => {
    * @returns Product
    */
   const getProduct = (): void => {
-    // dispatch(getProductRequest());
+    dispatch(getProductRequest());
 
     // return data
     if (data) {

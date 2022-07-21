@@ -1,5 +1,5 @@
 // Libraries
-import { FormEvent, memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Components
@@ -25,9 +25,13 @@ import { FormVariants, ImageVariants, VariantTypes } from '@common-types/index';
 
 interface ProductDetailProps {
   product: Product;
+  handleClearCurrent: () => void;
 }
 
-const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
+const ProductDetail: React.FC<ProductDetailProps> = ({
+  product,
+  handleClearCurrent
+}) => {
   const { editProduct } = useProducts();
 
   const navigate = useNavigate();
@@ -72,7 +76,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
    * Handle click back icon
    */
   const handleBack = useCallback(() => {
-    navigate(-1);
+    handleClearCurrent();
+    navigate(URL.HOME_PAGE);
   }, []);
 
   return (

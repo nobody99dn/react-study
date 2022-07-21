@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Hooks
@@ -9,7 +9,7 @@ import useProductById from '@hooks/useProductById';
 import ProductDetail from '@layouts/ProductDetail';
 
 // Store
-import { useStore } from '@store/index';
+import { clearCurrentProduct, useStore } from '@store/index';
 
 // Styles
 import './index.css';
@@ -24,7 +24,7 @@ import { ERROR_MESSAGES } from '@constants/index';
 import { VariantsTypes } from '@common-types/index';
 
 const DetailPage: React.FC = () => {
-  const { globalState } = useStore();
+  const { globalState, dispatch } = useStore();
 
   const { id } = useParams() as { id: string };
 
@@ -38,10 +38,17 @@ const DetailPage: React.FC = () => {
     }
   }, [isValidating]);
 
+  const handleClearCurrent = useCallback(() => {
+    dispatch(clearCurrentProduct());
+  }, []);
+
   return (
     <>
       {currentProduct ? (
-        <ProductDetail product={currentProduct} />
+        <ProductDetail
+          product={currentProduct}
+          handleClearCurrent={handleClearCurrent}
+        />
       ) : (
         <div className='error-message'>
           <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
