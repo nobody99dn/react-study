@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1658338013441" clover="3.2.0">
-  <project timestamp="1658338013442" name="All files">
-    <metrics statements="365" coveredstatements="326" conditionals="110" coveredconditionals="71" methods="93" coveredmethods="52" elements="568" coveredelements="449" complexity="0" loc="365" ncloc="365" packages="23" files="41" classes="41"/>
+<coverage generated="1658383121429" clover="3.2.0">
+  <project timestamp="1658383121429" name="All files">
+    <metrics statements="372" coveredstatements="332" conditionals="110" coveredconditionals="71" methods="94" coveredmethods="52" elements="576" coveredelements="455" complexity="0" loc="372" ncloc="372" packages="24" files="42" classes="42"/>
     <package name="assets">
       <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\assets\index.ts">
@@ -115,9 +115,10 @@
       </file>
     </package>
     <package name="components.Filter">
-      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="index.tsx" path="E:\asnet\react-training\practice-3\products-management-app\src\components\Filter\index.tsx">
-        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="8" type="stmt"/>
         <line num="8" count="8" type="stmt"/>
         <line num="11" count="8" type="stmt"/>
         <line num="23" count="8" type="stmt"/>
@@ -145,7 +146,7 @@
         <line num="54" count="4" type="stmt"/>
         <line num="55" count="1" type="stmt"/>
         <line num="58" count="4" type="stmt"/>
-        <line num="124" count="8" type="stmt"/>
+        <line num="120" count="8" type="stmt"/>
       </file>
     </package>
     <package name="components.Layout">
@@ -163,11 +164,11 @@
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.tsx" path="E:\asnet\react-training\practice-3\products-management-app\src\components\LoadingIndicator\index.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="9" type="stmt"/>
-        <line num="4" count="9" type="stmt"/>
-        <line num="6" count="9" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="14" count="9" type="stmt"/>
+        <line num="2" count="9" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
+        <line num="7" count="9" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="15" count="9" type="stmt"/>
       </file>
     </package>
     <package name="components.MessagePopUp">
@@ -200,7 +201,7 @@
         <line num="11" count="8" type="stmt"/>
         <line num="19" count="8" type="stmt"/>
         <line num="20" count="7" type="cond" truecount="2" falsecount="0"/>
-        <line num="33" count="8" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
       </file>
     </package>
     <package name="components.ModalForm">
@@ -217,17 +218,18 @@
       </file>
     </package>
     <package name="components.Posts">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="index.tsx" path="E:\asnet\react-training\practice-3\products-management-app\src\components\Posts\index.tsx">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="2" count="8" type="stmt"/>
         <line num="5" count="8" type="stmt"/>
         <line num="8" count="8" type="stmt"/>
         <line num="11" count="8" type="stmt"/>
-        <line num="22" count="8" type="stmt"/>
-        <line num="27" count="4" type="stmt"/>
-        <line num="29" count="12" type="stmt"/>
-        <line num="40" count="8" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="25" count="8" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="32" count="12" type="stmt"/>
+        <line num="43" count="8" type="stmt"/>
       </file>
     </package>
     <package name="components.SearchInput">
@@ -243,20 +245,22 @@
       </file>
     </package>
     <package name="components.commons.Button">
-      <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
       <file name="index.tsx" path="E:\asnet\react-training\practice-3\products-management-app\src\components\commons\Button\index.tsx">
-        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="2" count="9" type="stmt"/>
         <line num="5" count="9" type="stmt"/>
-        <line num="10" count="9" type="stmt"/>
-        <line num="19" count="9" type="stmt"/>
-        <line num="25" count="49" type="stmt"/>
-        <line num="34" count="9" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="17" count="9" type="stmt"/>
+        <line num="23" count="49" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
       </file>
     </package>
     <package name="components.commons.Card">
-      <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="index.tsx" path="E:\asnet\react-training\practice-3\products-management-app\src\components\commons\Card\index.tsx">
-        <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="2" count="8" type="stmt"/>
         <line num="5" count="8" type="stmt"/>
         <line num="8" count="8" type="stmt"/>
         <line num="11" count="8" type="stmt"/>
@@ -293,10 +297,10 @@
         <line num="5" count="9" type="stmt"/>
         <line num="17" count="9" type="stmt"/>
         <line num="26" count="18" type="stmt"/>
-        <line num="28" count="3" type="stmt"/>
-        <line num="33" count="18" type="stmt"/>
-        <line num="47" count="49" type="stmt"/>
-        <line num="56" count="9" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="30" count="18" type="stmt"/>
+        <line num="44" count="49" type="stmt"/>
+        <line num="53" count="9" type="stmt"/>
       </file>
     </package>
     <package name="components.commons.Text">
@@ -451,7 +455,7 @@
         <line num="15" count="8" type="stmt"/>
         <line num="19" count="8" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="31" count="8" type="stmt"/>
+        <line num="29" count="8" type="stmt"/>
       </file>
     </package>
     <package name="store">
@@ -557,6 +561,15 @@
         <line num="39" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="48" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="areEqual.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\utils\areEqual.ts">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
       </file>
     </package>
   </project>
