@@ -57,6 +57,10 @@ export default defineConfig({
       {
         find: '@pages',
         replacement: path.resolve(__dirname, 'src/pages')
+      },
+      {
+        find: '@common-types',
+        replacement: path.resolve(__dirname, 'src/common-types')
       }
     ]
   }

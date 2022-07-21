@@ -37,21 +37,18 @@ const useProductById = (id: string) => {
    *
    * @returns Product
    */
-  const getProduct = async (): Promise<void> => {
-    try {
-      dispatch(getProductRequest());
+  const getProduct = (): void => {
+    dispatch(getProductRequest());
 
-      if (error) {
-        throw new Error(ERROR_MESSAGES.PRODUCT_NOT_FOUND);
-      }
+    // return data
+    if (data) {
+      dispatch(getProductSuccess({ product: data }));
+    }
 
-      if (data) {
-        dispatch(getProductSuccess({ product: data }));
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        dispatch(getProductFailed({ errorMessage: error.message }));
-      }
+    if (error instanceof Error) {
+      dispatch(
+        getProductFailed({ errorMessage: ERROR_MESSAGES.PRODUCT_NOT_FOUND })
+      );
     }
   };
 

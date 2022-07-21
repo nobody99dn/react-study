@@ -1,6 +1,6 @@
 // Library
 import { SWRConfig } from 'swr';
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Styles
@@ -10,14 +10,10 @@ import './assets/styles/reset.css';
 import './assets/styles/variables.css';
 
 // Components
-import LoadingIndicator from '@components/LoadingIndicator';
-import MessagePopUp from '@components/MessagePopUp/index';
+import { LoadingIndicator, MessagePopUp } from '@components/index';
 
 // Store
 import { useStore } from './store';
-
-// Constant
-import { MessagePopUpVariants } from '@constants/index';
 
 const Home = lazy(() => import('@pages/Home'));
 const DetailPage = lazy(() => import('@pages/DetailPage'));
@@ -48,17 +44,11 @@ function App() {
 
       {isLoading && <LoadingIndicator />}
 
-      {errorMessage && (
+      {(errorMessage || successMessage) && (
         <MessagePopUp
-          text={errorMessage}
-          variant={MessagePopUpVariants.Failed}
-        />
-      )}
-
-      {successMessage && (
-        <MessagePopUp
-          text={successMessage}
-          variant={MessagePopUpVariants.Success}
+          successMessage={successMessage}
+          errorMessage={errorMessage}
+          isError={!!errorMessage}
         />
       )}
     </>

@@ -1,23 +1,17 @@
-// Library
-import React, {
-  FormEvent,
-  memo,
-  useCallback,
-  useEffect,
-  useState
-} from 'react';
+// Libraries
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Styles
 import './index.css';
 
 // Components
-import Posts from '@components/Posts/index';
-import SideBar from '@components/SideBar/index';
-import SearchInput from '@components/SearchInput';
-import ModalForm from '@components/ModalForm';
+import { Posts, SearchInput, ModalForm, Layout } from '@components/index';
 
-// Model
+// Layout
+import SideBar from '@layouts/SideBar/index';
+
+// Models
 import { Product } from '@models/product';
 
 // Constants
@@ -28,7 +22,7 @@ import {
   URL
 } from '@constants/index';
 
-// Hook
+// Hooks
 import useProducts from '@hooks/useProducts';
 
 // Store
@@ -47,7 +41,6 @@ const Main: React.FC = () => {
   // States
   const [isModalShow, setIsModalShow] = useState<boolean>(false);
   const [validateMessage, setValidateMessage] = useState<string>('');
-  const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
   const [product, setProduct] = useState<Product>({
     id: '',
     name: '',
@@ -56,9 +49,9 @@ const Main: React.FC = () => {
     imageUrl: ''
   });
   const [currentFilterPriceParam, setCurrentFilterPriceParam] =
-    useState<FilterOrderOptions | ''>('');
+    useState<FilterOrderOptions>();
   const [currentFilterTypeParam, setCurrentFilterTypeParam] =
-    useState<ProductTypes | ''>('');
+    useState<ProductTypes>();
   const [productName, setProductName] = useState<string>('');
 
   /**
@@ -78,71 +71,59 @@ const Main: React.FC = () => {
    * @param product Product
    * @returns void
    */
-  const handleCreateProduct = async (
-    event: FormEvent,
-    product: Product
-  ): Promise<void> => {
-    event.preventDefault();
-
-    setIsButtonLoading(true);
-
+  const handleCreateProduct = async (product: Product): Promise<void> => {
     // Validate form
     if (!product.name) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
-      setIsButtonLoading(false);
 
       return;
     }
 
     if (!product.type) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_TYPE_REQUIRED);
-      setIsButtonLoading(false);
 
       return;
     }
 
     if (!product.price) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_PRICE_REQUIRED);
-      setIsButtonLoading(false);
 
       return;
     }
 
     if (!product.imageUrl) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_IMAGE_REQUIRED);
-      setIsButtonLoading(false);
 
       return;
     }
 
     createProduct(product);
 
-    setIsButtonLoading(false);
     setIsModalShow(false);
   };
 
   /**
    * Handle close modal
    */
-  const handleCloseModal = (): void => {
+  const handleCloseModal = useCallback((): void => {
     setIsModalShow(false);
-  };
+  }, []);
 
-  const handleShowProductDetail = useCallback((productId: string) => {
+  const handleNavigateProductDetail = useCallback((productId: string) => {
     navigate(`${URL.DETAIL_PAGE}/${productId}`);
   }, []);
 
-  const handleToggleModal = () => {
+  const handleToggleModal = useCallback(() => {
     setIsModalShow(!isModalShow);
     setProduct(product);
-  };
+  }, []);
 
   /**
    * Handle filter product
    */
   const handleClearFilters = useCallback(() => {
-    setCurrentFilterPriceParam('');
-    setCurrentFilterTypeParam('');
+    setCurrentFilterPriceParam(undefined);
+    setCurrentFilterTypeParam(undefined);
   }, []);
 
   /**
@@ -182,9 +163,9 @@ const Main: React.FC = () => {
   /**
    * Handle search input change
    */
-  const handleSearchProduct = (value: string | number) => {
+  const handleSearchProduct = useCallback((value: string | number) => {
     setProductName(value as string);
-  };
+  }, []);
 
   /**
    * Handle search change
@@ -198,7 +179,7 @@ const Main: React.FC = () => {
   }, [productName]);
 
   return (
-    <main className='main'>
+    <>
       <div className='right-container'>
         <div className='right-content'>
           <SearchInput
@@ -207,7 +188,7 @@ const Main: React.FC = () => {
           />
           <Posts
             products={products}
-            handleOpenProductDetail={handleShowProductDetail}
+            handleNavigate={handleNavigateProductDetail}
             handleDeleteProduct={handleDeleteProduct}
           />
         </div>
@@ -226,13 +207,12 @@ const Main: React.FC = () => {
         <ModalForm
           isModalShow={isModalShow}
           product={product}
-          isButtonLoading={isButtonLoading}
           validateMessage={validateMessage}
           handleSubmitForm={handleCreateProduct}
           handleCloseModal={handleCloseModal}
         />
       )}
-    </main>
+    </>
   );
 };
 

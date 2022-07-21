@@ -1,12 +1,13 @@
 // Libraries
-import { render, act, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 // Components
 import ModalForm, { ModalFormProps } from './index';
-import { ProductTypes } from '@constants/types';
+
+import { ProductTypes } from '@constants/index';
 
 describe('ModalForm component', () => {
   const defaultProps: ModalFormProps = {
@@ -19,7 +20,6 @@ describe('ModalForm component', () => {
     },
     isModalShow: true,
     validateMessage: 'test message',
-    isButtonLoading: false,
     handleCloseModal: jest.fn(),
     handleSubmitForm: jest.fn()
   };

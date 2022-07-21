@@ -8,8 +8,7 @@ import {
   FilterOrderOptions,
   ERROR_MESSAGES,
   SUCCESS_MESSAGES,
-  URL_PRODUCTS,
-  localKey
+  URL_PRODUCTS
 } from '@constants/index';
 
 // Model
@@ -32,19 +31,14 @@ import {
   filterProductsRequest,
   editProductRequest,
   deleteProductRequest,
-  addProductRequest
+  addProductRequest,
+  filterProductsFailed,
+  searchProductsRequest,
+  searchProductsFailed
 } from '@store/index';
 
 // Helpers
-import {
-  get,
-  post,
-  remove,
-  update,
-  filterTypeAndPriceOrder,
-  queryProducts,
-  setLocalProducts
-} from '@helpers/index';
+import { get, post, remove, update, urlGeneration } from '@helpers/index';
 
 /**
  * This hook help execute product data
@@ -64,12 +58,7 @@ const useProducts = () => {
     isValidating && dispatch(getProductsRequest());
 
     if (!isValidating && !error && data) {
-      console.log(data);
-
       dispatch(getProductsSuccess({ products: data }));
-
-      // save local
-      setLocalProducts(localKey, data);
     } else if (!isValidating && error) {
       if (error instanceof Error) {
         dispatch(
@@ -105,9 +94,6 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS
         })
       );
-
-      // save data local
-      data && setLocalProducts(localKey, [...data, newProduct]);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
@@ -133,9 +119,9 @@ const useProducts = () => {
       const updatedProductIndex: number =
         data?.findIndex(
           (product: Product) => product.id === updatedProduct.id
-        ) || 0;
+        ) || -1;
 
-      if (!updatedProduct || !updatedProductIndex) {
+      if (!updatedProduct) {
         throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
       }
 
@@ -149,9 +135,6 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
         })
       );
-
-      // save local data
-      data && setLocalProducts(localKey, data);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(editProductFailed({ errorMessage: error.message }));
@@ -193,9 +176,6 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
         })
       );
-
-      // save local data
-      setLocalProducts(localKey, updatedProducts);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(deleteProductFailed({ errorMessage: error.message }));
@@ -210,9 +190,24 @@ const useProducts = () => {
    * @param input string
    */
   const searchingProducts = async (input: string) => {
-    const filteredProducts: Product[] = await get(queryProducts(input));
+    try {
+      dispatch(searchProductsRequest());
 
-    dispatch(searchProductsSuccess({ filteredProducts, input }));
+      const filteredProducts: Product[] = await get(
+        urlGeneration({ searchInput: input })
+      );
+
+      if (!filterProducts) {
+        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+      }
+
+      dispatch(searchProductsSuccess({ filteredProducts }));
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(searchProductsFailed({ errorMessage: error.message }));
+        return;
+      }
+    }
   };
 
   /**
@@ -222,22 +217,34 @@ const useProducts = () => {
    * @param currentFilterPriceParam FilterOrderOptions
    */
   const filterProducts = async (
-    currentFilterTypeParam: ProductTypes,
-    currentFilterPriceParam: FilterOrderOptions
+    currentFilterTypeParam?: ProductTypes,
+    currentFilterPriceParam?: FilterOrderOptions
   ) => {
-    dispatch(filterProductsRequest());
+    try {
+      dispatch(filterProductsRequest());
 
-    const filteredProducts: Product[] = await get(
-      filterTypeAndPriceOrder(currentFilterTypeParam, currentFilterPriceParam)
-    );
+      const filteredProducts: Product[] = await get(
+        urlGeneration({
+          type: currentFilterTypeParam,
+          priceOrder: currentFilterPriceParam
+        })
+      );
 
-    dispatch(
-      filterProductsSuccess({
-        currentFilterTypeParam,
-        currentFilterPriceParam,
-        filteredProducts
-      })
-    );
+      if (!filterProducts) {
+        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+      }
+
+      dispatch(
+        filterProductsSuccess({
+          filteredProducts
+        })
+      );
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(filterProductsFailed({ errorMessage: error.message }));
+        return;
+      }
+    }
   };
 
   return {

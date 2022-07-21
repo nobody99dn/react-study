@@ -5,7 +5,7 @@ import React, { memo } from 'react';
 import { searchIcon } from '@assets/index';
 
 // Component
-import TextField from '@components/commons/TextField';
+import { TextField } from '@components/index';
 
 export interface SearchInputProps {
   productName: string;

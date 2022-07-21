@@ -2,16 +2,16 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import Title, { VariantTypes } from './index';
+import Title from './index';
 
-// Constant
-import { FwType } from '@constants/index';
+// Constants
 
 // Styles
 import '@assets/styles/reset.css';
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 import './index.css';
+import { FwType, VariantTypes } from '@common-types/index';
 
 export default {
   title: 'Components/Title',
@@ -30,6 +30,6 @@ export const Subtitle = Template.bind({});
 Subtitle.args = {
   children: 'Title',
   variant: VariantTypes.Subtitle,
-  fw: FwType.Bold,
-  fs: 'italic'
+  fontWeight: FwType.Bold,
+  fontStyle: 'italic'
 };

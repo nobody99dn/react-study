@@ -5,18 +5,18 @@ import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 // Components
-import Image from './index';
+import Image, { ImageProps } from './index';
 
 // Image
 import { blankImage } from '@assets/index';
 
-// Constant
-import { ERROR_MESSAGES, ImageVariants } from '@constants/index';
+// Types
+import { ImageVariants } from '@common-types/index';
 
 describe('Image component', () => {
   let container: HTMLElement;
 
-  const defaultProps = {
+  const defaultProps: ImageProps = {
     alt: 'image',
     imageUrl: blankImage
   };

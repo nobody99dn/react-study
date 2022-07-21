@@ -1,19 +1,21 @@
 // Libraries
-import {
-  render,
-  fireEvent,
-  cleanup,
-  screen,
-  within
-} from '@testing-library/react';
+import { render, fireEvent, cleanup, within } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 // Components
 import Card, { CardProps } from './index';
+
+// Models
 import { Product } from '@models/product';
+
+// Images
 import { iPhoneImage } from '@assets/index';
+
+// Constants
 import { Currencies, ProductTypes } from '@constants/types';
+
+// Helpers
 import { currencyFormat } from '@helpers/string';
 
 describe('Card component', () => {
@@ -28,7 +30,7 @@ describe('Card component', () => {
   const defaultProps: CardProps = {
     product: mockProduct,
     currency: Currencies.VND,
-    handleOpenProductDetail: () => {},
+    handleNavigate: () => {},
     handleDeleteProduct: () => {}
   };
 
@@ -75,7 +77,7 @@ describe('Card component', () => {
     const myMock = jest.fn();
 
     const { getByText } = render(
-      <Card {...defaultProps} handleOpenProductDetail={myMock} />,
+      <Card {...defaultProps} handleNavigate={myMock} />,
       { container }
     );
 

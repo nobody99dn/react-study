@@ -1,41 +1,36 @@
 // Library
 import { memo, ReactNode } from 'react';
 
-// Constants
-import { FsType, FwType } from '@constants/index';
+// Types
+import { FsType, FwType, VariantsTypes } from '@common-types/index';
 
 // Styles
 import './index.css';
 
-export enum VariantsTypes {
-  Default = 'default',
-  Highlight = 'highlight'
-}
-
 interface TextProps {
   children: ReactNode;
   color?: string;
-  fs?: FsType;
-  fw?: FwType;
-  size?: string;
+  fontStyle?: FsType;
+  fontWeight?: FwType;
+  fontSize?: string;
   variant?: VariantsTypes;
 }
 
 const Text: React.FC<TextProps> = ({
   children,
   color,
-  fw = FwType.Normal,
-  size,
-  fs = FsType.Inherit,
+  fontWeight = FwType.Normal,
+  fontSize,
+  fontStyle = FsType.Inherit,
   variant = VariantsTypes.Default
 }) => (
   <p
     className={`text-${variant}`}
     style={{
-      fontSize: size,
+      fontSize: fontSize,
       color: color,
-      fontStyle: fs,
-      fontWeight: fw
+      fontStyle: fontStyle,
+      fontWeight: fontWeight
     }}
   >
     {children}

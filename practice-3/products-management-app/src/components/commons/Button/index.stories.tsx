@@ -8,8 +8,8 @@ import Button from './index';
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 
-// Constants
-import { ButtonVariants } from '@constants/index';
+// Types
+import { ButtonVariants } from '@common-types/index';
 
 export default {
   title: 'Components/Button',

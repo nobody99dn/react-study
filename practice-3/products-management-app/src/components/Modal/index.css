@@ -26,3 +26,10 @@
   justify-content: space-evenly;
   text-transform: capitalize;
 }
+
+.close-icon {
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+  top: 1rem;
+}

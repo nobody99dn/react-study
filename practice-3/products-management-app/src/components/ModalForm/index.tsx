@@ -1,22 +1,23 @@
-// Components
-import Form from '@components/Form';
-import Modal from '@components/Modal';
+// Libraries
+import React, { FormEvent, memo } from 'react';
 
-// Library
-import React, { FormEvent } from 'react';
+// Components
+import { Form, Modal } from '@components/index';
 
 // Constants
-import { FormVariants, PRODUCT_TYPE_LIST } from '@constants/index';
+import { PRODUCT_TYPE_LIST } from '@constants/index';
 
-// Model
+// Models
 import { Product } from '@models/product';
+
+// Types
+import { FormVariants } from '@common-types/index';
 
 export interface ModalFormProps {
   product: Product;
   isModalShow: boolean;
   validateMessage: string;
-  isButtonLoading: boolean;
-  handleSubmitForm: (event: FormEvent, product: Product) => void;
+  handleSubmitForm: (product: Product) => void;
   handleCloseModal: () => void;
 }
 
@@ -24,7 +25,6 @@ const ModalForm: React.FC<ModalFormProps> = ({
   product,
   isModalShow,
   validateMessage = '',
-  isButtonLoading,
   handleSubmitForm,
   handleCloseModal
 }) => (
@@ -34,10 +34,9 @@ const ModalForm: React.FC<ModalFormProps> = ({
       options={PRODUCT_TYPE_LIST}
       productItem={product}
       validateMessage={validateMessage}
-      isButtonLoading={isButtonLoading}
       handleSubmit={handleSubmitForm}
     />
   </Modal>
 );
 
-export default ModalForm;
+export default memo(ModalForm);

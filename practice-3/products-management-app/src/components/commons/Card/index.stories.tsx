@@ -31,6 +31,6 @@ Default.args = {
     type: ProductTypes.Phone
   },
   currency: Currencies.VND,
-  handleOpenProductDetail: () => {},
+  handleNavigate: () => {},
   handleDeleteProduct: () => {}
 };

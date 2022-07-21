@@ -1,13 +1,13 @@
-// Library
+// Libraries
 import React, { ReactNode } from 'react';
 
 // Components
-import Image from '@components/commons/Image';
+import { Image } from '@components/index';
 
 // Assets
 import { closeIcon } from '@assets/index';
 
-// Style
+// Styles
 import './index.css';
 
 export interface ModalProps {
@@ -20,12 +20,13 @@ const Modal: React.FC<ModalProps> = ({ children, isVisible, handleClose }) =>
   isVisible ? (
     <div className='modal'>
       <div className='modal-dialog'>
-        <Image
-          alt='close icon'
-          className='close-icon'
-          imageUrl={closeIcon}
-          handleClick={handleClose}
-        />
+        <div className='close-icon'>
+          <Image
+            alt='close icon'
+            imageUrl={closeIcon}
+            handleClick={handleClose}
+          />
+        </div>
         <div className='modal-body'>{children}</div>
       </div>
     </div>

@@ -1,8 +1,7 @@
-// Library
-import { FilterOrderOptions, ProductTypes } from '@constants/index';
+// Libraries
 import React, { memo, useCallback } from 'react';
 
-// Style
+// Styles
 import './index.css';
 
 interface SelectItemProps {

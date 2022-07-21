@@ -1,21 +1,20 @@
-// Library
-import React, { memo, useCallback, forwardRef } from 'react';
+// Libraries
+import { memo, useCallback, forwardRef } from 'react';
 
 // Components
-import Image from '@components/commons/Image/index';
+import { Image } from '@components/index';
 
 // Styles
 import './index.css';
 
-// Constants
+// Types
 import {
   ImageVariants,
   TextFieldVariants,
   TypeVariables
-} from '@constants/index';
+} from '@common-types/index';
 
 interface TextFieldProps {
-  id?: string;
   name?: string;
   defaultValue?: string | number;
   disabled?: boolean;
@@ -36,7 +35,6 @@ interface TextFieldProps {
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
-      id,
       name,
       defaultValue = '',
       disabled = false,
@@ -62,18 +60,19 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     return (
       <div className='field-wrapper'>
-        {label && <label htmlFor={id}>{label}: </label>}
+        {label && <label htmlFor={name}>{label}: </label>}
         <div className={'input-wrapper'}>
           {iconUrl && (
-            <Image
-              alt={'icon'}
-              className={'icon-left'}
-              imageUrl={iconUrl}
-              variant={ImageVariants.Icon}
-            />
+            <div className={'icon-left'}>
+              <Image
+                alt={'icon'}
+                imageUrl={iconUrl}
+                variant={ImageVariants.Icon}
+              />
+            </div>
           )}
           <input
-            id={id}
+            id={name}
             name={name}
             className={`field field-${variant}`}
             type={type}

@@ -13,8 +13,8 @@ import '@assets/styles/variables.css';
 // Icons
 import { searchIcon } from '@assets/index';
 
-// Constants
-import { TextFieldVariants } from '@constants/index';
+// Types
+import { TextFieldVariants } from '@common-types/index';
 
 export default {
   title: 'Components/TextField',
@@ -27,7 +27,6 @@ const Template: ComponentStory<typeof TextField> = (args) => (
 
 export const Standard = Template.bind({});
 Standard.args = {
-  id: 'standard-form',
   label: 'Text field',
   placeholder: 'Placeholder',
   name: 'standard form'

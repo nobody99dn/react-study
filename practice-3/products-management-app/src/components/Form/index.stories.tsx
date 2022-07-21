@@ -11,8 +11,10 @@ import '@assets/styles/reset.css';
 import './index.css';
 
 // Constants
-import { FormVariants } from '@constants/index';
-import { PRODUCT_TYPE_LIST } from '../../constants/types';
+import { PRODUCT_TYPE_LIST } from '@constants/types';
+
+// Types
+import { FormVariants } from '@common-types/index';
 
 export default {
   title: 'Components/Form',

@@ -2,7 +2,7 @@
 import React, { memo } from 'react';
 
 // Components
-import Card from '@components/commons/Card';
+import { Card } from '@components/index';
 
 // Styles
 import './index.css';
@@ -15,25 +15,24 @@ import { Product } from '@models/product';
 
 export interface PostsProps {
   products: Product[];
-  handleOpenProductDetail: (productId: string) => void;
+  handleNavigate: (productId: string) => void;
   handleDeleteProduct: (id: string) => void;
 }
 
 const Posts: React.FC<PostsProps> = ({
   products,
-  handleOpenProductDetail,
+  handleNavigate,
   handleDeleteProduct
 }) => (
   <div className='product-group'>
     {products.map((product: Product) => (
-      <div className='products-row' key={product.id}>
-        <Card
-          product={product}
-          currency={Currencies.VND}
-          handleOpenProductDetail={handleOpenProductDetail}
-          handleDeleteProduct={handleDeleteProduct}
-        />
-      </div>
+      <Card
+        key={product.id}
+        product={product}
+        currency={Currencies.VND}
+        handleNavigate={handleNavigate}
+        handleDeleteProduct={handleDeleteProduct}
+      />
     ))}
   </div>
 );

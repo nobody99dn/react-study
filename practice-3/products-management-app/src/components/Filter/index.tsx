@@ -5,8 +5,7 @@ import React from 'react';
 import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 // Components
-import Select from '@components/commons/SelectItem';
-import Button from '@components/commons/Button';
+import { SelectItem, Button } from '@components/index';
 
 // Styles
 import './index.css';
@@ -14,8 +13,8 @@ import './index.css';
 export type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  currentFilterTypeParam: ProductTypes | '';
-  currentFilterPriceParam: FilterOrderOptions | '';
+  currentFilterTypeParam?: ProductTypes;
+  currentFilterPriceParam?: FilterOrderOptions;
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;
   handleClearFilters: () => void;
@@ -24,15 +23,15 @@ export type FilterProps = {
 const Filter: React.FC<FilterProps> = ({
   typeFilterOptions,
   priceFilterOptions,
-  currentFilterTypeParam,
-  currentFilterPriceParam,
+  currentFilterTypeParam = '',
+  currentFilterPriceParam = '',
   handleTypeChange,
   handlePriceChange,
   handleClearFilters
 }) => (
   <div className='filter-container'>
     <div className='filter-item'>
-      <Select
+      <SelectItem
         label='Type'
         options={typeFilterOptions}
         name='type-option'
@@ -41,7 +40,7 @@ const Filter: React.FC<FilterProps> = ({
       />
     </div>
     <div className='filter-item'>
-      <Select
+      <SelectItem
         label='Price'
         options={priceFilterOptions}
         name='price-filter'

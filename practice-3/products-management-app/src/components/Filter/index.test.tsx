@@ -6,6 +6,8 @@ import '@testing-library/jest-dom';
 
 // Components
 import Filter, { FilterProps } from './index';
+
+// Constants
 import {
   FilterOrderOptions,
   ORDER_OPTIONS,
@@ -17,8 +19,6 @@ describe('Filter component', () => {
   const defaultProps: FilterProps = {
     typeFilterOptions: PRODUCT_TYPE_LIST,
     priceFilterOptions: ORDER_OPTIONS,
-    currentFilterPriceParam: '',
-    currentFilterTypeParam: '',
     handleTypeChange: jest.fn(),
     handlePriceChange: jest.fn(),
     handleClearFilters: jest.fn()

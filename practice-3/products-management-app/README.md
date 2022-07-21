@@ -7,6 +7,7 @@
 ## TIMELINE
 
 - Estimate time: **7 days (2022/07/07 - 2022/07/14)**
+- Actual time: **10 days (2022/07/07 - 2022/07/19)**
 
 ## TEAM SIZE
 
@@ -49,6 +50,8 @@
 ```
 ├── __mocks__
 ├── .storybook
+├── coverage
+├── node_modules
 └── src
     ├── assets
     │   ├── styles
@@ -65,24 +68,25 @@
     │   │   └── Title
     │   ├── Filter
     │   ├── Form
+    │   ├── Layout
     │   ├── LoadingIndicator
     │   ├── MessagePopUp
     │   ├── Modal
     │   ├── ModalForm
     │   ├── Posts
-    │   ├── SearchInput
-    │   └── SideBar
+    │   └── SearchInput
     ├── constants
     ├── helpers
     ├── hooks
     ├── layouts
     │   ├── Header
-    │   └── Main
+    │   ├── Main
+    │   ├── ProductDetail
+    │   └── SideBar
     ├── models
     ├── pages
-    │   ├── Home
-    │   └── ProductDetail
-    ├── services
+    │   ├── DetailPage
+    │   └── Home
     └── store
 
 ```
@@ -98,7 +102,7 @@
 - Checkout branch:
 
   ```bash
-  $ git checkout feature/products-management-practice
+  $ git checkout feature/practice-3
   ```
 
 - Change directory:
@@ -123,6 +127,12 @@
 
   ```
   $ yarn test
+  ```
+
+- Run storybook
+
+  ```
+  $ yarn storybook
   ```
 
 - Open browser and and type http://localhost:3000 in address bar
