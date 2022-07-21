@@ -5,7 +5,7 @@ import React, { memo } from 'react';
 import { searchIcon } from '@assets/index';
 
 // Component
-import TextField from '@components/commons/TextField';
+import { TextField } from '@components/index';
 
 export interface SearchInputProps {
   productName: string;
@@ -21,7 +21,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     iconUrl={searchIcon}
     height='4.25rem'
     iconWidth='2rem'
-    onChange={handleSearchProduct}
+    handleInputChange={handleSearchProduct}
     defaultValue={productName}
   />
 );

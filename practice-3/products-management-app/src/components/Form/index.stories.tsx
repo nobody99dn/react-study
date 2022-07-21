@@ -11,8 +11,10 @@ import '@assets/styles/reset.css';
 import './index.css';
 
 // Constants
-import { FormVariants } from '@constants/index';
-import { PRODUCT_TYPE_LIST } from '../../constants/types';
+import { PRODUCT_TYPE_LIST } from '@constants/types';
+
+// Types
+import { FormVariants } from '@common-types/index';
 
 export default {
   title: 'Components/Form',
@@ -25,7 +27,7 @@ export const CreateForm = Template.bind({});
 CreateForm.args = {
   variants: FormVariants.Create,
   options: PRODUCT_TYPE_LIST,
-  onSubmit() {},
+  handleSubmit: () => {},
   productItem: {
     id: '',
     name: '',
@@ -39,7 +41,7 @@ export const EditForm = Template.bind({});
 EditForm.args = {
   variants: FormVariants.Edit,
   options: PRODUCT_TYPE_LIST,
-  onSubmit() {},
+  handleSubmit: () => {},
   productItem: {
     id: 'product-01',
     name: 'iPhone X',

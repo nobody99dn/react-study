@@ -1,26 +1,25 @@
 // Libraries
 import React, { memo } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-// Component
-import Image from '@components/commons/Image';
+// Components
+import { Image } from '@components/index';
 
 // Assets
 import { logo } from '@assets/index';
 
-// Style
+// Styles
 import './index.css';
 
-// Constant
-import { ImageVariants } from '@constants/index';
+// Types
+import { ImageVariants } from '@common-types/index';
 
-interface HeaderProps {
-  href?: string;
-}
+interface HeaderProps {}
 
-const Header: React.FC<HeaderProps> = ({ href = '#' }) => (
+const Header: React.FC<HeaderProps> = () => (
   <header className='header'>
     <div className='container header-content'>
-      <a className='logo-link' href={href}>
+      <a className='logo-link'>
         <Image variant={ImageVariants.Logo} imageUrl={logo} alt='Page logo' />
       </a>
     </div>

@@ -1,0 +1,263 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Posts component should render correctly 1`] = `
+<div
+  className="product-group"
+>
+  <div
+    className="card"
+  >
+    <div
+      className="card-image"
+    >
+      <img
+        alt="Product test 1"
+        className="image"
+        src=""
+      />
+    </div>
+    <div
+      className="card-body"
+    >
+      <div
+        className="title-wrapper"
+      >
+        <div
+          className="title card-title"
+          style={
+            Object {
+              "color": undefined,
+              "fontSize": undefined,
+              "fontStyle": "inherit",
+              "fontWeight": undefined,
+              "lineHeight": "1.5rem",
+            }
+          }
+        >
+          Product test 1
+        </div>
+      </div>
+      <div
+        className="subtitle"
+        style={
+          Object {
+            "color": "var(--dark)",
+            "fontSize": "16px",
+            "fontStyle": "italic",
+            "fontWeight": undefined,
+            "lineHeight": "2rem",
+          }
+        }
+      >
+        Phone
+      </div>
+      <div
+        className="subtitle"
+        style={
+          Object {
+            "color": undefined,
+            "fontSize": undefined,
+            "fontStyle": "inherit",
+            "fontWeight": 700,
+            "lineHeight": "1.5rem",
+          }
+        }
+      >
+        1 000 000
+        <span>
+           
+          ₫
+        </span>
+      </div>
+      <div
+        className="button-wrapper"
+      >
+        <button
+          className="btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Edit
+        </button>
+        <button
+          className="btn btn-secondary"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-image"
+    >
+      <img
+        alt="Product test 2"
+        className="image"
+        src=""
+      />
+    </div>
+    <div
+      className="card-body"
+    >
+      <div
+        className="title-wrapper"
+      >
+        <div
+          className="title card-title"
+          style={
+            Object {
+              "color": undefined,
+              "fontSize": undefined,
+              "fontStyle": "inherit",
+              "fontWeight": undefined,
+              "lineHeight": "1.5rem",
+            }
+          }
+        >
+          Product test 2
+        </div>
+      </div>
+      <div
+        className="subtitle"
+        style={
+          Object {
+            "color": "var(--dark)",
+            "fontSize": "16px",
+            "fontStyle": "italic",
+            "fontWeight": undefined,
+            "lineHeight": "2rem",
+          }
+        }
+      >
+        Laptop
+      </div>
+      <div
+        className="subtitle"
+        style={
+          Object {
+            "color": undefined,
+            "fontSize": undefined,
+            "fontStyle": "inherit",
+            "fontWeight": 700,
+            "lineHeight": "1.5rem",
+          }
+        }
+      >
+        2 000 000
+        <span>
+           
+          ₫
+        </span>
+      </div>
+      <div
+        className="button-wrapper"
+      >
+        <button
+          className="btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Edit
+        </button>
+        <button
+          className="btn btn-secondary"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-image"
+    >
+      <img
+        alt="Product test 3"
+        className="image"
+        src=""
+      />
+    </div>
+    <div
+      className="card-body"
+    >
+      <div
+        className="title-wrapper"
+      >
+        <div
+          className="title card-title"
+          style={
+            Object {
+              "color": undefined,
+              "fontSize": undefined,
+              "fontStyle": "inherit",
+              "fontWeight": undefined,
+              "lineHeight": "1.5rem",
+            }
+          }
+        >
+          Product test 3
+        </div>
+      </div>
+      <div
+        className="subtitle"
+        style={
+          Object {
+            "color": "var(--dark)",
+            "fontSize": "16px",
+            "fontStyle": "italic",
+            "fontWeight": undefined,
+            "lineHeight": "2rem",
+          }
+        }
+      >
+        Tablet
+      </div>
+      <div
+        className="subtitle"
+        style={
+          Object {
+            "color": undefined,
+            "fontSize": undefined,
+            "fontStyle": "inherit",
+            "fontWeight": 700,
+            "lineHeight": "1.5rem",
+          }
+        }
+      >
+        3 000 000
+        <span>
+           
+          ₫
+        </span>
+      </div>
+      <div
+        className="button-wrapper"
+      >
+        <button
+          className="btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Edit
+        </button>
+        <button
+          className="btn btn-secondary"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

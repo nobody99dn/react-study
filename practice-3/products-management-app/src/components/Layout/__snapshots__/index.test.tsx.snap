@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout component should render correctly 1`] = `
+Array [
+  <header
+    className="header"
+  >
+    <div
+      className="container header-content"
+    >
+      <a
+        className="logo-link"
+      >
+        <img
+          alt="Page logo"
+          className="image image-logo "
+        />
+      </a>
+    </div>
+  </header>,
+  <main
+    className="main"
+  >
+    <p>
+      Children
+    </p>
+  </main>,
+]
+`;

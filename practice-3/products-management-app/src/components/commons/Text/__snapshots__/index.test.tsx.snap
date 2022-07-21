@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should render correctly 1`] = `
+<p
+  className="text-default"
+  style={
+    Object {
+      "color": undefined,
+      "fontSize": undefined,
+      "fontStyle": "inherit",
+      "fontWeight": 400,
+    }
+  }
+>
+  text
+</p>
+`;
+
+exports[`Button component should render correctly 2`] = `
+<p
+  className="text-highlight"
+  style={
+    Object {
+      "color": undefined,
+      "fontSize": undefined,
+      "fontStyle": "inherit",
+      "fontWeight": 400,
+    }
+  }
+>
+  Typography
+</p>
+`;
+
+exports[`Button component should render correctly 3`] = `
+<p
+  className="text-default"
+  style={
+    Object {
+      "color": undefined,
+      "fontSize": undefined,
+      "fontStyle": "inherit",
+      "fontWeight": 700,
+    }
+  }
+>
+  Typography
+</p>
+`;
+
+exports[`Button component should render correctly 4`] = `
+<p
+  className="text-default"
+  style={
+    Object {
+      "color": undefined,
+      "fontSize": undefined,
+      "fontStyle": "italic",
+      "fontWeight": 400,
+    }
+  }
+>
+  Typography
+</p>
+`;

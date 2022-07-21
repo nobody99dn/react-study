@@ -1,8 +1,7 @@
-// Library
-import { FilterOrderOptions, ProductTypes } from '@constants/index';
-import React, { memo, useCallback } from 'react';
+// Libraries
+import React, { memo } from 'react';
 
-// Style
+// Styles
 import './index.css';
 
 interface SelectItemProps {
@@ -11,7 +10,8 @@ interface SelectItemProps {
   value?: string | number;
   label: string;
   options: string[];
-  onChange: (value: string, fieldName?: string) => void;
+  disable?: boolean;
+  handleSelectChange: (value: string, fieldName: string) => void;
 }
 
 const SelectItem: React.FC<SelectItemProps> = ({
@@ -20,14 +20,12 @@ const SelectItem: React.FC<SelectItemProps> = ({
   value,
   label,
   options,
-  onChange
+  disable = false,
+  handleSelectChange
 }) => {
-  const handleChange = useCallback(
-    (e: { target: { value: string; name: string } }) => {
-      onChange?.(e.target.value, e.target.name);
-    },
-    [onChange]
-  );
+  const handleChange = (e: { target: { value: string; name: string } }) => {
+    handleSelectChange?.(e.target.value, e.target.name);
+  };
 
   return (
     <div className='select-wrapper'>
@@ -37,7 +35,9 @@ const SelectItem: React.FC<SelectItemProps> = ({
         name={name}
         id={id}
         value={value}
+        disabled={disable}
         onChange={handleChange}
+        data-testid='select-option'
       >
         <option value=''>Select</option>
         {options.map((option: string, index: number) => (

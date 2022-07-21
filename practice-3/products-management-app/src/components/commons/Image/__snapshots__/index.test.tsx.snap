@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image component should render correctly 1`] = `
+<img
+  alt="image"
+  className="image"
+/>
+`;
+
+exports[`Image component should render correctly 2`] = `
+<img
+  alt="image"
+  className="image image-logo "
+/>
+`;
+
+exports[`Image component should render correctly 3`] = `
+<img
+  alt="image"
+  className="image image-icon "
+/>
+`;

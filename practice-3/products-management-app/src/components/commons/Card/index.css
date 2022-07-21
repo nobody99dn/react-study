@@ -1,5 +1,5 @@
 .card {
-  display: block;
+  display: inline-block;
   background-color: var(--light-gray);
   border: 1px solid var(--white);
   cursor: pointer;
@@ -8,6 +8,7 @@
   max-width: 15.75rem;
   border-radius: 5px;
   text-align: start;
+  margin: 1rem;
 }
 
 .card:hover {
@@ -23,4 +24,11 @@
   display: flex;
   justify-content: space-around;
   padding: 0.5rem;
+}
+
+.card-image {
+  border-radius: 5px;
+  object-fit: contain;
+  overflow: hidden;
+  height: 18rem;
 }

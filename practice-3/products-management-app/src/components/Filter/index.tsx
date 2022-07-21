@@ -1,12 +1,11 @@
 // Library
-import React from 'react';
+import React, { memo } from 'react';
 
 // Constants
 import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 // Components
-import Select from '@components/commons/SelectItem';
-import Button from '@components/commons/Button';
+import { SelectItem, Button } from '@components/index';
 
 // Styles
 import './index.css';
@@ -14,8 +13,8 @@ import './index.css';
 export type FilterProps = {
   typeFilterOptions: ProductTypes[];
   priceFilterOptions: FilterOrderOptions[];
-  currentFilterTypeParam: ProductTypes | undefined;
-  currentFilterPriceParam: FilterOrderOptions | undefined;
+  currentFilterTypeParam?: ProductTypes;
+  currentFilterPriceParam?: FilterOrderOptions;
   handleTypeChange: (value: string) => void;
   handlePriceChange: (value: string) => void;
   handleClearFilters: () => void;
@@ -24,33 +23,33 @@ export type FilterProps = {
 const Filter: React.FC<FilterProps> = ({
   typeFilterOptions,
   priceFilterOptions,
-  currentFilterTypeParam,
-  currentFilterPriceParam,
+  currentFilterTypeParam = '',
+  currentFilterPriceParam = '',
   handleTypeChange,
   handlePriceChange,
   handleClearFilters
 }) => (
   <div className='filter-container'>
     <div className='filter-item'>
-      <Select
+      <SelectItem
         label='Type'
         options={typeFilterOptions}
         name='type-option'
-        onChange={handleTypeChange}
+        handleSelectChange={handleTypeChange}
         value={currentFilterTypeParam}
       />
     </div>
     <div className='filter-item'>
-      <Select
+      <SelectItem
         label='Price'
         options={priceFilterOptions}
         name='price-filter'
-        onChange={handlePriceChange}
+        handleSelectChange={handlePriceChange}
         value={currentFilterPriceParam}
       />
     </div>
-    <Button title='Clear filter' onClick={handleClearFilters} />
+    <Button title='Clear filter' handleClick={handleClearFilters} />
   </div>
 );
 
-export default Filter;
+export default memo(Filter);

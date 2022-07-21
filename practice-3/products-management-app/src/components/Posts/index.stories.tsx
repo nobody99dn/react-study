@@ -10,17 +10,11 @@ import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 import './index.css';
 
-// Helper
-import { get } from '@helpers/clientRequests';
-
-// Constant
-import { URL_PRODUCTS } from '@constants/api';
-
 // Model
 import { Product } from '@models/product';
-import { ProductTypes } from '@constants/types';
 
-const getProducts = async (): Promise<Product[]> => await get(URL_PRODUCTS);
+// Constants
+import { ProductTypes } from '@constants/index';
 
 export default {
   title: 'Components/Posts',
@@ -49,7 +43,5 @@ const products: Product[] = [
   }
 ];
 Default.args = {
-  products,
-  onOpenModalForm: () => {},
-  onDeleteProduct: () => {}
+  products
 };

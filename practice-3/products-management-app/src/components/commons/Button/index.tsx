@@ -1,38 +1,32 @@
 // Libraries
-import React from 'react';
+import React, { memo } from 'react';
 
-// Constants
-import { ButtonVariants } from '@constants/index';
+// Types
+import { ButtonVariants } from '@common-types/index';
 
-// Style
+// Styles
 import './index.css';
 
-interface ButtonProps {
+export interface ButtonProps {
   title: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
-  isLoading?: boolean;
-  onClick?: () => void;
+  handleClick: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
   title,
   variant = ButtonVariants.Default,
   isDisabled = false,
-  isLoading = false,
-  onClick
-}) => {
-  return (
-    <button
-      className={`btn btn-${variant} ${
-        isDisabled ? 'btn-disabled' : ''
-      }`.trim()}
-      onClick={onClick}
-      disabled={isDisabled}
-    >
-      {isLoading ? 'Loading...' : title}
-    </button>
-  );
-};
+  handleClick
+}) => (
+  <button
+    className={`btn btn-${variant}${isDisabled ? ' btn-disabled' : ''}`}
+    disabled={isDisabled}
+    onClick={handleClick}
+  >
+    {title}
+  </button>
+);
 
-export default Button;
+export default memo(Button);

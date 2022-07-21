@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessagePopUp component should render correctly 1`] = `
+<div
+  className="popup-messages
+      active
+      popup-success"
+>
+  <p
+    className="text-default"
+    style={
+      Object {
+        "color": "var(--white)",
+        "fontSize": undefined,
+        "fontStyle": "inherit",
+        "fontWeight": 400,
+      }
+    }
+  >
+    Success message
+  </p>
+</div>
+`;

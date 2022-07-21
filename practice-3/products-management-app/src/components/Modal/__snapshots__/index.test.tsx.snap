@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component should render correctly 1`] = `
+<div
+  className="modal"
+>
+  <div
+    className="modal-dialog"
+  >
+    <div
+      className="close-icon"
+    >
+      <img
+        alt="close icon"
+        className="image"
+        onClick={[MockFunction]}
+      />
+    </div>
+    <div
+      className="modal-body"
+    />
+  </div>
+</div>
+`;

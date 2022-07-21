@@ -1,5 +1,5 @@
 // Library
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 // Model
 import { Product } from '@models/product';
@@ -10,8 +10,8 @@ import { Product } from '@models/product';
  * @param url string
  * @returns Product[] | Product
  */
-const get = async (url: string): Promise<Product[] | Product> => {
-  const res: AxiosResponse<Product[]> = await axios.get(url);
+const get = async <T>(url: string): Promise<T> => {
+  const res: AxiosResponse<T> = await axios.get(url);
 
   return res.data;
 };

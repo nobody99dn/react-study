@@ -15,8 +15,8 @@ import logo from '@assets/images/logo.png';
 import iPhoneImage from '@assets/images/iphone-13-pro-max-alpine-green-alpine-green-color.jpg';
 import deleteIcon from '@assets/images/icons/trash-fill.svg';
 
-// Constants
-import { ImageVariants } from '@constants/index';
+// Types
+import { ImageVariants } from '@common-types/image';
 
 export default {
   title: 'Components/Image',

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title component should render correctly 1`] = `
+<div
+  className="title"
+  style={
+    Object {
+      "color": undefined,
+      "fontSize": undefined,
+      "fontStyle": "inherit",
+      "fontWeight": undefined,
+      "lineHeight": undefined,
+    }
+  }
+>
+  Title
+</div>
+`;
+
+exports[`Title component should render correctly 2`] = `
+<div
+  className="subtitle"
+  style={
+    Object {
+      "color": undefined,
+      "fontSize": undefined,
+      "fontStyle": "inherit",
+      "fontWeight": undefined,
+      "lineHeight": undefined,
+    }
+  }
+>
+  Title
+</div>
+`;
+
+exports[`Title component should render with custom style 1`] = `
+<div
+  className="title"
+  style={
+    Object {
+      "color": "#0f0",
+      "fontSize": "24px",
+      "fontStyle": "italic",
+      "fontWeight": 700,
+      "lineHeight": undefined,
+    }
+  }
+>
+  Title
+</div>
+`;

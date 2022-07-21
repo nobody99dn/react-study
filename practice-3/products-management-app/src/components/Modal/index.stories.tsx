@@ -2,16 +2,15 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
-import Modal from './index';
-import Form from '@components/Form';
+import { Form, Modal } from '@components/index';
 
 // Styles
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 import './index.css';
 
-// Constant
-import { FormVariants } from '@constants/index';
+// Types
+import { FormVariants } from '@common-types/index';
 
 export default {
   title: 'Components/Modal',
@@ -23,18 +22,5 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   isVisible: true,
-  children: (
-    <Form
-      validateMessage=''
-      onSubmit={() => {}}
-      variants={FormVariants.Create}
-      productItem={{
-        id: '',
-        name: '',
-        type: '',
-        price: 0,
-        imageUrl: ''
-      }}
-    />
-  )
+  children: <p>Modal </p>
 };

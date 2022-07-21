@@ -2,7 +2,7 @@
 import React, { memo } from 'react';
 
 // Components
-import Card from '@components/commons/Card';
+import { Card } from '@components/index';
 
 // Styles
 import './index.css';
@@ -13,29 +13,31 @@ import { Currencies } from '@constants/index';
 // Model
 import { Product } from '@models/product';
 
-interface PostsProps {
+// Utils
+import { areEqual } from '@utils/areEqual';
+
+export interface PostsProps {
   products: Product[];
-  onOpenProductDetail: (product: Product) => void;
-  onDeleteProduct: (id: string) => void;
+  handleNavigate: (productId: string) => void;
+  handleDeleteProduct: (id: string) => void;
 }
 
 const Posts: React.FC<PostsProps> = ({
   products,
-  onOpenProductDetail,
-  onDeleteProduct
+  handleNavigate,
+  handleDeleteProduct
 }) => (
   <div className='product-group'>
     {products.map((product: Product) => (
-      <div className='products-row' key={product.id}>
-        <Card
-          product={product}
-          currency={Currencies.VND}
-          onOpenProductDetail={onOpenProductDetail}
-          onDeleteProduct={onDeleteProduct}
-        />
-      </div>
+      <Card
+        key={product.id}
+        product={product}
+        currency={Currencies.VND}
+        handleNavigate={handleNavigate}
+        handleDeleteProduct={handleDeleteProduct}
+      />
     ))}
   </div>
 );
 
-export default memo(Posts);
+export default memo(Posts, areEqual<PostsProps>);

@@ -7,7 +7,7 @@
 .product-image {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 30%;
   max-width: 25rem;
   margin-bottom: 1rem;
@@ -26,4 +26,8 @@
 
 .error-container {
   text-align: center;
+}
+
+.back-icon {
+  padding: 1rem;
 }

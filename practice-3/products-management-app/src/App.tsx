@@ -1,6 +1,7 @@
 // Library
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { SWRConfig } from 'swr';
+import { Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Styles
 import './assets/styles/reset.css';
@@ -8,16 +9,14 @@ import './assets/styles/App.css';
 import './assets/styles/reset.css';
 import './assets/styles/variables.css';
 
-// Component
-import LoadingIndicator from '@components/LoadingIndicator';
-import MessagePopUp from '@components/MessagePopUp/index';
+// Components
+import { LoadingIndicator, MessagePopUp } from '@components/index';
 
 // Store
 import { useStore } from './store';
-import { MessagePopUpVariants } from '@constants/index';
 
 const Home = lazy(() => import('@pages/Home'));
-const Detail = lazy(() => import('@pages/Detail'));
+const DetailPage = lazy(() => import('@pages/DetailPage'));
 
 function App() {
   const { globalState } = useStore();
@@ -26,28 +25,30 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Suspense fallback={<LoadingIndicator />}>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/product-detail/:id' element={<Detail />} />
-          </Routes>
-        </Suspense>
-      </Router>
+      <SWRConfig
+        value={{
+          revalidateOnFocus: false,
+          shouldRetryOnError: false,
+          provider: () => new Map()
+        }}
+      >
+        <BrowserRouter>
+          <Suspense fallback={<LoadingIndicator />}>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/product-detail/:id' element={<DetailPage />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </SWRConfig>
 
       {isLoading && <LoadingIndicator />}
 
-      {errorMessage && (
+      {(errorMessage || successMessage) && (
         <MessagePopUp
-          text={errorMessage}
-          messagePopUpVariant={MessagePopUpVariants.Failed}
-        />
-      )}
-
-      {successMessage && (
-        <MessagePopUp
-          text={successMessage}
-          messagePopUpVariant={MessagePopUpVariants.Success}
+          successMessage={successMessage}
+          errorMessage={errorMessage}
+          isError={!!errorMessage}
         />
       )}
     </>

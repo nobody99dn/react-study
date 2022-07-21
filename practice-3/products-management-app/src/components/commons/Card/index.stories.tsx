@@ -31,6 +31,6 @@ Default.args = {
     type: ProductTypes.Phone
   },
   currency: Currencies.VND,
-  onOpenModalForm: () => {},
-  onDeleteProduct: () => {}
+  handleNavigate: () => {},
+  handleDeleteProduct: () => {}
 };

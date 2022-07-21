@@ -2,16 +2,15 @@
 import React, { memo } from 'react';
 
 // Layouts
-import Header from '@layouts/Header';
 import Main from '@layouts/Main';
 
-const Home: React.FC = () => {
-  return (
-    <>
-      <Header />
-      <Main />
-    </>
-  );
-};
+// Components
+import Layout from '@components/Layout';
+
+const Home: React.FC = () => (
+  <Layout>
+    <Main />
+  </Layout>
+);
 
 export default memo(Home);

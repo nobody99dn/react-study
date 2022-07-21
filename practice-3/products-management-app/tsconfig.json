@@ -28,7 +28,9 @@
       "@models/*": ["./models/*"],
       "@store/*": ["./store/*"],
       "@hooks/*": ["./hooks/*"],
-      "@pages/*": ["./pages/*"]
+      "@pages/*": ["./pages/*"],
+      "@common-types/*": ["./common-types/*"],
+      "@utils/*": ["./utils/*"]
     },
   },
   "include": ["src"],

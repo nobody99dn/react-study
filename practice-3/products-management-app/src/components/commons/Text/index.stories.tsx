@@ -2,10 +2,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
-import Text, { VariantsTypes } from './index';
+import Text from './index';
 
-// Constants
-import { FwType } from '@constants/index';
+// Types
+import { FwType, VariantsTypes } from '@common-types/index';
 
 // Styles
 import '@assets/styles/reset.css';
@@ -28,5 +28,5 @@ export const Highlight = Template.bind({});
 Highlight.args = {
   children: 'Text',
   variant: VariantsTypes.Highlight,
-  fw: FwType.Bold
+  fontWeight: FwType.Bold
 };
