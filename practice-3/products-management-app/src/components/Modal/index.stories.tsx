@@ -22,18 +22,5 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   isVisible: true,
-  children: (
-    <Form
-      validateMessage=''
-      handleSubmit={() => {}}
-      variants={FormVariants.Create}
-      productItem={{
-        id: '',
-        name: '',
-        type: '',
-        price: 0,
-        imageUrl: ''
-      }}
-    />
-  )
+  children: <p>Modal </p>
 };
