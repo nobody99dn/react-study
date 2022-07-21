@@ -35,9 +35,9 @@ const MessagePopUp: React.FC<MessagePopUpProps> = ({
 
   return (
     <div
-      className={`popup-messages
-      ${isVisible ? 'active' : ''}
-      ${isError ? 'popup-error' : 'popup-success'}`}
+      className={`popup-message${isVisible ? ' active' : ''}${
+        isError ? ' popup-error' : ' popup-success'
+      }`}
     >
       <Text color='var(--white)'>
         {isError ? errorMessage : successMessage}
