@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1658383121429" clover="3.2.0">
-  <project timestamp="1658383121429" name="All files">
-    <metrics statements="372" coveredstatements="332" conditionals="110" coveredconditionals="71" methods="94" coveredmethods="52" elements="576" coveredelements="455" complexity="0" loc="372" ncloc="372" packages="24" files="42" classes="42"/>
+<coverage generated="1658389977929" clover="3.2.0">
+  <project timestamp="1658389977930" name="All files">
+    <metrics statements="371" coveredstatements="346" conditionals="110" coveredconditionals="87" methods="94" coveredmethods="72" elements="575" coveredelements="505" complexity="0" loc="371" ncloc="371" packages="24" files="42" classes="42"/>
     <package name="assets">
       <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\assets\index.ts">
@@ -109,7 +109,7 @@
         <line num="13" count="20" type="stmt"/>
         <line num="14" count="33" type="stmt"/>
         <line num="15" count="22" type="stmt"/>
-        <line num="16" count="13" type="stmt"/>
+        <line num="16" count="14" type="stmt"/>
         <line num="17" count="22" type="stmt"/>
         <line num="18" count="66" type="stmt"/>
       </file>
@@ -172,24 +172,23 @@
       </file>
     </package>
     <package name="components.MessagePopUp">
-      <metrics statements="15" coveredstatements="10" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="1"/>
+      <metrics statements="14" coveredstatements="12" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="3"/>
       <file name="index.tsx" path="E:\asnet\react-training\practice-3\products-management-app\src\components\MessagePopUp\index.tsx">
-        <metrics statements="15" coveredstatements="10" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="1"/>
+        <metrics statements="14" coveredstatements="12" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="2" count="8" type="stmt"/>
         <line num="5" count="8" type="stmt"/>
         <line num="8" count="8" type="stmt"/>
         <line num="11" count="8" type="stmt"/>
         <line num="19" count="8" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="50" count="8" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="49" count="8" type="stmt"/>
       </file>
     </package>
     <package name="components.Modal">
@@ -311,7 +310,7 @@
         <line num="5" count="9" type="stmt"/>
         <line num="8" count="9" type="stmt"/>
         <line num="19" count="9" type="stmt"/>
-        <line num="27" count="10" type="stmt"/>
+        <line num="27" count="11" type="stmt"/>
         <line num="40" count="9" type="stmt"/>
       </file>
     </package>
@@ -346,47 +345,47 @@
       <metrics statements="26" coveredstatements="26" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
       <file name="actions.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\constants\actions.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="28" count="8" type="stmt"/>
+        <line num="2" count="9" type="stmt"/>
+        <line num="28" count="9" type="stmt"/>
       </file>
       <file name="api.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\constants\api.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
       </file>
       <file name="index.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\constants\index.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="3" count="8" type="stmt"/>
-        <line num="4" count="8" type="stmt"/>
-        <line num="5" count="8" type="stmt"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="2" count="9" type="stmt"/>
+        <line num="3" count="9" type="stmt"/>
+        <line num="4" count="9" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
       </file>
       <file name="messages.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\constants\messages.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="15" count="8" type="stmt"/>
-        <line num="21" count="8" type="stmt"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="15" count="9" type="stmt"/>
+        <line num="21" count="9" type="stmt"/>
       </file>
       <file name="routes.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\constants\routes.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="6" count="8" type="stmt"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
       </file>
       <file name="types.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\constants\types.ts">
         <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
-        <line num="1" count="10" type="cond" truecount="2" falsecount="0"/>
-        <line num="2" count="10" type="stmt"/>
-        <line num="3" count="10" type="stmt"/>
-        <line num="4" count="10" type="stmt"/>
-        <line num="7" count="10" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="10" type="stmt"/>
-        <line num="9" count="10" type="stmt"/>
-        <line num="10" count="10" type="stmt"/>
-        <line num="13" count="10" type="stmt"/>
-        <line num="19" count="10" type="cond" truecount="2" falsecount="0"/>
-        <line num="20" count="10" type="stmt"/>
-        <line num="21" count="10" type="stmt"/>
-        <line num="24" count="10" type="stmt"/>
+        <line num="1" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="4" count="11" type="stmt"/>
+        <line num="7" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="11" type="stmt"/>
+        <line num="9" count="11" type="stmt"/>
+        <line num="10" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+        <line num="19" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="11" type="stmt"/>
+        <line num="21" count="11" type="stmt"/>
+        <line num="24" count="11" type="stmt"/>
       </file>
     </package>
     <package name="helpers">
@@ -459,84 +458,84 @@
       </file>
     </package>
     <package name="store">
-      <metrics statements="90" coveredstatements="61" conditionals="25" coveredconditionals="0" methods="29" coveredmethods="1"/>
+      <metrics statements="90" coveredstatements="72" conditionals="25" coveredconditionals="16" methods="29" coveredmethods="18"/>
       <file name="actions.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\store\actions.ts">
-        <metrics statements="55" coveredstatements="47" conditionals="0" coveredconditionals="0" methods="23" coveredmethods="0"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="24" count="8" type="stmt"/>
-        <line num="28" count="8" type="stmt"/>
-        <line num="33" count="8" type="stmt"/>
-        <line num="39" count="8" type="stmt"/>
-        <line num="43" count="8" type="stmt"/>
-        <line num="48" count="8" type="stmt"/>
-        <line num="54" count="8" type="stmt"/>
-        <line num="58" count="8" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="66" count="8" type="stmt"/>
-        <line num="72" count="8" type="stmt"/>
-        <line num="76" count="8" type="stmt"/>
+        <metrics statements="55" coveredstatements="51" conditionals="0" coveredconditionals="0" methods="23" coveredmethods="16"/>
+        <line num="2" count="9" type="stmt"/>
+        <line num="24" count="9" type="stmt"/>
+        <line num="28" count="9" type="stmt"/>
+        <line num="33" count="9" type="stmt"/>
+        <line num="39" count="9" type="stmt"/>
+        <line num="43" count="9" type="stmt"/>
+        <line num="48" count="9" type="stmt"/>
+        <line num="54" count="9" type="stmt"/>
+        <line num="58" count="9" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
+        <line num="66" count="9" type="stmt"/>
+        <line num="72" count="9" type="stmt"/>
+        <line num="76" count="9" type="stmt"/>
         <line num="79" count="0" type="stmt"/>
-        <line num="84" count="8" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="92" count="8" type="stmt"/>
-        <line num="96" count="8" type="stmt"/>
+        <line num="84" count="9" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="92" count="9" type="stmt"/>
+        <line num="96" count="9" type="stmt"/>
         <line num="99" count="0" type="stmt"/>
-        <line num="104" count="8" type="stmt"/>
-        <line num="110" count="8" type="stmt"/>
-        <line num="114" count="8" type="stmt"/>
+        <line num="104" count="9" type="stmt"/>
+        <line num="110" count="9" type="stmt"/>
+        <line num="114" count="9" type="stmt"/>
         <line num="116" count="0" type="stmt"/>
-        <line num="121" count="8" type="stmt"/>
-        <line num="123" count="0" type="stmt"/>
-        <line num="129" count="8" type="stmt"/>
-        <line num="133" count="8" type="stmt"/>
+        <line num="121" count="9" type="stmt"/>
+        <line num="123" count="1" type="stmt"/>
+        <line num="129" count="9" type="stmt"/>
+        <line num="133" count="9" type="stmt"/>
         <line num="135" count="0" type="stmt"/>
-        <line num="140" count="8" type="stmt"/>
-        <line num="142" count="0" type="stmt"/>
-        <line num="148" count="8" type="stmt"/>
-        <line num="152" count="8" type="stmt"/>
-        <line num="156" count="8" type="stmt"/>
-        <line num="157" count="8" type="stmt"/>
-        <line num="158" count="8" type="stmt"/>
-        <line num="159" count="8" type="stmt"/>
-        <line num="160" count="8" type="stmt"/>
-        <line num="161" count="8" type="stmt"/>
-        <line num="162" count="8" type="stmt"/>
-        <line num="163" count="8" type="stmt"/>
-        <line num="164" count="8" type="stmt"/>
-        <line num="165" count="8" type="stmt"/>
-        <line num="166" count="8" type="stmt"/>
-        <line num="167" count="8" type="stmt"/>
-        <line num="168" count="8" type="stmt"/>
-        <line num="169" count="8" type="stmt"/>
-        <line num="170" count="8" type="stmt"/>
-        <line num="171" count="8" type="stmt"/>
-        <line num="172" count="8" type="stmt"/>
-        <line num="173" count="8" type="stmt"/>
-        <line num="174" count="8" type="stmt"/>
-        <line num="175" count="8" type="stmt"/>
-        <line num="176" count="8" type="stmt"/>
-        <line num="177" count="8" type="stmt"/>
-        <line num="178" count="8" type="stmt"/>
+        <line num="140" count="9" type="stmt"/>
+        <line num="142" count="1" type="stmt"/>
+        <line num="148" count="9" type="stmt"/>
+        <line num="152" count="9" type="stmt"/>
+        <line num="156" count="9" type="stmt"/>
+        <line num="157" count="9" type="stmt"/>
+        <line num="158" count="9" type="stmt"/>
+        <line num="159" count="9" type="stmt"/>
+        <line num="160" count="9" type="stmt"/>
+        <line num="161" count="9" type="stmt"/>
+        <line num="162" count="9" type="stmt"/>
+        <line num="163" count="9" type="stmt"/>
+        <line num="164" count="9" type="stmt"/>
+        <line num="165" count="9" type="stmt"/>
+        <line num="166" count="9" type="stmt"/>
+        <line num="167" count="9" type="stmt"/>
+        <line num="168" count="9" type="stmt"/>
+        <line num="169" count="9" type="stmt"/>
+        <line num="170" count="9" type="stmt"/>
+        <line num="171" count="9" type="stmt"/>
+        <line num="172" count="9" type="stmt"/>
+        <line num="173" count="9" type="stmt"/>
+        <line num="174" count="9" type="stmt"/>
+        <line num="175" count="9" type="stmt"/>
+        <line num="176" count="9" type="stmt"/>
+        <line num="177" count="9" type="stmt"/>
+        <line num="178" count="9" type="stmt"/>
       </file>
       <file name="index.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\store\index.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="3" count="8" type="stmt"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="2" count="9" type="stmt"/>
+        <line num="3" count="9" type="stmt"/>
       </file>
       <file name="reducer.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\store\reducer.ts">
-        <metrics statements="23" coveredstatements="4" conditionals="25" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="18" count="8" type="stmt"/>
-        <line num="33" count="8" type="cond" truecount="0" falsecount="1"/>
-        <line num="34" count="0" type="cond" truecount="0" falsecount="24"/>
-        <line num="36" count="0" type="stmt"/>
+        <metrics statements="23" coveredstatements="11" conditionals="25" coveredconditionals="16" methods="3" coveredmethods="1"/>
+        <line num="2" count="9" type="stmt"/>
+        <line num="18" count="9" type="stmt"/>
+        <line num="33" count="9" type="cond" truecount="0" falsecount="1"/>
+        <line num="34" count="17" type="cond" truecount="16" falsecount="8"/>
+        <line num="36" count="1" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
+        <line num="52" count="5" type="stmt"/>
+        <line num="64" count="7" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="85" count="2" type="stmt"/>
         <line num="93" count="0" type="stmt"/>
         <line num="97" count="0" type="stmt"/>
         <line num="105" count="0" type="stmt"/>
@@ -548,28 +547,28 @@
         <line num="135" count="0" type="stmt"/>
         <line num="143" count="0" type="stmt"/>
         <line num="150" count="0" type="stmt"/>
-        <line num="154" count="8" type="stmt"/>
+        <line num="154" count="9" type="stmt"/>
       </file>
       <file name="store.tsx" path="E:\asnet\react-training\practice-3\products-management-app\src\store\store.tsx">
         <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="13" count="8" type="stmt"/>
-        <line num="20" count="8" type="stmt"/>
-        <line num="24" count="8" type="stmt"/>
-        <line num="26" count="8" type="stmt"/>
-        <line num="34" count="8" type="stmt"/>
+        <line num="2" count="9" type="stmt"/>
+        <line num="13" count="9" type="stmt"/>
+        <line num="20" count="9" type="stmt"/>
+        <line num="24" count="9" type="stmt"/>
+        <line num="26" count="9" type="stmt"/>
+        <line num="34" count="9" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="48" count="8" type="stmt"/>
+        <line num="48" count="9" type="stmt"/>
       </file>
     </package>
     <package name="utils">
-      <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="areEqual.ts" path="E:\asnet\react-training\practice-3\products-management-app\src\utils\areEqual.ts">
-        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="3" count="8" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="3" count="9" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
       </file>
     </package>
   </project>
