@@ -1,5 +1,5 @@
 // Library
-import React from 'react';
+import React, { memo } from 'react';
 
 // Components
 import { Button, Filter } from '@components/index';
@@ -55,4 +55,4 @@ const SideBar: React.FC<SideBarProps> = ({
   </div>
 );
 
-export default SideBar;
+export default memo(SideBar);

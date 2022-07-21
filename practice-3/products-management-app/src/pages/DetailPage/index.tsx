@@ -15,7 +15,7 @@ import { clearCurrentProduct, useStore } from '@store/index';
 import './index.css';
 
 // Components
-import { Text } from '@components/index';
+import { Layout, Text } from '@components/index';
 
 // Constants
 import { ERROR_MESSAGES } from '@constants/index';
@@ -43,7 +43,7 @@ const DetailPage: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Layout>
       {currentProduct ? (
         <ProductDetail
           product={currentProduct}
@@ -56,7 +56,7 @@ const DetailPage: React.FC = () => {
           </Text>
         </div>
       )}
-    </>
+    </Layout>
   );
 };
 

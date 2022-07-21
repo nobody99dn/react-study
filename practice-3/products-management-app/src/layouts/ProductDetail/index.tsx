@@ -1,9 +1,9 @@
 // Libraries
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Components
-import { Image, Form, Title, Layout } from '@components/index';
+import { Image, Form, Title } from '@components/index';
 
 // Models
 import { Product } from '@models/product';
@@ -46,7 +46,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
    * @param product Product
    * @returns void
    */
-  const handleSubmitEdit = async (product: Product): Promise<void> => {
+  const handleSubmitEdit = useCallback((product: Product): void => {
     // Validate form
     if (!product.name) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
@@ -70,7 +70,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
     // Update state
     setCurrentProduct(product);
-  };
+  }, []);
 
   /**
    * Handle click back icon
@@ -81,33 +81,31 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
   }, []);
 
   return (
-    <Layout>
-      <div className='product-detail'>
-        <div className='back-icon'>
-          <Image
-            alt='Back to Home Page'
-            imageUrl={BackIcon}
-            variant={ImageVariants.Icon}
-            handleClick={handleBack}
-          />
-        </div>
-        <div className='product-image'>
-          <Image alt='Product Image' imageUrl={currentProduct.imageUrl} />
-          <Title variant={VariantTypes.Subtitle} children='Preview image' />
-        </div>
-        <div className='product-form'>
-          <Form
-            productItem={currentProduct}
-            validateMessage={validateMessage}
-            variants={FormVariants.Edit}
-            options={PRODUCT_TYPE_LIST}
-            isDisableForm={true}
-            handleSubmit={handleSubmitEdit}
-          />
-        </div>
+    <div className='product-detail'>
+      <div className='back-icon'>
+        <Image
+          alt='Back to Home Page'
+          imageUrl={BackIcon}
+          variant={ImageVariants.Icon}
+          handleClick={handleBack}
+        />
       </div>
-    </Layout>
+      <div className='product-image'>
+        <Image alt='Product Image' imageUrl={currentProduct.imageUrl} />
+        <Title variant={VariantTypes.Subtitle} children='Preview image' />
+      </div>
+      <div className='product-form'>
+        <Form
+          productItem={currentProduct}
+          validateMessage={validateMessage}
+          variants={FormVariants.Edit}
+          options={PRODUCT_TYPE_LIST}
+          isDisableForm={true}
+          handleSubmit={handleSubmitEdit}
+        />
+      </div>
+    </div>
   );
 };
 
-export default ProductDetail;
+export default memo(ProductDetail);

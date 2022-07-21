@@ -1,5 +1,5 @@
 // Library
-import React, { useCallback, useRef, useState } from 'react';
+import React, { memo, useCallback, useRef, useState } from 'react';
 
 // Style
 import './index.css';
@@ -117,4 +117,4 @@ const Form: React.FC<FormProps> = ({
   );
 };
 
-export default Form;
+export default memo(Form);

@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useCallback } from 'react';
+import React, { memo } from 'react';
 
 // Styles
 import './index.css';
@@ -23,12 +23,9 @@ const SelectItem: React.FC<SelectItemProps> = ({
   disable = false,
   handleSelectChange
 }) => {
-  const handleChange = useCallback(
-    (e: { target: { value: string; name: string } }) => {
-      handleSelectChange?.(e.target.value, e.target.name);
-    },
-    [handleSelectChange]
-  );
+  const handleChange = (e: { target: { value: string; name: string } }) => {
+    handleSelectChange?.(e.target.value, e.target.name);
+  };
 
   return (
     <div className='select-wrapper'>
