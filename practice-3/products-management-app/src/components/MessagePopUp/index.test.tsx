@@ -1,4 +1,6 @@
 // Libraries
+import { render } from '@testing-library/react';
+import React from 'react';
 import { create } from 'react-test-renderer';
 
 // Components
@@ -14,5 +16,14 @@ describe('MessagePopUp component', () => {
   test('should render correctly', () => {
     const defaultTree = create(<MessagePopUp {...defaultProps} />).toJSON();
     expect(defaultTree).toMatchSnapshot();
+  });
+
+  test('wait 2 second before disappear', () => {
+    jest.useFakeTimers();
+    jest.spyOn(global, 'setTimeout');
+
+    render(<MessagePopUp {...defaultProps} />);
+
+    expect(setTimeout).toHaveBeenCalled();
   });
 });
