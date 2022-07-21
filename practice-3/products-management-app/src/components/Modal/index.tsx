@@ -20,11 +20,13 @@ const Modal: React.FC<ModalProps> = ({ children, isVisible, handleClose }) =>
   isVisible ? (
     <div className='modal'>
       <div className='modal-dialog'>
-        <Image
-          alt='close icon'
-          imageUrl={closeIcon}
-          handleClick={handleClose}
-        />
+        <div className='close-icon'>
+          <Image
+            alt='close icon'
+            imageUrl={closeIcon}
+            handleClick={handleClose}
+          />
+        </div>
         <div className='modal-body'>{children}</div>
       </div>
     </div>
