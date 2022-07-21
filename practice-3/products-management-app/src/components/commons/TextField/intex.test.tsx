@@ -1,6 +1,11 @@
 // Libraries
-import { render, fireEvent, cleanup } from '@testing-library/react';
-import { screen } from '@testing-library/dom';
+import {
+  render,
+  fireEvent,
+  cleanup,
+  getByDisplayValue,
+  screen
+} from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
@@ -53,20 +58,6 @@ describe('TextField component', () => {
     const input = container.querySelector<HTMLInputElement>('input');
 
     expect(input).toHaveAttribute('readonly');
-  });
-
-  test('should be call onChange', () => {
-    const myMock = jest.fn();
-
-    render(<TextField {...defaultProps} onChange={myMock} />, { container });
-
-    const input: HTMLElement = container.getElementsByTagName('input')[0];
-
-    fireEvent.change(input);
-
-    expect(myMock).toHaveBeenCalled();
-    if (input) {
-    }
   });
 
   test('should render TextField with label', () => {

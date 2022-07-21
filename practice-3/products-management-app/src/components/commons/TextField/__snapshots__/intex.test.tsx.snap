@@ -80,30 +80,3 @@ exports[`TextField component should render correctly 3`] = `
   </div>
 </div>
 `;
-
-exports[`TextField component should render correctly 4`] = `
-<div
-  className="field-wrapper"
->
-  <div
-    className="input-wrapper"
-  >
-    <input
-      className="field field-standard"
-      disabled={true}
-      onChange={[Function]}
-      placeholder="Placeholder"
-      readOnly={false}
-      required={false}
-      style={
-        Object {
-          "height": undefined,
-          "width": undefined,
-        }
-      }
-      type="text"
-      value=""
-    />
-  </div>
-</div>
-`;
