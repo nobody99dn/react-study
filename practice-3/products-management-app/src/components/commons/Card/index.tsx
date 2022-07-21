@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 
 // Components
 import { Image, Title, Button } from '@components/index';
@@ -34,13 +34,13 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const { name, imageUrl, price, id, type: typeProduct } = product;
 
-  const handleToggleModal = () => {
+  const handleToggleModal = useCallback(() => {
     handleNavigate(id);
-  };
+  }, []);
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     handleDeleteProduct(id);
-  };
+  }, []);
 
   return (
     <div className='card'>
@@ -83,4 +83,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default Card;
+export default memo(Card);

@@ -1,5 +1,5 @@
 // Libraries
-import React, { FormEvent, memo } from 'react';
+import React, { memo } from 'react';
 
 // Components
 import { Form, Modal } from '@components/index';

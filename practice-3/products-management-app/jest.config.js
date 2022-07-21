@@ -14,6 +14,7 @@ module.exports = {
     '@common-types/(.*)': '<rootDir>/src/common-types/$1',
     '@layouts/(.*)': '<rootDir>/src/layouts/$1',
     '@store/(.*)': '<rootDir>/src/store/$1',
+    '@utils/(.*)': '<rootDir>/src/utils/$1',
     '\\.(css|svg|png|jpg)$': '<rootDir>/__mocks__/styleMock.ts'
   }
 };

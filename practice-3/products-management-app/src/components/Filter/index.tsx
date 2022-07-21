@@ -1,5 +1,5 @@
 // Library
-import React from 'react';
+import React, { memo } from 'react';
 
 // Constants
 import { FilterOrderOptions, ProductTypes } from '@constants/index';
@@ -52,4 +52,4 @@ const Filter: React.FC<FilterProps> = ({
   </div>
 );
 
-export default Filter;
+export default memo(Filter);

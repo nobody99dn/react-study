@@ -1,12 +1,12 @@
 // Libraries
-import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Styles
 import './index.css';
 
 // Components
-import { Posts, SearchInput, ModalForm, Layout } from '@components/index';
+import { Posts, SearchInput, ModalForm } from '@components/index';
 
 // Layout
 import SideBar from '@layouts/SideBar/index';
@@ -60,9 +60,9 @@ const Main: React.FC = () => {
    * @param id string
    * @returns void
    */
-  const handleDeleteProduct = async (id: string): Promise<void> => {
+  const handleDeleteProduct = useCallback((id: string): void => {
     deleteProduct(id);
-  };
+  }, []);
 
   /**
    * Handle create new product and edit product
@@ -71,7 +71,7 @@ const Main: React.FC = () => {
    * @param product Product
    * @returns void
    */
-  const handleCreateProduct = async (product: Product): Promise<void> => {
+  const handleCreateProduct = useCallback((product: Product): void => {
     // Validate form
     if (!product.name) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
@@ -100,7 +100,7 @@ const Main: React.FC = () => {
     createProduct(product);
 
     setIsModalShow(false);
-  };
+  }, []);
 
   /**
    * Handle close modal

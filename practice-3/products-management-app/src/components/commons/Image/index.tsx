@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo, useState, useCallback } from 'react';
+import React, { memo } from 'react';
 
 // Styles
 import './index.css';

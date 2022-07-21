@@ -1,9 +1,9 @@
 // Libraries
-import { FormEvent, memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Components
-import { Image, Form, Title, Layout } from '@components/index';
+import { Image, Form, Title } from '@components/index';
 
 // Models
 import { Product } from '@models/product';
@@ -25,9 +25,13 @@ import { FormVariants, ImageVariants, VariantTypes } from '@common-types/index';
 
 interface ProductDetailProps {
   product: Product;
+  handleClearCurrent: () => void;
 }
 
-const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
+const ProductDetail: React.FC<ProductDetailProps> = ({
+  product,
+  handleClearCurrent
+}) => {
   const { editProduct } = useProducts();
 
   const navigate = useNavigate();
@@ -42,7 +46,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
    * @param product Product
    * @returns void
    */
-  const handleSubmitEdit = async (product: Product): Promise<void> => {
+  const handleSubmitEdit = useCallback((product: Product): void => {
     // Validate form
     if (!product.name) {
       setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
@@ -66,13 +70,14 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
 
     // Update state
     setCurrentProduct(product);
-  };
+  }, []);
 
   /**
    * Handle click back icon
    */
   const handleBack = useCallback(() => {
-    navigate(-1);
+    handleClearCurrent();
+    navigate(URL.HOME_PAGE);
   }, []);
 
   return (
@@ -103,4 +108,4 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
   );
 };
 
-export default ProductDetail;
+export default memo(ProductDetail);
