@@ -2,7 +2,9 @@
   "extends": [
     "eslint:recommended", 
     "plugin:react/recommended", 
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
     "parser": "@babel/eslint-parser",
@@ -13,5 +15,12 @@
   "env": {
     "browser": true,
     "node": true
+  },
+  "rules": {
+    "eqeqeq": "error",
+    "indent":  ["error", 2,{ "SwitchCase": 1 }],
+    "curly": ["error", "all"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
   }
 }

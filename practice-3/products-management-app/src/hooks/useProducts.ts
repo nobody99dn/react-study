@@ -53,11 +53,13 @@ const useProducts = () => {
 
   const { dispatch } = useStore();
 
-  // Handle get all products when loaded
+  // // Handle get all products when loaded
   useEffect(() => {
     isValidating && dispatch(getProductsRequest());
 
     if (!isValidating && !error && data) {
+      console.log(123);
+
       dispatch(getProductsSuccess({ products: data }));
     } else if (!isValidating && error) {
       if (error instanceof Error) {

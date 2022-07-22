@@ -6,7 +6,7 @@
  */
 export function currencyFormat(price: number): string {
   //convert the string to an array
-  let arr = price.toString().split('');
+  const arr = price.toString().split('');
 
   //back to string with added spaces
   let result = '';
