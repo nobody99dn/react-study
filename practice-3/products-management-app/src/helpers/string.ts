@@ -4,7 +4,7 @@
  * @param price number
  * @returns string
  */
-export function currencyFormat(price: number): string {
+export const currencyFormat = (price: number): string => {
   //convert the string to an array
   const arr = price.toString().split('');
 
@@ -24,4 +24,4 @@ export function currencyFormat(price: number): string {
   }
 
   return result;
-}
+};
