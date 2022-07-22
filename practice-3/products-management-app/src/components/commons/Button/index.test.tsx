@@ -9,7 +9,7 @@ import Button, { ButtonProps } from './index';
 
 describe('Button component', () => {
   const defaultProps: ButtonProps = {
-    title: 'Button',
+    children: 'Button',
     onClick: jest.fn()
   };
   let container: HTMLElement;

@@ -109,10 +109,11 @@ const Form: React.FC<FormProps> = ({
 
       <Button
         variant={ButtonVariants.Primary}
-        title={variants}
         isDisabled={isDisable}
         onClick={handleClick}
-      />
+      >
+        {variants}
+      </Button>
     </div>
   );
 };

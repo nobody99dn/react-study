@@ -71,12 +71,10 @@ const Card: React.FC<CardProps> = ({
           <span> {currency}</span>
         </Title>
         <div className='button-wrapper'>
-          <Button title='Edit' onClick={handleToggleModal} />
-          <Button
-            variant={ButtonVariants.Secondary}
-            title='Delete'
-            onClick={handleDelete}
-          />
+          <Button onClick={handleToggleModal}>Edit</Button>
+          <Button variant={ButtonVariants.Secondary} onClick={handleDelete}>
+            Delete
+          </Button>
         </div>
       </div>
     </div>
