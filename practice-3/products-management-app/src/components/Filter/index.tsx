@@ -36,7 +36,7 @@ const Filter: React.FC<FilterProps> = ({
         options={typeFilterOptions}
         name='type-option'
         onSelectChange={onTypeChange}
-        value={currentFilterTypeParam}
+        defaultValue={currentFilterTypeParam}
       />
     </div>
     <div className='filter-item'>
@@ -45,7 +45,7 @@ const Filter: React.FC<FilterProps> = ({
         options={priceFilterOptions}
         name='price-filter'
         onSelectChange={onPriceChange}
-        value={currentFilterPriceParam}
+        defaultValue={currentFilterPriceParam}
       />
     </div>
     <Button onClick={onClearFilters}>Clear filter</Button>

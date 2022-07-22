@@ -37,11 +37,9 @@ const SideBar: React.FC<SideBarProps> = ({
 }) => (
   <div className='sidebar'>
     <div className='add-button'>
-      <Button
-        title='Add new product'
-        variant={ButtonVariants.Primary}
-        onClick={onOpenModalForm}
-      />
+      <Button variant={ButtonVariants.Primary} onClick={onOpenModalForm}>
+        Add new product
+      </Button>
     </div>
     <Filter
       typeFilterOptions={PRODUCT_TYPE_LIST}

@@ -1,5 +1,11 @@
 // Libraries
-import React, { memo, useCallback, forwardRef } from 'react';
+import React, {
+  memo,
+  forwardRef,
+  useState,
+  ChangeEvent,
+  useCallback
+} from 'react';
 
 // Components
 import { Image } from '@components/index';
@@ -29,7 +35,7 @@ export interface TextFieldProps {
   iconWidth?: string;
   variant?: TextFieldVariants;
   label?: string;
-  onInputChange?: (value: string | number, fieldName: string) => void;
+  onInputChange?: (value: string | number, fieldName?: string) => void;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
@@ -51,12 +57,14 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref = null
   ) => {
-    const handleChange = useCallback(
-      (e: { target: { value: string | number; name: string } }) => {
-        onInputChange?.(e.target.value, e.target.name);
-      },
-      [onInputChange]
-    );
+    const [value, setValue] = useState<string | number>(defaultValue);
+
+    const handleChange = useCallback((event: ChangeEvent) => {
+      const newValue = (event.currentTarget as HTMLInputElement).value;
+      setValue(newValue);
+
+      onInputChange && onInputChange(newValue);
+    }, []);
 
     return (
       <div className='field-wrapper'>
@@ -78,12 +86,14 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             type={type}
             style={{ width, height }}
             placeholder={placeholder}
-            value={defaultValue}
+            value={value}
             disabled={disabled}
             readOnly={readonly}
             required={required}
             ref={ref}
-            onChange={handleChange}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              handleChange(event)
+            }
           />
         </div>
       </div>
