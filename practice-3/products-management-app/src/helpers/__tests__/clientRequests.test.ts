@@ -10,6 +10,7 @@ import { ProductTypes } from '@constants/types';
 
 // Product
 import { Product } from '@models/product';
+import { ERROR_MESSAGES } from '@constants/messages';
 
 jest.mock('axios');
 
@@ -52,13 +53,13 @@ describe('Testing API', () => {
   });
 
   test('fetches erroneously data from an API', async () => {
-    const errorMessage = 'Network Error';
-
     (axios.get as jest.Mock).mockImplementationOnce(() =>
-      Promise.reject(new Error(errorMessage))
+      Promise.reject(new Error())
     );
 
-    await expect(get('url')).rejects.toThrow(errorMessage);
+    await expect(get('url')).rejects.toThrow(
+      ERROR_MESSAGES.SERVER_RESPONSE_ERROR
+    );
   });
 
   test('should create data', async () => {

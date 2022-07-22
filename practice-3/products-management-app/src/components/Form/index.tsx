@@ -19,7 +19,7 @@ import {
   VariantsTypes
 } from '@common-types/index';
 
-interface FormProps {
+export interface FormProps {
   variants: FormVariants;
   options?: ProductTypes[];
   productItem: Product;
@@ -80,6 +80,7 @@ const Form: React.FC<FormProps> = ({
       <Title>{variants} Product</Title>
       <form
         className='form'
+        name='form'
         onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event)}
       >
         <fieldset className='field-group'>
