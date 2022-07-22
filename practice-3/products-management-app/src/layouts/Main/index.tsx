@@ -180,12 +180,12 @@ const Main: React.FC = () => {
         <div className='right-content'>
           <SearchInput
             productName={productName}
-            handleSearchProduct={handleSearchProduct}
+            onSearchProduct={handleSearchProduct}
           />
           <Posts
             products={products}
-            handleNavigate={handleNavigateProductDetail}
-            handleDeleteProduct={handleDeleteProduct}
+            onNavigate={handleNavigateProductDetail}
+            onDeleteProduct={handleDeleteProduct}
           />
         </div>
       </div>
@@ -193,10 +193,10 @@ const Main: React.FC = () => {
         <SideBar
           currentFilterTypeParam={currentFilterTypeParam}
           currentFilterPriceParam={currentFilterPriceParam}
-          handleOpenModalForm={handleToggleModal}
-          handleTypeChange={handleTypeChange}
-          handlePriceChange={handlePriceChange}
-          handleClearFilters={handleClearFilters}
+          onOpenModalForm={handleToggleModal}
+          onTypeChange={handleTypeChange}
+          onPriceChange={handlePriceChange}
+          onClearFilters={handleClearFilters}
         />
       </div>
       {isModalShow && (
@@ -204,8 +204,8 @@ const Main: React.FC = () => {
           isModalShow={isModalShow}
           product={product}
           validateMessage={validateMessage}
-          handleSubmitForm={handleCreateProduct}
-          handleCloseModal={handleCloseModal}
+          onSubmitForm={handleCreateProduct}
+          onCloseModal={handleCloseModal}
         />
       )}
     </>

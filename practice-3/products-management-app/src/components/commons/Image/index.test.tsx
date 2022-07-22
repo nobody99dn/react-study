@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
@@ -52,7 +53,7 @@ describe('Image component', () => {
   test('should be click 1 times', () => {
     const myMock = jest.fn();
 
-    render(<Image {...defaultProps} handleClick={myMock} />, { container });
+    render(<Image {...defaultProps} onClick={myMock} />, { container });
 
     const image: HTMLImageElement = screen.getByRole('img');
 

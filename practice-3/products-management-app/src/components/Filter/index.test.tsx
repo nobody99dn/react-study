@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
@@ -14,15 +15,14 @@ import {
   ProductTypes,
   PRODUCT_TYPE_LIST
 } from '@constants/types';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 describe('Filter component', () => {
   const defaultProps: FilterProps = {
     typeFilterOptions: PRODUCT_TYPE_LIST,
     priceFilterOptions: ORDER_OPTIONS,
-    handleTypeChange: jest.fn(),
-    handlePriceChange: jest.fn(),
-    handleClearFilters: jest.fn()
+    onTypeChange: jest.fn(),
+    onPriceChange: jest.fn(),
+    onClearFilters: jest.fn()
   };
 
   let container: HTMLElement;
@@ -57,10 +57,10 @@ describe('Filter component', () => {
     expect(getByText(ProductTypes.Tablet)).toBeInTheDocument();
   });
 
-  test('should handleClearFilters be called', () => {
+  test('should onClearFilters be called', () => {
     const clearMock = jest.fn();
 
-    render(<Filter {...defaultProps} handleClearFilters={clearMock} />);
+    render(<Filter {...defaultProps} onClearFilters={clearMock} />);
 
     const clearBtn: HTMLButtonElement = screen.getByRole('button');
 
@@ -69,39 +69,41 @@ describe('Filter component', () => {
     expect(clearMock).toHaveBeenCalled();
   });
 
-  test('should handleTypeChange is called', () => {
+  test('should onTypeChange is called', () => {
     const changeTypeMock = jest.fn();
 
-    render(<Filter {...defaultProps} handleTypeChange={changeTypeMock} />, {
+    render(<Filter {...defaultProps} onTypeChange={changeTypeMock} />, {
       container
     });
 
-    const select: HTMLElement = container.querySelector(
+    const select: HTMLElement | null = container.querySelector(
       'select[name="type-option"]'
-    )!;
+    );
 
-    expect(select).toBeTruthy();
+    if (select) {
+      expect(select).toBeTruthy();
 
-    fireEvent.change(select);
+      fireEvent.change(select);
 
-    expect(changeTypeMock).toHaveBeenCalled();
+      expect(changeTypeMock).toHaveBeenCalled();
+    }
   });
 
-  test('should handlePriceChange is called', () => {
+  test('should onPriceChange is called', () => {
     const changePriceMock = jest.fn();
 
-    render(<Filter {...defaultProps} handlePriceChange={changePriceMock} />, {
+    render(<Filter {...defaultProps} onPriceChange={changePriceMock} />, {
       container
     });
 
-    const select: HTMLElement = container.querySelector(
+    const select: HTMLElement | null = container.querySelector(
       'select[name="price-filter"]'
-    )!;
+    );
 
-    expect(select).toBeTruthy();
+    if (select) {
+      fireEvent.change(select);
 
-    fireEvent.change(select);
-
-    expect(changePriceMock).toHaveBeenCalled();
+      expect(changePriceMock).toHaveBeenCalled();
+    }
   });
 });

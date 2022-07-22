@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
@@ -10,7 +11,7 @@ describe('Modal component', () => {
   const defaultProps: ModalProps = {
     children: '',
     isVisible: true,
-    handleClose: jest.fn()
+    onClose: jest.fn()
   };
 
   let container: HTMLElement;
@@ -41,7 +42,7 @@ describe('Modal component', () => {
   test('should be click', () => {
     const myMock = jest.fn();
 
-    render(<Modal {...defaultProps} handleClose={myMock} />, { container });
+    render(<Modal {...defaultProps} onClose={myMock} />, { container });
 
     const image: HTMLImageElement = screen.getByRole('img');
 

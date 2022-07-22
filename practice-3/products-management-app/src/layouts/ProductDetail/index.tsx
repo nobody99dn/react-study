@@ -1,5 +1,5 @@
 // Libraries
-import { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Components
@@ -25,12 +25,12 @@ import { FormVariants, ImageVariants, VariantTypes } from '@common-types/index';
 
 interface ProductDetailProps {
   product: Product;
-  handleClearCurrent: () => void;
+  onClearCurrent: () => void;
 }
 
 const ProductDetail: React.FC<ProductDetailProps> = ({
   product,
-  handleClearCurrent
+  onClearCurrent
 }) => {
   const { editProduct } = useProducts();
 
@@ -76,7 +76,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
    * Handle click back icon
    */
   const handleBack = useCallback(() => {
-    handleClearCurrent();
+    onClearCurrent();
     navigate(URL.HOME_PAGE);
   }, []);
 
@@ -87,12 +87,12 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
           alt='Back to Home Page'
           imageUrl={BackIcon}
           variant={ImageVariants.Icon}
-          handleClick={handleBack}
+          onClick={handleBack}
         />
       </div>
       <div className='product-image'>
         <Image alt='Product Image' imageUrl={currentProduct.imageUrl} />
-        <Title variant={VariantTypes.Subtitle} children='Preview image' />
+        <Title variant={VariantTypes.Subtitle}>Preview image</Title>
       </div>
       <div className='product-form'>
         <Form
@@ -101,7 +101,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
           variants={FormVariants.Edit}
           options={PRODUCT_TYPE_LIST}
           isDisableForm={true}
-          handleSubmit={handleSubmitEdit}
+          onSubmit={handleSubmitEdit}
         />
       </div>
     </div>

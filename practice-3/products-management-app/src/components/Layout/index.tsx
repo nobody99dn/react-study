@@ -1,5 +1,5 @@
 // Libraries
-import { memo, ReactNode } from 'react';
+import React, { memo, ReactNode } from 'react';
 
 // Layouts
 import Header from '@layouts/Header';

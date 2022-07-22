@@ -11,7 +11,7 @@ interface SelectItemProps {
   label: string;
   options: string[];
   disable?: boolean;
-  handleSelectChange: (value: string, fieldName: string) => void;
+  onSelectChange: (value: string, fieldName: string) => void;
 }
 
 const SelectItem: React.FC<SelectItemProps> = ({
@@ -21,10 +21,10 @@ const SelectItem: React.FC<SelectItemProps> = ({
   label,
   options,
   disable = false,
-  handleSelectChange
+  onSelectChange
 }) => {
   const handleChange = (e: { target: { value: string; name: string } }) => {
-    handleSelectChange?.(e.target.value, e.target.name);
+    onSelectChange?.(e.target.value, e.target.name);
   };
 
   return (

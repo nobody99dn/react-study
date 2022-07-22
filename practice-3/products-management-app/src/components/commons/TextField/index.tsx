@@ -1,5 +1,5 @@
 // Libraries
-import { memo, useCallback, forwardRef } from 'react';
+import React, { memo, useCallback, forwardRef } from 'react';
 
 // Components
 import { Image } from '@components/index';
@@ -29,7 +29,7 @@ export interface TextFieldProps {
   iconWidth?: string;
   variant?: TextFieldVariants;
   label?: string;
-  handleInputChange?: (value: string | number, fieldName: string) => void;
+  onInputChange?: (value: string | number, fieldName: string) => void;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
@@ -47,15 +47,15 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       placeholder,
       iconUrl,
       variant = TextFieldVariants.Standard,
-      handleInputChange
+      onInputChange
     },
     ref = null
   ) => {
     const handleChange = useCallback(
       (e: { target: { value: string | number; name: string } }) => {
-        handleInputChange?.(e.target.value, e.target.name);
+        onInputChange?.(e.target.value, e.target.name);
       },
-      [handleInputChange]
+      [onInputChange]
     );
 
     return (
@@ -76,7 +76,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             name={name}
             className={`field field-${variant}`}
             type={type}
-            style={{ width: width, height: height }}
+            style={{ width, height }}
             placeholder={placeholder}
             value={defaultValue}
             disabled={disabled}
@@ -90,5 +90,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     );
   }
 );
+
+TextField.displayName = 'TextField';
 
 export default memo(TextField);

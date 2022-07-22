@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, act, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
@@ -9,7 +10,7 @@ import Button, { ButtonProps } from './index';
 describe('Button component', () => {
   const defaultProps: ButtonProps = {
     title: 'Button',
-    handleClick: jest.fn()
+    onClick: jest.fn()
   };
   let container: HTMLElement;
   beforeEach(() => {
@@ -43,7 +44,7 @@ describe('Button component', () => {
 
   test('should be click 2 times', () => {
     const myMock = jest.fn();
-    render(<Button {...defaultProps} handleClick={myMock} />, { container });
+    render(<Button {...defaultProps} onClick={myMock} />, { container });
 
     const button: HTMLElement = screen.getByRole('button');
 

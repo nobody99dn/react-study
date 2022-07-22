@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
@@ -20,8 +21,8 @@ describe('ModalForm component', () => {
     },
     isModalShow: true,
     validateMessage: 'test message',
-    handleCloseModal: jest.fn(),
-    handleSubmitForm: jest.fn()
+    onCloseModal: jest.fn(),
+    onSubmitForm: jest.fn()
   };
 
   let container: HTMLElement;
@@ -44,7 +45,7 @@ describe('ModalForm component', () => {
   });
 
   test('should render correct validate message', () => {
-    const message: string = 'Test message';
+    const message = 'Test message';
 
     const { getByText } = render(
       <ModalForm {...defaultProps} validateMessage={message} />,
@@ -57,7 +58,7 @@ describe('ModalForm component', () => {
   test('should submitMock be called', () => {
     const submitMock = jest.fn();
 
-    render(<ModalForm {...defaultProps} handleSubmitForm={submitMock} />),
+    render(<ModalForm {...defaultProps} onSubmitForm={submitMock} />),
       { container };
 
     const button: HTMLImageElement = screen.getByRole('button');
@@ -70,7 +71,7 @@ describe('ModalForm component', () => {
   test('should handleClose be called', () => {
     const closeMock = jest.fn();
 
-    render(<ModalForm {...defaultProps} handleCloseModal={closeMock} />),
+    render(<ModalForm {...defaultProps} onCloseModal={closeMock} />),
       { container };
 
     const img: HTMLImageElement = screen.getByRole('img');

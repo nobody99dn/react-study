@@ -1,11 +1,6 @@
 // Libraries
-import {
-  render,
-  fireEvent,
-  cleanup,
-  getByDisplayValue,
-  screen
-} from '@testing-library/react';
+import React from 'react';
+import { render, cleanup } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
@@ -42,8 +37,6 @@ describe('TextField component', () => {
     expect(error).toMatchSnapshot();
   });
 
-  test('should render correct placeholder', () => {});
-
   test('should render disable input', () => {
     render(<TextField {...defaultProps} disabled />, { container });
 
@@ -61,7 +54,7 @@ describe('TextField component', () => {
   });
 
   test('should render TextField with label', () => {
-    const label: string = 'Label';
+    const label = 'Label';
 
     render(<TextField {...defaultProps} label={label} />, { container });
 
@@ -72,7 +65,7 @@ describe('TextField component', () => {
   });
 
   test('should render image if we pass iconUrl', () => {
-    const iconUrl: string = 'ICON_URL';
+    const iconUrl = 'ICON_URL';
 
     render(<TextField {...defaultProps} iconUrl={iconUrl} />, { container });
 

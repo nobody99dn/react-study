@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
@@ -41,8 +42,8 @@ describe('Posts component', () => {
 
   const defaultProps: PostsProps = {
     products: mockProducts,
-    handleNavigate: jest.fn(),
-    handleDeleteProduct: jest.fn()
+    onNavigate: jest.fn(),
+    onDeleteProduct: jest.fn()
   };
   beforeEach(() => {
     // setup a DOM element as a render target
@@ -73,7 +74,7 @@ describe('Posts component', () => {
   test('should handleOpenProductDetail is called', () => {
     const mockOpenProduct = jest.fn();
 
-    render(<Posts {...defaultProps} handleNavigate={mockOpenProduct} />, {
+    render(<Posts {...defaultProps} onNavigate={mockOpenProduct} />, {
       container
     });
 
@@ -84,13 +85,12 @@ describe('Posts component', () => {
     expect(mockOpenProduct).toHaveBeenCalled();
   });
 
-  test('should handleDeleteProduct is called', () => {
+  test('should onDeleteProduct is called', () => {
     const mockDeleteProduct = jest.fn();
 
-    render(
-      <Posts {...defaultProps} handleDeleteProduct={mockDeleteProduct} />,
-      { container }
-    );
+    render(<Posts {...defaultProps} onDeleteProduct={mockDeleteProduct} />, {
+      container
+    });
 
     const button: HTMLButtonElement[] = screen.getAllByText('Delete');
 

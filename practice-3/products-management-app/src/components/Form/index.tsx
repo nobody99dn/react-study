@@ -25,7 +25,7 @@ interface FormProps {
   productItem: Product;
   validateMessage: string;
   isDisableForm?: boolean;
-  handleSubmit: (product: Product) => void;
+  onSubmit: (product: Product) => void;
 }
 
 const Form: React.FC<FormProps> = ({
@@ -34,7 +34,7 @@ const Form: React.FC<FormProps> = ({
   options = [],
   validateMessage,
   isDisableForm = false,
-  handleSubmit
+  onSubmit
 }) => {
   const [product, setProduct] = useState<Product>(productItem);
   const [isDisable, setIsDisable] = useState<boolean>(isDisableForm);
@@ -52,7 +52,7 @@ const Form: React.FC<FormProps> = ({
   }, []);
 
   const handleClick = useCallback(() => {
-    handleSubmit(product);
+    onSubmit(product);
   }, [product]);
 
   return (
@@ -71,14 +71,14 @@ const Form: React.FC<FormProps> = ({
           placeholder='Enter product name...'
           type={TypeVariables.Text}
           readonly={isDisable}
-          handleInputChange={handleOnChange}
+          onInputChange={handleOnChange}
           ref={nameRef}
         />
         <SelectItem
           label='Product type'
           options={options}
           value={product.type}
-          handleSelectChange={handleOnChange}
+          onSelectChange={handleOnChange}
           name='type'
           disable={isDisable}
         />
@@ -89,7 +89,7 @@ const Form: React.FC<FormProps> = ({
           label='Price'
           placeholder='Enter price...'
           readonly={isDisable}
-          handleInputChange={handleOnChange}
+          onInputChange={handleOnChange}
         />
         <TextField
           defaultValue={product.imageUrl}
@@ -98,7 +98,7 @@ const Form: React.FC<FormProps> = ({
           label='Image link'
           placeholder='Enter image link...'
           readonly={isDisable}
-          handleInputChange={handleOnChange}
+          onInputChange={handleOnChange}
         />
         {validateMessage && (
           <Text variant={VariantsTypes.Highlight} color='var(--danger)'>
@@ -111,7 +111,7 @@ const Form: React.FC<FormProps> = ({
         variant={ButtonVariants.Primary}
         title={variants}
         isDisabled={isDisable}
-        handleClick={handleClick}
+        onClick={handleClick}
       />
     </div>
   );

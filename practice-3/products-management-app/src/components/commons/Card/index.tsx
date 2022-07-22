@@ -22,24 +22,24 @@ import { ButtonVariants, FwType, VariantTypes } from '@common-types/index';
 export interface CardProps {
   product: Product;
   currency?: Currencies;
-  handleNavigate: (productId: string) => void;
-  handleDeleteProduct: (id: string) => void;
+  onNavigate: (productId: string) => void;
+  onDeleteProduct: (id: string) => void;
 }
 
 const Card: React.FC<CardProps> = ({
   product,
   currency = Currencies.VND,
-  handleNavigate,
-  handleDeleteProduct
+  onNavigate,
+  onDeleteProduct
 }) => {
   const { name, imageUrl, price, id, type: typeProduct } = product;
 
   const handleToggleModal = useCallback(() => {
-    handleNavigate(id);
+    onNavigate(id);
   }, []);
 
   const handleDelete = useCallback(() => {
-    handleDeleteProduct(id);
+    onDeleteProduct(id);
   }, []);
 
   return (

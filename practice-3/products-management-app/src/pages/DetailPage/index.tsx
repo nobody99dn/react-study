@@ -47,7 +47,7 @@ const DetailPage: React.FC = () => {
       {currentProduct ? (
         <ProductDetail
           product={currentProduct}
-          handleClearCurrent={handleClearCurrent}
+          onClearCurrent={handleClearCurrent}
         />
       ) : (
         <div className='error-message'>

@@ -17,24 +17,24 @@ export interface ModalFormProps {
   product: Product;
   isModalShow: boolean;
   validateMessage: string;
-  handleSubmitForm: (product: Product) => void;
-  handleCloseModal: () => void;
+  onSubmitForm: (product: Product) => void;
+  onCloseModal: () => void;
 }
 
 const ModalForm: React.FC<ModalFormProps> = ({
   product,
   isModalShow,
   validateMessage = '',
-  handleSubmitForm,
-  handleCloseModal
+  onSubmitForm,
+  onCloseModal
 }) => (
-  <Modal isVisible={isModalShow} handleClose={handleCloseModal}>
+  <Modal isVisible={isModalShow} onClose={onCloseModal}>
     <Form
       variants={!product.id ? FormVariants.Create : FormVariants.Edit}
       options={PRODUCT_TYPE_LIST}
       productItem={product}
       validateMessage={validateMessage}
-      handleSubmit={handleSubmitForm}
+      onSubmit={onSubmitForm}
     />
   </Modal>
 );

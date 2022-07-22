@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
@@ -13,7 +14,7 @@ describe('Select Item component', () => {
     label: 'Select Item Label',
     name: 'select',
     options: ['option 1', 'option 2', 'option 3'],
-    handleSelectChange: jest.fn()
+    onSelectChange: jest.fn()
   };
 
   beforeEach(() => {
@@ -40,7 +41,7 @@ describe('Select Item component', () => {
   });
 
   test('should render correct label', () => {
-    const label: string = 'Select Component';
+    const label = 'Select Component';
     render(<SelectItem {...defaultProps} label={label} />, { container });
 
     expect(container.querySelector('label')).toHaveTextContent(label);
@@ -49,7 +50,7 @@ describe('Select Item component', () => {
   test('should be click', () => {
     const myMock = jest.fn();
 
-    render(<SelectItem {...defaultProps} handleSelectChange={myMock} />, {
+    render(<SelectItem {...defaultProps} onSelectChange={myMock} />, {
       container
     });
 

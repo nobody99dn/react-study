@@ -9,19 +9,19 @@ import { TextField } from '@components/index';
 
 export interface SearchInputProps {
   productName: string;
-  handleSearchProduct: (value: string | number) => void;
+  onSearchProduct: (value: string | number) => void;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
   productName,
-  handleSearchProduct
+  onSearchProduct
 }) => (
   <TextField
     placeholder='Searching...'
     iconUrl={searchIcon}
     height='4.25rem'
     iconWidth='2rem'
-    handleInputChange={handleSearchProduct}
+    onInputChange={onSearchProduct}
     defaultValue={productName}
   />
 );

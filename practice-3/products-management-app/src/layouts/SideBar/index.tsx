@@ -21,26 +21,26 @@ import { ButtonVariants } from '@common-types/index';
 interface SideBarProps {
   currentFilterTypeParam?: ProductTypes;
   currentFilterPriceParam?: FilterOrderOptions;
-  handleOpenModalForm: () => void;
-  handleTypeChange: (value: string) => void;
-  handlePriceChange: (value: string) => void;
-  handleClearFilters: () => void;
+  onOpenModalForm: () => void;
+  onTypeChange: (value: string) => void;
+  onPriceChange: (value: string) => void;
+  onClearFilters: () => void;
 }
 
 const SideBar: React.FC<SideBarProps> = ({
   currentFilterTypeParam,
   currentFilterPriceParam,
-  handleOpenModalForm,
-  handleTypeChange,
-  handlePriceChange,
-  handleClearFilters
+  onOpenModalForm,
+  onTypeChange,
+  onPriceChange,
+  onClearFilters
 }) => (
   <div className='sidebar'>
     <div className='add-button'>
       <Button
         title='Add new product'
         variant={ButtonVariants.Primary}
-        onClick={handleOpenModalForm}
+        onClick={onOpenModalForm}
       />
     </div>
     <Filter
@@ -48,9 +48,9 @@ const SideBar: React.FC<SideBarProps> = ({
       priceFilterOptions={ORDER_OPTIONS}
       currentFilterTypeParam={currentFilterTypeParam}
       currentFilterPriceParam={currentFilterPriceParam}
-      handleTypeChange={handleTypeChange}
-      handlePriceChange={handlePriceChange}
-      handleClearFilters={handleClearFilters}
+      onTypeChange={onTypeChange}
+      onPriceChange={onPriceChange}
+      onClearFilters={onClearFilters}
     />
   </div>
 );

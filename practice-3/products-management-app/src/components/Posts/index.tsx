@@ -19,14 +19,14 @@ import { areEqual } from '@utils/areEqual';
 
 export interface PostsProps {
   products: Product[];
-  handleNavigate: (productId: string) => void;
-  handleDeleteProduct: (id: string) => void;
+  onNavigate: (productId: string) => void;
+  onDeleteProduct: (id: string) => void;
 }
 
 const Posts: React.FC<PostsProps> = ({
   products,
-  handleNavigate,
-  handleDeleteProduct
+  onNavigate,
+  onDeleteProduct
 }) => (
   <div className='product-group'>
     {(products || []).map((product: Product) => (
@@ -34,8 +34,8 @@ const Posts: React.FC<PostsProps> = ({
         key={product.id}
         product={product}
         currency={Currencies.VND}
-        handleNavigate={handleNavigate}
-        handleDeleteProduct={handleDeleteProduct}
+        onNavigate={onNavigate}
+        onDeleteProduct={onDeleteProduct}
       />
     ))}
 
