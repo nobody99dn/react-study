@@ -18,12 +18,13 @@
 
 .card-body {
   padding: 0.5rem;
+  margin: 0 0.75rem;
 }
 
 .button-wrapper {
   display: flex;
-  justify-content: space-around;
-  padding: 0.5rem;
+  justify-content: space-between;
+  padding: 0.5rem 0;
 }
 
 .card-image {
