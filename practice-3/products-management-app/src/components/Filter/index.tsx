@@ -48,7 +48,7 @@ const Filter: React.FC<FilterProps> = ({
         value={currentFilterPriceParam}
       />
     </div>
-    <Button title='Clear filter' handleClick={handleClearFilters} />
+    <Button title='Clear filter' onClick={handleClearFilters} />
   </div>
 );
 

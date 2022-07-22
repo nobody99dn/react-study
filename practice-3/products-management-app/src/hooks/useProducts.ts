@@ -55,13 +55,17 @@ const useProducts = () => {
 
   // // Handle get all products when loaded
   useEffect(() => {
-    isValidating && dispatch(getProductsRequest());
+    try {
+      isValidating && dispatch(getProductsRequest());
 
-    if (!isValidating && !error && data) {
-      console.log(123);
-
-      dispatch(getProductsSuccess({ products: data }));
-    } else if (!isValidating && error) {
+      if (!isValidating && !error && data) {
+        dispatch(getProductsSuccess({ products: data }));
+      } else if (!isValidating && error) {
+        if (!data) {
+          throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+        }
+      }
+    } catch (error) {
       if (error instanceof Error) {
         dispatch(
           getProductsFailed({

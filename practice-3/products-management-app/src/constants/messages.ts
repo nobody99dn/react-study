@@ -9,7 +9,8 @@ const ERROR_MESSAGES = {
   PRODUCT_PRICE_REQUIRED: 'Price is required!',
   PRODUCT_IMAGE_REQUIRED: 'Image link is required!',
   PRODUCT_NOT_FOUND: 'The product was not exist!',
-  IMAGE_NOT_FOUND: 'Cannot load image. Please check URL again!'
+  IMAGE_NOT_FOUND: 'Cannot load image. Please check URL again!',
+  NO_PRODUCTS_FOUND: 'No Product Found!'
 };
 
 const SUCCESS_MESSAGES = {

@@ -11,19 +11,19 @@ export interface ButtonProps {
   title: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
-  handleClick: () => void;
+  onClick: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
   title,
   variant = ButtonVariants.Default,
   isDisabled = false,
-  handleClick
+  onClick
 }) => (
   <button
     className={`btn btn-${variant}${isDisabled ? ' btn-disabled' : ''}`}
     disabled={isDisabled}
-    onClick={handleClick}
+    onClick={onClick}
   >
     {title}
   </button>

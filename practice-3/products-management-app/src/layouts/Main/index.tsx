@@ -53,6 +53,26 @@ const Main: React.FC = () => {
   const [currentFilterTypeParam, setCurrentFilterTypeParam] =
     useState<ProductTypes>();
   const [productName, setProductName] = useState<string>('');
+  const [isFirstRun, setFirstRun] = useState(true);
+
+  /**
+   *  Filter change
+   **/
+  useEffect(() => {
+    if (isFirstRun) {
+      setFirstRun(false);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      filterProducts(
+        currentFilterTypeParam as ProductTypes,
+        currentFilterPriceParam as FilterOrderOptions
+      );
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [currentFilterPriceParam, currentFilterTypeParam]);
 
   /**
    * Handle delete product
@@ -147,36 +167,12 @@ const Main: React.FC = () => {
   );
 
   /**
-   *  Filter change
-   **/
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      filterProducts(
-        currentFilterTypeParam as ProductTypes,
-        currentFilterPriceParam as FilterOrderOptions
-      );
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [currentFilterPriceParam, currentFilterTypeParam]);
-
-  /**
    * Handle search input change
    */
   const handleSearchProduct = useCallback((value: string | number) => {
+    searchingProducts(value as string);
     setProductName(value as string);
   }, []);
-
-  /**
-   * Handle search change
-   */
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      searchingProducts(productName);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [productName]);
 
   return (
     <>
