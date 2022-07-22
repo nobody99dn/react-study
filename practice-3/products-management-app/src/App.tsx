@@ -1,5 +1,5 @@
 // Library
-import { SWRConfig } from 'swr';
+import React, { SWRConfig } from 'swr';
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
