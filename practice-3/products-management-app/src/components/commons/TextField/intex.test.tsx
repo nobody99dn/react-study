@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 

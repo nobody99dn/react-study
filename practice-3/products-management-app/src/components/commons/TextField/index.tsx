@@ -91,9 +91,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             readOnly={readonly}
             required={required}
             ref={ref}
-            onChange={(event: ChangeEvent<HTMLInputElement>) =>
-              handleChange(event)
-            }
+            onChange={handleChange}
           />
         </div>
       </div>

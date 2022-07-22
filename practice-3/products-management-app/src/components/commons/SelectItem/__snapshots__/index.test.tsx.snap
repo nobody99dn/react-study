@@ -4,7 +4,9 @@ exports[`Select Item component should render correctly 1`] = `
 <div
   className="select-wrapper"
 >
-  <label>
+  <label
+    htmlFor="select"
+  >
     Select Item Label
     :
   </label>
@@ -12,8 +14,10 @@ exports[`Select Item component should render correctly 1`] = `
     className="select"
     data-testid="select-option"
     disabled={false}
+    id="select"
     name="select"
     onChange={[Function]}
+    value="option 1"
   >
     <option
       value=""
@@ -43,7 +47,9 @@ exports[`Select Item component should render correctly 2`] = `
 <div
   className="select-wrapper"
 >
-  <label>
+  <label
+    htmlFor="select"
+  >
     Select Item Label
     :
   </label>
@@ -51,6 +57,7 @@ exports[`Select Item component should render correctly 2`] = `
     className="select"
     data-testid="select-option"
     disabled={false}
+    id="select"
     name="select"
     onChange={[Function]}
     value="option 2"

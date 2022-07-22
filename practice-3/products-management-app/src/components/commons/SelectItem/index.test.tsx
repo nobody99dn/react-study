@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react';
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup, screen } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
@@ -14,6 +14,7 @@ describe('Select Item component', () => {
     label: 'Select Item Label',
     name: 'select',
     options: ['option 1', 'option 2', 'option 3'],
+    defaultValue: 'option 1',
     onSelectChange: jest.fn()
   };
 
@@ -35,7 +36,7 @@ describe('Select Item component', () => {
     expect(defaultSelectItem).toMatchSnapshot();
 
     const selectItemWithValue = create(
-      <SelectItem {...defaultProps} value={defaultProps.options[1]} />
+      <SelectItem {...defaultProps} defaultValue={defaultProps.options[1]} />
     ).toJSON();
     expect(selectItemWithValue).toMatchSnapshot();
   });
@@ -45,19 +46,5 @@ describe('Select Item component', () => {
     render(<SelectItem {...defaultProps} label={label} />, { container });
 
     expect(container.querySelector('label')).toHaveTextContent(label);
-  });
-
-  test('should be click', () => {
-    const myMock = jest.fn();
-
-    render(<SelectItem {...defaultProps} onSelectChange={myMock} />, {
-      container
-    });
-
-    const select: HTMLElement = container.getElementsByTagName('select')[0];
-
-    fireEvent.change(select);
-
-    expect(myMock).toHaveBeenCalled();
   });
 });
