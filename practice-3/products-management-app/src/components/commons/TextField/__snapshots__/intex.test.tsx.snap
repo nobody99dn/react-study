@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField component should render correctly 1`] = `
+<div
+  className="field-wrapper"
+>
+  <div
+    className="input-wrapper"
+  >
+    <input
+      className="field field-standard"
+      disabled={false}
+      onChange={[Function]}
+      placeholder="Placeholder"
+      readOnly={false}
+      required={false}
+      style={
+        Object {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`TextField component should render correctly 2`] = `
+<div
+  className="field-wrapper"
+>
+  <div
+    className="input-wrapper"
+  >
+    <input
+      className="field field-standard"
+      disabled={false}
+      onChange={[Function]}
+      placeholder="Placeholder"
+      readOnly={false}
+      required={false}
+      style={
+        Object {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`TextField component should render correctly 3`] = `
+<div
+  className="field-wrapper"
+>
+  <div
+    className="input-wrapper"
+  >
+    <input
+      className="field field-standard"
+      disabled={false}
+      onChange={[Function]}
+      placeholder="Placeholder"
+      readOnly={false}
+      required={false}
+      style={
+        Object {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;
