@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 
 // Model
 import { Product } from '@models/product';
+import { ERROR_MESSAGES } from '@constants/messages';
 
 /**
  * Get data from server
@@ -11,9 +12,13 @@ import { Product } from '@models/product';
  * @returns Product[] | Product
  */
 const get = async <T>(url: string): Promise<T> => {
-  const res: AxiosResponse<T> = await axios.get(url);
+  try {
+    const res: AxiosResponse<T> = await axios.get(url);
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+  }
 };
 
 /**
@@ -36,9 +41,13 @@ const post = async (url: string, data: Product): Promise<Product> => {
  * @returns Product
  */
 const remove = async (url: string): Promise<Product> => {
-  const res: AxiosResponse<Product> = await axios.delete(url);
+  try {
+    const res: AxiosResponse<Product> = await axios.delete(url);
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+  }
 };
 
 /**
@@ -49,9 +58,13 @@ const remove = async (url: string): Promise<Product> => {
  * @returns Product
  */
 const update = async (url: string, data: Product): Promise<Product> => {
-  const res: AxiosResponse<Product> = await axios.put(url, data);
+  try {
+    const res: AxiosResponse<Product> = await axios.put(url, data);
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+  }
 };
 
 export { get, post, update, remove };

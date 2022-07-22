@@ -6,7 +6,6 @@ import useSWR from 'swr';
 import {
   ProductTypes,
   FilterOrderOptions,
-  ERROR_MESSAGES,
   SUCCESS_MESSAGES,
   URL_PRODUCTS
 } from '@constants/index';
@@ -55,18 +54,12 @@ const useProducts = () => {
 
   // // Handle get all products when loaded
   useEffect(() => {
-    try {
-      isValidating && dispatch(getProductsRequest());
+    isValidating && dispatch(getProductsRequest());
 
-      if (!isValidating && !error && data) {
-        dispatch(getProductsSuccess({ products: data }));
-      } else if (!isValidating && error) {
-        if (!data) {
-          throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-        }
-      }
-    } catch (error) {
-      if (error instanceof Error) {
+    if (!isValidating && !error && data) {
+      dispatch(getProductsSuccess({ products: data }));
+    } else if (!isValidating && error) {
+      if (!data) {
         dispatch(
           getProductsFailed({
             errorMessage: error.message
@@ -87,10 +80,6 @@ const useProducts = () => {
       dispatch(addProductRequest());
 
       const newProduct: Product = await post(URL_PRODUCTS, product);
-
-      if (!newProduct) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
 
       await mutate([...(data || []), newProduct], false);
 
@@ -126,10 +115,6 @@ const useProducts = () => {
         data?.findIndex(
           (product: Product) => product.id === updatedProduct.id
         ) || -1;
-
-      if (!updatedProduct) {
-        throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
-      }
 
       data?.splice(updatedProductIndex, 1, updatedProduct);
 
@@ -168,10 +153,6 @@ const useProducts = () => {
           (product: Product) => product.id === deletedProduct.id
         ) || 0;
 
-      if (!deletedProduct || !deletedProductIndex) {
-        throw new Error(ERROR_MESSAGES.REMOVE_PRODUCT_FAILED);
-      }
-
       updatedProducts?.splice(deletedProductIndex, 1);
 
       await mutate([...(updatedProducts || [])], false);
@@ -203,10 +184,6 @@ const useProducts = () => {
         urlGeneration({ searchInput: input })
       );
 
-      if (!filterProducts) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
       dispatch(searchProductsSuccess({ filteredProducts }));
     } catch (error) {
       if (error instanceof Error) {
@@ -235,10 +212,6 @@ const useProducts = () => {
           priceOrder: currentFilterPriceParam
         })
       );
-
-      if (!filterProducts) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
 
       dispatch(
         filterProductsSuccess({
