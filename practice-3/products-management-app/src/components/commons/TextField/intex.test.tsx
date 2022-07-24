@@ -73,4 +73,33 @@ describe('TextField component', () => {
 
     expect(image).toBeTruthy();
   });
+
+  test('should render correct value', () => {
+    const defaultValue = 'Test';
+
+    render(<TextField {...defaultProps} defaultValue={defaultValue} />);
+
+    const input: HTMLInputElement = screen.getByDisplayValue(defaultValue);
+
+    expect(input.value).toMatch(defaultValue);
+  });
+
+  test('should be changed', () => {
+    const myMock = jest.fn();
+    const displayText = 'Test';
+
+    render(
+      <TextField
+        {...defaultProps}
+        onInputChange={myMock}
+        defaultValue={displayText}
+      />
+    );
+
+    const input: HTMLInputElement = screen.getByDisplayValue(displayText);
+
+    fireEvent.change(input, { target: { value: 'Test1' } });
+
+    expect(myMock).toHaveBeenCalled();
+  });
 });
