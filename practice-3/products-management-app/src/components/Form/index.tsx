@@ -30,6 +30,8 @@ import {
 
 // Helpers
 import { validateProduct } from '@helpers/index';
+
+// Utilities
 import { areEqual } from '@utils/areEqual';
 
 export interface FormProps {

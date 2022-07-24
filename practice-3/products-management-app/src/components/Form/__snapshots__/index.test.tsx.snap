@@ -60,6 +60,21 @@ exports[`Form component should render correctly 1`] = `
         </div>
       </div>
       <div
+        className="validate-message"
+      >
+        <p
+          className="text-highlight"
+          style={
+            Object {
+              "color": "var(--danger)",
+              "fontSize": "12px",
+              "fontStyle": "inherit",
+              "fontWeight": 400,
+            }
+          }
+        />
+      </div>
+      <div
         className="select-wrapper"
       >
         <label
@@ -83,6 +98,21 @@ exports[`Form component should render correctly 1`] = `
             Select
           </option>
         </select>
+      </div>
+      <div
+        className="validate-message"
+      >
+        <p
+          className="text-highlight"
+          style={
+            Object {
+              "color": "var(--danger)",
+              "fontSize": "12px",
+              "fontStyle": "inherit",
+              "fontWeight": 400,
+            }
+          }
+        />
       </div>
       <div
         className="field-wrapper"
@@ -117,6 +147,21 @@ exports[`Form component should render correctly 1`] = `
         </div>
       </div>
       <div
+        className="validate-message"
+      >
+        <p
+          className="text-highlight"
+          style={
+            Object {
+              "color": "var(--danger)",
+              "fontSize": "12px",
+              "fontStyle": "inherit",
+              "fontWeight": 400,
+            }
+          }
+        />
+      </div>
+      <div
         className="field-wrapper"
       >
         <label
@@ -148,19 +193,21 @@ exports[`Form component should render correctly 1`] = `
           />
         </div>
       </div>
-      <p
-        className="text-highlight"
-        style={
-          Object {
-            "color": "var(--danger)",
-            "fontSize": undefined,
-            "fontStyle": "inherit",
-            "fontWeight": 400,
-          }
-        }
+      <div
+        className="validate-message"
       >
-        Validate test
-      </p>
+        <p
+          className="text-highlight"
+          style={
+            Object {
+              "color": "var(--danger)",
+              "fontSize": "12px",
+              "fontStyle": "inherit",
+              "fontWeight": 400,
+            }
+          }
+        />
+      </div>
     </fieldset>
     <button
       className="btn btn-primary"

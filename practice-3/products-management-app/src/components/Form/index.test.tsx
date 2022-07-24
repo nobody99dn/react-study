@@ -24,7 +24,6 @@ describe('Form component', () => {
       imageUrl: iPhoneImage,
       type: ProductTypes.Phone
     },
-    validateMessage: 'Validate test',
     variants: FormVariants.Create,
     onSubmit: jest.fn()
   };
@@ -46,17 +45,5 @@ describe('Form component', () => {
   test('should render correctly', () => {
     const createForm = create(<Form {...defaultProps} />).toJSON();
     expect(createForm).toMatchSnapshot();
-  });
-
-  test('should submit form is called', () => {
-    const myMock = jest.fn();
-    render(<Form {...defaultProps} onSubmit={myMock} />, { container });
-
-    const form: HTMLCollectionOf<HTMLFormElement> =
-      container.getElementsByTagName('form');
-
-    fireEvent.submit(form[0]);
-
-    expect(myMock).toHaveBeenCalled();
   });
 });
