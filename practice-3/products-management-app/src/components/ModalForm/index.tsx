@@ -16,7 +16,6 @@ import { FormVariants } from '@common-types/index';
 export interface ModalFormProps {
   product: Product;
   isModalShow: boolean;
-  validateMessage: string;
   onSubmitForm: (product: Product) => void;
   onCloseModal: () => void;
 }
@@ -24,7 +23,6 @@ export interface ModalFormProps {
 const ModalForm: React.FC<ModalFormProps> = ({
   product,
   isModalShow,
-  validateMessage = '',
   onSubmitForm,
   onCloseModal
 }) => (
@@ -33,7 +31,6 @@ const ModalForm: React.FC<ModalFormProps> = ({
       variants={!product.id ? FormVariants.Create : FormVariants.Edit}
       options={PRODUCT_TYPE_LIST}
       productItem={product}
-      validateMessage={validateMessage}
       onSubmit={onSubmitForm}
     />
   </Modal>

@@ -40,7 +40,6 @@ const Main: React.FC = () => {
 
   // States
   const [isModalShow, setIsModalShow] = useState<boolean>(false);
-  const [validateMessage, setValidateMessage] = useState<string>('');
   const [product, setProduct] = useState<Product>({
     id: '',
     name: '',
@@ -92,31 +91,6 @@ const Main: React.FC = () => {
    * @returns void
    */
   const handleCreateProduct = useCallback((product: Product): void => {
-    // Validate form
-    if (!product.name) {
-      setValidateMessage(ERROR_MESSAGES.PRODUCT_NAME_REQUIRED);
-
-      return;
-    }
-
-    if (!product.type) {
-      setValidateMessage(ERROR_MESSAGES.PRODUCT_TYPE_REQUIRED);
-
-      return;
-    }
-
-    if (!product.price) {
-      setValidateMessage(ERROR_MESSAGES.PRODUCT_PRICE_REQUIRED);
-
-      return;
-    }
-
-    if (!product.imageUrl) {
-      setValidateMessage(ERROR_MESSAGES.PRODUCT_IMAGE_REQUIRED);
-
-      return;
-    }
-
     createProduct(product);
 
     setIsModalShow(false);
@@ -203,7 +177,6 @@ const Main: React.FC = () => {
         <ModalForm
           isModalShow={isModalShow}
           product={product}
-          validateMessage={validateMessage}
           onSubmitForm={handleCreateProduct}
           onCloseModal={handleCloseModal}
         />
