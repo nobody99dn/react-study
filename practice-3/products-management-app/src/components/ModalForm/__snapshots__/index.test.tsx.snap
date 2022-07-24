@@ -78,6 +78,21 @@ exports[`ModalForm component should render correctly 1`] = `
               </div>
             </div>
             <div
+              className="validate-message"
+            >
+              <p
+                className="text-highlight"
+                style={
+                  Object {
+                    "color": "var(--danger)",
+                    "fontSize": "12px",
+                    "fontStyle": "inherit",
+                    "fontWeight": 400,
+                  }
+                }
+              />
+            </div>
+            <div
               className="select-wrapper"
             >
               <label
@@ -118,6 +133,21 @@ exports[`ModalForm component should render correctly 1`] = `
               </select>
             </div>
             <div
+              className="validate-message"
+            >
+              <p
+                className="text-highlight"
+                style={
+                  Object {
+                    "color": "var(--danger)",
+                    "fontSize": "12px",
+                    "fontStyle": "inherit",
+                    "fontWeight": 400,
+                  }
+                }
+              />
+            </div>
+            <div
               className="field-wrapper"
             >
               <label
@@ -150,6 +180,21 @@ exports[`ModalForm component should render correctly 1`] = `
               </div>
             </div>
             <div
+              className="validate-message"
+            >
+              <p
+                className="text-highlight"
+                style={
+                  Object {
+                    "color": "var(--danger)",
+                    "fontSize": "12px",
+                    "fontStyle": "inherit",
+                    "fontWeight": 400,
+                  }
+                }
+              />
+            </div>
+            <div
               className="field-wrapper"
             >
               <label
@@ -177,23 +222,25 @@ exports[`ModalForm component should render correctly 1`] = `
                     }
                   }
                   type="text"
-                  value=""
+                  value="url"
                 />
               </div>
             </div>
-            <p
-              className="text-highlight"
-              style={
-                Object {
-                  "color": "var(--danger)",
-                  "fontSize": undefined,
-                  "fontStyle": "inherit",
-                  "fontWeight": 400,
-                }
-              }
+            <div
+              className="validate-message"
             >
-              test message
-            </p>
+              <p
+                className="text-highlight"
+                style={
+                  Object {
+                    "color": "var(--danger)",
+                    "fontSize": "12px",
+                    "fontStyle": "inherit",
+                    "fontWeight": 400,
+                  }
+                }
+              />
+            </div>
           </fieldset>
           <button
             className="btn btn-primary"

@@ -8,19 +8,22 @@ import '@testing-library/jest-dom';
 // Components
 import ModalForm, { ModalFormProps } from './index';
 
+// Constants
 import { ProductTypes } from '@constants/index';
+
+// Model
+import { Product } from '@models/product';
 
 describe('ModalForm component', () => {
   const defaultProps: ModalFormProps = {
     product: {
       id: '1',
-      imageUrl: '',
+      imageUrl: 'url',
       name: 'Product test',
       price: 1000000,
       type: ProductTypes.Phone
     },
     isModalShow: true,
-    validateMessage: 'test message',
     onCloseModal: jest.fn(),
     onSubmitForm: jest.fn()
   };
@@ -44,24 +47,14 @@ describe('ModalForm component', () => {
     expect(defaultTree).toMatchSnapshot();
   });
 
-  test('should render correct validate message', () => {
-    const message = 'Test message';
-
-    const { getByText } = render(
-      <ModalForm {...defaultProps} validateMessage={message} />,
-      { container }
-    );
-
-    expect(getByText(message)).toBeInTheDocument();
-  });
-
   test('should submitMock be called', () => {
     const submitMock = jest.fn();
 
-    render(<ModalForm {...defaultProps} onSubmitForm={submitMock} />),
-      { container };
+    render(<ModalForm {...defaultProps} onSubmitForm={submitMock} />, {
+      container
+    });
 
-    const button: HTMLImageElement = screen.getByRole('button');
+    const button: HTMLButtonElement = screen.getByRole('button');
 
     fireEvent.click(button);
 

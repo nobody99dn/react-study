@@ -29,7 +29,6 @@ Default.args = {
     type: ProductTypes.Laptop
   },
   isModalShow: true,
-  validateMessage: '',
   onCloseModal: () => undefined,
   onSubmitForm: () => undefined
 };
