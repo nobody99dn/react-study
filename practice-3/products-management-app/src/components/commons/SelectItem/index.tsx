@@ -4,7 +4,8 @@ import React, {
   forwardRef,
   memo,
   useState,
-  useCallback
+  useCallback,
+  useEffect
 } from 'react';
 
 // Styles
@@ -25,6 +26,7 @@ const SelectItem = forwardRef<HTMLSelectElement, SelectItemProps>(
     ref = null
   ) => {
     const [value, setValue] = useState<string>(defaultValue);
+    const [isFirstRun, setIsFirstRun] = useState(true);
 
     const handleChange = useCallback((event: ChangeEvent) => {
       const newValue = (event.currentTarget as HTMLInputElement).value;
@@ -32,6 +34,15 @@ const SelectItem = forwardRef<HTMLSelectElement, SelectItemProps>(
 
       onSelectChange && onSelectChange(newValue);
     }, []);
+
+    useEffect(() => {
+      if (isFirstRun) {
+        setIsFirstRun(false);
+        return;
+      }
+
+      setValue(defaultValue);
+    }, [defaultValue]);
 
     return (
       <div className='select-wrapper'>

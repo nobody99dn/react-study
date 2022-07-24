@@ -103,6 +103,9 @@ const Main: React.FC = () => {
     setIsModalShow(false);
   }, []);
 
+  /**
+   * Handle navigate
+   */
   const handleNavigateProductDetail = useCallback((productId: string) => {
     navigate(`${URL.DETAIL_PAGE}/${productId}`);
   }, []);
