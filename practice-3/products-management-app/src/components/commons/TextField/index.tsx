@@ -61,7 +61,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     const handleChange = useCallback((event: ChangeEvent) => {
       const newValue = (event.currentTarget as HTMLInputElement).value;
-      setValue(value);
+      setValue(newValue);
 
       onInputChange && onInputChange(newValue);
     }, []);

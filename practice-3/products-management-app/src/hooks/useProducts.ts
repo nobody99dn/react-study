@@ -81,14 +81,14 @@ const useProducts = () => {
 
       const newProduct: Product = await post(URL_PRODUCTS, product);
 
-      await mutate([...(data || []), newProduct], false);
-
       dispatch(
         addProductSuccess({
           product: newProduct,
           successMessage: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS
         })
       );
+
+      await mutate([...(data || []), newProduct], false);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
@@ -118,14 +118,14 @@ const useProducts = () => {
 
       data?.splice(updatedProductIndex, 1, updatedProduct);
 
-      await mutate([...(data || [])], false);
-
       dispatch(
         editProductSuccess({
           product: updatedProduct,
           successMessage: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
         })
       );
+
+      await mutate([...(data || [])], false);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(editProductFailed({ errorMessage: error.message }));
@@ -155,14 +155,14 @@ const useProducts = () => {
 
       updatedProducts?.splice(deletedProductIndex, 1);
 
-      await mutate([...(updatedProducts || [])], false);
-
       dispatch(
         deleteProductSuccess({
           productId: deletedProduct.id,
           successMessage: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
         })
       );
+
+      await mutate([...(updatedProducts || [])], false);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(deleteProductFailed({ errorMessage: error.message }));
