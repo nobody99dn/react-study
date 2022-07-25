@@ -152,6 +152,7 @@ const clearMessages = (): ActionProps => ({
 const clearCurrentProduct = (): ActionProps => ({
   type: ACTIONS.CLEAR_CURRENT_PRODUCT
 });
+
 export {
   getProductsRequest,
   getProductsSuccess,

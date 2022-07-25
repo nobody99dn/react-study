@@ -24,6 +24,7 @@ import { Product } from '@models/product';
 import {
   ButtonVariants,
   FormVariants,
+  TextFieldVariants,
   TypeVariables,
   VariantsTypes
 } from '@common-types/index';

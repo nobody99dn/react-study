@@ -1,6 +1,5 @@
 // Libraries
 import React, { memo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 
 // Components
 import { Image } from '@components/index';
@@ -14,9 +13,7 @@ import './index.css';
 // Types
 import { ImageVariants } from '@common-types/index';
 
-interface HeaderProps {}
-
-const Header: React.FC<HeaderProps> = () => (
+const Header: React.FC = () => (
   <header className='header'>
     <div className='container header-content'>
       <a className='logo-link'>

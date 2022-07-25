@@ -27,7 +27,7 @@ Default.args = {
     id: '1',
     name: 'iPhone 13 Promax',
     imageUrl:
-      'https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-991ea96/wp-content/uploads/2022/04/iPhone-13-pro-max.png',
+      'https://lh6.googleusercontent.com/mCD1IQ4UfXYJkz6508H5_rspW2kt2HRaTMB8tPQArF8EMSonWBKHCRG0LL47xhI-0V8=w2400',
     price: 14000000,
     type: ProductTypes.Phone
   },

@@ -1,5 +1,5 @@
 // Library
-import {
+import React, {
   ReactNode,
   useReducer,
   useContext,
@@ -19,7 +19,7 @@ interface ContextProps {
 
 const Store: React.Context<ContextProps> = createContext<ContextProps>({
   globalState: INITIAL_STATES,
-  dispatch: () => {}
+  dispatch: () => undefined
 });
 Store.displayName = 'Store';
 
