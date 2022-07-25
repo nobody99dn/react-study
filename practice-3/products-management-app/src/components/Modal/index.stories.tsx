@@ -1,16 +1,14 @@
 // Library
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
-import { Form, Modal } from '@components/index';
+import { Modal } from '@components/index';
 
 // Styles
 import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 import './index.css';
-
-// Types
-import { FormVariants } from '@common-types/index';
 
 export default {
   title: 'Components/Modal',

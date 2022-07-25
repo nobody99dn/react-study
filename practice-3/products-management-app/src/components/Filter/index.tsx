@@ -15,9 +15,9 @@ export type FilterProps = {
   priceFilterOptions: FilterOrderOptions[];
   currentFilterTypeParam?: ProductTypes;
   currentFilterPriceParam?: FilterOrderOptions;
-  handleTypeChange: (value: string) => void;
-  handlePriceChange: (value: string) => void;
-  handleClearFilters: () => void;
+  onTypeChange: (value: string) => void;
+  onPriceChange: (value: string) => void;
+  onClearFilters: () => void;
 };
 
 const Filter: React.FC<FilterProps> = ({
@@ -25,9 +25,9 @@ const Filter: React.FC<FilterProps> = ({
   priceFilterOptions,
   currentFilterTypeParam = '',
   currentFilterPriceParam = '',
-  handleTypeChange,
-  handlePriceChange,
-  handleClearFilters
+  onTypeChange,
+  onPriceChange,
+  onClearFilters
 }) => (
   <div className='filter-container'>
     <div className='filter-item'>
@@ -35,8 +35,8 @@ const Filter: React.FC<FilterProps> = ({
         label='Type'
         options={typeFilterOptions}
         name='type-option'
-        handleSelectChange={handleTypeChange}
-        value={currentFilterTypeParam}
+        onSelectChange={onTypeChange}
+        defaultValue={currentFilterTypeParam}
       />
     </div>
     <div className='filter-item'>
@@ -44,11 +44,11 @@ const Filter: React.FC<FilterProps> = ({
         label='Price'
         options={priceFilterOptions}
         name='price-filter'
-        handleSelectChange={handlePriceChange}
-        value={currentFilterPriceParam}
+        onSelectChange={onPriceChange}
+        defaultValue={currentFilterPriceParam}
       />
     </div>
-    <Button title='Clear filter' handleClick={handleClearFilters} />
+    <Button onClick={onClearFilters}>Clear filter</Button>
   </div>
 );
 

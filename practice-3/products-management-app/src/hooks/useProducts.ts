@@ -6,7 +6,6 @@ import useSWR from 'swr';
 import {
   ProductTypes,
   FilterOrderOptions,
-  ERROR_MESSAGES,
   SUCCESS_MESSAGES,
   URL_PRODUCTS
 } from '@constants/index';
@@ -53,14 +52,14 @@ const useProducts = () => {
 
   const { dispatch } = useStore();
 
-  // Handle get all products when loaded
+  // // Handle get all products when loaded
   useEffect(() => {
     isValidating && dispatch(getProductsRequest());
 
     if (!isValidating && !error && data) {
       dispatch(getProductsSuccess({ products: data }));
     } else if (!isValidating && error) {
-      if (error instanceof Error) {
+      if (!data) {
         dispatch(
           getProductsFailed({
             errorMessage: error.message
@@ -82,18 +81,14 @@ const useProducts = () => {
 
       const newProduct: Product = await post(URL_PRODUCTS, product);
 
-      if (!newProduct) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
-
-      await mutate([...(data || []), newProduct], false);
-
       dispatch(
         addProductSuccess({
           product: newProduct,
           successMessage: SUCCESS_MESSAGES.ADD_PRODUCT_SUCCESS
         })
       );
+
+      await mutate([...(data || []), newProduct], false);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
@@ -121,13 +116,7 @@ const useProducts = () => {
           (product: Product) => product.id === updatedProduct.id
         ) || -1;
 
-      if (!updatedProduct) {
-        throw new Error(ERROR_MESSAGES.EDIT_PRODUCT_FAILED);
-      }
-
       data?.splice(updatedProductIndex, 1, updatedProduct);
-
-      await mutate([...(data || [])], false);
 
       dispatch(
         editProductSuccess({
@@ -135,6 +124,8 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.EDIT_PRODUCT_SUCCESS
         })
       );
+
+      await mutate([...(data || [])], false);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(editProductFailed({ errorMessage: error.message }));
@@ -162,13 +153,7 @@ const useProducts = () => {
           (product: Product) => product.id === deletedProduct.id
         ) || 0;
 
-      if (!deletedProduct || !deletedProductIndex) {
-        throw new Error(ERROR_MESSAGES.REMOVE_PRODUCT_FAILED);
-      }
-
       updatedProducts?.splice(deletedProductIndex, 1);
-
-      await mutate([...(updatedProducts || [])], false);
 
       dispatch(
         deleteProductSuccess({
@@ -176,6 +161,8 @@ const useProducts = () => {
           successMessage: SUCCESS_MESSAGES.REMOVE_PRODUCT_SUCCESS
         })
       );
+
+      await mutate([...(updatedProducts || [])], false);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(deleteProductFailed({ errorMessage: error.message }));
@@ -196,10 +183,6 @@ const useProducts = () => {
       const filteredProducts: Product[] = await get(
         urlGeneration({ searchInput: input })
       );
-
-      if (!filterProducts) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
 
       dispatch(searchProductsSuccess({ filteredProducts }));
     } catch (error) {
@@ -229,10 +212,6 @@ const useProducts = () => {
           priceOrder: currentFilterPriceParam
         })
       );
-
-      if (!filterProducts) {
-        throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
-      }
 
       dispatch(
         filterProductsSuccess({

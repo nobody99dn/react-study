@@ -1,17 +1,26 @@
-// Library
-import React, { memo, useCallback, useRef, useState } from 'react';
+// Libraries
+import React, {
+  memo,
+  useCallback,
+  useRef,
+  useState,
+  FormEvent,
+  useEffect
+} from 'react';
 
 // Style
 import './index.css';
 
 // Constants
-import { ProductTypes } from '@constants/index';
+import { INIT_ERRORS, ProductTypes, ValidateError } from '@constants/index';
 
 // Components
 import { Title, TextField, Button, SelectItem, Text } from '@components/index';
 
 // Model
 import { Product } from '@models/product';
+
+// Types
 import {
   ButtonVariants,
   FormVariants,
@@ -19,41 +28,81 @@ import {
   VariantsTypes
 } from '@common-types/index';
 
-interface FormProps {
+// Helpers
+import { validateProduct } from '@helpers/index';
+
+// Utilities
+import { areEqual } from '@utils/areEqual';
+
+export interface FormProps {
   variants: FormVariants;
   options?: ProductTypes[];
   productItem: Product;
-  validateMessage: string;
   isDisableForm?: boolean;
-  handleSubmit: (product: Product) => void;
+  onSubmit: (product: Product) => void;
 }
 
 const Form: React.FC<FormProps> = ({
   variants,
   productItem,
   options = [],
-  validateMessage,
   isDisableForm = false,
-  handleSubmit
+  onSubmit
 }) => {
   const [product, setProduct] = useState<Product>(productItem);
   const [isDisable, setIsDisable] = useState<boolean>(isDisableForm);
+  const [formErrors, setFormErrors] = useState<ValidateError>(INIT_ERRORS);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
+  const typeRef = useRef<HTMLSelectElement>(null);
+  const priceRef = useRef<HTMLInputElement>(null);
+  const urlRef = useRef<HTMLInputElement>(null);
 
-  const handleOnChange = (value: string | number, fieldName: string): void => {
-    setProduct({ ...product, [fieldName as string]: value });
-  };
+  // Check formErrors and Submit
+  useEffect(() => {
+    isSubmit &&
+      areEqual<ValidateError>(INIT_ERRORS, formErrors) &&
+      onSubmit(product);
+  }, [formErrors]);
 
+  /**
+   * Handle enable edit form
+   */
   const handleEnableEditButton = useCallback(() => {
     setIsDisable(false);
 
     nameRef.current && nameRef.current.focus();
   }, []);
 
-  const handleClick = useCallback(() => {
-    handleSubmit(product);
-  }, [product]);
+  /**
+   * Handle click submit in form
+   *
+   * @param event FormEvent<HTMLFormElement>
+   */
+  const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const name = nameRef.current?.value || '';
+    const type = typeRef.current?.value || '';
+    const price = +(priceRef.current?.value || 0);
+    const imageUrl = urlRef.current?.value || '';
+    const updateProduct: Product = {
+      id: product.id,
+      name,
+      type,
+      price,
+      imageUrl
+    };
+
+    // validate form
+    setFormErrors(validateProduct(updateProduct));
+
+    // Set current product
+    setProduct(updateProduct);
+
+    setIsSubmit(true);
+  }, []);
 
   return (
     <div className='form-wrapper'>
@@ -63,56 +112,93 @@ const Form: React.FC<FormProps> = ({
         </a>
       )}
       <Title>{variants} Product</Title>
-      <fieldset className='field-group'>
-        <TextField
-          defaultValue={product.name}
-          name='name'
-          label='Product name'
-          placeholder='Enter product name...'
-          type={TypeVariables.Text}
-          readonly={isDisable}
-          handleInputChange={handleOnChange}
-          ref={nameRef}
-        />
-        <SelectItem
-          label='Product type'
-          options={options}
-          value={product.type}
-          handleSelectChange={handleOnChange}
-          name='type'
-          disable={isDisable}
-        />
-        <TextField
-          defaultValue={product.price}
-          name='price'
-          type={TypeVariables.Number}
-          label='Price'
-          placeholder='Enter price...'
-          readonly={isDisable}
-          handleInputChange={handleOnChange}
-        />
-        <TextField
-          defaultValue={product.imageUrl}
-          name='imageUrl'
-          type={TypeVariables.Text}
-          label='Image link'
-          placeholder='Enter image link...'
-          readonly={isDisable}
-          handleInputChange={handleOnChange}
-        />
-        {validateMessage && (
-          <Text variant={VariantsTypes.Highlight} color='var(--danger)'>
-            {validateMessage}
-          </Text>
-        )}
-      </fieldset>
+      <form
+        className='form'
+        name='form'
+        onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event)}
+      >
+        <fieldset className='field-group'>
+          <TextField
+            defaultValue={productItem.name}
+            name='name'
+            label='Product name'
+            placeholder='Enter productItem name...'
+            type={TypeVariables.Text}
+            readonly={isDisable}
+            ref={nameRef}
+          />
+          <div className='validate-message'>
+            <Text
+              variant={VariantsTypes.Highlight}
+              color='var(--danger)'
+              fontSize='12px'
+            >
+              {formErrors.name}
+            </Text>
+          </div>
+          <SelectItem
+            label='Product type'
+            options={options}
+            defaultValue={productItem.type}
+            name='type'
+            disable={isDisable}
+            ref={typeRef}
+          />
+          <div className='validate-message'>
+            <Text
+              variant={VariantsTypes.Highlight}
+              color='var(--danger)'
+              fontSize='12px'
+            >
+              {formErrors.type}
+            </Text>
+          </div>
+          <TextField
+            defaultValue={productItem.price}
+            name='price'
+            type={TypeVariables.Number}
+            label='Price'
+            placeholder='Enter price...'
+            readonly={isDisable}
+            ref={priceRef}
+          />
+          <div className='validate-message'>
+            <Text
+              variant={VariantsTypes.Highlight}
+              color='var(--danger)'
+              fontSize='12px'
+            >
+              {formErrors.price}
+            </Text>
+          </div>
+          <TextField
+            defaultValue={productItem.imageUrl}
+            name='imageUrl'
+            type={TypeVariables.Text}
+            label='Image link'
+            placeholder='Enter image link...'
+            readonly={isDisable}
+            ref={urlRef}
+          />
+          <div className='validate-message'>
+            <Text
+              variant={VariantsTypes.Highlight}
+              color='var(--danger)'
+              fontSize='12px'
+            >
+              {formErrors.imageUrl}
+            </Text>
+          </div>
+        </fieldset>
 
-      <Button
-        variant={ButtonVariants.Primary}
-        title={variants}
-        isDisabled={isDisable}
-        handleClick={handleClick}
-      />
+        <Button
+          variant={ButtonVariants.Primary}
+          isDisabled={isDisable}
+          onClick={() => undefined}
+        >
+          {variants}
+        </Button>
+      </form>
     </div>
   );
 };

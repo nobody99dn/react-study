@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { cleanup } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 

@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo } from 'react';
+import React, { memo, ReactNode } from 'react';
 
 // Types
 import { ButtonVariants } from '@common-types/index';
@@ -8,24 +8,24 @@ import { ButtonVariants } from '@common-types/index';
 import './index.css';
 
 export interface ButtonProps {
-  title: string;
+  children: ReactNode;
   variant?: ButtonVariants;
   isDisabled?: boolean;
-  handleClick: () => void;
+  onClick: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  title,
+  children,
   variant = ButtonVariants.Default,
   isDisabled = false,
-  handleClick
+  onClick
 }) => (
   <button
     className={`btn btn-${variant}${isDisabled ? ' btn-disabled' : ''}`}
     disabled={isDisabled}
-    onClick={handleClick}
+    onClick={onClick}
   >
-    {title}
+    {children}
   </button>
 );
 

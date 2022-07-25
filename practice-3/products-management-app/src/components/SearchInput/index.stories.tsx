@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
@@ -22,5 +23,5 @@ const Template: ComponentStory<typeof SearchInput> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   productName: 'Search value',
-  handleSearchProduct: () => {}
+  onSearchProduct: () => undefined
 };

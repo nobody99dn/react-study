@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
@@ -7,21 +8,24 @@ import '@testing-library/jest-dom';
 // Components
 import ModalForm, { ModalFormProps } from './index';
 
+// Constants
 import { ProductTypes } from '@constants/index';
+
+// Model
+import { Product } from '@models/product';
 
 describe('ModalForm component', () => {
   const defaultProps: ModalFormProps = {
     product: {
       id: '1',
-      imageUrl: '',
+      imageUrl: 'url',
       name: 'Product test',
       price: 1000000,
       type: ProductTypes.Phone
     },
     isModalShow: true,
-    validateMessage: 'test message',
-    handleCloseModal: jest.fn(),
-    handleSubmitForm: jest.fn()
+    onCloseModal: jest.fn(),
+    onSubmitForm: jest.fn()
   };
 
   let container: HTMLElement;
@@ -43,24 +47,14 @@ describe('ModalForm component', () => {
     expect(defaultTree).toMatchSnapshot();
   });
 
-  test('should render correct validate message', () => {
-    const message: string = 'Test message';
-
-    const { getByText } = render(
-      <ModalForm {...defaultProps} validateMessage={message} />,
-      { container }
-    );
-
-    expect(getByText(message)).toBeInTheDocument();
-  });
-
   test('should submitMock be called', () => {
     const submitMock = jest.fn();
 
-    render(<ModalForm {...defaultProps} handleSubmitForm={submitMock} />),
-      { container };
+    render(<ModalForm {...defaultProps} onSubmitForm={submitMock} />, {
+      container
+    });
 
-    const button: HTMLImageElement = screen.getByRole('button');
+    const button: HTMLButtonElement = screen.getByRole('button');
 
     fireEvent.click(button);
 
@@ -70,7 +64,7 @@ describe('ModalForm component', () => {
   test('should handleClose be called', () => {
     const closeMock = jest.fn();
 
-    render(<ModalForm {...defaultProps} handleCloseModal={closeMock} />),
+    render(<ModalForm {...defaultProps} onCloseModal={closeMock} />),
       { container };
 
     const img: HTMLImageElement = screen.getByRole('img');

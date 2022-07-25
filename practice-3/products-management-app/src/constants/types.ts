@@ -22,3 +22,17 @@ export enum FilterOrderOptions {
 }
 
 export const ORDER_OPTIONS = [FilterOrderOptions.Asc, FilterOrderOptions.Desc];
+
+export type ValidateError = {
+  name: string;
+  type: string;
+  price: string;
+  imageUrl: string;
+};
+
+export const INIT_ERRORS: ValidateError = {
+  name: '',
+  price: '',
+  type: '',
+  imageUrl: ''
+};

@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form component should render correctly 1`] = `
+<div
+  className="form-wrapper"
+>
+  <div
+    className="title"
+    style={
+      Object {
+        "color": undefined,
+        "fontSize": undefined,
+        "fontStyle": "inherit",
+        "fontWeight": undefined,
+        "lineHeight": undefined,
+      }
+    }
+  >
+    Create
+     Product
+  </div>
+  <form
+    className="form"
+    name="form"
+    onSubmit={[Function]}
+  >
+    <fieldset
+      className="field-group"
+    >
+      <div
+        className="field-wrapper"
+      >
+        <label
+          htmlFor="name"
+        >
+          Product name
+          : 
+        </label>
+        <div
+          className="input-wrapper"
+        >
+          <input
+            className="field field-standard"
+            disabled={false}
+            id="name"
+            name="name"
+            onChange={[Function]}
+            placeholder="Enter productItem name..."
+            readOnly={false}
+            required={false}
+            style={
+              Object {
+                "height": undefined,
+                "width": undefined,
+              }
+            }
+            type="text"
+            value="Product Name"
+          />
+        </div>
+      </div>
+      <div
+        className="validate-message"
+      >
+        <p
+          className="text-highlight"
+          style={
+            Object {
+              "color": "var(--danger)",
+              "fontSize": "12px",
+              "fontStyle": "inherit",
+              "fontWeight": 400,
+            }
+          }
+        />
+      </div>
+      <div
+        className="select-wrapper"
+      >
+        <label
+          htmlFor="type"
+        >
+          Product type
+          :
+        </label>
+        <select
+          className="select"
+          data-testid="select-option"
+          disabled={false}
+          id="type"
+          name="type"
+          onChange={[Function]}
+          value="Phone"
+        >
+          <option
+            value=""
+          >
+            Select
+          </option>
+        </select>
+      </div>
+      <div
+        className="validate-message"
+      >
+        <p
+          className="text-highlight"
+          style={
+            Object {
+              "color": "var(--danger)",
+              "fontSize": "12px",
+              "fontStyle": "inherit",
+              "fontWeight": 400,
+            }
+          }
+        />
+      </div>
+      <div
+        className="field-wrapper"
+      >
+        <label
+          htmlFor="price"
+        >
+          Price
+          : 
+        </label>
+        <div
+          className="input-wrapper"
+        >
+          <input
+            className="field field-standard"
+            disabled={false}
+            id="price"
+            name="price"
+            onChange={[Function]}
+            placeholder="Enter price..."
+            readOnly={false}
+            required={false}
+            style={
+              Object {
+                "height": undefined,
+                "width": undefined,
+              }
+            }
+            type="number"
+            value={1000000}
+          />
+        </div>
+      </div>
+      <div
+        className="validate-message"
+      >
+        <p
+          className="text-highlight"
+          style={
+            Object {
+              "color": "var(--danger)",
+              "fontSize": "12px",
+              "fontStyle": "inherit",
+              "fontWeight": 400,
+            }
+          }
+        />
+      </div>
+      <div
+        className="field-wrapper"
+      >
+        <label
+          htmlFor="imageUrl"
+        >
+          Image link
+          : 
+        </label>
+        <div
+          className="input-wrapper"
+        >
+          <input
+            className="field field-standard"
+            disabled={false}
+            id="imageUrl"
+            name="imageUrl"
+            onChange={[Function]}
+            placeholder="Enter image link..."
+            readOnly={false}
+            required={false}
+            style={
+              Object {
+                "height": undefined,
+                "width": undefined,
+              }
+            }
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="validate-message"
+      >
+        <p
+          className="text-highlight"
+          style={
+            Object {
+              "color": "var(--danger)",
+              "fontSize": "12px",
+              "fontStyle": "inherit",
+              "fontWeight": 400,
+            }
+          }
+        />
+      </div>
+    </fieldset>
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Create
+    </button>
+  </form>
+</div>
+`;

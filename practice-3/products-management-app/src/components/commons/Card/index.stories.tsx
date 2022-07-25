@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
@@ -31,6 +32,6 @@ Default.args = {
     type: ProductTypes.Phone
   },
   currency: Currencies.VND,
-  handleNavigate: () => {},
-  handleDeleteProduct: () => {}
+  onNavigate: () => undefined,
+  onDeleteProduct: () => undefined
 };

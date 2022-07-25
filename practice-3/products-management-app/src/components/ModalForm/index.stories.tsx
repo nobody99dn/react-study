@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
@@ -28,7 +29,6 @@ Default.args = {
     type: ProductTypes.Laptop
   },
   isModalShow: true,
-  validateMessage: '',
-  handleCloseModal: () => {},
-  handleSubmitForm: () => {}
+  onCloseModal: () => undefined,
+  onSubmitForm: () => undefined
 };

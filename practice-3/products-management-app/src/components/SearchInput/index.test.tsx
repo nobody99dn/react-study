@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { create } from 'react-test-renderer';
@@ -10,7 +11,7 @@ import SearchInput, { SearchInputProps } from './index';
 describe('SearchInput component', () => {
   const defaultProps: SearchInputProps = {
     productName: 'Product Test',
-    handleSearchProduct: jest.fn()
+    onSearchProduct: jest.fn()
   };
 
   let container: HTMLElement;
@@ -33,7 +34,7 @@ describe('SearchInput component', () => {
   });
 
   test('should correct value', () => {
-    const productName: string = 'This is product testing';
+    const productName = 'This is product testing';
 
     render(<SearchInput {...defaultProps} productName={productName} />);
 

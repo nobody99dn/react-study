@@ -14,14 +14,14 @@ export interface ImageProps {
   alt: string;
   imageUrl: string;
   variant?: ImageVariants;
-  handleClick?: () => void;
+  onClick?: () => void;
 }
 
 const Image: React.FC<ImageProps> = ({
   alt,
   imageUrl = blankImage,
   variant = ImageVariants.Default,
-  handleClick
+  onClick
 }) => (
   <img
     className={`image${
@@ -29,7 +29,7 @@ const Image: React.FC<ImageProps> = ({
     }`}
     alt={alt}
     src={imageUrl}
-    onClick={handleClick}
+    onClick={onClick}
   />
 );
 

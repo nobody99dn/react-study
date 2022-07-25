@@ -1,4 +1,5 @@
 // Libraries
+import React from 'react';
 import { render, fireEvent, cleanup, within } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import '@testing-library/jest-dom';
@@ -30,8 +31,8 @@ describe('Card component', () => {
   const defaultProps: CardProps = {
     product: mockProduct,
     currency: Currencies.VND,
-    handleNavigate: () => {},
-    handleDeleteProduct: () => {}
+    onNavigate: () => jest.fn(),
+    onDeleteProduct: () => jest.fn()
   };
 
   let container: HTMLElement;
@@ -77,7 +78,7 @@ describe('Card component', () => {
     const myMock = jest.fn();
 
     const { getByText } = render(
-      <Card {...defaultProps} handleNavigate={myMock} />,
+      <Card {...defaultProps} onNavigate={myMock} />,
       { container }
     );
 
@@ -90,7 +91,7 @@ describe('Card component', () => {
     const myMock = jest.fn();
 
     const { getByText } = render(
-      <Card {...defaultProps} handleDeleteProduct={myMock} />,
+      <Card {...defaultProps} onDeleteProduct={myMock} />,
       { container }
     );
 

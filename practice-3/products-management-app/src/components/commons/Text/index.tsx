@@ -1,5 +1,5 @@
 // Library
-import { memo, ReactNode } from 'react';
+import React, { memo, ReactNode } from 'react';
 
 // Types
 import { FsType, FwType, VariantsTypes } from '@common-types/index';

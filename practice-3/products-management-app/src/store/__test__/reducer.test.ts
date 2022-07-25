@@ -1,4 +1,3 @@
-import { ACTIONS } from '@constants/actions';
 import { ProductTypes } from '@constants/types';
 import { Product } from '@models/product';
 import {
@@ -10,7 +9,6 @@ import {
   editProductRequest,
   deleteProductRequest,
   filterProductsRequest,
-  searchProductsRequest,
   getProductsFailed,
   editProductFailed,
   addProductFailed,
