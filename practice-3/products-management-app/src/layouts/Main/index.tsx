@@ -15,12 +15,7 @@ import SideBar from '@layouts/SideBar/index';
 import { Product } from '@models/product';
 
 // Constants
-import {
-  FilterOrderOptions,
-  ProductTypes,
-  ERROR_MESSAGES,
-  URL
-} from '@constants/index';
+import { FilterOrderOptions, ProductTypes, URL } from '@constants/index';
 
 // Hooks
 import useProducts from '@hooks/useProducts';

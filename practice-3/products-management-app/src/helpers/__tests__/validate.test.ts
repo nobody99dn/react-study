@@ -1,5 +1,5 @@
 import { validateProduct } from '..';
-import { ERROR_MESSAGES, ProductTypes, ValidateError } from '@constants/index';
+import { ERROR_MESSAGES } from '@constants/index';
 import { Product } from '@models/product';
 
 describe('Validate', () => {
