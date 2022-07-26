@@ -2,7 +2,7 @@
 
 **_This is my react training place_**
 
-## Practice 1: Room Time Web Application (4 day)
+## Practice 1: Room Time Web Application (4 days)
 
 ### Usage
 
@@ -16,7 +16,7 @@
 - 1 developer
   - Van Tran
 
-## Practice 2: Products Management Application (13 day)
+## Practice 2: Products Management Application (13 days)
 
 ### Usage
 
@@ -30,7 +30,7 @@
 - 1 developer
   - Van Tran
 
-## Practice 3: Products Management Application (In-progress)
+## Practice 3: Products Management Application (10 days)
 
 ### Usage
 
