@@ -1,15 +1,25 @@
 // Libraries
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, {
+  lazy,
+  memo,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Styles
 import './index.css';
 
 // Components
-import { Posts, SearchInput, ModalForm } from '@components/index';
+import { LoadingIndicator } from '@components/index';
+const Posts = lazy(() => import('@components/Posts'));
+const SearchInput = lazy(() => import('@components/SearchInput'));
+const ModalForm = lazy(() => import('@components/ModalForm'));
 
 // Layout
-import SideBar from '@layouts/SideBar/index';
+const SideBar = lazy(() => import('@layouts/SideBar'));
 
 // Models
 import { Product } from '@models/product';
@@ -147,7 +157,7 @@ const Main: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<LoadingIndicator />}>
       <div className='right-container'>
         <div className='right-content'>
           <SearchInput
@@ -179,7 +189,7 @@ const Main: React.FC = () => {
           onCloseModal={handleCloseModal}
         />
       )}
-    </>
+    </Suspense>
   );
 };
 

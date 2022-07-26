@@ -1,12 +1,9 @@
 // Libraries
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { lazy, memo, Suspense, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-// Hooks
-import useProductById from '@hooks/useProductById';
-
 // Layouts
-import ProductDetail from '@layouts/ProductDetail';
+const ProductDetail = lazy(() => import('@layouts/ProductDetail'));
 
 // Store
 import { clearCurrentProduct, useStore } from '@store/index';
@@ -15,7 +12,8 @@ import { clearCurrentProduct, useStore } from '@store/index';
 import './index.css';
 
 // Components
-import { Layout, Text } from '@components/index';
+import { LoadingIndicator, Text } from '@components/index';
+const Layout = lazy(() => import('@components/Layout'));
 
 // Constants
 import { ERROR_MESSAGES } from '@constants/index';
@@ -23,40 +21,45 @@ import { ERROR_MESSAGES } from '@constants/index';
 // Types
 import { VariantsTypes } from '@common-types/index';
 
+// Hooks
+import useProducts from '@hooks/useProducts';
+
 const DetailPage: React.FC = () => {
   const { globalState, dispatch } = useStore();
 
-  const { id } = useParams() as { id: string };
+  const { id } = useParams<string>();
 
-  const { getProduct, isValidating } = useProductById(id);
+  const { getProductById, productIsValidating } = useProducts(id);
 
   const { currentProduct } = globalState;
 
   useEffect(() => {
-    if (!isValidating) {
-      getProduct();
+    if (!productIsValidating) {
+      getProductById();
     }
-  }, [isValidating]);
+  }, [productIsValidating]);
 
   const handleClearCurrent = useCallback(() => {
     dispatch(clearCurrentProduct());
   }, []);
 
   return (
-    <Layout>
-      {currentProduct ? (
-        <ProductDetail
-          product={currentProduct}
-          onClearCurrent={handleClearCurrent}
-        />
-      ) : (
-        <div className='error-message'>
-          <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
-            {ERROR_MESSAGES.PRODUCT_NOT_FOUND}
-          </Text>
-        </div>
-      )}
-    </Layout>
+    <Suspense fallback={<LoadingIndicator />}>
+      <Layout>
+        {currentProduct ? (
+          <ProductDetail
+            product={currentProduct}
+            onClearCurrent={handleClearCurrent}
+          />
+        ) : (
+          <div className='error-message'>
+            <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
+              {ERROR_MESSAGES.PRODUCT_NOT_FOUND}
+            </Text>
+          </div>
+        )}
+      </Layout>
+    </Suspense>
   );
 };
 

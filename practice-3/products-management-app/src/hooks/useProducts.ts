@@ -33,22 +33,30 @@ import {
   addProductRequest,
   filterProductsFailed,
   searchProductsRequest,
-  searchProductsFailed
+  searchProductsFailed,
+  getProductRequest,
+  getProductSuccess,
+  getProductFailed
 } from '@store/index';
 
 // Helpers
 import { get, post, remove, update, urlGeneration } from '@helpers/index';
-
 /**
  * This hook help execute product data
  *
  * @returns Actions
  */
-const useProducts = () => {
-  const { data, error, isValidating, mutate } = useSWR<Product[]>(
-    URL_PRODUCTS,
+const useProducts = (id?: string) => {
+  const { data, error, isValidating, mutate } = useSWR<Product | Product[]>(
+    () => (!id ? `${URL_PRODUCTS}` : null),
     get
   );
+
+  const {
+    data: product,
+    error: productError,
+    isValidating: productIsValidating
+  } = useSWR<Product>(() => (id ? `${URL_PRODUCTS}/${id}` : null), get);
 
   const { dispatch } = useStore();
 
@@ -57,7 +65,7 @@ const useProducts = () => {
     isValidating && dispatch(getProductsRequest());
 
     if (!isValidating && !error && data) {
-      dispatch(getProductsSuccess({ products: data }));
+      dispatch(getProductsSuccess({ products: data as Product[] }));
     } else if (!isValidating && error) {
       if (!data) {
         dispatch(
@@ -68,6 +76,24 @@ const useProducts = () => {
       }
     }
   }, [isValidating]);
+
+  /**
+   * Get Product
+   *
+   * @returns Product
+   */
+  const getProductById = (): void => {
+    dispatch(getProductRequest());
+
+    // return data
+    if (product) {
+      dispatch(getProductSuccess({ product: product }));
+    }
+
+    if (productError instanceof Error) {
+      dispatch(getProductFailed({ errorMessage: productError.message }));
+    }
+  };
 
   /**
    * Add new product
@@ -88,7 +114,7 @@ const useProducts = () => {
         })
       );
 
-      await mutate([...(data || []), newProduct], false);
+      await mutate([...((data || []) as Product[]), newProduct], false);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(addProductFailed({ errorMessage: error.message }));
@@ -112,11 +138,11 @@ const useProducts = () => {
       );
 
       const updatedProductIndex: number =
-        data?.findIndex(
+        (data as Product[])?.findIndex(
           (product: Product) => product.id === updatedProduct.id
         ) || -1;
 
-      data?.splice(updatedProductIndex, 1, updatedProduct);
+      (data as Product[])?.splice(updatedProductIndex, 1, updatedProduct);
 
       dispatch(
         editProductSuccess({
@@ -125,7 +151,7 @@ const useProducts = () => {
         })
       );
 
-      await mutate([...(data || [])], false);
+      await mutate([...((data || []) as Product[])], false);
     } catch (error) {
       if (error instanceof Error) {
         dispatch(editProductFailed({ errorMessage: error.message }));
@@ -146,7 +172,7 @@ const useProducts = () => {
 
       const deletedProduct: Product = await remove(`${URL_PRODUCTS}/${id}`);
 
-      const updatedProducts: Product[] = [...(data || [])];
+      const updatedProducts: Product[] = [...((data || []) as Product[])];
 
       const deletedProductIndex: number =
         updatedProducts?.findIndex(
@@ -227,6 +253,8 @@ const useProducts = () => {
   };
 
   return {
+    productIsValidating,
+    getProductById,
     deleteProduct,
     createProduct,
     editProduct,

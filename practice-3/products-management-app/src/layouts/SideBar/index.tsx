@@ -1,8 +1,10 @@
 // Library
-import React, { memo } from 'react';
+import React, { lazy, memo, Suspense } from 'react';
 
 // Components
-import { Button, Filter } from '@components/index';
+import { LoadingIndicator } from '@components/index';
+const Button = lazy(() => import('@components/commons/Button'));
+const Filter = lazy(() => import('@components/Filter'));
 
 // Style
 import './index.css';
@@ -35,22 +37,24 @@ const SideBar: React.FC<SideBarProps> = ({
   onPriceChange,
   onClearFilters
 }) => (
-  <div className='sidebar'>
-    <div className='add-button'>
-      <Button variant={ButtonVariants.Primary} onClick={onOpenModalForm}>
-        Add new product
-      </Button>
+  <Suspense fallback={<LoadingIndicator />}>
+    <div className='sidebar'>
+      <div className='add-button'>
+        <Button variant={ButtonVariants.Primary} onClick={onOpenModalForm}>
+          Add new product
+        </Button>
+      </div>
+      <Filter
+        typeFilterOptions={PRODUCT_TYPE_LIST}
+        priceFilterOptions={ORDER_OPTIONS}
+        currentFilterTypeParam={currentFilterTypeParam}
+        currentFilterPriceParam={currentFilterPriceParam}
+        onTypeChange={onTypeChange}
+        onPriceChange={onPriceChange}
+        onClearFilters={onClearFilters}
+      />
     </div>
-    <Filter
-      typeFilterOptions={PRODUCT_TYPE_LIST}
-      priceFilterOptions={ORDER_OPTIONS}
-      currentFilterTypeParam={currentFilterTypeParam}
-      currentFilterPriceParam={currentFilterPriceParam}
-      onTypeChange={onTypeChange}
-      onPriceChange={onPriceChange}
-      onClearFilters={onClearFilters}
-    />
-  </div>
+  </Suspense>
 );
 
 export default memo(SideBar);

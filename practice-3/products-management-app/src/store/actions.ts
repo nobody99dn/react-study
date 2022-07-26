@@ -1,155 +1,176 @@
 // Constants
 import { ACTIONS } from '@constants/index';
-import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 // Model
 import { Product } from '@models/product';
-
-export interface ActionProps {
-  type: string;
-  payload?: {
-    products?: Product[];
-    successMessage?: string;
-    errorMessage?: string;
-    product?: Product;
-    productId?: string;
-    currentFilterTypeParam?: ProductTypes;
-    currentFilterPriceParam?: FilterOrderOptions;
-    filteredProducts?: Product[];
-    input?: string;
-  };
-}
+import {
+  IAddProductFailed,
+  IAddProductRequest,
+  IAddProductSuccess,
+  IClearCurrentProduct,
+  IClearMessage,
+  IDeleteProductFailed,
+  IDeleteProductRequest,
+  IDeleteProductSuccess,
+  IEditProductFailed,
+  IEditProductRequest,
+  IEditProductSuccess,
+  IFilterProductsFailed,
+  IFilterProductsRequest,
+  IFilterProductsSuccess,
+  IGetProductFailed,
+  IGetProductRequest,
+  IGetProductsFailed,
+  IGetProductsRequest,
+  IGetProductsSuccess,
+  IGetProductSuccess,
+  ISearchProductsFailed,
+  ISearchProductsRequest,
+  ISearchProductsSuccess
+} from './actionTypes';
 
 //* GET PRODUCTS ACTION *\\
-const getProductsRequest = (): ActionProps => ({
+const getProductsRequest = (): IGetProductsRequest => ({
   type: ACTIONS.GET_PRODUCTS_REQUEST
 });
 
-const getProductsSuccess = (payload: { products: Product[] }): ActionProps => ({
+const getProductsSuccess = (payload: {
+  products: Product[];
+}): IGetProductsSuccess => ({
   type: ACTIONS.GET_PRODUCTS_SUCCESS,
   payload
 });
 
-const getProductsFailed = (payload: { errorMessage: string }): ActionProps => ({
+const getProductsFailed = (payload: {
+  errorMessage: string;
+}): IGetProductsFailed => ({
   type: ACTIONS.GET_PRODUCTS_FAILED,
   payload
 });
 
 //* GET PRODUCT ACTION *\\
-const getProductRequest = (): ActionProps => ({
+const getProductRequest = (): IGetProductRequest => ({
   type: ACTIONS.GET_PRODUCT_REQUEST
 });
 
-const getProductSuccess = (payload: { product: Product }): ActionProps => ({
+const getProductSuccess = (payload: {
+  product: Product;
+}): IGetProductSuccess => ({
   type: ACTIONS.GET_PRODUCT_SUCCESS,
   payload
 });
 
-const getProductFailed = (payload: { errorMessage: string }): ActionProps => ({
+const getProductFailed = (payload: {
+  errorMessage: string;
+}): IGetProductFailed => ({
   type: ACTIONS.GET_PRODUCT_FAILED,
   payload
 });
 
 //* ADD PRODUCT ACTION *\\
-const addProductRequest = (): ActionProps => ({
+const addProductRequest = (): IAddProductRequest => ({
   type: ACTIONS.ADD_PRODUCT_REQUEST
 });
 
 const addProductSuccess = (payload: {
   product: Product;
   successMessage: string;
-}): ActionProps => ({
+}): IAddProductSuccess => ({
   type: ACTIONS.ADD_PRODUCT_SUCCESS,
   payload
 });
 
-const addProductFailed = (payload: { errorMessage: string }): ActionProps => ({
+const addProductFailed = (payload: {
+  errorMessage: string;
+}): IAddProductFailed => ({
   type: ACTIONS.ADD_PRODUCT_FAILED,
   payload
 });
 
 //* DELETE PRODUCT ACTION *\\
-const deleteProductRequest = (): ActionProps => ({
+const deleteProductRequest = (): IDeleteProductRequest => ({
   type: ACTIONS.DELETE_PRODUCT_REQUEST
 });
 
 const deleteProductSuccess = (payload: {
   productId: string;
   successMessage: string;
-}): ActionProps => ({
+}): IDeleteProductSuccess => ({
   type: ACTIONS.DELETE_PRODUCT_SUCCESS,
   payload
 });
 
 const deleteProductFailed = (payload: {
   errorMessage: string;
-}): ActionProps => ({
+}): IDeleteProductFailed => ({
   type: ACTIONS.DELETE_PRODUCT_FAILED,
   payload
 });
 
 //* EDIT PRODUCT ACTION *\\
-const editProductRequest = (): ActionProps => ({
+const editProductRequest = (): IEditProductRequest => ({
   type: ACTIONS.EDIT_PRODUCT_REQUEST
 });
 
 const editProductSuccess = (payload: {
   product: Product;
   successMessage: string;
-}): ActionProps => ({
+}): IEditProductSuccess => ({
   type: ACTIONS.EDIT_PRODUCT_SUCCESS,
   payload
 });
 
-const editProductFailed = (payload: { errorMessage: string }): ActionProps => ({
+const editProductFailed = (payload: {
+  errorMessage: string;
+}): IEditProductFailed => ({
   type: ACTIONS.EDIT_PRODUCT_FAILED,
   payload
 });
 
 //* FILTER PRODUCTS ACTION *\\
-const filterProductsRequest = (): ActionProps => ({
+const filterProductsRequest = (): IFilterProductsRequest => ({
   type: ACTIONS.FILTER_PRODUCTS_REQUEST
 });
 
 const filterProductsSuccess = (payload: {
   filteredProducts: Product[];
-}): ActionProps => ({
+}): IFilterProductsSuccess => ({
   type: ACTIONS.FILTER_PRODUCTS_SUCCESS,
   payload
 });
 
 const filterProductsFailed = (payload: {
   errorMessage: string;
-}): ActionProps => ({
+}): IFilterProductsFailed => ({
   type: ACTIONS.FILTER_PRODUCTS_FAILED,
   payload
 });
 
 //* SEARCH PRODUCTS ACTION *\\
-const searchProductsRequest = (): ActionProps => ({
+const searchProductsRequest = (): ISearchProductsRequest => ({
   type: ACTIONS.SEARCH_PRODUCTS_REQUEST
 });
 
 const searchProductsSuccess = (payload: {
   filteredProducts: Product[];
-}): ActionProps => ({
+}): ISearchProductsSuccess => ({
   type: ACTIONS.SEARCH_PRODUCTS_SUCCESS,
   payload
 });
 
 const searchProductsFailed = (payload: {
   errorMessage: string;
-}): ActionProps => ({
+}): ISearchProductsFailed => ({
   type: ACTIONS.SEARCH_PRODUCTS_FAILED,
   payload
 });
 
 //* CLEAR MESSAGE ACTION *\\
-const clearMessages = (): ActionProps => ({
+const clearMessages = (): IClearMessage => ({
   type: ACTIONS.CLEAR_MESSAGES
 });
 
-const clearCurrentProduct = (): ActionProps => ({
+const clearCurrentProduct = (): IClearCurrentProduct => ({
   type: ACTIONS.CLEAR_CURRENT_PRODUCT
 });
 
