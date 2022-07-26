@@ -30,7 +30,7 @@
 - 1 developer
   - Van Tran
 
-## Practice 3: Products Management Application (In-progress)
+## Practice 3: Products Management Application
 
 ### Usage
 
