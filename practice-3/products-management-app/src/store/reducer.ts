@@ -5,7 +5,7 @@ import { ACTIONS } from '@constants/index';
 import { Product } from '@models/product';
 
 // Action
-import { ActionProps } from './actions';
+import { ActionProps } from './actionTypes';
 
 interface InitialState {
   products: Product[];
@@ -55,6 +55,12 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
       };
 
     case ACTIONS.GET_PRODUCTS_FAILED:
+      return {
+        ...state,
+        errorMessage: action.payload.errorMessage,
+        isLoading: INITIAL_STATES.isLoading
+      };
+
     case ACTIONS.EDIT_PRODUCT_FAILED:
     case ACTIONS.DELETE_PRODUCT_FAILED:
     case ACTIONS.FILTER_PRODUCTS_FAILED:
@@ -63,14 +69,14 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
     case ACTIONS.ADD_PRODUCT_FAILED:
       return {
         ...state,
-        errorMessage: action.payload?.errorMessage as string,
+        errorMessage: action.payload.errorMessage,
         isLoading: INITIAL_STATES.isLoading
       };
 
     case ACTIONS.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
-        products: action.payload?.products as Product[],
+        products: action.payload.products,
         isLoading: INITIAL_STATES.isLoading
       };
 
@@ -78,15 +84,15 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
       return {
         ...state,
         isLoading: INITIAL_STATES.isLoading,
-        currentProduct: action.payload?.product as Product
+        currentProduct: action.payload.product
       };
 
     case ACTIONS.ADD_PRODUCT_SUCCESS:
       return {
         ...state,
-        products: [...state.products, action.payload?.product as Product],
+        products: [...state.products, action.payload.product],
         isLoading: INITIAL_STATES.isLoading,
-        successMessage: action.payload?.successMessage as string
+        successMessage: action.payload.successMessage
       };
 
     case ACTIONS.DELETE_PRODUCT_SUCCESS:
@@ -94,25 +100,25 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
         ...state,
         products: [
           ...state.products.filter(
-            (product) => product.id !== (action.payload?.productId as string)
+            (product) => product.id !== action.payload.productId
           )
         ],
         isLoading: INITIAL_STATES.isLoading,
-        successMessage: action.payload?.successMessage as string
+        successMessage: action.payload.successMessage
       };
 
     case ACTIONS.EDIT_PRODUCT_SUCCESS: {
       const productIndex: number = state.products.findIndex(
-        (product) => product.id === (action.payload?.product as Product).id
+        (product) => product.id === action.payload.product.id
       );
 
-      state.products[productIndex] = action.payload?.product as Product;
+      state.products[productIndex] = action.payload.product;
 
       return {
         ...state,
         products: state.products,
         isLoading: INITIAL_STATES.isLoading,
-        successMessage: action.payload?.successMessage as string
+        successMessage: action.payload.successMessage
       };
     }
 
@@ -120,7 +126,7 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
       return {
         ...state,
         isLoading: INITIAL_STATES.isLoading,
-        products: action.payload?.filteredProducts as Product[]
+        products: action.payload.filteredProducts
       };
     }
 
@@ -128,7 +134,7 @@ const reducer = (state = INITIAL_STATES, action: ActionProps): InitialState => {
       return {
         ...state,
         isLoading: INITIAL_STATES.isLoading,
-        products: action.payload?.filteredProducts as Product[]
+        products: action.payload.filteredProducts
       };
 
     case ACTIONS.CLEAR_MESSAGES: {
