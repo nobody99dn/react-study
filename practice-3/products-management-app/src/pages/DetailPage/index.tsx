@@ -1,9 +1,9 @@
 // Libraries
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { lazy, memo, Suspense, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Layouts
-import ProductDetail from '@layouts/ProductDetail';
+const ProductDetail = lazy(() => import('@layouts/ProductDetail'));
 
 // Store
 import { clearCurrentProduct, useStore } from '@store/index';
@@ -12,7 +12,8 @@ import { clearCurrentProduct, useStore } from '@store/index';
 import './index.css';
 
 // Components
-import { Layout, Text } from '@components/index';
+import { LoadingIndicator, Text } from '@components/index';
+const Layout = lazy(() => import('@components/Layout'));
 
 // Constants
 import { ERROR_MESSAGES } from '@constants/index';
@@ -43,20 +44,22 @@ const DetailPage: React.FC = () => {
   }, []);
 
   return (
-    <Layout>
-      {currentProduct ? (
-        <ProductDetail
-          product={currentProduct}
-          onClearCurrent={handleClearCurrent}
-        />
-      ) : (
-        <div className='error-message'>
-          <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
-            {ERROR_MESSAGES.PRODUCT_NOT_FOUND}
-          </Text>
-        </div>
-      )}
-    </Layout>
+    <Suspense fallback={<LoadingIndicator />}>
+      <Layout>
+        {currentProduct ? (
+          <ProductDetail
+            product={currentProduct}
+            onClearCurrent={handleClearCurrent}
+          />
+        ) : (
+          <div className='error-message'>
+            <Text color='var(--danger)' variant={VariantsTypes.Highlight}>
+              {ERROR_MESSAGES.PRODUCT_NOT_FOUND}
+            </Text>
+          </div>
+        )}
+      </Layout>
+    </Suspense>
   );
 };
 

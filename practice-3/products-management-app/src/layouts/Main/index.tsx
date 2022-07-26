@@ -13,10 +13,13 @@ import { useNavigate } from 'react-router-dom';
 import './index.css';
 
 // Components
-import { LoadingIndicator, Posts, SearchInput } from '@components/index';
+import { LoadingIndicator } from '@components/index';
+const Posts = lazy(() => import('@components/Posts'));
+const SearchInput = lazy(() => import('@components/SearchInput'));
+const ModalForm = lazy(() => import('@components/ModalForm'));
 
 // Layout
-import SideBar from '@layouts/SideBar/index';
+const SideBar = lazy(() => import('@layouts/SideBar'));
 
 // Models
 import { Product } from '@models/product';
@@ -55,8 +58,6 @@ const Main: React.FC = () => {
     useState<ProductTypes>();
   const [productName, setProductName] = useState<string>('');
   const [isFirstRun, setFirstRun] = useState(true);
-
-  let ModalForm = null;
 
   /**
    *  Filter change
@@ -147,10 +148,6 @@ const Main: React.FC = () => {
     [currentFilterPriceParam]
   );
 
-  if (isModalShow) {
-    ModalForm = lazy(() => import('@components/ModalForm'));
-  }
-
   /**
    * Handle search input change
    */
@@ -160,7 +157,7 @@ const Main: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<LoadingIndicator />}>
       <div className='right-container'>
         <div className='right-content'>
           <SearchInput
@@ -184,17 +181,15 @@ const Main: React.FC = () => {
           onClearFilters={handleClearFilters}
         />
       </div>
-      {isModalShow && ModalForm && (
-        <Suspense fallback={<LoadingIndicator />}>
-          <ModalForm
-            isModalShow={isModalShow}
-            product={product}
-            onSubmitForm={handleCreateProduct}
-            onCloseModal={handleCloseModal}
-          />
-        </Suspense>
+      {isModalShow && (
+        <ModalForm
+          isModalShow={isModalShow}
+          product={product}
+          onSubmitForm={handleCreateProduct}
+          onCloseModal={handleCloseModal}
+        />
       )}
-    </>
+    </Suspense>
   );
 };
 
