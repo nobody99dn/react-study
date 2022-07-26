@@ -26,7 +26,7 @@ import useProducts from '@hooks/useProducts';
 const DetailPage: React.FC = () => {
   const { globalState, dispatch } = useStore();
 
-  const { id } = useParams() as { id: string };
+  const { id } = useParams<string>();
 
   const { getProductById, productIsValidating } = useProducts(id);
 

@@ -7,7 +7,9 @@ import React, {
   Dispatch,
   createContext
 } from 'react';
-import { ActionProps } from './actions';
+
+// Action
+import { ActionProps } from './actionTypes';
 
 // Reducer
 import { INITIAL_STATES, InitialState } from './reducer';
