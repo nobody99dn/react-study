@@ -10,7 +10,7 @@ import '@assets/styles/App.css';
 import '@assets/styles/variables.css';
 
 // Constants
-import { PRODUCT_TYPE_LIST } from '@constants/types';
+import { PRODUCT_TYPE_LIST } from '@constants/index';
 
 export default {
   title: 'Components/Select',

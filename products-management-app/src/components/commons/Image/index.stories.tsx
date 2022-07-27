@@ -16,7 +16,7 @@ import iPhoneImage from '@assets/images/iphone-13-promax-alpine-green-alpine-gre
 import deleteIcon from '@assets/images/icons/trash-fill.svg';
 
 // Constants
-import { ImageVariants } from '@constants/types';
+import { ImageVariants } from '@constants/index';
 
 export default {
   title: 'Components/Image',

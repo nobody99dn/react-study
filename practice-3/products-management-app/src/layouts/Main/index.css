@@ -1,0 +1,15 @@
+.right-container {
+  display: block;
+  width: 85%;
+  float: right;
+}
+
+.right-content {
+  padding: 0 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.left-container {
+  width: 15%;
+}

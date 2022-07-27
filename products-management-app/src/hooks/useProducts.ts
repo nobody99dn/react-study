@@ -2,7 +2,7 @@
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@constants/messages';
 import { ProductTypes, FilterOrderOptions } from '../constants/types';
 
-// Type
+// Model
 import { Product } from '@models/product';
 
 // Service

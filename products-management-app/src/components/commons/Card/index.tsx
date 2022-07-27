@@ -15,7 +15,7 @@ import { currencyFormat } from '@helpers/string';
 // Styles
 import './index.css';
 
-// Type
+// Model
 import { Product } from '@models/product';
 
 interface CardProps {

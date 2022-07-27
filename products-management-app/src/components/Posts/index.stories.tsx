@@ -16,7 +16,7 @@ import { get } from '@helpers/clientRequests';
 // Constant
 import { URL_PRODUCTS } from '@constants/api';
 
-// Type
+// Model
 import { Product } from '@models/product';
 
 const products: Product[] = await get(URL_PRODUCTS);
@@ -30,10 +30,10 @@ const Template: ComponentStory<typeof Posts> = (args) => <Posts {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  handleOpenModalForm: () => { }
+  handleOpenModalForm: () => {}
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  handleOpenModalForm: () => { }
+  handleOpenModalForm: () => {}
 };

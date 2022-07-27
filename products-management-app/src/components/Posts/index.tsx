@@ -8,9 +8,9 @@ import Card from '@components/commons/Card';
 import './index.css';
 
 // Constants
-import { Currencies } from '@constants/types';
+import { Currencies } from '@constants/index';
 
-// Type
+// Model
 import { Product } from '@models/product';
 
 interface PostsProps {
@@ -25,22 +25,16 @@ const Posts: React.FC<PostsProps> = ({
   onDeleteProduct
 }) => (
   <div className='product-group'>
-    {
-      products
-        .map((product: Product) => (
-          <div
-            className='products-row'
-            key={product.id}
-          >
-            <Card
-              product={product}
-              currency={Currencies.VND}
-              onOpenModalForm={onOpenModalForm}
-              onDeleteProduct={onDeleteProduct}
-            />
-          </div>
-        ))
-    }
+    {products.map((product: Product) => (
+      <div className='products-row' key={product.id.toString()}>
+        <Card
+          product={product}
+          currency={Currencies.VND}
+          onOpenModalForm={onOpenModalForm}
+          onDeleteProduct={onDeleteProduct}
+        />
+      </div>
+    ))}
   </div>
 );
 

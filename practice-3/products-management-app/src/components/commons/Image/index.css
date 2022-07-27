@@ -1,0 +1,25 @@
+.image {
+  height: auto;
+  max-width: 100%;
+}
+
+/* - Logo */
+/* - ---------------------------------------------- */
+.image-logo {
+  background-repeat: no-repeat;
+  width: 6.25rem;
+  text-indent: -9999px;
+}
+
+/* - Icon */
+/* - ---------------------------------------------- */
+.image-icon {
+  display: block;
+  background-repeat: no-repeat;
+  width: 2.25rem;
+  cursor: pointer;
+}
+
+.image-error {
+  line-height: 1.5rem;
+}

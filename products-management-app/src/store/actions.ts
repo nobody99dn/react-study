@@ -1,9 +1,9 @@
 // Constants
 import { ACTIONS } from './constants';
 
-// Type
+// Model
 import { Product } from '@models/product';
-import { FilterOrderOptions, ProductTypes } from '@constants/types';
+import { FilterOrderOptions, ProductTypes } from '@constants/index';
 
 export interface ActionProps {
   type: string;

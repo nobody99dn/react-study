@@ -12,7 +12,7 @@ import './index.css';
 
 // Images
 import iPhoneImage from '@assets/images/iphone-13-promax-alpine-green-alpine-green-color.jpg';
-import { Currencies } from '@constants/types';
+import { Currencies } from '@constants/index';
 
 export default {
   title: 'Components/Card',
@@ -23,6 +23,6 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  handleOpenModalForm: () => { },
+  handleOpenModalForm: () => {},
   currency: Currencies.VND
 };
