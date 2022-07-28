@@ -2,9 +2,36 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
+import { format } from 'url';
+
+let counter = 0;
+
+export async function getServerSideProps() {
+  console.log(counter);
+
+  counter++;
+  return { props: { initialPropsCounter: counter } };
+}
 
 const Home: NextPage = () => {
+  const router = useRouter();
+  const { pathname, query } = router;
+
+  const reload = () => {
+    router.push(format({ pathname, query }));
+  };
+
+  const incrementCounter = () => {
+    const currentCounter = query.counter
+      ? parseInt(query.counter as string)
+      : 0;
+    const href = `/?counter=${currentCounter + 1}`;
+
+    router.push(href, href, { shallow: true });
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -40,6 +67,11 @@ const Home: NextPage = () => {
             </Link>
           </li>
         </ul>
+
+        <button onClick={reload}>Reload</button>
+        <button onClick={incrementCounter}>Change State Counter</button>
+        <p>{`getServerSideProps ran for initialPropsCounter times.`}</p>
+        <p>Counter: "{query.counter || 0}".</p>
       </main>
 
       <footer className={styles.footer}>
