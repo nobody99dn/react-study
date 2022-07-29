@@ -5,11 +5,22 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 import { format } from 'url';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 let counter = 0;
 
-export async function getServerSideProps() {
-  console.log(counter);
+export async function getServerSideProps({
+  req,
+  res
+}: {
+  req: NextApiRequest;
+  res: NextApiResponse;
+}) {
+  // Caching
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  );
 
   counter++;
   return { props: { initialPropsCounter: counter } };
@@ -71,12 +82,14 @@ const Home: NextPage = () => {
         <button onClick={reload}>Reload</button>
         <button onClick={incrementCounter}>Change State Counter</button>
         <p>{`getServerSideProps ran for initialPropsCounter times.`}</p>
-        <p>Counter: "{query.counter || 0}".</p>
+        <p>Counter: {query.counter || 0}.</p>
       </main>
 
       <footer className={styles.footer}>
         <a
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
+          href={
+            'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
+          }
           target='_blank'
           rel='noopener noreferrer'
         >
