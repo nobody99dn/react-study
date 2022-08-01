@@ -1,6 +1,6 @@
 import { FormEventHandler } from 'react';
 const Form = () => {
-  const handleSubmit = async (event: FormEventHandler<HTMLFormElement>) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     const data = {
