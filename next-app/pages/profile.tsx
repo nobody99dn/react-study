@@ -1,6 +1,6 @@
 // pages/profile.js
 
-import useUser from '../src/lib/useUser';
+import useUser from '@lib/useUser';
 
 // Authenticating Statically Generated Pages
 const Profile = () => {
