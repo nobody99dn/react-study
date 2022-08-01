@@ -15,7 +15,13 @@ const nextConfig = withMDX({
   swcMinify: true,
 
   // Append the default value with md extensions
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  amp: [
+    true,
+    {
+      validator: './custom_validator.js'
+    }
+  ]
 });
 
 module.exports = nextConfig;
