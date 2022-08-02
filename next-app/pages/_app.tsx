@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import ErrorBoundary from 'src/components/ErrorBoundaries.index';
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   console.log(metric);
@@ -52,7 +53,11 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <ErrorBoundary FallbackComponent={<div>Error Loading...</div>}>
+      <Component {...pageProps} />;
+    </ErrorBoundary>
+  );
 }
 
 export default MyApp;
