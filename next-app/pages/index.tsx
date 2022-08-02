@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 import { format } from 'url';
 import { NextApiRequest, NextApiResponse } from 'next';
+import ActiveLink from 'src/components/ActiveLink';
 
 let counter = 0;
 
@@ -83,6 +84,7 @@ const Home: NextPage = () => {
         <button onClick={incrementCounter}>Change State Counter</button>
         <p>{`getServerSideProps ran for initialPropsCounter times.`}</p>
         <p>Counter: {query.counter || 0}.</p>
+        <ActiveLink href='/about'>Active Link</ActiveLink>
       </main>
 
       <footer className={styles.footer}>

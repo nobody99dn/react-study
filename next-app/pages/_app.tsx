@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
-import ErrorBoundary from 'src/components/ErrorBoundaries.index';
+import ErrorBoundary from 'src/components/ErrorBoundaries/index';
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   console.log(metric);
