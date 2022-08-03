@@ -1,6 +1,8 @@
 import '../styles/globals.css';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import ErrorBoundary from 'src/components/ErrorBoundaries/index';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   console.log(metric);
@@ -53,6 +55,41 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string, { shallow }: any) => {
+      console.log(
+        `App is changing to ${url} ${
+          shallow ? 'with' : 'without'
+        } shallow routing`
+      );
+      router.events.on('routeChangeStart', handleRouteChange);
+
+      // If the component is unmounted, unsubscribe
+      // from the event with the `off` method:
+      return () => {
+        router.events.off('routeChangeStart', handleRouteChange);
+      };
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleRouteChangeError = (err: any, url: string) => {
+      if (err.cancelled) {
+        console.log(`Route to ${url} was cancelled!`);
+      }
+    };
+
+    router.events.on('routeChangeError', handleRouteChangeError);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off('routeChangeError', handleRouteChangeError);
+    };
+  }, []);
+
   return (
     <ErrorBoundary FallbackComponent={<div>Error Loading...</div>}>
       <Component {...pageProps} />;
