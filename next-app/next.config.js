@@ -26,7 +26,11 @@ const nextConfig = withMDX({
   swcMinify: true,
 
   // Append the default value with md extensions
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  env: {
+    customKey: 'my-value'
+  },
+  basePath: './'
 });
 
 module.exports = nextConfig;

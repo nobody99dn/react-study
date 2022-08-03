@@ -5,7 +5,7 @@ const ReadMore = () => {
 
   return (
     <button onClick={() => router.push('/about')}>
-      Click here to read more
+      Click here to read more {process.env.customKey}
     </button>
   );
 };

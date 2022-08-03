@@ -1,6 +1,6 @@
 const About = () => (
   <>
-    <h1>About page</h1>
+    <h1>About page {process.env.customKey}</h1>
   </>
 );
 
