@@ -1,34 +1,112 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React Practice
 
-## Getting Started
+## OVERVIEW
 
-First, run the development server:
+- This document provides a detailed estimate of the React practice. This practice creates a Movie Box App with goals that I can apply Next.js knowledge.
 
-```bash
-npm run dev
-# or
-yarn dev
+## TIMELINE
+
+- Estimate time: **7 days (2022/04/08 - 2022/08/10)**
+
+## TEAM SIZE
+
+- 1 developer:
+  - [Van Tran](van.tran@asnet.com.vn)
+
+## TARGETS
+
+- Apply Multi-pages
+- Apply Slug
+- Apply API Routing
+- Apply next/link
+- Apply next/image
+
+## TECHNICAL STACK
+
+- Next.js: Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+- React/React hooks: Hooks are the new feature introduced in the React 16.8 version. It allows you to use state and other React features without writing a class. Hooks are the functions which "hook into" React state and lifecycle features from function components. It does not work inside classes.
+- TypeScript: TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
+- HTML/CSS
+- [Mockapi](https://mockapi.io/): MockAPI is a simple tool that lets you easily mock up APIs, generate custom data, and preform operations on it using RESTful interface. MockAPI is meant to be used as a prototyping/testing/learning tool.
+- Axios: Axios is a promise-based HTTP Client for node.js and the browser.
+
+## REQUIREMENT DETAILS
+
+- Read more detail requirement in [here](https://docs.google.com/document/d/1EMusyZLScN4POSMZO7hh8WOhflCAjUpjdtanIeFusHg/edit?usp=sharing).
+
+## ENVIRONMENT
+
+- Windows
+
+## EDITOR
+
+- [Visual studio code](https://code.visualstudio.com)
+
+## DIRECTORY STRUCTURE
+
+```
+├── .husky
+├── node_modules
+├── public
+└── src
+    ├── style
+    ├── components
+    │   ├── Button
+    │   ├── Card
+    │   ├── Text
+    │   ├── TextField
+    │   ├── Title
+    │   ├── Filter
+    │   ├── Icon
+    │   ├── Form
+    │   ├── Banner
+    │   ├── Tabs
+    │   └── SearchBox
+    ├── constants
+    ├── helpers
+    ├── services
+    ├── layouts
+    │   ├── Header
+    │   ├── Footer
+    │   └── Main
+    ├── models
+    ├── pages
+    │   ├── login
+    │   └── movie-detail
+    └── utils
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## GET STARTED
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Clone project:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+  ```bash
+  $ git clone git@gitlab.asoft-python.com:van.tran/react-training.git
+  ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Checkout branch:
 
-## Learn More
+  ```bash
+  $ git checkout develop
+  ```
 
-To learn more about Next.js, take a look at the following resources:
+- Change directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```bash
+  $ cd movie-box-app
+  ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Install packages:
 
-## Deploy on Vercel
+  ```bash
+  $ pnpm i
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Start project
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  ```bash
+  $ pnpm dev
+  ```
+
+- Open browser and and type http://localhost:3000 in address bar
