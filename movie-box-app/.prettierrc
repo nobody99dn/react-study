@@ -1,4 +1,5 @@
 {
+  "semi": true,
   "endOfLine": "crlf",
   "printWidth": 80,
   "tabWidth": 2,
