@@ -4,7 +4,7 @@ const Home: NextPage = () => {
   return (
     <div>
       {/* TODO: Implement home page here */}
-      HOME PAGE Test
+      HOME PAGE
     </div>
   );
 };
