@@ -17,10 +17,11 @@ import { validateAccount } from '@helpers/validate';
 import { Account } from '@models/Account';
 
 interface FormProps {
+  className?: string;
   onSubmit: (account: Account) => void;
 }
 
-const Form: FC<FormProps> = ({ onSubmit }) => {
+const Form: FC<FormProps> = ({ className, onSubmit }) => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [account, setAccount] = useState<Account>({
     username: '',
@@ -36,6 +37,7 @@ const Form: FC<FormProps> = ({ onSubmit }) => {
     isSubmit &&
       areEqual<ValidateError>(INIT_ERRORS, formErrors) &&
       onSubmit(account);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formErrors]);
 
   const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
@@ -54,7 +56,7 @@ const Form: FC<FormProps> = ({ onSubmit }) => {
   }, []);
   return (
     <form
-      className="text-center"
+      className={['text-center', className].join('')}
       onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event)}
     >
       <fieldset>
