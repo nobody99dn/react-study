@@ -4,7 +4,7 @@
 echo '🏗️👷 Styling, testing and building your project before committing'
 
 # Check Prettier standards
-pnpm check-format ||
+cd movie-box-app && pnpm check-format ||
 (
     echo '🤢🤮🤢🤮 Its F**KING RAW - Your styling looks disgusting🤢🤮🤢🤮.
         Prettier Check Failed. Run `pnpm format`, add changes and try commit again.';
