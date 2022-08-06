@@ -16,6 +16,10 @@ module.exports = {
         'light-gray': '#F8F8F8',
         'dark-gray': '#BABBC3',
         dark: '#494C62'
+      },
+      backgroundImage: {
+        // eslint-disable-next-line quotes
+        login: "url('/images/background.jpg')"
       }
     }
   },
