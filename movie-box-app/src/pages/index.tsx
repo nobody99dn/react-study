@@ -12,6 +12,7 @@ import { Account } from '@models/Account';
 
 // Components
 import SEO from '@components/SEO';
+import Banner from '@components/Banner';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const Home: NextPage = () => {
         siteTitle="Home page"
         title="Home"
       />
-      {/* TODO: Implement home page here */}
+      <Banner />
       HOME PAGE
     </>
   );

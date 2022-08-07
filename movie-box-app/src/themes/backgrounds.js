@@ -6,6 +6,8 @@ module.exports = {
   ...defaultBackgroundImage,
   ...{
     // eslint-disable-next-line quotes
-    login: "url('/images/background.jpg')"
+    login: "url('/images/background.jpg')",
+    // eslint-disable-next-line quotes
+    banner: "url('/images/banner.png')"
   }
 };
