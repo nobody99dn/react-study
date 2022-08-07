@@ -13,6 +13,8 @@ import { Account } from '@models/Account';
 // Components
 import SEO from '@components/SEO';
 import Banner from '@components/Banner';
+import RatingBox from '@components/RatingBox';
+import SearchBox from '@components/SearchBox';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -33,6 +35,8 @@ const Home: NextPage = () => {
         title="Home"
       />
       <Banner />
+      <RatingBox value={4.5} />
+      <SearchBox />
       HOME PAGE
     </>
   );
