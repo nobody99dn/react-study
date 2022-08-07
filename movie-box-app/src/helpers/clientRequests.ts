@@ -1,9 +1,6 @@
 // Library
 import axios, { AxiosResponse } from 'axios';
 
-// Model
-import { Account } from '@models/Account';
-
 // Constants
 import { ERROR_MESSAGES } from '@constants/index';
 

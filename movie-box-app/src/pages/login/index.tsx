@@ -16,6 +16,10 @@ import { Account } from '@models/Account';
 // Services
 import { getAccount } from '@services/account';
 
+// Helpers
+import { setCurrentUser } from '@helpers/index';
+import Head from 'next/head';
+
 const Login: NextPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
@@ -24,6 +28,9 @@ const Login: NextPage = () => {
     const response: Account[] = await getAccount(account.username);
 
     if (response && response[0].password.match(account.password)) {
+      // set user before redirect
+      setCurrentUser(response[0]);
+
       router.push('/');
 
       return;
@@ -33,15 +40,21 @@ const Login: NextPage = () => {
   }, []);
 
   return (
-    <main className="h-screen bg-login bg-center bg-cover bg-no-repeat">
-      <div className="h-full flex flex-col items-center justify-center">
-        <Text
-          content={errorMessage}
-          className=" text-sm text-highlight text-start h-4 pt-1"
-        />
-        <Form className=" w-1/3" onSubmit={handleSubmit} />
-      </div>
-    </main>
+    <>
+      <Head>
+        <title>Login to MovieBox</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <main className="h-screen bg-login bg-center bg-cover bg-no-repeat">
+        <div className="h-full flex flex-col items-center justify-center">
+          <Text
+            content={errorMessage}
+            className=" text-sm text-highlight text-start h-4 pt-1"
+          />
+          <Form className=" w-1/3" onSubmit={handleSubmit} />
+        </div>
+      </main>
+    </>
   );
 };
 

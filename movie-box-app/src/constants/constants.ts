@@ -2,4 +2,6 @@ const END_POINT = {
   AUTHENTICATION: 'http://localhost:3000/api/form'
 };
 
-export { END_POINT };
+const USER_KEY = 'currentUser';
+
+export { END_POINT, USER_KEY };
