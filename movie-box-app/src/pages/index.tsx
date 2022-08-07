@@ -1,9 +1,15 @@
-import { getCurrentUser } from '@helpers/localStore';
-import { Account } from '@models/Account';
+/* eslint-disable react-hooks/exhaustive-deps */
+// Libraries
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+
+// Helpers
+import { getCurrentUser } from '@helpers/localStore';
+
+// Models
+import { Account } from '@models/Account';
 
 const Home: NextPage = () => {
   const router = useRouter();

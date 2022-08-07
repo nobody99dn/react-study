@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { useCallback, useState } from 'react';
 import type { NextPage } from 'next';
@@ -45,7 +46,7 @@ const Login: NextPage = () => {
         <title>Login to MovieBox</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <main className="h-screen bg-login bg-center bg-cover bg-no-repeat">
+      <div className="h-screen bg-login bg-center bg-cover bg-no-repeat">
         <div className="h-full flex flex-col items-center justify-center">
           <Text
             content={errorMessage}
@@ -53,7 +54,7 @@ const Login: NextPage = () => {
           />
           <Form className=" w-1/3" onSubmit={handleSubmit} />
         </div>
-      </main>
+      </div>
     </>
   );
 };
