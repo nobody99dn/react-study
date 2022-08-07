@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 
 interface TextProps {
-  content: string;
+  content: string | number;
   className?: string;
 }
 

@@ -15,7 +15,7 @@ const Banner: FC = () => (
         className=" uppercase"
         variant={TitleVariants.heading}
       />
-      <div className="flex ">
+      <div className="flex">
         <Title
           className=" pr-2"
           variant={TitleVariants.subtitle}
