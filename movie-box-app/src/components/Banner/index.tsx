@@ -8,7 +8,7 @@ import { TitleVariants } from '@common-types/title';
 import Title from '@components/Title';
 
 const Banner: FC = () => (
-  <div className="h-[80vh] bg-banner bg-no-repeat bg-cover relative">
+  <div className="h-[100vh] bg-banner bg-no-repeat bg-cover relative">
     <div className="absolute bottom-32 left-10">
       <Title
         content="wrath of the titans"
