@@ -14,7 +14,7 @@ const SearchBox: FC = () => {
       <Image
         src="/icons/search.svg"
         alt="Search Icon"
-        width="20"
+        width={20}
         height={10}
         className="absolute right-2 top-3 text-gray-300"
       />
