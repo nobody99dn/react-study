@@ -9,14 +9,14 @@ const SearchBox: FC = () => {
       <TextField
         name="search-box"
         type={TextFieldTypes.text}
-        className="border-dark-gray border-2 w-full"
+        className="border-gray-300 border-2 w-full"
       />
       <Image
         src="/icons/search.svg"
         alt="Search Icon"
         width="20"
         height={10}
-        className="absolute right-2 top-4 text-dark"
+        className="absolute right-2 top-3 text-gray-300"
       />
     </div>
   );
