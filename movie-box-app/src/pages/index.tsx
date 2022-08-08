@@ -18,9 +18,19 @@ import SearchBox from '@components/SearchBox';
 import Card from '@components/Card';
 import { Genres } from '@common-types/movieGenreTypes';
 import Tabs from '@components/Tabs';
+import MovieList from '@components/MovieList';
+import { Movie } from '@models/Movie';
+import { getMovies } from '@services/movie.service';
+import { ERROR_MESSAGES } from '@constants/messages';
 
-const Home: NextPage = () => {
+interface HomeProps {
+  movieList: Movie[];
+}
+
+const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
   const router = useRouter();
+
+  console.log(movieList);
 
   useEffect(() => {
     const currentUser: Account | null = getCurrentUser();
@@ -53,9 +63,30 @@ const Home: NextPage = () => {
         onClick={() => null}
       />
       <Tabs options={['Trending', 'Top rate']}>Movie</Tabs>
+      <MovieList movies={movieList} />
       HOME PAGE
     </>
   );
 };
+
+export async function getStaticProps() {
+  try {
+    const response: Movie[] = await getMovies();
+
+    if (!response) {
+      throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+    }
+
+    return {
+      props: { movieList: response }
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      return { props: { errorMessage: error.message } };
+    }
+
+    return { props: {} };
+  }
+}
 
 export default Home;

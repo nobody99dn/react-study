@@ -15,7 +15,7 @@ import { ERROR_MESSAGES } from '@constants/messages';
 import { Account } from '@models/Account';
 
 // Services
-import { getAccounts } from '@services/account';
+import { getAccounts } from '@services/account.service';
 
 // Helpers
 import { setCurrentUser } from '@helpers/index';
