@@ -16,15 +16,11 @@ const Title: FC<TitleProps> = ({
   variant = TitleVariants.default
 }) => (
   <div
-    className={[
-      'text-default',
-      `${
-        variant === TitleVariants.subtitle
-          ? ' text-sm text-dark-gray'
-          : ' text-base text-dark'
-      }`,
-      className
-    ].join('')}
+    className={`' ' + ${
+      variant === TitleVariants.subtitle
+        ? 'text-sm text-gray-200'
+        : 'text-base text-gray-300'
+    }${className && ` ${className}`}`}
   >
     {content}
   </div>

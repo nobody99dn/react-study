@@ -2,7 +2,6 @@
 // Libraries
 import { useEffect } from 'react';
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 // Helpers
@@ -10,6 +9,9 @@ import { getCurrentUser } from '@helpers/localStore';
 
 // Models
 import { Account } from '@models/Account';
+
+// Components
+import SEO from '@components/SEO';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -24,9 +26,11 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Movies Box</title>
-      </Head>
+      <SEO
+        description="The greatest movies you must known!"
+        siteTitle="Home page"
+        title="Home"
+      />
       {/* TODO: Implement home page here */}
       HOME PAGE
     </>

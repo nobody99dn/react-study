@@ -1,6 +1,5 @@
 // Libraries
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
 
 // Styles
 import '../styles/globals.css';
@@ -11,14 +10,9 @@ import Layout from '@components/Layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <link rel="icon" href="/icons/logo.png" />
-      </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 
