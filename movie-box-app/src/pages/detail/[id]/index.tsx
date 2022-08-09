@@ -1,10 +1,24 @@
+// Libraries
+import { useCallback } from 'react';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/future/image';
+
+// Services
 import { getMovieById, getMovies } from '@services/movie.service';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+
+// Models
 import { Movie } from '@models/Movie';
+
+// Constants
 import { ERROR_MESSAGES } from '@constants/messages';
+
+// Types
 import { ParamsProps } from '@common-types/param';
+
+// Components
+import Info from '@components/Info/index';
+import Play from '@components/Play';
 
 interface DetailProps {
   movie: Movie;
@@ -13,16 +27,32 @@ interface DetailProps {
 const Detail: NextPage<DetailProps> = ({ movie }) => {
   const { push } = useRouter();
 
+  const { coverImage = '/images/default-cover.jpg' } = movie;
+
+  const handleBack = useCallback(() => {
+    push('/');
+  }, []);
+
   return (
-    <div className="mt-20">
+    <div
+      className="pt-32 pl-20 h-screen bg-cover bg-no-repeat"
+      style={{
+        backgroundImage: `url('${coverImage}')`
+      }}
+    >
       <Image
-        onClick={() => push('/')}
+        className="bg-gray-400 rounded-xl cursor-pointer"
         src="/icons/arrow-left-short.svg"
         width="50"
         height="30"
         alt="back-icon"
+        onClick={handleBack}
       />
-      {JSON.stringify(movie)}
+
+      <div className="flex justify-evenly align-middle ">
+        <Info movie={movie} />
+        <Play />
+      </div>
     </div>
   );
 };
