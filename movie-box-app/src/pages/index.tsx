@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
@@ -22,15 +22,18 @@ import MovieList from '@components/MovieList';
 import { Movie } from '@models/Movie';
 import { getMovies } from '@services/movie.service';
 import { ERROR_MESSAGES } from '@constants/messages';
+import { TabOption, TAB_OPTION_LIST } from '@common-types/tabs';
+import { sortMoviesByTabOption } from '@helpers/sort';
 
 interface HomeProps {
   movieList: Movie[];
 }
 
 const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
-  const router = useRouter();
+  const [openTab, setOpenTab] = useState(TAB_OPTION_LIST[0]);
+  const [movies, setMovies] = useState<Movie[]>(movieList);
 
-  console.log(movieList);
+  const router = useRouter();
 
   useEffect(() => {
     const currentUser: Account | null = getCurrentUser();
@@ -38,6 +41,16 @@ const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
     if (!currentUser) {
       router.push('/login');
     }
+  }, []);
+
+  /**
+   * Handle sort Movies
+   *
+   * @params key TabOption
+   */
+  const handleRenderByTabOption = useCallback((key: TabOption) => {
+    setOpenTab(key);
+    setMovies(sortMoviesByTabOption(movies, key));
   }, []);
 
   return (
@@ -48,23 +61,15 @@ const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
         title="Home"
       />
       <Banner />
-      <RatingBox value={4.5} />
-      <SearchBox />
-      <Card
-        movie={{
-          id: '1',
-          name: 'test',
-          genres: [Genres.Action, Genres.Drama],
-          image:
-            'https://lh5.googleusercontent.com/m0DncCclLuK-9ybM3pd_mNsN00GwDQ6JJtWxbe3mohlP-E3dP01ZQPnK38wybL3Rp5M=w2400',
-          rating: 5,
-          releaseYear: 1999
-        }}
-        onClick={() => null}
-      />
-      <Tabs options={['Trending', 'Top rate']}>Movie</Tabs>
-      <MovieList movies={movieList} />
-      HOME PAGE
+      <section className="px-12">
+        <Tabs
+          currentTab={openTab}
+          options={TAB_OPTION_LIST}
+          onClick={handleRenderByTabOption}
+        >
+          <MovieList movies={movies} />
+        </Tabs>
+      </section>
     </>
   );
 };
@@ -72,6 +77,7 @@ const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
 export async function getStaticProps() {
   try {
     const response: Movie[] = await getMovies();
+    console.log(response);
 
     if (!response) {
       throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);

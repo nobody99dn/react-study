@@ -36,7 +36,7 @@ const Card: FC<CardProps> = ({
           content={releaseYear}
           className="absolute bottom-5 left-3 text-gray-100"
         />
-        <Image src={image} alt={name} width={275} height={350} className="" />
+        <Image src={image} alt={name} width={275} height={350} />
       </div>
       <div className="relative px-2 py-2.5">
         <div className="w-48">
@@ -47,14 +47,14 @@ const Card: FC<CardProps> = ({
         </div>
         <div>
           {genres.map((genre: Genres, index: number, genres: Genres[]) => (
-            <div key={genre}>
+            <div key={genre} className="inline-block">
               <Title
                 variant={TitleVariants.subtitle}
                 content={genre}
                 className="inline-block"
               />
               {index + 1 !== genres.length && (
-                <span className="text-gray-200">, </span>
+                <span className="text-gray-200">, &nbsp;</span>
               )}
             </div>
           ))}

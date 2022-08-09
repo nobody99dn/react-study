@@ -12,12 +12,12 @@ interface TabsProps {
 }
 
 const Tabs: FC<TabsProps> = ({ currentTab, options, children, onClick }) => (
-  <div className="flex flex-wrap">
+  <div className="flex flex-wrap mt-5">
     <div className="w-full">
       <ul className="border-b border-gray-200">
         {options.map((option: TabOption) => (
           <li
-            className={`inline-block p-2.5 cursor-pointer ${
+            className={`inline-block px-6 py-2.5 cursor-pointer ${
               option === currentTab
                 ? 'text-red-100 border-b-2 border-red-100'
                 : 'text-gray-200'
