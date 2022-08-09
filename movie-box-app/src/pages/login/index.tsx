@@ -48,8 +48,6 @@ const Login: NextPage<LoginProps> = ({
       );
 
       if (userFound === -1) {
-        console.log(userFound);
-
         throw new Error(ERROR_MESSAGES.NO_ACCOUNT_FOUND);
       }
 

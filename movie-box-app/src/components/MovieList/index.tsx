@@ -1,18 +1,27 @@
-import { areEqual } from '@helpers/areEqual';
+// Libraries
+import { FC } from 'react';
+
+// Models
 import { Movie } from '@models/Movie';
-import { FC, memo } from 'react';
-import Card from '../Card';
+
+// Components
+import Card from '@components/Card';
 
 interface MovieListProps {
   movies: Movie[];
 }
 
 const MovieList: FC<MovieListProps> = ({ movies }) => (
-  <div className="mx-auto my-0 block">
+  <div className="text-center">
     {movies.map((movie: Movie) => (
-      <Card key={movie.id} movie={movie} onClick={() => null} />
+      <Card
+        key={movie.id}
+        className="mx-4 my-2"
+        movie={movie}
+        onClick={() => null}
+      />
     ))}
   </div>
 );
 
-export default memo(MovieList, areEqual<MovieListProps>);
+export default MovieList;

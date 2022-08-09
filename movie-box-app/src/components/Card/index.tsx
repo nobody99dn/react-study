@@ -1,11 +1,18 @@
+// Libraries
+import { FC, memo } from 'react';
+import Image from 'next/future/image';
+
+// Components
 import Text from '@components/Text';
 import Title from '@components/Title';
-import { Movie } from '@models/Movie';
-import Image from 'next/future/image';
-import { FC, memo } from 'react';
 import RatingBox from '@components/RatingBox';
-import { TitleVariants } from '@common-types/title';
 import { Genres } from '@common-types/movieGenreTypes';
+
+// Models
+import { Movie } from '@models/Movie';
+
+// Types
+import { TitleVariants } from '@common-types/title';
 
 interface CardProps {
   className?: string;
@@ -19,7 +26,7 @@ const Card: FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`inline-block bg-white-100 shadow-2xl cursor-pointer rounded overflow-hidden${
+      className={`inline-block bg-white-100 shadow-2xl cursor-pointer rounded overflow-hidden text-start${
         className && ` ${className}`
       }`}
       onClick={onClick}
@@ -40,17 +47,16 @@ const Card: FC<CardProps> = ({
         </div>
         <div>
           {genres.map((genre: Genres, index: number, genres: Genres[]) => (
-            <>
+            <div key={genre}>
               <Title
                 variant={TitleVariants.subtitle}
                 content={genre}
-                key={genre}
                 className="inline-block"
               />
               {index + 1 !== genres.length && (
                 <span className="text-gray-200">, </span>
               )}
-            </>
+            </div>
           ))}
         </div>
         <RatingBox value={rating} className="absolute right-7 top-1/3" />

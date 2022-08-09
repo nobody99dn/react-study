@@ -8,7 +8,7 @@ import { get } from '@helpers/index';
 import { Movie } from '@models/Movie';
 
 const getMovies = async (): Promise<Movie[]> => {
-  return await get(MOVIE_URL);
+  return await get(`${MOVIE_URL}?sortBy=id&order=desc`);
 };
 
 export { getMovies };
