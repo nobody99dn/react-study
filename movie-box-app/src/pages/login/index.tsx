@@ -74,7 +74,7 @@ const Login: NextPage<LoginProps> = ({
         title="Login to the site"
       />
       <div className="h-screen">
-        <div className="w-screen h-screen z-0 absolute">
+        <div className="w-full h-screen z-0 absolute">
           <Image
             src="/images/background.jpg"
             layout="fill"

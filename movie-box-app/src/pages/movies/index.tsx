@@ -24,6 +24,7 @@ import { ERROR_MESSAGES } from '@constants/messages';
 // Types
 import { TabOption, TAB_OPTION_LIST } from '@common-types/tabs';
 import LoadingIndicator from '@components/LoadingIndicator';
+import SearchBox from '@components/SearchBox';
 
 interface MoviesProps {
   movieList: Movie[];
@@ -32,13 +33,6 @@ interface MoviesProps {
 const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
   const [openTab, setOpenTab] = useState<TabOption>(TAB_OPTION_LIST[0]);
   const [movies, setMovies] = useState<Movie[]>(movieList);
-
-  useEffect(() => {
-    // const currentUser: Account | null = getCurrentUser();
-    // if (!currentUser) {
-    //   router.push('/login');
-    // }
-  }, []);
 
   /**
    * Handle sort Movies
@@ -57,7 +51,7 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
    * @params value string
    * @return void
    */
-  const handleSearchMovies = async (value: string) => {
+  const handleSearchMovies = useCallback(async (value: string) => {
     if (value) {
       const moviesFound: Movie[] = await searchMoviesByName(value);
       setMovies(moviesFound);
@@ -65,7 +59,7 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
     } else {
       setMovies(sortMoviesByTabOption(movies, openTab));
     }
-  };
+  }, []);
 
   return (
     <Suspense fallback={<LoadingIndicator />}>
@@ -81,8 +75,8 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
           currentTab={openTab}
           options={TAB_OPTION_LIST}
           onClick={handleRenderByTabOption}
-          onChange={handleSearchMovies}
         >
+          <SearchBox onChange={handleSearchMovies} />
           <MovieList movies={movies} />
         </Tabs>
       </section>

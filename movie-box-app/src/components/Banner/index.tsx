@@ -10,7 +10,7 @@ import Title from '@components/Title';
 
 const Banner: FC = () => (
   <div className="h-screen">
-    <div className="w-screen h-screen z-0 absolute">
+    <div className="w-full h-screen z-0 absolute">
       <Image src="/images/banner.jpg" layout="fill" alt="login background" />
     </div>
     <div className="absolute bottom-32 left-10">

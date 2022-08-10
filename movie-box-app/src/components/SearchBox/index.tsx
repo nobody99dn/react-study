@@ -10,11 +10,11 @@ interface SearchBoxProps {
 
 const SearchBox: FC<SearchBoxProps> = ({ className = '', onChange }) => {
   return (
-    <div className={`relative${className && ` ${className}`}`}>
+    <div className={`relative w-96 pl-12 mt-10${className && ` ${className}`}`}>
       <TextField
         name="search-box"
         type={TextFieldTypes.text}
-        className="border-gray-300 border-2 w-full px-1 py-2"
+        className="border-gray-200 border-2 w-full px-1 py-2 rounded-2xl shadow-2xl"
         onChange={onChange}
       />
       <Image
@@ -22,7 +22,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className = '', onChange }) => {
         alt="Search Icon"
         width={20}
         height={10}
-        className="absolute right-2 top-3 text-gray-300"
+        className="absolute right-2 top-2.5 text-gray-300"
       />
     </div>
   );

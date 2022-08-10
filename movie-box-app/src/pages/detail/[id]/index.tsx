@@ -37,7 +37,7 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
 
   return (
     <div className="h-screen relative">
-      <div className="w-screen h-screen z-0 absolute">
+      <div className="w-full h-screen z-0 absolute">
         <Image src={coverImage} layout="fill" alt="login background" />
       </div>
 
@@ -69,8 +69,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
       throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
     }
 
-    const paths = response.map(({ id }) => {
-      return { params: { id } };
+    const paths = response.map(({ id, coverImage }) => {
+      return { params: { id, coverImage } };
     });
 
     return {
