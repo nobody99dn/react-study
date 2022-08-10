@@ -42,15 +42,14 @@ const Card: FC<CardProps> = ({
           content={releaseYear}
           className="absolute bottom-5 left-3 text-gray-100"
         />
-        <div className="w-[275px] h-[350px]">
-          <Image
-            src={image}
-            alt={name}
-            width={275}
-            height={350}
-            style={{ width: '100%', height: 'auto' }}
-          />
-        </div>
+        <Image
+          src={image}
+          alt={name}
+          width={275}
+          height={350}
+          style={{ width: '100%', height: 'auto' }}
+          className="w-[275px] h-[350px]"
+        />
       </div>
       <div className="relative px-4 py-5">
         <div className="w-48">
