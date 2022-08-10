@@ -1,5 +1,5 @@
 // Libraries
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 // Types
 import { TitleVariants } from '@common-types/title';
@@ -41,4 +41,4 @@ const Banner: FC = () => (
   </div>
 );
 
-export default Banner;
+export default memo(Banner);
