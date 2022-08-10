@@ -1,5 +1,6 @@
 import Footer from '@components/Footer';
 import Navbar from '@components/Navbar';
+import { END_POINT } from '@constants/constants';
 import { useRouter } from 'next/router';
 import { FC, memo, ReactNode } from 'react';
 
@@ -9,13 +10,17 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const { pathname } = useRouter();
+  console.log(pathname);
 
   return (
     <>
-      {pathname !== '/login' && <Navbar />}
+      {pathname !== END_POINT.LOGIN && pathname !== END_POINT[404] && (
+        <Navbar />
+      )}
       <main>{children}</main>
-      {/* TODO: Implement Footer */}
-      {pathname !== '/login' && <Footer />}
+      {pathname !== END_POINT.LOGIN && pathname !== END_POINT[404] && (
+        <Footer />
+      )}
     </>
   );
 };
