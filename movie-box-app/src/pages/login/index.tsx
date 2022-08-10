@@ -9,7 +9,7 @@ import LoadingIndicator from '@components/LoadingIndicator';
 const Form = lazy(() => import('@components/Form'));
 const Text = lazy(() => import('@components/Text'));
 
-// Contants
+// Constants
 import { ROUTES, ERROR_MESSAGES } from '@constants/index';
 
 // Models
@@ -23,6 +23,7 @@ import { setCurrentUser } from '@helpers/index';
 
 // Components
 import SEO from '@components/SEO';
+import Image from 'next/image';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -72,8 +73,15 @@ const Login: NextPage<LoginProps> = ({
         siteTitle="Login page"
         title="Login to the site"
       />
-      <div className="h-screen bg-login bg-center bg-cover bg-no-repeat">
-        <div className="h-full flex flex-col items-center justify-center">
+      <div className="h-screen">
+        <div className="w-screen h-screen z-0 absolute">
+          <Image
+            src="/images/background.jpg"
+            layout="fill"
+            alt="login background"
+          />
+        </div>
+        <div className="relative h-full flex flex-col items-center justify-center z-10">
           <div className="rounded p-4 bg-gray-400">
             <Text
               content="USER NAME: DE130099"
