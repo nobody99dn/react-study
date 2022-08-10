@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
-import { useCallback, useEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 
@@ -13,10 +13,10 @@ import { Account } from '@models/Account';
 import { Movie } from '@models/Movie';
 
 // Components
-import Banner from '@components/Banner';
-import SEO from '@components/SEO';
-import Tabs from '@components/Tabs';
-import MovieList from '@components/MovieList';
+const Banner = lazy(() => import('@components/Banner'));
+const SEO = lazy(() => import('@components/SEO'));
+const Tabs = lazy(() => import('@components/Tabs'));
+const MovieList = lazy(() => import('@components/MovieList'));
 
 // Services
 import { getMovies } from '@services/movie.service';
@@ -26,6 +26,7 @@ import { ERROR_MESSAGES } from '@constants/messages';
 
 // Types
 import { TabOption, TAB_OPTION_LIST } from '@common-types/tabs';
+import LoadingIndicator from '@components/LoadingIndicator';
 
 interface HomeProps {
   movieList: Movie[];
@@ -56,7 +57,7 @@ const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<LoadingIndicator />}>
       <SEO
         description="The greatest movies you must known!"
         siteTitle="Home page"
@@ -72,7 +73,7 @@ const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
           <MovieList movies={movies} />
         </Tabs>
       </section>
-    </>
+    </Suspense>
   );
 };
 
