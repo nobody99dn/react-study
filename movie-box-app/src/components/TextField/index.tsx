@@ -39,6 +39,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       setValue(newValue);
 
       onChange && onChange(newValue);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

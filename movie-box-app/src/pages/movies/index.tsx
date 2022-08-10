@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
-import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useState } from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 
 // Helpers
