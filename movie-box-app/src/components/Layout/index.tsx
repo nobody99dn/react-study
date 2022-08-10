@@ -1,3 +1,4 @@
+import Footer from '@components/Footer';
 import Navbar from '@components/Navbar';
 import { useRouter } from 'next/router';
 import { FC, memo, ReactNode } from 'react';
@@ -14,7 +15,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       {pathname !== '/login' && <Navbar />}
       <main>{children}</main>
       {/* TODO: Implement Footer */}
-      {/* {pathname !== '/login' && <Footer />} */}
+      {pathname !== '/login' && <Footer />}
     </>
   );
 };
