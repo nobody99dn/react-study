@@ -1,7 +1,7 @@
 import Image from 'next/future/image';
 import { FC } from 'react';
 
-const Play: FC = () => (
+const PlayButton: FC = () => (
   <div className="bg-gray-400 rounded-xl w-1/3 h-[30vh] flex align-middle justify-center relative">
     <Image
       src="/icons/play.svg"
@@ -13,4 +13,4 @@ const Play: FC = () => (
   </div>
 );
 
-export default Play;
+export default PlayButton;
