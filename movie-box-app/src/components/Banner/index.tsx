@@ -17,22 +17,22 @@ const Banner: FC = () => (
       />
       <div className="flex">
         <Title
-          className=" pr-2"
+          className="pr-2"
           variant={TitleVariants.subtitle}
           content="Fantasy"
         />
         <Title
-          className=" pr-2"
+          className="pr-2"
           variant={TitleVariants.subtitle}
           content="Animation"
         />
         <Title
-          className=" pr-2"
+          className="pr-2"
           variant={TitleVariants.subtitle}
           content="Family"
         />
         <Title
-          className=" pr-2"
+          className="pr-2"
           variant={TitleVariants.subtitle}
           content="Duration: 1h 52m"
         />

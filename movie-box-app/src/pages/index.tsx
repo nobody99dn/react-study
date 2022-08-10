@@ -19,7 +19,7 @@ const Tabs = lazy(() => import('@components/Tabs'));
 const MovieList = lazy(() => import('@components/MovieList'));
 
 // Services
-import { getMovies } from '@services/movie.service';
+import { getMovies, searchMoviesByName } from '@services/movie.service';
 
 // Constants
 import { ERROR_MESSAGES } from '@constants/messages';
@@ -33,7 +33,7 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
-  const [openTab, setOpenTab] = useState(TAB_OPTION_LIST[0]);
+  const [openTab, setOpenTab] = useState<TabOption>(TAB_OPTION_LIST[0]);
   const [movies, setMovies] = useState<Movie[]>(movieList);
 
   const router = useRouter();
@@ -50,10 +50,26 @@ const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
    * Handle sort Movies
    *
    * @params key TabOption
+   * @params void
    */
   const handleRenderByTabOption = useCallback((key: TabOption) => {
     setOpenTab(key);
     setMovies(sortMoviesByTabOption(movies, key));
+  }, []);
+
+  /**
+   * Handle search movie by name
+   *
+   * @params value string
+   * @return void
+   */
+  const handleSearchMovies = useCallback(async (value: string) => {
+    if (value === '') {
+      setMovies(sortMoviesByTabOption(movies, openTab));
+    } else {
+      const moviesFound: Movie[] = await searchMoviesByName(value);
+      setMovies(moviesFound);
+    }
   }, []);
 
   return (
@@ -69,6 +85,7 @@ const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
           currentTab={openTab}
           options={TAB_OPTION_LIST}
           onClick={handleRenderByTabOption}
+          onChange={handleSearchMovies}
         >
           <MovieList movies={movies} />
         </Tabs>
