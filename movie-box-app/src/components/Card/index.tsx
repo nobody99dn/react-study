@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { FC, memo, useCallback } from 'react';
 import Image from 'next/future/image';

@@ -10,6 +10,9 @@ import MenuItem from '@components/MenuItem';
 import Text from '@components/Text';
 import Title from '@components/Title';
 
+// Constants
+import { ROUTES } from '@constants/constants';
+
 const Footer: FC = () => (
   <footer className="px-10 py-8">
     <div className="border-b pb-8">
@@ -19,16 +22,16 @@ const Footer: FC = () => (
         className="text-[#494C62] uppercase inline-block"
       />
       <ul className="float-right">
-        <MenuItem href="/" className="ml-8" key="about">
+        <MenuItem href={ROUTES.MOVIES} className="ml-8" key="about">
           About
         </MenuItem>
-        <MenuItem href="/" className="ml-8" key="movies">
+        <MenuItem href={ROUTES.MOVIES} className="ml-8" key="movies">
           Movies
         </MenuItem>
-        <MenuItem href="/" className="ml-8" key="rating">
+        <MenuItem href={ROUTES.MOVIES} className="ml-8" key="rating">
           Rating
         </MenuItem>
-        <MenuItem href="/" className="ml-8" key="contact">
+        <MenuItem href={ROUTES.MOVIES} className="ml-8" key="contact">
           Contact
         </MenuItem>
       </ul>
@@ -39,7 +42,7 @@ const Footer: FC = () => (
         className="text-gray-200 inline-block"
       />
       <ul className="float-right">
-        <MenuItem href="/" className="ml-4" key="twitter">
+        <MenuItem href={ROUTES.MOVIES} className="ml-4" key="twitter">
           <Image
             src="/icons/twitter.svg"
             width="30"
@@ -47,7 +50,7 @@ const Footer: FC = () => (
             alt="twitter"
           />
         </MenuItem>
-        <MenuItem href="/" className="ml-4" key="pinterest">
+        <MenuItem href={ROUTES.MOVIES} className="ml-4" key="pinterest">
           <Image
             src="/icons/pinterest.svg"
             width="30"
@@ -55,7 +58,7 @@ const Footer: FC = () => (
             alt="pinterest"
           />
         </MenuItem>
-        <MenuItem href="/" className="ml-4" key="facebook">
+        <MenuItem href={ROUTES.MOVIES} className="ml-4" key="facebook">
           <Image
             src="/icons/facebook.svg"
             width="30"
@@ -63,7 +66,7 @@ const Footer: FC = () => (
             alt="facebook"
           />
         </MenuItem>
-        <MenuItem href="/" className="ml-4" key="instagram">
+        <MenuItem href={ROUTES.MOVIES} className="ml-4" key="instagram">
           <Image
             src="/icons/instagram.svg"
             width="30"

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { lazy, Suspense, useCallback } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -26,12 +27,12 @@ interface DetailProps {
 }
 
 const Detail: NextPage<DetailProps> = ({ movie }) => {
-  const { push } = useRouter();
+  const { back } = useRouter();
 
   const { coverImage = '/images/default-cover.jpg' } = movie;
 
   const handleBack = useCallback(() => {
-    push('/');
+    back();
   }, []);
 
   return (
