@@ -6,7 +6,7 @@
 
 ## TIMELINE
 
-- Estimate time: **7 days (2022/04/08 - 2022/08/10)**
+- Estimate time: **5 days (2022/04/08 - 2022/08/10)**
 
 ## TEAM SIZE
 
