@@ -44,6 +44,24 @@
 - 1 developer
   - Van Tran
 
+## Practice 4: Movie Box Application (5 days)
+
+### Usage
+
+- Clone project: `git clone git@gitlab.asoft-python.com:van.tran/react-training.git`
+- `git checkout develop`
+- `cd movie-box-app`
+- run `pnpm i` then run `pnpm dev`
+
+### Deployment
+
+- `https://movie-box-app.vercel.app`
+
+### Team size
+
+- 1 developer
+  - Van Tran
+
 # expired
 
 ## Practice 1: Increase/Decrease Application (1 day)
