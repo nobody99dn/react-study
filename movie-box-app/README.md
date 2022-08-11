@@ -100,7 +100,7 @@
 - Checkout branch:
 
   ```bash
-  $ git checkout feature/movie-box-app
+  $ git checkout develop
   ```
 
 - Change directory:
