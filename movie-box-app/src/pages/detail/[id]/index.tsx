@@ -76,7 +76,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const response: MoviesResponse = await getMovies();
 
     if (response.message === RESPONSE_MESSAGES[200] && response.movies) {
-      const paths = response?.movies.map(({ id }) => {
+      const paths = response.movies.map(({ id }) => {
         return { params: { id } };
       });
 

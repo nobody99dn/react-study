@@ -29,15 +29,7 @@ const nextConfig = {
     deviceSizes: [480, 768, 1024, 1200, 2048],
     imageSizes: [16, 48, 96, 128, 348]
   },
-  trailingSlash: true,
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      '/movies': { page: '/movies' }
-    };
-  }
+  trailingSlash: true
 };
 
 module.exports = nextConfig;

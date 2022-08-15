@@ -12,7 +12,7 @@ import { METHODS, RESPONSE_MESSAGES, DataPath } from '@constants/index';
 import { Movie } from '@models/Movie';
 
 export const handler = async (
-  { method, query: { name } }: NextApiRequest,
+  { method, query: { name = '' } }: NextApiRequest,
   res: NextApiResponse<MoviesResponse>
 ) => {
   switch (method) {
