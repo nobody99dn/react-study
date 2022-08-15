@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4001",
-    "build": "next build && next export",
-    "start": "next start",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 4000",
     "lint": "next lint",
     "check-types": "tsc --pretty --noEmit",
     "format": "prettier --write src/**/*.{ts,tsx}",

@@ -16,6 +16,9 @@ import { Movie } from '@models/Movie';
 import { TitleVariants } from '@common-types/title';
 import { useRouter } from 'next/router';
 
+// Helpers
+import { imageLoader } from '@helpers/index';
+
 interface CardProps {
   className?: string;
   movie: Movie;
@@ -44,6 +47,7 @@ const Card: FC<CardProps> = ({
           className="absolute bottom-5 left-3 text-gray-100"
         />
         <Image
+          loader={imageLoader}
           src={image}
           alt={name}
           width={275}

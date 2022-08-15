@@ -6,7 +6,7 @@
     "rating": 4,
     "releaseYear": 1999,
     "id": "1",
-    "coverImage": "https://lh3.googleusercontent.com/qzDIRuceKc-cs_aComoBHfgWx37YtzXNeiURV882ANEWQhZvI0tc9nlBbk50OJJtMUQ=w2400"
+    "coverImage": "https://lh3.googleusercontent.com/qzDIRuceKc-cs_aComoBHfgWx37YtzXNeiURV882ANEWQhZvI0tc9nlBbk50OJJtMUQ"
   },
   {
     "name": "John Wick: Chapter 2",
@@ -15,7 +15,7 @@
     "rating": 4.5,
     "releaseYear": 2017,
     "id": "2",
-    "coverImage": "https://lh4.googleusercontent.com/UJpYs1RImbqvxm4vitbtUaauu75W6AGK1KWJwv027Mm03ALUDR7IWFrs4RYvsBWD-W4=w2400"
+    "coverImage": "https://lh4.googleusercontent.com/UJpYs1RImbqvxm4vitbtUaauu75W6AGK1KWJwv027Mm03ALUDR7IWFrs4RYvsBWD-W4"
   },
   {
     "name": "Fantasy beasts and Magics",
@@ -24,7 +24,7 @@
     "rating": 4.9,
     "releaseYear": 2018,
     "id": "3",
-    "coverImage": "https://lh3.googleusercontent.com/sJUB7d2CZzhf0KMuKCSUL_Dt2IV7HiHuXBWl9wHtWLoJ3YMlPMg_grwDmkn95dWzOO0=w2400"
+    "coverImage": "https://lh3.googleusercontent.com/sJUB7d2CZzhf0KMuKCSUL_Dt2IV7HiHuXBWl9wHtWLoJ3YMlPMg_grwDmkn95dWzOO0"
   },
   {
     "name": "Beauty and the Beast",
@@ -33,7 +33,7 @@
     "rating": 4,
     "releaseYear": 2018,
     "id": "4",
-    "coverImage": "https://lh4.googleusercontent.com/tNGHq_nX2MsUKH396SqZ_rhZr949fmvm-SHa3repMELu639NG8-e5B16RWA8-3Ylmhc=w2400"
+    "coverImage": "https://lh4.googleusercontent.com/tNGHq_nX2MsUKH396SqZ_rhZr949fmvm-SHa3repMELu639NG8-e5B16RWA8-3Ylmhc"
   },
   {
     "name": "Justic League",
@@ -42,7 +42,7 @@
     "rating": 4.9,
     "releaseYear": 2020,
     "id": "5",
-    "coverImage": "https://lh4.googleusercontent.com/WnXPPwYj_y_ZRbo2dwf98jXcVtopCoG7LSW5dyjwkXgWl7zjwFarmbS82DaTBB-fSP4=w2400"
+    "coverImage": "https://lh4.googleusercontent.com/WnXPPwYj_y_ZRbo2dwf98jXcVtopCoG7LSW5dyjwkXgWl7zjwFarmbS82DaTBB-fSP4"
   },
   {
     "name": "Pirates of the Caribbe",
@@ -51,7 +51,7 @@
     "rating": 4.8,
     "releaseYear": 1999,
     "id": "6",
-    "coverImage": "https://lh6.googleusercontent.com/6JizX-ikLx7WKOEZT6xLyOxurfajRnshS8FBtvfdpuVGRJeKW5q2py91nVqep6hvDbM=w2400"
+    "coverImage": "https://lh6.googleusercontent.com/6JizX-ikLx7WKOEZT6xLyOxurfajRnshS8FBtvfdpuVGRJeKW5q2py91nVqep6hvDbM"
   },
   {
     "name": "Wonder Woman",
@@ -60,6 +60,6 @@
     "rating": 4.8,
     "releaseYear": 1999,
     "id": "7",
-    "coverImage": "https://lh6.googleusercontent.com/uFaXG9RFOdo9EWTvy0KySwFRjlTVz9JJyFvX7RXfoLxQtX_aF337iMm3lT_KgTzcnnE=w2400"
+    "coverImage": "https://lh6.googleusercontent.com/uFaXG9RFOdo9EWTvy0KySwFRjlTVz9JJyFvX7RXfoLxQtX_aF337iMm3lT_KgTzcnnE"
   }
 ]

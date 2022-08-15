@@ -2,8 +2,11 @@
 // Libraries
 import { lazy, Suspense, useCallback } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { useRouter } from 'next/router';
 import Image from 'next/future/image';
+import { useRouter } from 'next/router';
+
+// Helpers
+import { imageLoader } from '@helpers/index';
 
 // Services
 import { getMovieById, getMovies } from '@services/movie.service';
@@ -40,6 +43,7 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
     <div className="h-screen relative">
       <div className="w-full h-screen z-0 absolute overflow-hidden">
         <Image
+          loader={imageLoader}
           src={coverImage}
           alt="detail background"
           width={1440}
