@@ -1,7 +1,7 @@
 const ROUTES = {
   LOGIN: '/login',
   404: '/404',
-  MOVIES: '/movies',
+  MOVIES: '/home',
   UNDEFINED: '#!'
 };
 

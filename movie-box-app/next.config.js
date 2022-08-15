@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/movie/:id',
+        destination: '/detail/:id'
+      },
+      { source: '/home', destination: '/movies' }
+    ];
+  },
   async redirects() {
     return [
       {
