@@ -28,7 +28,7 @@ const Card: FC<CardProps> = ({
   const { push } = useRouter();
 
   const handleClick = useCallback(() => {
-    push(`/movie/${id}`);
+    push(`/detail/${id}`);
   }, []);
 
   return (

@@ -39,7 +39,7 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
    * Handle sort Movies
    *
    * @params key TabOption
-   * @params void
+   * @return void
    */
   const handleRenderByTabOption = useCallback((key: TabOption) => {
     setOpenTab(key);
