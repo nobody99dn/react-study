@@ -17,7 +17,8 @@ const Banner: FC = () => (
       style={{ width: '100%', height: 'auto' }}
       placeholder="blur"
       blurDataURL="/images/blur.jpg"
-      alt="login background"
+      alt="blur background"
+      sizes="100vw"
     />
     <div className="absolute bottom-32 left-10">
       <Title

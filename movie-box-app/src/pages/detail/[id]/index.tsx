@@ -47,6 +47,7 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
           style={{ width: '100%', height: 'auto' }}
           placeholder="blur"
           blurDataURL="/images/blur.jpg"
+          sizes="100vw"
         />
       </div>
 

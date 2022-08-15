@@ -71,7 +71,7 @@ const Login: NextPage<LoginProps> = ({
         title="Login to the site"
       />
       <div className="h-screen">
-        <div className="w-full h-screen z-0 absolute  overflow-hidden">
+        <div className="w-full h-screen z-0 absolute overflow-hidden">
           <Image
             src="/images/background.jpg"
             width={1440}
@@ -80,6 +80,7 @@ const Login: NextPage<LoginProps> = ({
             placeholder="blur"
             blurDataURL="/images/blur.jpg"
             alt="login background"
+            sizes="100vw"
           />
         </div>
         <div className="relative h-full flex flex-col items-center justify-center z-10">

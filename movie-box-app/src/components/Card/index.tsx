@@ -20,6 +20,7 @@ interface CardProps {
   className?: string;
   movie: Movie;
 }
+
 const Card: FC<CardProps> = ({
   className = '',
   movie: { id, name, genres, image, rating, releaseYear }
@@ -50,7 +51,7 @@ const Card: FC<CardProps> = ({
           style={{ width: '100%', height: 'auto' }}
           placeholder="blur"
           blurDataURL="/images/blur.jpg"
-          className="w-[275px] h-[350px]"
+          loading="lazy"
         />
       </div>
       <div className="relative px-4 py-5">

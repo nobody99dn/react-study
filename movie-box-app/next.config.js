@@ -21,9 +21,10 @@ const nextConfig = {
       'lh5.googleusercontent.com',
       'lh3.googleusercontent.com',
       'lh4.googleusercontent.com',
-      'lh6.googleusercontent.com',
-      'drive.google.com'
-    ]
+      'lh6.googleusercontent.com'
+    ],
+    deviceSizes: [480, 768, 1024, 1200, 2048],
+    imageSizes: [16, 48, 96, 128, 348]
   },
   trailingSlash: true,
   exportPathMap: async function (
