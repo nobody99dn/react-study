@@ -24,6 +24,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       error
     });
   }
+
   render() {
     if (this.state.hasError) {
       return (
@@ -31,7 +32,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
           <h2>Oops, there is an error!</h2>
           <details style={{ whiteSpace: 'pre-wrap' }}>
             {this.state.error && this.state.error.toString()}
-            <br />
           </details>
           <button
             type="button"

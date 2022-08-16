@@ -86,4 +86,4 @@ const Footer: FC = () => (
   </footer>
 );
 
-export default memo(Footer);
+export default Footer;

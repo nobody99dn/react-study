@@ -1,5 +1,5 @@
 // Libraries
-import { FC, memo, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 // Components
 import Footer from '@components/Footer';

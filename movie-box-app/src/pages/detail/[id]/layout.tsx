@@ -1,5 +1,5 @@
 // Libraries
-import { FC, memo, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 // Components
 import Footer from '@components/Footer';
@@ -19,4 +19,4 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   );
 };
 
-export default memo(Layout);
+export default Layout;

@@ -69,6 +69,7 @@ const Detail: NextPage<DetailProps> = ({ movie, errorMessage = '' }) => {
         <div className="absolute top-40 left-20 w-10 bg-white-100 rounded-xl cursor-pointer">
           <Image
             loader={internalLoader}
+            unoptimized
             src="/icons/arrow-left-short.svg"
             width="50"
             height="50"

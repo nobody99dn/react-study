@@ -2,7 +2,7 @@ const ROUTES = {
   LOGIN: '/login',
   404: '/404',
   MOVIES: '/home',
-  UNDEFINED: '#'
+  UNDEFINED: '/'
 };
 
 const USER_KEY = 'currentUser';

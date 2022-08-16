@@ -17,6 +17,7 @@ const SEO = lazy(() => import('@components/SEO'));
 const Tabs = lazy(() => import('@components/Tabs'));
 const MovieList = lazy(() => import('@components/MovieList'));
 const Text = lazy(() => import('@components/Text'));
+const ErrorBoundary = lazy(() => import('@components/ErrorBoundary'));
 
 // Services
 import { getMovies, searchMoviesByName } from '@services/movie.service';
@@ -90,15 +91,19 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [], error = '' }) => {
 
         <Banner />
         <section className="px-12">
-          <Tabs
-            currentTab={openTab}
-            options={TAB_OPTION_LIST}
-            onClick={handleRenderByTabOption}
-          >
-            <SearchBox onChange={handleSearchMovies} />
-            <MovieList movies={movies} />
-            {error && <Text content={errorMessage} className="text-red-100" />}
-          </Tabs>
+          <ErrorBoundary>
+            <Tabs
+              currentTab={openTab}
+              options={TAB_OPTION_LIST}
+              onClick={handleRenderByTabOption}
+            >
+              <SearchBox onChange={handleSearchMovies} />
+              <MovieList movies={movies} />
+              {error && (
+                <Text content={errorMessage} className="text-red-100" />
+              )}
+            </Tabs>
+          </ErrorBoundary>
         </section>
       </Suspense>
     </Layout>

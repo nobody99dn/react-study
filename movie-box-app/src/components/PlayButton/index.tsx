@@ -7,6 +7,7 @@ const PlayButton: FC = () => (
     <div className="w-28 flex align-middle">
       <Image
         loader={internalLoader}
+        unoptimized
         src="/icons/play.svg"
         alt="Play icon"
         width="100"

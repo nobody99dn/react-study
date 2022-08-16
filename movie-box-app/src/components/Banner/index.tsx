@@ -15,6 +15,7 @@ const Banner: FC = () => (
   <div className="h-screen overflow-hidden">
     <Image
       loader={internalLoader}
+      unoptimized
       src="/images/banner.jpg"
       width={1440}
       height={475}

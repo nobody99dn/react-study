@@ -21,6 +21,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className = '', onChange }) => {
       <div className="absolute w-6 right-4 top-2.5">
         <Image
           loader={internalLoader}
+          unoptimized
           src="/icons/search.svg"
           alt="Search Icon"
           width={20}
