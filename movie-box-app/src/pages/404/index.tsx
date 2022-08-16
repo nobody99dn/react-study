@@ -10,7 +10,7 @@ import { ROUTES } from '@constants/constants';
 import { useRouter } from 'next/router';
 
 // Helpers
-import { staticLoader } from '@helpers/image';
+import { internalLoader } from '@helpers/image';
 
 export default function Custom404() {
   const { asPath } = useRouter();
@@ -18,7 +18,7 @@ export default function Custom404() {
   return (
     <main className="absolute top-0 right-0 left-0 bottom-0 w-screen h-screen z-0">
       <Image
-        loader={staticLoader}
+        loader={internalLoader}
         src="/images/404.jpg"
         sizes="100vw"
         alt="Page not found!"

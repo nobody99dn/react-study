@@ -9,12 +9,12 @@ import { TitleVariants } from '@common-types/title';
 import Title from '@components/Title';
 
 // Helpers
-import { staticLoader } from '@helpers/image';
+import { internalLoader } from '@helpers/image';
 
 const Banner: FC = () => (
   <div className="h-screen overflow-hidden">
     <Image
-      loader={staticLoader}
+      loader={internalLoader}
       src="/images/banner.jpg"
       width={1440}
       height={475}

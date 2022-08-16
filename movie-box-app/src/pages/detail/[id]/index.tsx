@@ -6,7 +6,7 @@ import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 
 // Helpers
-import { imageLoader, staticLoader } from '@helpers/index';
+import { externalLoader, internalLoader } from '@helpers/index';
 
 // Services
 import { getMovieById, getMovies } from '@services/movie.service';
@@ -47,7 +47,7 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
       <div className="h-screen relative">
         <div className="w-full h-screen z-0 absolute overflow-hidden">
           <Image
-            loader={imageLoader}
+            loader={externalLoader}
             src={coverImage}
             alt="detail background"
             width={1440}
@@ -61,7 +61,7 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
 
         <div className="absolute top-40 left-20 w-10 bg-white-100 rounded-xl cursor-pointer">
           <Image
-            loader={staticLoader}
+            loader={internalLoader}
             src="/icons/arrow-left-short.svg"
             width="50"
             height="50"

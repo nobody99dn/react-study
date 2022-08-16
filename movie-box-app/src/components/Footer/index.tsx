@@ -14,7 +14,7 @@ import Title from '@components/Title';
 import { ROUTES } from '@constants/constants';
 
 // Helpers
-import { staticLoader } from '@helpers/image';
+import { internalLoader } from '@helpers/image';
 
 const Footer: FC = () => (
   <footer className="px-10 py-8">
@@ -47,7 +47,7 @@ const Footer: FC = () => (
       <ul className="float-right">
         <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="twitter">
           <Image
-            loader={staticLoader}
+            loader={internalLoader}
             src="/icons/twitter.svg"
             width="30"
             height="30"
@@ -56,7 +56,7 @@ const Footer: FC = () => (
         </MenuItem>
         <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="pinterest">
           <Image
-            loader={staticLoader}
+            loader={internalLoader}
             src="/icons/pinterest.svg"
             width="30"
             height="30"
@@ -65,7 +65,7 @@ const Footer: FC = () => (
         </MenuItem>
         <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="facebook">
           <Image
-            loader={staticLoader}
+            loader={internalLoader}
             src="/icons/facebook.svg"
             width="30"
             height="30"
@@ -74,7 +74,7 @@ const Footer: FC = () => (
         </MenuItem>
         <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="instagram">
           <Image
-            loader={staticLoader}
+            loader={internalLoader}
             src="/icons/instagram.svg"
             width="30"
             height="30"

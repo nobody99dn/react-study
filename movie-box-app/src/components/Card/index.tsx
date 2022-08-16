@@ -17,7 +17,7 @@ import { TitleVariants } from '@common-types/title';
 import { useRouter } from 'next/router';
 
 // Helpers
-import { imageLoader } from '@helpers/index';
+import { externalLoader } from '@helpers/index';
 
 interface CardProps {
   className?: string;
@@ -47,7 +47,7 @@ const Card: FC<CardProps> = ({
           className="absolute bottom-5 left-3 text-gray-100"
         />
         <Image
-          loader={imageLoader}
+          loader={externalLoader}
           src={image}
           alt={name}
           width={275}

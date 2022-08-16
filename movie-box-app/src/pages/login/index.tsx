@@ -26,7 +26,7 @@ import SEO from '@components/SEO';
 
 // Types
 import { AccountResponse } from '@common-types/apiResponse';
-import { staticLoader } from '@helpers/image';
+import { internalLoader } from '@helpers/image';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -76,7 +76,7 @@ const Login: NextPage<LoginProps> = ({
       <main className="h-screen">
         <div className="w-full h-screen z-0 absolute overflow-hidden">
           <Image
-            loader={staticLoader}
+            loader={internalLoader}
             src="/images/background.jpg"
             width={1440}
             height={475}
