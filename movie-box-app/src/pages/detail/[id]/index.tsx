@@ -6,7 +6,7 @@ import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 
 // Helpers
-import { imageLoader } from '@helpers/index';
+import { imageLoader, staticLoader } from '@helpers/index';
 
 // Services
 import { getMovieById, getMovies } from '@services/movie.service';
@@ -55,13 +55,14 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
         />
       </div>
 
-      <div className="absolute top-40 left-20">
+      <div className="absolute top-40 left-20 w-10 bg-white-100 rounded-xl cursor-pointer">
         <Image
-          className="bg-white-100 rounded-xl cursor-pointer"
+          loader={staticLoader}
           src="/icons/arrow-left-short.svg"
           width="50"
           height="50"
           alt="back-icon"
+          style={{ width: '100%', height: 'auto' }}
           onClick={handleBack}
         />
       </div>

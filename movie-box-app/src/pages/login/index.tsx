@@ -3,6 +3,8 @@
 import { lazy, Suspense, useCallback, useState } from 'react';
 import type { NextPage, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+
+// Helpers
 import Image from 'next/future/image';
 
 // Components
@@ -24,6 +26,7 @@ import SEO from '@components/SEO';
 
 // Types
 import { AccountResponse } from '@common-types/apiResponse';
+import { staticLoader } from '@helpers/image';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -73,6 +76,7 @@ const Login: NextPage<LoginProps> = ({
       <div className="h-screen">
         <div className="w-full h-screen z-0 absolute overflow-hidden">
           <Image
+            loader={staticLoader}
             src="/images/background.jpg"
             width={1440}
             height={475}

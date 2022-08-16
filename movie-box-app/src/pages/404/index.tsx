@@ -7,11 +7,18 @@ import Text from '@components/Text';
 
 // Constants
 import { ROUTES } from '@constants/constants';
+import { useRouter } from 'next/router';
+
+// Helpers
+import { staticLoader } from '@helpers/image';
 
 export default function Custom404() {
+  const { asPath } = useRouter();
+
   return (
     <div className="absolute top-0 right-0 left-0 bottom-0 w-screen h-screen z-0">
       <Image
+        loader={staticLoader}
         src="/images/404.jpg"
         sizes="100vw"
         alt="Page not found!"
@@ -23,6 +30,9 @@ export default function Custom404() {
         <Text
           content="404 - Page Not Found"
           className="text-red-100 font-bold text-2xl"
+        />
+        <Text
+          content={`The requested URL ${asPath} was not found on this server. That’s all we know.`}
         />
         <Link href={ROUTES.MOVIES}>HOME PAGE</Link>
       </div>
