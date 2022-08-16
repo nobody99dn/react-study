@@ -7,8 +7,9 @@ import 'tailwindcss/tailwind.css';
 
 // Layouts
 import Layout from '@layouts/Main';
-import ErrorBoundary from '@components/ErrorBoudary';
-import LoadingIndicator from '@components/LoadingIndicator';
+
+// Components
+import ErrorBoundary from '@components/ErrorBoundary';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <Layout>
