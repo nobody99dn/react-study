@@ -12,11 +12,11 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import Layout from './layout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <Layout>
-    <ErrorBoundary>
+  <ErrorBoundary>
+    <Layout>
       <Component {...pageProps} />
-    </ErrorBoundary>
-  </Layout>
+    </Layout>
+  </ErrorBoundary>
 );
 
 export default MyApp;
