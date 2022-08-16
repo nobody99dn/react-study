@@ -1,7 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { lazy, Suspense, useCallback } from 'react';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  GetStaticPropsResult,
+  NextPage
+} from 'next';
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 
@@ -25,15 +30,17 @@ import { MovieResponse, MoviesResponse } from '@common-types/apiResponse';
 import LoadingIndicator from '@components/LoadingIndicator';
 const Info = lazy(() => import('@components/Info'));
 const PlayButton = lazy(() => import('@components/PlayButton'));
+const Text = lazy(() => import('@components/Text'));
 
 // Layout
 import Layout from './layout';
 
 interface DetailProps {
-  movie: Movie;
+  movie?: Movie;
+  errorMessage?: string;
 }
 
-const Detail: NextPage<DetailProps> = ({ movie }) => {
+const Detail: NextPage<DetailProps> = ({ movie, errorMessage = '' }) => {
   const { push } = useRouter();
 
   const { coverImage = '/images/default-cover.jpg' } = movie || {};
@@ -47,7 +54,7 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
       <div className="h-screen relative">
         <div className="w-full h-screen z-0 absolute overflow-hidden">
           <Image
-            loader={externalLoader}
+            loader={movie?.coverImage ? externalLoader : internalLoader}
             src={coverImage}
             alt="detail background"
             width={1440}
@@ -72,7 +79,11 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
         </div>
         <div className="pt-40 pl-20 flex justify-evenly align-middle">
           <Suspense fallback={<LoadingIndicator />}>
-            <Info movie={movie} />
+            {movie ? (
+              <Info movie={movie} />
+            ) : (
+              <Text content={errorMessage} className="text-red-100 z-10" />
+            )}
             <PlayButton />
           </Suspense>
         </div>
@@ -106,7 +117,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params
+}): Promise<GetStaticPropsResult<DetailProps>> => {
   try {
     const { id = 0 } = params as ParamsProps;
 

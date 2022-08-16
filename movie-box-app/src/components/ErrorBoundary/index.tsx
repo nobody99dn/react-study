@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ReactNode } from 'react';
 
 type ErrorBoundaryState = {
   hasError: boolean;
@@ -18,10 +18,10 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       error: error
     };
   }
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log({ error, errorInfo });
+
+  componentDidCatch(error: Error) {
     this.setState({
-      error: error
+      error
     });
   }
   render() {

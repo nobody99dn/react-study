@@ -19,4 +19,4 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   );
 };
 
-export default memo(Layout);
+export default Layout;

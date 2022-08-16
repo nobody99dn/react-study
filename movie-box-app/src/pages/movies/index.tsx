@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
-import { lazy, Suspense, useCallback, useState } from 'react';
-import type { GetStaticProps, NextPage } from 'next';
+import { lazy, memo, Suspense, useCallback, useState } from 'react';
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 
 // Helpers
 import { sortMoviesByTabOption } from '@helpers/sort';
@@ -16,6 +16,7 @@ const Banner = lazy(() => import('@components/Banner'));
 const SEO = lazy(() => import('@components/SEO'));
 const Tabs = lazy(() => import('@components/Tabs'));
 const MovieList = lazy(() => import('@components/MovieList'));
+const Text = lazy(() => import('@components/Text'));
 
 // Services
 import { getMovies, searchMoviesByName } from '@services/movie.service';
@@ -26,15 +27,20 @@ import { ERROR_MESSAGES } from '@constants/messages';
 // Types
 import { TabOption, TAB_OPTION_LIST } from '@common-types/tabs';
 import { MoviesResponse } from '@common-types/apiResponse';
+import { ApiError } from '@common-types/error';
+
+// Layouts
 import Layout from './layout';
 
 interface MoviesProps {
-  movieList: Movie[];
+  movieList?: Movie[];
+  error?: string;
 }
 
-const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
+const Movies: NextPage<MoviesProps> = ({ movieList = [], error = '' }) => {
   const [openTab, setOpenTab] = useState<TabOption>(TAB_OPTION_LIST[0]);
   const [movies, setMovies] = useState<Movie[]>(movieList);
+  const [errorMessage, setErrorMessage] = useState(error);
 
   /**
    * Handle sort Movies
@@ -54,11 +60,22 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
    * @return void
    */
   const handleSearchMovies = useCallback(async (value: string) => {
-    if (value) {
-      const moviesFound: MoviesResponse = await searchMoviesByName(value);
-      setMovies(moviesFound.movies || []);
-    } else {
-      setMovies(sortMoviesByTabOption(movies, openTab));
+    try {
+      if (value) {
+        const moviesFound: MoviesResponse = await searchMoviesByName(value);
+
+        if (!moviesFound) {
+          throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+        }
+
+        setMovies(moviesFound.movies || []);
+      } else {
+        setMovies(sortMoviesByTabOption(movies, openTab));
+      }
+    } catch (error) {
+      if (error instanceof ApiError) {
+        setErrorMessage(error.message);
+      }
     }
   }, []);
 
@@ -80,6 +97,7 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
           >
             <SearchBox onChange={handleSearchMovies} />
             <MovieList movies={movies} />
+            {error && <Text content={errorMessage} className="text-red-100" />}
           </Tabs>
         </section>
       </Suspense>
@@ -87,7 +105,9 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<MoviesProps>
+> => {
   try {
     const response: MoviesResponse = await getMovies();
 
@@ -99,12 +119,16 @@ export const getStaticProps: GetStaticProps = async () => {
       props: { movieList: response.movies }
     };
   } catch (error) {
-    if (error instanceof Error) {
-      return { props: { errorMessage: error.message } };
+    if (error instanceof ApiError) {
+      return {
+        props: {
+          error: error.message
+        }
+      };
     }
 
     return { props: {} };
   }
 };
 
-export default Movies;
+export default memo(Movies);

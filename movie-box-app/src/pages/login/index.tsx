@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { lazy, Suspense, useCallback, useState } from 'react';
-import type { NextPage, GetStaticProps } from 'next';
+import type { NextPage, GetStaticProps, GetStaticPropsResult } from 'next';
 import { useRouter } from 'next/router';
 
 // Helpers
@@ -109,7 +109,9 @@ const Login: NextPage<LoginProps> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<LoginProps>
+> => {
   try {
     const { users, message }: AccountResponse = await getAccounts();
 
