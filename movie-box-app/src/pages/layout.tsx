@@ -2,13 +2,6 @@
 import { FC, memo, ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-// Constants
-import { ROUTES } from '@constants/constants';
-
-// Layouts
-import Footer from '@layouts/Footer';
-import Navbar from '@layouts/Header';
-
 // Components
 import LoadingIndicator from '@components/LoadingIndicator';
 
@@ -35,19 +28,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
-  return (
-    <>
-      {pageLoading ? (
-        <LoadingIndicator />
-      ) : (
-        <>
-          {pathname !== ROUTES.LOGIN && pathname !== ROUTES[404] && <Navbar />}
-          <main>{children}</main>
-          {pathname !== ROUTES.LOGIN && pathname !== ROUTES[404] && <Footer />}
-        </>
-      )}
-    </>
-  );
+  return <>{pageLoading ? <LoadingIndicator /> : <>{children}</>}</>;
 };
 
 export default memo(Layout);

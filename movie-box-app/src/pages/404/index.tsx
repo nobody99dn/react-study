@@ -16,7 +16,7 @@ export default function Custom404() {
   const { asPath } = useRouter();
 
   return (
-    <div className="absolute top-0 right-0 left-0 bottom-0 w-screen h-screen z-0">
+    <main className="absolute top-0 right-0 left-0 bottom-0 w-screen h-screen z-0">
       <Image
         loader={staticLoader}
         src="/images/404.jpg"
@@ -36,6 +36,6 @@ export default function Custom404() {
         />
         <Link href={ROUTES.MOVIES}>HOME PAGE</Link>
       </div>
-    </div>
+    </main>
   );
 }

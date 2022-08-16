@@ -5,11 +5,11 @@ import type { AppProps } from 'next/app';
 import '../styles/globals.css';
 import 'tailwindcss/tailwind.css';
 
-// Layouts
-import Layout from '@layouts/Main';
-
 // Components
 import ErrorBoundary from '@components/ErrorBoundary';
+
+// Layout
+import Layout from './layout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <Layout>

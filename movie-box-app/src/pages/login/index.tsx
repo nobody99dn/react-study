@@ -73,7 +73,7 @@ const Login: NextPage<LoginProps> = ({
         siteTitle="Login page"
         title="Login to the site"
       />
-      <div className="h-screen">
+      <main className="h-screen">
         <div className="w-full h-screen z-0 absolute overflow-hidden">
           <Image
             loader={staticLoader}
@@ -104,7 +104,7 @@ const Login: NextPage<LoginProps> = ({
           />
           <Form className="w-1/3" onSubmit={handleSubmit} />
         </div>
-      </div>
+      </main>
     </Suspense>
   );
 };

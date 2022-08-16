@@ -26,6 +26,9 @@ import LoadingIndicator from '@components/LoadingIndicator';
 const Info = lazy(() => import('@components/Info'));
 const PlayButton = lazy(() => import('@components/PlayButton'));
 
+// Layout
+import Layout from './layout';
+
 interface DetailProps {
   movie: Movie;
 }
@@ -40,39 +43,41 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
   }, []);
 
   return (
-    <div className="h-screen relative">
-      <div className="w-full h-screen z-0 absolute overflow-hidden">
-        <Image
-          loader={imageLoader}
-          src={coverImage}
-          alt="detail background"
-          width={1440}
-          height={475}
-          style={{ width: '100%', height: 'auto' }}
-          placeholder="blur"
-          blurDataURL="/images/blur.jpg"
-          sizes="100vw"
-        />
-      </div>
+    <Layout>
+      <div className="h-screen relative">
+        <div className="w-full h-screen z-0 absolute overflow-hidden">
+          <Image
+            loader={imageLoader}
+            src={coverImage}
+            alt="detail background"
+            width={1440}
+            height={475}
+            style={{ width: '100%', height: 'auto' }}
+            placeholder="blur"
+            blurDataURL="/images/blur.jpg"
+            sizes="100vw"
+          />
+        </div>
 
-      <div className="absolute top-40 left-20 w-10 bg-white-100 rounded-xl cursor-pointer">
-        <Image
-          loader={staticLoader}
-          src="/icons/arrow-left-short.svg"
-          width="50"
-          height="50"
-          alt="back-icon"
-          style={{ width: '100%', height: 'auto' }}
-          onClick={handleBack}
-        />
+        <div className="absolute top-40 left-20 w-10 bg-white-100 rounded-xl cursor-pointer">
+          <Image
+            loader={staticLoader}
+            src="/icons/arrow-left-short.svg"
+            width="50"
+            height="50"
+            alt="back-icon"
+            style={{ width: '100%', height: 'auto' }}
+            onClick={handleBack}
+          />
+        </div>
+        <div className="pt-40 pl-20 flex justify-evenly align-middle">
+          <Suspense fallback={<LoadingIndicator />}>
+            <Info movie={movie} />
+            <PlayButton />
+          </Suspense>
+        </div>
       </div>
-      <div className="pt-40 pl-20 flex justify-evenly align-middle">
-        <Suspense fallback={<LoadingIndicator />}>
-          <Info movie={movie} />
-          <PlayButton />
-        </Suspense>
-      </div>
-    </div>
+    </Layout>
   );
 };
 

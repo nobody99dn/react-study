@@ -26,6 +26,7 @@ import { ERROR_MESSAGES } from '@constants/messages';
 // Types
 import { TabOption, TAB_OPTION_LIST } from '@common-types/tabs';
 import { MoviesResponse } from '@common-types/apiResponse';
+import Layout from './layout';
 
 interface MoviesProps {
   movieList: Movie[];
@@ -62,25 +63,27 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
   }, []);
 
   return (
-    <Suspense fallback={<LoadingIndicator />}>
-      <SEO
-        description="The greatest movies you must known!"
-        siteTitle="Home page"
-        title="Home"
-      />
+    <Layout>
+      <Suspense fallback={<LoadingIndicator />}>
+        <SEO
+          description="The greatest movies you must known!"
+          siteTitle="Home page"
+          title="Home"
+        />
 
-      <Banner />
-      <section className="px-12">
-        <Tabs
-          currentTab={openTab}
-          options={TAB_OPTION_LIST}
-          onClick={handleRenderByTabOption}
-        >
-          <SearchBox onChange={handleSearchMovies} />
-          <MovieList movies={movies} />
-        </Tabs>
-      </section>
-    </Suspense>
+        <Banner />
+        <section className="px-12">
+          <Tabs
+            currentTab={openTab}
+            options={TAB_OPTION_LIST}
+            onClick={handleRenderByTabOption}
+          >
+            <SearchBox onChange={handleSearchMovies} />
+            <MovieList movies={movies} />
+          </Tabs>
+        </section>
+      </Suspense>
+    </Layout>
   );
 };
 
