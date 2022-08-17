@@ -31,7 +31,7 @@ import { MoviesResponse } from '@common-types/apiResponse';
 import { ApiError } from '@common-types/error';
 
 // Layouts
-import Layout from './layout';
+import Layout from './layout.page';
 
 interface MoviesProps {
   movieList?: Movie[];

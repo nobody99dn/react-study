@@ -33,7 +33,7 @@ const PlayButton = lazy(() => import('@components/PlayButton'));
 const Text = lazy(() => import('@components/Text'));
 
 // Layout
-import Layout from './layout';
+import Layout from './layout.page';
 import SEO from '@components/SEO';
 
 interface DetailProps {
