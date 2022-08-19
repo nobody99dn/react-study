@@ -42,10 +42,6 @@
 
 - [Visual studio code](https://code.visualstudio.com)
 
-## DEPLOYMENT
-
-- `https://movie-box-app.vercel.app`
-
 ## DIRECTORY STRUCTURE
 
 ```
@@ -122,3 +118,11 @@
   ```
 
 - Open browser and and type http://localhost:3000 in address bar
+
+## DEPLOYMENT
+
+- `https://movie-box-app.vercel.app`
+
+## KNOWN ISSUES
+
+- API Routes is not work in production environment.
