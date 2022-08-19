@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { lazy, Suspense, useCallback, useState } from 'react';
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps, GetStaticPropsResult } from 'next';
 import { useRouter } from 'next/router';
+
+// Helpers
 import Image from 'next/future/image';
 
 // Components
@@ -11,7 +13,7 @@ const Form = lazy(() => import('@components/Form'));
 const Text = lazy(() => import('@components/Text'));
 
 // Constants
-import { ROUTES, ERROR_MESSAGES } from '@constants/index';
+import { ROUTES, ERROR_MESSAGES, RESPONSE_MESSAGES } from '@constants/index';
 
 // Models
 import { Account } from '@models/Account';
@@ -21,6 +23,10 @@ import { getAccounts } from '@services/account.service';
 
 // Components
 import SEO from '@components/SEO';
+
+// Types
+import { AccountResponse } from '@common-types/apiResponse';
+import { internalLoader } from '@helpers/image';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -67,14 +73,18 @@ const Login: NextPage<LoginProps> = ({
         siteTitle="Login page"
         title="Login to the site"
       />
-      <div className="h-screen">
-        <div className="w-full h-screen z-0 absolute  overflow-hidden">
+      <main className="h-screen">
+        <div className="w-full h-screen z-0 absolute overflow-hidden">
           <Image
+            loader={internalLoader}
             src="/images/background.jpg"
             width={1440}
             height={475}
             style={{ width: '100%', height: 'auto' }}
+            placeholder="blur"
+            blurDataURL="/images/blur.jpg"
             alt="login background"
+            sizes="100vw"
           />
         </div>
         <div className="relative h-full flex flex-col items-center justify-center z-10">
@@ -94,22 +104,24 @@ const Login: NextPage<LoginProps> = ({
           />
           <Form className="w-1/3" onSubmit={handleSubmit} />
         </div>
-      </div>
+      </main>
     </Suspense>
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<LoginProps>
+> => {
   try {
-    const response: Account[] = await getAccounts();
+    const { users, message }: AccountResponse = await getAccounts();
 
-    if (!response) {
-      throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+    if (message === RESPONSE_MESSAGES[200]) {
+      return {
+        props: { listAccount: users }
+      };
     }
 
-    return {
-      props: { listAccount: response }
-    };
+    throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
   } catch (error) {
     if (error instanceof Error) {
       return { props: { errorMessage: error.message } };
@@ -117,6 +129,6 @@ export async function getStaticProps() {
 
     return { props: {} };
   }
-}
+};
 
 export default Login;

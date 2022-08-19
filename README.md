@@ -44,7 +44,7 @@
 - 1 developer
   - Van Tran
 
-## Practice 4: Movie Box Application (5 days)
+## Practice 4: Movie Box Application - Next.js (5 days)
 
 ### Usage
 
@@ -61,6 +61,11 @@
 
 - 1 developer
   - Van Tran
+
+## Example Folders
+
+- examples
+- next-app
 
 # expired
 
