@@ -1,7 +1,7 @@
 import { nanoid } from '@reduxjs/toolkit';
 import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postAdded } from './postsSlice';
+import { postsAdded } from './postsSlice';
 
 export const AddPostForm: FC = () => {
   const [title, setTitle] = useState('');
@@ -15,10 +15,10 @@ export const AddPostForm: FC = () => {
   const onContentChanged = (e: ChangeEvent<HTMLTextAreaElement>) =>
     setContent(e.target.value);
 
-  const onSavePostClicked = () => {
+  const onSavePostClicked = (): void => {
     if (title && content) {
       dispatch(
-        postAdded({
+        postsAdded({
           id: nanoid(),
           title,
           content
