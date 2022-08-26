@@ -66,6 +66,7 @@
 
 - examples
 - next-app
+- redux-essentials
 
 # expired
 
