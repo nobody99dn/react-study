@@ -2,9 +2,9 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "This is Node.js practice.",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/vawn-t/practice-nodejs-blog#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
