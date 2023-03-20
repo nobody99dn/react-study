@@ -1,0 +1,16 @@
+.btn {
+  padding: 10px 15px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn--primary {
+  background-color: var(--button-color);
+  color: white;
+}

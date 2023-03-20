@@ -1,0 +1,23 @@
+{
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "https://movie-box-app.vercel.app",
+      "strict_min_version": "42.0"
+    }
+  },
+
+  "browser_action": {
+    "default_icon": "/icons/logo.svg",
+    "default_title": "Movie Box"
+  },
+
+  "content_security_policy": "script-src 'self' https://movie-box-app.vercel.app; object-src 'self'",
+
+  "default_locale": "en",
+
+  "manifest_version": 2,
+
+  "name": "Movie Box Extension",
+
+  "version": "0.1"
+}

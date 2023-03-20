@@ -1,0 +1,21 @@
+.popup-message {
+  display: none;
+  position: fixed;
+  border-radius: 10px;
+  line-height: 2rem;
+  padding: 0 1rem;
+  top: 1rem;
+  right: 2rem;
+}
+
+.popup-error {
+  background-color: var(--danger);
+}
+
+.popup-success {
+  background-color: var(--success);
+}
+
+.popup-message.active {
+  display: block;
+}

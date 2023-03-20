@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>useDeferredValue</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      const { useState, useDeferredValue, useEffect } = React;
+
+      function SlowComponent({ value }) {
+        return (
+          <div>
+            <h2>Slow Component</h2>
+            {Array(value)
+              .fill(1)
+              .map((_, index) => (
+                <p key={index}>{value + index}</p>
+              ))}
+          </div>
+        );
+      }
+
+      function App() {
+        const [number, setNumber] = useState(0);
+
+        const deferredValue = useDeferredValue(number);
+        console.log('deferredValue outside', deferredValue);
+        useEffect(() => {
+          console.log(number);
+          console.log('deferredValue inside', deferredValue);
+        }, [number]);
+
+        const value = 50000;
+
+        const handleClick = () => {
+          setNumber(number + 1);
+        };
+
+        return (
+          <div>
+            <button onClick={handleClick}>Click to add + 1: {number}</button>
+
+            <p>Deferred value: {deferredValue}</p>
+
+            <SlowComponent value={value} />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

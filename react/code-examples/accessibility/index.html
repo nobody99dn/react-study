@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      // Mouse and pointer events
+      class OuterClickExample extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.state = { isOpen: false };
+          this.toggleContainer = React.createRef();
+
+          this.onClickHandler = this.onClickHandler.bind(this);
+          this.onClickOutsideHandler = this.onClickOutsideHandler.bind(this);
+        }
+
+        componentDidMount() {
+          window.addEventListener('click', this.onClickOutsideHandler);
+        }
+
+        componentWillUnmount() {
+          window.removeEventListener('click', this.onClickOutsideHandler);
+        }
+
+        onClickHandler() {
+          this.setState((currentState) => ({
+            isOpen: !currentState.isOpen
+          }));
+        }
+
+        onClickOutsideHandler(event) {
+          if (
+            this.state.isOpen &&
+            !this.toggleContainer.current.contains(event.target)
+          ) {
+            this.setState({ isOpen: false });
+          }
+        }
+
+        render() {
+          return (
+            <div ref={this.toggleContainer}>
+              <button onClick={this.onClickHandler}>Select an option</button>
+              {this.state.isOpen && (
+                <ul>
+                  <li>Option 1</li>
+                  <li>Option 2</li>
+                  <li>Option 3</li>
+                </ul>
+              )}
+            </div>
+          );
+        }
+      }
+
+      class BlurExample extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.state = { isOpen: false };
+          this.timeOutId = null;
+
+          this.onClickHandler = this.onClickHandler.bind(this);
+          this.onBlurHandler = this.onBlurHandler.bind(this);
+          this.onFocusHandler = this.onFocusHandler.bind(this);
+        }
+
+        onClickHandler() {
+          this.setState((currentState) => ({
+            isOpen: !currentState.isOpen
+          }));
+        }
+
+        // We close the popover on the next tick by using setTimeout.
+        // This is necessary because we need to first check if
+        // another child of the element has received focus as
+        // the blur event fires prior to the new focus event.
+        onBlurHandler() {
+          this.timeOutId = setTimeout(() => {
+            console.log('blur');
+            this.setState({
+              isOpen: false
+            });
+          });
+        }
+
+        // If a child receives focus, do not close the popover.
+        onFocusHandler() {
+          console.log('focus');
+          clearTimeout(this.timeOutId);
+        }
+
+        render() {
+          // React assists us by bubbling the blur and
+          // focus events to the parent.
+          return (
+            <div onBlur={this.onBlurHandler} onFocus={this.onFocusHandler}>
+              <button
+                onClick={this.onClickHandler}
+                aria-haspopup='true'
+                aria-expanded={this.state.isOpen}
+              >
+                Select an option
+              </button>
+              {this.state.isOpen && (
+                <ul>
+                  <li>Option 1</li>
+                  <li>Option 2</li>
+                  <li>Option 3</li>
+                </ul>
+              )}
+            </div>
+          );
+        }
+      }
+
+      function App() {
+        return (
+          <div>
+            <OuterClickExample />
+            <BlurExample />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

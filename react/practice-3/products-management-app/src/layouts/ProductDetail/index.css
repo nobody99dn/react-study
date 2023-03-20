@@ -1,0 +1,33 @@
+.product-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.product-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30%;
+  max-width: 25rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.product-form {
+  width: 70%;
+  max-width: 50rem;
+}
+
+.product-form,
+.product-image {
+  padding: 2rem;
+}
+
+.error-container {
+  text-align: center;
+}
+
+.back-icon {
+  padding: 1rem;
+}
