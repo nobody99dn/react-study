@@ -62,6 +62,7 @@
 
 ## Usage
 
-- Clone project: `git clone -b master git@gitlab.asoft-python.com:g-vantran/html-css-training.git`
-- Open folder `practice-2`
+- Clone project: `git clone -b master https://github.com/vawn-t/code-studies.git`
+- `cd html-css`
+- `cd practice-2`
 - Open `index.html` by your browser

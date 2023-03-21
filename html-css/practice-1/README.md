@@ -50,5 +50,7 @@
 
 ## Usage
 
-- Clone project: `git clone -b master git@gitlab.asoft-python.com:g-vantran/html-css-training.git`
+- Clone project: `https://github.com/vawn-t/code-studies.git`
+- `cd html-css`
+- `cd practice-1`
 - Open `index.html` by your browser
