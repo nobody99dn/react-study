@@ -1,0 +1,26 @@
+.accordion-button:not(.collapsed) {
+  color: var(--dark-gray-color);
+  background-color: var(--light-purple-background-color);
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-item:first-of-type .accordion-button {
+  border-radius: 0;
+}
+
+.accordion-button::after {
+  background-image: url(../../assets/icons/caret-up.svg);
+  background-size: 1rem;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url(../../assets/icons/caret-up.svg);
+}
+
+.group-name {
+  pointer-events: none;
+}

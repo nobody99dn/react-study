@@ -1,0 +1,13 @@
+.task-container {
+  position: relative;
+  background-image: url(../../assets/images/taskContainer-background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 80%;
+  border-radius: 0.3rem;
+}
+
+.task-title {
+  color: var(--dark-gray-color);
+  font-size: 34px;
+}
