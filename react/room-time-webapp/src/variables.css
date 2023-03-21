@@ -1,0 +1,8 @@
+:root {
+  --light-white-color: #fff;
+  --dark-green-color: #0f4555;
+  --light-gray-color: #cbcbcb;
+  --dark-gray-color: #9b9da0;
+  --highlight-color: #f5a623;
+  --invisible-color: rgba(255, 255, 255, 0)
+}

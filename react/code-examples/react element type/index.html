@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      function Header() {
+        return <div className='heading'>New Header</div>
+      }
+
+      class Content extends React.Component {
+        render() {
+          return <div className='content'>New Content</div>
+        }
+      }
+
+      function Footer() {
+        return <div className='footer'>New Footer</div>
+      }
+
+      //   const app = (
+      //     <div className='wrapper'>
+      //       <Header />
+      //       <Content />
+      //       <Footer />
+      //     </div>
+      //   )
+
+      // practice
+
+      function PostItem() {
+        return (
+          <div className='post-item'>
+            <label htmlFor='email'></label>
+            <input type='text' id='email' />
+            <img src='google.com' alt='Unknown' />
+            <h2 className='post-title'>C#(.NET)</h2>
+            <p className='post-decs'>Ban co kien thuc</p>
+            <p className='post-published'>Mot ngay moi</p>
+          </div>
+        )
+      }
+
+      const app = (
+        <div className='post-list'>
+          <PostItem />
+          <PostItem />
+          <PostItem />
+        </div>
+      )
+
+      ReactDOM.render(app, document.getElementById('root'))
+    </script>
+  </body>
+</html>

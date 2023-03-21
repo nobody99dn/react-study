@@ -1,0 +1,16 @@
+.header {
+  display: block;
+  top: 50%;
+  background-color: var(--light-gray);
+  height: 4.75rem;
+}
+
+.logo-link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-content {
+  height: 100%;
+}

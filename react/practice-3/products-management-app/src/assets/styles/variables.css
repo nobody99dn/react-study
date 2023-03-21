@@ -1,0 +1,11 @@
+:root {
+  /* - Colors */
+  /* - ---------------------------------------------- */
+  --dark: #353535;
+  --white: #FFF;
+  --primary: #137BBE;
+  --secondary: #FFAF4F;
+  --light-gray: #F5F6F7;
+  --danger: #FA5862;
+  --success: #198754;
+}

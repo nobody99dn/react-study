@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code-splitting</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="module" src="./App.js"></script>
+    <script type="text/babel">
+      const { Suspense } = React;
+      import Tabs from './Tabs';
+      import Glimmer from './Glimmer';
+
+      const Comments = React.lazy(() => import('./Comments'));
+      const Photos = React.lazy(() => import('./Photos'));
+
+      function MyComponent() {
+        const [tab, setTab] = React.useState('photos');
+
+        function handleTabSelect(tab) {
+          //Here, you tell React that setting tab to 'comments' is not an urgent update, but is a transition that may take some time. React will then keep the old UI in place and interactive, and will switch to showing <Comments /> when it is ready
+          startTransition(() => {
+            setTab(tab);
+          });
+        }
+
+        return (
+          <div>
+            <Tabs onTabSelect={handleTabSelect} />
+            <Suspense fallback={<Glimmer />}>
+              {tab === 'photos' ? <Photos /> : <Comments />}
+            </Suspense>
+          </div>
+        );
+      }
+    </script>
+  </body>
+</html>

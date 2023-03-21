@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>useImpertiveHandle</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      // import video1 from './video-1.mp4';
+      const { useRef, forwardRef, useImperativeHandle, useEffect } = React;
+
+      function Video(props, ref) {
+        const videoRef = useRef();
+
+        // gán object từ param 2 vào param 1
+        useImperativeHandle(ref, () => ({
+          play() {
+            videoRef.current.play();
+          },
+          pause() {
+            videoRef.current.pause();
+          }
+        }));
+
+        return <video src='./video-1.mp4' width={250} ref={videoRef} />;
+      }
+
+      Video = forwardRef(Video);
+
+      function App() {
+        const videoRef = useRef();
+
+        useEffect(() => {
+          console.log(videoRef);
+        });
+
+        const handlePlay = () => {
+          videoRef.current.play();
+        };
+
+        const handlePause = () => {
+          videoRef.current.pause();
+        };
+
+        return (
+          <div>
+            <Video ref={videoRef} />
+
+            <button onClick={handlePlay}>Play</button>
+            <button onClick={handlePause}>Pause</button>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class OuterClickExample extends React.Component {
+        constructor(props) {
+          super(props)
+
+          this.state = { isOpen: false }
+
+          // Create a ref to store the button div element
+          this.toggleContainer = React.createRef()
+
+          this.onClickHandler = this.onClickHandler.bind(this)
+          this.onClickOutsideHandler = this.onClickOutsideHandler.bind(this)
+        }
+
+        componentDidMount() {
+          window.addEventListener('click', this.onClickOutsideHandler)
+        }
+
+        componentWillUnmount() {
+          window.removeEventListener('click', this.onClickOutsideHandler)
+        }
+
+        onClickHandler() {
+          this.setState((currentState) => ({
+            isOpen: !currentState.isOpen
+          }))
+        }
+
+        onClickOutsideHandler(event) {
+          if (
+            this.state.isOpen &&
+            !this.toggleContainer.current.contains(event.target) // Use the `ref` callback to store a reference to not the div DOM
+          ) {
+            this.setState({ isOpen: false })
+          }
+        }
+
+        render() {
+          return (
+            <div ref={this.toggleContainer}>
+              <button onClick={this.onClickHandler}>Select an option</button>
+              {this.state.isOpen && (
+                <ul>
+                  <li>Option 1</li>
+                  <li>Option 2</li>
+                  <li>Option 3</li>
+                </ul>
+              )}
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<OuterClickExample />, document.getElementById('root'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+:root {
+  --button-color: #376aed;
+  --white: #ffff;
+  --gray: #d9dae1;
+  --heading-color: #171d28;
+  --text-blue-color: #9caae9;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

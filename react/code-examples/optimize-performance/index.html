@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optimize Performance</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      class ListOfWords extends React.PureComponent {
+        render() {
+          console.log(this.props);
+          return <div>{this.props.words.join(',')}</div>;
+        }
+      }
+
+      class WordAdder extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            words: ['marklar']
+          };
+          this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick() {
+          // This section is bad style and causes a bug:
+          // This bug because it reference to old state when shallow compare it will be equal
+          // const words = this.state.words;
+          // words.push('marklar');
+
+          // The Power Of Not Mutating Data
+          this.setState({ words: ['marklar', ...this.state.words] });
+          console.log('this.state.words;', this.state.words);
+        }
+
+        render() {
+          return (
+            <div>
+              <button onClick={this.handleClick}>Add marklar </button>
+              <ListOfWords words={this.state.words} />
+            </div>
+          );
+        }
+      }
+
+      // PureComponent sample
+      class CounterButton extends React.PureComponent {
+        constructor(props) {
+          super(props);
+          this.state = { count: 1 };
+        }
+
+        render() {
+          return (
+            <button
+              color={this.props.color}
+              onClick={() =>
+                this.setState((state) => ({ count: state.count + 1 }))
+              }
+            >
+              Count: {this.state.count}
+            </button>
+          );
+        }
+      }
+
+      const App = () => (
+        <div>
+          <WordAdder />
+          <CounterButton />
+        </div>
+      );
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
