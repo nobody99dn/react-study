@@ -1,0 +1,27 @@
+.select-wrapper {
+  padding: 1rem 1rem;
+}
+
+.select {
+  border-radius: 3px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  padding: 0.5rem;
+  text-indent: 0.25rem;
+  background: var(--light-gray);
+  border: 1px solid var(--light-gray);
+  margin-top: 0.25rem;
+}
+
+.select:disabled {
+  color: black;
+  cursor: text;
+  -webkit-touch-callout: text; /* iOS Safari */
+  -webkit-user-select: text; /* Safari */
+  -khtml-user-select: text; /* Konqueror HTML */
+  -moz-user-select: text; /* Old versions of Firefox */
+  -ms-user-select: text; /* Internet Explorer/Edge */
+  user-select: text;
+  opacity: 1;
+}

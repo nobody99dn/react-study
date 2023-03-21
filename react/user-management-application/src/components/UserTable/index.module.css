@@ -1,0 +1,42 @@
+.user-table {
+  border-collapse: collapse;
+  width: 1000px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table-scroll {
+  max-height: 450px;
+  overflow: auto;
+}
+
+.user-table__heading {
+  background-color: var(--button-color);
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+
+.user-table__heading-element,
+.user-table__row-element {
+  padding: 12px 15px;
+}
+
+.user-table__row-element {
+  border-bottom: 1px solid #dddd;
+  font-size: 0.9rem;
+}
+
+.user-table__row:last-of-type {
+  border-bottom: 2px solid var(--button-color);
+}
+
+.user-table__row:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.user-table__row--active {
+  color: var(--button-color);
+  cursor: pointer;
+}

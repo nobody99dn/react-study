@@ -1,0 +1,8 @@
+.sidebar {
+  width: 20%;
+}
+
+.sidebar-title {
+  color: var(--dark-purple-color);
+  font-size: 28px;
+}

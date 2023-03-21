@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Props</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      function PostItem(props) {
+        console.log(props)
+
+        if (typeof props.callback === 'function') {
+          props.callback(Math.random())
+        }
+
+        return (
+          <div className='post-item'>
+            <label htmlFor='email'></label>
+            <input type='text' id='email' />
+            <img src={props.image} alt='Unknown' />
+            <h2 className='post-title'>{props.title}</h2>
+            <p className='post-decs'>{props.desc}</p>
+            <p className='post-published'>{props.published}</p>
+          </div>
+        )
+      }
+
+      const app = (
+        <div className='post-list'>
+          <PostItem
+            title='C#(.NET)'
+            image='#'
+            desc='Ban co kien thuc'
+            published='Mot ngay truoc'
+            data={[{ a: 1, b: 2 }]}
+            callback={(random) => {
+              console.log('random: ', random)
+            }}
+          />
+
+          <PostItem
+            title='2. C#(.NET)'
+            image='2. #'
+            desc='2. Ban co kien thuc'
+            published='2. Mot ngay truoc'
+          />
+
+          <PostItem
+            title='3. C#(.NET)'
+            image='3. #'
+            desc='3. Ban co kien thuc'
+            published='3. Mot ngay truoc'
+          />
+        </div>
+      )
+
+      ReactDOM.render(app, document.getElementById('root'))
+    </script>
+  </body>
+</html>

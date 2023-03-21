@@ -1,0 +1,148 @@
+{
+  "todos": [
+    {
+      "id": "82a7d2c0-4abe-4180-9c49-3ba1d50f33cc",
+      "type": "group",
+      "name": "Group 1",
+      "lists": [
+        {
+          "id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa753",
+          "type": "list",
+          "name": "Child List 1",
+          "tasks": [
+            {
+              "id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
+              "name": "Practice",
+              "dueDate": "2022-03-17",
+              "dateModified": "2022-02-12"
+            }
+          ]
+        },
+        {
+          "id": "0ffd86bd-3943-472d-8a75-a37386f388c1",
+          "type": "list",
+          "name": "Child List 2",
+          "tasks": [
+            {
+              "id": "c0304a5a-89d7-432e-abc9-d2cbc308e41e",
+              "name": "Task 1",
+              "dueDate": "2022-03-17",
+              "dateCreated": "2022-02-12",
+              "dateModified": "2022-02-12"
+            },
+            {
+              "id": "94e32372-ba1b-4240-ba8a-64d78d813b02",
+              "name": "Task 2",
+              "dueDate": "",
+              "dateCreated": "",
+              "dateModified": ""
+            },
+            {
+              "id": "a15499bd-6787-47c1-b52b-8bbe9f17737d",
+              "name": "Task 3",
+              "dueDate": "",
+              "dateCreated": "",
+              "dateModified": ""
+            },
+            {
+              "id": "f0a51c6e-5de6-47e5-adc6-561556691501",
+              "name": "Task 4",
+              "dueDate": "",
+              "dateCreated": "",
+              "dateModified": ""
+            },
+            {
+              "id": "c53583f8-9d2c-4ca5-b3ac-94aad8c1a2c4",
+              "name": "Task 5",
+              "dueDate": "",
+              "dateCreated": "",
+              "dateModified": ""
+            },
+            {
+              "id": "e3e8caf1-a66b-4523-9132-8ccf60588a91",
+              "name": "Task 6",
+              "dueDate": "",
+              "dateCreated": "",
+              "dateModified": ""
+            },
+            {
+              "id": "1bf9f777-92bf-4f16-ac9a-c46fa8680bb5",
+              "name": "Task 7",
+              "dueDate": "",
+              "dateCreated": "",
+              "dateModified": ""
+            },
+            {
+              "id": "d28150f6-9ca7-43e8-a83c-fc5f469e5be1",
+              "name": "Task 8",
+              "dueDate": "",
+              "dateCreated": "",
+              "dateModified": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f5ab43e8-0867-4ea0-85cf-654c0a8fa711",
+      "type": "list",
+      "name": "List 1",
+      "tasks": [
+        {
+          "id": "476144b2-a7fb-48e1-82d7-850e6b5d720f",
+          "name": "JavaScript",
+          "dueDate": "",
+          "dateCreated": "",
+          "dateModified": ""
+        },
+        {
+          "id": "589b5e82-2973-4015-a13e-242946e5a318",
+          "name": "TypeScript",
+          "dueDate": "",
+          "dateCreated": "",
+          "dateModified": ""
+        },
+        {
+          "id": "624c85bf-14aa-4a09-9208-99c167d937fd",
+          "name": "ReactJS",
+          "dueDate": "",
+          "dateCreated": "",
+          "dateModified": ""
+        },
+        {
+          "id": "3120b607-695d-4d4d-91b0-2e434e1cac8f",
+          "name": "VueJS",
+          "dueDate": "",
+          "dateCreated": "",
+          "dateModified": ""
+        },
+        {
+          "id": "79e08a46-1683-4b5f-b6e9-561718d6ba43",
+          "name": "NodeJS",
+          "dueDate": "",
+          "dateCreated": "",
+          "dateModified": ""
+        },
+        {
+          "id": "aef4e177-620d-4b50-85c0-84f3065881a0",
+          "name": "NoSQL",
+          "dueDate": "",
+          "dateCreated": "",
+          "dateModified": ""
+        },
+        {
+          "id": "0b44e4a7-1095-4585-ab53-7cc77e834125",
+          "name": "Angular",
+          "dueDate": "",
+          "dateCreated": "",
+          "dateModified": ""
+        }
+      ]
+    },
+    {
+      "id": "44d5aee1-5e8e-430f-af8d-9fe558168744",
+      "type": "group",
+      "name": "Group 2"
+    }
+  ]
+}

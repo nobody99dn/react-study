@@ -1,0 +1,7 @@
+.icon-social {
+  cursor: pointer;
+}
+
+.icon-social:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      class Cat extends React.Component {
+        render() {
+          const mouse = this.props.mouse
+
+          return (
+            <img
+              src='https://thumbs.dreamstime.com/b/crazy-cat-tongue-hanging-out-40087599.jpg'
+              style={{ position: 'absolute', left: mouse.x, top: mouse.y }}
+            />
+          )
+        }
+      }
+
+      class Mouse extends React.Component {
+        constructor(props) {
+          super(props)
+          this.handleMouseMove = this.handleMouseMove.bind(this)
+          this.state = { x: 0, y: 0 }
+        }
+
+        handleMouseMove(event) {
+          this.setState({
+            x: event.clientX,
+            y: event.clientY
+          })
+        }
+
+        render() {
+          return (
+            <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
+              {/*
+                  Instead of providing a static representation of what <Mouse> renders,
+                  use the `render` prop to dynamically determine what to render.
+            */}
+
+              {this.props.render(this.state)}
+            </div>
+          )
+        }
+      }
+
+      class MouseTracker extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>Move the mouse around!</h1>
+              <Mouse render={(mouse) => <Cat mouse={mouse} />}></Mouse>
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<MouseTracker />, document.getElementById('root'))
+    </script>
+  </body>
+</html>

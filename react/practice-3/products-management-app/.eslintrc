@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "eslint:recommended", 
+    "plugin:react/recommended", 
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false, // <== ADD THIS
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module" // Allows for the use of imports
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "eqeqeq": "error",
+    "indent":  ["error", 2, { "SwitchCase": 1 }],
+    "curly": ["error", "all"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
+  }
+}
