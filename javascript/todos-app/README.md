@@ -71,13 +71,13 @@
 - Clone project:
 
   ```bash
-  $ git clone git@gitlab.asoft-python.com:van.tran/javascript-training.git
+  $ git clone https://github.com/vawn-t/code-studies.git
   ```
 
 - Checkout branch:
 
   ```bash
-  $ git checkout practice/todo-app
+  $ cd javascript
   ```
 
 - Change directory:
