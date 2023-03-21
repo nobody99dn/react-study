@@ -1,0 +1,542 @@
+/*------------------------------------*\
+  COMMON BUTTON CSS
+\*------------------------------------*/
+.btn {
+  font-family: HeliveticaNeueBold;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1.125rem;
+  color: var(--white-color);
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.btn:hover {
+  opacity: 0.8;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+}
+
+/* type of btn */
+.btn--primary {
+  background-color: var(--dark-blue-color);
+}
+
+.btn--secondary {
+  background: var(--red-color);
+}
+
+.btn--outlined {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0.125rem solid var(--white-color);
+}
+
+/*------------------------------------*\
+  APP-BAR
+\*------------------------------------*/
+.main-header {
+  align-items: center;
+  display: flex;
+  padding: 0.625rem 1.25rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.logo-link {
+  width: 14.125rem;
+  height: 1.875rem;
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.app-nav {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  margin-top: 0.9375rem;
+  justify-content: space-between;
+}
+
+.nav-list {
+  font-size: 1rem;
+}
+
+.nav-list__item {
+  display: inline;
+  margin-right: 1.25rem;
+}
+
+.nav-list__item .nav-list__item--active,
+.nav-list__link:hover {
+  color: var(--red-color);
+}
+
+.nav-list__link {
+  color: #00000c;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-family: HeliveticaNeue;
+}
+
+.btn__text-start::after {
+  content: "Get Started";
+}
+
+.btn__text-start {
+  font-size: 0.875rem;
+  padding: 0.6875rem 0.8125rem;
+}
+
+/*------------------------------------*\
+  MAIN FOOTER
+\*------------------------------------*/
+.main-footer {
+  background-color: var(--dark-gray-color);
+  color: var(--gray-color);
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 0.875rem;
+  justify-content: space-between;
+}
+
+.address {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  line-height: 2.5;
+  padding: 0 0.625rem;
+  text-align: center;
+}
+
+.socials {
+  display: flex;
+  font-size: 0.25rem;
+}
+
+.social-item {
+  display: inline-block;
+  height: 2.5rem;
+  width: 20%;
+}
+
+.social-item:hover {
+  opacity: 0.8;
+}
+
+.social-item a {
+  align-items: center;
+  color: var(--white-color);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.social-item__facebook {
+  background-color: #1877f2;
+}
+
+.social-item__twitter {
+  background-color: #1da1f2;
+}
+
+.social-item__linkedin {
+  background-color: #0a66c2;
+}
+
+.social-item__email {
+  background-color: var(--violet-color);
+}
+
+.social-item__goodfilms {
+  background: #1f1f1f url(../assets/images/icon-images/goodfilms.png) no-repeat
+    center center;
+  background-size: contain;
+}
+
+/*------------------------------------*\
+ SECTION GAME INTRO
+\*------------------------------------*/
+.game-intro {
+  position: relative;
+  width: 100%;
+  height: 55vw;
+}
+
+.intro-banner {
+  color: var(--white-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-banner__slogan {
+  font-family: HeliveticaNeue;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 300;
+}
+
+.intro-banner__play-icon {
+  font-size: 2.25rem;
+  margin-top: 1.8125rem;
+  cursor: pointer;
+}
+
+.intro-thumbnail {
+  height: 100%;
+}
+
+.intro-thumbnail__img {
+  width: 100%;
+  height: 100%;
+}
+
+.game-intro__btn {
+  border-color: var(--red-color);
+  color: var(--red-color);
+  display: none;
+  font-size: 1.3rem;
+  padding: 0.5rem 1.3em;
+  margin-top: 5rem;
+}
+
+/* GAME-PRODUCTS  */
+
+.game-product {
+  height: 65vw;
+}
+
+.game-products__title {
+  display: none;
+}
+
+.game-product__img {
+  width: 100%;
+  height: 100%;
+}
+
+.game-product__body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.game-product__content {
+  align-items: flex-end;
+  color: var(--white-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  top: 0;
+  padding: 0 1rem 0.5rem 1rem;
+  position: absolute;
+}
+
+.game-product__title {
+  font-family: HeliveticaNeueBold;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.game-product__subtitle {
+  font-family: HeliveticaNeueBold;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.game-product__excerpt {
+  font-size: 0.875rem;
+  display: none;
+}
+
+.game-product__more {
+  font-family: HeliveticaNeueBold;
+  display: none;
+}
+
+/*------------------------------------*\
+  SECTION GAME SERVICES
+\*------------------------------------*/
+.game-services {
+  color: var(--white-color);
+  background-color: var(--dark-blue-color);
+  line-height: 1.56;
+  padding: 1.875rem 1.5625rem;
+}
+
+.service-intro__header {
+  font-family: HeliveticaNeue;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  text-transform: capitalize;
+}
+
+.service-intro__desc {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.service-item__image {
+  width: 30px;
+  height: 30px;
+}
+
+.service-item__header {
+  font-family: HeliveticaNeueBold;
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.service-item__name {
+  font-size: 1rem;
+  margin-left: 0.625rem;
+  text-transform: capitalize;
+}
+
+.service-item__desc {
+  margin-top: 0.3125rem;
+  font-size: 0.875rem;
+}
+
+/*------------------------------------*\
+  SECTION GAME SERVICES
+\*------------------------------------*/
+.testimonials-slider {
+  background: var(--dark-blue-color);
+  padding: 2rem 0px;
+}
+
+.testimonials-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white-color);
+}
+
+.testimonials-header {
+  font-family: HeliveticaNeue;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.testimonials-content {
+  width: 85%;
+  text-align: center;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial__desc {
+  order: 0;
+  line-height: 1.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 1.4rem;
+}
+
+.testimonial__ref {
+  order: 1;
+  color: #bcc3cc;
+  font-size: 1rem;
+}
+
+.arrow-left,
+.arrow-right {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  transform: rotate(-45deg) skew(-13deg, -13deg);
+}
+
+.arrow-left {
+  border-top: 0.25rem solid rgb(174, 174, 174);
+  border-left: 0.25rem solid rgb(174, 174, 174);
+  margin-left: 3%;
+}
+
+.arrow-right {
+  border-bottom: 0.25rem solid rgb(174, 174, 174);
+  border-right: 0.25rem solid rgb(174, 174, 174);
+  margin-right: 3%;
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+  border-color: var(--white-color);
+}
+
+.indicator {
+  order: 2;
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.circle {
+  padding: 0.25rem;
+  border: 1px solid var(--white-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.circle:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.circle + .circle {
+  margin-left: 0.5rem;
+}
+
+.circle--contained {
+  background-color: var(--white-color);
+}
+
+/*------------------------------------*\
+  SECTION GAME FEEDBACK
+\*------------------------------------*/
+.game-feedback {
+  background: var(--blue-color);
+  color: white;
+}
+
+.game-feedback__header {
+  font-family: HeliveticaNeue;
+  display: none;
+}
+
+.game-feedback__btn {
+  font-family: HeliveticaNeueLight;
+  border: none;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: inherit;
+  padding: 1.3rem 0;
+}
+/*------------------------------------*\
+  SECTION ABOUT US
+\*------------------------------------*/
+
+.about-us {
+  background-color: var(--white-color);
+  color: var(--dark-gray-color);
+}
+
+.image-contain {
+  height: 100%;
+}
+
+.about-us__header-item {
+  align-items: center;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  display: flex;
+  justify-content: center;
+}
+
+.about-us__title {
+  text-align: center;
+  font-family: HeliveticaNeue;
+  font-weight: normal;
+  font-size: 1.5rem;
+  padding: 1.875rem 1.563rem;
+}
+
+.about-us__main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-us__body-item {
+  align-items: center;
+  background-color: var(--gray-color);
+  display: flex;
+  font-size: 0.875rem;
+  padding: 1.25rem 1.5625rem;
+  line-height: 1.428;
+}
+
+.process-image {
+  background-color: var(--white-color);
+  width: 50%;
+  height: 30vw;
+}
+
+.process-image > img {
+  padding: 0.05rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-us__items {
+  height: 100%;
+}
+
+.about-us__item {
+  background-color: var(--gray-color);
+  border: 0.0625rem solid var(--white-color);
+  display: flex;
+  height: 7.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-item {
+  height: 5.375rem;
+  width: 4.625rem;
+  transform: scale(0.5);
+}
+
+.about-us__label {
+  color: var(--red-color);
+  font-size: 1.75rem;
+  font-family: HeliveticaNeue;
+  margin-bottom: 0.3125rem;
+}
+
+.about-us__info {
+  color: var(--dark-gray-color);
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.about-us__btn {
+  align-items: center;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  display: flex;
+  line-height: 1.42;
+  justify-content: center;
+  text-transform: capitalize;
+  text-align: left;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+}
+
+.arrow {
+  width: 1.125rem;
+  height: 0.75rem;
+  margin-left: 0.5rem;
+}
