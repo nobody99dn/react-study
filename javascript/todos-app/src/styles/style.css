@@ -1,0 +1,32 @@
+/*------------------------------------*\
+  BASE STYLE
+\*------------------------------------*/
+@import url(./base.css);
+
+/*------------------------------------*\
+  COMPONENTS
+\*------------------------------------*/
+
+/* Title component style */
+@import url(./components/title.css);
+
+/* Sidebar component style */
+@import url(./components/sidebar.css);
+
+/* Task container component style */
+@import url(./components/tasksContainer.css);
+
+/*Task action menu component style*/
+@import url(./components/actionMenu.css);
+
+/* Group component style */
+@import url(./components/group.css);
+
+/* List component style */
+@import url(./components/list.css);
+
+/*Task component style*/
+@import url(./components/taskLine.css);
+
+/* Task input component style */
+@import url(./components/taskInput.css);

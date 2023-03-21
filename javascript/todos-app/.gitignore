@@ -1,0 +1,6 @@
+/.parcel-cache
+/dist
+/node_modules
+/.cache
+/package-lock.json
+/src/scripts/database/db.json

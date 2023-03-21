@@ -1,0 +1,23 @@
+.input-group .add-icon {
+  font-size: 25px;
+  position: absolute;
+  z-index: 10000;
+  top: 0px;
+  left: 5px;
+}
+
+.input-group .calendar-icon {
+  font-size: 25px;
+  right: 35px;
+}
+
+.task-form .form-control {
+  text-indent: 35px;
+  border-color: transparent;
+  max-width: 100%;
+  outline: none;
+}
+
+.input-group {
+  background-color: var(--light-white-color);
+}
