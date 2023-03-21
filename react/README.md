@@ -6,8 +6,8 @@
 
 ### Usage
 
-- Clone project: `git clone git@gitlab.asoft-python.com:van.tran/react-training.git`
-- `git checkout develop`
+- Clone project: `git clone https://github.com/vawn-t/code-studies.git`
+- `cd react`
 - `cd room-time-webapp`
 - run `npm i` then run `npm start`
 
@@ -20,8 +20,8 @@
 
 ### Usage
 
-- Clone project: `git clone git@gitlab.asoft-python.com:van.tran/react-training.git`
-- `git checkout develop`
+- Clone project: `git clone https://github.com/vawn-t/code-studies.git`
+- `cd react`
 - `cd products-management-app`
 - run `yarn install` then run `yarn dev`
 
@@ -34,8 +34,8 @@
 
 ### Usage
 
-- Clone project: `git clone git@gitlab.asoft-python.com:van.tran/react-training.git`
-- `git checkout develop`
+- Clone project: `git clone https://github.com/vawn-t/code-studies.git`
+- `cd react`
 - `cd practice-3/products-management-app`
 - run `yarn install` then run `yarn dev`
 
@@ -48,8 +48,8 @@
 
 ### Usage
 
-- Clone project: `git clone git@gitlab.asoft-python.com:van.tran/react-training.git`
-- `git checkout develop`
+- Clone project: `git clone https://github.com/vawn-t/code-studies.git`
+- `cd react`
 - `cd movie-box-app`
 - run `pnpm i` then run `pnpm dev`
 
@@ -96,7 +96,3 @@
 - 2 developers
   - Van Tran
   - Minh Nguyen Hoang
-
-# Code studies
-
-**_This is where the quintessence begins_**
